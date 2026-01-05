@@ -1,0 +1,50 @@
+SOULLINK TERMS OF SERVICE (EULA)
+
+Last Updated: January 2026
+
+1. ACCEPTANCE OF TERMS
+By accessing or using SoulLink (“the App”), you agree to be bound by these Terms of Service. If you do not agree, you must not use the App.
+
+2. ELIGIBILITY (16+)
+- You must be at least 16 years old to use SoulLink.
+- If you are under 18, you confirm you have permission from a parent or legal guardian where required by local law.
+- Providing false information about your age may result in restriction or termination of access.
+
+3. USER RESPONSIBILITIES
+- You agree not to misuse the App, including attempting to hack, reverse engineer, or disrupt its operation.
+- You are responsible for any content you input during chats.
+- You agree to comply with all applicable laws and regulations.
+- You must not harass, abuse, or harm others, or input hateful, discriminatory, or explicit content.
+
+4. CONTENT AND MATURITY NOTICE
+- SoulLink is intended for users aged 16 and older. It may include emotionally intense themes, stylized romantic dialogue, and mature character interactions.
+- The App does not include explicit sexual content or graphic violence.
+- SoulLink is for entertainment and creative purposes only. It is not a substitute for professional advice.
+
+5. INTELLECTUAL PROPERTY
+- All code, design, characters, lore, and branding are owned by SynonTech.
+- You may not copy, distribute, or modify the App without permission.
+- You are granted a limited, revocable, non‑transferable license to use the App for personal, non‑commercial purposes.
+
+6. PRIVACY
+- SoulLink may collect non‑personal usage data to improve functionality.
+- For broader data handling practices, refer to Microsoft’s Privacy Statement: https://privacy.microsoft.com/en-us/privacystatement
+- You may stop using the App at any time and request deletion of locally stored data where applicable.
+
+7. DISCLAIMERS
+- The App is provided “as is” without warranties of any kind.
+- We do not guarantee uninterrupted or error‑free operation.
+- SoulLink is for entertainment and creative purposes only.
+
+8. LIMITATION OF LIABILITY
+To the maximum extent permitted by law, SynonTech shall not be liable for indirect, incidental, or consequential damages arising from use of the App.
+
+9. TERMINATION
+We reserve the right to suspend or terminate access to SoulLink at any time, without notice, for violation of these Terms or applicable laws.
+If we learn a user is under 16, we may restrict or terminate access.
+
+10. CHANGES TO TERMS
+We may update these Terms from time to time. Continued use of SoulLink after changes indicates acceptance of the revised Terms.
+
+11. GOVERNING LAW
+These Terms are governed by the laws of South Africa (or your chosen jurisdiction). Any disputes will be resolved in the courts of that jurisdiction.

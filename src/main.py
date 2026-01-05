@@ -1,30 +1,46 @@
-# main.py
+# main.py (ASCII Explore pre-alpha)
 from roster_loader import load_roster
 from chat_engine import start_chat
 from onboarding import start_onboarding
 from progression import check_unlocks
 
+def show_explore(roster):
+    print("\n==============================================================")
+    print("✨ SoulLink — Explore Companions ✨")
+    print("==============================================================")
+
+    for i, bot in enumerate(roster, 1):
+        status = "Unlocked" if bot.get("unlocked", True) else "Locked 🔒"
+        traits = ", ".join(bot.get("personality", {}).get("traits", []))
+        quote = bot.get("voice", {}).get("quotes", [""])[0]
+
+        print(f"[{i}] {bot['name']} ({bot['archetype']}) — {status}")
+        if traits:
+            print(f"    Traits: {traits}")
+        if quote:
+            print(f"    Voice: \"{quote}\"")
+        print("    ------------------------------------")
+        if status == "Unlocked":
+            print("    [Start Chat]  [Preview Quotes]  [Pin]")
+        else:
+            print("    [Unlock Hint: Progress further]")
+        print()
+
 def main():
     print("✨ Welcome to SoulLink ✨")
     print("Forge your bond with a companion from the roster below:\n")
 
-    # Load roster
     roster = load_roster()
     if not roster:
-        print("No companions available. Please check your roster file.")
+        print("No companions available. Please check your roster files.")
         return
 
-    # Run onboarding (starter character, preferences, etc.)
     user_state = start_onboarding()
 
-    # Main loop: allow multiple chats until user quits
     while True:
-        print("\nAvailable Companions:")
-        for i, bot in enumerate(roster, 1):
-            status = "Unlocked" if bot.get("unlocked", True) else "Locked"
-            print(f"{i}. {bot['name']} ({bot['archetype']}) - {status}")
+        show_explore(roster)
+        choice = input("\nChoose a companion (number), or 'q' to quit: ")
 
-        choice = input("\nChoose a companion (number) or 'q' to quit: ")
         if choice.lower() == 'q':
             print("\nThanks for linking souls today. See you next time!")
             break
@@ -39,10 +55,25 @@ def main():
                 print(f"{selected_bot['name']} is locked. Progress further to unlock this companion.")
                 continue
 
-            # Start chat session
+            # ASCII detail view
+            print("\n--------------------------------------------------------------")
+            print(f"> {selected_bot['name']} — {selected_bot['archetype']}")
+            traits = ", ".join(selected_bot.get("personality", {}).get("traits", []))
+            flaws = ", ".join(selected_bot.get("personality", {}).get("flaws", []))
+            quotes = selected_bot.get("voice", {}).get("quotes", [])
+            print(f"  Traits: {traits}")
+            if flaws:
+                print(f"  Flaws: {flaws}")
+            if quotes:
+                print("  Quotes:")
+                for q in quotes[:2]:
+                    print(f"    - {q}")
+            print("--------------------------------------------------------------")
+
+            # Start chat
             start_chat(selected_bot, user_state)
 
-            # After chat, check progression milestones
+            # Progression check
             check_unlocks(user_state, roster)
 
         except ValueError:
