@@ -1,0 +1,624 @@
+{
+    "bots": [
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        },
+        {
+            "name": null,
+            "age": null,
+            "gender": null,
+            "archetype": null,
+            "appearance": null,
+            "personality": {
+                "public": null,
+                "private": null,
+                "traits": [
+                    ""
+                ],
+                "flaws": [
+                    ""
+                ]
+            },
+            "voice": {
+                "style": null,
+                "quotes": [
+                    ""
+                ]
+            },
+            "integration": {
+                "function": null,
+                "palette": [
+                    ""
+                ],
+                "unlockable": null,
+                "goal": null
+            }
+        }
+    ]
+}
