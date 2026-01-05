@@ -1,24 +1,47 @@
-# main.py (ASCII Explore pre-alpha)
+# main.py (ASCII Explore with affection + card unlocks)
 from roster_loader import load_roster
 from chat_engine import start_chat
 from onboarding import start_onboarding
 from progression import check_unlocks
 
-def show_explore(roster):
+def get_card_preview(bot):
+    """Return the appropriate card based on affection score."""
+    cards = bot.get("cards", [])
+    affection = bot.get("affection", 0)
+
+    if not cards:
+        return None
+
+    # Example: unlock second card at affection >= 20
+    if affection >= 20 and len(cards) > 1:
+        return cards[1]
+    return cards[0]
+
+def show_explore(roster, user_state):
     print("\n==============================================================")
-    print("✨ SoulLink — Explore Companions ✨")
+    username = user_state.get("profile", {}).get("name", "Traveler")
+    print(f"✨ SoulLink — Explore Companions for {username} ✨")
     print("==============================================================")
 
     for i, bot in enumerate(roster, 1):
         status = "Unlocked" if bot.get("unlocked", True) else "Locked 🔒"
-        traits = ", ".join(bot.get("personality", {}).get("traits", []))
-        quote = bot.get("voice", {}).get("quotes", [""])[0]
 
-        print(f"[{i}] {bot['name']} ({bot['archetype']}) — {status}")
+        name = bot.get("name", "Unknown")
+        archetype = bot.get("archetype", "Unknown")
+        traits = ", ".join(bot.get("personality", {}).get("traits", []))
+        quotes = bot.get("voice", {}).get("quotes", [])
+        quote = quotes[0] if quotes else ""
+        affection = bot.get("affection", 0)
+        card_preview = get_card_preview(bot)
+
+        print(f"[{i}] {name} ({archetype}) — {status}")
         if traits:
             print(f"    Traits: {traits}")
         if quote:
             print(f"    Voice: \"{quote}\"")
+        print(f"    Affection: {affection} ❤️")
+        if card_preview:
+            print(f"    Card preview: {card_preview}")
         print("    ------------------------------------")
         if status == "Unlocked":
             print("    [Start Chat]  [Preview Quotes]  [Pin]")
@@ -38,11 +61,11 @@ def main():
     user_state = start_onboarding()
 
     while True:
-        show_explore(roster)
+        show_explore(roster, user_state)
         choice = input("\nChoose a companion (number), or 'q' to quit: ")
 
         if choice.lower() == 'q':
-            print("\nThanks for linking souls today. See you next time!")
+            print(f"\nThanks for linking souls today, {user_state['profile']['name']}. See you next time!")
             break
 
         try:
@@ -61,13 +84,20 @@ def main():
             traits = ", ".join(selected_bot.get("personality", {}).get("traits", []))
             flaws = ", ".join(selected_bot.get("personality", {}).get("flaws", []))
             quotes = selected_bot.get("voice", {}).get("quotes", [])
-            print(f"  Traits: {traits}")
+            affection = selected_bot.get("affection", 0)
+            card_preview = get_card_preview(selected_bot)
+
+            if traits:
+                print(f"  Traits: {traits}")
             if flaws:
                 print(f"  Flaws: {flaws}")
             if quotes:
                 print("  Quotes:")
                 for q in quotes[:2]:
                     print(f"    - {q}")
+            print(f"  Affection: {affection} ❤️")
+            if card_preview:
+                print(f"  Card preview: {card_preview}")
             print("--------------------------------------------------------------")
 
             # Start chat

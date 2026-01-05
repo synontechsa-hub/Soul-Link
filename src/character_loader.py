@@ -1,62 +1,68 @@
-# character_loader.py
 import json
 import os
 
-def load_character(name: str, folder: str = "assets/json") -> dict | None:
+BOT_FOLDER = os.path.join(os.path.dirname(__file__), "..", "assets", "bots")
+
+def normalize_bot(bot: dict) -> dict:
+    """Convert JSON structure into the format the app expects."""
+    core = bot.get("Core Identity", {})
+    personality = bot.get("Personality", {})
+    voice = bot.get("Voice & Tone", {})
+
+    return {
+        "name": core.get("Name", "Unknown"),
+        "archetype": core.get("Archetype", ""),
+        "personality": {
+            "traits": personality.get("Traits", "").split(", ") if personality.get("Traits") else [],
+            "flaws": personality.get("Flaws", "").split(", ") if personality.get("Flaws") else []
+        },
+        "voice": {
+            "quotes": voice.get("Quotes", []),
+            "style": voice.get("Style", "")
+        },
+        # New standardized fields
+        "affection": bot.get("Affection", 0),
+        "cards": bot.get("Cards", []),
+        "responses": bot.get("Responses", {}),
+        # Keep original full data if needed
+        "raw": bot
+    }
+
+def load_character(name: str) -> dict | None:
     """
-    Load a single character JSON file by name.
-    Returns the character dict or None if not found/invalid.
+    Load a single character JSON file by bot name (e.g., 'Adrian').
+    Returns the normalized character dict or None if not found/invalid.
     """
-    filename = f"{name}.json"
-    path = os.path.join(folder, filename)
+    filename = f"Bot-{name}.json"
+    path = os.path.join(BOT_FOLDER, filename)
     try:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            if validate_character(data):
-                return data
-            else:
-                print(f"⚠️ Invalid character data in {filename}")
-                return None
+            return normalize_bot(data)
     except FileNotFoundError:
-        print(f"❌ Character file {filename} not found in {folder}")
+        print(f"❌ Character file {filename} not found in {BOT_FOLDER}")
         return None
     except json.JSONDecodeError:
         print(f"❌ Error decoding {filename}. Check JSON formatting.")
         return None
 
-
-def load_all_characters(folder: str = "assets/json") -> list[dict]:
+def load_all_characters() -> list[dict]:
     """
-    Load all character JSON files in the given folder.
-    Returns a list of valid character dicts.
+    Load all character JSON files in the bots folder.
+    Returns a list of normalized character dicts.
     """
     characters = []
-    if not os.path.exists(folder):
-        print(f"❌ Folder {folder} does not exist.")
+    if not os.path.exists(BOT_FOLDER):
+        print(f"❌ Folder {BOT_FOLDER} does not exist.")
         return characters
 
-    for file in os.listdir(folder):
-        if file.endswith(".json"):
-            path = os.path.join(folder, file)
+    for file in os.listdir(BOT_FOLDER):
+        if file.startswith("Bot-") and file.endswith(".json"):
+            path = os.path.join(BOT_FOLDER, file)
             try:
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                    if validate_character(data):
-                        characters.append(data)
-                    else:
-                        print(f"⚠️ Skipping invalid character file {file}")
+                    characters.append(normalize_bot(data))
             except Exception as e:
                 print(f"⚠️ Skipping {file}: {e}")
     return characters
-
-
-def validate_character(data: dict) -> bool:
-    """
-    Ensure the character JSON has required fields.
-    """
-    required = ["name", "archetype", "personality", "voice"]
-    for field in required:
-        if field not in data:
-            print(f"⚠️ Missing field '{field}' in character {data.get('name', 'Unknown')}")
-            return False
-    return True
