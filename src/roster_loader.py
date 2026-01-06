@@ -1,9 +1,13 @@
 import os
 import json
+import logging
+from typing import Dict, List
 
 BOT_FOLDER = os.path.join(os.path.dirname(__file__), "..", "assets", "bots")
 
-def normalize_bot(bot):
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
+def normalize_bot(bot: Dict) -> Dict:
     """Convert JSON structure into the format main.py and chat_engine expect."""
     core = bot.get("Core Identity", {})
     personality = bot.get("Personality", {})
@@ -20,22 +24,30 @@ def normalize_bot(bot):
             "quotes": voice.get("Quotes", []),
             "style": voice.get("Style", "")
         },
-        # New standardized fields
-        "affection": bot.get("Affection", 0),
+        # Standardized fields
+        "affection": int(bot.get("Affection", 0)),
         "cards": bot.get("Cards", []),
         "responses": bot.get("Responses", {}),
+        "unlocked": bot.get("unlocked", True),
         # Keep original full data if needed
         "raw": bot
     }
 
-def load_roster():
-    roster = []
+def load_roster() -> List[Dict]:
+    """
+    Load all bots from All-Bots.json or individual Bot-*.json files.
+    Returns a list of normalized bot dicts.
+    """
+    roster: List[Dict] = []
     all_path = os.path.join(BOT_FOLDER, "All-Bots.json")
 
     if os.path.exists(all_path):
-        with open(all_path, "r", encoding="utf-8") as f:
-            bots = json.load(f)
-            roster = [normalize_bot(b) for b in bots]
+        try:
+            with open(all_path, "r", encoding="utf-8") as f:
+                bots = json.load(f)
+                roster = [normalize_bot(b) for b in bots]
+        except Exception as e:
+            logging.error(f"Error loading All-Bots.json: {e}")
     else:
         for filename in os.listdir(BOT_FOLDER):
             if filename.startswith("Bot-") and filename.endswith(".json"):
@@ -45,6 +57,7 @@ def load_roster():
                         bot = json.load(f)
                         roster.append(normalize_bot(bot))
                 except Exception as e:
-                    print(f"Error loading {filename}: {e}")
+                    logging.warning(f"Skipping {filename}: {e}")
 
+    logging.info(f"Loaded {len(roster)} bots from {BOT_FOLDER}")
     return roster

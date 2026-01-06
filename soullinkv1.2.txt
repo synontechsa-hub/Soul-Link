@@ -1,0 +1,66 @@
+SoulLink Backend — Version 1.2
+==============================
+
+Overview
+--------
+This release marks the transition of SoulLink’s backend into a fully
+frontend-ready logic engine. All ASCII prints and console banners have
+been removed, replaced with structured returns and logging. The backend
+now cleanly integrates with the Flutter frontend, providing data-driven
+outputs for UI rendering.
+
+Modules Refactored
+------------------
+1. main.py
+   - Removed ASCII art and decorative prints.
+   - Returns structured roster data via explore_roster().
+   - Scalable card unlocks (new card every 20 affection points).
+   - Progression check integrated with unlock feedback.
+   - Backend-only orchestration, no presentation logic.
+
+2. chat_engine.py
+   - Removed console prints and emojis.
+   - Returns structured events:
+     { bot_reply, milestone, affection, unlocked }.
+   - Affection scaling (+2 for “love”, +1 otherwise).
+   - Milestones tracked and returned for frontend celebration.
+
+3. onboarding.py
+   - Removed ASCII onboarding banners.
+   - Accepts parameters from frontend (name, age, gender).
+   - Returns structured user_state:
+     { profile, milestones, affection }.
+   - Seeds initial milestone: "onboarding_started".
+
+4. progression.py
+   - Removed unlock print messages.
+   - Returns list of newly unlocked bots.
+   - Configurable affection thresholds (default 10).
+   - Extensible unlock logic for future progression mechanics.
+
+5. roster_loader.py
+   - Removed error prints, replaced with logging.
+   - Loads roster from All-Bots.json or individual Bot-*.json files.
+   - Normalizes bot data with traits, quotes, affection, unlock state.
+   - Returns clean list of bot dicts for frontend rendering.
+
+6. character_loader.py
+   - Removed error prints, replaced with logging.
+   - Loads individual bot JSONs or batch by name list.
+   - Normalizes bot data consistently with roster_loader.
+   - Returns clean dicts for targeted bot loading.
+
+Key Achievements
+----------------
+- Backend is now a pure logic engine, frontend handles presentation.
+- Consistent normalization across all bot data structures.
+- Affection and progression mechanics integrated cleanly.
+- Logging provides backend visibility without polluting frontend.
+- Modular design ensures scalability and emotional resonance.
+
+Version Roadmap
+---------------
+- v1.2.0 (current): Frontend-ready backend, no ASCII prints, structured returns.
+- v1.3.0 (planned): Persistence layer (save/load user state to JSON or DB).
+- v1.4.0: Event hooks for frontend (API endpoints, websocket integration).
+- v2.0.0: Advanced progression mechanics (fusion bots, timed unlocks, lore events).

@@ -1,48 +1,71 @@
 import random
+import logging
+from typing import Dict, Any, Optional
 
-def start_chat(bot, user_state=None):
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
+def start_chat(bot: Dict[str, Any], user_state: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """
+    Handle a single chat session with a bot.
+    Returns structured events for the frontend to render:
+    {
+        "bot_reply": str,
+        "milestone": Optional[str],
+        "affection": int,
+        "unlocked": Optional[List[str]]
+    }
+    """
     profile = user_state.get("profile", {}) if user_state else {}
     username = profile.get("name", "Traveler")
     age = profile.get("age", None)
     gender = profile.get("gender", None)
-
-    print(f"\n--- Chatting with {bot['name']} ({bot['archetype']}) ---")
-    print("Type 'exit' to end.\n")
 
     traits = bot.get("personality", {}).get("traits", [])
     flaws = bot.get("personality", {}).get("flaws", [])
     quotes = bot.get("voice", {}).get("quotes", [])
     responses = bot.get("responses", {})
 
-    while True:
-        msg = input(f"{username}: ")
-        if msg.lower() == "exit":
+    # Instead of interactive input, frontend passes user message
+    def handle_message(msg: str) -> Dict[str, Any]:
+        msg_lower = msg.lower()
+
+        # Exit handling
+        if msg_lower == "exit":
             farewell = responses.get("Farewell", [f"Until our souls link again, {username}..."])
-            print(f"{bot['name']}: {random.choice(farewell)}")
-            break
+            return {
+                "bot_reply": random.choice(farewell),
+                "milestone": None,
+                "affection": bot.get("affection", 0),
+                "unlocked": None
+            }
 
-        response = generate_response(bot, msg, username, age, gender, traits, flaws, quotes, responses)
-        print(response)
+        # Generate bot reply
+        reply = generate_response(bot, msg, username, age, gender, traits, flaws, quotes, responses)
 
-        # Track progression milestones
+        # Track progression
+        milestone = None
         if user_state is not None:
             milestone = f"Chatted with {bot['name']}"
             if milestone not in user_state.get("milestones", []):
                 user_state.setdefault("milestones", []).append(milestone)
-                print(f"🎉 Milestone achieved: {milestone}")
+                logging.info(f"Milestone achieved: {milestone}")
 
-            # Increment affection
-            bot["affection"] = bot.get("affection", 0) + 1
-            print(f"💖 Affection with {bot['name']} is now {bot['affection']}")
+            # Increment affection (scaled)
+            increment = 2 if "love" in msg_lower else 1
+            bot["affection"] = bot.get("affection", 0) + increment
+            logging.info(f"Affection with {bot['name']} is now {bot['affection']}")
 
-def generate_response(bot, msg, username, age, gender, traits, flaws, quotes, responses):
-    """
-    Smarter response logic:
-    - Keyword triggers (sad, happy, love, etc.)
-    - Personality-driven templates
-    - Profile-aware personalization
-    - Random fallback to quotes, traits, flaws, or responses
-    """
+        return {
+            "bot_reply": reply,
+            "milestone": milestone,
+            "affection": bot.get("affection", 0),
+            "unlocked": None  # progression.py can fill this in
+        }
+
+    return {"handle_message": handle_message}
+
+def generate_response(bot, msg, username, age, gender, traits, flaws, quotes, responses) -> str:
+    """Generate a bot response based on keywords, personality, profile, and fallbacks."""
     msg_lower = msg.lower()
 
     # Keyword triggers

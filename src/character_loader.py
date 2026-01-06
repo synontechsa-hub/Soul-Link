@@ -1,9 +1,13 @@
 import json
 import os
+import logging
+from typing import Dict, List, Optional
 
 BOT_FOLDER = os.path.join(os.path.dirname(__file__), "..", "assets", "bots")
 
-def normalize_bot(bot: dict) -> dict:
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
+def normalize_bot(bot: Dict) -> Dict:
     """Convert JSON structure into the format the app expects."""
     core = bot.get("Core Identity", {})
     personality = bot.get("Personality", {})
@@ -20,15 +24,16 @@ def normalize_bot(bot: dict) -> dict:
             "quotes": voice.get("Quotes", []),
             "style": voice.get("Style", "")
         },
-        # New standardized fields
-        "affection": bot.get("Affection", 0),
+        # Standardized fields
+        "affection": int(bot.get("Affection", 0)),
         "cards": bot.get("Cards", []),
         "responses": bot.get("Responses", {}),
+        "unlocked": bot.get("unlocked", True),
         # Keep original full data if needed
         "raw": bot
     }
 
-def load_character(name: str) -> dict | None:
+def load_character(name: str) -> Optional[Dict]:
     """
     Load a single character JSON file by bot name (e.g., 'Adrian').
     Returns the normalized character dict or None if not found/invalid.
@@ -40,20 +45,20 @@ def load_character(name: str) -> dict | None:
             data = json.load(f)
             return normalize_bot(data)
     except FileNotFoundError:
-        print(f"❌ Character file {filename} not found in {BOT_FOLDER}")
+        logging.error(f"Character file {filename} not found in {BOT_FOLDER}")
         return None
     except json.JSONDecodeError:
-        print(f"❌ Error decoding {filename}. Check JSON formatting.")
+        logging.error(f"Error decoding {filename}. Check JSON formatting.")
         return None
 
-def load_all_characters() -> list[dict]:
+def load_all_characters() -> List[Dict]:
     """
     Load all character JSON files in the bots folder.
     Returns a list of normalized character dicts.
     """
-    characters = []
+    characters: List[Dict] = []
     if not os.path.exists(BOT_FOLDER):
-        print(f"❌ Folder {BOT_FOLDER} does not exist.")
+        logging.error(f"Folder {BOT_FOLDER} does not exist.")
         return characters
 
     for file in os.listdir(BOT_FOLDER):
@@ -64,5 +69,14 @@ def load_all_characters() -> list[dict]:
                     data = json.load(f)
                     characters.append(normalize_bot(data))
             except Exception as e:
-                print(f"⚠️ Skipping {file}: {e}")
+                logging.warning(f"Skipping {file}: {e}")
+
+    logging.info(f"Loaded {len(characters)} characters from {BOT_FOLDER}")
     return characters
+
+def load_characters(names: List[str]) -> List[Dict]:
+    """
+    Load a batch of characters by name list.
+    Returns only successfully loaded bots.
+    """
+    return [c for n in names if (c := load_character(n))]
