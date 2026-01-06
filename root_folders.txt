@@ -1,0 +1,56 @@
+SOUL-LINK/
+├── .vscode/
+├── assets/
+│   ├── backgrounds/
+│   ├── bots/
+│   │   ├── All-Bots.json
+│   │   ├── Bot-Adrian.json
+│   │   ├── Bot-Aria.json
+│   │   ├── Bot-Blaze.json
+│   │   ├── ... (20+ individual bot JSONs)
+├── documentation/
+│   └── EULA.txt
+├── icons/
+├── media/
+├── ui_ux/
+├── flutter_fronted/
+│   ├── lib/
+│   │   ├── models/
+│   │   │   ├── bot.dart
+│   │   │   └── character.dart
+│   │   ├── screens/
+│   │   │   ├── bot_list_screen.dart
+│   │   │   ├── chat_screen.dart
+│   │   │   ├── explore_screen.dart
+│   │   │   ├── home_screen.dart
+│   │   │   └── login_screen.dart
+│   │   ├── services/
+│   │   │   ├── api_service.dart
+│   │   │   ├── auth_service.dart
+│   │   │   └── bot_loader.dart
+│   │   ├── widgets/
+│   │   │   ├── bot_card.dart
+│   │   │   ├── chat_bubble.dart
+│   │   │   └── social_login_button.dart
+│   │   └── main.dart
+│   └── pubspec.yaml (currently misspelled as pubspec.yami)
+├── src/
+│   ├── __pycache__/
+│   ├── character_loader.py
+│   ├── chat_engine.py
+│   ├── main.py
+│   ├── onboarding.py
+│   ├── progression.py
+│   └── roster_loader.py
+├── tests/
+│   ├── run_test_character_loader.bat
+│   ├── run_test_character_loader.sh
+│   └── test_character_loader.py
+├── LICENSE
+├── .gitignore
+
+https://solid-invention-r4q4prj66wpf5xyg.github.dev/
+└── Soul-Link/
+    ├── root_folders.txt
+    ├── ... (mirrors your local structure)
+
