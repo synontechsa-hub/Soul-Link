@@ -3,7 +3,8 @@ import json
 import logging
 from typing import Dict, List
 
-BOT_FOLDER = os.path.join(os.path.dirname(__file__), "..", "assets", "bots")
+# ✅ Correct path: stay inside project root
+BOT_FOLDER = os.path.join(os.path.dirname(__file__), "assets", "bots")
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
