@@ -185,7 +185,7 @@
       "name": "soullink",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.10"
     }
   ],
   "generator": "pub",
