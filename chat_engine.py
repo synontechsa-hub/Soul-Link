@@ -4,6 +4,9 @@ from typing import Dict, Any, Optional
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
+# Optional: set a seed during testing for deterministic behavior
+# random.seed(42)
+
 def start_chat(bot: Dict[str, Any], user_state: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     Handle a single chat session with a bot.
@@ -25,11 +28,9 @@ def start_chat(bot: Dict[str, Any], user_state: Optional[Dict[str, Any]] = None)
     quotes = bot.get("voice", {}).get("quotes", [])
     responses = bot.get("responses", {})
 
-    # Instead of interactive input, frontend passes user message
     def handle_message(msg: str) -> Dict[str, Any]:
         msg_lower = msg.lower()
 
-        # Exit handling
         if msg_lower == "exit":
             farewell = responses.get("Farewell", [f"Until our souls link again, {username}..."])
             return {
@@ -39,10 +40,8 @@ def start_chat(bot: Dict[str, Any], user_state: Optional[Dict[str, Any]] = None)
                 "unlocked": None
             }
 
-        # Generate bot reply
         reply = generate_response(bot, msg, username, age, gender, traits, flaws, quotes, responses)
 
-        # Track progression
         milestone = None
         if user_state is not None:
             milestone = f"Chatted with {bot['name']}"
@@ -50,16 +49,22 @@ def start_chat(bot: Dict[str, Any], user_state: Optional[Dict[str, Any]] = None)
                 user_state.setdefault("milestones", []).append(milestone)
                 logging.info(f"Milestone achieved: {milestone}")
 
-            # Increment affection (scaled)
-            increment = 2 if "love" in msg_lower else 1
+            # Affection scaling: only increment on meaningful messages
+            increment = 0
+            if any(k in msg_lower for k in ["love", "care", "trust"]):
+                increment = 3
+            elif any(k in msg_lower for k in ["hello", "hi", "hey", "thanks"]):
+                increment = 1
+
             bot["affection"] = bot.get("affection", 0) + increment
-            logging.info(f"Affection with {bot['name']} is now {bot['affection']}")
+            if increment > 0:
+                logging.info(f"Affection with {bot['name']} +{increment} → {bot['affection']}")
 
         return {
             "bot_reply": reply,
             "milestone": milestone,
             "affection": bot.get("affection", 0),
-            "unlocked": None  # progression.py can fill this in
+            "unlocked": None
         }
 
     return {"handle_message": handle_message}
@@ -68,7 +73,6 @@ def generate_response(bot, msg, username, age, gender, traits, flaws, quotes, re
     """Generate a bot response based on keywords, personality, profile, and fallbacks."""
     msg_lower = msg.lower()
 
-    # Keyword triggers
     if "sad" in msg_lower and traits:
         return f"{bot['name']}: I can sense your mood, {username}. Even with my {random.choice(traits)}, I want to lift you up."
     elif "happy" in msg_lower:
@@ -76,31 +80,25 @@ def generate_response(bot, msg, username, age, gender, traits, flaws, quotes, re
     elif "love" in msg_lower:
         return f"{bot['name']}: Love is complicated... but I feel something when you say that, {username}."
 
-    # Profile-aware personalization
     if age and random.random() < 0.3:
         return f"{bot['name']}: At {age}, you already carry wisdom, {username}."
     if gender and random.random() < 0.3:
         return f"{bot['name']}: I sense strength in you as a {gender}, {username}."
 
-    # Trait-driven fallback
     if traits and random.random() < 0.4:
         trait = random.choice(traits)
         return f"{bot['name']}: As someone who's {trait}, I'd say '{msg}' stirs something in me."
 
-    # Flaw-driven fallback
     if flaws and random.random() < 0.2:
         flaw = random.choice(flaws)
         return f"{bot['name']}: I admit, my {flaw} side makes it hard to answer... but I hear you, {username}."
 
-    # Responses fallback
     if responses and random.random() < 0.5:
         default_lines = responses.get("Default", [])
         if default_lines:
             return f"{bot['name']}: {random.choice(default_lines)}"
 
-    # Quote fallback
     if quotes and random.random() < 0.5:
         return f"{bot['name']}: {random.choice(quotes)}"
 
-    # Generic fallback
     return f"{bot['name']}: I hear you, {username}. '{msg}' stays with me."
