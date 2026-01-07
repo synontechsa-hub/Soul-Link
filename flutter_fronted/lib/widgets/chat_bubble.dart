@@ -17,10 +17,7 @@ class ChatBubble extends StatelessWidget {
           color: isUser ? Colors.blueAccent : Colors.pinkAccent,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.white),
-        ),
+        child: Text(text, style: TextStyle(color: Colors.white)),
       ),
     );
   }

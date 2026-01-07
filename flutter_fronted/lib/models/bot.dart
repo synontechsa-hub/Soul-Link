@@ -3,11 +3,7 @@ class Bot {
   final String archetype;
   final String description;
 
-  Bot({
-    required this.name,
-    required this.archetype,
-    required this.description,
-  });
+  Bot({required this.name, required this.archetype, required this.description});
 
   factory Bot.fromJson(Map<String, dynamic> json) {
     return Bot(

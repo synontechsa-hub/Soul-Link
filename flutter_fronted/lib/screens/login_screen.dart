@@ -3,15 +3,14 @@ import '../services/auth_service.dart';
 import '../widgets/social_login_button.dart';
 import 'chat_screen.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final auth = AuthService();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -21,16 +20,17 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void handleGuestLogin() async {
-  await auth.loginAsGuest();
+    await auth.loginAsGuest();
 
-  if (!mounted) return;
+    if (!mounted) return;
 
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(builder: (_) => const ChatScreen()),
-  );
-}
-
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const ChatScreen(botName: "Evangeline"),
+      ),
+    );
+  }
 
   void handleGoogleLogin() async {
     await auth.loginWithGoogle();
@@ -45,7 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("SoulLink", style: TextStyle(fontSize: 32, color: Colors.white)),
+            const Text(
+              "SoulLink",
+              style: TextStyle(fontSize: 32, color: Colors.white),
+            ),
             const SizedBox(height: 24),
             TextField(
               controller: emailController,
@@ -68,12 +71,17 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: handleEmailLogin,
-              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFE53935)),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFE53935),
+              ),
               child: const Text("Login with Email"),
             ),
             const SizedBox(height: 16),
             SocialLoginButton(label: "Google", onTap: handleGoogleLogin),
-            SocialLoginButton(label: "Continue as Guest", onTap: handleGuestLogin),
+            SocialLoginButton(
+              label: "Continue as Guest",
+              onTap: handleGuestLogin,
+            ),
           ],
         ),
       ),

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'screens/login_screen.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Firebase for login
+void main() {
   runApp(const SoulLinkApp());
 }
 
@@ -17,10 +14,10 @@ class SoulLinkApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "SoulLink",
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF0E0E11), // Neutral-900
-        primaryColor: const Color(0xFFE53935), // Red-500
+        scaffoldBackgroundColor: const Color(0xFF0E0E11),
+        primaryColor: const Color(0xFFE53935),
       ),
-      home: const LoginScreen(), // Start at login
+      home: const LoginScreen(),
     );
   }
 }

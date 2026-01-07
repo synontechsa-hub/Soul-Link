@@ -4,7 +4,11 @@ class SocialLoginButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  const SocialLoginButton({required this.label, required this.onTap, super.key});
+  const SocialLoginButton({
+    required this.label,
+    required this.onTap,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,14 @@ class _ExploreScreenState extends State<ExploreScreen> {
   String _searchQuery = "";
   String _selectedFilter = "All";
 
-  final List<String> filters = ["All", "Recommend", "Anime", "Female", "Real", "Male"];
+  final List<String> filters = [
+    "All",
+    "Recommend",
+    "Anime",
+    "Female",
+    "Real",
+    "Male",
+  ];
 
   @override
   void initState() {
@@ -34,13 +41,16 @@ class _ExploreScreenState extends State<ExploreScreen> {
   void _applyFilters() {
     setState(() {
       _filteredBots = _allBots.where((bot) {
-        final matchesSearch = bot.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
+        final matchesSearch =
+            bot.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
             bot.archetype.toLowerCase().contains(_searchQuery.toLowerCase()) ||
             bot.description.toLowerCase().contains(_searchQuery.toLowerCase());
 
         final matchesFilter = _selectedFilter == "All"
             ? true
-            : bot.archetype.toLowerCase().contains(_selectedFilter.toLowerCase());
+            : bot.archetype.toLowerCase().contains(
+                _selectedFilter.toLowerCase(),
+              );
 
         return matchesSearch && matchesFilter;
       }).toList();
@@ -93,7 +103,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     selectedColor: const Color(0xFF7E57C2), // Purple-500
                     backgroundColor: const Color(0xFF181A1F),
                     labelStyle: TextStyle(
-                      color: isSelected ? Colors.white : const Color(0xFF6B6F7A),
+                      color: isSelected
+                          ? Colors.white
+                          : const Color(0xFF6B6F7A),
                     ),
                     onSelected: (_) {
                       setState(() {
@@ -128,12 +140,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         )
                       : GridView.builder(
                           padding: const EdgeInsets.all(16),
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.8,
-                            crossAxisSpacing: 12,
-                            mainAxisSpacing: 12,
-                          ),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 0.8,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                              ),
                           itemCount: _filteredBots.length,
                           itemBuilder: (context, index) {
                             final bot = _filteredBots[index];
@@ -184,7 +197,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                         bot.description,
                                         style: const TextStyle(
                                           fontSize: 12,
-                                          color: Color(0xFFF2F3F6), // Neutral-100
+                                          color: Color(
+                                            0xFFF2F3F6,
+                                          ), // Neutral-100
                                         ),
                                         overflow: TextOverflow.fade,
                                       ),

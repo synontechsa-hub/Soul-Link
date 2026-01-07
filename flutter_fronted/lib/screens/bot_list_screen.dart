@@ -43,14 +43,18 @@ class _BotListScreenState extends State<BotListScreen> {
                 return Card(
                   color: const Color(0xFF181A1F),
                   child: ListTile(
-                    title: Text(bot.name, style: const TextStyle(color: Colors.white)),
-                    subtitle: Text(bot.archetype, style: const TextStyle(color: Colors.grey)),
+                    title: Text(
+                      bot.name,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    subtitle: Text(
+                      bot.archetype,
+                      style: const TextStyle(color: Colors.grey),
+                    ),
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => ChatScreen(bot: bot),
-                        ),
+                        MaterialPageRoute(builder: (_) => ChatScreen(bot: bot)),
                       );
                     },
                   ),

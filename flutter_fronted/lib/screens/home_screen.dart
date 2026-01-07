@@ -11,7 +11,8 @@ class HomeScreen extends StatelessWidget {
     final Bot recommendedBot = Bot(
       name: "Arael",
       archetype: "Empathic Guide",
-      description: "Helps users explore emotional depth and personal growth through conversation.",
+      description:
+          "Helps users explore emotional depth and personal growth through conversation.",
     );
 
     return Scaffold(
@@ -77,7 +78,10 @@ class HomeScreen extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFE53935), // Red-500
-                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 24,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -90,7 +94,10 @@ class HomeScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Text("Chat Now", style: TextStyle(color: Colors.white)),
+                    child: const Text(
+                      "Chat Now",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
