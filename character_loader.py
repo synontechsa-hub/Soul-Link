@@ -7,6 +7,8 @@ from utils.validation import validate_bot
 
 # Align path with roster_loader.py (project root/assets/bots)
 BOT_FOLDER = os.path.join(os.path.dirname(__file__), "assets", "bots")
+# Align path with roster_loader.py (project root/assets/bots)
+BOT_FOLDER = os.path.join(os.path.dirname(__file__), "assets", "bots")
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
@@ -40,6 +42,7 @@ def normalize_bot(bot: Dict) -> Dict:
 
 def load_character(name: str) -> Optional[Dict]:
     """Load a single character JSON file by bot name (e.g., 'Adrian')."""
+    """Load a single character JSON file by bot name (e.g., 'Adrian')."""
     filename = f"Bot-{name}.json"
     path = os.path.join(BOT_FOLDER, filename)
     try:
@@ -55,7 +58,10 @@ def load_character(name: str) -> Optional[Dict]:
 
 def load_all_characters() -> List[Dict]:
     """Load all character JSON files in the bots folder, avoiding duplicates."""
+    """Load all character JSON files in the bots folder, avoiding duplicates."""
     characters: List[Dict] = []
+    seen_names = set()
+
     seen_names = set()
 
     if not os.path.exists(BOT_FOLDER):
@@ -72,6 +78,10 @@ def load_all_characters() -> List[Dict]:
                     if normalized["name"] not in seen_names:
                         characters.append(normalized)
                         seen_names.add(normalized["name"])
+                    normalized = normalize_bot(data)
+                    if normalized["name"] not in seen_names:
+                        characters.append(normalized)
+                        seen_names.add(normalized["name"])
             except Exception as e:
                 logging.warning(f"Skipping {file}: {e}")
 
@@ -79,6 +89,17 @@ def load_all_characters() -> List[Dict]:
     return characters
 
 def load_characters(names: List[str]) -> List[Dict]:
+    """Load a batch of characters by name list."""
+    characters: List[Dict] = []
+    seen_names = set()
+
+    for n in names:
+        c = load_character(n)
+        if c and c["name"] not in seen_names:
+            characters.append(c)
+            seen_names.add(c["name"])
+
+    return characters
     """Load a batch of characters by name list."""
     characters: List[Dict] = []
     seen_names = set()

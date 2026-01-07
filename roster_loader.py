@@ -1,12 +1,9 @@
 import json
 import os
 import logging
-from typing import Dict, List, Optional
+from typing import Dict, List
 
-from utils.normalization import normalize_list
-from utils.validation import validate_bot
-
-# Align path with project root/assets/bots
+# ✅ Correct path: stay inside project root
 BOT_FOLDER = os.path.join(os.path.dirname(__file__), "assets", "bots")
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -21,11 +18,11 @@ def normalize_bot(bot: Dict) -> Dict:
         "name": core.get("Name", "Unknown"),
         "archetype": core.get("Archetype", ""),
         "personality": {
-            "traits": normalize_list(personality.get("Traits")),
-            "flaws": normalize_list(personality.get("Flaws"))
+            "traits": personality.get("Traits", "").split(", ") if personality.get("Traits") else [],
+            "flaws": personality.get("Flaws", "").split(", ") if personality.get("Flaws") else []
         },
         "voice": {
-            "quotes": normalize_list(voice.get("Quotes")),
+            "quotes": voice.get("Quotes", []),
             "style": voice.get("Style", "")
         },
         "affection": int(bot.get("Affection", 0)),
@@ -35,62 +32,31 @@ def normalize_bot(bot: Dict) -> Dict:
         "raw": bot
     }
 
-    validate_bot(normalized)
-    return normalized
-
-def load_character(name: str) -> Optional[Dict]:
-    """Load a single character JSON file by bot name (e.g., 'Adrian')."""
-    filename = f"Bot-{name}.json"
-    path = os.path.join(BOT_FOLDER, filename)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return normalize_bot(data)
-    except FileNotFoundError:
-        logging.error(f"Character file {filename} not found in {BOT_FOLDER}")
-        return None
-    except json.JSONDecodeError:
-        logging.error(f"Error decoding {filename}. Check JSON formatting.")
-        return None
-
-def load_all_characters() -> List[Dict]:
-    """Load all character JSON files in the bots folder, avoiding duplicates."""
-    characters: List[Dict] = []
-    seen_names = set()
-
-    if not os.path.exists(BOT_FOLDER):
-        logging.error(f"Folder {BOT_FOLDER} does not exist.")
-        return characters
-
-    for file in os.listdir(BOT_FOLDER):
-        if file.startswith("Bot-") and file.endswith(".json"):
-            path = os.path.join(BOT_FOLDER, file)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    normalized = normalize_bot(data)
-                    if normalized["name"] not in seen_names:
-                        characters.append(normalized)
-                        seen_names.add(normalized["name"])
-            except Exception as e:
-                logging.warning(f"Skipping {file}: {e}")
-
-    logging.info(f"Loaded {len(characters)} characters from {BOT_FOLDER}")
-    return characters
-
-def load_characters(names: List[str]) -> List[Dict]:
-    """Load a batch of characters by name list."""
-    characters: List[Dict] = []
-    seen_names = set()
-
-    for n in names:
-        c = load_character(n)
-        if c and c["name"] not in seen_names:
-            characters.append(c)
-            seen_names.add(c["name"])
-
-    return characters
-
 def load_roster() -> List[Dict]:
-    """Alias for loading the full character roster."""
-    return load_all_characters()
+    """
+    Load all bots from All-Bots.json or individual Bot-*.json files.
+    Returns a list of normalized bot dicts.
+    """
+    roster: List[Dict] = []
+    all_path = os.path.join(BOT_FOLDER, "All-Bots.json")
+
+    if os.path.exists(all_path):
+        try:
+            with open(all_path, "r", encoding="utf-8") as f:
+                bots = json.load(f)
+                roster = [normalize_bot(b) for b in bots]
+        except Exception as e:
+            logging.error(f"Error loading All-Bots.json: {e}")
+    else:
+        for filename in os.listdir(BOT_FOLDER):
+            if filename.startswith("Bot-") and filename.endswith(".json"):
+                path = os.path.join(BOT_FOLDER, filename)
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        bot = json.load(f)
+                        roster.append(normalize_bot(bot))
+                except Exception as e:
+                    logging.warning(f"Skipping {filename}: {e}")
+
+    logging.info(f"Loaded {len(roster)} bots from {BOT_FOLDER}")
+    return roster

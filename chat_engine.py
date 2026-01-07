@@ -169,6 +169,7 @@ def start_chat(bot: Dict[str, Any], user_state: Optional[Dict[str, Any]] = None)
             "milestone": milestone,
             "affection": bot.get("affection", 0),
             "unlocked": None
+            "unlocked": None
         }
 
     return {"handle_message": handle_message}
@@ -237,7 +238,6 @@ def generate_response(
         if defaults:
             return f"{bot['name']}: {random.choice(defaults)}"
 
-    # Quote fallback
     if quotes and random.random() < 0.5:
         return f"{bot['name']}: {random.choice(quotes)}"
 
