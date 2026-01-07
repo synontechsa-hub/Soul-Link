@@ -1,23 +1,27 @@
 import requests
+import logging
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
+MODEL_NAME = "llama3:8b"
 
-def generate(
-    prompt: str,
-    model: str = "llama3:8b",
-    temperature: float = 0.8,
-    max_tokens: int = 300,
-) -> str:
+logging.basicConfig(level=logging.INFO)
+
+
+def generate_reply(prompt: str) -> str:
+    """
+    Sends a prompt to Ollama and returns the model's reply.
+    """
     payload = {
-        "model": model,
+        "model": MODEL_NAME,
         "prompt": prompt,
-        "stream": False,
-        "options": {
-            "temperature": temperature,
-            "num_predict": max_tokens,
-        },
+        "stream": False
     }
 
-    response = requests.post(OLLAMA_URL, json=payload, timeout=120)
-    response.raise_for_status()
-    return response.json()["response"]
+    try:
+        response = requests.post(OLLAMA_URL, json=payload, timeout=120)
+        response.raise_for_status()
+        data = response.json()
+        return data.get("response", "").strip()
+    except Exception as e:
+        logging.error(f"Ollama error: {e}")
+        return "⚠️ Error: LLM unavailable."
