@@ -1,165 +1,94 @@
 import 'package:flutter/material.dart';
-import '../models/bot.dart';
-import '../services/api_service.dart';
 
 class ChatScreen extends StatefulWidget {
-  final Bot bot;
-
-  const ChatScreen({super.key, required this.bot});
+  const ChatScreen({super.key});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final TextEditingController _controller = TextEditingController();
-  final ScrollController _scrollController = ScrollController();
+  final TextEditingController _messageController = TextEditingController();
 
-  final List<Map<String, dynamic>> _messages = []; 
-  // {role: "user"/"bot", text: "...", time: DateTime}
+  final List<Map<String, String>> messages = [
+    {
+      "sender": "bot",
+      "text": "Hello… I’ve been waiting for you."
+    }
+  ];
 
-  bool _isBotTyping = false;
-
-  void _sendMessage() async {
-    final text = _controller.text.trim();
+  void sendMessage() {
+    final text = _messageController.text.trim();
     if (text.isEmpty) return;
 
     setState(() {
-      _messages.add({
-        "role": "user",
-        "text": text,
-        "time": DateTime.now(),
-      });
-      _controller.clear();
-      _isBotTyping = true; // show typing indicator
-    });
-
-    _scrollToBottom();
-
-    // Call backend
-    final reply = await ApiService.sendMessage(widget.bot, text);
-
-    setState(() {
-      _isBotTyping = false;
-      _messages.add({
-        "role": "bot",
-        "text": reply,
-        "time": DateTime.now(),
+      messages.add({"sender": "user", "text": text});
+      messages.add({
+        "sender": "bot",
+        "text": "I hear you. Tell me more."
       });
     });
 
-    _scrollToBottom();
-  }
-
-  void _scrollToBottom() {
-    Future.delayed(const Duration(milliseconds: 100), () {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
-      }
-    });
-  }
-
-  String _formatTimestamp(DateTime time) {
-    return "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}";
-  }
-
-  Widget _buildMessageBubble(Map<String, dynamic> msg) {
-    final isUser = msg["role"] == "user";
-    return Align(
-      alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 6),
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: isUser
-              ? const Color(0xFF42A5F5) // Blue-500
-              : const Color(0xFF7E57C2), // Purple-500
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              msg["text"],
-              style: const TextStyle(color: Colors.white, fontSize: 14),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              _formatTimestamp(msg["time"]),
-              style: const TextStyle(color: Color(0xFFB0BEC5), fontSize: 10),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTypingIndicator() {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 6),
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: const Color(0xFF7E57C2), // Purple-500
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: const Text("...", style: TextStyle(color: Colors.white)),
-      ),
-    );
+    _messageController.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0E0E11), // Neutral-900
+      backgroundColor: const Color(0xFF0E0E11),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF181A1F), // Neutral-800
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(widget.bot.name,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Text(widget.bot.archetype,
-                style: const TextStyle(fontSize: 14, color: Color(0xFFB39DDB))),
-          ],
-        ),
+        backgroundColor: Colors.black,
+        title: const Text("Evangeline"),
       ),
       body: Column(
         children: [
+          // Chat messages
           Expanded(
             child: ListView.builder(
-              controller: _scrollController,
               padding: const EdgeInsets.all(16),
-              itemCount: _messages.length + (_isBotTyping ? 1 : 0),
+              itemCount: messages.length,
               itemBuilder: (context, index) {
-                if (_isBotTyping && index == _messages.length) {
-                  return _buildTypingIndicator();
-                }
-                return _buildMessageBubble(_messages[index]);
+                final msg = messages[index];
+                final isUser = msg["sender"] == "user";
+
+                return Align(
+                  alignment:
+                      isUser ? Alignment.centerRight : Alignment.centerLeft,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: isUser
+                          ? const Color(0xFFE53935)
+                          : const Color(0xFF1E1E24),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Text(
+                      msg["text"] ?? "",
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                );
               },
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            color: const Color(0xFF181A1F), // Neutral-800
+
+          // Input field
+          Padding(
+            padding: const EdgeInsets.all(12),
             child: Row(
               children: [
                 Expanded(
                   child: TextField(
-                    controller: _controller,
+                    controller: _messageController,
                     style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      hintText: "Type a message...",
-                      hintStyle: const TextStyle(color: Color(0xFF6B6F7A)),
+                    decoration: const InputDecoration(
+                      hintText: "Say something…",
+                      hintStyle: TextStyle(color: Colors.white54),
                       filled: true,
-                      fillColor: const Color(0xFF0E0E11),
+                      fillColor: Color(0xFF1E1E24),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
                         borderSide: BorderSide.none,
                       ),
                     ),
@@ -167,12 +96,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 const SizedBox(width: 8),
                 IconButton(
-                  icon: const Icon(Icons.send, color: Color(0xFFE53935)), // Red-500
-                  onPressed: _sendMessage,
-                ),
+                  icon: const Icon(Icons.send, color: Colors.white),
+                  onPressed: sendMessage,
+                )
               ],
             ),
-          ),
+          )
         ],
       ),
     );

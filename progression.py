@@ -3,7 +3,8 @@ from typing import Dict, List
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
-AFFECTION_THRESHOLD = 10
+# Raise threshold for better pacing
+AFFECTION_THRESHOLD = 20
 
 def check_unlocks(user_state: Dict, roster: List[Dict]) -> List[str]:
     """

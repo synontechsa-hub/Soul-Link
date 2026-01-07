@@ -1,0 +1,13 @@
+{
+  "profile": {
+    "name": "Bruce",
+    "age": 34,
+    "gender": "Male"
+  },
+  "milestones": [
+    "onboarding_started",
+    "onboarding_completed"
+  ],
+  "affection": {},
+  "onboarding_complete": true
+}

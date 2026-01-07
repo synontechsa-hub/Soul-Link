@@ -1,0 +1,22 @@
+name: soullink
+description: SoulLink chat app
+version: 1.4.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.32.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/bots/
+    - assets/backgrounds/
+    - assets/icons/
+    - assets/ui_ux/
+    - assets/media/
+    - assets/documentation/

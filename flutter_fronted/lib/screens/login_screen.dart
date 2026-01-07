@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import '../widgets/social_login_button.dart';
+import 'chat_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,6 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   final auth = AuthService();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -18,8 +21,16 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void handleGuestLogin() async {
-    await auth.loginAsGuest();
-  }
+  await auth.loginAsGuest();
+
+  if (!mounted) return;
+
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (_) => const ChatScreen()),
+  );
+}
+
 
   void handleGoogleLogin() async {
     await auth.loginWithGoogle();

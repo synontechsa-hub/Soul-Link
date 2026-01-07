@@ -1,9 +1,0 @@
-flutter:
-  assets:
-    - assets/characters/
-    - assets/backgrounds/
-    - assets/icons/
-    - assets/bots/              # all bot JSON files
-    - assets/ui_ux/             # logo, mascot, UI elements
-    - assets/media/             # audio/video files
-    - assets/documentation/     # legals, etc

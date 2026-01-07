@@ -1,0 +1,39 @@
+SoulLink v1.4 — Data Safety & Character Foundations
+
+Release Focus: Stability, data integrity, and character reliability
+Theme: "Make characters trustworthy before making them smarter"
+
+ADDED
+- Robust JSON normalization layer
+- Supports lists and comma-/slash-separated strings for:
+  * Traits
+  * Flaws
+  * Quotes
+- Prevents silent runtime bugs caused by malformed character data
+- Safer character loading
+- All bots now load with guaranteed list-based personality and voice fields
+- Improved resilience when authoring new character files
+- Developer-friendly validation behavior
+- Malformed or incomplete character fields now fail gracefully instead of breaking chat logic
+- Foundation for future systems
+- Prepares backend for upcoming chat intelligence, progression depth, and authoring tools
+
+IMPROVED
+- Character dialogue consistency and personality expression
+- Reliability of random selection logic (random.choice)
+- Overall backend stability during chat sessions
+- Content authoring experience for non-technical creators
+
+FIXED
+- Bug where string-based traits/flaws/quotes were treated as iterable characters
+- Inconsistent bot behavior caused by mixed JSON data formats
+- Subtle chat response degradation caused by malformed personality data
+
+INTERNAL / STRUCTURAL
+- Centralized data normalization logic
+- Enforced consistent internal bot schema across loaders
+- No breaking API changes (fully backward compatible)
+
+NOTES
+SoulLink v1.4 is a foundational release.
+It intentionally prioritizes correctness and stability over new features, ensuring all future intelligence, progression, and narrative systems are built on reliable data.

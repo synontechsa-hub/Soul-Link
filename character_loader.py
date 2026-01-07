@@ -2,8 +2,11 @@ import json
 import os
 import logging
 from typing import Dict, List, Optional
+from utils.validation import validate_bot
 
-BOT_FOLDER = os.path.join(os.path.dirname(__file__), "..", "assets", "bots")
+
+# Align path with roster_loader.py (project root/assets/bots)
+BOT_FOLDER = os.path.join(os.path.dirname(__file__), "assets", "bots")
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
@@ -13,31 +16,30 @@ def normalize_bot(bot: Dict) -> Dict:
     personality = bot.get("Personality", {})
     voice = bot.get("Voice & Tone", {})
 
-    return {
+    normalized = {
         "name": core.get("Name", "Unknown"),
         "archetype": core.get("Archetype", ""),
         "personality": {
-            "traits": personality.get("Traits", "").split(", ") if personality.get("Traits") else [],
-            "flaws": personality.get("Flaws", "").split(", ") if personality.get("Flaws") else []
+            "traits": normalize_list(personality.get("Traits")),
+            "flaws": normalize_list(personality.get("Flaws"))
         },
         "voice": {
-            "quotes": voice.get("Quotes", []),
+            "quotes": normalize_list(voice.get("Quotes")),
             "style": voice.get("Style", "")
         },
-        # Standardized fields
         "affection": int(bot.get("Affection", 0)),
         "cards": bot.get("Cards", []),
         "responses": bot.get("Responses", {}),
         "unlocked": bot.get("unlocked", True),
-        # Keep original full data if needed
         "raw": bot
     }
 
+    validate_bot(normalized)
+    return normalized
+
+
 def load_character(name: str) -> Optional[Dict]:
-    """
-    Load a single character JSON file by bot name (e.g., 'Adrian').
-    Returns the normalized character dict or None if not found/invalid.
-    """
+    """Load a single character JSON file by bot name (e.g., 'Adrian')."""
     filename = f"Bot-{name}.json"
     path = os.path.join(BOT_FOLDER, filename)
     try:
@@ -52,11 +54,10 @@ def load_character(name: str) -> Optional[Dict]:
         return None
 
 def load_all_characters() -> List[Dict]:
-    """
-    Load all character JSON files in the bots folder.
-    Returns a list of normalized character dicts.
-    """
+    """Load all character JSON files in the bots folder, avoiding duplicates."""
     characters: List[Dict] = []
+    seen_names = set()
+
     if not os.path.exists(BOT_FOLDER):
         logging.error(f"Folder {BOT_FOLDER} does not exist.")
         return characters
@@ -67,7 +68,10 @@ def load_all_characters() -> List[Dict]:
             try:
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                    characters.append(normalize_bot(data))
+                    normalized = normalize_bot(data)
+                    if normalized["name"] not in seen_names:
+                        characters.append(normalized)
+                        seen_names.add(normalized["name"])
             except Exception as e:
                 logging.warning(f"Skipping {file}: {e}")
 
@@ -75,8 +79,14 @@ def load_all_characters() -> List[Dict]:
     return characters
 
 def load_characters(names: List[str]) -> List[Dict]:
-    """
-    Load a batch of characters by name list.
-    Returns only successfully loaded bots.
-    """
-    return [c for n in names if (c := load_character(n))]
+    """Load a batch of characters by name list."""
+    characters: List[Dict] = []
+    seen_names = set()
+
+    for n in names:
+        c = load_character(n)
+        if c and c["name"] not in seen_names:
+            characters.append(c)
+            seen_names.add(c["name"])
+
+    return characters
