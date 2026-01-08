@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
+import 'navigation/main_scaffold.dart';
 import 'state/app_session.dart';
-import 'main_scaffold.dart';
 import 'dev/seed_data.dart';
-import 'chats/chat_screen.dart';
 
 void main() {
   runApp(const SoulLinkApp());
@@ -16,7 +14,6 @@ class SoulLinkApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final session = AppSession();
     seedAppSession(session);
-
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

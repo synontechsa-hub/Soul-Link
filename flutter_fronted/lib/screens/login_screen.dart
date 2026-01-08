@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import '../widgets/social_login_button.dart';
-import 'chat_screen.dart';
+import 'chats/chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (_) => const ChatScreen(botName: "Evangeline"),
+        builder: (_) => ChatScreen(botName: "Evangeline"),
       ),
     );
   }
