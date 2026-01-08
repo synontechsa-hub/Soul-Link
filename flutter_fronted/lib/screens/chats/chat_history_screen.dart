@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../state/app_session.dart';
-import '../models/conversation_model.dart';
-import '../models/bot_model.dart';
+import '../../state/app_session.dart';
+import '../../models/conversation_model.dart';
+import '../../models/bot_model.dart';
 
 class ChatHistoryScreen extends StatelessWidget {
   final AppSession session;
