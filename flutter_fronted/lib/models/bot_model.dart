@@ -1,3 +1,7 @@
+// ─────────────────────────────────────────────
+// 🤖 BOT CORE MODEL
+// ─────────────────────────────────────────────
+
 class BotModel {
   final String id;
   final String name;
@@ -19,7 +23,7 @@ class BotModel {
     required this.memoryPolicy,
   });
 
-  /// ---- Serialization ----
+  // ───────── Serialization ─────────
 
   Map<String, dynamic> toJson() {
     return {
@@ -34,17 +38,19 @@ class BotModel {
 
   factory BotModel.fromJson(Map<String, dynamic> json) {
     return BotModel(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-      avatarUrl: json['avatarUrl'],
-      persona: BotPersona.fromJson(json['persona']),
-      memoryPolicy: BotMemoryPolicy.fromJson(json['memoryPolicy']),
+      id: json['id'] ?? '',
+      name: json['name'] ?? 'Unknown Bot',
+      description: json['description'] ?? '',
+      avatarUrl: json['avatarUrl'] ?? '',
+      persona: BotPersona.fromJson(json['persona'] ?? {}),
+      memoryPolicy: BotMemoryPolicy.fromJson(json['memoryPolicy'] ?? {}),
     );
   }
 }
 
-/// ---- Persona ----
+// ─────────────────────────────────────────────
+// 🎭 BOT PERSONA (BEHAVIORAL DNA)
+// ─────────────────────────────────────────────
 
 class BotPersona {
   /// The system prompt or core personality definition
@@ -67,21 +73,24 @@ class BotPersona {
 
   factory BotPersona.fromJson(Map<String, dynamic> json) {
     return BotPersona(
-      systemPrompt: json['systemPrompt'],
-      traits: List<String>.from(json['traits']),
+      systemPrompt: json['systemPrompt'] ?? '',
+      // Safe casting of dynamic list to String list
+      traits: (json['traits'] as List?)?.map((e) => e.toString()).toList() ?? [],
     );
   }
 }
 
-/// ---- Memory Policy ----
+// ─────────────────────────────────────────────
+// 💾 BOT MEMORY POLICY (COGNITIVE RULES)
+// ─────────────────────────────────────────────
+
+enum MemoryScope { short, long, hybrid }
 
 class BotMemoryPolicy {
-  /// short = session only
-  /// long = persistent
-  /// hybrid = summarized + recent
-  final String scope;
+  /// Determines the persistence strategy (session, persistent, or summarized)
+  final MemoryScope scope;
 
-  /// Higher values = stronger memory retention
+  /// Higher values = stronger memory retention (used in bond evolution)
   final int retentionStrength;
 
   BotMemoryPolicy({
@@ -89,17 +98,25 @@ class BotMemoryPolicy {
     required this.retentionStrength,
   });
 
+  // 🧠 MEMORY CONFIGURATION HELPERS
+  bool get isPersistent => scope == MemoryScope.long || scope == MemoryScope.hybrid;
+  bool get usesSummarization => scope == MemoryScope.hybrid;
+
   Map<String, dynamic> toJson() {
     return {
-      'scope': scope,
+      'scope': scope.name, // Saves enum as string "short", "long", etc.
       'retentionStrength': retentionStrength,
     };
   }
 
   factory BotMemoryPolicy.fromJson(Map<String, dynamic> json) {
     return BotMemoryPolicy(
-      scope: json['scope'],
-      retentionStrength: json['retentionStrength'],
+      // 🧠 EVOLUTION LOGIC: Safely parse enum from string
+      scope: MemoryScope.values.firstWhere(
+        (e) => e.name == json['scope'],
+        orElse: () => MemoryScope.short,
+      ),
+      retentionStrength: json['retentionStrength'] ?? 0,
     );
   }
 }

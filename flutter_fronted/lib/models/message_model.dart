@@ -1,3 +1,7 @@
+// ─────────────────────────────────────────────
+// 💬 MESSAGE ENTITIES
+// ─────────────────────────────────────────────
+
 enum MessageRole {
   user,
   bot,
@@ -14,7 +18,11 @@ class MessageModel {
     DateTime? timestamp,
   }) : timestamp = timestamp ?? DateTime.now();
 
-  /// Convenience constructors
+  // ─────────────────────────────────────────────
+  // 🏗️ CONVENIENCE CONSTRUCTORS
+  // ─────────────────────────────────────────────
+
+  /// Creates a message attributed to the human user
   factory MessageModel.user(String content) {
     return MessageModel(
       role: MessageRole.user,
@@ -22,6 +30,7 @@ class MessageModel {
     );
   }
 
+  /// Creates a message attributed to the AI bot
   factory MessageModel.bot(String content) {
     return MessageModel(
       role: MessageRole.bot,
@@ -29,7 +38,22 @@ class MessageModel {
     );
   }
 
-  /// Serialization
+  // ─────────────────────────────────────────────
+  // 🧠 CHAT UI HELPERS
+  // ─────────────────────────────────────────────
+
+  bool get isFromUser => role == MessageRole.user;
+  bool get isFromBot => role == MessageRole.bot;
+
+  /// Returns a shortened preview of the message for list views
+  String get preview => content.length > 50 
+      ? '${content.substring(0, 50)}...' 
+      : content;
+
+  // ─────────────────────────────────────────────
+  // 🔄 SERIALIZATION
+  // ─────────────────────────────────────────────
+
   Map<String, dynamic> toJson() {
     return {
       'role': role.name,
@@ -40,9 +64,15 @@ class MessageModel {
 
   factory MessageModel.fromJson(Map<String, dynamic> json) {
     return MessageModel(
-      role: MessageRole.values.byName(json['role']),
-      content: json['content'],
-      timestamp: DateTime.parse(json['timestamp']),
+      // 🧠 EVOLUTION LOGIC: Safe enum lookup
+      role: MessageRole.values.firstWhere(
+        (e) => e.name == json['role'],
+        orElse: () => MessageRole.user, 
+      ),
+      content: json['content'] ?? '',
+      timestamp: json['timestamp'] != null 
+          ? DateTime.parse(json['timestamp']) 
+          : DateTime.now(),
     );
   }
 }
