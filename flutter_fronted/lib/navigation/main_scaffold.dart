@@ -24,21 +24,22 @@ class MainScaffold extends StatefulWidget {
 class _MainScaffoldState extends State<MainScaffold> {
   int _currentIndex = 0;
 
-  // 🧠 NAVIGATION LOGIC
-  // We remove 'late final' and use a getter or rebuild logic 
-  // to ensure ChatHistoryScreen always has the freshest session data.
+  // ─────────────────────────────────────────────
+  // 🧠 NAVIGATION LOGIC & STATE INJECTION
+  // ─────────────────────────────────────────────
+  
   List<Widget> _buildScreens() {
     return [
-      const HomeScreen(),
-      const BrowseScreen(),
-      const SizedBox(), // 🧪 Placeholder for "Create Bot" FAB
+      HomeScreen(session: widget.session),      // 🟢 Fixed: Parameter 'session' provided
+      BrowseScreen(session: widget.session),    // 🟢 Fixed: Parameter 'session' provided
+      const SizedBox(),                         // 🧪 Placeholder for FAB logic
       ChatHistoryScreen(session: widget.session),
-      const ProfileScreen(),
+      ProfileScreen(session: widget.session),   // 🟢 Fixed: Parameter 'session' provided
     ];
   }
 
   void _onTabTapped(int index) {
-    // 🧠 NAVIGATION GUARD: Prevent switching to the empty spacer
+    // 🧠 GUARD: Do not navigate to the index reserved for the FAB notch
     if (index == 2) return; 
     
     setState(() {
@@ -51,45 +52,72 @@ class _MainScaffoldState extends State<MainScaffold> {
     final screens = _buildScreens();
 
     return Scaffold(
-      // 🧠 STATE PRESERVATION: IndexedStack keeps the scroll 
-      // position of your chat history alive even when you switch tabs.
+      backgroundColor: const Color(0xFF0A0A0C),
+
+      // ─────────────────────────────────────────────
+      // 📺 VIEWPORT (STATE PRESERVATION)
+      // ─────────────────────────────────────────────
+      
       body: IndexedStack(
         index: _currentIndex,
         children: screens,
       ),
       
       // ─────────────────────────────────────────────
-      // 🔹 FLOATING ACTION BUTTON (CENTRAL HUB)
+      // 🔹 FLOATING ACTION BUTTON (SOUL CREATOR)
       // ─────────────────────────────────────────────
+      
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        elevation: 8,
+        backgroundColor: Colors.blueAccent,
         onPressed: () {
-          // Future: Logic to create a new bot/conversation
-          print("Create Bot Tapped");
+          // Future: Open Bot Creation Wizard
+          print("Initialize Soul Sequence...");
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.white, size: 28),
       ),
 
       // ─────────────────────────────────────────────
-      // ⚓ BOTTOM NAVIGATION BAR
+      // ⚓ BOTTOM NAVIGATION BAR (DOCK)
       // ─────────────────────────────────────────────
+      
       bottomNavigationBar: BottomAppBar(
+        padding: EdgeInsets.zero,
+        color: const Color(0xFF16161A),
         shape: const CircularNotchedRectangle(),
-        notchMargin: 8.0,
+        notchMargin: 10.0,
         child: BottomNavigationBar(
-          elevation: 0, // Remove shadow as BottomAppBar handles it
+          elevation: 0,
           backgroundColor: Colors.transparent, 
           currentIndex: _currentIndex,
           onTap: _onTabTapped,
           type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.blueAccent,
+          unselectedItemColor: Colors.white24,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.explore_rounded), label: "Browse"),
-            BottomNavigationBarItem(icon: Icon(null), label: ""), // Space for FAB
-            BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_rounded), label: "Chats"),
-            BottomNavigationBarItem(icon: Icon(Icons.person_rounded), label: "Profile"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded), 
+              label: "Home"
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.explore_rounded), 
+              label: "Browse"
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(null), 
+              label: "" // Empty slot for FAB Notch
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat_bubble_rounded), 
+              label: "Inbox"
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_rounded), 
+              label: "Profile"
+            ),
           ],
         ),
       ),

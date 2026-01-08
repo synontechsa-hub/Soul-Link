@@ -5,6 +5,10 @@ import '../../models/bot_model.dart';
 import '../../models/message_model.dart';
 import '../../services/api_service.dart';
 
+// ─────────────────────────────────────────────
+// 🏗️ CHAT INTERFACE
+// ─────────────────────────────────────────────
+
 class ChatScreen extends StatefulWidget {
   final AppSession session;
   final String conversationId;
@@ -24,13 +28,13 @@ class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _scrollController = ScrollController();
   bool isLoading = false;
 
-  // 🧠 UI REFINEMENT: Scroll to bottom whenever messages change
+  // 🧠 UI REFINEMENT: Auto-scroll with fixed curve
   void _scrollToBottom() {
     if (_scrollController.hasClients) {
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 300),
-        curve: Curves.outOfBoxes,
+        curve: Curves.easeOut, // 🟢 FIXED: 'outOfBoxes' was not a valid Flutter curve
       );
     }
   }
@@ -45,7 +49,6 @@ class _ChatScreenState extends State<ChatScreen> {
       isLoading = true;
     });
     
-    // Scroll after adding user message
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
 
     try {
@@ -59,7 +62,7 @@ class _ChatScreenState extends State<ChatScreen> {
       });
     } catch (_) {
       setState(() {
-        widget.session.addBotMessage(conversation.id, '⚠️ Connection error. Is the backend running?');
+        widget.session.addBotMessage(conversation.id, '⚠️ Neural Link Interrupted. Check backend.');
       });
     } finally {
       setState(() { isLoading = false; });
@@ -78,6 +81,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A0C),
+      
       // ─────────────────────────────────────────────
       // 🎭 PREMIUM HEADER
       // ─────────────────────────────────────────────
@@ -92,7 +96,7 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             CircleAvatar(
               radius: 18,
-              backgroundImage: NetworkImage(bot.avatarUrl),
+              backgroundImage: AssetImage(bot.avatarUrl), 
             ),
             const SizedBox(width: 12),
             Column(

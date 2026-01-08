@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
-import 'navigation/main_scaffold.dart';
+import 'package:provider/provider.dart';
+import 'app.dart';
 import 'state/app_session.dart';
 import 'dev/seed_data.dart';
 
-void main() {
-  runApp(const SoulLinkApp());
-}
+// ─────────────────────────────────────────────
+// 🏗️ APPLICATION ENTRY POINT
+// ─────────────────────────────────────────────
 
-class SoulLinkApp extends StatelessWidget {
-  const SoulLinkApp({super.key});
+void main() async {
+  // 1. Ensure Flutter bindings are initialized for async asset loading
+  WidgetsFlutterBinding.ensureInitialized();
 
-  @override
-  Widget build(BuildContext context) {
-    final session = AppSession();
-    seedAppSession(session);
+  // 2. Initialize the Core Session
+  final session = AppSession();
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'SoulLink',
-      theme: ThemeData.dark(),
-      home: MainScaffold(session: session),
-    );
-  }
+  // 3. Load the Soul Roster (The 30+ bots)
+  // We call this before runApp so the data is ready the moment the screen draws
+  await seedAppSession(session);
+
+  runApp(
+    // 4. Wrap the app in ChangeNotifierProvider
+    // This allows Echo, Nova, and Evangeline to be "found" by any widget
+    ChangeNotifierProvider<AppSession>.value(
+      value: session,
+      child: const SoulLinkApp(),
+    ),
+  );
 }
