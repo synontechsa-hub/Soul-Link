@@ -59,7 +59,13 @@ class _ChatHistoryTile extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(bot.avatarUrl),
+          backgroundColor: Colors.grey.shade800,
+          backgroundImage: bot.avatarUrl.isNotEmpty
+            ? NetworkImage(bot.avatarUrl)
+            : null,
+          child: bot.avatarUrl.isEmpty
+            ? Text(bot.name[0])
+            : null,
       ),
       title: Text(
         bot.name,
@@ -69,7 +75,8 @@ class _ChatHistoryTile extends StatelessWidget {
         lastMessage,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-      ),
+        style: const TextStyle(color: Colors.grey),
+      ),  
       trailing: Text(
         _formatTime(conversation.lastUpdated),
         style: const TextStyle(fontSize: 12, color: Colors.grey),
