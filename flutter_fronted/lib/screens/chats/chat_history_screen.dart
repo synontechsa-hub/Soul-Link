@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../state/app_session.dart';
 import '../../models/bot_model.dart';
 import '../../models/conversation_model.dart';
+import 'chat_screen.dart';
 
 class ChatHistoryScreen extends StatelessWidget {
   final AppSession session;
@@ -30,12 +31,21 @@ class ChatHistoryScreen extends StatelessWidget {
             bot: bot,
             conversation: conversation,
             onTap: () {
-              // Step 3 will wire this
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ChatScreen(
+                    session: session,
+                    conversationId: conversation.id,
+                  ),
+                ),
+              );
             },
           );
         },
       ),
     );
+
   }
 }
 

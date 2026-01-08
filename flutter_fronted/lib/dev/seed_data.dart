@@ -57,13 +57,8 @@ void seedAppSession(AppSession session) {
     createdAt: DateTime.now().subtract(const Duration(days: 3)),
     lastUpdated: DateTime.now().subtract(const Duration(minutes: 5)),
     messages: [
-      MessageModel(
-        id: 'm1',
-        conversationId: 'convo_luna',
-        sender: 'bot',
-        senderId: botA.id,
-        content: 'Hey… I’m glad you came back.',
-        timestamp: DateTime.now().subtract(const Duration(minutes: 5)),
+      MessageModel.bot(
+        'Hey… I’m glad you came back.',
       ),
     ],
     state: ConversationState(
@@ -79,13 +74,8 @@ void seedAppSession(AppSession session) {
     createdAt: DateTime.now().subtract(const Duration(days: 1)),
     lastUpdated: DateTime.now().subtract(const Duration(hours: 2)),
     messages: [
-      MessageModel(
-        id: 'm2',
-        conversationId: 'convo_ember',
-        sender: 'bot',
-        senderId: botB.id,
-        content: 'So… did you miss me or what? 😏',
-        timestamp: DateTime.now().subtract(const Duration(hours: 2)),
+      MessageModel.bot(
+        'So… did you miss me or what? 😏',
       ),
     ],
     state: ConversationState(

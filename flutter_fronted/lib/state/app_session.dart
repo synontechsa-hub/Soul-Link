@@ -1,6 +1,7 @@
 import '../models/user_model.dart';
 import '../models/bot_model.dart';
 import '../models/conversation_model.dart';
+import '../models/message_model.dart';
 
 class AppSession {
   /// The logged-in user
@@ -35,5 +36,45 @@ class AppSession {
         .where((c) => c.botId == botId)
         .cast<ConversationModel?>()
         .firstWhere((c) => c != null, orElse: () => null);
+  }
+
+  // ─────────────────────────────────────────────
+  // 🔹 MESSAGE & STATE MUTATION (THIS IS NEW)
+  // ─────────────────────────────────────────────
+
+  void addUserMessage(String conversationId, String content) {
+    final conversation = conversations[conversationId];
+    if (conversation == null) return;
+
+    conversation.messages.add(
+      MessageModel.user(content),
+    );
+
+    _evolveConversationState(conversation);
+    conversation.lastUpdated = DateTime.now();
+  }
+
+  void addBotMessage(String conversationId, String content) {
+    final conversation = conversations[conversationId];
+    if (conversation == null) return;
+
+    conversation.messages.add(
+      MessageModel.bot(content),
+    );
+
+    conversation.lastUpdated = DateTime.now();
+  }
+
+  // ─────────────────────────────────────────────
+  // 🧠 CONVERSATION EVOLUTION LOGIC
+  // ─────────────────────────────────────────────
+
+  void _evolveConversationState(ConversationModel conversation) {
+    final currentState = conversation.state;
+
+    conversation.state = ConversationState(
+      progressionLevel: currentState.progressionLevel + 1,
+      memorySummary: currentState.memorySummary,
+    );
   }
 }
