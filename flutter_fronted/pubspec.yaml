@@ -1,20 +1,27 @@
 name: soullink
 description: SoulLink chat app
-version: 1.4.0+1
+version: 1.5.0+1
 
 environment:
-  sdk: "^3.10.0"
+  sdk: ">=3.10.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.1
+  provider: ^6.1.1 # 🟢 ADDED THIS
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/bots/
+    - assets/characters/ # 🟢 ADDED THIS (matches your JSON paths)
     - assets/backgrounds/
     - assets/icons/
     - assets/ui_ux/

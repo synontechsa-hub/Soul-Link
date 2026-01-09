@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:ui'; // Required for Glassmorphism (BackdropFilter)
+import 'package:provider/provider.dart'; // 🟢 Added for state management
 import '../services/auth_service.dart';
 import '../widgets/social_login_button.dart';
-import '../home/home_screen.dart'; // Navigate to Home after login
+import '../state/app_session.dart'; // 🟢 Added reference to session
+import '../navigation/main_scaffold.dart'; // 🟢 Updated to point to the Scaffold
+import '../models/user_model.dart'; // 🟢 Required for Guest User creation
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,16 +20,43 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   bool _isLoading = false;
 
+  // ─────────────────────────────────────────────
+  // 🧬 STYLIZED COMPONENTS: AUTH HANDLERS
+  // ─────────────────────────────────────────────
+
   void handleGuestLogin() async {
     setState(() => _isLoading = true);
-    await auth.loginAsGuest();
-    if (!mounted) return;
     
-    // Smooth transition to the main hub
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => HomeScreen(session: auth.session)),
-    );
+    // 1. Grab the global session via Provider
+    final session = Provider.of<AppSession>(context, listen: false);
+
+    try {
+      // 2. Perform Login via Service (Calling the void function)
+      await auth.loginAsGuest();
+      
+      // 3. Create a Guest User Model locally
+      final guestUser = UserModel(
+        id: 'guest_${DateTime.now().millisecondsSinceEpoch}',
+        screenName: 'Guest Wanderer',
+        createdAt: DateTime.now(),
+        economy: UserEconomy(currency: 500, points: 0),
+      );
+
+      if (!mounted) return;
+      
+      // 4. Sync the User to the Global State
+      session.currentUser = guestUser;
+
+      // 5. Navigate to the main application hub
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const MainScaffold()),
+      );
+    } catch (e) {
+      debugPrint("❌ Neural Link Failed: $e");
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
   }
 
   @override
@@ -39,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
           // ─────────────────────────────────────────────
           Positioned.fill(
             child: Image.asset(
-              'assets/images/poster_girl.jpg', // Path to your art
+              'assets/media/soullink_alyssa.png', // Path to your art
               fit: BoxFit.cover,
             ),
           ),
