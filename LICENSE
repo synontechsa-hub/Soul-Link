@@ -1,21 +1,31 @@
-MIT License
+SOULLINK END USER LICENSE AGREEMENT (EULA)
+Copyright (c) 2026 SynonTech.
+Copyright (c) 2026 Synonimity.
+All Rights Reserved.
 
-Copyright (c) 2026 SynonTech
+1. PROPRIETARY RIGHTS
+This software, including but not limited to its "Neural" character data (All-Bots.json), 
+system prompts, bond-progression algorithms, and UI assets, is the exclusive 
+intellectual property of SynonTech. 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+2. GRANT OF LICENSE
+SynonTech hereby grants you a personal, non-exclusive, non-transferable license 
+to use the SoulLink software for personal, non-commercial purposes only. 
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+3. RESTRICTIONS
+You are strictly prohibited from:
+   a. Redistributing, selling, or leasing the software or its asset bundles 
+      (e.g., All-Bots.json, seed_data.dart).
+   b. Reverse engineering the "Soul Models" or using the "SystemPrompts" to 
+      train competing AI models.
+   c. Removing or altering any copyright notices or SynonTech branding.
 
+4. "AS IS" WARRANTY
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+IMPLIED. IN NO EVENT SHALL SYNONTECH OR THE AUTHORS BE LIABLE FOR ANY CLAIM, 
+DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THE SOFTWARE.
+
+5. TERMINATION
+This license is effective until terminated. Your rights under this license 
+will terminate automatically without notice if you fail to comply with any 
+term(s) of this EULA.
