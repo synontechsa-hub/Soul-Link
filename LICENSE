@@ -21,6 +21,29 @@ You are strictly prohibited from:
    c. Removing or altering any copyright notices or SynonTech branding.
 
 4. "AS IS" WARRANTY
+SOULLINK END USER LICENSE AGREEMENT (EULA)
+Copyright (c) 2026 SynonTech.
+Copyright (c) 2026 Synonimity.
+All Rights Reserved.
+
+1. PROPRIETARY RIGHTS
+This software, including but not limited to its "Neural" character data (All-Bots.json), 
+system prompts, bond-progression algorithms, and UI assets, is the exclusive 
+intellectual property of SynonTech. 
+
+2. GRANT OF LICENSE
+SynonTech hereby grants you a personal, non-exclusive, non-transferable license 
+to use the SoulLink software for personal, non-commercial purposes only. 
+
+3. RESTRICTIONS
+You are strictly prohibited from:
+   a. Redistributing, selling, or leasing the software or its asset bundles 
+      (e.g., All-Bots.json, seed_data.dart).
+   b. Reverse engineering the "Soul Models" or using the "SystemPrompts" to 
+      train competing AI models.
+   c. Removing or altering any copyright notices or SynonTech branding.
+
+4. "AS IS" WARRANTY
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED. IN NO EVENT SHALL SYNONTECH OR THE AUTHORS BE LIABLE FOR ANY CLAIM, 
 DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THE SOFTWARE.
