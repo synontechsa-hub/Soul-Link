@@ -8,7 +8,7 @@ echo.
 
 REM --- Backend ---
 start "SoulLink Backend" cmd /k ^
-cd /d D:\Coding\SoulLinkv1.4\backend ^& ^
+cd /d D:\Coding\SoulLink_v1.5.0\backend ^& ^
 D:\Coding\.venv\Scripts\Activate.bat ^& ^
 uvicorn main:app --reload
 
@@ -21,7 +21,7 @@ echo.
 
 REM --- Frontend ---
 start "SoulLink Frontend" cmd /k ^
-cd /d D:\Coding\SoulLinkv1.4\flutter_fronted ^& ^
+cd /d D:\Coding\SoulLink_v1.5.0\flutter_fronted ^& ^
 flutter run -d windows
 
 echo.

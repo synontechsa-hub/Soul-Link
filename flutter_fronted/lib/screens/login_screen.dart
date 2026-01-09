@@ -20,44 +20,45 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   bool _isLoading = false;
 
-  // ─────────────────────────────────────────────
-  // 🧬 STYLIZED COMPONENTS: AUTH HANDLERS
-  // ─────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// 🧬 STYLIZED COMPONENTS: AUTH HANDLERS
+// ─────────────────────────────────────────────
 
-  void handleGuestLogin() async {
-    setState(() => _isLoading = true);
+void handleGuestLogin() async {
+  setState(() => _isLoading = true);
+  
+  // 1. Grab the global session via Provider
+  final session = Provider.of<AppSession>(context, listen: false);
+
+  try {
+    // 2. Perform Login via Service
+    await auth.loginAsGuest();
     
-    // 1. Grab the global session via Provider
-    final session = Provider.of<AppSession>(context, listen: false);
+    // 3. Create a Guest User Model locally
+    final guestUser = UserModel(
+      id: 'guest_${DateTime.now().millisecondsSinceEpoch}',
+      screenName: 'Guest Wanderer',
+      createdAt: DateTime.now(),
+      economy: UserEconomy(currency: 500, points: 0),
+    );
 
-    try {
-      // 2. Perform Login via Service (Calling the void function)
-      await auth.loginAsGuest();
-      
-      // 3. Create a Guest User Model locally
-      final guestUser = UserModel(
-        id: 'guest_${DateTime.now().millisecondsSinceEpoch}',
-        screenName: 'Guest Wanderer',
-        createdAt: DateTime.now(),
-        economy: UserEconomy(currency: 500, points: 0),
-      );
+    if (!mounted) return;
+    
+    // 4. Sync the User to the Global State
+    session.currentUser = guestUser;
 
-      if (!mounted) return;
-      
-      // 4. Sync the User to the Global State
-      session.currentUser = guestUser;
-
-      // 5. Navigate to the main application hub
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const MainScaffold()),
-      );
-    } catch (e) {
-      debugPrint("❌ Neural Link Failed: $e");
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
-    }
+    // 5. Navigate to the main application hub
+    // ✅ FIX: Added the required 'session' parameter below
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => MainScaffold(session: session)), 
+    );
+  } catch (e) {
+    debugPrint("❌ Neural Link Failed: $e");
+  } finally {
+    if (mounted) setState(() => _isLoading = false);
   }
+}
 
   @override
   Widget build(BuildContext context) {

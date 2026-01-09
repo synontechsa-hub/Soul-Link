@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.1
-  provider: ^6.1.1 # 🟢 ADDED THIS
+  provider: ^6.1.1 # 🟢
 
 dev_dependencies:
   flutter_test:
@@ -21,9 +21,8 @@ flutter:
 
   assets:
     - assets/bots/
-    - assets/characters/ # 🟢 ADDED THIS (matches your JSON paths)
-    - assets/backgrounds/
-    - assets/icons/
-    - assets/ui_ux/
-    - assets/media/
-    - assets/documentation/
+    - assets/media/ # soullink_alyssa.png
+  #  - assets/backgrounds/
+  #  - assets/icons/
+  #  - assets/ui_ux/
+  #  - assets/documentation/

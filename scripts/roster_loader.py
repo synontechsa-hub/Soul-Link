@@ -3,10 +3,24 @@ import os
 import logging
 from typing import Dict, List
 
+# ─────────────────────────────────────────────
+# 🧭 PATH RESOLUTION
+# ─────────────────────────────────────────────
 # ✅ Correct path: stay inside project root
-BOT_FOLDER = os.path.join(os.path.dirname(__file__), "assets", "bots")
+# (scripts/ → project root → assets/bots)
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+BOT_FOLDER = os.path.join(PROJECT_ROOT, "assets", "bots")
+
+# ─────────────────────────────────────────────
+# 🪵 LOGGING
+# ─────────────────────────────────────────────
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
+# ─────────────────────────────────────────────
+# 🧠 BOT NORMALIZATION
+# ─────────────────────────────────────────────
 
 def normalize_bot(bot: Dict) -> Dict:
     """Convert JSON structure into the format the app expects."""
@@ -31,6 +45,13 @@ def normalize_bot(bot: Dict) -> Dict:
         "unlocked": bot.get("unlocked", True),
         "raw": bot
     }
+
+    # IMPORTANT: normalization must return the constructed bot
+    return normalized
+
+# ─────────────────────────────────────────────
+# 📦 ROSTER LOADING
+# ─────────────────────────────────────────────
 
 def load_roster() -> List[Dict]:
     """

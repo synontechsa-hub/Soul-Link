@@ -1,7 +1,14 @@
-# version.py
+# The mammoth...
+# The behemoth...
+# The long awaited...
 import os
 
-SOUL_LINK_VERSION = "1.4.0"
+# This is not the end. Your journey will continue in another version of this world.
+# - NieR: Automata
+SOUL_LINK_VERSION = "1.5.0" #How cute... she's only 5...
 
-# Deterministic debug mode (used for testing)
+# Debugging is just the boss fight of coding—every bug is a mini‑boss,
+# and the final crash is the raid boss. Git gud...
 DEBUG_DETERMINISTIC = os.getenv("SOULLINK_DEBUG", "0") == "1"
+
+# What, you expected something huge? Pfffft!

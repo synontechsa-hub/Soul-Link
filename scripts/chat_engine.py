@@ -1,13 +1,5 @@
-# chat_engine.py
-"""
-Chat engine for SoulLink.
-Handles per-session bot conversations, short-term memory,
-affection progression, and response generation.
-
-Phase 2 introduces:
-- Conversation memory (topic, emotion, turn count)
-- Deterministic behavior support (via DEBUG_DETERMINISTIC)
-"""
+# Might need a rework. Behemoth code alert!
+# RAWRRRRRR!!!!!!!
 
 import random
 import logging
@@ -16,6 +8,10 @@ from typing import Dict, Any, Optional, Tuple
 from version import DEBUG_DETERMINISTIC
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
+# ─────────────────────────────────────────────
+# 🧪 DEBUG / DETERMINISM
+# ─────────────────────────────────────────────
 
 # Enable deterministic behavior for testing/debugging
 if DEBUG_DETERMINISTIC:
@@ -168,7 +164,6 @@ def start_chat(bot: Dict[str, Any], user_state: Optional[Dict[str, Any]] = None)
             "bot_reply": reply,
             "milestone": milestone,
             "affection": bot.get("affection", 0),
-            "unlocked": None
             "unlocked": None
         }
 
