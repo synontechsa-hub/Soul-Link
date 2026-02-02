@@ -1,0 +1,13 @@
+# requirements.txt
+
+fastapi
+uvicorn
+sqlmodel
+requests
+groq==0.4.0  # ← ADD THIS LINE
+
+python-dotenv==1.0.0
+sqlmodel==0.0.14
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.23groq==0.4.0
+groq==0.4.0

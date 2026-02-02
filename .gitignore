@@ -44,7 +44,6 @@ SoulLink_v1.5.3/_dev/
 # =========================
 # Miscellaneous
 # =========================
-*.txt
 *.bat
 .DS_Store
 Thumbs.db
