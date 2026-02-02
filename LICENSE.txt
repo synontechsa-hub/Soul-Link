@@ -1,4 +1,4 @@
-Copyright (c) 2026 Syn
+Copyright (c) 2026 Synonimity operating under SynonTech
 
 All rights reserved.
 
@@ -7,3 +7,4 @@ SoulLink, including all code, assets, designs, and associated materials, is the 
 Viewing or accessing this repository does not grant any rights to use, copy, modify, distribute, or create derivative works from any part of SoulLink. 
 
 Any unauthorized use of this project is strictly prohibited and may result in legal action.
+
