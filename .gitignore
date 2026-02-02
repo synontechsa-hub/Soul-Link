@@ -1,0 +1,50 @@
+# =========================
+# Python / Backend
+# =========================
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.venv/
+.env
+*.log
+
+# =========================
+# Flutter / Dart
+# =========================
+# Build outputs
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+*.flutter-plugins
+*.flutter-plugins-dependencies
+*.dart_tool/
+*.gradle/
+.idea/
+*.iml
+*.lock
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.bak
+
+# =========================
+# SoulLink development files
+# =========================
+SoulLink_v1.5.3/_dev/
+
+# =========================
+# Miscellaneous
+# =========================
+*.txt
+*.bat
+.DS_Store
+Thumbs.db
