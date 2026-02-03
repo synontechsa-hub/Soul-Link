@@ -31,7 +31,6 @@
 │   └── /map                    # Link City assets
 │
 ├── .env                        # Local secrets
-├── .env_examples.txt           # Layout for redacted keys
 ├── .gitignore                  # Ignores .env and _dev/
 ├── requirements.txt            # Python Dependencies
 └── version.py                  # Identity
