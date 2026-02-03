@@ -1,0 +1,253 @@
+================================================================================
+LEGION ENGINE | DEVELOPMENT LOG v1.5.3-P
+================================================================================
+DATE:      2026-01-28
+ARCHITECT: [NOMAD MODE]
+GOAL:      Eliminate hardcoding; 5-tab Navigation Framework implementation.
+================================================================================
+
+[ BACKEND / SYSTEM UPDATES ]
+--------------------------------------------------------------------------------
+[SOULS.PY]    Logic: Implemented 'explore_souls' with 'notin_' filtering.
+              Result: Engine queries 'relationships' table to exclude 
+              Souls already linked to USR-001.
+
+[MAP.PY]      Logic: Created 'get_world_map' endpoint.
+              Result: Pulls live data from 'locations' table and cross-
+              references active Soul coordinates.
+
+[LOCATION.PY] Data Integrity: Verified SQLModel schema for Link City.
+              Note: Confirmed JSON support for 'system_modifiers' (future 
+              Gatekeeper/Intimacy lock-out logic).
+
+[ARCH.]       Protocol: Added 'linkWithSoul' POST route.
+              Result: Database-level handshake for new Soul links.
+
+
+[ FRONTEND / INTERFACE UPDATES ]
+--------------------------------------------------------------------------------
+[NAVIGATION]  Framework: Replaced single-screen layout with 5-tab BottomNavBar.
+              Optimization: 'IndexedStack' used to maintain state across sectors.
+
+[HUB]         Apartment: Built Mirror/Persona editor. 
+              Tracking: Name, Bio, Gender.
+
+[EXPLORE]     Scouting: Replaced "Notes" with Live Scouting.
+              Tech: FutureBuilder + PageView (API-direct discovery cards).
+
+[MAP]         HUD: API-fed tactical data. 
+              Feature: District highlighting for active Soul presence.
+
+[SETTINGS]    Controls: Implemented Master NSFW/Adult toggle.
+              Utility: Added session termination protocol.
+
+
+[ CITY GEOGRAPHY | DATABASE SYNC ]
+--------------------------------------------------------------------------------
+ID              | DISTRICT NAME       | TYPE / STATUS
+----------------|---------------------|-----------------------------------------
+LC-EST-01       | Linkside Estate     | User Loft (Home)
+LC-RES-02       | Crimson Arms        | Residential
+LC-PUB-03       | Soul Plaza          | Public Hub / Spawn
+LC-SPO-04       | Stop n Go Racetrack | Sports
+LC-LND-05       | Skylink Tower       | Landmark
+LC-PVT-06       | Dollhouse Dungeon   | Nightlife (Private)
+LC-WLS-07       | Ether Baths Spa     | Wellness (Private)
+
+================================================================================
+LEGION ENGINE | WORLD-SEED LOG v1.5.3-P
+================================================================================
+DATE:      2026-01-30
+STATUS:    CITY-SYNC COMPLETE [RECOVERY MODE]
+SUMMARY:   25 Unique Locations Synchronized to SQL Database via seed_world.py
+================================================================================
+
+[!] DATA ARCHITECTURE: THE LOCATION SCHEMA
+Each district now carries a 'system_modifiers' JSON payload that dictates:
+- [PRIVACY]  : Public, Semi-Private, or Private (Relationship Gate).
+- [MODS]     : Float values (e.g., safety: 1.5) affecting Soul AI behavior.
+- [SENSORY]  : Style and sensory tags for Frontend shader/SFX triggers.
+
+--------------------------------------------------------------------------------
+[I] RESIDENTIAL SECTOR (The Safe Zones)
+--------------------------------------------------------------------------------
+> linkside_estate      : [Private] User Loft. Baseline Home.
+> civic_heights        : [Public] Orderly municipal living.
+> northway_flats       : [Semi-Private] Quiet architecture; detached rhythm.
+> midline_residences   : [Public] Efficiency-first housing.
+> crimson_arms         : [Semi-Private] Faded grandeur; high melancholy/isolation.
+> skylink_apartments   : [Semi-Private] High-rise functional; Adrian’s Home.
+
+--------------------------------------------------------------------------------
+[II] COMMERCIAL & CORPORATE (The Grind)
+--------------------------------------------------------------------------------
+> circuit_street       : [Public] The Forge location; high mood volatility.
+> linkgate_mall        : [Public] Targeted holographic ads; high distraction.
+> apex_corporate_plaza : [Semi-Private] Pristine/Cutthroat; Dorian’s Office.
+
+--------------------------------------------------------------------------------
+[III] NIGHTLIFE & INDULGENCE (The Neon)
+--------------------------------------------------------------------------------
+> neon_nights          : [Public] Pulse-bass; low guard-drop rate.
+> rooftop_lounge       : [Semi-Private] Intimate atmospheric escape.
+> dollhouse_dungeon    : [Private] Sub-Skylink bar; sultry dark/low inhibitions.
+> zenith_lounge        : [Semi-Private] 65th-floor refined loneliness; Rosalynn’s spot.
+
+--------------------------------------------------------------------------------
+[IV] WELLNESS & REFLECTION (The Sanctuary)
+--------------------------------------------------------------------------------
+> ether_baths          : [Private] Mineral-rich synth-water; high closeness.
+> the_garden           : [Public] Bio-dome synthetic Eden; high calm.
+> twilight_park        : [Public] Real grass luxury; gentle pacing.
+
+--------------------------------------------------------------------------------
+[V] LANDMARKS & CULTURAL (The Foundation)
+--------------------------------------------------------------------------------
+> skylink_tower        : [Public] Massive authority; high surveillance.
+> city_planetarium     : [Public] Deep existential scaling; wonder 1.4.
+> neon_span_bridge     : [Public] Solitary contemplation; high isolation.
+> echo_archives        : [Public] Physical books; Aria’s corner.
+> shadowed_archives    : [Semi-Private] Gothic/Occult wing; Sylas/Evangeline spot.
+
+--------------------------------------------------------------------------------
+[VI] SPORTS & COMBAT (The Edge)
+--------------------------------------------------------------------------------
+> stop_n_go           : [Public] Adrenaline junkies; frantic pacing.
+> iron_resolve_gym     : [Public] Discipline-focused physical training.
+> link_city_arena      : [Public] Cinematic scale; high reputation weight.
+> obsidian_proving_pts : [Semi-Private] Brutal training; high danger/intensity.
+
+--------------------------------------------------------------------------------
+[VII] MISC & SOCIAL
+--------------------------------------------------------------------------------
+> soul_plaza           : [Public] The Hub. Crowded dynamics.
+> circuit_diner        : [Public] 24-hour refuge; high accessibility.
+> umbral_exchange      : [Private] Underground market; noir criminal/low morality.
+
+================================================================================
+SCRIPT LOG: seed_world.py execution
+- Database URL: [DETECTED]
+- Upsert Logic: Active (Display Names and Mods updated for all 25 IDs)
+- Assets: Audio 'neon_ambient_01.mp3' linked as default environment track.
+================================================================================
+
+================================================================================
+SESSION LOG | 2026-02-02 | ALPHA VALIDATION & SYSTEM AUDIT
+================================================================================
+
+[ LAUNCH INFRASTRUCTURE ]
+--------------------------------------------------------------------------------
+- Created LAUNCH_SOULLINK.bat + launch_soullink.ps1 for one-click startup
+  * Auto-detects project structure and .env configuration
+  * Starts backend (uvicorn) and frontend (flutter) in separate windows
+  * Monitors processes + graceful shutdown on Ctrl+C
+- Created MANUAL_LAUNCH_GUIDE.md for troubleshooting
+
+[ CRITICAL BUG FIXES ]
+--------------------------------------------------------------------------------
+1. Frontend: Fixed Icons.Language error in login_screen.dart
+   - Changed to Icons.link (Material doesn't include Language icon)
+
+2. Backend API: Fixed gender vs gender_identity field name mismatch
+   - Updated backend/app/api/users.py schemas (UserUpdate, UserProfile)
+   - All references changed from gender_identity to gender
+
+3. Frontend Model: Updated user_model.dart to handle both field names
+   - Added fallback: json['gender'] ?? json['gender_identity']
+
+4. Database: Confirmed User.last_energy_refill field for Energy System
+
+[ ALPHA VALIDATION RESULTS ]
+--------------------------------------------------------------------------------
+✅ Login Flow: "Syn" (Architect) login successful
+✅ The Mirror: Profile creation and update working
+✅ Dashboard: All Souls loaded with max intimacy (Dev account)
+✅ Multi-User: New user registration and profile validated
+✅ Location System: All Souls initialized at starting locations
+✅ Energy System: Rate limiting active for free users
+✅ Memory Isolation: Zero data bleed confirmed via SQL queries
+
+[ SYSTEM AUDIT ]
+--------------------------------------------------------------------------------
+Audited: Backend (sessions, queries, errors), Frontend (state, memory),
+         Security (auth, isolation), Performance (N+1, caching), 
+         Vision Alignment (ethics, doctrine)
+
+Key Findings:
+- ✅ Zero memory leaks (proper session management + dispose calls)
+- ✅ Zero data bleed (strict user_id filtering everywhere)
+- ✅ Vision-aligned (energy system ethics, tiering doctrine)
+- ⚠️ Auth is MVP-only (X-User-Id header - needs JWT for Beta)
+- ⚠️ Minor optimization: brain.py history query can skip reverse
+- ⚠️ chat_screen.dart needs error handling on history load
+
+Overall Grade: A- (Excellent for Alpha)
+Recommendation: SHIP ALPHA 🚀
+
+[ FILES MODIFIED ]
+--------------------------------------------------------------------------------
+NEW:     _dev/scripts/launch_soullink.ps1
+NEW:     LAUNCH_SOULLINK.bat
+NEW:     _dev/MANUAL_LAUNCH_GUIDE.md
+FIXED:   frontend/lib/screens/login_screen.dart (Icon)
+FIXED:   frontend/lib/models/user_model.dart (Field fallback)
+FIXED:   backend/app/api/users.py (Schema rename)
+UPDATED: backend/app/models/user.py (last_energy_refill)
+
+[ STATUS ]
+--------------------------------------------------------------------------------
+✅ ALPHA-READY - Core loop functional, foundation stable
+⏳ Next: Beta testing (intimacy progression, location effects, ads)
+================================================================================
+
+================================================================================
+SESSION LOG | 2026-02-03 | v1.5.4 "ARISE" - THE INDEPENDENCE MILESTONE
+================================================================================
+
+[ ARCHITECTURE: VERSION INDEPENDENCE ]
+--------------------------------------------------------------------------------
+- Established 'version.py' as Single Source of Truth for the entire ecosystem.
+- Removed all hardcoded "Phoenix" and "1.5.3" strings from functional code.
+- Created 'lib/core/version.dart' (Frontend) for dynamic identity injection.
+- Updated Flutter package name to 'soul_link' (Clean slate).
+
+[ SECURITY LOCKDOWN ]
+--------------------------------------------------------------------------------
+- Designed Row Level Security (RLS) policies for all core tables.
+- Created 'supa_security_v1.sql' migration to enable RLS and data isolation.
+- Implemented strict auth.uid() checks for Chats, Relationships, and Profiles.
+
+[ INTERACTIVE UI: THE WORLD-AWARE UPDATE ]
+--------------------------------------------------------------------------------
+1. APARTMENT HUB: 
+   - Transformed 'Mirror Screen' into 'Linkside Apartment' Functional Hub.
+   - 2x3 Grid Layout: Bed (Logout), Mirror (Identity), TV, Radio, Couch, Window.
+   - Persona Configuration moved to an overlay modal (Mirror).
+
+2. CITY RADAR (MAP):
+   - Locations are now interactive hotspots (Clickable Nodes).
+   - Tactical Data Overlay: Shows Soul presence and Location intel.
+   - USER MOVEMENT: Implemented 'Enter Location' logic (Updates User DB state).
+
+[ BACKEND: USER POSITIONING ]
+--------------------------------------------------------------------------------
+- Added 'current_location' to User Model (linkside_apartment by default).
+- Implemented 'PATCH /api/v1/users/move' to handle physical world navigation.
+- Refactored API Service to synchronize User position during city traversal.
+
+[ FILES MODIFIED ]
+--------------------------------------------------------------------------------
+CORE:    version.py (Bumped to 1.5.4)
+BACKEND: backend/app/main.py (Dynamic title/desc)
+BACKEND: backend/app/models/user.py (current_location)
+BACKEND: backend/app/api/users.py (/move endpoint)
+FRONTEND: frontend/pubspec.yaml (soul_link)
+FRONTEND: frontend/lib/core/version.dart (NEW: Centralized identity)
+FRONTEND: frontend/lib/screens/apartment_screen.dart (Hub Layout)
+FRONTEND: frontend/lib/screens/map_screen.dart (Clickable Nodes)
+
+[ STATUS ]
+--------------------------------------------------------------------------------
+✅ ARISE SUCCESSFUL - System is decoupled, secured, and world-aware.
+⏳ Next: NPC logic expansion, lore broadcast system (TV/Radio).
+================================================================================

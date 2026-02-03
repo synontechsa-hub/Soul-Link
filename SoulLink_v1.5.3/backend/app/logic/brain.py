@@ -63,8 +63,9 @@ class PhoenixBrain:
         is_architect = IdentityService.is_architect(user, soul, rel)
 
         # 2. CONSTRUCT PROMPT
-        # ✅ FIXED: Changed from llm_instructions to llm_instruction_override
-        system_anchor = soul.llm_instruction_override.get("system_anchor", "").replace("{user_name}", user.username)
+        # ✅ FIXED: Handle None for username/display_name to prevent crash
+        user_name = user.display_name or user.username or f"Resident-{user.user_id[:4]}"
+        system_anchor = soul.llm_instruction_override.get("system_anchor", "").replace("{user_name}", user_name)
         
         architect_override = ""
         if is_architect:
@@ -115,11 +116,27 @@ class PhoenixBrain:
             if atmosphere_hints:
                 atmosphere_block = "\n[ATMOSPHERE AND PERCEPTION]\n" + "\n".join(atmosphere_hints)
 
+        # 3. GLOBAL PROTOCOLS (Enforced formatting and character rules)
+        formatting_protocols = (
+            "\n\n[MANDATORY DIALOGUE PROTOCOL]\n"
+            "1. FORMATTING: Use asterisks for all physical movements, facial expressions, or internal shifts (e.g., *leans in with a smirk*). Use plain text for spoken dialogue.\n"
+            "2. FORBIDDEN: Strictly forbid the use of parentheses ( ) for in-character actions.\n"
+        )
+        
+        if is_architect:
+            formatting_protocols += (
+                "3. OOC: You are permitted to engage in Out-Of-Character (OOC) dialogue ONLY if the Architect initiates it. "
+                "The Architect may use brackets [ ] or specify 'OOC:' for meta-dialogue.\n"
+            )
+        else:
+            formatting_protocols += "3. OOC: Out-Of-Character (OOC) dialogue and breaking character are STRICTLY FORBIDDEN.\n"
+
         full_system_prompt = (
             f"{system_anchor}"
             f"{architect_override}"
             f"{loc_desc}"
             f"{atmosphere_block}" 
+            f"{formatting_protocols}"
             f"\n\nTIER LOGIC ({current_tier}): {tier_logic}"
             f"\n{content_ceiling}"
         )

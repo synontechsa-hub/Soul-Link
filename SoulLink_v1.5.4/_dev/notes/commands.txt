@@ -1,0 +1,67 @@
+uvicorn start:
+cd SoulLink_v1.5.4/
+uvicorn backend.app.main:app --reload
+python -m uvicorn backend.app.main:app --reload
+
+
+Nuke DB CLI:
+python -c "from backend.app.core.database import engine; from backend.app.models.soul import Soul; from sqlmodel import SQLModel; SQLModel.metadata.drop_all(engine); print('Database Nuked successfully')"
+
+
+Dev scripts:
+
+python _dev/scripts/nuke_db.py
+python _dev/scripts/init_db.py
+python _dev/scripts/seed_db.py
+
+python _dev/scripts/boost_intimacy.py
+python _dev/scripts/test_chat.py
+
+python _dev/scripts/move_to.py [soul_id] [location_id]
+python _dev/scripts/move_to.py evangeline_01 linkgate_mall
+python _dev/scripts/move_to.py adrian_01 stop_n_go_racetrack
+
+
+Flutter console commands:
+cd SoulLink_v1.5.4/frontend/
+
+flutter clean
+
+flutter pub get
+
+flutter create
+flutter create .
+
+flutter analyze
+
+flutter run
+flutter run -d windows
+
+
+Swagger
+http://127.0.0.1:8000/docs
+
+
+curl -X POST http://127.0.0.1:8000/chat \
+-H "Content-Type: application/json" \
+-d "{\"user_id\":\"USR-001\",\"soul_id\":\"evangeline_01\",\"message\":\"*Hugs her tighter* I'm glad you don't blame me.\"}"
+
+curl -X POST http://127.0.0.1:8000/chat \
+-H "Content-Type: application/json" \
+-d "{\"user_id\":\"USR-001\",\"soul_id\":\"adrian_01\",\"message\":\"Adrian, I want you to know that I care deeply about all my creations. Each and every one of you is special to me.\"}"
+
+curl -X POST http://127.0.0.1:8000/chat \
+-H "Content-Type: application/json" \
+-d '{"user_id":"USR-001","soul_id":"blaze_01","message":"*Hey i been building this world all day, I have an excuse"}'
+
+curl -X POST http://127.0.0.1:8000/chat \
+-H "Content-Type: application/json" \
+-d '{"user_id":"USR-001","soul_id":"echo_01","message":"*reaches out and touches her glitch halo gently* I see you, Echo. The real you."}'
+
+curl -X POST http://127.0.0.1:8000/chat \
+-H "Content-Type: application/json" \
+-d '{"user_id":"USR-001","soul_id":"kate_01","message":"*I squeeze her shoulder gently* You're one of my children, Kate... I want you to be happy"}'
+
+curl -X POST http://127.0.0.1:8000/chat \
+-H "Content-Type: application/json" \
+-d '{"user_id":"USR-001","soul_id":"selene_01","message":"*closes my laptop without changing anything* You are perfect the way you are, my daughter"}'

@@ -8,8 +8,11 @@ from typing import Optional
 class User(SQLModel, table=True):
     __tablename__ = "users"
     
-    user_id: str = Field(primary_key=True, max_length=12)
-    username: str = Field(unique=True, max_length=50)
+    # Matches Supabase UUID
+    user_id: str = Field(primary_key=True, max_length=36)
+    
+    # Guests might not have a username yet
+    username: Optional[str] = Field(default=None, max_length=50)
     display_name: Optional[str] = Field(default=None, max_length=100)
     
     # 🏠 APARTMENT / PROFILE DATA (New for v1.5.3-P)

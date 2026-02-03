@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/dashboard_state.dart';
 
 class ApiService {
@@ -12,49 +13,25 @@ class ApiService {
 
   ApiService({this.userId});
 
+  // --- HEADERS WITH JWT ---
+  
   Map<String, String> get _headers {
-    final headers = {"Content-Type": "application/json"};
-    if (userId != null) {
-      headers["X-User-Id"] = userId!;
-    }
-    return headers;
+    final session = Supabase.instance.client.auth.currentSession;
+    final token = session?.accessToken;
+    
+    // Debug: Print token (first 10 chars)
+    if (token != null) print("🔑 API Call with Token: ${token.substring(0, 10)}...");
+
+    return {
+      "Content-Type": "application/json",
+      if (token != null) "Authorization": "Bearer $token",
+    };
   }
 
-  // --- AUTHENTICATION ---
-
-  Future<Map<String, dynamic>> login(String username) async {
-    final response = await http.post(
-      Uri.parse("$baseUrl/users/login"),
-      headers: {"Content-Type": "application/json"},
-      body: jsonEncode({"username": username}),
-    );
-
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      userId = data['user_id']; // Update the service's current user ID
-      return data;
-    } else {
-      throw Exception("Login Failed: ${response.body}");
-    }
-  }
-
-  Future<Map<String, dynamic>> register(String username, {String? displayName}) async {
-    final response = await http.post(
-      Uri.parse("$baseUrl/users/register"),
-      headers: {"Content-Type": "application/json"},
-      body: jsonEncode({
-        "username": username,
-        if (displayName != null) "display_name": displayName,
-      }),
-    );
-
-    if (response.statusCode == 200) {
-      // Registration successful, return data (maybe auto-login depending on flow)
-      return jsonDecode(response.body);
-    } else {
-      throw Exception("Registration Failed: ${response.body}");
-    }
-  }
+  // --- AUTHENTICATION (Supabase handled, only JIT sync here if needed) ---
+  
+  // Note: Login/Register is now done via AuthService (Supabase SDK) directly.
+  // The Backend 'Sync' happens automatically on 'getUserProfile' or middleware.
 
   // --- MISSING METHODS RESTORED BELOW ---
 

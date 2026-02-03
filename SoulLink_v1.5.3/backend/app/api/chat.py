@@ -80,6 +80,9 @@ async def send_message(
             is_architect=rel.is_architect
         )
     except Exception as e:
+        import traceback
+        print(f"❌ NEURAL LINK ERROR: {e}")
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Neural Link Failure: {str(e)}")
 
 # ... (History endpoint remains the same)

@@ -3,6 +3,8 @@
 // _dev/
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/dashboard_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -36,20 +38,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(color: Colors.white10),
           
           _buildSectionHeader("SYSTEM STATUS"),
-          const ListTile(
-            leading: Icon(Icons.terminal, color: Colors.cyanAccent),
-            title: Text("LEGION ENGINE V1.5.3-P"),
-            subtitle: Text("Connected: USR-001 (Architect)"),
+          Consumer<DashboardProvider>(
+            builder: (context, provider, child) {
+              final user = provider.currentUser;
+              final isArch = user?.account_tier == 'architect' || (user?.user_id != null && user!.user_id.startsWith('e1b5')); // Basic check if seed not run
+              return ListTile(
+                leading: Icon(Icons.terminal, color: isArch ? Colors.cyanAccent : Colors.white38),
+                title: Text("LEGION ENGINE V1.5.3-P"),
+                subtitle: Text("Connected: ${user?.display_name ?? user?.username ?? user?.user_id ?? 'Unknown'}${isArch ? ' (Architect)' : ''}"),
+              );
+            },
           ),
           const Divider(color: Colors.white10),
 
           _buildSectionHeader("ACCOUNT"),
-          ListTile(
-            leading: const Icon(Icons.logout, color: Colors.white38),
-            title: const Text("TERMINATE SESSION", style: TextStyle(color: Colors.white70)),
-            onTap: () {
-              // Future Logout Logic
-            },
+          Consumer<DashboardProvider>(
+            builder: (context, provider, child) => ListTile(
+              leading: const Icon(Icons.logout, color: Colors.redAccent),
+              title: const Text("TERMINATE SESSION", style: TextStyle(color: Colors.white70)),
+              onTap: () {
+                provider.logout();
+                Navigator.of(context).popUntil((route) => route.isFirst);
+              },
+            ),
           ),
           const SizedBox(height: 50),
           const Center(

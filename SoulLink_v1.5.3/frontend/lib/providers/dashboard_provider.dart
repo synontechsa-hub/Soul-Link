@@ -1,48 +1,53 @@
 // frontend/lib/providers/dashboard_provider.dart
-// version.py
-// _dev/
+// version.py v1.5.3-P
 
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
 import '../models/dashboard_state.dart';
-import '../models/user_model.dart';
+import '../models/user_model.dart' as model;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DashboardProvider extends ChangeNotifier {
-  final ApiService apiService; // Position 1
+  final ApiService apiService;
   DashboardState? _state;
-  User? _currentUser;
+  model.User? _currentUser;
   bool _isLoading = false;
 
-  // THE FIX: Standard positional constructor
-  DashboardProvider(this.apiService);
+  DashboardProvider(this.apiService) {
+    // If we have a session, hydrate the provider immediately
+    if (Supabase.instance.client.auth.currentSession != null) {
+      initAfterAuth();
+    }
+  }
 
   DashboardState? get state => _state;
-  User? get currentUser => _currentUser;
+  model.User? get currentUser => _currentUser;
   bool get isLoading => _isLoading;
   bool get isLoggedIn => _currentUser != null;
 
   /// CORE-LOOP: Profile is complete if the user has defined a gender or a bio.
-  /// This ensures they have passed through the Mirror at least once.
   bool get isProfileComplete {
     if (_currentUser == null) return false;
-    // Check if critical fields are set
     final hasGender = _currentUser!.genderIdentity != null && _currentUser!.genderIdentity != "Not Specified";
     final hasBio = _currentUser!.bio != null && _currentUser!.bio!.isNotEmpty;
+    // Basic check: If data exists, it's "complete" enough for the dashboard
     return hasGender || hasBio;
   }
 
-  Future<void> login(String username) async {
+  /// Initialize state after successful Supabase Auth
+  /// Fetches the profile from the Backend (JIT Sync) and then the dashboard.
+  Future<void> initAfterAuth() async {
     _isLoading = true;
     notifyListeners();
     try {
-      final data = await apiService.login(username);
-      if (data['profile'] != null) {
-        _currentUser = User.fromJson(data['profile']);
-      }
+      await refreshUser();
       await syncDashboard();
     } catch (e) {
-      debugPrint("Login Error: $e");
-      rethrow;
+      debugPrint("Init Error: $e");
+      // If 401, logout?
+      if (e.toString().contains("401")) { // Basic check
+         logout();
+      }
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -52,17 +57,12 @@ class DashboardProvider extends ChangeNotifier {
   Future<void> refreshUser() async {
     try {
       final data = await apiService.getUserProfile();
-      _currentUser = User.fromJson(data);
+      _currentUser = model.User.fromJson(data);
       notifyListeners();
     } catch (e) {
       debugPrint("Refresh User Error: $e");
+      rethrow;
     }
-  }
-
-  void logout() {
-    _currentUser = null;
-    apiService.userId = null;
-    notifyListeners();
   }
 
   Future<void> syncDashboard() async {
@@ -76,5 +76,11 @@ class DashboardProvider extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  void logout() {
+    Supabase.instance.client.auth.signOut();
+    _currentUser = null;
+    notifyListeners();
   }
 }
