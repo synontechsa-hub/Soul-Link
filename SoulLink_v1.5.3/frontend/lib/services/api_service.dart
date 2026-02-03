@@ -8,14 +8,53 @@ import '../models/dashboard_state.dart';
 
 class ApiService {
   static const String baseUrl = "http://localhost:8000/api/v1";
-  final String userId;
+  String? userId;
 
-  ApiService({required this.userId});
+  ApiService({this.userId});
 
-  Map<String, String> get _headers => {
-        "Content-Type": "application/json",
-        "X-User-Id": userId,
-      };
+  Map<String, String> get _headers {
+    final headers = {"Content-Type": "application/json"};
+    if (userId != null) {
+      headers["X-User-Id"] = userId!;
+    }
+    return headers;
+  }
+
+  // --- AUTHENTICATION ---
+
+  Future<Map<String, dynamic>> login(String username) async {
+    final response = await http.post(
+      Uri.parse("$baseUrl/users/login"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({"username": username}),
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      userId = data['user_id']; // Update the service's current user ID
+      return data;
+    } else {
+      throw Exception("Login Failed: ${response.body}");
+    }
+  }
+
+  Future<Map<String, dynamic>> register(String username, {String? displayName}) async {
+    final response = await http.post(
+      Uri.parse("$baseUrl/users/register"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "username": username,
+        if (displayName != null) "display_name": displayName,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // Registration successful, return data (maybe auto-login depending on flow)
+      return jsonDecode(response.body);
+    } else {
+      throw Exception("Registration Failed: ${response.body}");
+    }
+  }
 
   // --- MISSING METHODS RESTORED BELOW ---
 

@@ -74,6 +74,11 @@ class _ApartmentScreenState extends State<ApartmentScreen> {
         gender: _selectedGender,
       );
 
+      // 3. Refresh Provider State to trigger Onboarding Advance
+      if (mounted) {
+        await Provider.of<DashboardProvider>(context, listen: false).refreshUser();
+      }
+
       if (!mounted) return;
 
       if (mounted) {

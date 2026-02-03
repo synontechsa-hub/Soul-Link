@@ -37,7 +37,6 @@ async def send_message(
 ):
     brain = PhoenixBrain(session.get_bind())
     
-    # 1. Fetch Relationship
     rel = session.exec(
         select(SoulRelationship).where(
             SoulRelationship.user_id == user.user_id,
@@ -47,6 +46,19 @@ async def send_message(
 
     if not rel:
         raise HTTPException(status_code=404, detail="Link lost. Please re-initialize.")
+
+    # ⚡ ENGINE SAFETY: ENERGY GOVERNOR
+    from backend.app.services.energy_system import EnergySystem
+    
+    has_energy = EnergySystem.check_and_deduct_energy(user, session)
+    if not has_energy:
+        # Check if they are simply spamming
+        # For MVP: Hard blocking anyone with 0 energy.
+        # Future: Implement the 30s slow-lane timer.
+        raise HTTPException(
+            status_code=429, 
+            detail="Neural Link Overheated (Zero Energy). Recharging systems..."
+        )
 
     try:
         # 2. Generate Response (Brain might update Intimacy inside logic/brain.py)

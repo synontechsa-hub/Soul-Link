@@ -27,4 +27,5 @@ class User(SQLModel, table=True):
     lifetime_tokens_used: int = Field(default=0)
     
     last_ad_at: Optional[datetime] = None
+    last_energy_refill: datetime = Field(default_factory=datetime.utcnow)
     created_at: datetime = Field(default_factory=datetime.utcnow)

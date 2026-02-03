@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/dashboard_provider.dart';
+import 'registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       // We'll tell the API to create or fetch this user
-      await provider.apiService.login(_usernameController.text);
+      await provider.login(_usernameController.text);
       // If successful, the provider handles the state change and main.dart
       // will automatically switch to the Dashboard.
     } catch (e) {
@@ -48,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.Language, size: 80, color: Colors.cyanAccent),
+            const Icon(Icons.link, size: 80, color: Colors.cyanAccent),
             const SizedBox(height: 20),
             const Text(
               "SOUL-LINK SYSTEM",
@@ -108,6 +109,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           letterSpacing: 2,
                         ),
                       ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const RegistrationScreen()),
+                );
+              },
+              child: const Text(
+                "NEW SOUL? CREATE IDENTITY",
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 12,
+                  letterSpacing: 1.5,
+                ),
               ),
             ),
           ],

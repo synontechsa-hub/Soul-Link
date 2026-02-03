@@ -76,13 +76,50 @@ class PhoenixBrain:
             )
 
         loc_desc = ""
+        atmosphere_block = ""
+        
         if location:
             loc_desc = f"\nCURRENT LOCATION: {location.display_name}. {location.description}"
+            
+            # --- ATMOSPHERIC RESONANCE (Engine Depth Upgrade) ---
+            modifiers = location.system_modifiers or {}
+            moods = modifiers.get("mood_modifiers", {})
+            privacy = modifiers.get("privacy_gate", "Public")
+            
+            atmosphere_hints = []
+            
+            # 1. Privacy Logic
+            if privacy == "Private":
+                atmosphere_hints.append("PRIVACY: TOTAL. You are alone with the user. No one is watching.")
+            elif privacy == "Semi-Private":
+                atmosphere_hints.append("PRIVACY: PARTIAL. People are nearby but not listening closely.")
+            else:
+                atmosphere_hints.append("PRIVACY: NONE. Public space. Behave appropriately.")
+
+            # 2. Mood Logic (Thresholds)
+            danger = float(moods.get("danger", 0.0))
+            if danger > 1.2:
+                atmosphere_hints.append("THREAT LEVEL: HIGH. Be guarded, anxious, or alert.")
+            
+            intimacy = float(moods.get("intimacy", 0.0))
+            if intimacy > 1.3:
+                atmosphere_hints.append("VIBE: INTIMATE. The air is heavy with connection. It is safe to be vulnerable.")
+            
+            # 3. Pacing Logic
+            pacing = moods.get("pacing", "neutral")
+            if "fast" in pacing or "frantic" in pacing:
+                atmosphere_hints.append("PACING: FAST. The world is moving quickly. Keep responses short and reactive.")
+            elif "slow" in pacing or "deliberate" in pacing:
+                atmosphere_hints.append("PACING: SLOW. Time feels dilated. You can speak in longer, more thoughtful sentences.")
+            
+            if atmosphere_hints:
+                atmosphere_block = "\n[ATMOSPHERE AND PERCEPTION]\n" + "\n".join(atmosphere_hints)
 
         full_system_prompt = (
             f"{system_anchor}"
             f"{architect_override}"
             f"{loc_desc}"
+            f"{atmosphere_block}" 
             f"\n\nTIER LOGIC ({current_tier}): {tier_logic}"
             f"\n{content_ceiling}"
         )

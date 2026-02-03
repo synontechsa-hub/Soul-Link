@@ -4,12 +4,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart'; // 1. Add this import
+import 'package:flutter_dotenv/flutter_dotenv.dart'; 
+import 'screens/apartment_screen.dart'; // Add this import
 import 'providers/dashboard_provider.dart';
 import 'services/api_service.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/explore_screen.dart';
 import 'screens/map_screen.dart';
+import 'screens/login_screen.dart';
 
 // 2. Change main to be async
 void main() async {
@@ -32,27 +34,37 @@ class LinkCityApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // API Service will now be able to read the URL from .env properly
-    final apiService = ApiService(userId: "USR-001");
+    // Start with no user ID
+    final apiService = ApiService();
 
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => DashboardProvider(apiService)..syncDashboard(),
+          create: (_) => DashboardProvider(apiService),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: const Color(0xFF0A0A0E),
-          // Cleaned up the navigation bar colors while we're at it
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             selectedItemColor: Colors.cyanAccent,
             unselectedItemColor: Colors.white24,
             backgroundColor: Color(0xFF1A1A22),
           ),
         ),
-        home: const MainNavigationShell(),
+        home: Consumer<DashboardProvider>(
+          builder: (context, provider, child) {
+            // 1. Not Logged In -> Login Screen
+            if (!provider.isLoggedIn) return const LoginScreen();
+
+            // 2. Logged In but Profile Incomplete -> The Mirror (Apartment)
+            if (!provider.isProfileComplete) return const ApartmentScreen();
+
+            // 3. Logged In & Complete -> The City (Dashboard)
+            return const MainNavigationShell();
+          },
+        ),
       ),
     );
   }
@@ -72,7 +84,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
     const DashboardScreen(),
     const ExploreScreen(),
     const MapScreen(),
-    const Center(child: Text("APARTMENT COMING SOON")), // Placeholder if file missing
+    const ApartmentScreen(), 
   ];
 
   @override

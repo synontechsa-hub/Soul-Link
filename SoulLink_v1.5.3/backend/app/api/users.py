@@ -22,7 +22,7 @@ class UserUpdate(BaseModel):
     """Data sent from the Apartment Mirror to update the persona."""
     display_name: Optional[str] = None
     bio: Optional[str] = None
-    gender_identity: Optional[str] = None
+    gender: Optional[str] = None
     age: Optional[int] = None
 
 class UserProfile(BaseModel):
@@ -31,7 +31,7 @@ class UserProfile(BaseModel):
     username: str
     display_name: Optional[str]
     bio: Optional[str]
-    gender_identity: Optional[str]
+    gender: Optional[str]
     age: Optional[int]
     account_tier: str
     gems: int
@@ -124,8 +124,8 @@ async def update_profile(
         user.display_name = data.display_name
     if data.bio is not None:
         user.bio = data.bio
-    if data.gender_identity is not None:
-        user.gender_identity = data.gender_identity
+    if data.gender is not None:
+        user.gender = data.gender
     if data.age is not None:
         user.age = data.age
     
