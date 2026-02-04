@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/kate_01_thumb.jpeg",
         "starting_location": "city_planetarium",
         "home_location": "midline_residences",
+        "routines": {
+            "morning": "echo_archives",
+            "afternoon": "city_planetarium",
+            "evening": "twilight_park",
+            "night": "midline_residences",
+            "home_time": "midline_residences"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

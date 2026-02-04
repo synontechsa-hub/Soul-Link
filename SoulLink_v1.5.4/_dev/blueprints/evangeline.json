@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/evangeline_01_thumb.jpeg",
         "starting_location": "shadowed_archives",
         "home_location": "crimson_arms",
+        "routines": {
+            "morning": "the_garden",
+            "afternoon": "shadowed_archives",
+            "evening": "linkgate_mall",
+            "night": "crimson_arms",
+            "home_time": "crimson_arms"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

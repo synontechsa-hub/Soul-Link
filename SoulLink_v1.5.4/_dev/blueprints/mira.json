@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/mira_01_thumb.jpeg",
         "starting_location": "pixel_den",
         "home_location": "civic_heights",
+        "routines": {
+            "morning": "circuit_street",
+            "afternoon": "pixel_den",
+            "evening": "neon_nights",
+            "night": "civic_heights",
+            "home_time": "civic_heights"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/blaze_01_thumb.jpeg",
         "starting_location": "stop_n_go",
         "home_location": "civic_heights",
+        "routines": {
+            "morning": "iron_resolve_gym",
+            "afternoon": "stop_n_go",
+            "evening": "link_city_arena",
+            "night": "circuit_diner",
+            "home_time": "civic_heights"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

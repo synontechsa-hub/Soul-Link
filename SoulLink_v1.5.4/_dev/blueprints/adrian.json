@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/adrian_01_thumb.jpeg",
         "starting_location": "stop_n_go",
         "home_location": "midline_residences",
+        "routines": {
+            "morning": "circuit_street",
+            "afternoon": "stop_n_go",
+            "evening": "circuit_diner",
+            "night": "midline_residences",
+            "home_time": "midline_residences"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

@@ -29,15 +29,26 @@ async def get_full_state(
     )
     results = session.exec(statement).all()
     
+    # ⏳ TIME SYNC: Resolve dynamic locations
+    from backend.app.logic.time_manager import TimeManager
+    from backend.app.models.time_slot import TimeSlot
+    
+    time_manager = TimeManager(session.get_bind())
+    # We need the user's current time slot to calculate where souls are
+    current_slot = TimeSlot(user.current_time_slot)
+
     soul_states = []
     for rel, soul in results:
+        # Dynamic location lookup (Fixes Ghost Dots)
+        dynamic_location = time_manager.get_soul_location_at_time(soul.soul_id, current_slot)
+        
         soul_states.append({
             "soul_id": rel.soul_id,
             "name": soul.name,
             "archetype": soul.archetype,
-            "portrait_url": soul.portrait_url, # ✅ Added for Dashboard UI
+            "portrait_url": soul.portrait_url, 
             "tier": rel.intimacy_tier,
-            "location": rel.current_location,
+            "location": dynamic_location, # ✅ NOW DYNAMIC!
             "last_interaction": rel.last_interaction.isoformat() if rel.last_interaction else None,
             "is_architect": rel.is_architect,
             "nsfw_unlocked": rel.nsfw_unlocked

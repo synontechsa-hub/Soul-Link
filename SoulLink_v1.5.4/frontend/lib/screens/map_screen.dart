@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import '../providers/dashboard_provider.dart';
 import '../models/relationship.dart';
 import '../core/version.dart';
+import '../widgets/map/radar_selector.dart';
+import '../widgets/map/tactical_node.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -18,11 +20,23 @@ class _MapScreenState extends State<MapScreen> {
   String? _selectedSoulId;
   List<dynamic> _locations = [];
   bool _isLoadingLocs = true;
+  String _currentTimeSlot = 'morning';  // Track current time slot
 
   @override
   void initState() {
     super.initState();
     _fetchLocations();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final provider = Provider.of<DashboardProvider>(context);
+    final user = provider.currentUser;
+    if (user != null && user.currentTimeSlot != _currentTimeSlot && !_isLoadingLocs) {
+       // 🕰️ Time Shift Detected! Refresh Map Radar
+       _fetchLocations();
+    }
   }
 
   Future<void> _fetchLocations() async {
@@ -33,6 +47,10 @@ class _MapScreenState extends State<MapScreen> {
         setState(() {
           _locations = data;
           _isLoadingLocs = false;
+          // Extract time slot from first location (all have same time_slot)
+          if (data.isNotEmpty && data[0]['time_slot'] != null) {
+            _currentTimeSlot = data[0]['time_slot'];
+          }
         });
       }
     } catch (e) {
@@ -145,7 +163,13 @@ class _MapScreenState extends State<MapScreen> {
       ),
       body: Column(
         children: [
-          if (state != null) _buildRadarSelector(state.activeSouls),
+          _buildTimeSlotHeader(),  // NEW: Time slot indicator
+          if (state != null && dashboard.currentUser?.accountTier == 'architect')
+            RadarSelector(
+              souls: state.activeSouls,
+              selectedSoulId: _selectedSoulId,
+              onSoulSelected: (id) => setState(() => _selectedSoulId = id),
+            ),
           Expanded(
             child: _isLoadingLocs
                 ? const Center(child: CircularProgressIndicator(color: Colors.cyanAccent))
@@ -158,7 +182,13 @@ class _MapScreenState extends State<MapScreen> {
                       childAspectRatio: 0.85,
                     ),
                     itemCount: _locations.length,
-                    itemBuilder: (context, index) => _buildTacticalNode(_locations[index], state?.activeSouls ?? []),
+                    itemBuilder: (context, index) => TacticalNode(
+                      loc: _locations[index],
+                      allSouls: state?.activeSouls ?? [],
+                      selectedSoulId: _selectedSoulId,
+                      onMoveSoul: _moveSoulTo,
+                      onShowDetails: _showLocationDetails,
+                    ),
                   ),
           ),
         ],
@@ -166,92 +196,99 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  Widget _buildRadarSelector(List<SoulRelationship> souls) {
+  // ⏰ TIME SLOT HEADER
+  Widget _buildTimeSlotHeader() {
+    final timeSlotInfo = _getTimeSlotInfo(_currentTimeSlot);
+    
     return Container(
-      height: 110,
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      decoration: const BoxDecoration(color: Color(0xFF1A1A22), border: Border(bottom: BorderSide(color: Colors.white10))),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemCount: souls.length,
-        itemBuilder: (context, index) {
-          final soul = souls[index];
-          bool isSelected = _selectedSoulId == soul.soulId;
-          return GestureDetector(
-            onTap: () => setState(() => _selectedSoulId = isSelected ? null : soul.soulId),
-            child: Container(
-              margin: const EdgeInsets.only(right: 20),
-              width: 70,
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 28,
-                    backgroundColor: isSelected ? Colors.cyanAccent : Colors.white10,
-                    child: CircleAvatar(
-                      radius: 26,
-                      backgroundColor: Colors.black,
-                      backgroundImage: (soul.portrait_url.isNotEmpty) ? NetworkImage("http://localhost:8000${soul.portrait_url}") : null,
-                      child: soul.portrait_url.isEmpty ? const Icon(Icons.person, color: Colors.white10) : null,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(soul.name.toUpperCase(), style: TextStyle(fontSize: 10, color: isSelected ? Colors.cyanAccent : Colors.white54, letterSpacing: 1), overflow: TextOverflow.ellipsis),
-                ],
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: timeSlotInfo['colors'] as List<Color>,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        border: const Border(bottom: BorderSide(color: Colors.white10)),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            timeSlotInfo['icon'] as IconData,
+            color: Colors.white,
+            size: 24,
+          ),
+          const SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                (timeSlotInfo['name'] as String).toUpperCase(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                ),
               ),
-            ),
-          );
-        },
+              Text(
+                timeSlotInfo['description'] as String,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 11,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildTacticalNode(dynamic loc, List<SoulRelationship> allSouls) {
-    final soulsHere = allSouls.where((s) => s.currentLocation == loc['id']).toList();
-    bool canMoveSoulHere = _selectedSoulId != null;
-
-    return GestureDetector(
-      onTap: () {
-        if (canMoveSoulHere) {
-          _moveSoulTo(loc['id'], loc['name']);
-        } else {
-          _showLocationDetails(loc, allSouls);
-        }
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF1A1A22),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: soulsHere.isNotEmpty ? Colors.cyanAccent.withOpacity(0.3) : Colors.white10, width: 1),
-        ),
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(loc['name'].toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 1)),
-                  const SizedBox(height: 4),
-                  Text(loc['desc'] ?? "Sector Restricted", style: const TextStyle(color: Colors.white38, fontSize: 9), maxLines: 2),
-                ],
-              ),
-            ),
-            if (canMoveSoulHere)
-               const Center(child: Icon(Icons.add_location_alt, color: Colors.cyanAccent, size: 30))
-            else
-              Positioned(
-                bottom: 12,
-                left: 12,
-                child: Row(
-                  children: soulsHere.isEmpty 
-                    ? [const Text("NO SIGNALS", style: TextStyle(color: Colors.white10, fontSize: 8, fontWeight: FontWeight.bold))]
-                    : soulsHere.map((s) => Container(margin: const EdgeInsets.only(right: 4), width: 8, height: 8, decoration: const BoxDecoration(color: Colors.cyanAccent, shape: BoxShape.circle))).toList(),
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
+  // Get time slot display info
+  Map<String, dynamic> _getTimeSlotInfo(String timeSlot) {
+    switch (timeSlot) {
+      case 'morning':
+        return {
+          'name': 'Morning',
+          'description': 'The city awakens to neon dawn',
+          'icon': Icons.wb_sunny,
+          'colors': [const Color(0xFFFF6B35), const Color(0xFFFFAA00)],
+        };
+      case 'afternoon':
+        return {
+          'name': 'Afternoon',
+          'description': 'Peak activity across all sectors',
+          'icon': Icons.wb_sunny_outlined,
+          'colors': [const Color(0xFF00D9FF), const Color(0xFF0099FF)],
+        };
+      case 'evening':
+        return {
+          'name': 'Evening',
+          'description': 'Golden hour descends on Link City',
+          'icon': Icons.wb_twilight,
+          'colors': [const Color(0xFFFF6B9D), const Color(0xFFC06C84)],
+        };
+      case 'night':
+        return {
+          'name': 'Night',
+          'description': 'Neon lights illuminate the darkness',
+          'icon': Icons.nightlight_round,
+          'colors': [const Color(0xFF6B5B95), const Color(0xFF2A1B3D)],
+        };
+      case 'home_time':
+        return {
+          'name': 'Home Time',
+          'description': 'The city sleeps, souls return home',
+          'icon': Icons.bedtime,
+          'colors': [const Color(0xFF1A1A2E), const Color(0xFF0F0F1E)],
+        };
+      default:
+        return {
+          'name': 'Unknown',
+          'description': 'Time data unavailable',
+          'icon': Icons.access_time,
+          'colors': [const Color(0xFF1A1A22), const Color(0xFF0A0A0E)],
+        };
+    }
   }
 }

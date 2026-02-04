@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/echo_01_thumb.jpeg",
         "starting_location": "soul_plaza",
         "home_location": "soul_plaza",
+        "routines": {
+            "morning": "circuit_street",
+            "afternoon": "pixel_den",
+            "evening": "neon_nights",
+            "night": "umbral_exchange",
+            "home_time": "soul_plaza"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

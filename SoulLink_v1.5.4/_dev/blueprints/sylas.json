@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/sylas_01_thumb.jpeg",
         "starting_location": "shadowed_archives",
         "home_location": "skylink_apartments",
+        "routines": {
+            "morning": "echo_archives",
+            "afternoon": "shadowed_archives",
+            "evening": "city_planetarium",
+            "night": "skylink_apartments",
+            "home_time": "skylink_apartments"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

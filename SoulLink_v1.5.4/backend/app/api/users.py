@@ -64,3 +64,25 @@ async def update_profile(
         "status": "Identity Synchronized",
         "updated_fields": data.dict(exclude_none=True)
     }
+
+class UserMove(BaseModel):
+    location_id: str
+
+@router.patch("/move")
+async def move_user(
+    data: UserMove,
+    user: User = Depends(get_current_user),
+    session: Session = Depends(get_session)
+):
+    """
+    Update the user's current location in the city.
+    """
+    user.current_location = data.location_id
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    
+    return {
+        "status": "Location Updated",
+        "current_location": user.current_location
+    }

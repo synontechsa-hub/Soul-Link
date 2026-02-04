@@ -20,24 +20,29 @@ async def get_world_map(
 ):
     """
     Fetch the full geography of Link City directly from the Database.
-    Also detects which souls are currently active in each district.
+    Also detects which souls are currently active in each district based on
+    the current time slot and their daily routines.
     """
     # 1. Pull all locations from the DB
     statement = select(Location)
     locations = session.exec(statement).all()
     
-    # 2. Pull all relationships for this user to see where souls are
-    rel_statement = select(SoulRelationship).where(SoulRelationship.user_id == user.user_id)
-    relationships = session.exec(rel_statement).all()
+    # 2. Get time-based soul locations using TimeManager
+    from backend.app.logic.time_manager import TimeManager
+    time_manager = TimeManager(session.get_bind())  # Pass engine/connection
+    world_state = time_manager.get_world_state(user.user_id)
     
-    # 3. Build the response
+    # world_state contains:
+    # - current_time_slot: str
+    # - soul_locations: {soul_id: location_id}
+    
+    # 3. Build the response with time-based soul presence
     output = []
+    soul_locs = world_state['soul_locations']
+    
     for loc in locations:
-        # Check if any of your souls are here
-        present_souls = [
-            rel.soul_id for rel in relationships 
-            if rel.current_location == loc.location_id
-        ]
+        # Filter souls that are at this specific location
+        present_souls = [s_id for s_id, l_id in soul_locs.items() if l_id == loc.location_id]
         
         output.append({
             "id": loc.location_id,
@@ -45,7 +50,8 @@ async def get_world_map(
             "category": loc.category,
             "desc": loc.description,
             "privacy": loc.system_modifiers.get("privacy_gate", "Public"),
-            "present_souls": present_souls # 📡 Live data!
+            "present_souls": present_souls,  # 📡 Time-based soul presence!
+            "time_slot": world_state['time_slot']  # Current time context
         })
         
     return output

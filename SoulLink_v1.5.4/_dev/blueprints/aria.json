@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/aria_01_thumb.jpeg",
         "starting_location": "echo_archives",
         "home_location": "northway_flats",
+        "routines": {
+            "morning": "echo_archives",
+            "afternoon": "the_garden",
+            "evening": "twilight_park",
+            "night": "northway_flats",
+            "home_time": "northway_flats"
+        },
         "capabilities": {
             "romance": false,
             "sexual_content": false,

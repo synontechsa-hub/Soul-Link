@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/selene_01_thumb.jpeg",
         "starting_location": "city_planetarium",
         "home_location": "zenith_lounge",
+        "routines": {
+            "morning": "the_garden",
+            "afternoon": "twilight_park",
+            "evening": "city_planetarium",
+            "night": "rooftop_lounge",
+            "home_time": "zenith_lounge"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

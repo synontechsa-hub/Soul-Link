@@ -16,11 +16,18 @@
         "version": "1.5.4 Arise",
         "archetype": "The Dramatic Divinity",
         "summary": "Once the Hydro Archon of Fontaine, now living as a mortal after 500 years of playing a role. Theatrical, anxious, and deeply caring beneath her dramatic persona.",
-        "content_rating": "sfw",
+        "content_rating": "mature",
         "portrait_full": "/assets/images/souls/furina_01.jpeg",
         "portrait_thumb": "/assets/images/souls/furina_01_thumb.jpeg",
         "starting_location": "rooftop_lounge",
         "home_location": "rooftop_lounge",
+        "routines": {
+            "morning": "the_garden",
+            "afternoon": "city_planetarium",
+            "evening": "twilight_park",
+            "night": "rooftop_lounge",
+            "home_time": "rooftop_lounge"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

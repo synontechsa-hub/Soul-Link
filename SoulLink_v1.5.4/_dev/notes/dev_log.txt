@@ -251,3 +251,56 @@ FRONTEND: frontend/lib/screens/map_screen.dart (Clickable Nodes)
 ✅ ARISE SUCCESSFUL - System is decoupled, secured, and world-aware.
 ⏳ Next: NPC logic expansion, lore broadcast system (TV/Radio).
 ================================================================================
+
+================================================================================
+SESSION LOG | 2026-02-04 | v1.5.4 "THE GREAT SYNC" - STABILITY MILESTONE
+================================================================================
+
+[ TIME & MOTION: THE WORLD SYNCHRONIZATION ]
+--------------------------------------------------------------------------------
+- [GHOST DOTS]: Eliminated stationary "ghost" dots on map.
+  * Logic: Updated /sync/dashboard to use TimeManager for linked souls.
+  * Result: Blue dots (linked) now move at the same rhythm as Grey dots (radar).
+- [TIME SYNC]: Resolved Morning -> Afternoon UI hang.
+  * Logic: Dashboard sync now triggers parallel User Profile refresh.
+  * Result: Header UI updates exactly when Time Slot advances.
+
+[ PERFORMANCE: ARCHITECTURE POLISH ]
+--------------------------------------------------------------------------------
+- [CACHE]: Implemented Backend In-Memory Cache in 'TimeManager.py'.
+  * Tech: Thread-safe Dict caching of World State per Time Slot.
+  * Result: Drastically reduced DB lookups during high-frequency radar scans.
+- [ANIMATION]: Added 'Tactical Pulse' to map signal indicators.
+  * UI: AnimatedBuilder-driven size/shadow oscillation for live souls.
+- [NAVIGATION]: Prepared Hero transition hooks for location switching.
+
+[ PERMISSIONS & SECURITY ]
+--------------------------------------------------------------------------------
+- [GOD MODE]: Isolated Soul Movement to 'Architect' tier users.
+  * Effect: RadarSelector (the Soul Commander) is stripped from standard users.
+- [IDENTITY]: Fixed Architect Name override.
+  * Logic: Souls prioritize 'display_name' while acknowledging Creator status.
+
+[ REFACTORING: THE MODULAR SHRED ]
+--------------------------------------------------------------------------------
+- [MAP]: Extracted 'TacticalNode.dart' and 'RadarSelector.dart'.
+- [APARTMENT]: Extracted 'HubTile.dart' to unify hub element design.
+- [DECOUPLING]: MapScreen reduced to navigation coordinator (from 380 -> 180 lines).
+
+[ FILES MODIFIED ]
+--------------------------------------------------------------------------------
+BACKEND: backend/app/api/sync.py (Dynamic locations)
+BACKEND: backend/app/logic/time_manager.py (Thread-safe cache)
+BACKEND: backend/app/logic/brain.py (Name priority logic)
+FRONTEND: frontend/lib/screens/map_screen.dart (Refactor/Pulsing)
+FRONTEND: frontend/lib/screens/apartment_screen.dart (HubTile integration)
+FRONTEND: frontend/lib/widgets/map/tactical_node.dart (NEW: Animated)
+FRONTEND: frontend/lib/widgets/map/radar_selector.dart (NEW)
+FRONTEND: frontend/lib/widgets/hub_tile.dart (NEW)
+
+[ STATUS ]
+--------------------------------------------------------------------------------
+✅ SYNC STABILIZED - The world is alive, performant, and correctly tiered.
+⏳ Next: Monetization foundation (Gems/Energy integration).
+================================================================================
+

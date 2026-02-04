@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/rosalynn_01_thumb.jpeg",
         "starting_location": "linkview_cuisine",
         "home_location": "skylink_tower",
+        "routines": {
+            "morning": "the_garden",
+            "afternoon": "linkview_cuisine",
+            "evening": "ether_baths",
+            "night": "skylink_tower",
+            "home_time": "skylink_tower"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

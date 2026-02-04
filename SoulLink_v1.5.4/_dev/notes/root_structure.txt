@@ -1,4 +1,6 @@
-/SoulLink_v1.5.3_Phoenix
+Note: This needs updating...
+
+/SoulLink_v1.5.4
 ├── /_dev                       # THE ARCHITECT'S WORKSHOP (Excluded from Ship)
 │   ├── /blueprints             # Raw .json files (Eva, Alyssa, etc.)
 │   ├── /prototypes             # Experimental brain logic / prompt testing

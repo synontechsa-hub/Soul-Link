@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/dashboard_provider.dart';
 
+import '../services/auth_service.dart';
+
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
@@ -41,15 +43,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     setState(() => _isRegistering = true);
     final provider = Provider.of<DashboardProvider>(context, listen: false);
+    final authService = AuthService();
 
     try {
-      // 1. Register
-      await provider.apiService.register(username, displayName: displayName.isNotEmpty ? displayName : null);
+      // 1. Register (Anonymous Auth for now)
+      await authService.signInAnonymously();
       
-      // 2. Auto-login (User request implied seamless flow)
-      await provider.login(username);
+      // 2. Update Profile with Name
+      // Note: Backend might sync username from auth metadata or we rely on display_name
+      await provider.apiService.updateUserProfile(
+        name: displayName.isNotEmpty ? displayName : username
+      );
       
-      // 3. Navigation handled by Main Consumer
+      // 3. Auto-login / Init Dashboard
+      await provider.initAfterAuth();
+      
+      // 4. Navigation handled by Main Consumer (or manual pop)
       if (mounted) {
          Navigator.pop(context); // Clear registration from stack
       }

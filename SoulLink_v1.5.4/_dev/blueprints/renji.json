@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/renji_01_thumb.jpeg",
         "starting_location": "zenith_lounge",
         "home_location": "skylink_apartments",
+        "routines": {
+            "morning": "the_garden",
+            "afternoon": "linkgate_mall",
+            "evening": "zenith_lounge",
+            "night": "rooftop_lounge",
+            "home_time": "skylink_apartments"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": false,

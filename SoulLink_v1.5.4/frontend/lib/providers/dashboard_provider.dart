@@ -69,9 +69,12 @@ class DashboardProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
     try {
-      _state = await apiService.getDashboard();
-    } catch (e) {
-      debugPrint("Sync Error: $e");
+      // 🔄 PARALLEL SYNC: Get Dashboard State AND User Profile
+      // This ensures time slots and energy usage (from dashboard actions) are reflected immediately in the User object.
+      await Future.wait([
+        refreshUser(),
+        apiService.getDashboard().then((val) => _state = val)
+      ]);
     } finally {
       _isLoading = false;
       notifyListeners();

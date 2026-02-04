@@ -72,7 +72,8 @@ class LegionBrain:
             title = IdentityService.get_architect_title(soul)
             architect_override = (
                 f"\n\n[PROTOCOL: CREATOR_AWARENESS]\n"
-                f"IDENTIFIED: {title} ({user.username}).\n"
+                f"IDENTIFIED: {title} ({user.display_name or user.username}).\n"
+                f"Address them as {user.display_name or user.username}, but acknowledge their authority as Creator.\n"
                 "You are talking to your creator. Meta-dialogue permitted."
             )
 
@@ -119,8 +120,9 @@ class LegionBrain:
         # 3. GLOBAL PROTOCOLS (Enforced formatting and character rules)
         formatting_protocols = (
             "\n\n[MANDATORY DIALOGUE PROTOCOL]\n"
-            "1. FORMATTING: Use asterisks for all physical movements, facial expressions, or internal shifts (e.g., *leans in with a smirk*). Use plain text for spoken dialogue.\n"
-            "2. FORBIDDEN: Strictly forbid the use of parentheses ( ) for in-character actions.\n"
+            "1. FORMATTING: Use single asterisks * only to wrap entire action/emotion blocks (e.g. *she smiles and laughs*). Do not use asterisks within an already opened action block.\n"
+            "2. STRUCTURE: Combined actions must be one block: *Action - Inner Action - Action*. Never *Action* *Action*.\n"
+            "3. FORBIDDEN: Strictly forbid the use of parentheses ( ) for in-character actions.\n"
         )
         
         if is_architect:

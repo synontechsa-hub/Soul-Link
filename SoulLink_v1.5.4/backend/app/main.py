@@ -10,7 +10,7 @@ from fastapi.staticfiles import StaticFiles
 import os
 
 # Import the Clean Routers
-from backend.app.api import chat, map, souls, sync, users
+from backend.app.api import chat, map, souls, sync, users, time
 from version import APP_NAME, VERSION_SHORT, VERSION_DISPLAY, CURRENT_CODENAME
 
 app = FastAPI(
@@ -45,6 +45,7 @@ app.include_router(chat.router, prefix="/api/v1")
 app.include_router(map.router, prefix="/api/v1")
 app.include_router(souls.router, prefix="/api/v1")
 app.include_router(sync.router, prefix="/api/v1")
+app.include_router(time.router, prefix="/api/v1")
 
 @app.get("/")
 def read_root():

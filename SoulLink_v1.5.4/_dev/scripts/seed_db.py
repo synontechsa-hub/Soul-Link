@@ -101,6 +101,7 @@ def seed_souls(architect_id):
                     "personality": raw_data.get("identity_pillar", {}).get("bio", ""),
                     "portrait_url": meta.get("portrait_full"), 
                     "spawn_location": meta.get("starting_location", "soul_plaza"),
+                    "routines": meta.get("routines", {}),  # ⏰ NEW: Time slot routines
                     "identity_pillar": raw_data.get("identity_pillar", {}),
                     "aesthetic_pillar": raw_data.get("aesthetic_pillar", {}),
                     "interaction_engine": raw_data.get("interaction_engine", {}),

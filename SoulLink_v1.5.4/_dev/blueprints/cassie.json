@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/cassie_01_thumb.jpeg",
         "starting_location": "pixel_den",
         "home_location": "skylink_apartments",
+        "routines": {
+            "morning": "linkgate_mall",
+            "afternoon": "pixel_den",
+            "evening": "neon_nights",
+            "night": "skylink_apartments",
+            "home_time": "skylink_apartments"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

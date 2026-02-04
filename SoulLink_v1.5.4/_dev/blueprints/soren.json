@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/soren_01_thumb.jpeg",
         "starting_location": "shadowed_archives",
         "home_location": "crimson_arms",
+        "routines": {
+            "morning": "echo_archives",
+            "afternoon": "shadowed_archives",
+            "evening": "circuit_diner",
+            "night": "crimson_arms",
+            "home_time": "crimson_arms"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

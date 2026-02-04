@@ -42,11 +42,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Consumer<DashboardProvider>(
             builder: (context, provider, child) {
               final user = provider.currentUser;
-              final isArch = user?.account_tier == 'architect' || (user?.user_id != null && user!.user_id.startsWith('e1b5')); // Basic check if seed not run
+              final isArch = user?.accountTier == 'architect' || (user?.userId != null && user!.userId.startsWith('e1b5')); // Basic check if seed not run
               return ListTile(
                 leading: Icon(Icons.terminal, color: isArch ? Colors.cyanAccent : Colors.white38),
                 title: Text(SoulLinkVersion.engineTag),
-                subtitle: Text("Connected: ${user?.display_name ?? user?.username ?? user?.user_id ?? 'Unknown'}${isArch ? ' (Architect)' : ''}"),
+                subtitle: Text("Connected: ${user?.displayName ?? user?.username ?? user?.userId ?? 'Unknown'}${isArch ? ' (Architect)' : ''}"),
               );
             },
           ),
@@ -64,7 +64,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           const SizedBox(height: 50),
-          const Center(
+          Center(
             child: Text("${SoulLinkVersion.appName.toUpperCase()} ${SoulLinkVersion.codename.toUpperCase()} — MADE BY THE ARCHITECT", 
               style: const TextStyle(color: Colors.white10, fontSize: 10, letterSpacing: 2)),
           ),

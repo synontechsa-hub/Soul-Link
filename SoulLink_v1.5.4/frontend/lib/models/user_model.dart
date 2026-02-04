@@ -13,6 +13,7 @@ class User {
   final int gems;
   final int energy;
   final String currentLocation;
+  final String currentTimeSlot;
 
   User({
     required this.userId,
@@ -25,6 +26,7 @@ class User {
     required this.gems,
     required this.energy,
     required this.currentLocation,
+    required this.currentTimeSlot,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -39,6 +41,7 @@ class User {
       gems: json['gems'] ?? 0,
       energy: json['energy'] ?? 0,
       currentLocation: json['current_location'] ?? 'linkside_apartment',
+      currentTimeSlot: json['current_time_slot'] ?? 'morning',
     );
   }
 
@@ -54,6 +57,7 @@ class User {
       'gems': gems,
       'energy': energy,
       'current_location': currentLocation,
+      'current_time_slot': currentTimeSlot,
     };
   }
 }

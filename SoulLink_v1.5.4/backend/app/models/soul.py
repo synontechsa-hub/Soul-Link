@@ -26,6 +26,14 @@ class Soul(SQLModel, table=True):
 
     # 📍 The Seeder is looking for this exact line:
     spawn_location: str = Field(default="soul_plaza", max_length=100)
+    
+    # ⏰ TIME SLOT ROUTINES (Turn-Based Location System)
+    # Stores where this soul is during each time slot
+    routines: Dict[str, str] = Field(
+        default_factory=dict,
+        sa_column=Column(JSON),
+        description="Time slot -> location_id mapping for soul's daily routine"
+    )
 
     # The Pillars (Legion structure) — stored as JSON
     identity_pillar: Dict[str, Any] = Field(

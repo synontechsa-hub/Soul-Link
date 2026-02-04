@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/dorian_01_thumb.jpeg",
         "starting_location": "skylink_tower",
         "home_location": "skylink_tower",
+        "routines": {
+            "morning": "apex_corporate_plaza",
+            "afternoon": "linkgate_mall",
+            "evening": "zenith_lounge",
+            "night": "rooftop_lounge",
+            "home_time": "skylink_tower"
+        },
         "capabilities": {
             "romance": true,
             "sexual_content": true,

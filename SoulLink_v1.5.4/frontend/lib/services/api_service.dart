@@ -96,7 +96,7 @@ class ApiService {
       body: jsonEncode({
         if (name != null) "display_name": name,
         if (bio != null) "bio": bio,
-        if (gender != null) "gender_identity": gender,
+        if (gender != null) "gender": gender,
       }),
     );
   }
@@ -136,5 +136,37 @@ class ApiService {
     );
     if (response.statusCode == 200) return jsonDecode(response.body);
     throw Exception("User Move Error");
+  }
+
+  // --- TIME SLOT SYSTEM ---
+
+  Future<Map<String, dynamic>> advanceTimeSlot({String? targetSlot}) async {
+    final response = await http.post(
+      Uri.parse("$baseUrl/time/advance"),
+      headers: _headers,
+      body: jsonEncode({
+        if (targetSlot != null) "target_slot": targetSlot,
+      }),
+    );
+    if (response.statusCode == 200) return jsonDecode(response.body);
+    throw Exception("Time Advance Error: ${response.body}");
+  }
+
+  Future<Map<String, dynamic>> getCurrentTimeState() async {
+    final response = await http.get(
+      Uri.parse("$baseUrl/time/current"),
+      headers: _headers,
+    );
+    if (response.statusCode == 200) return jsonDecode(response.body);
+    throw Exception("Time State Error");
+  }
+
+  Future<List<dynamic>> getAllTimeSlots() async {
+    final response = await http.get(Uri.parse("$baseUrl/time/slots"));
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data['slots'];
+    }
+    throw Exception("Time Slots Error");
   }
 }

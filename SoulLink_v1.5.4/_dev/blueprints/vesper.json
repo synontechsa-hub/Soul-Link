@@ -21,6 +21,13 @@
         "portrait_thumb": "/assets/images/souls/vesper_01_thumb.jpeg",
         "starting_location": "neon_nights",
         "home_location": "crimson_arms",
+        "routines": {
+            "morning": "circuit_street",
+            "afternoon": "umbral_exchange",
+            "evening": "neon_nights",
+            "night": "obsidian_proving_grounds",
+            "home_time": "crimson_arms"
+        },
         "capabilities": {
             "romance": false,
             "sexual_content": true,
