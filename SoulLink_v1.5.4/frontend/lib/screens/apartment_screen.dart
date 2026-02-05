@@ -1,6 +1,7 @@
-// frontend/lib/screens/apartment_screen.dart
-// version.py v1.5.4 Arise
-
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/dashboard_provider.dart';
+import '../widgets/modals/mirror_edit_modal.dart';
 import '../widgets/hub_tile.dart';
 
 class ApartmentScreen extends StatefulWidget {

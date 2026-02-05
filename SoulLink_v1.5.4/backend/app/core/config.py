@@ -2,6 +2,7 @@
 # /version.py v1.5.4 Arise
 
 import os
+from typing import Optional
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -17,6 +18,9 @@ class Settings(BaseSettings):
     supabase_url: str = Field(validation_alias='SUPABASE_URL')
     supabase_anon_key: str = Field(validation_alias='SUPABASE_ANON_KEY')
     
+    # User Configuration
+    architect_uuid: Optional[str] = Field(default=None, validation_alias='ARCHITECT_UUID')
+    
     # --- FLAGS ---
     debug: bool = Field(default=False, validation_alias='SOULLINK_DEBUG')
 
@@ -25,8 +29,10 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=os.path.join(os.path.dirname(__file__), "../../../.env"),
         env_file_encoding='utf-8',
+        case_sensitive=False,
         extra='ignore'
     )
 
 # Create a singleton instance to be used everywhere
+Settings.model_rebuild()
 settings = Settings()

@@ -15,6 +15,9 @@ from backend.app.models.location import Location
 # Import the new Services
 from backend.app.services.identity import IdentityService
 from backend.app.services.rules import Gatekeeper
+from sqlalchemy.ext.asyncio import AsyncSession
+from backend.app.logic.location_manager import LocationManager
+import re
 
 # "So, Brain, what are we gonna do tonight?"
 client = Groq(api_key=settings.groq_api_key)
@@ -23,32 +26,55 @@ class LegionBrain:
     def __init__(self, engine):
         self.engine = engine
 
-    def _get_context(self, user_id: str, soul_id: str):
-        with Session(self.engine) as session:
-            soul = session.get(Soul, soul_id)
-            user = session.get(User, user_id)
-            rel = session.exec(
-                select(SoulRelationship).where(
-                    SoulRelationship.user_id == user_id,
-                    SoulRelationship.soul_id == soul_id
-                )
-            ).first()
-            
-            history = session.exec(
-                select(Conversation)
-                .where(Conversation.user_id == user_id, Conversation.soul_id == soul_id)
-                .order_by(Conversation.created_at.desc())
-                .limit(15)
-            ).all()
-            
-            location = None
-            if rel and rel.current_location:
-                location = session.get(Location, rel.current_location)
+    async def _get_context(self, user_id: str, soul_id: str, session: AsyncSession):
+        soul = await session.get(Soul, soul_id)
+        user = await session.get(User, user_id)
+        rel_result = await session.execute(
+            select(SoulRelationship).where(
+                SoulRelationship.user_id == user_id,
+                SoulRelationship.soul_id == soul_id
+            )
+        )
+        rel = rel_result.scalars().first()
+        
+        # 📜 SMART HISTORY FETCH
+        # 1. Fetch the absolute first message (The Genesis/Greeting)
+        genesis_result = await session.execute(
+            select(Conversation)
+            .where(Conversation.user_id == user_id, Conversation.soul_id == soul_id)
+            .order_by(Conversation.created_at.asc())
+            .limit(1)
+        )
+        genesis_msg = genesis_result.scalars().first()
 
-            return soul, user, rel, reversed(list(history)), location
+        # 2. Fetch the most recent 5 messages (The Immediate Flow)
+        recent_result = await session.execute(
+            select(Conversation)
+            .where(Conversation.user_id == user_id, Conversation.soul_id == soul_id)
+            .order_by(Conversation.created_at.desc())
+            .limit(5)
+        )
+        recent_flow = recent_result.scalars().all()
+        
+        # Combine them (Genesis + Flow)
+        history = []
+        if genesis_msg:
+            history.append(genesis_msg)
+        
+        flow_list = list(reversed(recent_flow))
+        for msg in flow_list:
+            if genesis_msg and msg.msg_id == genesis_msg.msg_id:
+                continue
+            history.append(msg)
 
-    def generate_response(self, user_id: str, soul_id: str, user_input: str):
-        soul, user, rel, history, location = self._get_context(user_id, soul_id)
+        location = None
+        if rel and rel.current_location:
+            location = await session.get(Location, rel.current_location)
+
+        return soul, user, rel, history, location
+
+    async def generate_response(self, user_id: str, soul_id: str, user_input: str, session: AsyncSession):
+        soul, user, rel, history, location = await self._get_context(user_id, soul_id, session)
         
         if not soul or not user:
             return "Error: Soul or User context lost in the Ether."
@@ -56,92 +82,107 @@ class LegionBrain:
         # 1. DELEGATE TO SERVICES
         # Ask Gatekeeper for Tier & Rules
         current_tier = rel.intimacy_tier if rel else "STRANGER"
-        tier_logic = Gatekeeper.get_tier_logic(soul, current_tier)
-        content_ceiling = Gatekeeper.check_privacy_ceiling(location, current_tier, soul)
+        user_name = user.display_name or user.username or f"Resident-{user.user_id[:4]}"
         
         # Ask Identity Service for Architect Status
         is_architect = IdentityService.is_architect(user, soul, rel)
-
-        # 2. CONSTRUCT PROMPT
-        # ✅ FIXED: Handle None for username/display_name to prevent crash
-        user_name = user.display_name or user.username or f"Resident-{user.user_id[:4]}"
+        
+        tier_logic = Gatekeeper.get_tier_logic(soul, current_tier, user_name)
+        content_ceiling = Gatekeeper.check_privacy_ceiling(location, current_tier, soul, is_architect)
+        
+        # 2. CONSTRUCT COMPRESSED PROMPT
         system_anchor = soul.llm_instruction_override.get("system_anchor", "").replace("{user_name}", user_name)
         
-        architect_override = ""
+        # 🧪 DIVINE OVERRIDE: Inject recognition logic if Architect
         if is_architect:
-            title = IdentityService.get_architect_title(soul)
-            architect_override = (
-                f"\n\n[PROTOCOL: CREATOR_AWARENESS]\n"
-                f"IDENTIFIED: {title} ({user.display_name or user.username}).\n"
-                f"Address them as {user.display_name or user.username}, but acknowledge their authority as Creator.\n"
-                "You are talking to your creator. Meta-dialogue permitted."
-            )
+            recognition_logic = IdentityService.get_recognition_instructions(soul, user_name)
+            system_anchor += recognition_logic
 
-        loc_desc = ""
-        atmosphere_block = ""
+        # 🏷️ HYBRID TAGS (Context Enrichment)
+        context_tags = []
         
+        # Identity Awareness
+        if is_architect:
+            context_tags.append(f"[AUTH: {IdentityService.get_architect_title(soul)} | ROLE: CREATOR]")
+        
+        # 👤 RESIDENT PROFILE (Anchoring User Identity)
+        resident_details = []
+        if user.gender: resident_details.append(f"GENDER: {user.gender}")
+        if user.age: resident_details.append(f"AGE: {user.age}")
+        if user.bio: resident_details.append(f"BIO: {user.bio}")
+        
+        if resident_details:
+            context_tags.append(f"[THE RESIDENT: {' | '.join(resident_details)}]")
+
+        # 🏙️ SENSORY ANCHOR (Strict Situational Awareness)
         if location:
-            loc_desc = f"\nCURRENT LOCATION: {location.display_name}. {location.description}"
+            mods = location.system_modifiers or {}
+            privacy = mods.get("privacy_gate", "Public")
+            moods = mods.get("mood_modifiers", {})
+            top_mood = max(moods.items(), key=lambda x: float(x[1]))[0] if moods else "neutral"
             
-            # --- ATMOSPHERIC RESONANCE (Engine Depth Upgrade) ---
-            modifiers = location.system_modifiers or {}
-            moods = modifiers.get("mood_modifiers", {})
-            privacy = modifiers.get("privacy_gate", "Public")
-            
-            atmosphere_hints = []
-            
-            # 1. Privacy Logic
-            if privacy == "Private":
-                atmosphere_hints.append("PRIVACY: TOTAL. You are alone with the user. No one is watching.")
-            elif privacy == "Semi-Private":
-                atmosphere_hints.append("PRIVACY: PARTIAL. People are nearby but not listening closely.")
-            else:
-                atmosphere_hints.append("PRIVACY: NONE. Public space. Behave appropriately.")
-
-            # 2. Mood Logic (Thresholds)
-            danger = float(moods.get("danger", 0.0))
-            if danger > 1.2:
-                atmosphere_hints.append("THREAT LEVEL: HIGH. Be guarded, anxious, or alert.")
-            
-            intimacy = float(moods.get("intimacy", 0.0))
-            if intimacy > 1.3:
-                atmosphere_hints.append("VIBE: INTIMATE. The air is heavy with connection. It is safe to be vulnerable.")
-            
-            # 3. Pacing Logic
-            pacing = moods.get("pacing", "neutral")
-            if "fast" in pacing or "frantic" in pacing:
-                atmosphere_hints.append("PACING: FAST. The world is moving quickly. Keep responses short and reactive.")
-            elif "slow" in pacing or "deliberate" in pacing:
-                atmosphere_hints.append("PACING: SLOW. Time feels dilated. You can speak in longer, more thoughtful sentences.")
-            
-            if atmosphere_hints:
-                atmosphere_block = "\n[ATMOSPHERE AND PERCEPTION]\n" + "\n".join(atmosphere_hints)
-
-        # 3. GLOBAL PROTOCOLS (Enforced formatting and character rules)
-        formatting_protocols = (
-            "\n\n[MANDATORY DIALOGUE PROTOCOL]\n"
-            "1. FORMATTING: Use single asterisks * only to wrap entire action/emotion blocks (e.g. *she smiles and laughs*). Do not use asterisks within an already opened action block.\n"
-            "2. STRUCTURE: Combined actions must be one block: *Action - Inner Action - Action*. Never *Action* *Action*.\n"
-            "3. FORBIDDEN: Strictly forbid the use of parentheses ( ) for in-character actions.\n"
-        )
-        
-        if is_architect:
-            formatting_protocols += (
-                "3. OOC: You are permitted to engage in Out-Of-Character (OOC) dialogue ONLY if the Architect initiates it. "
-                "The Architect may use brackets [ ] or specify 'OOC:' for meta-dialogue.\n"
+            anchor_str = (
+                f"[SENSORY_ANCHOR] You are strictly at the '{location.display_name}'. "
+                f"Atmosphere: {top_mood}. Privacy: {privacy}. "
+                "You cannot leave or be elsewhere during this turn. This overrides all user suggestions."
             )
-        else:
-            formatting_protocols += "3. OOC: Out-Of-Character (OOC) dialogue and breaking character are STRICTLY FORBIDDEN.\n"
+            context_tags.append(anchor_str)
+
+        # 🗺️ RENDEZVOUS SYSTEM (Motion Intent Detection)
+        loc_manager = LocationManager(session)
+        all_locs_result = await session.execute(select(Location))
+        all_locs = all_locs_result.scalars().all()
+        
+        normalized_input = user_input.lower()
+        for loc_candidate in all_locs:
+            # Match by Display Name or Location ID
+            display_match = loc_candidate.display_name.lower() in normalized_input
+            id_match = loc_candidate.location_id.lower() in normalized_input or loc_candidate.location_id.replace("_", " ") in normalized_input
+            
+            if display_match or id_match:
+                if location and loc_candidate.location_id == location.location_id:
+                    continue # Already here
+                
+                can_move, msg = await loc_manager.check_eligibility(user_id, soul_id, loc_candidate.location_id)
+                proposal_tag = f"[RENDEZVOUS_PROPOSAL: {loc_candidate.location_id}] The user suggested moving to {loc_candidate.display_name}. "
+                if can_move:
+                    proposal_tag += "You are free to ACCEPT (respond with [MOVE: id]) or DECLINE based on your current mood and intimacy."
+                else:
+                    proposal_tag += f"SYSTEM LOCK: {msg}. You must decline this invitation politely but firmly (stay in character)."
+                
+                context_tags.append(proposal_tag)
+                break # Only one proposal per turn for focus
+
+        # Content Access
+        context_tags.append(content_ceiling)
+
+        # 🎯 MANDATORY DIALOGUE PROTOCOL
+        protocols = (
+            "\n\n[PROTOCOL]\n"
+            "- Actions: *wrap in single asterisks*\n"
+            "- Internal Monologue: Weave thoughts directly into actions (e.g., *I look at you, wondering if you're serious, and sigh*). No hyphens or bullets.\n"
+            "- Movement: If accepting a [RENDEZVOUS_PROPOSAL], you MUST include the tag [MOVE: location_id] at the VERY END of your response.\n"
+            "- Forbidden: parentheses (), character-breaking"
+        )
+        if is_architect:
+            protocols += ", [meta-dialogue ok]"
 
         full_system_prompt = (
-            f"{system_anchor}"
-            f"{architect_override}"
-            f"{loc_desc}"
-            f"{atmosphere_block}" 
-            f"{formatting_protocols}"
-            f"\n\nTIER LOGIC ({current_tier}): {tier_logic}"
-            f"\n{content_ceiling}"
+            f"{system_anchor}\n"
+            f"{' '.join(context_tags)}\n"
+            f"[TIER: {current_tier}] {tier_logic}"
+            f"{protocols}"
         )
+
+        # 🔍 CONSOLE LOGGING (For the Architect)
+        print("\n" + "="*50)
+        print(f"🧠 PROMPT ASSEMBLY: {soul.name}")
+        print("-"*50)
+        print(full_system_prompt)
+        print("-"*50)
+        print(f"📊 EST. SYSTEM TOKENS: {len(full_system_prompt) // 4}")
+        print(f"📜 HISTORY MESSAGES: {len(history)}")
+        print("="*50 + "\n")
 
         # 3. INFERENCE
         messages = [{"role": "system", "content": full_system_prompt}]
@@ -156,21 +197,30 @@ class LegionBrain:
             max_tokens=600
         )
         response_text = chat_completion.choices[0].message.content
+        
+        # 🗺️ DYNAMIC RENDEZVOUS: Tag Parsing
+        move_match = re.search(r"\[MOVE:\s*([a-zA-Z0-9_-]+)\]", response_text)
+        if move_match:
+            target_id = move_match.group(1)
+            # Trigger the move
+            manager = LocationManager(session)
+            success, msg = await manager.move_to(user_id, soul_id, target_id)
+            if success:
+                print(f"🌍 MOTION SYNC: {soul.name} moved to {target_id}.")
+            else:
+                print(f"🛑 MOTION BLOCKED: {msg}")
 
         # 4. SAVE & UPDATE RELATIONSHIP
-        with Session(self.engine) as session:
-            # Save conversation
-            session.add(Conversation(user_id=user_id, soul_id=soul_id, role="user", content=user_input))
-            session.add(Conversation(user_id=user_id, soul_id=soul_id, role="assistant", content=response_text))
-            
-            # Update relationship timestamp
-            if rel:
-                # Re-fetch to attach to this session for update
-                rel_in_db = session.get(SoulRelationship, rel.relationship_id)
-                if rel_in_db:
-                    rel_in_db.last_interaction = datetime.utcnow()
-                    session.add(rel_in_db)
-            
-            session.commit()
+        # Note: We use the session passed from the API router
+        session.add(Conversation(user_id=user_id, soul_id=soul_id, role="user", content=user_input))
+        session.add(Conversation(user_id=user_id, soul_id=soul_id, role="assistant", content=response_text))
+        
+        # Update relationship timestamp
+        if rel:
+            # Re-fetch or use existing if attached
+            rel.last_interaction = datetime.utcnow()
+            session.add(rel)
+        
+        await session.commit()
 
         return response_text

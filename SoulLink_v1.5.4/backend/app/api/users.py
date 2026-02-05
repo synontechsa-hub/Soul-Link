@@ -2,8 +2,9 @@
 # /version.py v1.5.4 Arise
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session, select
-from backend.app.database.session import get_session
+from sqlmodel import select
+from backend.app.database.session import get_async_session
+from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.models.user import User
 from backend.app.api.dependencies import get_current_user
 from pydantic import BaseModel
@@ -44,7 +45,7 @@ async def get_my_profile(user: User = Depends(get_current_user)):
 async def update_profile(
     data: UserUpdate,
     user: User = Depends(get_current_user),
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
     """THE MIRROR: Updates user persona data."""
     if data.display_name is not None:
@@ -57,8 +58,8 @@ async def update_profile(
         user.age = data.age
     
     session.add(user)
-    session.commit()
-    session.refresh(user)
+    await session.commit()
+    await session.refresh(user)
     
     return {
         "status": "Identity Synchronized",
@@ -72,15 +73,15 @@ class UserMove(BaseModel):
 async def move_user(
     data: UserMove,
     user: User = Depends(get_current_user),
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
     """
     Update the user's current location in the city.
     """
     user.current_location = data.location_id
     session.add(user)
-    session.commit()
-    session.refresh(user)
+    await session.commit()
+    await session.refresh(user)
     
     return {
         "status": "Location Updated",

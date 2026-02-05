@@ -4,26 +4,17 @@
 import os
 import sys
 from pathlib import Path
-from dotenv import load_dotenv
-from sqlmodel import create_engine, Session, select
-
 # Path setup
 script_dir = Path(__file__).parent
 project_root = script_dir.parent.parent
 sys.path.insert(0, str(project_root))
 
-# Load root .env
-load_dotenv(project_root / ".env")
+# Path setup
 
+from sqlmodel import Session, select
+from backend.app.core.config import settings
+from backend.app.database.session import engine
 from backend.app.models.location import Location
-
-# Use SUPABASE_DB_URL or fallback to DATABASE_URL
-DATABASE_URL = os.getenv("SUPABASE_DB_URL") or os.getenv("DATABASE_URL")
-if not DATABASE_URL:
-    print("❌ ERROR: Neither SUPABASE_DB_URL nor DATABASE_URL found in .env!")
-    sys.exit(1)
-
-engine = create_engine(DATABASE_URL)
 
 def seed_link_city():
     print(f"🗺️  Rebuilding Link City for v1.5.4 Arise...")

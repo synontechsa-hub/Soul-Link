@@ -3,6 +3,7 @@
 from sqlmodel import SQLModel, Field, Column, JSON
 from datetime import datetime
 from typing import Optional
+import uuid
 
 # The art of conversing, it's much more than just what I say and you say.
 class Conversation(SQLModel, table=True):
@@ -12,9 +13,13 @@ class Conversation(SQLModel, table=True):
     __tablename__ = "conversations"
     
     # Defining the ID of each field
-    msg_id: int = Field(default=None, primary_key=True)
-    user_id: str = Field(max_length=36)
-    soul_id: str = Field(max_length=50)
+    msg_id: str = Field(
+        default_factory=lambda: str(uuid.uuid4()), 
+        primary_key=True,
+        max_length=36
+    )
+    user_id: str = Field(max_length=36, index=True)
+    soul_id: str = Field(max_length=50, index=True)
     
     # Role of the roll...
     role: str = Field(max_length=10)  # "user" or "assistant"

@@ -9,8 +9,9 @@ Integrates Supabase Auth for secure JWT validation and Architect Role checks.
 
 from fastapi import Header, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from sqlmodel import Session, select
-from backend.app.database.session import get_session
+from sqlmodel import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from backend.app.database.session import get_async_session
 from backend.app.models.user import User
 from backend.app.core.config import settings
 from typing import Optional
@@ -50,25 +51,24 @@ async def get_current_user_uuid(
 
 async def get_current_user(
     user_uuid: str = Depends(get_current_user_uuid),
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ) -> User:
     """
-    Fetches the local User record.
-    If the user exists in Supabase but not locally, JIT creates them (Sync).
+    Fetches the local User record asynchronously.
+    If the user exists in Supabase but not locally, JIT creates them (Async).
     """
-    user = session.get(User, user_uuid)
+    user = await session.get(User, user_uuid)
     
     if not user:
-        # JIT Provisioning (Sync)
-        # We need to fetch basic info from Supabase if possible, or just create a stub
+        # JIT Provisioning (Async)
         new_user = User(
             user_id=user_uuid,
             username=f"Guest-{user_uuid[:8]}", # Temporary placeholder
             account_tier="free"
         )
         session.add(new_user)
-        session.commit()
-        session.refresh(new_user)
+        await session.commit()
+        await session.refresh(new_user)
         return new_user
     
     return user
@@ -77,7 +77,7 @@ async def require_architect_role(
     credentials: HTTPAuthorizationCredentials = Depends(security)
 ) -> str:
     """
-    Checks if the user has the 'architect' role in Supabase App Metadata.
+    Checks if the user has the 'architect' role asynchronously.
     """
     token = credentials.credentials
     

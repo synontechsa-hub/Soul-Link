@@ -7,9 +7,10 @@
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
 from typing import Optional
-from backend.app.database.session import get_session
+from backend.app.database.session import get_async_session
 from backend.app.models.user import User
 from backend.app.models.time_slot import TimeSlot, get_time_slot_display_name, get_time_slot_description
 from backend.app.logic.time_manager import TimeManager
@@ -32,15 +33,13 @@ class TimeStateResponse(BaseModel):
 async def advance_time_slot(
     request: AdvanceTimeRequest,
     user: User = Depends(get_current_user),
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
     """
     Advance the user's time slot to the next one (or jump to a specific slot).
     This is the "End Turn" mechanic - triggered by sleeping in the apartment bed.
-    
-    Returns the new time slot and updated world state.
     """
-    manager = TimeManager(session.get_bind())
+    manager = TimeManager(session)
     
     # Validate target slot if provided
     target_slot_enum = None
@@ -54,10 +53,10 @@ async def advance_time_slot(
             )
     
     # Advance time
-    new_slot = manager.advance_time_slot(user.user_id, target_slot_enum)
+    new_slot = await manager.advance_time_slot(user.user_id, target_slot_enum)
     
     # Get updated world state
-    world_state = manager.get_world_state(user.user_id)
+    world_state = await manager.get_world_state(user.user_id)
     
     return {
         "status": "time_advanced",
@@ -72,14 +71,14 @@ async def advance_time_slot(
 @router.get("/current")
 async def get_current_time_state(
     user: User = Depends(get_current_user),
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ) -> TimeStateResponse:
     """
     Get the current time slot and world state.
     Shows where all souls are right now based on their routines.
     """
-    manager = TimeManager(session.get_bind())
-    world_state = manager.get_world_state(user.user_id)
+    manager = TimeManager(session)
+    world_state = await manager.get_world_state(user.user_id)
     
     current_slot = TimeSlot(world_state["time_slot"])
     
@@ -94,7 +93,6 @@ async def get_current_time_state(
 async def get_all_time_slots():
     """
     Get information about all available time slots.
-    Useful for the time selection UI in the apartment.
     """
     slots = []
     for slot in TimeSlot:

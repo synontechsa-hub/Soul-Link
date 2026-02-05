@@ -3,8 +3,9 @@
 # _dev/
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session, select
-from backend.app.database.session import get_session
+from sqlmodel import select
+from backend.app.database.session import get_async_session
+from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.logic.location_manager import LocationManager
 from backend.app.models.location import Location
 from backend.app.models.relationship import SoulRelationship
@@ -16,7 +17,7 @@ router = APIRouter(prefix="/map", tags=["Legion Engine - Map"])
 @router.get("/locations")
 async def get_world_map(
     user: User = Depends(get_current_user), 
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
     """
     Fetch the full geography of Link City directly from the Database.
@@ -25,12 +26,13 @@ async def get_world_map(
     """
     # 1. Pull all locations from the DB
     statement = select(Location)
-    locations = session.exec(statement).all()
+    res = await session.execute(statement)
+    locations = res.scalars().all()
     
     # 2. Get time-based soul locations using TimeManager
     from backend.app.logic.time_manager import TimeManager
-    time_manager = TimeManager(session.get_bind())  # Pass engine/connection
-    world_state = time_manager.get_world_state(user.user_id)
+    time_manager = TimeManager(session)
+    world_state = await time_manager.get_world_state(user.user_id)
     
     # world_state contains:
     # - current_time_slot: str
@@ -61,20 +63,20 @@ async def move_to_location(
     soul_id: str,
     location_id: str,
     user: User = Depends(get_current_user), 
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
     """
     Move a soul to a new location in Link City.
     The LocationManager handles Gatekeeper rules (Privacy/Intimacy).
     """
-    manager = LocationManager(session.get_bind())
+    manager = LocationManager(session)
     
-    success, message = manager.move_to(user.user_id, soul_id, location_id)
+    success, message = await manager.move_to(user.user_id, soul_id, location_id)
     
     if not success:
         raise HTTPException(status_code=403, detail=message)
     
-    loc = session.get(Location, location_id)
+    loc = await session.get(Location, location_id)
     if not loc:
         raise HTTPException(status_code=404, detail="Destination location does not exist.")
     

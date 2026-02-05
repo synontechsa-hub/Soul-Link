@@ -43,7 +43,7 @@ class SoulRelationship(SQLModel, table=True):
 
     # Current world state
     current_location: Optional[str] = Field(
-        default="linkgate_mall", # Default starting point
+        default=None, # NULL = Follow Dynamic Routine
         max_length=50
     )
 

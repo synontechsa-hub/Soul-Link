@@ -4,8 +4,9 @@
 
 import logging
 from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session, select, col
-from backend.app.database.session import get_session
+from sqlmodel import select, col
+from backend.app.database.session import get_async_session
+from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.models.soul import Soul
 from backend.app.models.user import User
 from backend.app.models.relationship import SoulRelationship
@@ -16,28 +17,25 @@ router = APIRouter(prefix="/souls", tags=["Legion Engine - Souls"])
 logger = logging.getLogger("LegionEngine")
 
 @router.get("/explore")
-def explore_souls(
+async def explore_souls(
     q: Optional[str] = None, 
     user: User = Depends(get_current_user), 
-    db: Session = Depends(get_session)
+    db: AsyncSession = Depends(get_async_session)
 ):
     try:
         # 1. Get existing links
         linked_statement = select(SoulRelationship).where(
             SoulRelationship.user_id == user.user_id
         )
-        relationships = db.exec(linked_statement).all()
+        rel_result = await db.execute(linked_statement)
+        relationships = rel_result.scalars().all()
         linked_dict = {rel.soul_id: rel for rel in relationships}
 
         # 2. Search Query
         statement = select(Soul)
-        if q:
-            statement = statement.where(
-                (col(Soul.name).ilike(f"%{q}%")) | 
-                (col(Soul.archetype).ilike(f"%{q}%"))
-            )
         
-        all_souls = db.exec(statement).all()
+        soul_result = await db.execute(statement)
+        all_souls = soul_result.scalars().all()
         
         output = []
         for s in all_souls:
@@ -66,9 +64,9 @@ def explore_souls(
         raise HTTPException(status_code=500, detail="Failed to scout for souls.")
 
 @router.get("/{soul_id}")
-def get_soul_details(soul_id: str, db: Session = Depends(get_session)):
+async def get_soul_details(soul_id: str, db: AsyncSession = Depends(get_async_session)):
     """Get detailed public profile info."""
-    soul = db.get(Soul, soul_id)
+    soul = await db.get(Soul, soul_id)
     if not soul:
         raise HTTPException(404, detail=f"Soul {soul_id} not found.")
     
@@ -88,19 +86,20 @@ def get_soul_details(soul_id: str, db: Session = Depends(get_session)):
 async def link_with_soul(
     soul_id: str,
     user: User = Depends(get_current_user), 
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
     """Initialize a relationship with a soul."""
-    soul = session.get(Soul, soul_id)
+    soul = await session.get(Soul, soul_id)
     if not soul:
         raise HTTPException(404, detail=f"Soul {soul_id} not found.")
     
-    existing = session.exec(
+    rel_result = await session.execute(
         select(SoulRelationship).where(
             SoulRelationship.user_id == user.user_id,
             SoulRelationship.soul_id == soul_id
         )
-    ).first()
+    )
+    existing = rel_result.scalars().first()
     
     if existing:
         return {
@@ -119,17 +118,20 @@ async def link_with_soul(
         soul_id=soul_id,
         intimacy_score=0,
         intimacy_tier="STRANGER",
-        current_location=start_loc # <--- Dynamic Spawn!
+        current_location=None # <--- Follows Dynamic Routine
     )
     
-    # 🕵️ ARCHITECT CHECK
-    if user.user_id == "USR-001":
+    # 🕵️ ARCHITECT RECOGNITION (Blueprint Allowlist)
+    dev_cfg = soul.meta_data.get("dev_config", {})
+    allowed_ids = dev_cfg.get("architect_ids", [])
+    
+    if user.user_id in allowed_ids:
         new_rel.is_architect = True
         new_rel.nsfw_unlocked = True 
     
     session.add(new_rel)
-    session.commit()
-    session.refresh(new_rel)
+    await session.commit()
+    await session.refresh(new_rel)
     
     return {
         "status": "linked",
@@ -145,15 +147,16 @@ async def link_with_soul(
 async def get_relationship_status(
     soul_id: str,
     user: User = Depends(get_current_user), 
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
     """Check your current relationship status with a soul."""
-    rel = session.exec(
+    rel_result = await session.execute(
         select(SoulRelationship).where(
             SoulRelationship.user_id == user.user_id,
             SoulRelationship.soul_id == soul_id
         )
-    ).first()
+    )
+    rel = rel_result.scalars().first()
     
     if not rel:
         raise HTTPException(404, detail=f"No relationship with {soul_id}.")

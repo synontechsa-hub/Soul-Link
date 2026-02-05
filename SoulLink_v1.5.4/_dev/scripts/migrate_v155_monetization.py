@@ -5,23 +5,16 @@
 import os
 import sys
 from pathlib import Path
-from dotenv import load_dotenv
-from sqlalchemy import create_engine, text
-
 # Path setup
 script_dir = Path(__file__).parent
 project_root = script_dir.parent.parent
 sys.path.insert(0, str(project_root))
 
-# Load root .env
-load_dotenv(project_root / ".env")
+from sqlmodel import text
+from backend.app.core.config import settings
+from backend.app.database.session import engine
 
-DATABASE_URL = os.getenv("SUPABASE_DB_URL") or os.getenv("DATABASE_URL")
-if not DATABASE_URL:
-    print("❌ ERROR: Neither SUPABASE_DB_URL nor DATABASE_URL found in .env!")
-    sys.exit(1)
-
-engine = create_engine(DATABASE_URL)
+# Constants are now pulled from settings
 
 def run_migration():
     """

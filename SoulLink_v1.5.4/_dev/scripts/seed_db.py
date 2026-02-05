@@ -6,31 +6,21 @@ import sys
 import os
 from pathlib import Path
 from datetime import datetime, timezone
-from dotenv import load_dotenv
 
 # Path setup
 script_dir = Path(__file__).parent
 project_root = script_dir.parent.parent
 sys.path.insert(0, str(project_root))
 
-# Load root .env
-load_dotenv(project_root / ".env")
 
-from sqlalchemy import create_engine
 from sqlmodel import SQLModel, Session, select
+from backend.app.core.config import settings
+from backend.app.database.session import engine
 from backend.app.models.soul import Soul
 from backend.app.models.location import Location
 from backend.app.models.relationship import SoulRelationship
 from backend.app.models.user import User
 from version import VERSION_SHORT, CURRENT_CODENAME
-
-# "War, war never changes." - Fallout
-DATABASE_URL = os.getenv("SUPABASE_DB_URL") or os.getenv("DATABASE_URL")
-if not DATABASE_URL:
-    print("❌ ERROR: Neither SUPABASE_DB_URL nor DATABASE_URL found in .env!")
-    sys.exit(1)
-
-engine = create_engine(DATABASE_URL)
 
 def init_db():
     print(f"🔥 {CURRENT_CODENAME} Rising: Initializing soul_link_db...")
@@ -41,7 +31,13 @@ def ensure_architect_exists():
     """Checks if the Architect exists based on ARCHITECT_UUID env var.
     If missing, creates a stub. If present, ensures 'architect' tier.
     """
-    architect_id = os.getenv("ARCHITECT_UUID")
+    architect_id = settings.architect_uuid
+    if not architect_id:
+        # Fallback check to see if it's in the environment at all
+        architect_id = os.getenv("ARCHITECT_UUID")
+        if architect_id:
+             print(f"ℹ️ Found ARCHITECT_UUID in raw environment: {architect_id[:8]}...")
+        
     if not architect_id or "[YOUR-ID-GOES-HERE]" in architect_id:
         print("⚠️ ARCHITECT_UUID not found or not set in .env. Skipping Architect check.")
         return None
@@ -93,6 +89,12 @@ def seed_souls(architect_id):
                     continue
 
                 # Prepare the fields
+                meta = raw_data.get("meta", {})
+                dev_config = raw_data.get("dev_config", {})
+                
+                # Merge dev_config into meta_data for internal engine recognition
+                meta_data = {**meta, "dev_config": dev_config}
+
                 updated_fields = {
                     "name": soul_name,
                     "version": meta.get("version", VERSION_SHORT),
@@ -106,7 +108,7 @@ def seed_souls(architect_id):
                     "aesthetic_pillar": raw_data.get("aesthetic_pillar", {}),
                     "interaction_engine": raw_data.get("interaction_engine", {}),
                     "llm_instruction_override": raw_data.get("llm_instruction_override", {}),
-                    "meta_data": meta
+                    "meta_data": meta_data
                 }
 
                 # --- DB SYNC ---
@@ -143,7 +145,7 @@ def seed_souls(architect_id):
                             intimacy_tier="SOUL_LINKED",
                             is_architect=True,
                             nsfw_unlocked=True,
-                            current_location=start_loc
+                            current_location=None # Follow Dynamic Routine
                         )
                         session.add(architect_link)
                         print(f"    🔗 Bound {soul_name} to Architect.")

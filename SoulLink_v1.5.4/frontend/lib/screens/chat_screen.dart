@@ -5,7 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/dashboard_provider.dart';
-import '../models/relationship.dart'; // Ensure this model is imported
+import '../models/relationship.dart';
+import '../widgets/location_suggestion_sheet.dart';
 
 class ChatScreen extends StatefulWidget {
   // We pass the full relationship now to pre-fill the UI state
@@ -103,6 +104,30 @@ class _ChatScreenState extends State<ChatScreen> {
       setState(() => _messages.add({"role": "system", "content": "⚠️ CONNECTION LOST"}));
     } finally {
       if (mounted) setState(() => _isSending = false);
+    }
+  }
+
+  void _suggestLocation() async {
+    try {
+      final api = Provider.of<DashboardProvider>(context, listen: false).apiService;
+      final locations = await api.getMapLocations();
+      
+      if (!mounted) return;
+      
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) => LocationSuggestionSheet(
+          locations: locations,
+          onSelect: (name, id) {
+            // Send a cinematic suggestion
+            _messageController.text = "I was thinking... maybe we should head over to $name?";
+            _sendMessage();
+          },
+        ),
+      );
+    } catch (e) {
+      debugPrint("📍 LOC FETCH FAULT: $e");
     }
   }
 
@@ -223,6 +248,13 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       child: Row(
         children: [
+          // 🗺️ RENDEZVOUS BUTTON
+          IconButton(
+            icon: const Icon(Icons.explore_outlined, color: Colors.white38),
+            onPressed: _suggestLocation,
+            tooltip: 'Suggest Rendezvous',
+          ),
+          const SizedBox(width: 8),
           Expanded(
             child: TextField(
               controller: _messageController,

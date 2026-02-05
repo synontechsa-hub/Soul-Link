@@ -1,7 +1,6 @@
-# /backend/app/services/energy_system.py
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 from backend.app.models.user import User
-from sqlmodel import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 # "Power overwhelming." - Archon, StarCraft
 class EnergySystem:
@@ -10,7 +9,7 @@ class EnergySystem:
     REFILL_AMOUNT = 1
 
     @staticmethod
-    def check_and_deduct_energy(user: User, session: Session) -> bool:
+    async def check_and_deduct_energy(user: User, session: AsyncSession) -> bool:
         """
         Manages the Energy Economy.
         Returns True if user is in FAST MODE (Energy Used).
@@ -21,9 +20,13 @@ class EnergySystem:
             return True
 
         # 1. Regenerate Energy First
-        now = datetime.utcnow()
-        last_refill = user.last_energy_refill or user.created_at
+        now = datetime.now(timezone.utc)
+        last_refill = user.last_energy_refill
         
+        # Ensure last_refill is timezone-aware
+        if last_refill.tzinfo is None:
+            last_refill = last_refill.replace(tzinfo=timezone.utc)
+            
         delta = now - last_refill
         minutes_passed = delta.total_seconds() / 60
         
@@ -36,11 +39,9 @@ class EnergySystem:
             if user.energy < EnergySystem.MAX_ENERGY:
                 user.energy = min(EnergySystem.MAX_ENERGY, user.energy + energy_gain)
             
-            # Reset the clock (keep the remainder to avoid losing seconds)
-            # Actually, simplest approach is just reset to now for MVP stability
+            # Reset the clock
             user.last_energy_refill = now
             session.add(user)
-            # We commit later or let the caller handle it (Caller handles commit usually)
 
         # 2. Check Deductions
         if user.energy > 0:

@@ -7,12 +7,16 @@
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
-from backend.app.database.session import get_session
+from backend.app.database.session import get_async_session
+from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.logic.brain import LegionBrain
 from backend.app.models.relationship import SoulRelationship
 from backend.app.models.user import User
 from backend.app.api.dependencies import get_current_user 
+from backend.app.logic.time_manager import TimeManager  # <--- NEW
+from backend.app.models.time_slot import TimeSlot        # <--- NEW
 from pydantic import BaseModel
+from typing import Optional
 
 router = APIRouter(prefix="/chat", tags=["Legion Engine - Chat"])
 
@@ -28,21 +32,23 @@ class ChatResponse(BaseModel):
     intimacy_score: int  # <--- NEW: Live progress tracking
     location: str
     is_architect: bool   # <--- NEW: UI theming
+    debug_info: Optional[dict] = None # <--- NEW: Telemetry
 
 @router.post("/send", response_model=ChatResponse)
 async def send_message(
     request: ChatRequest, 
     user: User = Depends(get_current_user), 
-    session: Session = Depends(get_session)
+    session: AsyncSession = Depends(get_async_session)
 ):
-    brain = LegionBrain(session.get_bind())
+    brain = LegionBrain(session.bind)
     
-    rel = session.exec(
+    rel_result = await session.execute(
         select(SoulRelationship).where(
             SoulRelationship.user_id == user.user_id,
             SoulRelationship.soul_id == request.soul_id
         )
-    ).first()
+    )
+    rel = rel_result.scalars().first()
 
     if not rel:
         raise HTTPException(status_code=404, detail="Link lost. Please re-initialize.")
@@ -50,7 +56,7 @@ async def send_message(
     # ⚡ ENGINE SAFETY: ENERGY GOVERNOR
     from backend.app.services.energy_system import EnergySystem
     
-    has_energy = EnergySystem.check_and_deduct_energy(user, session)
+    has_energy = await EnergySystem.check_and_deduct_energy(user, session)
     if not has_energy:
         # Check if they are simply spamming
         # For MVP: Hard blocking anyone with 0 energy.
@@ -62,22 +68,43 @@ async def send_message(
 
     try:
         # 2. Generate Response (Brain might update Intimacy inside logic/brain.py)
-        response_text = brain.generate_response(
+        response_text = await brain.generate_response(
             user_id=user.user_id,
             soul_id=request.soul_id,
-            user_input=request.message
+            user_input=request.message,
+            session=session
         )
         
-        # 3. REFRESH Data (Crucial: Get the new score/location after the Brain worked)
-        session.refresh(rel) 
+        # 3. UNIFIED LOCATION RESOLUTION
+        # Manual Override > Dynamic Routine
+        display_location = rel.current_location
+        if not display_location:
+            time_manager = TimeManager(session)
+            display_location = await time_manager.get_soul_location_at_time(
+                request.soul_id, 
+                TimeSlot(user.current_time_slot)
+            )
+
+        # 4. MONITORING (For the Architect's Eyes Only)
+        debug_info = None
+        if user.account_tier == "architect":
+            # Roughly estimate tokens from user input + estimated base prompt
+            # (Actual full prompt count is inside brain.py)
+            est_base = 1200 # Average system context
+            debug_info = {
+                "est_input_tokens": (len(request.message) // 4) + est_base,
+                "model": "llama-3.3-70b-versatile",
+                "status": "Telemetry Active"
+            }
 
         return ChatResponse(
             soul_id=request.soul_id,
             response=response_text,
             tier=rel.intimacy_tier,
-            intimacy_score=rel.intimacy_score, # Sending the fresh score
-            location=rel.current_location or "Unknown",
-            is_architect=rel.is_architect
+            intimacy_score=rel.intimacy_score,
+            location=display_location or "Unknown",
+            is_architect=rel.is_architect,
+            debug_info=debug_info
         )
     except Exception as e:
         import traceback
@@ -91,32 +118,34 @@ async def send_message(
 async def get_chat_history(
     soul_id: str,
     limit: int = 50,
-    user: User = Depends(get_current_user), # ✅ Validates user and prevents "Spying"
-    session: Session = Depends(get_session)
+    user: User = Depends(get_current_user), 
+    session: AsyncSession = Depends(get_async_session)
 ):
     from backend.app.models.conversation import Conversation
     
     # 🕵️ GROK FIX: Ensure they are actually linked before showing history
-    rel_exists = session.exec(
+    rel_result = await session.execute(
         select(SoulRelationship).where(
             SoulRelationship.user_id == user.user_id,
             SoulRelationship.soul_id == soul_id
         )
-    ).first()
+    )
+    rel_exists = rel_result.scalars().first()
     
     if not rel_exists:
         raise HTTPException(status_code=403, detail="Access denied. No link established.")
 
     # 📜 GROK FIX: Order by Ascending (Oldest -> Newest) directly in DB
-    messages = session.exec(
+    msg_result = await session.execute(
         select(Conversation)
         .where(
             Conversation.user_id == user.user_id, 
             Conversation.soul_id == soul_id
         )
-        .order_by(Conversation.created_at.asc()) # Database does the sorting
+        .order_by(Conversation.created_at.asc())
         .limit(limit)
-    ).all()
+    )
+    messages = msg_result.scalars().all()
     
     return [
         {
@@ -124,7 +153,7 @@ async def get_chat_history(
             "content": msg.content,
             "timestamp": msg.created_at.isoformat()
         }
-        for msg in messages # No reversed() needed anymore!
+        for msg in messages 
     ]
 
 # "Stay frosty."
