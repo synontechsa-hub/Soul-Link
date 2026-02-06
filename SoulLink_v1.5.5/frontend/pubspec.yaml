@@ -1,0 +1,28 @@
+# /frontend/pubspec.yaml
+# /version.py v1.5.4-Arise
+
+name: soul_link
+description: The Interface for Link City (v1.5.4 Arise).
+version: 1.5.4+1
+
+environment:
+  sdk: '>=3.10.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+  provider: ^6.1.1
+  flutter_dotenv: ^5.1.0
+  supabase_flutter: ^2.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
