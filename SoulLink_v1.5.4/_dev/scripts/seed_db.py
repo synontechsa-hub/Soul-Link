@@ -16,7 +16,7 @@ sys.path.insert(0, str(project_root))
 from sqlmodel import SQLModel, Session, select
 from backend.app.core.config import settings
 from backend.app.database.session import engine
-from backend.app.models.soul import Soul
+from backend.app.models.soul import Soul, SoulPillar, SoulState
 from backend.app.models.location import Location
 from backend.app.models.relationship import SoulRelationship
 from backend.app.models.user import User
@@ -73,7 +73,7 @@ def seed_souls(architect_id):
     
     # Filter for JSONs and ignore templates
     json_files = [f for f in blueprint_path.glob("*.json") if "_template" not in f.name]
-    print(f"🧬 Syncing {len(json_files)} Souls to the Hive...")
+    print(f"🧬 Syncing {len(json_files)} Souls to the Hive (3-Table Architecture)...")
 
     with Session(engine) as session:
         for json_file in json_files:
@@ -88,39 +88,55 @@ def seed_souls(architect_id):
                 if not soul_id:
                     continue
 
-                # Prepare the fields
-                meta = raw_data.get("meta", {})
-                dev_config = raw_data.get("dev_config", {})
-                
-                # Merge dev_config into meta_data for internal engine recognition
-                meta_data = {**meta, "dev_config": dev_config}
-
-                updated_fields = {
+                # --- PILLAR 1: IDENTITY (souls table) ---
+                soul_fields = {
                     "name": soul_name,
-                    "version": meta.get("version", VERSION_SHORT),
                     "archetype": meta.get("archetype", "Unknown"),
                     "summary": meta.get("summary", "A mysterious soul..."),
-                    "personality": raw_data.get("identity_pillar", {}).get("bio", ""),
-                    "portrait_url": meta.get("portrait_full"), 
-                    "spawn_location": meta.get("starting_location", "soul_plaza"),
-                    "routines": meta.get("routines", {}),  # ⏰ NEW: Time slot routines
+                    "portrait_url": meta.get("portrait_full")
+                }
+
+                existing_soul = session.get(Soul, soul_id)
+                if existing_soul:
+                    print(f"  🔄 Updating Identity: {soul_name}")
+                    for key, value in soul_fields.items():
+                        setattr(existing_soul, key, value)
+                else:
+                    print(f"  ✨ Creating Soul: {soul_name}")
+                    new_soul = Soul(soul_id=soul_id, **soul_fields)
+                    session.add(new_soul)
+
+                # --- PILLAR 2: LOGIC/DEFINITIONS (soul_pillars table) ---
+                pillar_fields = {
                     "identity_pillar": raw_data.get("identity_pillar", {}),
                     "aesthetic_pillar": raw_data.get("aesthetic_pillar", {}),
                     "interaction_engine": raw_data.get("interaction_engine", {}),
                     "llm_instruction_override": raw_data.get("llm_instruction_override", {}),
-                    "meta_data": meta_data
+                    "meta_data": {**meta, "dev_config": raw_data.get("dev_config", {})}
                 }
 
-                # --- DB SYNC ---
-                existing = session.get(Soul, soul_id)
-                if existing:
-                    print(f"  🔄 Updating: {soul_name}")
-                    for key, value in updated_fields.items():
-                        setattr(existing, key, value)
+                existing_pillar = session.get(SoulPillar, soul_id)
+                if existing_pillar:
+                    for key, value in pillar_fields.items():
+                        setattr(existing_pillar, key, value)
                 else:
-                    print(f"  ✨ Creating: {soul_name}")
-                    new_soul = Soul(soul_id=soul_id, **updated_fields)
-                    session.add(new_soul)
+                    new_pillar = SoulPillar(soul_id=soul_id, **pillar_fields)
+                    session.add(new_pillar)
+
+                # --- PILLAR 3: LIVE STATE (soul_states table) ---
+                state_fields = {
+                    "current_location_id": meta.get("starting_location", "soul_plaza"),
+                    "energy": 100,
+                    "mood": "neutral"
+                }
+
+                existing_state = session.get(SoulState, soul_id)
+                if existing_state:
+                    for key, value in state_fields.items():
+                        setattr(existing_state, key, value)
+                else:
+                    new_state = SoulState(soul_id=soul_id, **state_fields)
+                    session.add(new_state)
 
                 session.flush() # Sync so we can link the relationship
 

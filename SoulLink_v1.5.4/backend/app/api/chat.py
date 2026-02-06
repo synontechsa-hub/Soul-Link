@@ -5,7 +5,7 @@
 # "The right man in the wrong place can make all the difference in the world."
 # - G-Man, Half-Life 2
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlmodel import Session, select
 from backend.app.database.session import get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -13,8 +13,9 @@ from backend.app.logic.brain import LegionBrain
 from backend.app.models.relationship import SoulRelationship
 from backend.app.models.user import User
 from backend.app.api.dependencies import get_current_user 
-from backend.app.logic.time_manager import TimeManager  # <--- NEW
-from backend.app.models.time_slot import TimeSlot        # <--- NEW
+from backend.app.logic.time_manager import TimeManager
+from backend.app.models.time_slot import TimeSlot
+from backend.app.core.rate_limiter import limiter, RateLimits
 from pydantic import BaseModel
 from typing import Optional
 
@@ -35,17 +36,19 @@ class ChatResponse(BaseModel):
     debug_info: Optional[dict] = None # <--- NEW: Telemetry
 
 @router.post("/send", response_model=ChatResponse)
+@limiter.limit(RateLimits.CHAT)
 async def send_message(
-    request: ChatRequest, 
+    chat_request: ChatRequest, 
     user: User = Depends(get_current_user), 
-    session: AsyncSession = Depends(get_async_session)
+    session: AsyncSession = Depends(get_async_session),
+    request: Request = None
 ):
     brain = LegionBrain(session.bind)
     
     rel_result = await session.execute(
         select(SoulRelationship).where(
             SoulRelationship.user_id == user.user_id,
-            SoulRelationship.soul_id == request.soul_id
+            SoulRelationship.soul_id == chat_request.soul_id
         )
     )
     rel = rel_result.scalars().first()
@@ -70,8 +73,8 @@ async def send_message(
         # 2. Generate Response (Brain might update Intimacy inside logic/brain.py)
         response_text = await brain.generate_response(
             user_id=user.user_id,
-            soul_id=request.soul_id,
-            user_input=request.message,
+            soul_id=chat_request.soul_id,
+            user_input=chat_request.message,
             session=session
         )
         
@@ -81,7 +84,7 @@ async def send_message(
         if not display_location:
             time_manager = TimeManager(session)
             display_location = await time_manager.get_soul_location_at_time(
-                request.soul_id, 
+                chat_request.soul_id, 
                 TimeSlot(user.current_time_slot)
             )
 
@@ -92,13 +95,13 @@ async def send_message(
             # (Actual full prompt count is inside brain.py)
             est_base = 1200 # Average system context
             debug_info = {
-                "est_input_tokens": (len(request.message) // 4) + est_base,
+                "est_input_tokens": (len(chat_request.message) // 4) + est_base,
                 "model": "llama-3.3-70b-versatile",
                 "status": "Telemetry Active"
             }
 
         return ChatResponse(
-            soul_id=request.soul_id,
+            soul_id=chat_request.soul_id,
             response=response_text,
             tier=rel.intimacy_tier,
             intimacy_score=rel.intimacy_score,
@@ -115,11 +118,13 @@ async def send_message(
 # ... (History endpoint remains the same)
 
 @router.get("/history")
+@limiter.limit(RateLimits.READ_ONLY)
 async def get_chat_history(
     soul_id: str,
     limit: int = 50,
     user: User = Depends(get_current_user), 
-    session: AsyncSession = Depends(get_async_session)
+    session: AsyncSession = Depends(get_async_session),
+    request: Request = None
 ):
     from backend.app.models.conversation import Conversation
     

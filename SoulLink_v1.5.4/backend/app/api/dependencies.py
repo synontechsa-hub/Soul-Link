@@ -20,8 +20,9 @@ from supabase import create_client, Client
 # Initialize Supabase Client (For server-side validation)
 try:
     supabase: Client = create_client(settings.supabase_url, settings.supabase_anon_key)
+    print(f"Supabase Client Init: URL={settings.supabase_url[:20]}...")
 except Exception as e:
-    print(f"⚠️ Supabase Init Failed: {e}")
+    print(f"Supabase Init Failed: {e}")
     supabase = None
 
 security = HTTPBearer()
@@ -39,14 +40,18 @@ async def get_current_user_uuid(
 
     try:
         # Verify the token with Supabase
+        print(f"DEBUG: Validating token: {token[:10]}...") 
         user_response = supabase.auth.get_user(token)
+        
         if not user_response or not user_response.user:
+             print("DEBUG: Supabase returned no user.")
              raise HTTPException(401, detail="Invalid Authentication Token")
         
+        print(f"DEBUG: Auth success for {user_response.user.id}")
         return user_response.user.id
         
     except Exception as e:
-        print(f"Auth Error: {e}")
+        print(f"DEBUG: Auth Error Details: {e}")
         raise HTTPException(401, detail="Invalid or Expired Token")
 
 async def get_current_user(

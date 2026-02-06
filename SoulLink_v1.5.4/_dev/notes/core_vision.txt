@@ -20,12 +20,13 @@ Baldur's Gate 3 (Depth), and the golden age of RPGs.
 The Apartment is the user's "Safe Room." It is a functional 
 command center, not just a menu.
 
-- BED:    Thematic Logout (The Sleep Cycle).
+- BED:    Skip time (The Sleep Cycle).
 - MIRROR: Persona Editor (Self-Reflection).
 - TV:     Lore Stream & Ad-Opt-In (Link City News).
 - RADIO:  Ambient Audio Toggle.
 - COUCH:  Social Interaction Point (Visiting Souls).
 - WINDOW: City Skyline / Quick-Map Access.
+- DOOR:	  Log out from the app
 
 --------------------------------------------------------------------
 [3] THE WORLD: LINK CITY MAP
@@ -64,7 +65,7 @@ DYNAMIC LORE:
 --------------------------------------------------------------------
 [6] THE RED LINES (NON-NEGOTIABLE)
 --------------------------------------------------------------------
-1. NO Stamina/Energy systems.
+1. NO Stamina/Energy systems. (silent system in place to not go broke)
 2. NO Paywalled core chat.
 3. NO Gambling/Gacha mechanics.
 4. NO Sale of User Data.

@@ -14,6 +14,7 @@ sys.path.insert(0, str(project_root))
 from seed_db import init_db, ensure_architect_exists, seed_souls
 from seed_world import seed_link_city
 from migrate_v155_monetization import run_migration
+from backup_db import run_backup
 
 def Arise_Full_Sequence():
     print("=" * 60)
@@ -21,6 +22,11 @@ def Arise_Full_Sequence():
     print("=" * 60)
 
     try:
+        # STEP 0: Safety Backup
+        print("\n--- PHASE 0: SAFETY BACKUP ---")
+        run_backup()
+        print("✅ Phase 0 Complete.")
+
         # STEP 1: Core Database & Souls
         print("\n--- PHASE 1: SOUL INITIALIZATION ---")
         init_db()

@@ -1,14 +1,16 @@
 # /backend/app/api/users.py
 # /version.py v1.5.4 Arise
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlmodel import select
 from backend.app.database.session import get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.models.user import User
 from backend.app.api.dependencies import get_current_user
-from pydantic import BaseModel
+from backend.app.core.rate_limiter import limiter, RateLimits
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
+from backend.app.core.cache import cache_service
 
 router = APIRouter(prefix="/users", tags=["Legion Engine - Users"])
 
@@ -23,6 +25,8 @@ class UserUpdate(BaseModel):
 
 class UserProfile(BaseModel):
     """The full data packet for the frontend."""
+    model_config = ConfigDict(from_attributes=True)
+    
     user_id: str
     username: Optional[str]
     display_name: Optional[str]
@@ -33,19 +37,38 @@ class UserProfile(BaseModel):
     gems: int
     energy: int
     current_location: str
+    current_time_slot: str # Added to match frontend User model
 
 # --- ENDPOINTS ---
 
 @router.get("/me", response_model=UserProfile)
-async def get_my_profile(user: User = Depends(get_current_user)):
+@limiter.limit(RateLimits.READ_ONLY)
+async def get_my_profile(
+    user: User = Depends(get_current_user),
+    request: Request = None
+):
     """Fetch profile for the Apartment screen."""
+    cache_key = f"user:profile:{user.user_id}"
+    
+    # Check cache
+    cached_profile = cache_service.get(cache_key)
+    if cached_profile:
+        return cached_profile
+    
+    # If not cached, the returned 'user' object will be validated against UserProfile
+    # and then returned. We should cache the validated dict for maximum speed.
+    profile_data = UserProfile.model_validate(user).model_dump(mode='json')
+    
+    cache_service.set(cache_key, profile_data, ttl=600) # 10 minute profile cache
     return user
 
 @router.patch("/update")
+@limiter.limit(RateLimits.USER_WRITE)
 async def update_profile(
     data: UserUpdate,
     user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_async_session)
+    session: AsyncSession = Depends(get_async_session),
+    request: Request = None
 ):
     """THE MIRROR: Updates user persona data."""
     if data.display_name is not None:
@@ -60,6 +83,9 @@ async def update_profile(
     session.add(user)
     await session.commit()
     await session.refresh(user)
+    
+    # Invalidate cache
+    cache_service.delete(f"user:profile:{user.user_id}")
     
     return {
         "status": "Identity Synchronized",
@@ -82,6 +108,9 @@ async def move_user(
     session.add(user)
     await session.commit()
     await session.refresh(user)
+    
+    # Invalidate cache
+    cache_service.delete(f"user:profile:{user.user_id}")
     
     return {
         "status": "Location Updated",

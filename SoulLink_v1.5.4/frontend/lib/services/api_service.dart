@@ -8,7 +8,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/dashboard_state.dart';
 
 class ApiService {
-  static const String baseUrl = "http://localhost:8000/api/v1";
+  // static const String baseUrl = 'http://localhost:8000/api/v1'; // Localhost
+  static const String baseUrl = 'http://127.0.0.1:8000/api/v1'; // IPv4 specific for Windows
   String? userId;
 
   ApiService({this.userId});
@@ -84,9 +85,16 @@ class ApiService {
   // --- EXISTING METHODS (Keep these too) ---
 
   Future<Map<String, dynamic>> getUserProfile() async {
-    final response = await http.get(Uri.parse("$baseUrl/users/me"), headers: _headers);
-    if (response.statusCode == 200) return jsonDecode(response.body);
-    throw Exception("Profile Error");
+    try {
+      final response = await http.get(Uri.parse("$baseUrl/users/me"), headers: _headers);
+      if (response.statusCode == 200) return jsonDecode(response.body);
+      
+      print("❌ PROFILE ERROR: Status=${response.statusCode}, Body=${response.body}");
+      throw Exception("Profile Error: ${response.statusCode}");
+    } catch (e) {
+      print("❌ PROFILE EXCEPTION: $e");
+      rethrow;
+    }
   }
 
   Future<void> updateUserProfile({String? name, String? bio, String? gender}) async {

@@ -13,7 +13,7 @@ from backend.app.core.config import settings
 from backend.app.database.session import engine
 
 # Import all models so SQLModel knows what to drop
-from backend.app.models.soul import Soul
+from backend.app.models.soul import Soul, SoulPillar, SoulState
 from backend.app.models.location import Location
 from backend.app.models.user import User
 from backend.app.models.relationship import SoulRelationship
