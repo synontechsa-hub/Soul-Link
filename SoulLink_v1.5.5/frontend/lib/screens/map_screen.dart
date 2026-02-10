@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../providers/dashboard_provider.dart';
 import '../models/relationship.dart';
 import '../core/version.dart';
+import '../core/config.dart';
 import '../widgets/map/radar_selector.dart';
 import '../widgets/map/tactical_node.dart';
 
@@ -20,7 +21,6 @@ class _MapScreenState extends State<MapScreen> {
   String? _selectedSoulId;
   List<dynamic> _locations = [];
   bool _isLoadingLocs = true;
-  String _currentTimeSlot = 'morning';  // Track current time slot
 
   @override
   void initState() {
@@ -33,9 +33,10 @@ class _MapScreenState extends State<MapScreen> {
     super.didChangeDependencies();
     final provider = Provider.of<DashboardProvider>(context);
     final user = provider.currentUser;
-    if (user != null && user.currentTimeSlot != _currentTimeSlot && !_isLoadingLocs) {
-       // 🕰️ Time Shift Detected! Refresh Map Radar
-       _fetchLocations();
+    // Note: We no longer need to check local _currentTimeSlot
+    if (user != null && !_isLoadingLocs) {
+       // Check if we need to refresh (implement more precise checking if needed)
+       // For now, if the user state changed, we might want to refresh
     }
   }
 
@@ -47,10 +48,6 @@ class _MapScreenState extends State<MapScreen> {
         setState(() {
           _locations = data;
           _isLoadingLocs = false;
-          // Extract time slot from first location (all have same time_slot)
-          if (data.isNotEmpty && data[0]['time_slot'] != null) {
-            _currentTimeSlot = data[0]['time_slot'];
-          }
         });
       }
     } catch (e) {
@@ -74,7 +71,7 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  Future<void> _moveUserTo(String locationId, String locationName) async {
+  Future<void> _moveUserTo(BuildContext modalContext, String locationId, String locationName) async {
     final provider = Provider.of<DashboardProvider>(context, listen: false);
     try {
       await provider.apiService.moveUser(locationId: locationId);
@@ -83,14 +80,15 @@ class _MapScreenState extends State<MapScreen> {
         SnackBar(content: Text("IDENTITY TRANSMARKED: YOU ENTERED $locationName"), backgroundColor: Colors.green),
       );
       provider.refreshUser();
-      Navigator.pop(context); // Close modal
+      Navigator.pop(modalContext); // Close modal using its own context
     } catch (e) {
+      if (mounted) Navigator.pop(modalContext); // Close anyway on error if mounted
       if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("USER MOVE FAILED: $e")));
     }
   }
 
   void _showLocationDetails(dynamic loc, List<SoulRelationship> allSouls) {
-    final soulsHere = allSouls.where((s) => s.currentLocation == loc['id']).toList();
+    final soulsHere = allSouls.where((s) => s.currentLocation == loc['location_id']).toList();
     
     showModalBottomSheet(
       context: context,
@@ -105,8 +103,8 @@ class _MapScreenState extends State<MapScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(loc['name'].toUpperCase(), style: const TextStyle(color: Colors.cyanAccent, fontWeight: FontWeight.bold, fontSize: 18, letterSpacing: 2)),
-            Text(loc['desc'] ?? "Sector data restricted.", style: const TextStyle(color: Colors.white38, fontSize: 12)),
+            Text((loc['display_name'] ?? loc['name'] ?? 'UNKNOWN').toString().toUpperCase(), style: const TextStyle(color: Colors.cyanAccent, fontWeight: FontWeight.bold, fontSize: 18, letterSpacing: 2)),
+            Text(loc['desc'] ?? "Scanning sector... Signal strength nominal.", style: const TextStyle(color: Colors.white38, fontSize: 12)),
             const Divider(color: Colors.white10, height: 30),
             const Text("SIGNALS DETECTED:", style: TextStyle(color: Colors.white54, fontSize: 10, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
@@ -123,7 +121,7 @@ class _MapScreenState extends State<MapScreen> {
                     child: CircleAvatar(
                       radius: 20,
                       backgroundColor: Colors.cyanAccent.withOpacity(0.2),
-                      backgroundImage: (soulsHere[i].portrait_url.isNotEmpty) ? NetworkImage("http://localhost:8000${soulsHere[i].portrait_url}") : null,
+                      backgroundImage: (soulsHere[i].portrait_url.isNotEmpty) ? NetworkImage(AppConfig.getImageUrl(soulsHere[i].portrait_url)) : null,
                       child: soulsHere[i].portrait_url.isEmpty ? const Icon(Icons.person, color: Colors.white38) : null,
                     ),
                   ),
@@ -137,7 +135,7 @@ class _MapScreenState extends State<MapScreen> {
                 icon: const Icon(Icons.location_on),
                 label: const Text("ENTER LOCATION", style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.5)),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.cyanAccent, foregroundColor: Colors.black),
-                onPressed: () => _moveUserTo(loc['id'], loc['name']),
+                onPressed: () => _moveUserTo(context, loc['location_id'], loc['display_name'] ?? loc['name'] ?? 'UNKNOWN'),
               ),
             ),
           ],
@@ -163,7 +161,6 @@ class _MapScreenState extends State<MapScreen> {
       ),
       body: Column(
         children: [
-          _buildTimeSlotHeader(),  // NEW: Time slot indicator
           if (state != null && dashboard.currentUser?.accountTier == 'architect')
             RadarSelector(
               souls: state.activeSouls,
@@ -196,53 +193,6 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  // ⏰ TIME SLOT HEADER
-  Widget _buildTimeSlotHeader() {
-    final timeSlotInfo = _getTimeSlotInfo(_currentTimeSlot);
-    
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: timeSlotInfo['colors'] as List<Color>,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        border: const Border(bottom: BorderSide(color: Colors.white10)),
-      ),
-      child: Row(
-        children: [
-          Icon(
-            timeSlotInfo['icon'] as IconData,
-            color: Colors.white,
-            size: 24,
-          ),
-          const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                (timeSlotInfo['name'] as String).toUpperCase(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                ),
-              ),
-              Text(
-                timeSlotInfo['description'] as String,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 11,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 
   // Get time slot display info
   Map<String, dynamic> _getTimeSlotInfo(String timeSlot) {

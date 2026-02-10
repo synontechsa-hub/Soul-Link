@@ -2,7 +2,7 @@
 # "Does this unit have a soul?" - Legion - Mass Effect 2
 
 from sqlmodel import SQLModel, Field, Column
-from sqlalchemy import JSON 
+from sqlalchemy import JSON, Text
 from datetime import datetime
 from typing import Optional, Dict, Any
 from pydantic import BaseModel
@@ -37,19 +37,23 @@ class SoulPillar(SQLModel, table=True):
     # ⏰ DEFINITION: Routines
     routines: Dict[str, str] = Field(
         default_factory=dict,
-        sa_column=Column(JSON),
+        sa_type=JSON,
         description="Time slot -> location_id mapping"
     )
 
     # 🧬 DEFINITION: The Pillars
-    identity_pillar: Dict[str, Any] = Field(default_factory=dict, sa_column=Column(JSON))
-    aesthetic_pillar: Dict[str, Any] = Field(default_factory=dict, sa_column=Column(JSON))
-    interaction_engine: Dict[str, Any] = Field(default_factory=dict, sa_column=Column(JSON))
+    # Core pillar data
+    personality: str = Field(default="", sa_column=Column(Text))
+    background: str = Field(default="", sa_column=Column(Text))
+
+    # 🧬 DEFINITION: The Pillars
+    identity_pillar: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    aesthetic_pillar: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    interaction_engine: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
 
     # 🚀 DEFINITION: Overrides & Meta
-    llm_instruction_override: Dict[str, Any] = Field(default_factory=dict, sa_column=Column(JSON))
-    meta_data: Dict[str, Any] = Field(default_factory=dict, sa_column=Column(JSON))
-    personality: Optional[str] = Field(default=None, max_length=2000)
+    llm_instruction_override: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    meta_data: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
 
 class SoulState(SQLModel, table=True):
     """

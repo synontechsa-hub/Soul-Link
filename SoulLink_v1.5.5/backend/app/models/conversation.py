@@ -5,12 +5,17 @@ from datetime import datetime
 from typing import Optional
 import uuid
 
+from sqlalchemy import Index
+
 # The art of conversing, it's much more than just what I say and you say.
 class Conversation(SQLModel, table=True):
     """
     Stores chat messages between user and souls
     """
     __tablename__ = "conversations"
+    __table_args__ = (
+        Index("ix_conversation_user_soul_created", "user_id", "soul_id", "created_at"),
+    )
     
     # Defining the ID of each field
     msg_id: str = Field(

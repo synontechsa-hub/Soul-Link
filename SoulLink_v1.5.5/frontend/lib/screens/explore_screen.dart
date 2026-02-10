@@ -7,6 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../providers/dashboard_provider.dart';
 import './chat_screen.dart';
 import '../widgets/explore_soul_card.dart';
+import '../core/config.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
@@ -96,11 +97,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final String rawApiBase =
-        dotenv.env['API_URL'] ?? 'http://localhost:8000/api/v1';
-    final String apiBase = rawApiBase.trim();
-    final String serverRoot = apiBase.replaceAll('/api/v1', '');
-
     return Scaffold(
       backgroundColor: const Color(0xFF0A0A0E),
       appBar: AppBar(
@@ -148,12 +144,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     itemCount: _filteredSouls.length,
                     itemBuilder: (context, index) {
                       final soul = _filteredSouls[index];
-                      // Flexible path logic to handle backend key variations
+                      // Use AppConfig for image URL
                       final String path =
                           soul['portrait_url'] ??
                           soul['image_url'] ??
                           '/assets/images/souls/default_01.jpeg';
-                      final String imageUrl = "$serverRoot$path";
+                      final String imageUrl = AppConfig.getImageUrl(path);
                       final bool isLinked = soul['is_linked'] ?? false;
                       
                       return ExploreSoulCard(

@@ -47,18 +47,18 @@ if settings.enable_rate_limiting:
 allowed_origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost:8080",      # Flutter web dev
+    "http://127.0.0.1:8080",
 ]
 
-# In production, only allow specific origins (no wildcard)
+# In production, only allow specific origins
 if settings.environment == "production":
-    # TODO: Add your production frontend URL here
-    allowed_origins = [
-        "https://yourdomain.com",
-        "https://www.yourdomain.com",
-    ]
-elif settings.environment == "development":
-    # Allow all origins in development for easier testing
-    allowed_origins.append("*")
+    if settings.production_frontend_url:
+        allowed_origins = [settings.production_frontend_url]
+    else:
+        # Fallback to empty list if not configured (will block all CORS)
+        allowed_origins = []
+        logger.warning("⚠️ Production mode but no PRODUCTION_FRONTEND_URL set!")
 
 app.add_middleware(
     CORSMiddleware,

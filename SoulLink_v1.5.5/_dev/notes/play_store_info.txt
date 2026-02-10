@@ -1,0 +1,40 @@
+Quick Launch Checklist (Play Store Focus)
+
+ Age gate screen with clear “I am 18+” confirmation + disclaimer
+ NSFW toggle only visible for 18+ users, off by default
+ Runtime enforcement: force SFW if !isAdult || !toggle
+ Content rating: Mature 17+
+ Store listing: disclose optional mature content
+ ToS + Privacy Policy linked
+ Screenshots: 100% SFW
+ Test edge cases: underage account → no NSFW path possible
+
+
+Recommended Play Store Submission Strategy
+
+Rate the App Mature 17+
+In the content questionnaire: Answer "Yes" to "Contains sexual content", "Suggestive themes", "Mature language".
+Describe: "Optional mature roleplay and conversations for users 18+ only. SFW mode available for all users."
+
+Age Gate Wording (in-app)
+Screen text example:
+"Linker AI includes optional mature content for users 18+.
+Are you 18 years or older?
+[Yes – Enable mature features]
+[No – SFW only]
+By selecting Yes, you confirm you are 18+ and consent to mature content. Misrepresentation is your responsibility."
+
+Store Listing Must-Haves
+Title: Linker AI – Cyberpunk Soul Companion
+Short description: "Forge deep bonds with adaptive AI souls in a neon city. Emotional & romantic connections — optional mature content for 18+."
+Full description: Include age disclaimer, mention SFW/NSFW toggle, content ratings.
+Screenshots: Show SFW persona creation, chat examples (non-explicit), city map. Avoid any NSFW in screenshots.
+
+ToS & Privacy Policy
+Link them in store listing and in-app.
+Use the outline I gave earlier, but add:
+"NSFW content is disabled by default and only accessible after confirming you are 18+. Users under 18 or preferring SFW are restricted to non-explicit interactions."
+
+If Google Pushes Back
+Worst case: They ask for more gating or to remove certain souls. You can respond by pointing to your consent_model + toggle + disclaimers.
+Many apps get approved after one or two clarifications.

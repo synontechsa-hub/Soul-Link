@@ -16,14 +16,13 @@ from backend.app.api.dependencies import get_current_user
 from backend.app.logic.time_manager import TimeManager
 from backend.app.models.time_slot import TimeSlot
 from backend.app.core.rate_limiter import limiter, RateLimits
+from backend.app.core.validation import ValidatedChatRequest
+from backend.app.core.logging_config import get_logger
 from pydantic import BaseModel
 from typing import Optional
 
 router = APIRouter(prefix="/chat", tags=["Legion Engine - Chat"])
-
-class ChatRequest(BaseModel):
-    soul_id: str
-    message: str
+logger = get_logger("ChatAPI")
 
 # ⚡ UPDATED RESPONSE MODEL
 class ChatResponse(BaseModel):
@@ -38,11 +37,12 @@ class ChatResponse(BaseModel):
 @router.post("/send", response_model=ChatResponse)
 @limiter.limit(RateLimits.CHAT)
 async def send_message(
-    chat_request: ChatRequest, 
+    chat_request: ValidatedChatRequest,  # ✅ Validated input
     user: User = Depends(get_current_user), 
     session: AsyncSession = Depends(get_async_session),
     request: Request = None
 ):
+    logger.info(f"Chat request from user={user.user_id} to soul={chat_request.soul_id}")
     brain = LegionBrain(session.bind)
     
     rel_result = await session.execute(
@@ -99,6 +99,22 @@ async def send_message(
                 "model": "llama-3.3-70b-versatile",
                 "status": "Telemetry Active"
             }
+        
+        # 5. 🚀 REAL-TIME: Push via WebSocket
+        from backend.app.services.websocket_manager import websocket_manager
+        from datetime import datetime
+        
+        await websocket_manager.send_to_user(user.user_id, {
+            "type": "chat_message",
+            "data": {
+                "soul_id": chat_request.soul_id,
+                "response": response_text,
+                "intimacy_score": rel.intimacy_score,
+                "tier": rel.intimacy_tier,
+                "location": display_location or "Unknown"
+            },
+            "timestamp": datetime.utcnow().isoformat()
+        })
 
         return ChatResponse(
             soul_id=chat_request.soul_id,
@@ -111,8 +127,8 @@ async def send_message(
         )
     except Exception as e:
         import traceback
-        print(f"❌ NEURAL LINK ERROR: {e}")
-        traceback.print_exc()
+        logger.error(f"Chat error for user={user.user_id}, soul={chat_request.soul_id}: {e}")
+        logger.debug(traceback.format_exc())
         raise HTTPException(status_code=500, detail=f"Neural Link Failure: {str(e)}")
 
 # ... (History endpoint remains the same)

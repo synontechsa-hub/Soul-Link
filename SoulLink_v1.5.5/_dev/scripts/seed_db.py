@@ -108,6 +108,7 @@ def seed_souls(architect_id):
 
                 # --- PILLAR 2: LOGIC/DEFINITIONS (soul_pillars table) ---
                 pillar_fields = {
+                    "routines": meta.get("routines", {}),  # ✅ Extract routines from meta
                     "identity_pillar": raw_data.get("identity_pillar", {}),
                     "aesthetic_pillar": raw_data.get("aesthetic_pillar", {}),
                     "interaction_engine": raw_data.get("interaction_engine", {}),

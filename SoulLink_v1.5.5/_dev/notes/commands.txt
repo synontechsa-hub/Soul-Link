@@ -1,5 +1,5 @@
 uvicorn start:
-cd SynonTech/SoulLink_v1.5.4/
+cd SynonTech/SoulLink_v1.5.5/
 uvicorn backend.app.main:app --reload
 python -m uvicorn backend.app.main:app --reload
 uvicorn backend.app.main:app --reload --port 8001

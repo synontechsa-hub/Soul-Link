@@ -5,11 +5,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../core/config.dart';
 import '../models/dashboard_state.dart';
 
 class ApiService {
-  // static const String baseUrl = 'http://localhost:8000/api/v1'; // Localhost
-  static const String baseUrl = 'http://127.0.0.1:8000/api/v1'; // IPv4 specific for Windows
+  // Use AppConfig for dynamic URL configuration
+  static String get baseUrl => '${AppConfig.apiBaseUrl}/api/v1';
   String? userId;
 
   ApiService({this.userId});

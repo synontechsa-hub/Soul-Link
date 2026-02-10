@@ -1,6 +1,7 @@
 // frontend/lib/widgets/map/radar_selector.dart
 import 'package:flutter/material.dart';
 import '../../models/relationship.dart';
+import '../../core/config.dart';
 
 class RadarSelector extends StatelessWidget {
   final List<SoulRelationship> souls;
@@ -44,7 +45,7 @@ class RadarSelector extends StatelessWidget {
                       radius: 26,
                       backgroundColor: Colors.black,
                       backgroundImage: (soul.portrait_url.isNotEmpty)
-                          ? NetworkImage("http://localhost:8000${soul.portrait_url}")
+                          ? NetworkImage(AppConfig.getImageUrl(soul.portrait_url))
                           : null,
                       child: soul.portrait_url.isEmpty
                           ? const Icon(Icons.person, color: Colors.white10)

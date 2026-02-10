@@ -13,8 +13,18 @@ logger = logging.getLogger("RateLimiter")
 
 # Initialize the rate limiter
 # Uses client IP address as the key for rate limiting
+# Custom key function to support proxies (Docker/Nginx)
+def get_real_ip(request: Request) -> str:
+    # Build a list of potential headers: Cloudflare, Nginx, or standard XFF
+    forwarded = request.headers.get("X-Forwarded-For")
+    if forwarded:
+        return forwarded.split(",")[0]
+    return request.headers.get("X-Real-IP") or get_remote_address(request)
+
+# Initialize the rate limiter
+# Uses client IP address as the key for rate limiting
 limiter = Limiter(
-    key_func=get_remote_address,
+    key_func=get_real_ip,
     default_limits=["100/minute"],  # Global default: 100 requests per minute
     storage_uri="memory://",  # In-memory storage (upgrade to Redis for production)
     headers_enabled=False,  # Disable headers to prevent "parameter `response` must be an instance of starlette.responses.Response" error

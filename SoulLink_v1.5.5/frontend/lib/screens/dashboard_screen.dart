@@ -10,8 +10,30 @@ import './chat_screen.dart';         // ← Kept/confirmed for ChatScreen (assum
 
 import '../widgets/soul_card.dart';
 
-class DashboardScreen extends StatelessWidget {
+import '../providers/websocket_provider.dart';
+import '../widgets/time_display.dart';  // ← Added TimeDisplay widget
+
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // 🔌 Link WebSocket Time Events to Dashboard Sync
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final ws = Provider.of<WebSocketProvider>(context, listen: false);
+      final dash = Provider.of<DashboardProvider>(context, listen: false);
+      
+      ws.onTimeAdvance = (data) {
+        if (mounted) dash.handleTimeAdvance(data);
+      };
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +42,14 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black, // Keeping that Cyberpunk feel
       appBar: AppBar(
-        title: const Text('LINK CITY DASHBOARD', 
-          style: TextStyle(letterSpacing: 2.0, fontWeight: FontWeight.bold, fontSize: 16)
+        title: Row(
+          children: [
+             const TimeDisplay(), // 🕰️ Added Time Display
+             const SizedBox(width: 12),
+             const Text('LINK CITY', 
+              style: TextStyle(letterSpacing: 2.0, fontWeight: FontWeight.bold, fontSize: 16)
+            ),
+          ],
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

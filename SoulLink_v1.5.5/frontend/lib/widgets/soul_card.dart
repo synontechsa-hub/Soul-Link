@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../models/relationship.dart';
+import '../core/config.dart';
 
 class SoulCard extends StatelessWidget {
   final SoulRelationship relationship;
@@ -16,10 +17,8 @@ class SoulCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // URL Logic for the portraits
-    final String apiBase = dotenv.env['API_URL'] ?? 'http://localhost:8000/api/v1';
-    final String serverRoot = apiBase.replaceAll('/api/v1', '');
-    final String fullImageUrl = "$serverRoot${relationship.portrait_url}";
+    // Use AppConfig for image URL
+    final String fullImageUrl = AppConfig.getImageUrl(relationship.portrait_url);
 
     return InkWell( // Using InkWell for that ripple effect on tap
       onTap: onTap,

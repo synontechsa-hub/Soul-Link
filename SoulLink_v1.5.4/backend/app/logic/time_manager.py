@@ -51,37 +51,16 @@ class TimeManager:
     
     async def get_soul_location_at_time(self, soul_id: str, time_slot: TimeSlot) -> str:
         """
-        Resolve where a soul is based on their routine pillar.
+        Resolve where a soul is at a specific time using LocationResolver.
         """
-        result = await self.session.execute(
-            text("SELECT routines FROM soul_pillars WHERE soul_id = :soul_id"),
-            {"soul_id": soul_id}
+        from backend.app.services.location_resolver import LocationResolver
+        
+        return await LocationResolver.resolve_location(
+            soul_id=soul_id,
+            time_slot=time_slot,
+            session=self.session,
+            user_id=None  # Global context
         )
-        row = result.fetchone()
-        
-        if not row:
-            # Fallback to current state if no pillar found
-            state_result = await self.session.execute(
-                text("SELECT current_location_id FROM soul_states WHERE soul_id = :soul_id"),
-                {"soul_id": soul_id}
-            )
-            state_row = state_result.fetchone()
-            return state_row[0] if state_row else "soul_plaza"
-        
-        import json
-        routines_raw = row[0]
-        routines = json.loads(routines_raw) if isinstance(routines_raw, str) else routines_raw
-        
-        if routines and time_slot.value in routines:
-            return routines[time_slot.value]
-        
-        # Final fallback to live state
-        state_result = await self.session.execute(
-            text("SELECT current_location_id FROM soul_states WHERE soul_id = :soul_id"),
-            {"soul_id": soul_id}
-        )
-        state_row = state_result.fetchone()
-        return state_row[0] if state_row else "soul_plaza"
     
     async def get_world_state(self, user_id: str) -> Dict:
         """
@@ -109,11 +88,17 @@ class TimeManager:
         
         # Fetch all live locations from soul_states
         souls_result = await self.session.execute(
-            text("SELECT soul_id, current_location_id FROM soul_states")
+            text("SELECT soul_id FROM souls")
         )
-        rows = souls_result.fetchall()
+        soul_ids = [row[0] for row in souls_result.fetchall()]
         
-        soul_locations = {soul_id: loc for soul_id, loc in rows}
+        # Resolve locations using LocationResolver (includes routines!)
+        from backend.app.services.location_resolver import LocationResolver
+        soul_locations = await LocationResolver.resolve_bulk_locations(
+            soul_ids=soul_ids,
+            time_slot=current_slot,
+            session=self.session
+        )
         
         # Update cache (5 minute TTL)
         cache_service.set(cache_key, soul_locations, ttl=300)

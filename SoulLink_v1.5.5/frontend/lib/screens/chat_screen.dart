@@ -5,8 +5,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/dashboard_provider.dart';
+import '../providers/websocket_provider.dart';
 import '../models/relationship.dart';
 import '../widgets/location_suggestion_sheet.dart';
+import '../widgets/error_toast.dart';
 
 class ChatScreen extends StatefulWidget {
   // We pass the full relationship now to pre-fill the UI state
@@ -39,6 +41,34 @@ class _ChatScreenState extends State<ChatScreen> {
     _currentTier = widget.relationship.intimacyTier;
     
     _loadHistory();
+    _subscribeToWebSocket();
+  }
+
+  void _subscribeToWebSocket() {
+    final wsProvider = Provider.of<WebSocketProvider>(context, listen: false);
+    
+    // Listen for real-time chat messages
+    wsProvider.onChatMessage = (data) {
+      final soulId = data['soul_id'] as String?;
+      
+      // DISABLED: Prevent duplicate messages (we already add from HTTP response)
+      // Only process messages for this soul
+      // if (soulId == widget.relationship.soulId && mounted) {
+      //   setState(() {
+      //     _messages.add({"role": "soul", "content": data['response'] ?? ''});
+      //     _intimacyScore = data['intimacy_score'] ?? _intimacyScore;
+      //     _currentLocation = data['location'] ?? _currentLocation;
+      //     _currentTier = data['tier'] ?? _currentTier;
+      //   });
+      //   _scrollToBottom();
+      // }
+    };
+  }
+
+  /// Strip movement commands from soul response
+  String _stripMovementCommands(String text) {
+    // Remove [MOVE_location_name] brackets
+    return text.replaceAll(RegExp(r'\[MOVE_[^\]]+\]'), '').trim();
   }
 
   Future<void> _loadHistory() async {
@@ -50,7 +80,7 @@ class _ChatScreenState extends State<ChatScreen> {
         setState(() {
           _messages.clear();
           for (var entry in history) {
-            _messages.add({"role": entry['role'], "content": entry['content']});
+            _messages.add({"role": entry['role'], "content": _stripMovementCommands(entry['content'] ?? '')});
           }
         });
         _scrollToBottom();
@@ -91,7 +121,7 @@ class _ChatScreenState extends State<ChatScreen> {
       
       if (mounted) {
         setState(() {
-          _messages.add({"role": "soul", "content": response['response']});
+          _messages.add({"role": "soul", "content": _stripMovementCommands(response['response'])});
           // ⚡ LIVE UPDATE: Update the meter and location immediately
           _intimacyScore = response['intimacy_score'] ?? _intimacyScore;
           _currentLocation = response['location'] ?? _currentLocation;
@@ -101,7 +131,10 @@ class _ChatScreenState extends State<ChatScreen> {
       }
     } catch (e) {
       debugPrint("COMM ERROR: $e");
-      setState(() => _messages.add({"role": "system", "content": "⚠️ CONNECTION LOST"}));
+      if (mounted) {
+        ErrorToast.show(context, ErrorToast.parseError(e));
+        setState(() => _messages.add({"role": "system", "content": "⚠️ CONNECTION LOST"}));
+      }
     } finally {
       if (mounted) setState(() => _isSending = false);
     }

@@ -29,14 +29,19 @@ async def explore_souls(
         relationships = rel_result.scalars().all()
         linked_dict = {rel.soul_id: rel for rel in relationships}
 
-        # 2. Get all souls and their live states
+        # 2. Get all souls
         soul_result = await db.execute(select(Soul))
         all_souls = soul_result.scalars().all()
+        
+        # 3. Batch fetch SoulStates (Fix N+1)
+        soul_ids = [s.soul_id for s in all_souls]
+        state_result = await db.execute(select(SoulState).where(SoulState.soul_id.in_(soul_ids)))
+        state_map = {state.soul_id: state for state in state_result.scalars().all()}
         
         output = []
         for s in all_souls:
             rel = linked_dict.get(s.soul_id)
-            state = await db.get(SoulState, s.soul_id)
+            state = state_map.get(s.soul_id)
             
             soul_data = {
                 "id": s.soul_id,

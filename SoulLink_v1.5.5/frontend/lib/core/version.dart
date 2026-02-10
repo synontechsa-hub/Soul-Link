@@ -2,7 +2,8 @@
 
 class SoulLinkVersion {
   static const String appName = "SoulLink";
-  static const String codename = "Arise";
+  static const String number = "1.5.6";
+  static const String codename = "Arise Alpha";
   static const String version = "1.5.4";
   static const String build = "1";
   

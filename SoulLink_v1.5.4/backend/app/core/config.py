@@ -41,6 +41,9 @@ class Settings(BaseSettings):
     
     # Sentry (Error Monitoring)
     sentry_dsn: Optional[str] = Field(default=None, validation_alias='SENTRY_DSN')
+    
+    # Frontend URLs (for CORS)
+    production_frontend_url: Optional[str] = Field(default=None, validation_alias='PRODUCTION_FRONTEND_URL')
 
     # THE FIX: Point to root .env relative to this file's location.
     # backend/app/core/config.py -> ../../../.env reaches root.

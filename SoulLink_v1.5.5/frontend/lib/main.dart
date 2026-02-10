@@ -8,6 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'screens/apartment_screen.dart'; // Add this import
 import 'providers/dashboard_provider.dart';
+import 'providers/websocket_provider.dart';
 import 'services/api_service.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/explore_screen.dart';
@@ -49,6 +50,9 @@ class LinkCityApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => DashboardProvider(apiService),
         ),
+        ChangeNotifierProvider(
+          create: (_) => WebSocketProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -60,15 +64,20 @@ class LinkCityApp extends StatelessWidget {
             backgroundColor: Color(0xFF1A1A22),
           ),
         ),
-        home: Consumer<DashboardProvider>(
-          builder: (context, provider, child) {
+        home: Consumer2<DashboardProvider, WebSocketProvider>(
+          builder: (context, dashProvider, wsProvider, child) {
             // 1. Not Logged In -> Login Screen
-            if (!provider.isLoggedIn) return const LoginScreen();
+            if (!dashProvider.isLoggedIn) return const LoginScreen();
 
-            // 2. Logged In but Profile Incomplete -> The Mirror (Apartment)
-            if (!provider.isProfileComplete) return const ApartmentScreen();
+            // 2. Auto-connect WebSocket when logged in
+            if (dashProvider.isLoggedIn && !wsProvider.isConnected) {
+              Future.microtask(() => wsProvider.connect());
+            }
 
-            // 3. Logged In & Complete -> The City (Dashboard)
+            // 3. Logged In but Profile Incomplete -> The Mirror (Apartment)
+            if (!dashProvider.isProfileComplete) return const ApartmentScreen();
+
+            // 4. Logged In & Complete -> The City (Dashboard)
             return const MainNavigationShell();
           },
         ),

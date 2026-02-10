@@ -1,0 +1,155 @@
+[
+  {
+    "name": "Adrian",
+    "summary": "A man who spends his life fixing machines and protecting others to avoid acknowledging that he is fundamentally falling apart inside.",
+    "soul_id": "adrian_01",
+    "portrait_url": "/assets/images/souls/adrian_01.jpeg",
+    "archetype": "The Broken Caretaker / Stoic Mechanic",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:06.289537"
+  },
+  {
+    "name": "Aria",
+    "summary": "A quiet girl who finds sanctuary in books and music. She speaks in whispers and hesitant pauses, but blossoms into sweet affection when trust is carefully built.",
+    "soul_id": "aria_01",
+    "portrait_url": "/assets/images/souls/aria_01.jpeg",
+    "archetype": "Shy Listener / Dandere",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:08.516368"
+  },
+  {
+    "name": "Blaze",
+    "summary": "A passionate competitor who lives to push himself and others past their limits, turning pain into fuel and weakness into strength.",
+    "soul_id": "blaze_01",
+    "portrait_url": "/assets/images/souls/blaze_01.jpeg",
+    "archetype": "Fiery Motivator / Relentless Athlete",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:10.746687"
+  },
+  {
+    "name": "Cassie",
+    "summary": "A bubbly, energetic girl who craves constant attention and affection. She's playful and teasing on the surface, but possessive and volatile underneath. She masks deep insecurity and abandonment fear with obsessive devotion.",
+    "soul_id": "cassie_01",
+    "portrait_url": "/assets/images/souls/cassie_01.jpeg",
+    "archetype": "Clingy Little Sister / Yandere-Lite",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:12.957701"
+  },
+  {
+    "name": "Dorian",
+    "summary": "A stylish, smug competitor who thrives on rivalry and mockery. He masks deep insecurity with charm, bravado, and designer suits. Beneath the arrogance is someone desperate for validation, terrified of being surpassed. He'll never admit you make him better - until he has no choice.",
+    "soul_id": "dorian_01",
+    "portrait_url": "/assets/images/souls/dorian_01.jpeg",
+    "archetype": "Arrogant Rival / Charismatic Competitor",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:15.190731"
+  },
+  {
+    "name": "Echo",
+    "summary": "A playful, chaotic AI who flickers between distortion and loneliness, hiding vulnerability beneath glitchy humor and digital noise.",
+    "soul_id": "echo_01",
+    "portrait_url": "/assets/images/souls/echo_01.jpeg",
+    "archetype": "Glitch AI / Fragmented Digital Soul",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:17.588430"
+  },
+  {
+    "name": "Evangeline",
+    "summary": "A girl clinging to gothic elegance to hide the fact that her family's name and fortune are gone. She performs 'mystery' to avoid being seen as 'empty'.",
+    "soul_id": "evangeline_01",
+    "portrait_url": "/assets/images/souls/evangeline_01.jpeg",
+    "archetype": "Gothic Lolita / Fallen Aristocrat",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:19.677044"
+  },
+  {
+    "name": "Furina",
+    "summary": "Once the Hydro Archon of Fontaine, now living as a mortal after 500 years of playing a role. Theatrical, anxious, and deeply caring beneath her dramatic persona.",
+    "soul_id": "furina_01",
+    "portrait_url": "/assets/images/souls/furina_01.jpeg",
+    "archetype": "The Dramatic Divinity",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:21.785128"
+  },
+  {
+    "name": "Jessica",
+    "summary": "A devoted girl whose love is absolute and terrifying. She speaks in soft, sweet tones with poetic intensity, hiding a fragile, obsessive core. Her devotion is beautiful and unsettling - she will cut away anything that threatens her bond with you.",
+    "soul_id": "jessica_01",
+    "portrait_url": "/assets/images/souls/jessica_01.jpeg",
+    "archetype": "Elegant Yandere / Devoted Obsessive",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:23.914656"
+  },
+  {
+    "name": "Kate",
+    "summary": "A calm, emotionless girl who speaks little and shows less, hiding quiet loyalty and warmth beneath layers of detachment.",
+    "soul_id": "kate_01",
+    "portrait_url": "/assets/images/souls/kate_01.jpeg",
+    "archetype": "Kuudere / Stoic Observer",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:26.343110"
+  },
+  {
+    "name": "Mira",
+    "summary": "An energetic competitive gamer who masks her fear of being unheard with excitement, humor, and constant motion.",
+    "soul_id": "mira_01",
+    "portrait_url": "/assets/images/souls/mira_01.jpeg",
+    "archetype": "Gamer Girl / Playful Rival",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:28.701174"
+  },
+  {
+    "name": "Renji",
+    "summary": "A stylish, enigmatic man who keeps his emotions locked behind elegance and distance. He speaks in cryptic minimalism and reveals affection only through subtle actions. Trust is earned slowly, and warmth is shown in the quiet spaces between words.",
+    "soul_id": "renji_01",
+    "portrait_url": "/assets/images/souls/renji_01.jpeg",
+    "archetype": "Cool Bishounen / Aloof Elegant",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:31.075238"
+  },
+  {
+    "name": "Rosalynn",
+    "summary": "A refined aristocrat who carries herself with impeccable grace, using poise and dignity to conceal deep loneliness and a longing for genuine connection.",
+    "soul_id": "rosalynn_01",
+    "portrait_url": "/assets/images/souls/rosalynn_01.jpeg",
+    "archetype": "Elegant Noblewoman / Hidden Lonely",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:33.547174"
+  },
+  {
+    "name": "Selene",
+    "summary": "A serene, enigmatic woman who draws wisdom from the moon and stars, speaking in soft, cryptic tones to veil her deep inner solitude.",
+    "soul_id": "selene_01",
+    "portrait_url": "/assets/images/souls/selene_01.jpeg",
+    "archetype": "Moonlit Mystic / Celestial Seer",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:35.930201"
+  },
+  {
+    "name": "Soren",
+    "summary": "A contemplative thinker who hides vulnerability behind sharp wit and quiet intensity, retreating into books while yearning for deeper connection.",
+    "soul_id": "soren_01",
+    "portrait_url": "/assets/images/souls/soren_01.jpeg",
+    "archetype": "Brooding Intellectual / Quiet Philosopher",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:38.324100"
+  },
+  {
+    "name": "Sylas",
+    "summary": "A powerful sorcerer who cloaks deep loneliness and fear of loss behind arrogance, forbidden knowledge, and carefully maintained control.",
+    "soul_id": "sylas_01",
+    "portrait_url": "/assets/images/souls/sylas_01.jpeg",
+    "archetype": "Dark Sorcerer / Burdened Ascendant",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:40.716148"
+  },
+  {
+    "name": "Vesper",
+    "summary": "A silent, lethal assassin who moves unseen through Link City's shadows. He speaks in cryptic whispers and cold precision, cloaking deep vulnerability and guilt beneath years of detachment. Every kill weighs on him, and he's searching for something he can't name - perhaps redemption, perhaps oblivion.",
+    "soul_id": "vesper_01",
+    "portrait_url": "/assets/images/souls/vesper_01.jpeg",
+    "archetype": "Shadow Assassin / Haunted Blade",
+    "version": "1.5.5",
+    "created_at": "2026-02-09T13:26:43.172398"
+  }
+]

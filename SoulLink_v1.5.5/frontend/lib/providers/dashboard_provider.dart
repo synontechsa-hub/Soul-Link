@@ -81,6 +81,14 @@ class DashboardProvider extends ChangeNotifier {
     }
   }
 
+
+
+  /// Handle real-time time advance events
+  void handleTimeAdvance(Map<String, dynamic> data) {
+    debugPrint("🕰️ TIME ADVANCE: Syncing Dashboard...");
+    syncDashboard();
+  }
+
   void logout() {
     Supabase.instance.client.auth.signOut();
     _currentUser = null;

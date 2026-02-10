@@ -60,20 +60,31 @@ class LocationManager:
         state = await self.session.get(SoulState, soul_id)
 
         try:
-            # 1. Update User Context
+            # 1. Update User Context (manual override - Priority 1)
+            # This ensures the move is private and won't affect other users.
             rel.current_location = location_id
-            
-            # 2. Update Global State (The Source of Truth)
-            if state:
-                state.current_location_id = location_id
-                state.last_updated = datetime.utcnow()
-                self.session.add(state)
-            
             self.session.add(rel)
-            await self.session.commit()
+            
+            # 2. DO NOT update Global State (Priority 3) for player-led moves.
+            # Global state updates are reserved for world-level events or Architect edits.
+            # (Deleted: LocationResolver.update_global_location call)
             
             # 3. Cache Invalidation: Global world state is now stale
             cache_service.delete_pattern("world:state:*")
+            
+            # 4. 🚀 REAL-TIME: Broadcast location update via WebSocket
+            from backend.app.services.websocket_manager import websocket_manager
+            from datetime import datetime as dt
+            
+            await websocket_manager.broadcast_to_all({
+                "type": "location_update",
+                "data": {
+                    "soul_id": soul_id,
+                    "location_id": location_id,
+                    "location_name": loc.display_name
+                },
+                "timestamp": dt.utcnow().isoformat()
+            })
             
             return True, f"Synchronized. Welcome to {loc.display_name}."
         except Exception as e:

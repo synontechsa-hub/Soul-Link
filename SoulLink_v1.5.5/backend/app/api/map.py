@@ -10,29 +10,31 @@ from backend.app.models.location import Location
 from backend.app.models.relationship import SoulRelationship
 from backend.app.models.user import User
 from backend.app.models.soul import SoulState
-from backend.app.api.dependencies import get_current_user
+from backend.app.api.dependencies import get_current_user, ArchitectOnly
 from backend.app.core.rate_limiter import limiter, RateLimits
+from backend.app.core.config import settings
+from backend.app.core.logging_config import get_logger
+from backend.app.logic.time_manager import TimeManager
+from backend.app.models.time_slot import TimeSlot
 from pydantic import BaseModel
 from typing import List, Optional
 
 router = APIRouter(prefix="/map", tags=["Legion Engine - Map"])
 
 @router.get("/locations")
-@limiter.limit(RateLimits.MAP_LOCATIONS)
+# @limiter.limit(RateLimits.MAP_LOCATIONS)
 async def get_world_map(
     user: User = Depends(get_current_user), 
     session: AsyncSession = Depends(get_async_session),
     request: Request = None
 ):
-    """
-    Fetch the full geography of Link City with 30-minute caching.
-    """
     cache_key = "map:geography"
     
     # 1. Pull dynamic soul locations (Already cached in TimeManager)
     from backend.app.logic.time_manager import TimeManager
+    from backend.app.models.time_slot import TimeSlot
     time_manager = TimeManager(session)
-    world_state = await time_manager.get_world_state(user.user_id)
+    world_state = await time_manager.get_world_state(user.user_id, TimeSlot(user.current_time_slot))
     soul_locs = world_state['soul_locations']
     
     # 2. Check for cached geography (The static/semi-static descriptors)
@@ -42,41 +44,37 @@ async def get_world_map(
     if cached_geo:
         # We still need to inject the LATEST dynamic soul locations into the cached geography
         for loc in cached_geo:
-            loc["present_souls"] = [s_id for s_id, l_id in soul_locs.items() if l_id == loc["id"]]
+            loc["present_souls"] = [s_id for s_id, l_id in soul_locs.items() if l_id == loc["location_id"]]
             loc["time_slot"] = world_state['time_slot']
         return cached_geo
     
-    # 3. Pull all locations from the DB if cache miss
-    statement = select(Location)
-    res = await session.execute(statement)
-    locations = res.scalars().all()
+    # 3. Cache Miss: Rebuild Full Geography Response
+    from backend.app.services.location_resolver import LocationResolver
+    locations = await LocationResolver.get_all_locations(session)
     
-    # 4. Build the response
     output = []
-    for loc in locations:
-        output.append({
-            "id": loc.location_id,
-            "name": loc.display_name,
-            "category": loc.category,
-            "desc": loc.description,
-            "privacy": loc.system_modifiers.get("privacy_gate", "Public")
-            # present_souls and time_slot added in the inject step below
-        })
-        
-    # Cache the geography for 30 minutes (semistatic)
-    cache_service.set(cache_key, output, ttl=1800)
+    current_time_slot = world_state.get('time_slot', user.current_time_slot)
     
-    # Re-inject souls for this specific request
-    for loc in output:
-        loc["present_souls"] = [s_id for s_id, l_id in soul_locs.items() if l_id == loc["id"]]
-        loc["time_slot"] = world_state['time_slot']
-        
+    for loc in locations:
+        loc_data = loc.model_dump()
+        # Filter souls present at this location
+        loc_data["id"] = loc.location_id # Alias for frontend compatibility
+        loc_data["present_souls"] = [s_id for s_id, l_id in soul_locs.items() if l_id == loc.location_id]
+        loc_data["time_slot"] = current_time_slot
+        output.append(loc_data)
+
+    # 4. Cache the geography (TTL 1 hour)
+    cache_service.set(cache_key, output, ttl=3600)
+    
     return output
+
+class MoveRequest(BaseModel):
+    soul_id: str
+    target_location_id: str
 
 @router.post("/move")
 async def move_to_location(
-    soul_id: str,
-    location_id: str,
+    move_request: MoveRequest,
     user: User = Depends(get_current_user), 
     session: AsyncSession = Depends(get_async_session)
 ):
@@ -84,6 +82,9 @@ async def move_to_location(
     Move a soul to a new location in Link City.
     The LocationManager handles Gatekeeper rules (Privacy/Intimacy).
     """
+    soul_id = move_request.soul_id
+    location_id = move_request.target_location_id
+
     manager = LocationManager(session)
     
     success, message = await manager.move_to(user.user_id, soul_id, location_id)

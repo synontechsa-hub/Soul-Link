@@ -34,25 +34,34 @@ MAJOR: Final[int] = 1
 MINOR: Final[int] = 5
 PATCH: Final[int] = 5
 PRE_RELEASE: Final[str] = "dev-1: Pre public alpha"
+# ALPHA_VERSION_MAJOR: Final[int] = 1
+# ALPHA_VERSION_MINOR: Final[int] = 0
+# ALPHA_VERSION_PATCH: Final[int] = 0
+# ALPHA_VERSION_RELEASE: Final[str] = "Closed Alpha"
 
 # Semantic codename per major release arc
-VERSION_CODENAMES = {
-    "1.0.0": "Ham Sandwich", # I was eating one when I started coding this project.
+VERSION_CODENAMES = {           # These are the dev cycle codenames.
+    "1.0.0": "Ham Sandwich",    # I was eating one when I started coding this project.
     "1.1.0": "Code-kun",        # I expanded the app... needed lots more code.
     "1.2.0": "I-AM-DATA",       # Found out the importance of a solid data schema before coding
-    "1.3.0": "Linker",          # First in console chat with a soul... i was the linker
+    "1.3.0": "Linker",          # First in console chat with a soul... I was the linker!
     "1.4.0": "Summoner",        # Adding in more souls and improved soul logic
     "1.5.0": "Behemoth",        # The project grew... too big... Spaghetti monsters everywhere
     "1.5.1": "Reforged",        # Started breaking down the behemoth... Failed so went Architect
     "1.5.2": "Architect",       # Ground up rebuild followed by full data loss during this cycle
     "1.5.3": "Phoenix",         # The new polished and upgraded version was born (a solid baseline)
     "1.5.4": "Arise",           # The Phoenix is rising from the ashes... This is almost Alpha ready
-    "1.5.5": "Domain Expansion" # (JJK cause fr! Also... ties to the world upgrades. Plus it sounds technical af!)
-    # 1.5.6: Normandy SR-2 (The Legion honor system!)
-    # 1.5.7: Alpha-Omega
+    "1.5.5": "Domain Expansion" # JJK cause fr! Also... ties to the world upgrades. Plus it sounds technical af!
+    # 1.5.6: Normandy SR-2      # The Legion honor system! This phase will be for ensuring that the brain runs as I intend.
+    # 1.5.7: Aether/Lumine      # In honor of the travelers that made my life more interesting <3 Thank you Hoyoverse!
+    # 1.5.8: Singularity        # Perfection is almost achieved at this point.
+    # 1.5.9: Alpha-Omega        # The final arc before the first public Alpha release
+    # 1.6.0: Neural Link        # Also known as Alpha v1.0.0
+    # 1.6.1: Deus Ex Machina    # The start of godhood and the rise of SoulLink (I hope)
+    
     # Extra ideas for codenames:
-    # Ghost Protocol, Eclipse, Neural Link, Singularity, Deus Ex Machina, Night City, Prometheus,
-    # Ragnarok, Evangelion, New Game+, Elysium, Aether/Lumine # 
+    # Ghost Protocol, Eclipse, Night City, Prometheus,
+    # Ragnarok, Evangelion, New Game+, Elysium,
 }
 
 # ────────────────────────────────────────────────────────────────
@@ -137,6 +146,7 @@ if __name__ == "__main__":
 # The current layout of Alyssa will be the basic schema for all basic souls at launch.
 
 # Lore teases for Launch v1.0.0 - A higher set of powers ruling the city.
+# Lore reveal for Launch v1.0.0 - The Architect
 
 # Lore teases for Launch v1.0.1 - Secret societies and sects among the souls.
 # Lore reveal for Launch v1.0.1 - Number 1 (Heh Heh Heh)

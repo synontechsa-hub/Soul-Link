@@ -14,16 +14,22 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.database.session import get_async_session
 from backend.app.models.user import User
 from backend.app.core.config import settings
+from backend.app.core.logging_config import get_logger
 from typing import Optional
 from supabase import create_client, Client
 
-# Initialize Supabase Client (For server-side validation)
+logger = get_logger("Dependencies")
+
+# ⚡ SUPABASE CLIENT SINGLETON
+# Initialize once, reuse everywhere
 try:
     supabase: Client = create_client(settings.supabase_url, settings.supabase_anon_key)
-    print(f"Supabase Client Init: URL={settings.supabase_url[:20]}...")
+    logger.info(f"✅ Supabase Client Init: {settings.supabase_url[:20]}...")
 except Exception as e:
-    print(f"Supabase Init Failed: {e}")
-    supabase = None
+    logger.critical(f"❌ CRITICAL: Supabase Init Failed: {e}")
+    # We might want to raise here or allow partial startup depending on strategy
+    # For now, let it fail hard as Auth is critical
+    raise RuntimeError("Cannot start server without Supabase connection") from e
 
 security = HTTPBearer()
 
@@ -40,6 +46,9 @@ async def get_current_user_uuid(
 
     try:
         # Verify the token with Supabase
+        # NOTE: Reverted from run_in_executor due to 401 errors (context propagation issue?)
+        # This blocks for ~0.5s but is reliable.
+        # Future optimization: Cache user validation or use async supabase client.
         print(f"DEBUG: Validating token: {token[:10]}...") 
         user_response = supabase.auth.get_user(token)
         
@@ -72,8 +81,13 @@ async def get_current_user(
             account_tier="free"
         )
         session.add(new_user)
-        await session.commit()
-        await session.refresh(new_user)
+        try:
+            await session.commit()
+            await session.refresh(new_user)
+        except Exception as e:
+            await session.rollback()
+            logger.error(f"Failed to create user {user_uuid}: {e}", exc_info=True)
+            raise HTTPException(status_code=500, detail="Failed to create user account")
         return new_user
     
     return user

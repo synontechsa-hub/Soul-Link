@@ -219,6 +219,11 @@ class LegionBrain:
         state.last_updated = datetime.utcnow()
         session.add(state)
         
-        await session.commit()
+        try:
+            await session.commit()
+        except Exception as e:
+            await session.rollback()
+            print(f"❌ TRANSACTION FAILED: {e}")
+            raise Exception(f"Failed to save conversation: {str(e)}")
 
         return response_text

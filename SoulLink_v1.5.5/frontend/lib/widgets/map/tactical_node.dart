@@ -46,20 +46,33 @@ class _TacticalNodeState extends State<TacticalNode> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    final soulsHere = widget.allSouls.where((s) => s.currentLocation == widget.loc['id']).toList();
+    final soulsHere = widget.allSouls.where((s) => s.currentLocation == widget.loc['location_id']).toList();
+    
+    // DEBUG: Check why souls aren't showing
+    if (widget.allSouls.isNotEmpty && widget.loc['location_id'] == 'travel_hub') { // Just check one known location or all
+       // print("📍 Checking ${widget.loc['location_id']} (${widget.loc['display_name']})");
+       // for (var s in widget.allSouls) {
+       //   if (s.currentLocation == widget.loc['location_id']) {
+       //      print("   ✅ Found soul ${s.soulName} here!");
+       //   } else {
+       //      // print("   ❌ Soul ${s.soulName} is at ${s.currentLocation}");
+       //   }
+       // }
+    }
+
     bool canMoveSoulHere = widget.selectedSoulId != null;
     final presentSoulsIds = widget.loc['present_souls'] as List? ?? [];
 
     return GestureDetector(
       onTap: () {
         if (canMoveSoulHere) {
-          widget.onMoveSoul(widget.loc['id'], widget.loc['name']);
+          widget.onMoveSoul(widget.loc['location_id'], widget.loc['display_name'] ?? widget.loc['name'] ?? 'UNKNOWN');
         } else {
           widget.onShowDetails(widget.loc, widget.allSouls);
         }
       },
       child: Hero(
-        tag: 'location_${widget.loc['id']}',
+        tag: 'location_${widget.loc['location_id'] ?? widget.loc['id']}',
         child: Container(
           decoration: BoxDecoration(
             color: const Color(0xFF1A1A22),
@@ -77,7 +90,7 @@ class _TacticalNodeState extends State<TacticalNode> with SingleTickerProviderSt
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.loc['name'].toUpperCase(),
+                      (widget.loc['display_name'] ?? widget.loc['name'] ?? 'UNKNOWN').toString().toUpperCase(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w900,
@@ -88,13 +101,10 @@ class _TacticalNodeState extends State<TacticalNode> with SingleTickerProviderSt
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      widget.loc['desc'] ?? "Sector Restricted",
-                      style: const TextStyle(
-                        color: Colors.white38,
-                        fontSize: 9,
-                        decoration: TextDecoration.none,
-                      ),
+                      widget.loc['desc'] ?? "Signal strength nominal.",
                       maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(color: Colors.white38, fontSize: 10),
                     ),
                   ],
                 ),
@@ -117,15 +127,9 @@ class _TacticalNodeState extends State<TacticalNode> with SingleTickerProviderSt
                             decoration: TextDecoration.none,
                           ),
                         )
-                      else ...[
-                        // Linked Souls (Cyan)
+                      else
+                        // Only show linked souls (cyan dots)
                         ...soulsHere.map((s) => _PulseDot(color: Colors.cyanAccent, animation: _pulseAnimation)),
-                        // Unknown Signals (Grey)
-                        ...List.generate(
-                          (presentSoulsIds.length - soulsHere.length).clamp(0, 99),
-                          (index) => _PulseDot(color: Colors.white12, animation: _pulseAnimation, hasBorder: true),
-                        ),
-                      ],
                     ],
                   ),
                 ),
