@@ -1,0 +1,115 @@
+{
+    "soul_id": "SOUL_ID_HERE",
+    "version": "1.5.5",
+    "author_id": "14dd612d-744e-487d-b2d5-cc47732183d3",
+    "identity": {
+        "name": "",
+        "age": 0,
+        "gender": "",
+        "archetype_id": "",
+        "faction_id": "",
+        "occupation": "",
+        "summary": "",
+        "bio": "",
+        "personality_traits": {
+            "primary": [],
+            "hidden": [],
+            "flaws": []
+        }
+    },
+    "aesthetic": {
+        "description": "",
+        "portrait_path": "/assets/images/souls/SOUL_ID_HERE.jpeg",
+        "speech_profile": {
+            "voice_style": "",
+            "signature_emote": "",
+            "forbidden_behaviors": []
+        }
+    },
+    "systems_config": {
+        "content_rating": "mature",
+        "capabilities": {
+            "romance": false,
+            "sexual_content": false,
+            "explicit_language": false,
+            "emotional_dependency": false
+        },
+        "consent": {
+            "profile_id": "",
+            "can_initiate": [],
+            "requires_explicit_consent": [],
+            "notes": ""
+        },
+        "intimacy": {
+            "initial_tier": "STRANGER",
+            "initial_score": 0,
+            "affection_cap": 100,
+            "primary_emotional_state": "",
+            "mask_integrity_default": 0.5
+        }
+    },
+    "routine": {
+        "template_id": "",
+        "location_preferences": {
+            "home_zone": "",
+            "work_zone": "",
+            "entertainment_zone": "",
+            "relaxation_zone": "",
+            "dining_zone": "",
+            "nightlife_zone": "",
+            "cultural_zone": "",
+            "sports_zone": "",
+            "underground_zone": "",
+            "public_square_zone": ""
+        },
+        "schedule_overrides": {}
+    },
+    "inventory": {
+        "items": []
+    },
+    "relationships": {},
+    "lore_associations": {
+        "factions": [],
+        "topics": [],
+        "secrets": []
+    },
+    "interaction_system": {
+        "intimacy_tiers": {
+            "STRANGER": {
+                "logic": "",
+                "allowed_topics": [],
+                "forbidden_topics": [],
+                "llm_bias": "",
+                "location_access": [],
+                "affection_modifier": 0.8
+            },
+            "TRUSTED": {
+                "logic": "",
+                "allowed_topics": [],
+                "forbidden_topics": [],
+                "llm_bias": "",
+                "location_access": [],
+                "affection_modifier": 1.2
+            },
+            "SOUL_LINKED": {
+                "logic": "",
+                "allowed_topics": [],
+                "forbidden_topics": [],
+                "llm_bias": "",
+                "location_access": [],
+                "affection_modifier": 1.5
+            }
+        },
+        "character_specific_rules": [],
+        "stress_trigger": {
+            "condition": "",
+            "responses": {
+                "STRANGER_TRUSTED": "",
+                "SOUL_LINKED": ""
+            }
+        }
+    },
+    "prompts": {
+        "system_anchor_override": ""
+    }
+}

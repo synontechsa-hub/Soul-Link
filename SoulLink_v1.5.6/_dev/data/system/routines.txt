@@ -1,0 +1,92 @@
+ZONE STANDARDIZATION FOR ROUTINES.JSON
+Use these exact names (lowercase + underscore) in all routine templates and soul JSONs.
+
+home_zone
+Description: Personal living spaces – where souls sleep, relax privately, or invite trusted Linkers.
+Examples: civic_heights, crimson_arms, linkside_estate, midline_residences, northway_flats, skylink_apartments
+
+work_zone
+Description: Day jobs and professional environments – offices, malls, corporate buildings.
+Examples: apex_corporate_plaza, linkgate_mall
+
+entertainment_zone
+Description: High-energy fun – arcades, racetracks, arenas, stadiums.
+Examples: link_city_arena, pixel_den, stop_n_go
+
+relaxation_zone
+Description: Calm, restorative spots – gardens, parks, overlooks, spas, lounges.
+Examples: ether_baths, rooftop_lounge, scenic_overlook, the_garden, twilight_park, zenith_lounge
+
+dining_zone
+Description: Places to eat and drink casually – diners, restaurants.
+Examples: circuit_diner, linkview_cuisine
+
+nightlife_zone
+Description: Evening/night party scenes – clubs, bars, underground venues.
+Examples: dollhouse_dungeon, neon_nights
+
+cultural_zone (recommended new zone)
+Description: Intellectual and artistic spots – libraries, archives, planetarium.
+Examples: echo_archives, shadowed_archives, city_planetarium
+
+sports_zone (recommended new zone)
+Description: Physical training and competition – gyms, proving grounds.
+Examples: iron_resolve_gym, obsidian_proving_grounds
+
+underground_zone (recommended new zone)
+Description: Shady, hidden, or risky areas – black markets, bridges.
+Examples: umbral_exchange, neon_span_bridge
+
+public_square_zone (recommended new zone)
+Description: Busy open public areas – plazas, streets.
+Examples: soul_plaza, circuit_street
+
+SOUL ROUTINE PROFILES
+Standardized routine behaviors and logic for souls in Link City
+Updated: 2026-02 (based on v1.5.5 zone system)
+
+commercial_worker
+Behavior:      Standard business hours
+Logic:         Weekdays spent in work_zone. Evenings focus on dining_zone. Weekends include shopping (work_zone) and nightlife_zone.
+Complexity:    +4
+
+nightlife_performer
+Behavior:      Active in the evening and night
+Logic:         Evenings in entertainment_zone (arenas). Nights in nightlife_zone. Weekends use relaxation_zone (spas/lounges).
+Complexity:    +3
+
+academic_scholar
+Behavior:      Dedicated to study and quiet contemplation
+Logic:         Mornings and afternoons in cultural_zone (archives/libraries). Evenings and nights in relaxation_zone (gardens/parks).
+Complexity:    +1
+
+nocturnal_shadow
+Behavior:      Active in the underground and alleys
+Logic:         Evenings in underground_zone. Nights in nightlife_zone or public_square_zone. Weekends utilize sports_zone (proving grounds).
+Complexity:    +3
+
+stoic_protector
+Behavior:      Focused on physical training and public vigilance
+Logic:         Mornings in relaxation_zone (gardens). Afternoons in public_square_zone. Evenings in sports_zone (gyms).
+Complexity:    +2
+
+corporate_executive
+Behavior:      High-intensity business hours followed by elite leisure
+Logic:         Weekdays dominated by work_zone. Evenings and weekends focus on dining_zone and relaxation_zone (lounges).
+Complexity:    +2
+
+underground_fixer (v1.5.4)
+Behavior:      Moves between digital archives and hidden exchanges
+Logic:         Rotates between underground_zone and cultural_zone.
+Complexity:    +1
+
+unbound_wanderer (v1.5.4)
+Behavior:      Finds peace in public movement
+Logic:         Heavily utilizes public_square_zone and relaxation_zone.
+Complexity:    +1
+
+Notes:
+- Complexity rating (+1 to +4) indicates how many zone types and schedule variations are used (higher = more dynamic/conditional)
+- All routines inherit from base "day_job" template unless overridden
+- Weekends are always lighter/social unless specified (e.g., nocturnal_shadow keeps underground focus)
+- Use zone names exactly as defined in zones.json (e.g., work_zone, not specific locations)

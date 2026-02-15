@@ -1,0 +1,107 @@
+{
+    "version": "1.5.5",
+    "link_stability": {
+        "max_stability": 100,
+        "decay_rate_per_message": 2.0,
+        "decay_rate_per_turn": 5.0,
+        "warning_threshold": 20.0,
+        "critical_threshold": 5.0,
+        "overdrive_multiplier": 0.0,
+        "status_labels": {
+            "100": "Perfect",
+            "80": "Stable",
+            "50": "Fluctuating",
+            "20": "Unstable",
+            "5": "Critical"
+        }
+    },
+    "ad_system": {
+        "global_cooldown_seconds": 30,
+        "placements": {
+            "diagnostic_boost": {
+                "id": "diagnostic_boost",
+                "type": "rewarded_video",
+                "name": "Diagnostic Signal Boost",
+                "trigger": "low_stability_prompt",
+                "reward": {
+                    "stability_restore": 100,
+                    "tokens": 0
+                }
+            },
+            "time_skip_sync": {
+                "id": "time_skip_sync",
+                "type": "interstitial",
+                "name": "Transition Sync",
+                "trigger": "bed_transition",
+                "reward": {
+                    "stability_restore": 10,
+                    "tokens": 5
+                }
+            },
+            "city_billboards": {
+                "id": "city_billboards",
+                "type": "native_map",
+                "name": "Link City Billboard",
+                "brands": [
+                    "Neo-Cola",
+                    "Link-Net",
+                    "Zenith-Tech"
+                ],
+                "reward": {
+                    "tokens": 2
+                },
+                "cooldown_seconds": 3600
+            },
+            "apartment_tv": {
+                "id": "apartment_tv",
+                "type": "voluntary_rewarded",
+                "name": "Link-Net Broadcast",
+                "reward": {
+                    "tokens": 10
+                },
+                "cooldown_seconds": 60
+            }
+        }
+    },
+    "subscriptions": {
+        "tiers": {
+            "free": {
+                "id": "free",
+                "name": "Standard Link",
+                "price": 0.0,
+                "benefits": {
+                    "ads_enabled": true,
+                    "max_stability": 100,
+                    "ai_model": "gemini-1.5-flash",
+                    "context_window": 8192,
+                    "priority": "normal"
+                }
+            },
+            "premium": {
+                "id": "premium",
+                "name": "High-Stability Link",
+                "price": 9.99,
+                "currency": "USD",
+                "interval": "monthly",
+                "benefits": {
+                    "ads_enabled": false,
+                    "max_stability": 999999,
+                    "ai_model": "gemini-1.5-pro",
+                    "context_window": 32768,
+                    "priority": "high",
+                    "premium_badges": true
+                }
+            }
+        }
+    },
+    "economy": {
+        "token_name": "Link Credits",
+        "token_symbol": "LC",
+        "initial_user_balance": 50,
+        "token_utility": {
+            "extra_message_at_zero_stability": 10,
+            "instant_cooldown_reset": 25,
+            "cosmetic_item_unlock": 100
+        }
+    }
+}

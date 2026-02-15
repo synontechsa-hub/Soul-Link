@@ -1,0 +1,71 @@
+{
+    "location_id": "dollhouse_dungeon",
+    "meta": {
+        "display_name": "The Dollhouse Dungeon",
+        "category": "nightlife",
+        "subcategory": "general",
+        "description": "A bar located in the basement level of Skylink Tower.",
+        "image_url": "/assets/images/locations/the_dollhouse_dungeon_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Hidden beneath Skylink Tower, The Dollhouse Dungeon is accessed through an unmarked elevator requiring clearance or invitation. The space is low-lit and intimate, washed in deep crimson and violet light. Velvet-lined booths curve along the walls, and mirrored panels distort reflections in subtle, deliberate ways. Music pulses through the floor — slow, heavy bass during early evening and deeper, more immersive rhythms past midnight. The air carries notes of perfume, polished wood, and expensive liquor.",
+        "crowd_atmosphere": "Evening (18-22) begins refined and controlled — executives unwinding, curated conversations, subtle power dynamics. Night (22-04) shifts the tone: laughter grows louder, personal boundaries soften, and alliances form in shadowed corners. The energy remains controlled but charged. Staff maintain quiet authority, ensuring discretion above all.",
+        "activities": [
+            "Reserve a private booth for confidential conversation.",
+            "Order signature cocktails crafted off-menu.",
+            "Engage in subtle social maneuvering among corporate elites.",
+            "Dance in the low-lit central floor as music intensifies.",
+            "Receive or deliver information in exchange for favors."
+        ],
+        "interaction_rules": "Privacy Level: Private. Entry requires invitation, status clearance, or narrative justification. Conversations are confidential; recording devices are prohibited.",
+        "seasonal_variations": {
+            "frostlink": "The underground location makes it a warm refuge. Winter-themed cocktails and exclusive events draw the elite seeking privacy and warmth.",
+            "surgespring": "Spring brings renewed energy to power plays. The atmosphere crackles with ambition and new alliances forming.",
+            "burnseason": "The cool underground space becomes even more desirable during heatwaves. Summer sees increased attendance from heat-refugees with status.",
+            "shadowfall": "The contemplative season brings more introspective conversations. Deals become more thoughtful, less impulsive."
+        },
+        "weather_variations": {
+            "ice_storm": "The dungeon is packed with stranded elites. The forced proximity creates unexpected alliances and tensions.",
+            "electromagnetic_storm": "Backup systems engage seamlessly. The storm outside adds drama to the already charged atmosphere of power and intrigue.",
+            "heatwave": "The cool underground space is in high demand. Entry becomes even more exclusive as everyone seeks refuge.",
+            "clear_cool": "Perfect weather means some elites skip the dungeon for rooftop venues, making it quieter and more intimate."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "evening",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "bartender",
+            "security_staff",
+            "host",
+            "private_event_coordinator"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "The Dollhouse Dungeon was established shortly after Skylink Tower’s completion, designed as an exclusive retreat for high-level executives and select clients. Officially, it is described as a luxury lounge. Unofficially, it functions as a pressure valve for those who operate at the top of Link City's corporate hierarchy.",
+        "secrets": "Certain booths are equipped with sound-dampening fields far beyond standard acoustic treatment. A secondary corridor behind the bar connects to restricted elevator shafts not listed on public building schematics. Rumors suggest that some deals finalized within The Dollhouse Dungeon have quietly reshaped entire districts of the city."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "inhibitions": 0.5
+        }
+    }
+}

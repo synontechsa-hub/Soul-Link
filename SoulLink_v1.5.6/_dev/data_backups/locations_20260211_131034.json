@@ -1,0 +1,513 @@
+[
+  {
+    "description": "A modest but well-kept apartment assignd to new residents of Link City.",
+    "location_id": "linkside_estate",
+    "image_url": "/assets/images/locations/linkview_estate_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Linkside Estate (User Loft)",
+    "category": "residential",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Private",
+      "mood_modifiers": {
+        "safety": 1.5,
+        "customization": 1.4
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "Rain-slick pavement, flickering holographic ads.",
+    "location_id": "circuit_street",
+    "image_url": "/assets/images/locations/circuit_street_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Circuit Street",
+    "category": "commercial",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "mood_volatility": 1.2
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "Violet-crimson neon, pulsing bass.",
+    "location_id": "neon_nights",
+    "image_url": "/assets/images/locations/neon_nights_club_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Neon Nights Club",
+    "category": "nightlife",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "energy": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A quiet escape above the smog.",
+    "location_id": "rooftop_lounge",
+    "image_url": "/assets/images/locations/the_rooftop_lounge_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "The Rooftop Lounge",
+    "category": "nightlife",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "openness": 1.4
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A day spa located near the city plaza.",
+    "location_id": "ether_baths",
+    "image_url": "/assets/images/locations/ether_baths_spa_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Ether Baths Spa",
+    "category": "wellness",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Private",
+      "mood_modifiers": {
+        "recovery": 1.2
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A bar located in the basement level of Skylink Tower.",
+    "location_id": "dollhouse_dungeon",
+    "image_url": "/assets/images/locations/the_dollhouse_dungeon_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "The Dollhouse Dungeon",
+    "category": "nightlife",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Private",
+      "mood_modifiers": {
+        "inhibitions": 0.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A high-tier restaurant on the top floor of Skylink Tower.",
+    "location_id": "linkview_cuisine",
+    "image_url": "/assets/images/locations/linkview_cuisine_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "LinkView Cuisine",
+    "category": "dining",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "sophistication": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A massive projection dome simulating the cosmos.",
+    "location_id": "city_planetarium",
+    "image_url": "/assets/images/locations/city_planetarium_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "City Planetarium",
+    "category": "landmark",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "wonder": 1.4
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "The smell of burning rubber and ozone.",
+    "location_id": "stop_n_go",
+    "image_url": "/assets/images/locations/stop_n_go_racetrack_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Stop n Go Racetrack",
+    "category": "sports",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "adrenaline": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A crumbling mid-rise on the edge of the Arts District.",
+    "location_id": "crimson_arms",
+    "image_url": "/assets/images/locations/crimson_arms_apartments_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Crimson Arms Apartments",
+    "category": "residential",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "melancholy": 1.3
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A massive, opulent building in the center of Link City.",
+    "location_id": "skylink_tower",
+    "image_url": "/assets/images/locations/skylink_tower_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Skylink Tower",
+    "category": "landmark",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "authority": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "The buzzing shopping mall in Link City.",
+    "location_id": "linkgate_mall",
+    "image_url": "/assets/images/locations/linkgate_mall_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "LinkGate Mall",
+    "category": "commercial",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "distraction": 1.3
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A bio-dome of engineered tranquility.",
+    "location_id": "the_garden",
+    "image_url": "/assets/images/locations/the_garden_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Link City Botanical Garden",
+    "category": "wellness",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "calm": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "The beating heart of the city.",
+    "location_id": "soul_plaza",
+    "image_url": "/assets/images/locations/soul_plaza_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Soul Plaza",
+    "category": "public_hub",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "social_density": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A no-nonsense training facility.",
+    "location_id": "iron_resolve_gym",
+    "image_url": "/assets/images/locations/iron_resolve_gym_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Iron Resolve Gym",
+    "category": "sports",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "discipline": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A colossal stadium of steel and light.",
+    "location_id": "link_city_arena",
+    "image_url": "/assets/images/locations/link_city_arena_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Link City Arena",
+    "category": "sports",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "confidence": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A practical residential block near municipal offices.",
+    "location_id": "civic_heights",
+    "image_url": "/assets/images/locations/civic_heights_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Civic Heights",
+    "category": "residential",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "stability": 1.3
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "Low-rise apartments tucked away.",
+    "location_id": "northway_flats",
+    "image_url": "/assets/images/locations/northway_flats_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Northway Flats",
+    "category": "residential",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "calm": 1.4
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "Standard residential housing designed for efficiency.",
+    "location_id": "midline_residences",
+    "image_url": "/assets/images/locations/midline_residences_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Midline Residences",
+    "category": "residential",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "balance": 1.3
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "Mid-tier apartments within Skylink Tower.",
+    "location_id": "skylink_apartments",
+    "image_url": "/assets/images/locations/skylink_tower_residences_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Skylink Tower Residences",
+    "category": "residential",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "isolation": 1.3
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A three-story library with wooden floors.",
+    "location_id": "echo_archives",
+    "image_url": "/assets/images/locations/echo_archives_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Echo Archives Public Library",
+    "category": "cultural",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "calm": 1.6
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A sprawling cyberpunk arcade.",
+    "location_id": "pixel_den",
+    "image_url": "/assets/images/locations/pixel_den_arcade_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "The Pixel Den Arcade",
+    "category": "entertainment",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "energy": 1.6
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A hidden market.",
+    "location_id": "umbral_exchange",
+    "image_url": "/assets/images/locations/the_umbral_exchange_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "The Umbral Exchange",
+    "category": "underground",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Private",
+      "mood_modifiers": {
+        "danger": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A gleaming district of glass towers.",
+    "location_id": "apex_corporate_plaza",
+    "image_url": "/assets/images/locations/apex_corporate_plaza_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Apex Corporate Plaza",
+    "category": "commercial",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "authority": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A brutal training facility.",
+    "location_id": "obsidian_proving_grounds",
+    "image_url": "/assets/images/locations/obsidian_proving_grounds_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Obsidian Proving Grounds",
+    "category": "combat",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "intensity": 1.6
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A 24-hour diner on Circuit Street.",
+    "location_id": "circuit_diner",
+    "image_url": "/assets/images/locations/the_circuit_diner_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "The Circuit Diner",
+    "category": "dining",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "comfort": 1.4
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A massive suspension bridge.",
+    "location_id": "neon_span_bridge",
+    "image_url": "/assets/images/locations/neon_span_bridge_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Neon Span Bridge",
+    "category": "landmark",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "isolation": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A small urban park wedged between residential blocks.",
+    "location_id": "twilight_park",
+    "image_url": "/assets/images/locations/twilight_park_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "Twilight Park",
+    "category": "wellness",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Public",
+      "mood_modifiers": {
+        "calm": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A sleek rooftop bar.",
+    "location_id": "zenith_lounge",
+    "image_url": "/assets/images/locations/zenith_rooftop_lounge_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "The Zenith Rooftop Lounge",
+    "category": "nightlife",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "sophistication": 1.4
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  },
+  {
+    "description": "A darker, more gothic wing of the library.",
+    "location_id": "shadowed_archives",
+    "image_url": "/assets/images/locations/the_shadowed_archives_01.jpg",
+    "environmental_prompts": [],
+    "display_name": "The Shadowed Archives",
+    "category": "cultural",
+    "music_track": "ambient_city_loop.mp3",
+    "system_modifiers": {
+      "privacy_gate": "Semi-Private",
+      "mood_modifiers": {
+        "mystery": 1.5
+      },
+      "music": "neon_ambient_01.mp3"
+    },
+    "min_intimacy": 0
+  }
+]

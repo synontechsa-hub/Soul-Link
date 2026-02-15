@@ -1,0 +1,46 @@
+Note: This needs updating...
+
+/SoulLink_v1.5.4
+├── /_dev                       # THE ARCHITECT'S WORKSHOP (Excluded from Ship)
+│   ├── /blueprints             # Raw .json files (Eva, Alyssa, etc.)
+│   ├── /prototypes             # Experimental brain logic / prompt testing
+│   ├── /scripts                # ALL running scripts (seed_db.py, migrations, etc.)
+│   └── /notes                  # Design docs, Lore, v1.1.0+ Roadmaps
+│
+├── /backend                    # THE LEGION ENGINE (Clean & Shippable)
+│   ├── /app
+│   │   ├── /api                # FastAPI Routers (The "Doors")
+│   │   ├── /core               # Config, Versioning, Security (The "Internal Laws")
+│   │   ├── /database           # DB Session management (The "Connection")
+│   │   ├── /logic              # LLM Orchestration & Sentry (The "Thought Process")
+│   │   ├── /models             # SQLModel Definitions (The "Skeleton")
+│   │   └── /services           # Logic for NSFW gating & Intimacy (The "Rules")
+│   └── main.py                 # Clean entry point
+│
+├── /frontend                   # THE INTERFACE (Flutter Project)
+│   ├── /lib                    # DART SOURCE (The Heart)
+│   │   ├── /models             # Data classes (Soul, User, Relationship)
+│   │   ├── /services           # API Clients (The Handshake)
+│   │   ├── /providers          # State Management (Riverpod/Provider)
+│   │   ├── /screens            # App Screens (Explore, Map, Chat)
+│   │   ├── /widgets            # UI Components (SoulCards, Bubbles)
+│   │   └── main.dart           # Flutter Entry Point
+│   ├── /assets                 # App-specific images/fonts
+│   └── pubspec.yaml            # Flutter Dependencies
+│
+├── /assets                     # SHARED STATIC RESOURCES
+│   ├── /souls                  # Processed portraits (Named by soul_id)
+│   └── /map                    # Link City assets
+│
+├── .env                        # Local secrets
+├── .gitignore                  # Ignores .env and _dev/
+├── requirements.txt            # Python Dependencies
+└── version.py                  # Identity
+
+Potential improvements:
+
+/logic
+├── /memory        # memory injection / summarization
+├── /personality   # tone, tier modulation
+└── /world         # location awareness, ambient context
+

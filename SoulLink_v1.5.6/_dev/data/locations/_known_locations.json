@@ -1,0 +1,157 @@
+[
+    {
+        "id": "apex_corporate_plaza",
+        "name": "Apex Corporate Plaza",
+        "description": "A gleaming district of glass towers."
+    },
+    {
+        "id": "circuit_diner",
+        "name": "The Circuit Diner",
+        "description": "A 24-hour diner on Circuit Street."
+    },
+    {
+        "id": "circuit_street",
+        "name": "Circuit Street",
+        "description": "Rain-slick pavement, flickering holographic ads."
+    },
+    {
+        "id": "city_planetarium",
+        "name": "City Planetarium",
+        "description": "A massive projection dome simulating the cosmos."
+    },
+    {
+        "id": "civic_heights",
+        "name": "Civic Heights",
+        "description": "A practical residential block near municipal offices."
+    },
+    {
+        "id": "crimson_arms",
+        "name": "Crimson Arms Apartments",
+        "description": "A crumbling mid-rise on the edge of the Arts District."
+    },
+    {
+        "id": "dollhouse_dungeon",
+        "name": "The Dollhouse Dungeon",
+        "description": "A bar located in the basement level of Skylink Tower."
+    },
+    {
+        "id": "echo_archives",
+        "name": "Echo Archives Public Library",
+        "description": "A three-story library with wooden floors."
+    },
+    {
+        "id": "ether_baths",
+        "name": "Ether Baths Spa",
+        "description": "A day spa located near the city plaza."
+    },
+    {
+        "id": "iron_resolve_gym",
+        "name": "Iron Resolve Gym",
+        "description": "A no-nonsense training facility."
+    },
+    {
+        "id": "link_city_arena",
+        "name": "Link City Arena",
+        "description": "A colossal stadium of steel and light."
+    },
+    {
+        "id": "linkgate_mall",
+        "name": "LinkGate Mall",
+        "description": "The buzzing shopping mall in Link City."
+    },
+    {
+        "id": "linkside_estate",
+        "name": "Linkside Estate (User Loft)",
+        "description": "A modest but well-kept apartment assignd to new residents of Link City."
+    },
+    {
+        "id": "linkview_cuisine",
+        "name": "LinkView Cuisine",
+        "description": "A high-tier restaurant on the top floor of Skylink Tower."
+    },
+    {
+        "id": "midline_residences",
+        "name": "Midline Residences",
+        "description": "Standard residential housing designed for efficiency."
+    },
+    {
+        "id": "neon_nights",
+        "name": "Neon Nights Club",
+        "description": "Violet-crimson neon, pulsing bass."
+    },
+    {
+        "id": "neon_span_bridge",
+        "name": "Neon Span Bridge",
+        "description": "A massive suspension bridge."
+    },
+    {
+        "id": "northway_flats",
+        "name": "Northway Flats",
+        "description": "Low-rise apartments tucked away."
+    },
+    {
+        "id": "obsidian_proving_grounds",
+        "name": "Obsidian Proving Grounds",
+        "description": "A brutal training facility."
+    },
+    {
+        "id": "pixel_den",
+        "name": "The Pixel Den Arcade",
+        "description": "A sprawling cyberpunk arcade."
+    },
+    {
+        "id": "rooftop_lounge",
+        "name": "The Rooftop Lounge",
+        "description": "A quiet escape above the smog."
+    },
+    {
+        "id": "scenic_overlook",
+        "name": "Scenic Overlook",
+        "description": "A high vantage point on the outskirts of Link City, offering a breathtaking view of the neon skyline."
+    },
+    {
+        "id": "shadowed_archives",
+        "name": "The Shadowed Archives",
+        "description": "A darker, more gothic wing of the library."
+    },
+    {
+        "id": "skylink_apartments",
+        "name": "Skylink Tower Residences",
+        "description": "Mid-tier apartments within Skylink Tower."
+    },
+    {
+        "id": "skylink_tower",
+        "name": "Skylink Tower",
+        "description": "A massive, opulent building in the center of Link City."
+    },
+    {
+        "id": "soul_plaza",
+        "name": "Soul Plaza",
+        "description": "The beating heart of the city."
+    },
+    {
+        "id": "stop_n_go",
+        "name": "Stop n Go Racetrack",
+        "description": "The smell of burning rubber and ozone."
+    },
+    {
+        "id": "the_garden",
+        "name": "Link City Botanical Garden",
+        "description": "A bio-dome of engineered tranquility."
+    },
+    {
+        "id": "twilight_park",
+        "name": "Twilight Park",
+        "description": "A small urban park wedged between residential blocks."
+    },
+    {
+        "id": "umbral_exchange",
+        "name": "The Umbral Exchange",
+        "description": "A hidden market."
+    },
+    {
+        "id": "zenith_lounge",
+        "name": "The Zenith Rooftop Lounge",
+        "description": "A sleek rooftop bar."
+    }
+]

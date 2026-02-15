@@ -1,0 +1,66 @@
+{
+    "location_id": "rooftop_lounge",
+    "meta": {
+        "display_name": "The Rooftop Lounge",
+        "category": "nightlife",
+        "subcategory": "general",
+        "description": "A quiet escape above the smog.",
+        "image_url": "/assets/images/locations/the_rooftop_lounge_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Perched atop a gleaming skyscraper, the Rooftop Lounge offers a tranquil retreat from Link City's chaos. Warm ambient lighting glows along sleek glass railings, and the faint scent of citrus cocktails and aged oak fills the air. A soft breeze carries the distant hum of the city below, while jazz and chill electronic tracks play discreetly from hidden speakers.",
+        "crowd_atmosphere": "The crowd here is intimate and composed. Guests are often business elites, artists, or city residents seeking a serene evening. Conversations are quiet and thoughtful. Some lean against the railing watching the neon skyline, while others sit at cozy alcoves sharing drinks in hushed tones.",
+        "activities": [
+            "Sip craft cocktails while overlooking the cityscape.",
+            "Attend exclusive evening events and social mixers.",
+            "Relax in private alcoves with ambient lighting and music.",
+            "Engage in low-key networking or casual conversations.",
+            "Reserve rooftop cabanas for semi-private gatherings."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Patrons are expected to respect personal space and maintain subdued conversation.",
+        "seasonal_variations": {
+            "frostlink": "Heaters glow orange against the twilight. Patrons wrap themselves in provided thermal blankets, sipping hot spiced cocktails while watching the frozen city.",
+            "surgespring": "The air is crisp and filled with the scent of ozone and blooming rooftop gardens. The wind carries a sense of renewal and possibility.",
+            "burnseason": "Misting fans create a cool oasis above the sweltering streets. Ice-cold drinks are mandatory, and the lounge is packed until dawn.",
+            "shadowfall": "The autumn haze turns the sunset into a spectacular display of purple and gold. The mood is melancholic and romantic."
+        },
+        "weather_variations": {
+            "snow_heavy": "The retractable glass walls slide shut, turning the lounge into a warm snow globe. The silent falling snow muffles the city lights.",
+            "electromagnetic_storm": "Patrons gather at the edge to watch lightning strike the nearby towers. The air smells of ozone, and the hair on your arms stands up.",
+            "heatwave": "The night air provides welcome relief from the day's heat. The breeze at this altitude makes the lounge the most comfortable spot in the city.",
+            "rain_acid": " The glass enclosure creates a cozy, safe space while acidic rain streaks the panels, distorting the neon city below."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "evening",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "The Rooftop Lounge was established in 2043 to offer a refined, elevated nightlife experience. Designed to contrast the frenetic energy of the streets below, it quickly became a favored spot for reflective evenings and exclusive gatherings.",
+        "secrets": "Certain private areas are reserved for VIPs who possess coded access cards. Rumor has it that some guests conduct discreet meetings here that can influence city politics and corporate decisions."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "openness": 1.4
+        }
+    }
+}

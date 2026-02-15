@@ -1,0 +1,69 @@
+{
+    "location_id": "scenic_overlook",
+    "meta": {
+        "display_name": "Scenic Overlook",
+        "category": "landmark",
+        "subcategory": "general",
+        "description": "A high vantage point on the outskirts of Link City, offering a breathtaking view of the neon skyline.",
+        "image_url": "/assets/images/locations/scenic_overlook_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Perched on the edge of Link City's outskirts, the Scenic Overlook offers a commanding view of the neon-lit skyline. The wind is crisp, carrying a faint tang of ozone. The soft hum of distant traffic vibrates subtly through the ground, while the city lights stretch endlessly like circuits of pulsing color. Twilight and night bring an ethereal glow, perfect for reflection or quiet companionship.",
+        "crowd_atmosphere": "Visitors here are sparse and contemplative. Some sit alone on benches or ledges, sketching or recording thoughts, while others arrive in pairs, quietly sharing the view. It is a place of calm observation, with little noise beyond the ambient city hum.",
+        "activities": [
+            "Observe the city’s neon skyline and digital nightscape.",
+            "Meditate or reflect on personal goals and thoughts.",
+            "Sketch or photograph the view for artistic purposes.",
+            "Have intimate, quiet conversations at the edge of the overlook.",
+            "Trace patterns in the city's architecture and grid from above."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Visitors are expected to maintain contemplative silence and respect the solitude of others.",
+        "seasonal_variations": {
+            "frostlink": "The air is crystal clear and biting cold. The city lights twinkle with a sharpness only seen in winter. Visitors don't linger long.",
+            "surgespring": "Wind whips across the overlook, carrying scents of distant rain and wet pavement. The city below looks like a circuit board coming online.",
+            "burnseason": "Heat haze shimmers over the city during the day, softening the hard edges of the skyscrapers. At night, the view is sultry and still.",
+            "shadowfall": "Dead leaves swirl around the benches. The view is often obscured by low-hanging smog or fog, making the city feel distant and dreamlike."
+        },
+        "weather_variations": {
+            "snow_light": "The sounds of the city are dampened to a hush. The overlook feels completely isolated, a white void above the world.",
+            "thunderstorm": "You can see the rain sweeping across the city blocks like a curtain. Lightning strikes illuminate the grid in brief, blinding flashes.",
+            "heatwave": "The concrete railing is warm to the touch even at night. The city below glows like an ember.",
+            "fog": "The city is invisible, a glowing diffuse floor beneath a sea of gray. It feels like floating in a cloud."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "required_item": null
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "A favored spot for poets, dreamers, and city romantics. Many claim that observing the skyline from here reveals hidden patterns in the urban grid, believed to be left by the Architect during Link City's initial design.",
+        "secrets": "Beneath the bench at the far north corner, initials and small messages are carved into the wood—tokens left by those who wanted to leave a trace of themselves in the city. Some say reading them brings insight into past visitors’ intentions and thoughts."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "inspiration": 1.5,
+            "serenity": 1.4
+        }
+    }
+}

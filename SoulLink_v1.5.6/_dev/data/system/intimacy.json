@@ -1,0 +1,62 @@
+{
+    "intimacy_id": "intimacy_system_config",
+    "version": "1.5.5",
+    "tiers": [
+        {
+            "id": "STRANGER",
+            "display_name": "Stranger",
+            "score_range": [
+                0,
+                35
+            ],
+            "access_level": "low",
+            "romance_unlocked": false,
+            "can_visit_home": false,
+            "default_affection_mod": 0.8,
+            "description": "Baseline interaction level. Minimal access."
+        },
+        {
+            "id": "TRUSTED",
+            "display_name": "Trusted",
+            "score_range": [
+                36,
+                85
+            ],
+            "access_level": "medium",
+            "romance_unlocked": true,
+            "can_visit_home": false,
+            "default_affection_mod": 1.2,
+            "description": "Friendship and shared interests unlocked."
+        },
+        {
+            "id": "SOUL_LINKED",
+            "display_name": "Soul Linked",
+            "score_range": [
+                86,
+                100
+            ],
+            "access_level": "high",
+            "romance_unlocked": true,
+            "can_visit_home": true,
+            "default_affection_mod": 1.5,
+            "description": "Endgame vulnerability and devotion."
+        }
+    ],
+    "mechanics": {
+        "xp_gain": {
+            "base_per_message": 1,
+            "sentiment_weight": 0.5,
+            "quality_modifiers": {
+                "short_response": 0.5,
+                "thoughtful_response": 1.5,
+                "deep_emotional_response": 2.0
+            },
+            "daily_cap": 50
+        },
+        "decay": {
+            "enabled": true,
+            "rate_per_day": -1,
+            "grace_period_days": 3
+        }
+    }
+}

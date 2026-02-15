@@ -1,0 +1,69 @@
+{
+    "location_id": "neon_span_bridge",
+    "meta": {
+        "display_name": "Neon Span Bridge",
+        "category": "landmark",
+        "subcategory": "general",
+        "description": "A massive suspension bridge.",
+        "image_url": "/assets/images/locations/neon_span_bridge_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The Neon Span Bridge stretches across the river like a ribbon of glowing cables. Steel beams are outlined with soft neon accents, and the wet pavement reflects the city lights below. The wind whistles through the suspension towers, carrying faint scents of rain and ozone.",
+        "crowd_atmosphere": "Pedestrians stroll along the bridge at all hours, some stopping to photograph the view while others jog or cycle. Tourists and locals intermingle, though the bridge retains a sense of openness and quiet majesty. At night, it feels ethereal and slightly isolated.",
+        "activities": [
+            "Walk or jog across the span while admiring Link City’s skyline.",
+            "Photograph the neon-lit towers and city below.",
+            "Observe boats passing under the bridge.",
+            "Meet contacts discreetly at designated observation points.",
+            "Use the bridge as a shortcut connecting key districts of the city."
+        ],
+        "interaction_rules": "Privacy Level: Public. All activities are visible to passersby; discretion is limited at peak times.",
+        "seasonal_variations": {
+            "frostlink": "The cables are coated in a thin layer of ice that shimmers in the neon light. The wind bite is fierce, keeping pedestrians moving quickly.",
+            "surgespring": "Mist from the river mingles with the neon, creating an ethereal, cyberpunk glow. The bridge feels alive with electric potential.",
+            "burnseason": "Heat shimmers off the asphalt during the day. At night, it becomes a popular spot for cooling breezes off the water.",
+            "shadowfall": "Fog often rolls in, obscuring the ends of the bridge. The lights create halos in the mist, perfect for moody, clandestine meetings."
+        },
+        "weather_variations": {
+            "snow_heavy": "Traffic slows to a crawl. The bridge is a white ribbon in the darkness, beautiful but treacherous.",
+            "electromagnetic_storm": "Lightning strikes the towers, grounding harmlessly but spectacularly. The view of the city under the storm is unmatched.",
+            "heatwave": "The bridge is empty at noon but packed at midnight with people seeking the river breeze.",
+            "rain_acid": "Pedestrians vanish. The neon reflects distorted and oily on the wet, chemical-slicked pavement."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "home_time"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Completed in 2042, the Neon Span Bridge was one of Link City's largest engineering projects, designed to ease traffic while providing a visually stunning landmark connecting the downtown and arts districts.",
+        "secrets": "Certain maintenance catwalks beneath the bridge are off-limits to the public. Urban explorers whisper of hidden nooks where street artists leave cryptic neon murals, only visible after dark."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "isolation": 1.5
+        }
+    }
+}

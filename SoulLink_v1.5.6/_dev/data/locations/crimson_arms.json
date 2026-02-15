@@ -1,0 +1,68 @@
+{
+    "location_id": "crimson_arms",
+    "meta": {
+        "display_name": "Crimson Arms Apartments",
+        "category": "residential",
+        "subcategory": "general",
+        "description": "A crumbling mid-rise on the edge of the Arts District.",
+        "image_url": "/assets/images/locations/crimson_arms_apartments_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Crimson Arms rises in faded brick and peeling paint, its exterior stained by years of rain and neglect. Rusted balcony railings lean slightly outward, and a flickering hallway light near the entrance casts an uneven glow over chipped concrete steps. The air smells faintly of damp plaster, old cooking oil, and cigarette smoke. Inside, narrow corridors echo with distant footsteps and muffled music from behind thin walls.",
+        "crowd_atmosphere": "Residents are artists, gig workers, night-shift laborers, and those priced out of safer districts. Morning (06-12) feels subdued, curtains drawn and hallways quiet. Afternoon (12-18) brings movement — canvases carried downstairs, instruments tuned, arguments through walls. Evening (18-22) carries low music and balcony conversations. Night (22-04) feels heavier: insomnia, quiet sadness, whispered creativity, and occasional volatility.",
+        "activities": [
+            "Visit a resident if invited.",
+            "Sit on the rooftop and overlook the Arts District skyline.",
+            "Listen to live music drifting from an apartment gathering.",
+            "Leave anonymous notes on the communal notice board.",
+            "Observe subtle tensions between long-term tenants and newcomers."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Exterior and common areas accessible; apartment entry requires invitation or narrative justification.",
+        "seasonal_variations": {
+            "frostlink": "The building's aging heating system struggles. Residents layer blankets and huddle near space heaters. Ice forms on the rusted balconies.",
+            "surgespring": "Spring brings renewed creative energy. Windows open, music drifts between apartments, and the rooftop becomes a gathering space.",
+            "burnseason": "The lack of AC makes apartments unbearable during the day. Residents escape to the rooftop at night, creating impromptu social gatherings.",
+            "shadowfall": "The building takes on a melancholic beauty. Amber light through dirty windows creates an artistic, contemplative atmosphere."
+        },
+        "weather_variations": {
+            "snow_heavy": "The building becomes isolated. Residents share resources and gather in common areas, creating unexpected community bonds.",
+            "thunderstorm": "Leaks appear in several apartments. Residents scramble with buckets while lightning illuminates the building dramatically.",
+            "heatwave": "The building is nearly uninhabitable during the day. Residents flee to air-conditioned public spaces or suffer through the oppressive heat.",
+            "clear_cool": "Perfect weather brings everyone to the rooftop. The building feels alive with music, conversation, and creative energy."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Crimson Arms was originally built during Link City's early cultural expansion, intended as affordable housing for artists and municipal contractors. Over time, funding shifted elsewhere, maintenance slowed, and the building declined. Despite its deterioration, it became a quiet sanctuary for creators who couldn’t afford the polished districts.",
+        "secrets": "A sealed maintenance stairwell on the upper floors leads to a section of rooftop access not shown on official plans. Some residents claim that one apartment — officially condemned — still has power and network access despite being listed as uninhabitable. The communal basement storage room contains forgotten canvases, broken instruments, and at least one locked trunk no one admits owning."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "melancholy": 1.3
+        }
+    }
+}

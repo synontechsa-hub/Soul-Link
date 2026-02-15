@@ -1,0 +1,68 @@
+{
+    "location_id": "shadowed_archives",
+    "meta": {
+        "display_name": "The Shadowed Archives",
+        "category": "cultural",
+        "subcategory": "general",
+        "description": "A darker, more gothic wing of the library.",
+        "image_url": "/assets/images/locations/the_shadowed_archives_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Dim, ambient lighting casts long shadows along towering bookshelves. The scent of aged paper and polished wood is pervasive. A faint chill lingers, and the echo of footsteps is unusually pronounced, giving the space a solemn, reverent atmosphere.",
+        "crowd_atmosphere": "Visitors here move cautiously and quietly, whispering softly as they navigate the stacks. Scholars hunched over rare tomes, archivists scanning manuscripts, and occasional curious readers create an air of intense concentration.",
+        "activities": [
+            "Study rare manuscripts and historic documents.",
+            "Research esoteric topics in hushed solitude.",
+            "Catalogue or archive rare books under supervision.",
+            "Trace hidden passages or alcoves tucked behind shelves.",
+            "Attend exclusive guided readings or lectures."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Whispering and discretion are expected; no loud conversations or casual socializing.",
+        "seasonal_variations": {
+            "frostlink": "Drafts chill the aisles, causing scholars to huddle in their coats. The smell of old paper is crisp. The silence feels frozen and absolute.",
+            "surgespring": "Dust motes dance in the few shafts of sunlight. The archives feel slightly less oppressive, as if the weight of history has lightened.",
+            "burnseason": "The archives are a cool, stone sanctuary. The thick walls keep the heat out completely. It smells of cool dust and preservation chemicals.",
+            "shadowfall": "The shadows seem to lengthen and deepen. It is the perfect atmosphere for uncovering dark secrets. The air is still and heavy."
+        },
+        "weather_variations": {
+            "snow_heavy": "The world outside ceases to exist. There is only the archive and its secrets. The silence is profound.",
+            "thunderstorm": "Thunder rumbles deep in the earth, vibrating through the stone floor. It feels like the building itself is growling.",
+            "heatwave": "While cool, the air feels stagnant and old. The ventilation struggles to move heavy air through the stacks.",
+            "rain_steady": "The sound of rain is a distant, comforting drone, encouraging hours of uninterrupted study."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": false
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "evening"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "required_item": null
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "The Shadowed Archives were added as a secluded wing to house the library's oldest and most delicate collections. Over time, it has become a haven for scholars, historians, and those pursuing knowledge that is rarely sought.",
+        "secrets": "Some alcoves contain manuscripts rumored to alter perception when read at night. Archivists whisper that hidden ledgers document events that never appear in official city records."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "mystery": 1.5,
+            "focus": 1.4
+        }
+    }
+}

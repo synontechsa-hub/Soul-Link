@@ -1,0 +1,53 @@
+🦾 SoulLink v1.5.4: Monetization & Ad Summary
+
+The "Link Stability" System (Core UX)
+
+Narrative-themed status bar instead of hard "Out of Energy" wall.
+
+Concept: "Link Stability" or "Signal Strength" bar in Chat UI.
+
+Mechanic: Heavy chatting degrades signal (tokens used).
+
+Ad Trigger: Low signal prompts soul to suggest a "Diagnostic Check" or "Signal Boost."
+
+Reward: Watching a rewarded video ad restores signal to 100%, allowing continued chat without a paywall.
+
+"Billboards of Link City" (Native/Map Ads)
+
+Ads integrated into the vector world map.
+
+Concept: Specific map tiles act as sponsored "billboards" or "terminals."
+
+Mechanic: Neon signs for in-universe brands (e.g., "Neo-Cola" or "Link-Net").
+
+Reward: Interacting provides small, non-essential perks for avatar or apartment.
+
+The "Time-Skip Interstitial" (Natural Pauses)
+
+Leverages Turn-Based Time Slot system.
+
+Concept: Ads during "Bed" transition (End Turn).
+
+Mechanic: Clicking Bed to advance time plays a short interstitial ad during fade/loading.
+
+Why it works: Mimics a commercial break or loading screen, less jarring than interrupting live chat.
+
+The "Opt-In" Apartment TV
+
+Concept: TV object in user's home base.
+
+Mechanic: Voluntary way to "farm" credits/tokens.
+
+Vibe: Users can let ads run while idle to build a token buffer for later use.
+
+Premium Tier: "The High-Stability Link"
+
+Monthly subscription for power users.
+
+No Ads: Removes banners and transition ads.
+
+Priority Processing: Access to advanced models (e.g., Gemini Pro) for richer dialogue.
+
+Expanded Memory: Larger context windows for long-term soul memory.
+
+Fair Play: NSFW/adult content unlocks remain free, but Premium may reach higher-quality dialogue slightly faster.

@@ -1,0 +1,69 @@
+{
+    "location_id": "northway_flats",
+    "meta": {
+        "display_name": "Northway Flats",
+        "category": "residential",
+        "subcategory": "general",
+        "description": "Low-rise apartments tucked away.",
+        "image_url": "/assets/images/locations/northway_flats_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Northway Flats consists of modest low-rise buildings, their brick facades softened by creeping ivy and small landscaped courtyards. The smell of laundry and cooking drifts from open windows. The faint hum of air conditioners and distant city traffic creates a subdued urban background.",
+        "crowd_atmosphere": "Residents move at their own pace—morning commutes, children playing in the courtyards, neighbors chatting near the stairwells. The vibe is relaxed, with a sense of community, though moments of quiet solitude are plentiful.",
+        "activities": [
+            "Walk through the courtyards and enjoy the small gardens.",
+            "Observe daily routines of residents from public areas.",
+            "Visit shared laundry or recreation rooms.",
+            "Engage with locals at the front entrance or mail area.",
+            "Access nearby convenience stores and street vendors."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Respectful observation is allowed; personal interiors require invitation.",
+        "seasonal_variations": {
+            "frostlink": "Snow caps the ivy on the brick facades. The courtyards are quiet, save for the crunch of boots on frozen paths.",
+            "surgespring": "Window boxes overflow with genetically engineered blooms. The courtyards are busy with residents enjoying the mild air.",
+            "burnseason": "Fans whir in every window. Residents sit on stoops and in shaded courtyard corners until late at night.",
+            "shadowfall": "Dead leaves scatter across the brick pathways. The complex feels settled and cozy, a true home against the encroaching dark."
+        },
+        "weather_variations": {
+            "snow_heavy": "The flats look like a vintage postcard. Residents help each other clear paths, strengthening community bonds.",
+            "thunderstorm": "Puddles form in the uneven courtyard pavement. The brick walls darken with rain, feeling protective and solid.",
+            "heatwave": "The brick absorbs heat, keeping the flats warm into the night. Water fights break out in the courtyard among the younger residents.",
+            "fog": "The low-rise buildings seem to disappear into the gray. Sounds are muffled, creating a sense of isolation."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "home_time"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Built in 2035, Northway Flats was part of an affordable housing initiative to accommodate city workers and young professionals. Despite its age, many of the buildings remain well-maintained and popular among long-term residents.",
+        "secrets": "Some residents have unofficial rooftop gardens, hidden from public view. Occasional whispered stories speak of old service tunnels connecting the blocks, remnants of early city infrastructure."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "calm": 1.4
+        }
+    }
+}

@@ -1,0 +1,111 @@
+{
+    "time_id": "time_system_config",
+    "version": "1.5.5",
+    "time_slots": [
+        {
+            "id": "morning",
+            "range": "06:00-12:00",
+            "display_name": "Morning",
+            "lighting": "soft_dawn",
+            "crowd_density": "low",
+            "energy_mod": 1.0,
+            "intimacy_mod": 1.0
+        },
+        {
+            "id": "afternoon",
+            "range": "12:00-18:00",
+            "display_name": "Afternoon",
+            "lighting": "bright_daylight",
+            "crowd_density": "high",
+            "energy_mod": 1.0,
+            "intimacy_mod": 1.0
+        },
+        {
+            "id": "evening",
+            "range": "18:00-22:00",
+            "display_name": "Evening",
+            "lighting": "neon_glow",
+            "crowd_density": "medium",
+            "energy_mod": 1.1,
+            "intimacy_mod": 1.2
+        },
+        {
+            "id": "night",
+            "range": "22:00-04:00",
+            "display_name": "Night",
+            "lighting": "dark_neon",
+            "crowd_density": "low",
+            "energy_mod": 1.2,
+            "intimacy_mod": 1.4
+        },
+        {
+            "id": "home_time",
+            "range": "04:00-06:00",
+            "display_name": "Late Night / Home",
+            "lighting": "pre_dawn",
+            "crowd_density": "minimal",
+            "energy_mod": 0.8,
+            "intimacy_mod": 1.5
+        }
+    ],
+    "days_of_week": {
+        "monday": {
+            "type": "weekday",
+            "traffic": "high"
+        },
+        "tuesday": {
+            "type": "weekday",
+            "traffic": "high"
+        },
+        "wednesday": {
+            "type": "weekday",
+            "traffic": "high"
+        },
+        "thursday": {
+            "type": "weekday",
+            "traffic": "high"
+        },
+        "friday": {
+            "type": "weekday",
+            "traffic": "very_high",
+            "vibe": "party_night"
+        },
+        "saturday": {
+            "type": "weekend",
+            "traffic": "very_high",
+            "vibe": "leisure"
+        },
+        "sunday": {
+            "type": "weekend",
+            "traffic": "medium",
+            "vibe": "rest"
+        }
+    },
+    "calendar_integration": {
+        "enabled": true,
+        "calendar_file": "calendar.json",
+        "seasonal_modifiers_stack": true,
+        "description": "Time slots work in conjunction with seasonal effects from the calendar system."
+    },
+    "weather_integration": {
+        "enabled": true,
+        "weather_file": "weather.json",
+        "weather_modifiers_stack": true,
+        "description": "Weather effects stack with time slot and seasonal modifiers for rich atmospheric variation."
+    },
+    "modifier_stacking_order": [
+        "base_time_slot",
+        "seasonal_modifier",
+        "weather_modifier"
+    ],
+    "progression_rules": {
+        "trigger": "user_sleep",
+        "advancement": "next_slot",
+        "day_change_slot": "home_time",
+        "description": "Time advances when the user chooses to 'sleep' or 'wait'. The day rolls over after 'home_time'."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-12"
+    }
+}

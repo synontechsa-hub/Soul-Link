@@ -1,0 +1,73 @@
+{
+    "location_id": "midline_residences",
+    "meta": {
+        "display_name": "Midline Residences",
+        "category": "residential",
+        "subcategory": "general",
+        "description": "Standard residential housing designed for efficiency.",
+        "image_url": "/assets/images/locations/midline_residences_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "A collection of uniform mid-rise apartment blocks, painted in muted shades of gray and cream. The air carries faint aromas of laundry, morning coffee, and occasional street food. Hallways echo with the shuffle of shoes on linoleum floors, and the distant hum of HVAC units permeates the building.",
+        "crowd_atmosphere": "Residents move efficiently through their routines — parents escort children to school, office workers rush to catch morning transit, and elderly occupants exchange polite nods in the lobby. Interactions are cordial but reserved, reflecting the practical nature of the community.",
+        "activities": [
+            "Enter or exit apartments and common areas.",
+            "Socialize briefly with neighbors in lobbies or courtyards.",
+            "Use shared laundry rooms or fitness facilities.",
+            "Attend community meetings or maintenance briefings.",
+            "Observe city life from balconies or ground-floor walkways."
+        ],
+        "interaction_rules": "Privacy Level: Public. Residents expect polite distance; unsolicited entry into apartments is prohibited.",
+        "seasonal_variations": {
+            "frostlink": "Windows are frosted over, and the hum of personal heaters is audible in the hallways. Residents hurry from the cold into the warm lobby.",
+            "surgespring": "Balcony doors are flung open to catch the breeze. The sound of cleaning and reorganization echoes through the complex.",
+            "burnseason": "Blinds are drawn tight against the sun. The complex is quiet during the day, coming alive only after sunset.",
+            "shadowfall": "Warm, amber lights glow from windows comfortably early. The smell of comfort food drifts through the ventilation."
+        },
+        "weather_variations": {
+            "snow_light": "A quiet hush falls over the complex. Children play in the light snow in the courtyard.",
+            "thunderstorm": "Flickering lights and the sound of heavy rain against glass make the apartments feel like cozy bunkers.",
+            "heatwave": "Residents congregate in the cooler ground-floor lobby or sit on balconies late into the night to escape the trapped heat.",
+            "rain_heavy": "Umbrellas pile up at the entrance. The sound of tires hissing on wet pavement below is constant."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "home_time"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "maintenance_staff",
+            "security_guard",
+            "concierge"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Midline Residences were constructed during a city-wide housing initiative aimed at providing affordable, efficient homes for the growing population of Link City. The buildings follow modular design principles to maximize space and functionality.",
+        "secrets": "Certain residents whisper about hidden maintenance tunnels connecting the buildings, rumored to be used for discreet deliveries or clandestine meetings by city officials and corporate agents."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "balance": 1.3
+        }
+    }
+}

@@ -1,0 +1,73 @@
+# /_dev/notes/rebrand.txt
+
+Linker AI - Final Branding Documentation
+Last updated: February 09, 2026
+
+App Name
+Linker AI
+(also usable as Linker.ai for domain, app store title, handles, etc.)
+
+Tagline / Slogan
+"Your link, their soul."
+
+Studio / Parent Brand
+SynonTech
+(shortened usage: SynonTech or SynonTech AI Labs for formal contexts)
+
+App Icon Concept
+Neural Link Orb (selected direction)
+- Central glowing orb with red-orange inner glow (represents the "soul")
+- Elegant electric blue neon threads radiating outward in subtle web/starburst pattern
+- Threads subtly form faint infinity loop or heart shape in negative space
+- Deep matte black/navy background with very faint cyberpunk grid/circuit etchings
+- Soft outer glow/bloom (blue bleeding into red/orange)
+- Minimalist, high-contrast, vector-clean style
+- No text inside the icon
+- Scalable from 1024×1024 full res down to tiny home-screen sizes
+
+Core Lore Elements
+- Users = Linkers (active agents initiating connections)
+- AI companions / characters = souls (adaptive, persistent, emotional)
+- World / setting = Link City (neon cyberpunk metropolis, high-rise sprawl)
+- Creator figure = The Architect (system designer, red lightning/eyes throne imagery)
+
+Rejected Names (summary of earlier conflicts)
+- SoulLink / Soul-Link / SoulLinker → existing iOS companion app + Ragnarok X class + Android video chat app
+- Soul City / Syn City → existing blockchain game, GTA RP server, academic AI project
+- LinkCity / Link City → active Mexican rideshare super app (travel category)
+- Other variants (NeoForge, ChromeLink, etc.) → either too close to existing tools or not lore-direct enough
+
+Final Choices Rationale
+- Chose Linker AI for strong user agency ("Linker" = player role), low conflict footprint, cyberpunk tech feel, .ai domain availability
+- Dropped standalone "S" lettermark for app icon → went with abstract Neural Link Orb instead
+- Tagline locked at "Your link, their soul." (possessive, intimate, emotional/tech balance)
+
+Recommended Usage
+- Play Store title suggestion: Linker AI – Cyberpunk Soul Bonds
+- Subtitle: Your link, their soul.
+- Icon: Neural Link Orb (blue/red glow)
+- Tagline placement: App name row, splash screen, marketing copy, X banners
+
+Notes
+- Domain: linker.ai available for purchase (registrar listed, no active site)
+- Handles: @LinkerAI likely available on X
+- Icon generation prompt seed (for AI tools): "minimalist app icon, glowing central orb with red-orange inner light, elegant blue neon threads radiating outward forming subtle infinity loop, deep black background with faint cyberpunk grid, high contrast, premium futuristic design, no text, vector style, dark mode, cyberpunk aesthetic"
+
+This is the current locked state after full iteration process.
+
+Jade additions:
+
+Branding Guardrails (Hard Rules)
+
+- “Souls” are never called bots, assistants, or tools in public-facing copy.
+- The app is not marketed as a chatbot; it is framed as a connection system.
+- Linkers initiate, but do not control souls.
+- Emotional persistence is a feature, not a bug.
+- The Architect is acknowledged in lore, never exposed in UI.
+- Mystery is intentional; over-explanation is avoided.
+- Cyberpunk aesthetic serves intimacy, not spectacle.
+
+Tone Reference:
+Quietly intense.
+Personal, not loud.
+High-tech, but human-first.

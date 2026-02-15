@@ -1,0 +1,72 @@
+{
+    "location_id": "city_planetarium",
+    "meta": {
+        "display_name": "City Planetarium",
+        "category": "landmark",
+        "subcategory": "general",
+        "description": "A massive projection dome simulating the cosmos.",
+        "image_url": "/assets/images/locations/city_planetarium_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The City Planetarium rises as a smooth, silver-white dome against the skyline, its curved surface reflecting the city lights like a distant moon. Inside, the vast projection chamber envelops visitors in a seamless artificial cosmos. During Morning, soft guided narrations accompany slow rotations of simulated star fields. Afternoon shows are brighter and more educational, mapping constellations and planetary systems in stunning clarity. By Evening, the dome darkens fully, and galaxies bloom across the ceiling in breathtaking silence.",
+        "crowd_atmosphere": "Morning brings students and quiet explorers, voices hushed in reverence. Afternoon fills with families, tourists, and academic groups engaged in discussion. Evening feels slower and more contemplative — couples, thinkers, and solitary visitors reclining beneath digital starlight. The atmosphere is calm, introspective, and faintly awe-struck.",
+        "activities": [
+            "Attend immersive cosmic projection shows and narrated star tours.",
+            "Recline beneath simulated galaxies in quiet reflection.",
+            "Participate in educational workshops or astronomy lectures.",
+            "Observe rare astronomical simulations not visible from the real sky.",
+            "Engage in thoughtful conversation beneath the artificial cosmos."
+        ],
+        "interaction_rules": "Privacy Level: Public. Respectful silence expected during projections.",
+        "seasonal_variations": {
+            "frostlink": "Winter shows feature ice planets and frozen nebulae. The contrast between cold outside and cosmic warmth inside is profound.",
+            "surgespring": "Spring shows emphasize stellar birth and cosmic renewal. The season's energy translates into shows about creation and new beginnings.",
+            "burnseason": "Summer shows focus on burning stars and solar phenomena. The cool dome provides perfect refuge from the heat outside.",
+            "shadowfall": "Autumn shows explore dark matter and the void between stars. The contemplative season pairs perfectly with cosmic mystery."
+        },
+        "weather_variations": {
+            "snow_heavy": "The planetarium is packed with people seeking shelter and wonder. Snow on the dome's exterior creates a beautiful contrast with stars inside.",
+            "clear_cool": "Perfect weather means the dome can open its observation deck. Real stars complement the projected cosmos.",
+            "electromagnetic_storm": "The storm causes spectacular effects on the dome's exterior. Inside, shows incorporate the real electrical phenomenon into cosmic displays.",
+            "data_rain": "The rare phenomenon is incorporated into special shows. Projections blend real data streams with cosmic simulations."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "evening"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "astronomy_guide",
+            "projection_technician",
+            "research_assistant",
+            "event_coordinator"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "The City Planetarium was commissioned during a period of civic renewal, intended to remind Link City's citizens that their ambitions extended beyond corporate towers. Built with state-of-the-art projection arrays and astrophysical simulation engines, it quickly became both an educational hub and a quiet refuge from the city’s intensity.",
+        "secrets": "Some claim the projection engine is capable of more than entertainment. Hidden programs allegedly simulate not just distant galaxies, but predictive cosmic models tied to deep-space signal research. A restricted control chamber beneath the dome is rumored to house experimental algorithms that analyze anomalous transmissions from beyond the solar system."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "wonder": 1.4
+        }
+    }
+}

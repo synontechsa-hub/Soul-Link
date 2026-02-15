@@ -1,0 +1,75 @@
+{
+    "location_id": "circuit_street",
+    "meta": {
+        "display_name": "Circuit Street",
+        "category": "commercial",
+        "subcategory": "general",
+        "description": "Rain-slick pavement and flickering holographic advertisements.",
+        "image_url": "/assets/images/locations/circuit_street_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Circuit Street stretches through the heart of Link City like a glowing artery. Rain-slick pavement reflects towering holographic advertisements that flicker between corporate propaganda and underground art. During Morning, delivery drones zip overhead while storefronts boot up their displays. Afternoon brings heavy foot traffic and constant movement. By Evening, neon intensifies and the street hum deepens. At Night, shadows lengthen beneath the holo-ads, and the city feels electric. During Home Time, mist rolls low across the pavement, and only a few determined figures remain in motion.",
+        "crowd_atmosphere": "Morning is transactional and brisk. Afternoon becomes dense and kinetic, filled with shoppers, couriers, street vendors, and performers. Evening shifts toward social energy — laughter, music leaking from open doorways, spontaneous gatherings. Night carries unpredictability: deals in alleyways, whispered negotiations, and volatile encounters. Home Time feels liminal — neither fully safe nor fully dangerous, just suspended.",
+        "activities": [
+            "Browse storefronts ranging from high-end tech boutiques to underground market stalls.",
+            "Watch or participate in spontaneous street performances.",
+            "Meet contacts in passing without drawing attention.",
+            "Accept short-term gigs or courier tasks from digital kiosks.",
+            "Explore side alleys that may lead to hidden sub-locations."
+        ],
+        "interaction_rules": "Privacy Level: Public. Highly dynamic environment influenced by time slot and day type.",
+        "seasonal_variations": {
+            "frostlink": "The street's neon reflects brilliantly off frost and ice. Steam rises from vents, and people move quickly between warm storefronts.",
+            "surgespring": "Electrical storms add drama to the street's already electric atmosphere. Power surges cause holographic ads to flicker spectacularly.",
+            "burnseason": "During the day, the street is quieter as heat shimmers off pavement. But at night, it explodes with activity as the city comes alive.",
+            "shadowfall": "The street takes on amber and purple tones. Data streams are occasionally visible in the air, adding to the season's mysterious atmosphere."
+        },
+        "weather_variations": {
+            "light_rain": "Rain creates the iconic cyberpunk aesthetic - neon reflecting off wet pavement. The street becomes even more visually stunning.",
+            "electromagnetic_storm": "Visible electrical arcs dance between buildings. The street becomes a spectacular, dangerous light show that draws crowds.",
+            "heatwave": "The street is nearly abandoned during the day, heat rising in visible waves. Evening brings explosive crowds seeking nightlife.",
+            "data_rain": "The rare phenomenon transforms the street into a mesmerizing spectacle. Crowds gather to watch data streams cascade like digital rain."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "home_time",
+            "twenty_four_hour_cycle": true
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "street_vendor",
+            "courier",
+            "performer",
+            "independent_technician"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Circuit Street predates most of Link City's corporate skyline. Originally a trade corridor for independent merchants and repair shops, it evolved alongside the city’s technological boom. As megacorporations rose, Circuit Street adapted rather than vanished — layering holographic advertising and digital kiosks over its old foundations. It remains one of the few districts where corporate presence and grassroots enterprise visibly collide.",
+        "secrets": "Certain holographic ads are rumored to be more than advertisements — encrypted signals embedded within their light patterns, readable only by those who know what to look for. Some alleys contain access points to hidden networks and invitation-only gatherings. On rare nights, entire storefronts appear where there were none the day before — and disappear just as quietly."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "mood_volatility": 1.2
+        }
+    }
+}

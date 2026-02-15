@@ -1,0 +1,72 @@
+LINK CITY LOCATION CATEGORIES BREAKDOWN
+For map UI, filtering, tooltips, search, and routine assignment.
+
+1. commercial (shopping, business, corporate districts)
+Description: Busy commercial areas with shops, offices, malls, and corporate towers — high foot traffic, ads, and professional energy.
+Locations:
+- apex_corporate_plaza: "A gleaming district of glass towers."
+- linkgate_mall: "The buzzing shopping mall in Link City."
+- circuit_street: "Rain-slick pavement, flickering holographic ads."
+
+2. residential (apartments, housing blocks)
+Description: Living spaces — from modest flats to high-rise towers — where souls rest and invite trusted Linkers.
+Locations:
+- civic_heights: "A practical residential block near municipal offices."
+- crimson_arms: "A crumbling mid-rise on the edge of the Arts District."
+- linkside_estate: "A modest but well-kept apartment assigned to new residents of Link City."
+- midline_residences: "Standard residential housing designed for efficiency."
+- northway_flats: "Low-rise apartments tucked away."
+- skylink_apartments: "Mid-tier apartments within Skylink Tower."
+
+3. nightlife (clubs, bars, underground venues)
+Description: Evening and late-night party scenes — pulsing bass, neon, crowds, and social energy.
+Locations:
+- dollhouse_dungeon: "A bar located in the basement level of Skylink Tower."
+- neon_nights: "Violet-crimson neon, pulsing bass."
+- zenith_lounge: "A sleek rooftop bar."
+
+4. landmark (iconic city features, views, bridges)
+Description: Iconic, high-visibility spots — towers, overlooks, bridges — often used for contemplation or lore teases.
+Locations:
+- neon_span_bridge: "A massive suspension bridge."
+- scenic_overlook: "A high vantage point on the outskirts of Link City, offering a breathtaking view of the neon skyline."
+- skylink_tower: "A massive, opulent building in the center of Link City."
+- soul_plaza: "The beating heart of the city."
+
+5. sports (gyms, arenas, racetracks)
+Description: Physical training, competition, and adrenaline — gyms, proving grounds, arenas.
+Locations:
+- iron_resolve_gym: "A no-nonsense training facility."
+- link_city_arena: "A colossal stadium of steel and light."
+- obsidian_proving_grounds: "A brutal training facility."
+- stop_n_go: "The smell of burning rubber and ozone."
+
+6. wellness (spas, gardens, parks)
+Description: Calm, restorative, contemplative spaces — nature, relaxation, recovery.
+Locations:
+- ether_baths: "A day spa located near the city plaza."
+- the_garden: "A bio-dome of engineered tranquility."
+- twilight_park: "A small urban park wedged between residential blocks."
+
+7. entertainment (arcades, fun venues)
+Description: High-energy leisure — arcades, gaming dens, entertainment hubs.
+Locations:
+- pixel_den: "A sprawling cyberpunk arcade."
+
+8. cultural (libraries, archives, planetariums)
+Description: Intellectual and artistic spaces — knowledge, contemplation, projection domes.
+Locations:
+- echo_archives: "A three-story library with wooden floors."
+- shadowed_archives: "A darker, more gothic wing of the library."
+- city_planetarium: "A massive projection dome simulating the cosmos."
+
+9. dining (restaurants, diners)
+Description: Eating and drinking spots — casual diners to upscale restaurants.
+Locations:
+- circuit_diner: "A 24-hour diner on Circuit Street."
+- linkview_cuisine: "A high-tier restaurant on the top floor of Skylink Tower."
+
+10. underground (hidden markets, shady areas)
+Description: Risky, secretive, or off-grid locations — black markets, hidden exchanges.
+Locations:
+- umbral_exchange: "A hidden market."

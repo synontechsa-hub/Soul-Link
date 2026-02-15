@@ -1,0 +1,577 @@
+{
+    "weather_id": "link_city_weather",
+    "version": "1.5.5",
+    "description": "Global randomized weather system for Link City with seasonal constraints and cyberpunk-themed weather types.",
+    "weather_types": [
+        {
+            "id": "clear_frost",
+            "display_name": "Clear Frost",
+            "description": "Clear skies with frost coating surfaces. Breath visible in cold air.",
+            "seasons": [
+                "frostlink"
+            ],
+            "probability_weight": 40,
+            "atmospheric_effects": {
+                "visibility": "clear",
+                "temperature_feel": "very_cold",
+                "visual_theme": "crisp_neon_on_frost",
+                "audio_theme": "muffled_quiet",
+                "crowd_behavior": "hurried_movement"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.85,
+                "indoor_energy_mod": 1.15,
+                "crowd_density_outdoor": 0.6,
+                "lighting_intensity": 1.3,
+                "intimacy_mod": 1.1
+            },
+            "llm_context": "The air is bitterly cold. Frost coats every surface, and neon signs reflect off icy windows. People move quickly between buildings, breath misting in the frigid air."
+        },
+        {
+            "id": "ice_fog",
+            "display_name": "Ice Fog",
+            "description": "Dense fog with ice crystals suspended in the air, reducing visibility.",
+            "seasons": [
+                "frostlink"
+            ],
+            "probability_weight": 25,
+            "atmospheric_effects": {
+                "visibility": "low",
+                "temperature_feel": "very_cold",
+                "visual_theme": "mysterious_ice_crystals",
+                "audio_theme": "muffled_distant",
+                "crowd_behavior": "cautious_slow"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.75,
+                "indoor_energy_mod": 1.2,
+                "crowd_density_outdoor": 0.4,
+                "lighting_intensity": 0.8,
+                "intimacy_mod": 1.3
+            },
+            "llm_context": "Thick ice fog blankets the city, ice crystals glittering in the diffused neon glow. Visibility is poor, and the cold penetrates deep. Most people stay indoors."
+        },
+        {
+            "id": "snow_light",
+            "display_name": "Light Snow",
+            "description": "Gentle snowfall creating a serene atmosphere with muffled sounds.",
+            "seasons": [
+                "frostlink"
+            ],
+            "probability_weight": 20,
+            "atmospheric_effects": {
+                "visibility": "moderate",
+                "temperature_feel": "cold",
+                "visual_theme": "snow_on_neon",
+                "audio_theme": "muffled_peaceful",
+                "crowd_behavior": "relaxed_indoor_preference"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.9,
+                "indoor_energy_mod": 1.1,
+                "crowd_density_outdoor": 0.7,
+                "lighting_intensity": 1.1,
+                "intimacy_mod": 1.2
+            },
+            "llm_context": "Light snow falls gently, accumulating on streets and rooftops. Neon signs create colorful halos in the falling snow. The city feels quieter, more peaceful."
+        },
+        {
+            "id": "snow_heavy",
+            "display_name": "Heavy Snow",
+            "description": "Heavy snowfall with low visibility and accumulating drifts.",
+            "seasons": [
+                "frostlink"
+            ],
+            "probability_weight": 10,
+            "atmospheric_effects": {
+                "visibility": "very_low",
+                "temperature_feel": "very_cold",
+                "visual_theme": "white_void",
+                "audio_theme": "silent_muffled",
+                "crowd_behavior": "shelter_seeking"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.6,
+                "indoor_energy_mod": 1.3,
+                "crowd_density_outdoor": 0.2,
+                "lighting_intensity": 0.7,
+                "intimacy_mod": 1.5
+            },
+            "llm_context": "Heavy snow blankets everything. Visibility is nearly zero, and the streets are empty. Only the glow of neon signs penetrates the white curtain. Everyone seeks shelter."
+        },
+        {
+            "id": "ice_storm",
+            "display_name": "Ice Storm",
+            "description": "Rare and dangerous ice accumulation causing system failures.",
+            "seasons": [
+                "frostlink"
+            ],
+            "probability_weight": 5,
+            "atmospheric_effects": {
+                "visibility": "low",
+                "temperature_feel": "extreme_cold",
+                "visual_theme": "ice_encrusted_danger",
+                "audio_theme": "cracking_ice_wind",
+                "crowd_behavior": "emergency_shelter"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.5,
+                "indoor_energy_mod": 1.4,
+                "crowd_density_outdoor": 0.1,
+                "lighting_intensity": 0.9,
+                "intimacy_mod": 1.6
+            },
+            "llm_context": "An ice storm grips the city. Ice accumulates on everything, power systems flicker and fail, and the streets are treacherous and abandoned. This is dangerous weather."
+        },
+        {
+            "id": "clear_electric",
+            "display_name": "Clear Electric",
+            "description": "Clear skies with an electrical charge in the air.",
+            "seasons": [
+                "surgespring"
+            ],
+            "probability_weight": 30,
+            "atmospheric_effects": {
+                "visibility": "clear",
+                "temperature_feel": "mild",
+                "visual_theme": "charged_vibrant",
+                "audio_theme": "faint_electrical_hum",
+                "crowd_behavior": "energetic"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 1.1,
+                "indoor_energy_mod": 1.0,
+                "crowd_density_outdoor": 1.1,
+                "lighting_intensity": 1.2,
+                "intimacy_mod": 1.0
+            },
+            "llm_context": "The air feels charged with electricity. Skies are clear, but there's a faint hum in the air. People seem more energetic, and the city pulses with renewed vigor."
+        },
+        {
+            "id": "light_rain",
+            "display_name": "Light Rain",
+            "description": "Gentle rain creating beautiful neon reflections on wet streets.",
+            "seasons": [
+                "surgespring",
+                "shadowfall"
+            ],
+            "probability_weight": 25,
+            "atmospheric_effects": {
+                "visibility": "good",
+                "temperature_feel": "cool",
+                "visual_theme": "neon_reflections_wet",
+                "audio_theme": "gentle_rain_patter",
+                "crowd_behavior": "normal_with_umbrellas"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.95,
+                "indoor_energy_mod": 1.05,
+                "crowd_density_outdoor": 0.9,
+                "lighting_intensity": 1.1,
+                "intimacy_mod": 1.1
+            },
+            "llm_context": "Light rain falls steadily, creating beautiful reflections of neon signs on wet pavement. The city takes on a cinematic quality, colors more vivid against the rain."
+        },
+        {
+            "id": "thunderstorm",
+            "display_name": "Thunderstorm",
+            "description": "Lightning and thunder with power surges creating dramatic atmosphere.",
+            "seasons": [
+                "surgespring"
+            ],
+            "probability_weight": 20,
+            "atmospheric_effects": {
+                "visibility": "moderate",
+                "temperature_feel": "cool",
+                "visual_theme": "lightning_flashes",
+                "audio_theme": "thunder_rumble",
+                "crowd_behavior": "excited_cautious"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.85,
+                "indoor_energy_mod": 1.15,
+                "crowd_density_outdoor": 0.7,
+                "lighting_intensity": 1.4,
+                "intimacy_mod": 1.2
+            },
+            "llm_context": "Thunder rolls across the city as lightning flashes illuminate the skyline. Power surges cause lights to flicker. The storm is dramatic and energizing, but most people stay indoors."
+        },
+        {
+            "id": "heavy_rain",
+            "display_name": "Heavy Rain",
+            "description": "Torrential rain with flooding and reduced outdoor activity.",
+            "seasons": [
+                "surgespring"
+            ],
+            "probability_weight": 15,
+            "atmospheric_effects": {
+                "visibility": "low",
+                "temperature_feel": "cool",
+                "visual_theme": "torrential_downpour",
+                "audio_theme": "pounding_rain",
+                "crowd_behavior": "indoor_retreat"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.7,
+                "indoor_energy_mod": 1.2,
+                "crowd_density_outdoor": 0.5,
+                "lighting_intensity": 0.8,
+                "intimacy_mod": 1.3
+            },
+            "llm_context": "Heavy rain pounds the city. Streets flood, visibility is poor, and the sound of rain is deafening. Almost everyone has retreated indoors to wait out the storm."
+        },
+        {
+            "id": "electromagnetic_storm",
+            "display_name": "Electromagnetic Storm",
+            "description": "Rare phenomenon with visible electrical arcs and tech glitches.",
+            "seasons": [
+                "surgespring"
+            ],
+            "probability_weight": 10,
+            "atmospheric_effects": {
+                "visibility": "moderate",
+                "temperature_feel": "charged",
+                "visual_theme": "electrical_arcs_visible",
+                "audio_theme": "crackling_electricity",
+                "crowd_behavior": "awed_cautious"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.8,
+                "indoor_energy_mod": 1.3,
+                "crowd_density_outdoor": 0.6,
+                "lighting_intensity": 1.5,
+                "intimacy_mod": 1.1
+            },
+            "llm_context": "An electromagnetic storm crackles through the city. Visible arcs of electricity dance between buildings, tech systems glitch and flicker. It's beautiful and dangerous in equal measure."
+        },
+        {
+            "id": "clear_hot",
+            "display_name": "Clear Hot",
+            "description": "Oppressive heat with heat haze and bright glare.",
+            "seasons": [
+                "burnseason"
+            ],
+            "probability_weight": 35,
+            "atmospheric_effects": {
+                "visibility": "hazy",
+                "temperature_feel": "hot",
+                "visual_theme": "heat_shimmer",
+                "audio_theme": "humming_cooling_units",
+                "crowd_behavior": "lethargic_shade_seeking"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.75,
+                "indoor_energy_mod": 1.0,
+                "crowd_density_outdoor": 0.6,
+                "lighting_intensity": 1.3,
+                "intimacy_mod": 0.9
+            },
+            "llm_context": "The heat is oppressive. Heat haze shimmers off pavement, and the sun's glare is harsh. Cooling units hum everywhere. People move slowly, seeking shade and air conditioning."
+        },
+        {
+            "id": "heatwave",
+            "display_name": "Heatwave",
+            "description": "Extreme heat reducing daytime activity to a minimum.",
+            "seasons": [
+                "burnseason"
+            ],
+            "probability_weight": 25,
+            "atmospheric_effects": {
+                "visibility": "hazy",
+                "temperature_feel": "extreme_heat",
+                "visual_theme": "intense_shimmer",
+                "audio_theme": "strained_cooling_systems",
+                "crowd_behavior": "nocturnal_shift"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.6,
+                "indoor_energy_mod": 0.95,
+                "crowd_density_outdoor": 0.3,
+                "lighting_intensity": 1.4,
+                "intimacy_mod": 0.8,
+                "time_slot_overrides": {
+                    "evening": {
+                        "outdoor_energy_mod": 1.3,
+                        "crowd_density_outdoor": 1.5
+                    },
+                    "night": {
+                        "outdoor_energy_mod": 1.3,
+                        "crowd_density_outdoor": 1.4
+                    }
+                }
+            },
+            "llm_context": "A brutal heatwave grips the city. Daytime streets are nearly abandoned, the heat unbearable. But when evening comes, the city explodes with activity as people emerge from their refuges."
+        },
+        {
+            "id": "smog_light",
+            "display_name": "Light Smog",
+            "description": "Light smog creating an amber haze with reduced air quality.",
+            "seasons": [
+                "burnseason"
+            ],
+            "probability_weight": 20,
+            "atmospheric_effects": {
+                "visibility": "moderate",
+                "temperature_feel": "warm",
+                "visual_theme": "amber_haze",
+                "audio_theme": "muffled_industrial",
+                "crowd_behavior": "masks_common"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.85,
+                "indoor_energy_mod": 1.1,
+                "crowd_density_outdoor": 0.8,
+                "lighting_intensity": 0.9,
+                "intimacy_mod": 0.95
+            },
+            "llm_context": "Light smog hangs over the city, creating an amber haze. Air quality is reduced, and many people wear masks. The atmosphere feels heavy and industrial."
+        },
+        {
+            "id": "smog_heavy",
+            "display_name": "Heavy Smog",
+            "description": "Dense smog with visibility issues and health warnings.",
+            "seasons": [
+                "burnseason"
+            ],
+            "probability_weight": 15,
+            "atmospheric_effects": {
+                "visibility": "low",
+                "temperature_feel": "warm_stuffy",
+                "visual_theme": "thick_amber_fog",
+                "audio_theme": "muffled_oppressive",
+                "crowd_behavior": "indoor_preference_masks"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.7,
+                "indoor_energy_mod": 1.15,
+                "crowd_density_outdoor": 0.5,
+                "lighting_intensity": 0.7,
+                "intimacy_mod": 1.0
+            },
+            "llm_context": "Heavy smog chokes the city. Visibility is poor, and health warnings are in effect. Most people stay indoors with air filtration, and those outside wear respirators."
+        },
+        {
+            "id": "dust_storm",
+            "display_name": "Dust Storm",
+            "description": "Rare swirling dust and debris making outdoor conditions dangerous.",
+            "seasons": [
+                "burnseason"
+            ],
+            "probability_weight": 5,
+            "atmospheric_effects": {
+                "visibility": "very_low",
+                "temperature_feel": "hot_gritty",
+                "visual_theme": "swirling_debris",
+                "audio_theme": "howling_wind_debris",
+                "crowd_behavior": "emergency_shelter"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.5,
+                "indoor_energy_mod": 1.2,
+                "crowd_density_outdoor": 0.1,
+                "lighting_intensity": 0.6,
+                "intimacy_mod": 1.4
+            },
+            "llm_context": "A dust storm rages through the city. Swirling dust and debris make outdoor conditions dangerous. Visibility is nearly zero. Everyone has taken shelter indoors."
+        },
+        {
+            "id": "clear_cool",
+            "display_name": "Clear Cool",
+            "description": "Pleasant crisp air with golden light creating ideal conditions.",
+            "seasons": [
+                "shadowfall"
+            ],
+            "probability_weight": 35,
+            "atmospheric_effects": {
+                "visibility": "clear",
+                "temperature_feel": "pleasant_cool",
+                "visual_theme": "golden_amber_light",
+                "audio_theme": "crisp_clear",
+                "crowd_behavior": "relaxed_active"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 1.1,
+                "indoor_energy_mod": 1.0,
+                "crowd_density_outdoor": 1.0,
+                "lighting_intensity": 1.0,
+                "intimacy_mod": 1.1
+            },
+            "llm_context": "The weather is perfect. Cool, crisp air and golden light create ideal conditions. People are out and about, enjoying the pleasant atmosphere of Shadowfall season."
+        },
+        {
+            "id": "overcast",
+            "display_name": "Overcast",
+            "description": "Gray skies with diffused light creating a melancholic mood.",
+            "seasons": [
+                "shadowfall"
+            ],
+            "probability_weight": 25,
+            "atmospheric_effects": {
+                "visibility": "good",
+                "temperature_feel": "cool",
+                "visual_theme": "gray_diffused",
+                "audio_theme": "quiet_subdued",
+                "crowd_behavior": "contemplative"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.95,
+                "indoor_energy_mod": 1.05,
+                "crowd_density_outdoor": 0.9,
+                "lighting_intensity": 0.8,
+                "intimacy_mod": 1.2
+            },
+            "llm_context": "Gray clouds cover the sky, diffusing the light and creating a melancholic atmosphere. The mood is contemplative, and people seem more introspective."
+        },
+        {
+            "id": "fog",
+            "display_name": "Fog",
+            "description": "Mysterious fog reducing visibility and creating atmospheric conditions.",
+            "seasons": [
+                "shadowfall"
+            ],
+            "probability_weight": 15,
+            "atmospheric_effects": {
+                "visibility": "low",
+                "temperature_feel": "cool_damp",
+                "visual_theme": "mysterious_neon_halos",
+                "audio_theme": "muffled_mysterious",
+                "crowd_behavior": "cautious_atmospheric"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.9,
+                "indoor_energy_mod": 1.1,
+                "crowd_density_outdoor": 0.8,
+                "lighting_intensity": 0.9,
+                "intimacy_mod": 1.3
+            },
+            "llm_context": "Fog rolls through the city, creating mysterious halos around neon signs. Visibility is reduced, and the atmosphere is thick with mystery and possibility."
+        },
+        {
+            "id": "data_rain",
+            "display_name": "Data Rain",
+            "description": "Rare phenomenon where visible data streams cascade through the air.",
+            "seasons": [
+                "shadowfall"
+            ],
+            "probability_weight": 5,
+            "atmospheric_effects": {
+                "visibility": "moderate",
+                "temperature_feel": "cool",
+                "visual_theme": "cascading_data_streams",
+                "audio_theme": "digital_whispers",
+                "crowd_behavior": "awed_observant"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 1.0,
+                "indoor_energy_mod": 1.0,
+                "crowd_density_outdoor": 1.2,
+                "lighting_intensity": 1.2,
+                "intimacy_mod": 1.4
+            },
+            "llm_context": "A rare Data Rain phenomenon occurs. Visible streams of data cascade through the air like digital rain, creating a mesmerizing display. People stop to watch in awe."
+        }
+    ],
+    "seasonal_weather_pools": {
+        "frostlink": [
+            {
+                "weather_id": "clear_frost",
+                "weight": 40
+            },
+            {
+                "weather_id": "ice_fog",
+                "weight": 25
+            },
+            {
+                "weather_id": "snow_light",
+                "weight": 20
+            },
+            {
+                "weather_id": "snow_heavy",
+                "weight": 10
+            },
+            {
+                "weather_id": "ice_storm",
+                "weight": 5
+            }
+        ],
+        "surgespring": [
+            {
+                "weather_id": "clear_electric",
+                "weight": 30
+            },
+            {
+                "weather_id": "light_rain",
+                "weight": 25
+            },
+            {
+                "weather_id": "thunderstorm",
+                "weight": 20
+            },
+            {
+                "weather_id": "heavy_rain",
+                "weight": 15
+            },
+            {
+                "weather_id": "electromagnetic_storm",
+                "weight": 10
+            }
+        ],
+        "burnseason": [
+            {
+                "weather_id": "clear_hot",
+                "weight": 35
+            },
+            {
+                "weather_id": "heatwave",
+                "weight": 25
+            },
+            {
+                "weather_id": "smog_light",
+                "weight": 20
+            },
+            {
+                "weather_id": "smog_heavy",
+                "weight": 15
+            },
+            {
+                "weather_id": "dust_storm",
+                "weight": 5
+            }
+        ],
+        "shadowfall": [
+            {
+                "weather_id": "clear_cool",
+                "weight": 35
+            },
+            {
+                "weather_id": "overcast",
+                "weight": 25
+            },
+            {
+                "weather_id": "light_rain",
+                "weight": 20
+            },
+            {
+                "weather_id": "fog",
+                "weight": 15
+            },
+            {
+                "weather_id": "data_rain",
+                "weight": 5
+            }
+        ]
+    },
+    "progression_rules": {
+        "change_frequency": "daily",
+        "change_trigger": "day_advancement",
+        "persistence": "full_day",
+        "allow_time_slot_variation": false,
+        "description": "Weather is randomly selected each day from the current season's pool using weighted probability. Weather persists for the entire day and changes when the calendar day advances."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-15",
+        "author": "SynonTech",
+        "integration_notes": "Global weather system. Integrates with calendar.json for seasonal constraints and time_and_day.json for modifier stacking. Weather is a city-wide event, not location-specific."
+    }
+}

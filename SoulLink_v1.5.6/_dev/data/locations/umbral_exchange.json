@@ -1,0 +1,67 @@
+{
+    "location_id": "umbral_exchange",
+    "meta": {
+        "display_name": "The Umbral Exchange",
+        "category": "underground",
+        "subcategory": "general",
+        "description": "A hidden market.",
+        "image_url": "/assets/images/locations/the_umbral_exchange_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Dimly lit lanterns cast long shadows over narrow alleys lined with stalls. The air smells of exotic spices, metallic tangs, and smoke from tiny brazier fires. Hushed whispers, bartering voices, and the soft clinking of coins echo throughout.",
+        "crowd_atmosphere": "A mix of shady traders, thrill-seekers, and curious locals weave through the stalls. Some keep their heads down, while others flaunt rare wares. Tension and excitement hang thick, with the occasional nervous glance over shoulders.",
+        "activities": [
+            "Browse rare, illicit, or exotic goods not found aboveground.",
+            "Negotiate trades with cautious vendors.",
+            "Gather information from shadowy contacts.",
+            "Experience the underground nightlife and secret gatherings.",
+            "Watch for pickpockets and potential threats among the crowd."
+        ],
+        "interaction_rules": "Privacy Level: Private. Only registered or trusted visitors are allowed past the main entrance; unknown outsiders are discouraged. Respect vendor rules and avoid drawing attention.",
+        "seasonal_variations": {
+            "frostlink": "The braziers burn hotter and more frequent. Smugglers deal in thermal gear and illegal heating units. The air is thick with the smell of coal and burning synth-fuel.",
+            "surgespring": "The dampness of the underground increases. The exchange deals in anti-fungal tech and waterproof casing for delicate electronics.",
+            "burnseason": "The underground is a natural refuge from the heat. The exchange is packed during the day as people seek the cool, dark alleys.",
+            "shadowfall": "The lanterns are dimmed further, matching the season's gloom. The exchange feels even more secretive and dangerous."
+        },
+        "weather_variations": {
+            "snow_heavy": "Access to the underground is difficult. The exchange is quiet, inhabited only by the most desperate or well-prepared traders.",
+            "thunderstorm": "Water drips from the ceiling in rhythmic patterns. The sound of thunder is a muffled, low-frequency vibration through the bedrock.",
+            "heatwave": "The exchange is an absolute hive of activity, as the temperature below remains steady and cool while the city above burns.",
+            "clear_cool": "A rare flow of fresh air reaches the deeper levels. The moisture levels drop, making for a strangely pleasant atmosphere in the dark."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "evening",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "The Umbral Exchange began as a clandestine trade hub for smugglers and black-market merchants decades ago. Over time, it evolved into a semi-organized underground marketplace, attracting those seeking rare or forbidden items.",
+        "secrets": "Beneath the main market floor, hidden tunnels connect to forgotten sections of the city. These passages are rumored to contain caches of stolen artifacts, secret meetings, and unsanctioned duels."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "danger": 1.5,
+            "mystery": 1.4
+        }
+    }
+}

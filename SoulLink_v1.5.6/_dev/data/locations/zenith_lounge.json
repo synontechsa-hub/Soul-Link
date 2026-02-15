@@ -1,0 +1,67 @@
+{
+    "location_id": "zenith_lounge",
+    "meta": {
+        "display_name": "The Zenith Rooftop Lounge",
+        "category": "nightlife",
+        "subcategory": "general",
+        "description": "A sleek rooftop bar.",
+        "image_url": "/assets/images/locations/zenith_rooftop_lounge_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Glass railings stretch along the rooftop, offering panoramic views of Link City’s neon skyline. Soft ambient lighting casts warm glows on sleek furniture. The scent of citrus cocktails mixes with night air tinged by distant city ozone.",
+        "crowd_atmosphere": "Well-dressed patrons lounge on plush seating, engaged in hushed conversation or laughter. Chill electronic beats set a relaxed vibe. Staff move gracefully, serving drinks with precision, while the occasional photographer captures cityscape selfies.",
+        "activities": [
+            "Enjoy crafted cocktails and gourmet small plates.",
+            "Socialize with other high-tier guests in a semi-private environment.",
+            "Admire the skyline and observe city events from above.",
+            "Participate in exclusive rooftop gatherings or themed nights.",
+            "Network with influential figures and VIPs."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Only guests with reservations or invitations are allowed. Maintain etiquette and respect personal space.",
+        "seasonal_variations": {
+            "frostlink": "Glass walls are fully extended and polarized for warmth. The winter cityscape looks like a field of cold, blue diamonds from this height.",
+            "surgespring": "The lounge features botanical 'surge' cocktails. The air is humid and smells of engineered tropical flowers and fresh ozone.",
+            "burnseason": "Mist-jets hidden in the ceiling keep the outdoor terrace habitable. The lounge is the premier spot for the city's elite to watch the summer sunset.",
+            "shadowfall": "Amber lighting dominates the lounge. The vibe is sophisticated and melancholic, perfect for high-stakes, quiet negotiations."
+        },
+        "weather_variations": {
+            "snow_heavy": "The lounge becomes a warm sanctuary in the clouds. Looking out is like being inside a snow globe hovering over the city.",
+            "electromagnetic_storm": "The lounge's protection field hums visibly as lightning strikes nearby. It’s a thrill for the patrons, safely watching the raw power of the sky.",
+            "heatwave": "The lounge provides the best night breeze in the city. Reservations are impossible to get as the elite escape the stagnant heat below.",
+            "data_rain": "Special filter-glass allows patrons to see the individual data-packets in the rain cascade. It’s a mesmerizing, digital-nature spectacle."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "evening",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "The Zenith Lounge was established to cater to the city’s elite nightlife crowd, offering a serene escape above the bustling streets below. Its sleek design and sweeping views quickly made it a city icon.",
+        "secrets": "A hidden VIP terrace on the far east corner is accessible only via a discreet elevator. Patrons there can enjoy exclusive drinks and clandestine meetings away from prying eyes."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "sophistication": 1.4,
+            "openness": 1.3
+        }
+    }
+}
