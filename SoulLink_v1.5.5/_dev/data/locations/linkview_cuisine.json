@@ -1,0 +1,73 @@
+{
+    "location_id": "linkview_cuisine",
+    "meta": {
+        "display_name": "LinkView Cuisine",
+        "category": "dining",
+        "subcategory": "general",
+        "description": "A high-tier restaurant on the top floor of Skylink Tower.",
+        "image_url": "/assets/images/locations/linkview_cuisine_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "An elegant restaurant perched atop Skylink Tower, offering panoramic views of Link City. Soft ambient lighting reflects off polished marble and glass surfaces. Aromas of carefully curated international cuisine fill the air, blending with the faint scent of fresh flowers on each table. Subtle jazz plays from hidden speakers, and servers glide gracefully between tables.",
+        "crowd_atmosphere": "The clientele is a mix of high-profile executives, visiting dignitaries, and discerning food enthusiasts. Conversations are hushed and sophisticated, punctuated by the occasional toast. Waitstaff move efficiently but unobtrusively. There is a palpable energy of exclusivity, refinement, and quiet observation.",
+        "activities": [
+            "Reserve a table with cityscape views for business dinners or personal celebrations.",
+            "Sample seasonal tasting menus crafted by renowned chefs.",
+            "Engage in discreet networking or high-stakes deal-making over meals.",
+            "Enjoy a private wine tasting in the glass-walled wine room.",
+            "Observe city traffic and events through the expansive panoramic windows."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Patrons are expected to maintain decorum, respect private conversations, and follow staff guidance.",
+        "seasonal_variations": {
+            "frostlink": "The restaurant offers winter tasting menus. The panoramic views of the frost-covered city create a stunning backdrop for fine dining.",
+            "surgespring": "Spring menus feature fresh, vibrant ingredients. Lightning from spring storms creates dramatic flashes through the panoramic windows.",
+            "burnseason": "Summer menus emphasize light, cooling dishes. Evening reservations are in high demand as diners enjoy the view of the city coming alive at night.",
+            "shadowfall": "Autumn menus feature rich, contemplative flavors. The amber and purple light of the season creates an especially romantic atmosphere."
+        },
+        "weather_variations": {
+            "snow_heavy": "The view of the snow-covered city is breathtaking. The restaurant is fully booked with patrons enjoying the spectacular winter scene.",
+            "thunderstorm": "Lightning illuminates the cityscape dramatically. Diners watch the storm from the safety of the tower, adding excitement to their meals.",
+            "clear_cool": "Perfect weather creates stunning city views. The panoramic windows showcase Link City at its most beautiful, enhancing the dining experience.",
+            "electromagnetic_storm": "The spectacular storm creates an unforgettable backdrop. Diners watch electrical arcs dance across the skyline while enjoying their meals."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "chef",
+            "waitstaff",
+            "sommelier",
+            "host"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "LinkView Cuisine opened during Skylink Tower’s grand inauguration, aiming to redefine fine dining in Link City. Its design combines futuristic architecture with traditional elegance, establishing it as a symbol of prestige and gastronomic excellence.",
+        "secrets": "Some patrons claim that select tables are outfitted with private communication terminals and AR interfaces for conducting sensitive business meetings or confidential tastings away from public view."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "sophistication": 1.5
+        }
+    }
+}

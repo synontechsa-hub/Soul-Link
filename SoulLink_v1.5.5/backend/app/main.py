@@ -158,7 +158,7 @@ else:
     print(f"WARNING: Asset directory not found at {assets_path}")
 
 # Import the Clean Routers
-from backend.app.api import chat, map, souls, sync, users, time, websocket, health
+from backend.app.api import chat, map, souls, sync, users, time, websocket, health, ads
 
 # ... (rest of file)
 
@@ -171,6 +171,7 @@ app.include_router(souls.router, prefix="/api/v1")
 app.include_router(sync.router, prefix="/api/v1")
 app.include_router(time.router, prefix="/api/v1")
 app.include_router(websocket.router, prefix="/api/v1")  # ✅ WebSocket support
+app.include_router(ads.router, prefix="/api/v1")  # ✅ Monetization endpoints
 
 # GLOBAL EXCEPTION SANITIZATION
 # GLOBAL EXCEPTION HANDLING

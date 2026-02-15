@@ -1,0 +1,69 @@
+{
+    "location_id": "skylink_tower",
+    "meta": {
+        "display_name": "Skylink Tower",
+        "category": "landmark",
+        "subcategory": "general",
+        "description": "A massive, opulent building in the center of Link City.",
+        "image_url": "/assets/images/locations/skylink_tower_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Sunlight glints off its mirrored surfaces, casting prismatic reflections across the plaza below. Inside, marble floors shine beneath ornate chandeliers, elevators hum silently, and the faint scent of polished stone and subtle cologne pervades the air. The building feels alive, a blend of human ambition and cutting-edge technology.",
+        "crowd_atmosphere": "Visitors range from suited executives rushing between meetings to tourists taking in the grandeur. Security personnel move methodically, maintaining order while unobtrusively observing every corner. The lobby is buzzing but composed, with a sense of calculated precision permeating the crowd.",
+        "activities": [
+            "Attend high-level corporate meetings or pitch sessions.",
+            "Explore observation decks with panoramic views of Link City.",
+            "Shop at exclusive boutiques or dine at premium restaurants inside the tower.",
+            "Interact with building AI systems for information or access control."
+        ],
+        "interaction_rules": "Privacy Level: Public. Guests may freely explore general areas, but private floors require authorization.",
+        "seasonal_variations": {
+            "frostlink": "The lobby is decorated with crystalline, holographic ice structures. Heated floor tiles provide immediate relief to those entering from the plaza.",
+            "surgespring": "Digital banners celebrate the city's renewal. The marble floors seem to shine with a more vibrant, energetic reflection.",
+            "burnseason": "The tower is a primary cooling hub for the district. The lobby is a bustling refuge of corporate precision and powerful air conditioning.",
+            "shadowfall": "The tower's exterior lighting shifts to amber and deep purple. The ambient music in the lobby becomes slower and more contemplative."
+        },
+        "weather_variations": {
+            "snow_heavy": "The tower stands like a silver needle in a white world. The lobby is packed with delayed commuters waiting for transport clearings.",
+            "electromagnetic_storm": "The tower acts as a massive lightning rod. Arcs are visible from the lobby skylights, grounded safely by the building's advanced grid.",
+            "heatwave": "The mirrored surfaces reflect intense heat back onto the plaza. Inside, the tower is a frigid, high-tech haven.",
+            "data_rain": "The tower's external surfaces shimmer as data rain flows down the glass. Crowds gather in the lobby to watch the cascade through the glass walls."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "evening"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "required_item": null
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Constructed during Link City's Golden Era of architecture, Skylink Tower became a symbol of prosperity and technological progress. It houses a mixture of corporate offices, residential units, and public amenities, making it a central hub of city life.",
+        "secrets": "Certain restricted floors reportedly contain private AI research labs and hidden conference suites. Rumors persist of a concealed observation deck accessible only to those who know the tower's coded pathways."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "authority": 1.5,
+            "grandiosity": 1.6
+        }
+    }
+}

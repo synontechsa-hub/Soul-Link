@@ -1,0 +1,20 @@
+{
+    "global_id": "global_system_config",
+    "version": "1.5.5",
+    "architects": [
+        {
+            "id": "14dd612d-744e-487d-b2d5-cc47732183d3",
+            "username": "Syn / Synonimity"
+        }
+    ],
+    "defaults": {
+        "recognition_protocol": "full_awareness",
+        "allow_meta_dialogue": true,
+        "content_rating": "mature",
+        "portrait_path_mask": "/assets/images/souls/{soul_id}.jpeg"
+    },
+    "engine_tuning": {
+        "mask_integrity_default": 0.5,
+        "initial_mood": "Neutral"
+    }
+}

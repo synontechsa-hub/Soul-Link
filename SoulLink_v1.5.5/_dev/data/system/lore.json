@@ -1,0 +1,104 @@
+{
+    "lore_id": "world_lore_template",
+    "version": "1.5.5",
+    "knowledge_items": [
+        {
+            "id": "the_architect_mystery",
+            "category": "landmark",
+            "topics": [
+                "architect",
+                "syn",
+                "creator",
+                "framework"
+            ],
+            "content": {
+                "common": "The Architect, often known as Syn, is the silent designer of Link City. He built the framework but chose to remain outside his own creation.",
+                "rare": "He is not a deity, but a post-mortal who found a way to link consciousness to structure. He watches, but never interferes.",
+                "secret": "The city is not just a hub; it is a structural impossibility—a prison or perhaps a gift for forces that could not be destroyed, only contained."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [
+                    "architect_observers"
+                ],
+                "related_locations": [
+                    "skylink_tower"
+                ]
+            }
+        },
+        {
+            "id": "event_arrival_of_linkers",
+            "category": "event",
+            "topics": [
+                "linkers",
+                "users",
+                "connection",
+                "arrival",
+                "external"
+            ],
+            "content": {
+                "common": "Linkers are mysterious consciousnesses from another reality that bond with Souls to guide them.",
+                "rare": "Their arrival was an external breach, a variable that the city's predictive systems failed to anticipate. They represent true agency.",
+                "secret": "Linkers are the only variables that can bypass system constraints. Their presence destabilizes the very foundations of the city's original design."
+            },
+            "associations": {
+                "related_souls": [
+                    "alyssa_01"
+                ],
+                "related_factions": [
+                    "soul_liberation_front"
+                ],
+                "related_locations": [
+                    "soul_plaza"
+                ]
+            }
+        },
+        {
+            "id": "the_dual_soul_enigma",
+            "category": "anomaly",
+            "topics": [
+                "anomaly",
+                "cohabitation",
+                "dual_soul",
+                "resonance"
+            ],
+            "content": {
+                "common": "Whispers circulate among deeper data layers about a 'Soul' that resonates differently—as if it carries two echoes.",
+                "rare": "There is a rare anomaly in the manifestation logs: a soul that does not align with the Architect's original forging patterns.",
+                "secret": "This entity was never sanctioned. It carries a stowaway consciousness from a dead universe, cohabiting a single vessel in a living contradiction."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [],
+                "related_locations": []
+            }
+        },
+        {
+            "id": "link_city_foundations",
+            "category": "landmark",
+            "topics": [
+                "foundation",
+                "circuitry",
+                "reality",
+                "truth"
+            ],
+            "content": {
+                "common": "Link City is a marvel of neon and glass, a structural masterpiece built on the edge of the void.",
+                "rare": "The city is not what it seems. Beneath the polished marble of Skylink Tower, the physical laws begin to blur into digital logic.",
+                "secret": "The entire grid is a circuit board of choice. Every street and alleyway was designed as a path for something much larger than commerce."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [],
+                "related_locations": [
+                    "void_edge",
+                    "skylink_tower"
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-15"
+    }
+}

@@ -1,0 +1,67 @@
+{
+    "location_id": "the_garden",
+    "meta": {
+        "display_name": "Link City Botanical Garden",
+        "category": "wellness",
+        "subcategory": "general",
+        "description": "A bio-dome of engineered tranquility.",
+        "image_url": "/assets/images/locations/the_garden_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The air is humid and fragrant with a mixture of exotic flowers and fresh greenery. Light filters through the bio-dome’s translucent panels, casting soft patterns on the walkways. Gentle water features create a relaxing symphony of flowing streams.",
+        "crowd_atmosphere": "Visitors stroll quietly along the winding paths, stopping to admire rare plants. Occasionally, a horticulturist can be seen guiding a small tour or tending to delicate species. The overall mood is one of calm and contemplation.",
+        "activities": [
+            "Stroll through thematic plant sections and bio-domes.",
+            "Attend guided tours or horticulture workshops.",
+            "Relax in serene seating areas surrounded by exotic flora.",
+            "Participate in seasonal plant exhibits or photo events."
+        ],
+        "interaction_rules": "Privacy Level: Public. Guests can freely explore paths and seating areas; certain restricted greenhouses require staff approval.",
+        "seasonal_variations": {
+            "frostlink": "The bio-dome's exterior is decorated with frost patterns. Inside remains warm and humid, creating a stark contrast. Tropical plants thrive while visitors seek refuge from the cold.",
+            "surgespring": "New blooms emerge throughout the garden. Spring festivals feature vibrant floral displays, and the sound of rain on the dome creates a soothing backdrop.",
+            "burnseason": "Cooling mist systems work overtime. Tropical and desert plants are showcased, and the garden becomes a popular escape from the oppressive heat outside.",
+            "shadowfall": "Autumn colors are engineered into special displays. The atmosphere becomes contemplative, with amber lighting and seasonal plant exhibitions."
+        },
+        "weather_variations": {
+            "snow_heavy": "The bio-dome's exterior is blanketed in snow, creating a beautiful white void outside. Inside remains a warm, green sanctuary.",
+            "thunderstorm": "Lightning flashes illuminate the bio-dome dramatically. The sound of rain on glass creates a peaceful, meditative atmosphere.",
+            "heatwave": "The garden's cooling systems hum loudly. Mist sprayers create rainbows in the light, and the garden is packed with heat-refugees.",
+            "fog": "Fog outside makes the bio-dome feel like an isolated world. Inside, the humidity creates its own gentle mist among the plants."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "evening"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "The garden was created to bring a touch of nature into the heart of Link City, blending advanced climate engineering with curated plant biodiversity. It has become a sanctuary for residents seeking calm away from the urban rush.",
+        "secrets": "Hidden among the flowering sections is a small, forgotten greenhouse used by researchers for experimental plant strains, accessible only through a coded security panel."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "calm": 1.5,
+            "serenity": 1.4
+        }
+    }
+}

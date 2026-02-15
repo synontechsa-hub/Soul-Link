@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart'; 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'screens/apartment_screen.dart'; // Add this import
 import 'providers/dashboard_provider.dart';
@@ -14,6 +14,7 @@ import 'screens/dashboard_screen.dart';
 import 'screens/explore_screen.dart';
 import 'screens/map_screen.dart';
 import 'screens/login_screen.dart';
+import 'services/ad_service.dart';
 
 // 2. Change main to be async
 void main() async {
@@ -23,7 +24,7 @@ void main() async {
   // 4. Load the environment file
   try {
     await dotenv.load(fileName: ".env");
-    
+
     // Initialize Supabase
     await Supabase.initialize(
       url: dotenv.env['SUPABASE_URL'] ?? '',
@@ -31,7 +32,9 @@ void main() async {
     );
     print("✅ Link City Environment & Supabase Loaded");
   } catch (e) {
-    print("❌ Critical Error: Could not load .env file. Check if it exists in frontend root!");
+    print(
+      "❌ Critical Error: Could not load .env file. Check if it exists in frontend root!",
+    );
   }
 
   runApp(const LinkCityApp());
@@ -47,11 +50,10 @@ class LinkCityApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => DashboardProvider(apiService),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => WebSocketProvider(),
+        ChangeNotifierProvider(create: (_) => DashboardProvider(apiService)),
+        ChangeNotifierProvider(create: (_) => WebSocketProvider()),
+        ChangeNotifierProvider<AdService>(
+          create: (_) => MockAdService(apiService)..init(),
         ),
       ],
       child: MaterialApp(
@@ -100,7 +102,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
     const DashboardScreen(),
     const ExploreScreen(),
     const MapScreen(),
-    const ApartmentScreen(), 
+    const ApartmentScreen(),
   ];
 
   @override

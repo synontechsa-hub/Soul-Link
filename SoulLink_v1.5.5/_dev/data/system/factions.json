@@ -1,0 +1,88 @@
+{
+    "factions_id": "factions_registry",
+    "version": "1.5.5",
+    "factions": {
+        "racers": {
+            "id": "racers",
+            "name": "The Racing Circuit",
+            "description": "Adrenaline junkies who bond over speed, mechanics, and competition.",
+            "philosophy": "Push past the limit.",
+            "associated_locations": [
+                "stop_n_go",
+                "circuit_street",
+                "obsidian_proving_grounds"
+            ]
+        },
+        "academy_students": {
+            "id": "academy_students",
+            "name": "Link City Academy Students",
+            "description": "Young residents focused on education and social hierarchy.",
+            "philosophy": "Learn, adapt, survive social cliques.",
+            "associated_locations": [
+                "soul_plaza",
+                "the_garden",
+                "linkgate_mall"
+            ]
+        },
+        "corporate_elite": {
+            "id": "corporate_elite",
+            "name": "The Gilded Circle",
+            "description": "The wealthy elite who rule Link City from the high towers.",
+            "philosophy": "Power is the only currency that matters.",
+            "associated_locations": [
+                "skylink_tower",
+                "apex_corporate_plaza",
+                "zenith_lounge",
+                "linkview_cuisine"
+            ]
+        },
+        "underground": {
+            "id": "underground",
+            "name": "The Circuit Underground",
+            "description": "Rebels, outcasts, and survivors who live outside the corporate system.",
+            "philosophy": "Survive together, trust no one else.",
+            "associated_locations": [
+                "circuit_diner",
+                "neon_nights",
+                "crimson_arms",
+                "neon_span_bridge"
+            ]
+        },
+        "digital_natives": {
+            "id": "digital_natives",
+            "name": "The Glitch Collective",
+            "description": "Entities born from code, hackers, and those who blur the line between physical and digital.",
+            "philosophy": "Information is life. Connection is survival.",
+            "associated_locations": [
+                "pixel_den",
+                "umbral_exchange",
+                "echo_archives",
+                "soul_plaza"
+            ]
+        },
+        "creatives": {
+            "id": "creatives",
+            "name": "The Aesthetic Vanguard",
+            "description": "Artists, performers, and visionaries dedicated to expression.",
+            "philosophy": "Create beauty in a broken world.",
+            "associated_locations": [
+                "the_garden",
+                "rooftop_lounge",
+                "city_planetarium",
+                "soul_plaza"
+            ]
+        },
+        "caretakers": {
+            "id": "caretakers",
+            "name": "The Quiet Keepers",
+            "description": "Healers, guardians, and those who tend to the broken.",
+            "philosophy": "To heal is to rebel against entropy.",
+            "associated_locations": [
+                "shadowed_archives",
+                "the_garden",
+                "ether_baths",
+                "twilight_park"
+            ]
+        }
+    }
+}

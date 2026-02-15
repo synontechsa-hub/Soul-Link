@@ -1,0 +1,74 @@
+{
+    "location_id": "linkgate_mall",
+    "meta": {
+        "display_name": "LinkGate Mall",
+        "category": "commercial",
+        "subcategory": "general",
+        "description": "The buzzing shopping mall in Link City.",
+        "image_url": "/assets/images/locations/linkgate_mall_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "A multi-level shopping paradise filled with glowing storefronts, ambient music, and the hum of conversation. The scent of coffee, perfume, and fast food blends together as neon signage reflects off polished tiles. Escalators and glass elevators transport shoppers between floors, while interactive holograms advertise the latest products.",
+        "crowd_atmosphere": "Shoppers of all ages roam the mall. Teenagers cluster near tech stores, families navigate with carts, and business professionals pass through briskly. Security personnel patrol the floors, and maintenance staff ensure the mall stays pristine. During peak hours, the environment buzzes with excitement, while late evenings are quieter but still alive with window shoppers.",
+        "activities": [
+            "Browse high-end boutiques, electronics stores, and specialty shops.",
+            "Grab meals or snacks at cafes and food courts.",
+            "Participate in seasonal events, promotions, and product launches.",
+            "Attend interactive holographic demos or pop-up exhibitions.",
+            "Relax in seating areas while people-watching or planning purchases."
+        ],
+        "interaction_rules": "Privacy Level: Public. Shoppers must follow posted rules, respect staff and other patrons, and avoid disruptive behavior.",
+        "seasonal_variations": {
+            "frostlink": "The mall is decorated with winter themes. Shoppers seek warmth and holiday shopping deals. Hot beverage kiosks do brisk business.",
+            "surgespring": "Spring fashion launches and vibrant displays dominate. The mall hosts renewal sales and tech product launches timed with the energetic season.",
+            "burnseason": "The mall becomes a popular heat refuge. Evening shopping peaks as people avoid daytime heat. Summer sales and cooling stations are everywhere.",
+            "shadowfall": "Autumn themes and contemplative displays appear. The mall hosts harvest festivals and data-themed art installations matching the season's aesthetic."
+        },
+        "weather_variations": {
+            "snow_heavy": "The mall is packed with people seeking shelter and entertainment. Some shoppers are stranded and make the most of it.",
+            "electromagnetic_storm": "The mall's backup systems engage smoothly. Shoppers watch the spectacular storm through skylights while continuing to browse.",
+            "heatwave": "The mall is absolutely packed with heat-refugees. Cooling stations and ice cream shops have long lines.",
+            "data_rain": "The rare phenomenon draws crowds to the mall's observation areas. Special viewing events are hastily organized by event coordinators."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "shop_associate",
+            "security_staff",
+            "cleaning_staff",
+            "event_coordinator",
+            "tech_support"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "LinkGate Mall was constructed to unify the city’s retail experience under one roof. Opening with a mix of local boutiques and international brands, it quickly became a central hub for commerce and social interaction in Link City. Over the years, it has hosted major product launches and seasonal festivals, cementing its reputation as a landmark of urban culture.",
+        "secrets": "Whispers tell of hidden VIP lounges accessible only to certain patrons and executives, and some service corridors contain prototype retail tech not seen by the general public. There are rumors of AI-managed behavioral analytics tracking shopping patterns across the mall for optimization and targeted events."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "distraction": 1.3
+        }
+    }
+}

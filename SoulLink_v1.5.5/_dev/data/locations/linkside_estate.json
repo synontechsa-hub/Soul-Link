@@ -1,0 +1,73 @@
+{
+    "location_id": "linkside_estate",
+    "meta": {
+        "display_name": "Linkside Estate (User Loft)",
+        "category": "residential",
+        "subcategory": "general",
+        "description": "A modest but well-kept apartment assigned to new residents of Link City.",
+        "image_url": "/assets/images/locations/linkview_estate_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "A cozy apartment with minimalistic furnishings, soft lighting, and clean surfaces. The faint aroma of polished wood and fresh laundry lingers in the air. Large windows overlook the bustling streets below, letting in filtered daylight and the distant hum of Link City life.",
+        "crowd_atmosphere": "Quiet and personal. Residents and guests move silently, mindful of shared walls and neighbors. Occasionally, the distant sounds of the city drift in, but inside, the loft is a calm, private retreat.",
+        "activities": [
+            "Relax or nap on the furnished sofa.",
+            "Organize personal items in the wardrobe and storage units.",
+            "Cook simple meals in the kitchenette.",
+            "Use the apartment as a personal workspace or creative studio.",
+            "Host small, private gatherings with close friends."
+        ],
+        "interaction_rules": "Privacy Level: Private. Only the resident and approved visitors may enter. Respect all personal belongings and maintain quiet.",
+        "seasonal_variations": {
+            "frostlink": "The apartment's heating keeps it cozy against the winter cold. Frost patterns form on the windows, creating beautiful views of the city.",
+            "surgespring": "Windows are opened to let in fresh spring air. The apartment feels energized and renewed, perfect for spring cleaning and reorganization.",
+            "burnseason": "The AC works constantly during heatwaves. The apartment becomes a cool refuge, though the view outside shimmers with heat haze.",
+            "shadowfall": "Amber and purple light filters through the windows. The apartment takes on a contemplative, cozy atmosphere perfect for introspection."
+        },
+        "weather_variations": {
+            "snow_heavy": "The apartment becomes a warm fortress against the storm. The view outside is a white void, making the interior feel even more secure.",
+            "thunderstorm": "Lightning illuminates the apartment dramatically. The storm creates a cozy atmosphere, perfect for staying in with hot drinks.",
+            "heatwave": "The apartment's AC makes it a premium refuge. The contrast between the scorching city outside and cool interior is deeply satisfying.",
+            "clear_cool": "Perfect weather means windows can be opened. Fresh air and pleasant temperatures make the apartment feel especially comfortable."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "home_time"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "resident",
+            "guest"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Linkside Estate was built as part of Link City's initiative to provide starter apartments to new residents. Each loft is standardized for comfort, efficiency, and safety, making it ideal for settling into the city while exploring opportunities and social connections.",
+        "secrets": "Some residents have discovered hidden storage panels in the walls for personal items. Rumors hint that certain apartments may include early-access smart-home features not publicly advertised, controlled by a central AI for testing."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "safety": 1.5,
+            "customization": 1.4
+        }
+    }
+}

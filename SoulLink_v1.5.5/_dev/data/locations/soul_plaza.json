@@ -1,0 +1,69 @@
+{
+    "location_id": "soul_plaza",
+    "meta": {
+        "display_name": "Soul Plaza",
+        "category": "public_hub",
+        "subcategory": "general",
+        "description": "The beating heart of the city.",
+        "image_url": "/assets/images/locations/soul_plaza_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The plaza is alive with motion and sound: the rhythmic tapping of shoes on polished stone, faint electronic hums from embedded street tech, and a blend of street food aromas mingling with the scent of ozone from neon signs. Holographic banners pulse above, casting shifting glows across the crowd.",
+        "crowd_atmosphere": "Commuters, street performers, shoppers, and tourists all intermix. Conversations, laughter, and the occasional shouted vendor call create a dynamic, bustling environment. The plaza feels both vibrant and safe, a crossroads of city life.",
+        "activities": [
+            "People-watch from central benches or fountains.",
+            "Shop at pop-up vendor stalls offering exotic wares.",
+            "Listen to street performers and musicians.",
+            "Attend city announcements or holographic displays."
+        ],
+        "interaction_rules": "Privacy Level: Public. Social interactions are encouraged; NPCs respond dynamically to presence and actions.",
+        "seasonal_variations": {
+            "frostlink": "The plaza's fountains are frozen solid, creating ice sculptures. Fewer people brave the cold, but those who do huddle around heat lamps. Steam rises from street vendors' carts.",
+            "surgespring": "The plaza comes alive with spring energy. Holographic displays are extra vibrant, and crowds gather to watch electrical storms from the safety of covered areas.",
+            "burnseason": "During the day, the plaza is quieter as people avoid the heat. But at night, it transforms into a bustling hub of activity with outdoor concerts and night markets.",
+            "shadowfall": "The plaza takes on a contemplative atmosphere. Amber and purple lights create beautiful shadows, and people gather to watch data streams occasionally visible in the air."
+        },
+        "weather_variations": {
+            "snow_heavy": "The plaza is nearly deserted, blanketed in heavy snow. Only the most dedicated souls venture out, and street vendors have closed their stalls.",
+            "thunderstorm": "Lightning illuminates the plaza dramatically. People take shelter under awnings and in doorways, watching the storm with excitement.",
+            "heatwave": "The plaza is abandoned during the day, heat shimmering off the stone. Cooling mist stations run constantly for the few brave souls outside.",
+            "electromagnetic_storm": "Visible electrical arcs dance between the holographic banners. Crowds gather in awe, keeping a safe distance from the spectacular phenomenon.",
+            "data_rain": "The rare Data Rain phenomenon draws huge crowds to the plaza. People stand mesmerized, watching cascading data streams fall like digital rain."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Soul Plaza has long been the symbolic heart of Link City, hosting celebrations, public announcements, and social gatherings. Over the decades, its design has been adapted to accommodate both holographic art and high foot traffic.",
+        "secrets": "Beneath the main fountain lies a maintenance tunnel with hidden graffiti from the city's underground artists. Certain holographic ads occasionally display cryptic messages only visible during specific light cycles."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "social_density": 1.5,
+            "vibrancy": 1.6
+        }
+    }
+}

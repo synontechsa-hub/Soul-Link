@@ -1,0 +1,68 @@
+{
+    "location_id": "pixel_den",
+    "meta": {
+        "display_name": "The Pixel Den Arcade",
+        "category": "entertainment",
+        "subcategory": "general",
+        "description": "A sprawling cyberpunk arcade.",
+        "image_url": "/assets/images/locations/pixel_den_arcade_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The Pixel Den Arcade pulses with neon light and electronic hum. Arcade cabinets line every wall, projecting flickering holograms and digital soundtracks. The scent of fried snacks, energy drinks, and warm plastics mingles with the tang of ozone from overused wiring. Laser grids and VR pods blink in rhythmic patterns, creating a sensory overload that thrills the visitor.",
+        "crowd_atmosphere": "Gamers of all ages crowd the arcade, from casual players enjoying retro cabinets to competitive teens chasing high scores. Laughter, cheers, and the occasional groan echo through the space. Friends huddle over VR headsets while others line up for popular rhythm games. The environment is energetic, chaotic, and unrelentingly bright.",
+        "activities": [
+            "Compete in classic and modern arcade games, from VR shooters to rhythm challenges.",
+            "Participate in high-score tournaments and leaderboard challenges.",
+            "Use VR and AR gaming pods for immersive experiences.",
+            "Purchase exclusive digital collectibles and in-game items from kiosks.",
+            "Grab snacks or energy drinks at the neon-lit concession stand."
+        ],
+        "interaction_rules": "Privacy Level: Public. Visitors are free to interact with games and other guests, but physical play areas follow standard arcade etiquette.",
+        "seasonal_variations": {
+            "frostlink": "The arcade becomes a warm, energetic refuge from the cold. Winter-themed tournaments and events draw large crowds seeking indoor entertainment.",
+            "surgespring": "Spring brings new game releases and tech demos. The arcade hosts launch events, and the energy is electric with excitement.",
+            "burnseason": "The arcade is packed at night as people escape the heat. Evening tournaments and events become the main draw, with daytime attendance lower.",
+            "shadowfall": "Autumn brings retro game festivals and nostalgic events. The arcade's neon takes on amber and purple tones matching the season."
+        },
+        "weather_variations": {
+            "snow_heavy": "The arcade is absolutely packed with people seeking entertainment and shelter. Tournaments are spontaneously organized to keep everyone engaged.",
+            "electromagnetic_storm": "The storm causes occasional game glitches, which gamers find exciting. Backup systems keep everything running, adding to the cyberpunk atmosphere.",
+            "heatwave": "The arcade's AC makes it a premium refuge. Evening crowds are massive, and cold drink sales skyrocket.",
+            "data_rain": "The rare phenomenon draws huge crowds. The arcade hosts special viewing parties, and data-themed games become extra popular."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Founded in 2041, the Pixel Den became a cornerstone of Link City's entertainment district. Originally a small retro arcade, it expanded into a sprawling neon-lit playground with cutting-edge VR and AR experiences, drawing visitors from across the city.",
+        "secrets": "Some VR pods are rumored to host hidden challenges that unlock rare digital items. Occasional private tournaments are held after hours, accessible only to select VIP members who receive cryptic invitations."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "energy": 1.6
+        }
+    }
+}

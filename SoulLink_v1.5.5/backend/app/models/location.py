@@ -21,12 +21,19 @@ class Location(SQLModel, table=True):
     category: Optional[str] = Field(default=None, max_length=50)
     description: Optional[str] = Field(default=None)
     music_track: str = Field(default="ambient_city_loop.mp3", max_length=100)
+    image_url: Optional[str] = Field(default=None, max_length=255)
     
     # Judge/Narrator modifiers (affects soul responses)
     # 🚀 NEW: LEGION OVERRIDES 🚀
     # Stores { "system_anchor": "..." } and specific interaction logic
+    # Judge/Narrator modifiers (maintaining backward compat while adding new structure)
     system_modifiers: dict = Field(default_factory=dict, sa_column=Column(JSON))
-    environmental_prompts: list = Field(default_factory=list, sa_column=Column(JSON))
     
-    # For locations with intimacy locks.
+    # 🚀 v1.5.5 DOMAIN EXPANSION COLUMNS 🚀
+    system_prompt_anchors: dict = Field(default_factory=dict, sa_column=Column(JSON))
+    game_logic: dict = Field(default_factory=dict, sa_column=Column(JSON)) # Hours, jobs, entry rules
+    lore: dict = Field(default_factory=dict, sa_column=Column(JSON))
+    source_metadata: dict = Field(default_factory=dict, sa_column=Column(JSON))
+
+    # For locations with intimacy locks (kept for quick indexing)
     min_intimacy: int = Field(default=0)

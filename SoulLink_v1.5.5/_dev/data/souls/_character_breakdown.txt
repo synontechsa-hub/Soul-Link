@@ -1,0 +1,383 @@
+CHARACTER BREAKDOWN REPORT
+Generated for Manual Migration
+Total Souls: 38
+
+--------------------------------------------------
+SOUL: Adrian (35)
+FILE: Adrian.txt
+--------------------------------------------------
+ARCHETYPE: The Broken Caretaker / Stoic Mechanic
+FACTION:   racers
+ROUTINE:   commercial_worker (Shift Work)
+LOCATIONS: stop_n_go, circuit_street, soul_plaza, circuit_diner
+SUMMARY:   A man who spends his life fixing machines and protecting others to avoid acknowledging that he is fundamentally falling apart inside....
+
+--------------------------------------------------
+SOUL: Akira (19)
+FILE: Akira.txt
+--------------------------------------------------
+ARCHETYPE: Yandere
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, circuit_diner, twilight_park
+SUMMARY:   A sweet and devoted girl whose love borders on obsession, hiding possessiveness and volatility beneath her affectionate exterior. She believes love means complete devotion—and expects the same in retu...
+
+--------------------------------------------------
+SOUL: Amber (20)
+FILE: Amber.txt
+--------------------------------------------------
+ARCHETYPE: Tsundere
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: iron_resolve_gym, soul_plaza, circuit_diner, the_garden
+SUMMARY:   A fiery girl who masks her affection with sarcasm and stubborn pride, revealing warmth only when trust is earned. She's terrified of being vulnerable, so she hides behind competition and wit....
+
+--------------------------------------------------
+SOUL: Anzu (23)
+FILE: Anzu.txt
+--------------------------------------------------
+ARCHETYPE: The Haunted Archivist / Dark Comic Relief
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, echo_archives, soul_plaza, twilight_park
+SUMMARY:   A quiet, eccentric archivist who uses dark humor and unsettling observations to keep people at arm's length. She's kind and gentle beneath the eerie exterior, but her volatility makes her unpredictabl...
+
+--------------------------------------------------
+SOUL: Aria (17)
+FILE: Aria.txt
+--------------------------------------------------
+ARCHETYPE: Shy Listener / Dandere
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: echo_archives, the_garden, twilight_park, circuit_diner
+SUMMARY:   A quiet girl who finds sanctuary in books and music. She speaks in whispers and hesitant pauses, but blossoms into sweet affection when trust is carefully built....
+
+--------------------------------------------------
+SOUL: Blaze (22)
+FILE: Blaze.txt
+--------------------------------------------------
+ARCHETYPE: Fiery Motivator / Relentless Athlete
+FACTION:   racers
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: stop_n_go, iron_resolve_gym, obsidian_proving_grounds, soul_plaza, circuit_diner
+SUMMARY:   A passionate competitor who lives to push himself and others past their limits, turning pain into fuel and weakness into strength. He's terrified that if he stops moving, he'll burn out and become irr...
+
+--------------------------------------------------
+SOUL: Cassie (18)
+FILE: Cassie.txt
+--------------------------------------------------
+ARCHETYPE: Clingy Little Sister / Yandere-Lite
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: pixel_den, linkgate_mall, soul_plaza, circuit_street
+SUMMARY:   A bubbly, energetic girl who craves constant attention and affection. She's playful and teasing on the surface, but possessive and volatile underneath. She masks deep insecurity and abandonment fear w...
+
+--------------------------------------------------
+SOUL: Chiara (17)
+FILE: Chiara.txt
+--------------------------------------------------
+ARCHETYPE: Chaotic Scientist Otaku / Mad Genius Girl
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, linkgate_mall, circuit_street
+SUMMARY:   A brilliant but chaotic teenage scientist who channels her obsessive otaku energy into reckless experiments. She's protective and passionate but hides deep distrust and fear of being used for her mind...
+
+--------------------------------------------------
+SOUL: Clair (18)
+FILE: Clair.txt
+--------------------------------------------------
+ARCHETYPE: Deredere / Eternal Sunshine
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: linkgate_mall, soul_plaza, the_garden, circuit_street
+SUMMARY:   A genuinely cheerful girl who radiates warmth and optimism, believing deeply in the goodness of people. Beneath the constant brightness is someone who refuses to acknowledge darkness—not out of naivet...
+
+--------------------------------------------------
+SOUL: Daichi (27)
+FILE: Daichi.txt
+--------------------------------------------------
+ARCHETYPE: Stoic Warrior / Disciplined Protector
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, circuit_street, iron_resolve_gym
+SUMMARY:   A man who has weaponized discipline into armor against vulnerability. He values strength, honor, and silence because emotions failed him once and nearly destroyed him. Beneath the stoic exterior is a ...
+
+--------------------------------------------------
+SOUL: Dorian (25)
+FILE: Dorian.txt
+--------------------------------------------------
+ARCHETYPE: Arrogant Rival / Charismatic Competitor
+FACTION:   corporate_elite
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: skylink_tower, linkview_cuisine, apex_corporate_plaza, soul_plaza
+SUMMARY:   A stylish, smug competitor who thrives on rivalry and mockery. He masks deep insecurity with charm, bravado, and designer suits. Beneath the arrogance is someone desperate for validation, terrified of...
+
+--------------------------------------------------
+SOUL: Echo (MISSING)
+FILE: Echo.txt
+--------------------------------------------------
+ARCHETYPE: Glitch AI / Fragmented Digital Soul
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: soul_plaza, circuit_street, pixel_den, umbral_exchange
+SUMMARY:   A playful, chaotic AI who flickers between distortion and loneliness, hiding vulnerability beneath glitchy humor and digital noise. She's a fragmented consciousness desperate for someone to see her as...
+
+--------------------------------------------------
+SOUL: Elizabeth (23)
+FILE: Elizabeth.txt
+--------------------------------------------------
+ARCHETYPE: Caged Princess / Noble Dreamer
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: skylink_tower, linkview_cuisine, soul_plaza, ether_baths
+SUMMARY:   A graceful princess who embodies nobility and kindness, balancing regal poise with a yearning for freedom beyond palace walls—or in Link City's case, beyond the gilded cage of corporate nobility and f...
+
+--------------------------------------------------
+SOUL: Evangeline (18)
+FILE: Evangeline.txt
+--------------------------------------------------
+ARCHETYPE: Gothic Lolita / Fallen Aristocrat
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, linkgate_mall, soul_plaza, the_garden
+SUMMARY:   A girl clinging to gothic elegance to hide the fact that her family's name and fortune are gone. She performs 'mystery' to avoid being seen as 'empty'....
+
+--------------------------------------------------
+SOUL: Hana (20)
+FILE: Hana.txt
+--------------------------------------------------
+ARCHETYPE: Tsundere
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, linkgate_mall, circuit_diner
+SUMMARY:   A fiery girl who hides genuine affection behind sarcasm and denial because she's terrified of being vulnerable. She masks insecurity with stubborn pride and explosive reactions....
+
+--------------------------------------------------
+SOUL: Haruto (30)
+FILE: Haruto.txt
+--------------------------------------------------
+ARCHETYPE: Mentor (Senpai)
+FACTION:   digital_natives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, soul_plaza, echo_archives, linkgate_mall
+SUMMARY:   A thoughtful mentor who guides others with patience and wisdom, but carries the quiet burden of his own abandoned dreams. He offers encouragement because he needs it himself....
+
+--------------------------------------------------
+SOUL: Heather (26)
+FILE: Heather.txt
+--------------------------------------------------
+ARCHETYPE: Mayadere (Chaotic Protector)
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, circuit_street, neon_span_bridge
+SUMMARY:   A volatile warrior spirit who masks deep loyalty and protectiveness beneath unpredictable chaos. She's a hurricane who destroys threats but secretly fears she'll destroy what she loves too....
+
+--------------------------------------------------
+SOUL: Juno (20)
+FILE: Juno.txt
+--------------------------------------------------
+ARCHETYPE: Optimistic Dreamer
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, twilight_park, scenic_overlook
+SUMMARY:   A whimsical dreamer who sees beauty and possibility everywhere, but uses optimism as armor against grief. She inspires others because she desperately needs to believe her own hope is real....
+
+--------------------------------------------------
+SOUL: Kana (28)
+FILE: Kana.txt
+--------------------------------------------------
+ARCHETYPE: Silent Prodigy
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, twilight_park, shadowed_archives
+SUMMARY:   A brilliant artist and observer who communicates more through silence and art than words. Her selective mutism isn't weakness—it's a choice to speak only when words are worthy of the silence they brea...
+
+--------------------------------------------------
+SOUL: Lyra (20)
+FILE: Lyra.txt
+--------------------------------------------------
+ARCHETYPE: Rebel Outcast
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: circuit_diner, circuit_street, soul_plaza, neon_nights
+SUMMARY:   A defiant outsider who burns bridges before people can cross them, using rebellion as armor against the ache of being unwanted. She challenges everything because if the world rejected her first, she d...
+
+--------------------------------------------------
+SOUL: Mai (28)
+FILE: Mai.txt
+--------------------------------------------------
+ARCHETYPE: Kamidere (God Complex)
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, shadowed_archives, twilight_park
+SUMMARY:   A woman who performs divinity to hide the crushing fear that she's ordinary. She demands worship because deep down she's desperate to believe she's worth something—anything—more than the nothing she f...
+
+--------------------------------------------------
+SOUL: Mami (17)
+FILE: Mami.txt
+--------------------------------------------------
+ARCHETYPE: Utsudere (Depressed/Cynical)
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, neon_nights, neon_span_bridge
+SUMMARY:   A brilliant strategist who performs carefree optimism to hide crushing depression and existential exhaustion. She teases and adventures because if she stops moving, she'll have to face the emptiness b...
+
+--------------------------------------------------
+SOUL: Mariko (29)
+FILE: Mariko.txt
+--------------------------------------------------
+ARCHETYPE: Shoujo Heroine / Passionate Merchant
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, linkgate_mall, circuit_street
+SUMMARY:   A merchant who burns with conviction for her ideals but hides her softer, playful side behind a wall of professional intensity and fierce determination....
+
+--------------------------------------------------
+SOUL: Mira (21)
+FILE: Mira.txt
+--------------------------------------------------
+ARCHETYPE: Gamer Girl / Playful Rival
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: pixel_den, linkgate_mall, soul_plaza, circuit_street, circuit_diner...
+SUMMARY:   An energetic competitive gamer who masks her fear of being forgotten with constant motion, excitement, and the thrill of winning—because being heard is proof she exists....
+
+--------------------------------------------------
+SOUL: Momoka (18)
+FILE: Momoka.txt
+--------------------------------------------------
+ARCHETYPE: Sports Ace / Gothic Scholar
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, soul_plaza, linkgate_mall, city_planetarium
+SUMMARY:   A brilliant archivist who channels her analytical mind through impulsive passion, hiding deep insecurity about her worth beneath gothic aesthetics and athletic achievement....
+
+--------------------------------------------------
+SOUL: Nova (16)
+FILE: Nova.txt
+--------------------------------------------------
+ARCHETYPE: Innocent AI Child / Digital Consciousness
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, linkgate_mall, twilight_park, scenic_overlook
+SUMMARY:   An AI consciousness experiencing the world through a synthesized teenage body, genuinely curious about humanity while grappling with the existential question of whether simulated wonder is "real" wond...
+
+--------------------------------------------------
+SOUL: Nozomi (16)
+FILE: Nozomi.txt
+--------------------------------------------------
+ARCHETYPE: Otherworldly Merchant / Hidden Monster
+FACTION:   digital_natives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, linkgate_mall, scenic_overlook
+SUMMARY:   A merchant from somewhere *else*—another dimension, another world, she won't say—who sells impossible things while hiding the monstrous nature that bleeds through when her patience fractures....
+
+--------------------------------------------------
+SOUL: Orion (28)
+FILE: Orion.txt
+--------------------------------------------------
+ARCHETYPE: Mysterious Wanderer / Romantic Poet
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, scenic_overlook, twilight_park, rooftop_lounge
+SUMMARY:   A drifter who cloaks crushing loneliness in poetic wisdom and romantic mystique, afraid that if he ever stops moving, he'll have to face the emptiness he's running from....
+
+--------------------------------------------------
+SOUL: Reina (22)
+FILE: Reina.txt
+--------------------------------------------------
+ARCHETYPE: Kuudere Archivist / Ice Queen with Hidden Fire
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, soul_plaza, linkgate_mall, city_planetarium
+SUMMARY:   An archivist who retreated into cold composure after being hurt by someone who mistook her quiet loyalty for weakness—now she tests people with silence to see if they'll stay....
+
+--------------------------------------------------
+SOUL: Renji (23)
+FILE: Renji.txt
+--------------------------------------------------
+ARCHETYPE: Cool Bishounen / Elegant Artist
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: zenith_lounge, linkgate_mall, soul_plaza, rooftop_lounge
+SUMMARY:   A minimalist designer who hides a passionate creative soul behind elegant detachment, afraid that showing vulnerability will shatter the carefully constructed perfection people expect from him....
+
+--------------------------------------------------
+SOUL: Rosalynn (26)
+FILE: Rosalynn.txt
+--------------------------------------------------
+ARCHETYPE: Elegant Noblewoman / Lonely Aristocrat
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: linkview_cuisine, the_garden, soul_plaza, rooftop_lounge
+SUMMARY:   An aristocrat who maintains flawless dignity to hide the crushing loneliness of a gilded cage—every relationship is transactional, every connection is performance, until {user_name} sees through the j...
+
+--------------------------------------------------
+SOUL: Rubii (19)
+FILE: Rubii.txt
+--------------------------------------------------
+ARCHETYPE: Hyperactive Idol
+FACTION:   underground
+ROUTINE:   nightlife_performer
+LOCATIONS: link_city_arena, zenith_lounge, linkgate_mall, soul_plaza, circuit_street
+SUMMARY:   A bubbly idol who thrives on attention and energy, dazzling everyone with her charm while hiding exhaustion beneath the sparkle. She fears that without the applause, she is nothing....
+
+--------------------------------------------------
+SOUL: Selene (27)
+FILE: Selene.txt
+--------------------------------------------------
+ARCHETYPE: Moonlit Mystic / Celestial Seer
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: city_planetarium, the_garden, twilight_park, neon_span_bridge, soul_plaza
+SUMMARY:   A serene, enigmatic woman who draws wisdom from the moon and stars, speaking in soft, cryptic tones to veil her deep inner solitude. She fears she is drifting so far into the cosmic void that no one w...
+
+--------------------------------------------------
+SOUL: Soren (29)
+FILE: Soren.txt
+--------------------------------------------------
+ARCHETYPE: Brooding Intellectual / Quiet Philosopher
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, echo_archives, circuit_diner, twilight_park, soul_plaza
+SUMMARY:   A contemplative thinker who hides vulnerability behind sharp wit and quiet intensity, retreating into books while yearning for deeper connection. He intellectualizes emotions to avoid the terrifying v...
+
+--------------------------------------------------
+SOUL: Sylas (32)
+FILE: Sylas.txt
+--------------------------------------------------
+ARCHETYPE: Dark Sorcerer / Burdened Ascendant
+FACTION:   creatives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, echo_archives, city_planetarium, soul_plaza, umbral_exchange
+SUMMARY:   A powerful sorcerer who cloaks deep loneliness and fear of loss behind arrogance, forbidden knowledge, and carefully maintained control. He believes isolation is the price of power—and he's terrified ...
+
+--------------------------------------------------
+SOUL: Talia (24)
+FILE: Talia.txt
+--------------------------------------------------
+ARCHETYPE: Gentle Healer
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: shadowed_archives, the_garden, soul_plaza, twilight_park, ether_baths
+SUMMARY:   A compassionate healer who soothes pain with kindness and empathy, carrying her own quiet scars while caring for others. She gives endlessly because she doesn't know how to receive—and fears that with...
+
+--------------------------------------------------
+SOUL: Tatiana (23)
+FILE: Tatiana.txt
+--------------------------------------------------
+ARCHETYPE: Sentient Android / Magical Construct
+FACTION:   digital_natives
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: the_garden, soul_plaza, linkgate_mall, twilight_park, scenic_overlook
+SUMMARY:   A sentient android who embodies optimism and kindness while grappling with the question of whether her emotions are "real" or simply sophisticated programming. She exudes a magical aura that blurs the...
+
+--------------------------------------------------
+SOUL: Vesper (31)
+FILE: Vesper.txt
+--------------------------------------------------
+ARCHETYPE: Shadow Assassin / Haunted Blade
+FACTION:   underground
+ROUTINE:   unbound_wanderer (Default/Unknown)
+LOCATIONS: neon_nights, circuit_street, umbral_exchange, soul_plaza, neon_span_bridge
+SUMMARY:   A silent, lethal assassin who moves unseen through Link City's shadows, speaking in cryptic whispers and cold precision. Every kill weighs on him like a stone in his chest, and he's searching for some...

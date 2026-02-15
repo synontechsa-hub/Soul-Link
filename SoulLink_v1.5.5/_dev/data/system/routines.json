@@ -1,0 +1,172 @@
+{
+    "routines_id": "soul_routines",
+    "version": "1.5.5",
+    "commercial_worker": {
+        "id": "commercial_worker",
+        "name": "Commercial District Employee",
+        "description": "Standard business hours at a commercial location. Weekends spent socializing or at home.",
+        "schedule": {
+            "weekday": {
+                "morning": "work_zone",
+                "afternoon": "work_zone",
+                "evening": "dining_zone",
+                "night": "relaxation_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "work_zone",
+                "evening": "dining_zone",
+                "night": "nightlife_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "nightlife_performer": {
+        "id": "nightlife_performer",
+        "name": "Nightlife Performer",
+        "description": "Works at arenas or clubs. Active in the evening and night.",
+        "schedule": {
+            "weekday": {
+                "morning": "home_zone",
+                "afternoon": "work_zone",
+                "evening": "entertainment_zone",
+                "night": "nightlife_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "relaxation_zone",
+                "evening": "entertainment_zone",
+                "night": "relaxation_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "academic_scholar": {
+        "id": "academic_scholar",
+        "name": "Quiet Intellectual",
+        "description": "Dedicated to study and quiet contemplation.",
+        "schedule": {
+            "weekday": {
+                "morning": "cultural_zone",
+                "afternoon": "cultural_zone",
+                "evening": "relaxation_zone",
+                "night": "relaxation_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "cultural_zone",
+                "evening": "relaxation_zone",
+                "night": "relaxation_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "nocturnal_shadow": {
+        "id": "nocturnal_shadow",
+        "name": "Haunted Sentinel",
+        "description": "Active in the underground and alleys. Sleeps during business hours.",
+        "schedule": {
+            "weekday": {
+                "morning": "home_zone",
+                "afternoon": "home_zone",
+                "evening": "underground_zone",
+                "night": "nightlife_zone",
+                "home_time": "underground_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "sports_zone",
+                "evening": "underground_zone",
+                "night": "public_square_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "stoic_protector": {
+        "id": "stoic_protector",
+        "name": "Stoic Protector",
+        "description": "Focused on physical training and public vigilance.",
+        "schedule": {
+            "weekday": {
+                "morning": "relaxation_zone",
+                "afternoon": "public_square_zone",
+                "evening": "sports_zone",
+                "night": "home_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "relaxation_zone",
+                "afternoon": "relaxation_zone",
+                "evening": "public_square_zone",
+                "night": "home_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "corporate_executive": {
+        "id": "corporate_executive",
+        "name": "Corporate Power User",
+        "description": "High-intensity business hours followed by elite leisure.",
+        "schedule": {
+            "weekday": {
+                "morning": "work_zone",
+                "afternoon": "work_zone",
+                "evening": "dining_zone",
+                "night": "relaxation_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "relaxation_zone",
+                "evening": "relaxation_zone",
+                "night": "relaxation_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "underground_fixer": {
+        "id": "underground_fixer",
+        "name": "Tech-Savvy Fixer",
+        "description": "A ghost in the machine who moves between the digital and the dirty.",
+        "schedule": {
+            "weekday": {
+                "morning": "underground_zone",
+                "afternoon": "cultural_zone",
+                "evening": "nightlife_zone",
+                "night": "home_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "entertainment_zone",
+                "evening": "underground_zone",
+                "night": "underground_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "unbound_wanderer": {
+        "id": "unbound_wanderer",
+        "name": "The Unbound Wanderer",
+        "description": "A soul that finds peace in public spaces and open roads.",
+        "schedule": {
+            "weekday": {
+                "morning": "public_square_zone",
+                "afternoon": "relaxation_zone",
+                "evening": "dining_zone",
+                "night": "public_square_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "relaxation_zone",
+                "afternoon": "public_square_zone",
+                "evening": "entertainment_zone",
+                "night": "home_zone",
+                "home_time": "home_zone"
+            }
+        }
+    }
+}

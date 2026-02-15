@@ -1,0 +1,72 @@
+{
+    "location_id": "neon_nights",
+    "meta": {
+        "display_name": "Neon Nights Club",
+        "category": "nightlife",
+        "subcategory": "general",
+        "description": "Violet-crimson neon, pulsing bass.",
+        "image_url": "/assets/images/locations/neon_nights_club_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The club's interior is drenched in violet and crimson neon, casting sharp shadows over polished black floors. The bass vibrates through walls and floors, a rhythmic pulse felt as much as heard. Faint scents of exotic perfumes and spirits mingle with the warm hum of crowded energy.",
+        "crowd_atmosphere": "The crowd is diverse and electric: dancers lose themselves to the music, socialites cluster in VIP corners, and bartenders move swiftly serving cocktails. Energy levels peak late at night, with laughter, chatter, and occasional arguments punctuating the beats.",
+        "activities": [
+            "Dance on the main floor beneath the neon lights.",
+            "Order specialty cocktails from the bar.",
+            "Socialize in VIP lounges or corner tables.",
+            "Participate in themed events or live DJ shows.",
+            "Observe the city through floor-to-ceiling tinted windows."
+        ],
+        "interaction_rules": "Privacy Level: Public. Patrons are free to mingle, but aggressive behavior is monitored and ejected by security.",
+        "seasonal_variations": {
+            "frostlink": "The club becomes a warm refuge from the cold. Condensation forms on the tinted windows, and the contrast between the frigid outside and heated interior intensifies the atmosphere.",
+            "surgespring": "Electrical storms outside create dramatic lightning flashes through the windows. The club's sound system occasionally crackles with power surges, adding to the energy.",
+            "burnseason": "The club is packed during evening and night as people escape the heat. The cooling system works overtime, and cold drinks are in high demand.",
+            "shadowfall": "The club takes on a more intimate, contemplative vibe. Purple and amber lighting dominates, matching the season's mood outside."
+        },
+        "weather_variations": {
+            "ice_storm": "The club is one of the few places still open and packed with people seeking shelter. The windows are completely frosted over.",
+            "electromagnetic_storm": "The light show outside competes with the club's own effects. Patrons crowd the windows to watch electrical arcs dance across the skyline.",
+            "heatwave": "The club doesn't open until evening, but when it does, it's absolutely packed with heat-refugees ready to party.",
+            "data_rain": "The rare phenomenon draws crowds. DJs incorporate the visual spectacle into their sets, and the dancefloor is electric with energy."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "evening",
+            "close_slot": "home_time"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "bartender",
+            "DJ",
+            "security_guard",
+            "wait_staff"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Neon Nights Club opened in 2049 as one of Link City's first neon-themed nightlife venues. It quickly became a hotspot for trendsetters and underground artists seeking a visually immersive experience.",
+        "secrets": "Rumor has it that the club has hidden rooms accessed only by select VIPs, where exclusive after-hours events occur — sometimes involving high-profile deals or discreet networking between influential figures."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "energy": 1.5
+        }
+    }
+}

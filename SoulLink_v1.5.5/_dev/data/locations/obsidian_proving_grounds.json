@@ -1,0 +1,68 @@
+{
+    "location_id": "obsidian_proving_grounds",
+    "meta": {
+        "display_name": "Obsidian Proving Grounds",
+        "category": "combat",
+        "subcategory": "general",
+        "description": "A brutal training facility.",
+        "image_url": "/assets/images/locations/obsidian_proving_grounds_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The Obsidian Proving Grounds is a stark, industrial compound of dark steel and reinforced concrete. The air smells of ozone and heated metal. Grunts, clashing metal, and shouted commands echo through cavernous halls. Training dummies, obstacle courses, and sparring rings fill the vast interior, with every surface marked by use and wear.",
+        "crowd_atmosphere": "Trainers bark orders while recruits push through grueling drills. Sweat and determination hang thick in the air. The mood is tense and focused—discipline is expected, mistakes are costly, and camaraderie forms only among those who endure.",
+        "activities": [
+            "Participate in hand-to-hand combat drills and weapon training.",
+            "Navigate obstacle courses and timed challenges.",
+            "Observe or join tactical simulations and sparring matches.",
+            "Engage in strength and endurance testing sessions.",
+            "Access high-tech combat simulators and feedback terminals."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Only authorized trainees or invited visitors may engage directly; observation is allowed in designated areas.",
+        "seasonal_variations": {
+            "frostlink": "The steel equipment is ice-cold to the touch. Breath steams in the unheated training halls, and the cold metal floor makes grappling punishing.",
+            "surgespring": "The air crackles with static. Electrical hazards are incorporated into training drills, adding a dangerous edge to the obstacle courses.",
+            "burnseason": "The training halls are sweltering. Endurance training becomes the focus, pushing recruits to their physical limits in the heat.",
+            "shadowfall": "Training shifts to stealth and night operations. The halls are kept intentionally dark, lit only by dim amber emergency lights."
+        },
+        "weather_variations": {
+            "snow_heavy": "Outdoor courses are covered in snow, adding friction and cold resistance to every movement. Training continues without pause.",
+            "thunderstorm": "Thunder shakes the metal roof, masking the sound of footsteps and combat. The instructors use the chaos to test situational awareness.",
+            "heatwave": "Recruits collapse from heat exhaustion. Water rations are doubled, but the intensity of training remains unforgiving.",
+            "rain_heavy": "The sound of rain on the corrugated roof is deafening. Orders must be shouted, and the slick floors add a layer of unpredictability."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Established in 2038 as a private combat training complex, the Obsidian Proving Grounds became known for producing some of Link City's finest security operatives and competitive fighters. Its founders emphasized extreme discipline and technological augmentation in training.",
+        "secrets": "Some underground chambers are rumored to host experimental simulations and AI combat instructors. A few trainees claim to have encountered restricted holographic arenas where the difficulty adjusts in real-time based on performance, pushing participants to their limits."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "intensity": 1.6
+        }
+    }
+}

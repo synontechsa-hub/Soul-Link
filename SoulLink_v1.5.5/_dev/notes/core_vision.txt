@@ -78,7 +78,7 @@ DYNAMIC LORE:
 Dev notes:
 The apartment will be remade into a fully interactive environment.
 
-- The user will be able to walk around the apartment and interact with objects.
+- The user will be able to pan the screen around the apartment and interact with objects.
 - The user will be able to look at the city skyline from the window.
 - The user will be able to sit on the couch and watch TV.
 - The user will be able to look in the mirror and see their reflection.

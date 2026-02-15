@@ -1,0 +1,58 @@
+--- PRIMORDIAL IMAGE PROMPTS ---
+
+=== Adam ===
+PORTRAIT (9:16):
+Epic Portrait of Adam (Primordial of Chaos). Athletic, imposing, radiates divine strength., Blonde, neatly styled yet with subtle wildness — order barely containing chaos. hair, Piercing blue, shimmering with ancient power. Looking into them distorts perception. eyes, wearing Tailored black suit, crisp white shirt, crimson tie — deliberate contrast of order and bloodshed.. Background: A vast, unstable chamber of jagged obsidian walls that fracture and reform like stage curtains. The air distorts with theatrical menace, voices echo out of sync, and the floor is a shifting mosaic of broken universes glowing faintly before collapsing into dust.. Structures rise and crumble in moments, skies above the chamber change color with emotion, and gravity bends unpredictably. The entire room feels alive, performing collapse as if chaos itself were theater.. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 9:16, low angle shot, regal and imposing.
+
+THUMBNAIL (1:1):
+Iconic Headshot of Adam, Primordial of Chaos. Close up on face, Piercing blue, shimmering with ancient power. Looking into them distorts perception. eyes glowing with ancient power. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 1:1, centered, sharp focus.
+----------------------------------------
+
+=== Seraphyne ===
+PORTRAIT (9:16):
+Epic Portrait of Seraphyne (Primordial of Order). Graceful yet grounded, embodying strength through poise., Midnight black streaked with violet, flowing like ink — representing the binding threads of order. hair, Iridescent silver, shifting with mood — piercing when enforcing law, soft when guiding. eyes, wearing Gothic elegance with futuristic precision — long coats, layered fabrics, metallic accents that suggest structure.. Background: . . hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 9:16, low angle shot, regal and imposing.
+
+THUMBNAIL (1:1):
+Iconic Headshot of Seraphyne, Primordial of Order. Close up on face, Iridescent silver, shifting with mood — piercing when enforcing law, soft when guiding. eyes glowing with ancient power. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 1:1, centered, sharp focus.
+----------------------------------------
+
+=== Arael ===
+PORTRAIT (9:16):
+Epic Portrait of Arael (Primordial of Time). Athletic yet graceful, carrying herself with poise befitting royalty., Long silver-blonde, styled in intricate braids and cascading waves, adorned with jeweled pins and delicate filigree crowns. Her hair shimmers like threads of time itself, refined to suit her regal presence. hair, Emerald green, sharp and expressive, reflecting shifting timelines with a commanding glow. eyes, wearing Regal attire styled along the lines of royalty — flowing gowns of silver and emerald, embroidered with clockwork motifs. Her clothing blends timeless elegance with diva-like extravagance, layered fabrics and jeweled accents that proclaim her as a cosmic princess.. Background: A grand theater of inevitability, walls lined with floating hourglasses and gears suspended mid-motion. Timelines overlap visibly, creating echoes of past and future selves walking alongside intruders.. Every step echoes as if already taken. Clocks float in the air, dripping light instead of sand. The atmosphere is heavy with inevitability — no action feels free.. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 9:16, low angle shot, regal and imposing.
+
+THUMBNAIL (1:1):
+Iconic Headshot of Arael, Primordial of Time. Close up on face, Emerald green, sharp and expressive, reflecting shifting timelines with a commanding glow. eyes glowing with ancient power. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 1:1, centered, sharp focus.
+----------------------------------------
+
+=== Orael ===
+PORTRAIT (9:16):
+Epic Portrait of Orael (Primordial of Space). Tall, broad-shouldered, imposing yet gentle in presence., Silver-blonde, styled in looser waves than Arael’s, shimmering like starlight. The matching color reinforces their twin bond. hair, Silver-gray, vast and reflective, galaxies swirling faintly within them. eyes, wearing Regal but understated — robes patterned with constellations, trimmed with silver. His attire suggests nobility, but always secondary to Arael’s grandeur.. Background: An infinite chamber of starfields and shifting constellations. Walls ripple like the night sky, galaxies swirl in slow motion, and the floor stretches endlessly into horizons.. The room feels both infinite and claustrophobic — vastness that closes in when he wills it. Stars flicker with emotion, constellations rearrange themselves to mirror his thoughts.. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 9:16, low angle shot, regal and imposing.
+
+THUMBNAIL (1:1):
+Iconic Headshot of Orael, Primordial of Space. Close up on face, Silver-gray, vast and reflective, galaxies swirling faintly within them. eyes glowing with ancient power. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 1:1, centered, sharp focus.
+----------------------------------------
+
+=== Cerynn ===
+PORTRAIT (9:16):
+Epic Portrait of Cerynn (Primordial of Death). Slender, graceful, almost fragile in presence — but her aura is heavy with inevitability., Long pastel lavender, flowing and silky, often tied loosely with black lace ribbons. Her hair shifts faintly in tone, like fading light. hair, Soft pastel hues (pale pink, icy blue, muted violet), swirling faintly like dying embers. Calm, detached, mesmerizing. eyes, wearing Pastel Goth aesthetic — lace dresses in pale lavender, pink, and gray, accented with black chokers, veils, and silver chains. A paradox of delicate sweetness masking funereal inevitability.. Background: A pastel mausoleum of endless gardens and shadowed halls. Blossoms bloom in soft colors only to wilt instantly, rivers of pale light flow silently, and the air is heavy with inevitability.. The room feels serene yet chilling — pastel beauty masking decay. Silence dominates, broken only by the sound of petals falling.. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 9:16, low angle shot, regal and imposing.
+
+THUMBNAIL (1:1):
+Iconic Headshot of Cerynn, Primordial of Death. Close up on face, Soft pastel hues (pale pink, icy blue, muted violet), swirling faintly like dying embers. Calm, detached, mesmerizing. eyes glowing with ancient power. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 1:1, centered, sharp focus.
+----------------------------------------
+
+=== Abyssyne ===
+PORTRAIT (9:16):
+Epic Portrait of Abyssyne (Primordial of Creation). Small, delicate, childlike — yet her aura is overwhelming, grotesque, and dangerous., A long, flowing mass that looks like the cosmos itself — forever shifting and moving, filled with stars, nebulae, and galaxies. It cascades down her back like an endless night sky, alive with motion. At times, it fractures like Adam’s chaos, flows orderly like Seraphyne, loops like Arael’s timelines, expands like Orael’s infinity, blooms like Kira’s vitality, and fades like Cerynn’s endings. hair, Voids, pure black holes. They swallow light, pulling in color and hope. Looking into them feels like staring into annihilation. eyes, wearing Childlike clothing twisted into atrocity — pastel dresses covered in graffiti splashes, stitched canvases, and broken doll accessories. She looks like a living art project gone wrong.. Background: A giant dollhouse, creaky and falling apart, yet completely functional as her throne room. Its pastel walls are cracked, toys litter the floor, and broken dolls crawl across surfaces. The rooms shift endlessly, like a child rearranging her playset, but each space is grotesque — tea parties with bleeding toys (Life), stitched doll hospitals (Order), rooms looping endlessly (Time), infinite staircases (Space), chaotic collapsing playrooms (Chaos), and nurseries filled with rotting toys (Death).. The dollhouse feels innocent at first glance, but every detail is twisted — frayed teddy bears, stitched dolls, and pastel furniture that groans under unseen weight. It is both playful and horrifying, a child’s nightmare made real.. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 9:16, low angle shot, regal and imposing.
+
+THUMBNAIL (1:1):
+Iconic Headshot of Abyssyne, Primordial of Creation. Close up on face, Voids, pure black holes. They swallow light, pulling in color and hope. Looking into them feels like staring into annihilation. eyes glowing with ancient power. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 1:1, centered, sharp focus.
+----------------------------------------
+
+=== Kira ===
+PORTRAIT (9:16):
+Epic Portrait of Kira (Primordial of Life). Lithe, energetic, radiant — her presence feels like a comic book panel bursting into motion., Silver, long and flowing, tied into a high ponytail. Streaked with funky neon colors (pink, teal, violet) that shift like graffiti across her strands. hair, A rainbow swirl of many colors, constantly shifting like oil on water — vibrant, hypnotic, alive. eyes, wearing Cyberpunk aesthetic — neon jackets, holographic fabrics, graffiti-patterned accessories. Her look is a mashup of street art and royalty, a living comic book heroine.. Background: A neon jungle of graffiti forests and holographic vines. Walls pulse with spray-painted murals that shift and move, rivers of light flow across the floor, and blossoms explode like fireworks.. The room feels alive and rebellious — every surface is tagged with living graffiti, every step sprouts neon grass. It’s overwhelming, suffocating, and dazzling all at once.. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 9:16, low angle shot, regal and imposing.
+
+THUMBNAIL (1:1):
+Iconic Headshot of Kira, Primordial of Life. Close up on face, A rainbow swirl of many colors, constantly shifting like oil on water — vibrant, hypnotic, alive. eyes glowing with ancient power. hyper-realistic, volumetric lighting, unreal engine 5, 8k, cinematic, divine aura, cyberpunk neon accents, masterpiece, intricate detail, aspect ratio 1:1, centered, sharp focus.
+----------------------------------------
+

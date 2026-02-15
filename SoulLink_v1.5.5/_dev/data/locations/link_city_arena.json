@@ -1,0 +1,74 @@
+{
+    "location_id": "link_city_arena",
+    "meta": {
+        "display_name": "Link City Arena",
+        "category": "sports",
+        "subcategory": "general",
+        "description": "A colossal stadium of steel and light.",
+        "image_url": "/assets/images/locations/link_city_arena_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Massive steel girders support soaring tiers of seating under bright floodlights. The air vibrates with echoes of cheering crowds and thumping bass from events. The scent of popcorn, energy drinks, and polished concrete mingles. LED screens flash team logos and digital advertisements, creating a dynamic pulse throughout the arena.",
+        "crowd_atmosphere": "The arena fills with energy during events. Fans wear team colors, chant, and wave banners, while security personnel and staff navigate the crowd with precision. During downtime, cleaners, vendors, and athletes move through the space with efficiency and purpose. Noise ebbs and flows, but the anticipation is always palpable.",
+        "activities": [
+            "Watch professional sports matches or competitive e-sports tournaments.",
+            "Attend large-scale concerts, festivals, and exhibitions.",
+            "Participate in community fitness events or charity matches.",
+            "Access VIP lounges for networking or private viewings.",
+            "Explore behind-the-scenes tours, including locker rooms and media areas."
+        ],
+        "interaction_rules": "Privacy Level: Public. Attendees must respect seating arrangements, follow event staff instructions, and maintain general decorum during events.",
+        "seasonal_variations": {
+            "frostlink": "The arena converts its central floor for ice events. Outside, crowds bundle up in heated queues. The massive structure hums with heating systems.",
+            "surgespring": "The arena hosts major e-sports tournaments. The energy is electric, with holographic displays spilling out into the streets.",
+            "burnseason": "The arena is a massive, climate-controlled refuge. Summer concerts and indoor sports draw huge crowds escaping the heat.",
+            "shadowfall": "Events take on a darker, more artistic tone. Holo-concerts featuring minor keys and mysterious themes are popular."
+        },
+        "weather_variations": {
+            "snow_heavy": "Event delays are common, but those inside enjoy a warm, isolated world of entertainment. The roof is firmly sealed against the snow.",
+            "thunderstorm": "The roar of the crowd rivals the thunder outside. The retractable roof is closed, and the atmosphere inside is intense and focused.",
+            "heatwave": "The arena's AC is pushed to the limit. It's one of the most popular places in the city, packed even for minor events.",
+            "clear_cool": "The retractable roof opens for evening events, letting in the cool night air and starlight to mix with the stadium lights."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "event_manager",
+            "security_staff",
+            "concessions_worker",
+            "technician",
+            "tour_guide"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Link City Arena was inaugurated to host both traditional sports and the city’s rapidly growing e-sports scene. Its design combines futuristic architecture with functional crowd management. Over the years, it has hosted legendary matches, international concerts, and civic celebrations, becoming a landmark of competition and culture in Link City.",
+        "secrets": "Rumors suggest hidden underground tunnels connect to key city buildings, allowing discreet movement of VIPs and athletes. Certain executive suites are said to contain AI-managed observation systems that track crowd engagement and behavioral patterns during events."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "confidence": 1.5
+        }
+    }
+}

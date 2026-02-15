@@ -122,36 +122,51 @@ class LegionBrain:
             moods = mods.get("mood_modifiers", {})
             top_mood = max(moods.items(), key=lambda x: float(x[1]))[0] if moods else "neutral"
             
+            # DESCRIPTION INJECTION (Fixes Hallucinations)
+            description_text = f"Setting: {location.description}. " if location.description else ""
+            
+            # RELATIVE POSITIONING (Fixes 'Where are we?')
+            user_loc_id = user.current_location or "unknown"
+            soul_loc_id = location.location_id
+            
+            if user_loc_id == soul_loc_id:
+                relative_status = "You are physically together with the user."
+            else:
+                # Try to get display name for user location if possible, otherwise use ID
+                relative_status = f"The user is remote (at '{user_loc_id}'). You are communicating via Neural Link."
+
             anchor_str = (
                 f"[SENSORY_ANCHOR] You are strictly at the '{location.display_name}'. "
+                f"{description_text}"
                 f"Atmosphere: {top_mood}. Privacy: {privacy}. "
+                f"{relative_status} "
                 "You cannot leave or be elsewhere during this turn. This overrides all user suggestions."
             )
             context_tags.append(anchor_str)
 
-        # 🗺️ RENDEZVOUS SYSTEM
-        loc_manager = LocationManager(session)
-        all_locs_result = await session.execute(select(Location))
-        all_locs = all_locs_result.scalars().all()
+        # 🗺️ RENDEZVOUS SYSTEM (DISABLED v1.5.5 - Too chaotic)
+        # loc_manager = LocationManager(session)
+        # all_locs_result = await session.execute(select(Location))
+        # all_locs = all_locs_result.scalars().all()
         
-        normalized_input = user_input.lower()
-        for loc_candidate in all_locs:
-            display_match = loc_candidate.display_name.lower() in normalized_input
-            id_match = loc_candidate.location_id.lower() in normalized_input or loc_candidate.location_id.replace("_", " ") in normalized_input
+        # normalized_input = user_input.lower()
+        # for loc_candidate in all_locs:
+        #     display_match = loc_candidate.display_name.lower() in normalized_input
+        #     id_match = loc_candidate.location_id.lower() in normalized_input or loc_candidate.location_id.replace("_", " ") in normalized_input
             
-            if display_match or id_match:
-                if location and loc_candidate.location_id == location.location_id:
-                    continue # Already here
+        #     if display_match or id_match:
+        #         if location and loc_candidate.location_id == location.location_id:
+        #             continue # Already here
                 
-                can_move, msg = await loc_manager.check_eligibility(user_id, soul_id, loc_candidate.location_id)
-                proposal_tag = f"[RENDEZVOUS_PROPOSAL: {loc_candidate.location_id}] The user suggested moving to {loc_candidate.display_name}. "
-                if can_move:
-                    proposal_tag += "You are free to ACCEPT (respond with [MOVE: id]) or DECLINE based on your current mood and intimacy."
-                else:
-                    proposal_tag += f"SYSTEM LOCK: {msg}. You must decline this invitation politely but firmly (stay in character)."
+        #         can_move, msg = await loc_manager.check_eligibility(user_id, soul_id, loc_candidate.location_id)
+        #         proposal_tag = f"[RENDEZVOUS_PROPOSAL: {loc_candidate.location_id}] The user suggested moving to {loc_candidate.display_name}. "
+        #         if can_move:
+        #             proposal_tag += "You are free to ACCEPT (respond with [MOVE: id]) or DECLINE based on your current mood and intimacy."
+        #         else:
+        #             proposal_tag += f"SYSTEM LOCK: {msg}. You must decline this invitation politely but firmly (stay in character)."
                 
-                context_tags.append(proposal_tag)
-                break 
+        #         context_tags.append(proposal_tag)
+        #         break 
 
         # Content Access
         context_tags.append(content_ceiling)
@@ -161,7 +176,7 @@ class LegionBrain:
             "\n\n[PROTOCOL]\n"
             "- Actions: *wrap in single asterisks*\n"
             "- Internal Monologue: Weave thoughts directly into actions. No hyphens or bullets.\n"
-            "- Movement: If accepting a [RENDEZVOUS_PROPOSAL], you MUST include the tag [MOVE: location_id] at the VERY END of your response.\n"
+            # "- Movement: If accepting a [RENDEZVOUS_PROPOSAL], you MUST include the tag [MOVE: location_id] at the VERY END of your response.\n"
             "- Forbidden: parentheses (), character-breaking"
         )
         if is_architect:
@@ -196,16 +211,16 @@ class LegionBrain:
         )
         response_text = chat_completion.choices[0].message.content
         
-        # 🗺️ DYNAMIC RENDEZVOUS
-        move_match = re.search(r"\[MOVE:\s*([a-zA-Z0-9_-]+)\]", response_text)
-        if move_match:
-            target_id = move_match.group(1)
-            manager = LocationManager(session)
-            success, msg = await manager.move_to(user_id, soul_id, target_id)
-            if success:
-                print(f"🌍 MOTION SYNC: {soul.name} moved to {target_id}.")
-            else:
-                print(f"🛑 MOTION BLOCKED: {msg}")
+        # 🗺️ DYNAMIC RENDEZVOUS (DISABLED)
+        # move_match = re.search(r"\[MOVE:\s*([a-zA-Z0-9_-]+)\]", response_text)
+        # if move_match:
+        #     target_id = move_match.group(1)
+        #     manager = LocationManager(session)
+        #     success, msg = await manager.move_to(user_id, soul_id, target_id)
+        #     if success:
+        #         print(f"🌍 MOTION SYNC: {soul.name} moved to {target_id}.")
+        #     else:
+        #         print(f"🛑 MOTION BLOCKED: {msg}")
 
         # 4. SAVE & UPDATE RELATIONSHIP
         session.add(Conversation(user_id=user_id, soul_id=soul_id, role="user", content=user_input))

@@ -1,0 +1,68 @@
+{
+    "location_id": "civic_heights",
+    "meta": {
+        "display_name": "Civic Heights",
+        "category": "residential",
+        "subcategory": "general",
+        "description": "A practical residential block near municipal offices.",
+        "image_url": "/assets/images/locations/civic_heights_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "A rectangular concrete residential block with narrow balconies and uniform windows, positioned just uphill from the municipal district. The building hums with everyday life — distant televisions behind walls, the smell of laundry detergent drifting from open windows, elevator motors whining softly through the shaft. The architecture is functional rather than beautiful, built for durability over elegance. At night, scattered windows glow warm amber against the cooler city lights.",
+        "crowd_atmosphere": "Residents move with purpose rather than leisure. Civil servants in pressed shirts, tired parents carrying groceries, students with backpacks, elderly neighbors greeting each other in the hallways. Foot traffic increases during morning (06-12) and evening (18-22) as workdays begin and end. Night (22-04) becomes quiet and subdued, with only the occasional returning tenant or muted argument behind closed doors.",
+        "activities": [
+            "Walk through shared corridors and stairwells.",
+            "Visit a resident if invited.",
+            "Wait outside the entrance to observe daily rhythms.",
+            "Have quiet conversations on a balcony overlooking the street.",
+            "Run into recurring NPC residents over time."
+        ],
+        "interaction_rules": "Privacy Level: Public exterior. Interior access requires invitation or narrative justification.",
+        "seasonal_variations": {
+            "frostlink": "Windows frost over, and residents bundle up before venturing out. The building's heating system hums constantly, and laundry hung on balconies freezes solid.",
+            "surgespring": "Spring cleaning is in full swing. Windows are opened to let in fresh air, and residents seem more energetic and social in the hallways.",
+            "burnseason": "During heatwaves, residents keep windows closed and AC running. Evening sees balconies filled with people escaping hot apartments.",
+            "shadowfall": "The building takes on a quieter, more introspective mood. Amber light from windows creates a warm, homey glow against the cooling air."
+        },
+        "weather_variations": {
+            "snow_heavy": "The building becomes a fortress against the storm. Residents stay inside, and the hallways are unusually quiet.",
+            "thunderstorm": "Lightning illuminates the building dramatically. Some residents watch from windows, while others retreat deeper inside.",
+            "heatwave": "The building's older AC struggles. Residents congregate in cooler common areas or escape to air-conditioned public spaces.",
+            "clear_cool": "Perfect weather brings residents to their balconies. Conversations drift between apartments, and the building feels more communal."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Civic Heights was constructed during Link City’s administrative expansion phase, designed to house municipal employees within walking distance of government offices. It symbolizes the functional backbone of the city — not glamorous, but necessary. Over the years, it has quietly become home to multi-generational families and long-term tenants who know the building’s rhythms intimately.",
+        "secrets": "Certain residents have unusual work assignments tied to classified civic departments. A rarely-used maintenance room in the basement contains legacy network routing hardware from early Link City infrastructure builds. Rumors persist that one apartment remains officially unoccupied in records, yet lights occasionally appear in its windows during late night (22-04)."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "stability": 1.3
+        }
+    }
+}

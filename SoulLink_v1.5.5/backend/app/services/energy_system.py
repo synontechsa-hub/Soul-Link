@@ -23,6 +23,11 @@ class EnergySystem:
         now = datetime.now(timezone.utc)
         last_refill = user.last_energy_refill
         
+        # Handle None (Legacy users)
+        if last_refill is None:
+            last_refill = now
+            user.last_energy_refill = now
+        
         # Ensure last_refill is timezone-aware
         if last_refill.tzinfo is None:
             last_refill = last_refill.replace(tzinfo=timezone.utc)

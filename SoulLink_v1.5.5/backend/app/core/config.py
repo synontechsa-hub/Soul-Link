@@ -44,6 +44,17 @@ class Settings(BaseSettings):
     
     # Frontend URLs (for CORS)
     production_frontend_url: Optional[str] = Field(default=None, validation_alias='PRODUCTION_FRONTEND_URL')
+    
+    # --- MONETIZATION: AD NETWORK CONFIGURATION ---
+    applovin_sdk_key: Optional[str] = Field(default="mock_key", validation_alias='APPLOVIN_SDK_KEY')
+    applovin_ssv_secret: Optional[str] = Field(default="mock_secret", validation_alias='APPLOVIN_SSV_SECRET')
+    tapjoy_sdk_key: Optional[str] = Field(default="mock_key", validation_alias='TAPJOY_SDK_KEY')
+    tapjoy_app_id: Optional[str] = Field(default="mock_id", validation_alias='TAPJOY_APP_ID')
+    
+    # Ad System Configuration
+    ad_stability_decay_rate: float = Field(default=2.0, validation_alias='AD_STABILITY_DECAY_RATE')
+    ad_stability_warning_threshold: float = Field(default=20.0, validation_alias='AD_STABILITY_WARNING_THRESHOLD')
+    ad_cooldown_seconds: int = Field(default=30, validation_alias='AD_COOLDOWN_SECONDS')
 
     # THE FIX: Point to root .env relative to this file's location.
     # backend/app/core/config.py -> ../../../.env reaches root.

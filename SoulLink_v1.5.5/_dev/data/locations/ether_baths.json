@@ -1,0 +1,72 @@
+{
+    "location_id": "ether_baths",
+    "meta": {
+        "display_name": "Ether Baths Spa",
+        "category": "wellness",
+        "subcategory": "general",
+        "description": "A day spa located near the city plaza.",
+        "image_url": "/assets/images/locations/ether_baths_spa_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Ether Baths Spa exudes calm sophistication. Steam rises from stone-lined baths, scented with lavender and eucalyptus. Soft instrumental music drifts through air vents, mingling with the gentle trickle of fountains. Sunlight filters through frosted glass in the morning, creating warm halos; in the evening, subtle lanterns and neon accents offer serene ambient light.",
+        "crowd_atmosphere": "Guests arrive seeking relaxation and recovery. Morning brings a trickle of early clients enjoying private hydrotherapy. Afternoon sees a mix of massage appointments, facial treatments, and yoga classes. Evenings are quieter, with intimate spa sessions and meditation circles. Staff move silently, maintaining discretion and a calming presence.",
+        "activities": [
+            "Soak in thermal baths infused with aromatherapy blends.",
+            "Book full-body massages or targeted physical therapy sessions.",
+            "Attend guided yoga and meditation sessions in serene rooms.",
+            "Participate in private skincare and facial treatments.",
+            "Relax in quiet lounges with herbal teas and ambient soundscapes."
+        ],
+        "interaction_rules": "Privacy Level: Private. Guests must maintain low voice levels and respect other patrons' personal space.",
+        "seasonal_variations": {
+            "frostlink": "The spa becomes an especially popular refuge from the cold. Steam from the baths is extra thick, and the contrast with the frigid outside is deeply satisfying.",
+            "surgespring": "Spring renewal packages are popular. The spa incorporates fresh floral scents, and guests feel energized by the season's vitality.",
+            "burnseason": "Cooling treatments are in high demand. Ice baths, cold stone therapy, and chilled aromatherapy help guests escape the oppressive heat.",
+            "shadowfall": "The spa takes on a contemplative, meditative atmosphere. Amber lighting and autumn-scented oils create a deeply relaxing environment."
+        },
+        "weather_variations": {
+            "snow_heavy": "The spa is fully booked with people seeking warm refuge. The contrast between snowy windows and warm baths is heavenly.",
+            "thunderstorm": "The sound of rain on the roof creates an extra layer of relaxation. Lightning flashes through frosted glass add drama to meditation sessions.",
+            "heatwave": "Cold plunge pools and ice treatments are booked solid. The spa's cooling systems work perfectly, making it a premium heat refuge.",
+            "clear_cool": "Perfect weather makes the spa's outdoor meditation garden accessible. Guests enjoy the pleasant temperature during yoga sessions."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "evening"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "therapist",
+            "spa_attendant",
+            "receptionist",
+            "yoga_instructor"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Ether Baths Spa was established during Link City's wellness boom in the early 21st century, designed to combine traditional hydrotherapy techniques with modern technology. Its founders emphasized the integration of mental and physical recovery, and it quickly became a high-demand location for city elites seeking privacy and rejuvenation.",
+        "secrets": "Rumors suggest that some high-paying patrons can access hidden sub-levels offering experimental relaxation tech and private treatment pods. Whispered stories claim a subterranean chamber contains AI-driven therapists capable of learning individual guest preferences to an uncanny degree."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "recovery": 1.2
+        }
+    }
+}

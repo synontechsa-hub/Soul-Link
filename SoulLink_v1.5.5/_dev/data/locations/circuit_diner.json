@@ -1,0 +1,75 @@
+{
+    "location_id": "circuit_diner",
+    "meta": {
+        "display_name": "The Circuit Diner",
+        "category": "dining",
+        "subcategory": "general",
+        "description": "A 24-hour neon-lit diner on Circuit Street.",
+        "image_url": "/assets/images/locations/the_circuit_diner_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The Circuit Diner glows in steady neon blues and pinks, its sign flickering gently against the skyline. Inside, vinyl booths line chrome-edged tables, and the scent of coffee, fried onions, and warm bread lingers in the air. During Morning, sunlight filters softly through half-drawn blinds. Afternoon hums with clinking cutlery and casual chatter. By Evening and Night, neon reflections dance across polished floors while the low murmur of late-night conversations blends with the hiss of the grill.",
+        "crowd_atmosphere": "Morning draws early commuters and quiet regulars nursing strong coffee. Afternoon brings students, freelancers, and casual meetings. Evening shifts toward relaxed dinners and small groups unwinding. Night belongs to insomniacs, night-shift workers, drifters, and deep conversations that stretch past reason. During Home Time, the diner becomes calm and intimate — a sanctuary for those not ready to sleep.",
+        "activities": [
+            "Order comfort food and unlimited refills of coffee.",
+            "Meet friends or contacts in a neutral, low-pressure environment.",
+            "Work quietly in a booth with background ambience.",
+            "Have late-night philosophical conversations.",
+            "Observe the eclectic mix of regular patrons."
+        ],
+        "interaction_rules": "Privacy Level: Public. Open access at all hours.",
+        "seasonal_variations": {
+            "frostlink": "The diner becomes a warm beacon in the cold. Frost patterns form on the windows, and steam from hot coffee is extra visible. More people linger longer, seeking warmth.",
+            "surgespring": "Rain patters on the diner's roof and windows. The neon sign flickers with power surges, and conversations turn to the dramatic storms outside.",
+            "burnseason": "The diner's AC works overtime. During heatwaves, it becomes packed at night with people escaping the heat, while daytime sees fewer customers.",
+            "shadowfall": "The diner takes on a contemplative, nostalgic atmosphere. Amber lighting dominates, and late-night philosophical conversations seem deeper."
+        },
+        "weather_variations": {
+            "snow_heavy": "The diner is one of the few places still accessible. Snow-covered patrons stumble in, grateful for warmth and hot food.",
+            "thunderstorm": "Lightning flashes illuminate the diner dramatically. The storm creates a cozy, intimate atmosphere inside.",
+            "heatwave": "The diner is nearly empty during the day but packed at night. Cold drinks and ice cream are in high demand.",
+            "ice_fog": "The diner's neon sign creates a beautiful halo in the ice fog. Inside feels like a warm sanctuary cut off from the world."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "home_time",
+            "twenty_four_hour_cycle": true
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "server",
+            "line_cook",
+            "shift_manager",
+            "barista"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "The Circuit Diner opened during Link City's early infrastructure boom, originally serving construction crews working overnight shifts. Over time it became a cultural constant — a neutral ground where corporate workers, street-level freelancers, students, and wanderers could sit at the same counter without hierarchy. Many quiet revolutions and startup ideas were first sketched on napkins here.",
+        "secrets": "Rumor has it the corner booth near the back wall is unofficially reserved. Some say a retired systems architect still monitors city networks from that seat. Others believe the diner’s old analog wiring bypasses certain surveillance systems, making it one of the few places in Link City where conversations remain truly private."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "comfort": 1.4
+        }
+    }
+}

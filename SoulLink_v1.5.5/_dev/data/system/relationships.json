@@ -1,0 +1,84 @@
+{
+    "relationships_id": "dna_relationships",
+    "version": "1.5.5",
+    "description": "Defines the types of relationships souls can have with each other.",
+    "relationship_types": {
+        "friend": {
+            "id": "friend",
+            "name": "Friend",
+            "description": "A close companion who offers mutual support.",
+            "affinity_impact": 1.1,
+            "dialogue_tone": "casual_warm",
+            "interaction_rules": {
+                "can_share_secrets": true,
+                "will_defend": true
+            }
+        },
+        "rival": {
+            "id": "rival",
+            "name": "Rival",
+            "description": "A competitive challenger who pushes for improvement.",
+            "affinity_impact": 1.0,
+            "dialogue_tone": "competitive",
+            "interaction_rules": {
+                "can_share_secrets": false,
+                "will_defend": false
+            }
+        },
+        "coworker": {
+            "id": "coworker",
+            "name": "Co-worker",
+            "description": "A professional acquaintance known through work.",
+            "affinity_impact": 1.0,
+            "dialogue_tone": "professional",
+            "interaction_rules": {
+                "can_share_secrets": false,
+                "will_defend": false
+            }
+        },
+        "mentor": {
+            "id": "mentor",
+            "name": "Mentor",
+            "description": "A guide or teacher who provides instruction.",
+            "affinity_impact": 1.2,
+            "dialogue_tone": "respectful_guide",
+            "interaction_rules": {
+                "can_share_secrets": true,
+                "will_defend": true
+            }
+        },
+        "student": {
+            "id": "student",
+            "name": "Student",
+            "description": "A learner looking for guidance.",
+            "affinity_impact": 1.2,
+            "dialogue_tone": "respectful_learner",
+            "interaction_rules": {
+                "can_share_secrets": true,
+                "will_defend": true
+            }
+        },
+        "enemy": {
+            "id": "enemy",
+            "name": "Enemy",
+            "description": "An antagonistic relationship defined by hostility.",
+            "affinity_impact": 0.5,
+            "dialogue_tone": "hostile",
+            "interaction_rules": {
+                "can_share_secrets": false,
+                "will_defend": false
+            }
+        },
+        "family": {
+            "id": "family",
+            "name": "Family",
+            "description": "A deep bond of blood or choice.",
+            "affinity_impact": 1.5,
+            "dialogue_tone": "intimate_familial",
+            "interaction_rules": {
+                "can_share_secrets": true,
+                "will_defend": true
+            }
+        }
+    }
+}

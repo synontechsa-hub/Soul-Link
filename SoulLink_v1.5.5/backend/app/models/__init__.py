@@ -9,14 +9,20 @@ from .relationship import SoulRelationship
 from .conversation import Conversation
 from .user import User
 from .time_slot import TimeSlot
+from .user_soul_state import UserSoulState
+from .ad_impression import AdImpression
+from .lore_item import LoreItem
 
 __all__ = [
+    "User",
     "Soul",
     "SoulPillar",
     "SoulState",
-    "Location", 
     "SoulRelationship",
     "Conversation",
-    "User",
-    "TimeSlot"
+    "Location",
+    "TimeSlot",
+    "UserSoulState",
+    "AdImpression",
+    "LoreItem",
 ]

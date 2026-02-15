@@ -1,0 +1,72 @@
+{
+    "location_id": "apex_corporate_plaza",
+    "meta": {
+        "display_name": "Apex Corporate Plaza",
+        "category": "commercial",
+        "subcategory": "general",
+        "description": "A gleaming district of glass towers.",
+        "image_url": "/assets/images/locations/apex_corporate_plaza_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "A cathedral of commerce and ambition, Apex Corporate Plaza rises in mirrored steel and blue-tinted glass. During Morning and Afternoon, sunlight fractures across its towers in sharp reflections. By Evening, interior lights glow in regimented constellations. The air smells faintly of ozone and polished marble. Footsteps echo crisply across immaculate stone walkways, interrupted by the distant hum of elevators and the soft whir of autonomous security drones.",
+        "crowd_atmosphere": "Morning traffic builds steadily as analysts and executives arrive. Afternoon is dense and high-pressure, filled with negotiations and strategic meetings. By Evening, only senior staff and select investors remain. At Night and Home Time, the plaza exterior is quiet, guarded, and largely inaccessible to the public.",
+        "activities": [
+            "Attend high-level business meetings in glass-walled conference rooms.",
+            "Network at rooftop corporate mixers overlooking Link City (Evening only).",
+            "Submit applications or pitch proposals to major firms.",
+            "Observe rival executives negotiating delicate agreements.",
+            "Access premium financial terminals and market feeds."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Public access restricted outside business hours.",
+        "seasonal_variations": {
+            "frostlink": "The glass towers reflect winter light brilliantly. Heated walkways keep ice at bay, and executives arrive in heavy coats before shedding them in climate-controlled lobbies.",
+            "surgespring": "Power surges occasionally disrupt meetings. Backup systems kick in seamlessly, but the electrical atmosphere adds tension to high-stakes negotiations.",
+            "burnseason": "The plaza's cooling systems are state-of-the-art. During heatwaves, the contrast between the scorching outside and frigid interior is stark.",
+            "shadowfall": "The amber and purple light of the season reflects beautifully off the glass towers. The contemplative mood affects even the hardened executives."
+        },
+        "weather_variations": {
+            "ice_storm": "Only essential personnel brave the ice storm. The plaza operates on skeleton crews, and many meetings are conducted remotely.",
+            "electromagnetic_storm": "Backup systems engage as the storm causes minor disruptions. Executives watch the spectacular light show from their tower offices.",
+            "smog_heavy": "Air filtration systems work overtime. The plaza becomes an even more exclusive refuge, with outdoor access severely limited.",
+            "clear_cool": "Perfect weather brings executives to rooftop mixers. The clear skies and pleasant temperature make for ideal networking conditions."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": false
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "evening"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "corporate_analyst",
+            "executive_assistant",
+            "security_officer",
+            "financial_consultant"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Apex Corporate Plaza was constructed during Link City's Second Expansion Era, when private megacorporations eclipsed municipal governance in influence. What began as three office towers quickly expanded into an entire district after several landmark mergers centralized economic power here. Many of Link City's most controversial policy shifts were drafted in these buildings long before the public ever heard of them.",
+        "secrets": "Rumors persist of restricted sublevels beneath the plaza — floors that do not appear on public schematics. Some claim a private AI arbitration system operates below ground, capable of forecasting market collapses and political unrest weeks in advance. Others whisper that certain executives meet here to negotiate contracts that extend beyond business — into influence, memory manipulation, and identity acquisition."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "authority": 1.5
+        }
+    }
+}

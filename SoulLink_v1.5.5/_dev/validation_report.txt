@@ -1,0 +1,13 @@
+Validating 12 souls...
+✅ adrian_01.json PASS
+✅ akira_01.json PASS
+✅ amber_01.json PASS
+✅ anzu_01.json PASS
+✅ aria_01.json PASS
+✅ blaze_01.json PASS
+✅ daichi_01.json PASS
+✅ dorian_01.json PASS
+✅ echo_01.json PASS
+✅ elizabeth_01.json PASS
+✅ evangeline_01.json PASS
+✅ hana_01.json PASS

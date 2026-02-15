@@ -1,0 +1,69 @@
+{
+    "location_id": "skylink_apartments",
+    "meta": {
+        "display_name": "Skylink Tower Residences",
+        "category": "residential",
+        "subcategory": "general",
+        "description": "Mid-tier apartments within Skylink Tower.",
+        "image_url": "/assets/images/locations/skylink_tower_residences_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "Hallways echo with soft footsteps, faint hums of air filtration systems, and occasional chatter from neighbors. The scent of polished concrete mingles with faint traces of coffee and home-cooked meals drifting from apartment kitchens. Soft ambient lighting gives the corridors a calm, orderly feeling.",
+        "crowd_atmosphere": "Residents are a mix of young professionals, small families, and long-term tenants. Conversations are casual and polite. Children’s laughter occasionally filters through the walls, while adults move efficiently through shared spaces like the lobby or laundry rooms.",
+        "activities": [
+            "Enter and leave apartments at different times of day.",
+            "Socialize briefly with neighbors in communal areas.",
+            "Use shared amenities such as laundry rooms or fitness corners.",
+            "Maintain or decorate personal apartments according to preference."
+        ],
+        "interaction_rules": "Privacy Level: Semi-Private. Residents are friendly but respect each other's personal space.",
+        "seasonal_variations": {
+            "frostlink": "Condensation beads on the high-quality glass. The tower's central heating is impeccable, but residents still favor heavy robes and hot tea.",
+            "surgespring": "The air filtration carries the faint, simulated scent of cherry blossoms. A sense of renewal permeates the orderly halls.",
+            "burnseason": "The cooling systems hum with a deeper, more industrial vibration. The internal temperature remains a perfect, artificial 22 degrees.",
+            "shadowfall": "The halls take on a more intimate, quiet atmosphere. Individual apartment lights glow with a warm, amber invitation."
+        },
+        "weather_variations": {
+            "snow_heavy": "The windows show a white void. Residents feel safely cocooned in the tower's massive structure.",
+            "thunderstorm": "Lightning flashes are spectacular at this height, momentarily illuminating the long corridors through the end-of-hall windows.",
+            "heatwave": "The luxury of the tower's insulation is apparent; while the city sizzles, the residences remain a cool sanctuary.",
+            "clear_cool": "The panoramic windows are crystal clear, offering sharp views of the city's details that are normally lost in the haze."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night",
+            "home_time"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "home_time"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "required_item": null
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Constructed as part of Skylink Tower’s expansion, these apartments were designed to accommodate mid-tier residents seeking convenience and proximity to city amenities. The tower itself has become an iconic mixed-use hub over the years.",
+        "secrets": "Some residents whisper about hidden maintenance corridors connecting floors and secret rooftop access. A few report glimpses of unusual nocturnal activities on upper floors, but nothing official is documented."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "isolation": 1.3,
+            "comfort": 1.4
+        }
+    }
+}

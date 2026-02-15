@@ -1,0 +1,246 @@
+{
+    "calendar_id": "link_city_calendar",
+    "version": "1.5.5",
+    "description": "Cyberpunk-themed calendar system for Link City with fictional months and seasons.",
+    "year_structure": {
+        "months_per_year": 12,
+        "days_per_month": 30,
+        "days_per_year": 360,
+        "description": "Standard 12-month year with 30 days per month for simplified progression."
+    },
+    "months": [
+        {
+            "id": "neonfall",
+            "number": 1,
+            "display_name": "Neonfall",
+            "season": "frostlink",
+            "description": "Early winter month when neon lights reflect off the first frost."
+        },
+        {
+            "id": "glitchmonth",
+            "number": 2,
+            "display_name": "Glitchmonth",
+            "season": "frostlink",
+            "description": "Deep winter when systems strain in the cold."
+        },
+        {
+            "id": "synthwave",
+            "number": 3,
+            "display_name": "Synthwave",
+            "season": "frostlink",
+            "description": "Late winter as synthetic warmth begins to return."
+        },
+        {
+            "id": "pulserise",
+            "number": 4,
+            "display_name": "Pulserise",
+            "season": "surgespring",
+            "description": "Early spring when the city pulses with renewed energy."
+        },
+        {
+            "id": "chromaflow",
+            "number": 5,
+            "display_name": "Chromaflow",
+            "season": "surgespring",
+            "description": "Mid spring when colors bloom across the city."
+        },
+        {
+            "id": "voltpeak",
+            "number": 6,
+            "display_name": "Voltpeak",
+            "season": "surgespring",
+            "description": "Late spring marked by electrical storms and energy surges."
+        },
+        {
+            "id": "blazecycle",
+            "number": 7,
+            "display_name": "Blazecycle",
+            "season": "burnseason",
+            "description": "Early summer bringing heat waves and neon glare."
+        },
+        {
+            "id": "netburn",
+            "number": 8,
+            "display_name": "Netburn",
+            "season": "burnseason",
+            "description": "Mid summer when networks run hot and activity peaks."
+        },
+        {
+            "id": "fluxfade",
+            "number": 9,
+            "display_name": "Fluxfade",
+            "season": "burnseason",
+            "description": "Late summer as energy begins to wane."
+        },
+        {
+            "id": "shadowshift",
+            "number": 10,
+            "display_name": "Shadowshift",
+            "season": "shadowfall",
+            "description": "Early autumn with longer shadows and cooler nights."
+        },
+        {
+            "id": "datafall",
+            "number": 11,
+            "display_name": "Datafall",
+            "season": "shadowfall",
+            "description": "Mid autumn when information flows like falling leaves."
+        },
+        {
+            "id": "voidcrest",
+            "number": 12,
+            "display_name": "Voidcrest",
+            "season": "shadowfall",
+            "description": "Late autumn, darkness before winter's return."
+        }
+    ],
+    "seasons": [
+        {
+            "id": "frostlink",
+            "display_name": "Frostlink",
+            "months": [
+                1,
+                2,
+                3
+            ],
+            "description": "Winter season of cold, crisp neon reflections and steam from vents.",
+            "atmosphere": {
+                "temperature": "cold",
+                "weather_patterns": [
+                    "frost",
+                    "ice",
+                    "snow",
+                    "clear_cold_nights"
+                ],
+                "visual_theme": "crisp_neon_on_frost",
+                "audio_theme": "muffled_quiet_with_wind",
+                "crowd_behavior": "hurried_indoor_seeking"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.9,
+                "indoor_energy_mod": 1.1,
+                "crowd_density_outdoor": 0.7,
+                "crowd_density_indoor": 1.3,
+                "lighting_intensity": 1.2,
+                "intimacy_mod": 1.0
+            },
+            "llm_context": "It's Frostlink season in Link City. The air is cold and crisp, with frost coating surfaces and neon signs reflecting brilliantly off icy windows. Steam rises from street vents, and people move quickly between heated buildings."
+        },
+        {
+            "id": "surgespring",
+            "display_name": "Surgespring",
+            "months": [
+                4,
+                5,
+                6
+            ],
+            "description": "Spring season of electrical storms, vibrant colors, and renewal energy.",
+            "atmosphere": {
+                "temperature": "mild",
+                "weather_patterns": [
+                    "rain",
+                    "thunderstorms",
+                    "electrical_activity",
+                    "clear_charged_air"
+                ],
+                "visual_theme": "dynamic_flickering_lights",
+                "audio_theme": "thunder_and_rain",
+                "crowd_behavior": "energetic_renewal"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 1.0,
+                "indoor_energy_mod": 1.0,
+                "crowd_density_outdoor": 1.0,
+                "crowd_density_indoor": 1.0,
+                "lighting_intensity": 1.1,
+                "intimacy_mod": 1.0
+            },
+            "llm_context": "It's Surgespring season in Link City. The atmosphere is charged with electrical energy, occasional power surges cause lights to flicker, and vibrant colors seem more vivid. Rain is common, creating beautiful neon reflections on wet streets."
+        },
+        {
+            "id": "burnseason",
+            "display_name": "Burnseason",
+            "months": [
+                7,
+                8,
+                9
+            ],
+            "description": "Summer season of heat haze, intense neon, and peak nightlife.",
+            "atmosphere": {
+                "temperature": "hot",
+                "weather_patterns": [
+                    "heat_waves",
+                    "smog",
+                    "dust",
+                    "clear_hot_days"
+                ],
+                "visual_theme": "harsh_daylight_blazing_neon",
+                "audio_theme": "humming_cooling_systems",
+                "crowd_behavior": "nocturnal_shift"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 0.8,
+                "indoor_energy_mod": 1.0,
+                "crowd_density_outdoor": 0.6,
+                "crowd_density_indoor": 1.2,
+                "lighting_intensity": 1.3,
+                "intimacy_mod": 1.0,
+                "time_slot_overrides": {
+                    "evening": {
+                        "energy_mod": 1.3,
+                        "crowd_density_outdoor": 1.4
+                    },
+                    "night": {
+                        "energy_mod": 1.3,
+                        "crowd_density_outdoor": 1.3
+                    }
+                }
+            },
+            "llm_context": "It's Burnseason in Link City. Oppressive heat dominates the day, creating shimmering heat haze and driving people indoors. But when evening falls, the city comes alive with intense nightlife as people emerge to escape the heat."
+        },
+        {
+            "id": "shadowfall",
+            "display_name": "Shadowfall",
+            "months": [
+                10,
+                11,
+                12
+            ],
+            "description": "Autumn season of longer shadows, visible data streams, and melancholic atmosphere.",
+            "atmosphere": {
+                "temperature": "cool",
+                "weather_patterns": [
+                    "fog",
+                    "overcast",
+                    "light_rain",
+                    "clear_cool_days"
+                ],
+                "visual_theme": "amber_purple_tones_soft_neon",
+                "audio_theme": "quiet_contemplative",
+                "crowd_behavior": "reflective_moderate"
+            },
+            "modifiers": {
+                "outdoor_energy_mod": 1.0,
+                "indoor_energy_mod": 1.0,
+                "crowd_density_outdoor": 0.9,
+                "crowd_density_indoor": 1.1,
+                "lighting_intensity": 0.9,
+                "intimacy_mod": 1.2
+            },
+            "llm_context": "It's Shadowfall season in Link City. Shadows grow longer, the light takes on amber and purple tones, and a melancholic atmosphere settles over the city. Data streams are sometimes visible in the air, and people seem more contemplative."
+        }
+    ],
+    "progression_rules": {
+        "trigger": "user_sleep",
+        "day_advancement": "next_day",
+        "month_change_day": 30,
+        "year_change_month": 12,
+        "description": "Calendar advances one day each time user sleeps. Month changes after day 30, year changes after month 12 (Voidcrest)."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-15",
+        "author": "SynonTech",
+        "integration_notes": "Integrates with time_and_day.json and weather.json for rich atmospheric variation."
+    }
+}

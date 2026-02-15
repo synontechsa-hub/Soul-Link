@@ -12,14 +12,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.logic.brain import LegionBrain
 from backend.app.models.relationship import SoulRelationship
 from backend.app.models.user import User
+from backend.app.models.user_soul_state import UserSoulState
 from backend.app.api.dependencies import get_current_user 
 from backend.app.logic.time_manager import TimeManager
 from backend.app.models.time_slot import TimeSlot
 from backend.app.core.rate_limiter import limiter, RateLimits
 from backend.app.core.validation import ValidatedChatRequest
 from backend.app.core.logging_config import get_logger
+from backend.app.core.config import settings
 from pydantic import BaseModel
 from typing import Optional
+from datetime import datetime as dt
 
 router = APIRouter(prefix="/chat", tags=["Legion Engine - Chat"])
 logger = get_logger("ChatAPI")
@@ -56,18 +59,63 @@ async def send_message(
     if not rel:
         raise HTTPException(status_code=404, detail="Link lost. Please re-initialize.")
 
-    # ⚡ ENGINE SAFETY: ENERGY GOVERNOR
-    from backend.app.services.energy_system import EnergySystem
+    try:
+        # ⚡ ENGINE SAFETY: ENERGY GOVERNOR
+        from backend.app.services.energy_system import EnergySystem
+        
+        has_energy = await EnergySystem.check_and_deduct_energy(user, session)
+        if not has_energy:
+            # Check if they are simply spamming
+            # For MVP: Hard blocking anyone with 0 energy.
+            # Future: Implement the 30s slow-lane timer.
+            raise HTTPException(
+                status_code=429, 
+                detail="Neural Link Overheated (Zero Energy). Recharging systems..."
+            )
     
-    has_energy = await EnergySystem.check_and_deduct_energy(user, session)
-    if not has_energy:
-        # Check if they are simply spamming
-        # For MVP: Hard blocking anyone with 0 energy.
-        # Future: Implement the 30s slow-lane timer.
-        raise HTTPException(
-            status_code=429, 
-            detail="Neural Link Overheated (Zero Energy). Recharging systems..."
+        # 📡 STABILITY DECAY SYSTEM (v1.5.5 Monetization)
+        # Get or create user_soul_state
+        state_result = await session.execute(
+            select(UserSoulState).where(
+                UserSoulState.user_id == user.user_id,
+                UserSoulState.soul_id == chat_request.soul_id
+            )
         )
+        state = state_result.scalar_one_or_none()
+        
+        if not state:
+            # Create initial state for this user-soul pair
+            state = UserSoulState(
+                user_id=user.user_id,
+                soul_id=chat_request.soul_id,
+                signal_stability=100.0
+            )
+            session.add(state)
+            await session.flush()
+        
+        # Check if stability is depleted
+        if state.signal_stability <= 0:
+            raise HTTPException(
+                status_code=402,  # Payment Required
+                detail="Signal lost. Restore stability to continue."
+            )
+            
+    except Exception as e:
+        logger.error(f"FATAL CHAT ERROR: {str(e)}", exc_info=True)
+        if isinstance(e, HTTPException):
+            raise e
+        raise HTTPException(status_code=500, detail=f"Internal System Failure: {str(e)}")
+    
+    # Decay stability (2% per message by default)
+    state.signal_stability = max(0, state.signal_stability - settings.ad_stability_decay_rate)
+    state.last_stability_decay = dt.utcnow()
+    state.total_messages_sent += 1
+    state.updated_at = dt.utcnow()
+    
+    # Check if warning threshold reached
+    warning_message = None
+    if state.signal_stability <= settings.ad_stability_warning_threshold and state.signal_stability > 0:
+        warning_message = "The link is getting fuzzy... I'm losing you. Can you run a diagnostic?"
 
     try:
         # 2. Generate Response (Brain might update Intimacy inside logic/brain.py)
@@ -77,6 +125,10 @@ async def send_message(
             user_input=chat_request.message,
             session=session
         )
+        
+        # Inject stability warning if needed
+        if warning_message:
+            response_text = f"{response_text}\n\n*[SYSTEM]: {warning_message}*"
         
         # 3. UNIFIED LOCATION RESOLUTION
         # Manual Override > Dynamic Routine
@@ -102,7 +154,6 @@ async def send_message(
         
         # 5. 🚀 REAL-TIME: Push via WebSocket
         from backend.app.services.websocket_manager import websocket_manager
-        from datetime import datetime
         
         await websocket_manager.send_to_user(user.user_id, {
             "type": "chat_message",
@@ -113,7 +164,7 @@ async def send_message(
                 "tier": rel.intimacy_tier,
                 "location": display_location or "Unknown"
             },
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": dt.utcnow().isoformat()
         })
 
         return ChatResponse(

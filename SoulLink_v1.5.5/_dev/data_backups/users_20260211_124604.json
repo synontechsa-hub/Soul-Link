@@ -1,0 +1,27 @@
+[
+  {
+    "username": "TheArchitect",
+    "energy": 100,
+    "subscription_end": null,
+    "user_id": "14dd612d-744e-487d-b2d5-cc47732183d3",
+    "lifetime_tokens_used": 0,
+    "total_ads_watched": 0,
+    "display_name": "Syn",
+    "last_ad_at": null,
+    "ad_cooldown_until": null,
+    "age": null,
+    "last_energy_refill": "2026-02-09T13:26:03.881817",
+    "stability_overdrive_until": null,
+    "gender": "Male",
+    "current_location": "neon_nights",
+    "stripe_customer_id": null,
+    "bio": "The Architect of Link City and the man that forged all souls. A tall blonde man with mismatched blue and green eyes. Normally wears a black suit with a crimson tie.",
+    "current_time_slot": "afternoon",
+    "stripe_subscription_id": null,
+    "account_tier": "architect",
+    "subscription_status": null,
+    "created_at": "2026-02-09T13:26:03.881921",
+    "gems": 0,
+    "subscription_start": null
+  }
+]

@@ -1,0 +1,73 @@
+{
+    "location_id": "iron_resolve_gym",
+    "meta": {
+        "display_name": "Iron Resolve Gym",
+        "category": "sports",
+        "subcategory": "general",
+        "description": "A no-nonsense training facility.",
+        "image_url": "/assets/images/locations/iron_resolve_gym_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The gym smells of rubber mats, metal, and chalk dust. Clangs of weights hitting iron plates echo off concrete walls. The air is warm, humid, and charged with the determination of athletes pushing themselves to their limits. Fluorescent lighting creates sharp shadows, highlighting rippling muscles and sweat-slicked equipment.",
+        "crowd_atmosphere": "Members range from casual fitness enthusiasts to hardened bodybuilders and competitive fighters. The room hums with intensity: trainers shout corrections, treadmills thrum with consistent pounding, and weightlifters grunt in focused effort. There’s camaraderie, but also fierce personal discipline; distractions are minimal.",
+        "activities": [
+            "Perform weightlifting and resistance training on free weights and machines.",
+            "Join guided high-intensity interval training (HIIT) classes.",
+            "Practice combat sports such as boxing, MMA, or kickboxing in dedicated rings.",
+            "Attend personal training sessions for tailored strength or conditioning programs.",
+            "Use cardio machines including treadmills, stationary bikes, and rowing machines."
+        ],
+        "interaction_rules": "Privacy Level: Public. All members are expected to respect training zones, share equipment efficiently, and maintain focus on personal fitness goals.",
+        "seasonal_variations": {
+            "frostlink": "The gym is packed as people seek indoor exercise. The warmth from bodies and equipment creates intense heat, contrasting sharply with the cold outside.",
+            "surgespring": "Spring renewal energy drives higher attendance. Members push harder, inspired by the season's vitality and renewal themes.",
+            "burnseason": "Early morning and late evening see peak attendance as people avoid daytime heat. The gym's AC works overtime to keep the space cool.",
+            "shadowfall": "The gym takes on a more contemplative energy. Members focus on endurance and discipline as the season's introspective mood settles in."
+        },
+        "weather_variations": {
+            "snow_heavy": "The gym is packed with people who can't exercise outdoors. The energy is intense as everyone channels cabin fever into their workouts.",
+            "clear_cool": "Perfect weather means some members skip the gym for outdoor runs, but dedicated lifters remain focused on their indoor training.",
+            "heatwave": "The gym is busiest during early morning and late evening. Cooling stations and extra fans are set up throughout the space.",
+            "thunderstorm": "The sound of thunder adds intensity to workouts. Members push harder, energized by the dramatic weather outside."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [
+            "personal_trainer",
+            "fitness_instructor",
+            "maintenance_staff",
+            "receptionist"
+        ],
+        "connections": []
+    },
+    "lore": {
+        "history": "Iron Resolve Gym was founded to serve the growing community of dedicated athletes in Link City’s commercial district. Known for its strict policies and state-of-the-art equipment, it quickly gained a reputation as a place where serious results are achieved, attracting both local residents and professional sports teams.",
+        "secrets": "Whispers suggest a hidden basement area where elite trainers run clandestine strength experiments and training programs not available to the public. Some say certain AI-assisted machines track detailed biometrics to optimize each member’s performance secretly."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "discipline": 1.5
+        }
+    }
+}

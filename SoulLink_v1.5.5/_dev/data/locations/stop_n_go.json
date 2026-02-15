@@ -1,0 +1,67 @@
+{
+    "location_id": "stop_n_go",
+    "meta": {
+        "display_name": "Stop n Go Racetrack",
+        "category": "sports",
+        "subcategory": "general",
+        "description": "The smell of burning rubber and ozone.",
+        "image_url": "/assets/images/locations/stop_n_go_racetrack_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The track vibrates with the roar of engines and the screech of tires. The air is thick with the scent of burning rubber and ozone from the high-voltage speed circuits. Neon banners flash along the track edges, reflecting off puddles from the occasional rain.",
+        "crowd_atmosphere": "Fans and racers alike fill the grandstands, shouting and cheering. Pit crews rush back and forth, and the ambient noise of engines, announcements, and music creates an electrifying energy.",
+        "activities": [
+            "Participate in go-kart or hovercar races.",
+            "Watch live racing events from the grandstands.",
+            "Visit pit lanes to observe vehicle tuning and repairs.",
+            "Compete in time trials or challenge other players."
+        ],
+        "interaction_rules": "Privacy Level: Public. Spectators can interact lightly with racers and crews; race participation requires standard entry rules.",
+        "seasonal_variations": {
+            "frostlink": "The track is heated to prevent icing, creating a constant haze of steam. Racing suits are heavily insulated, and hot energy drinks are the norm.",
+            "surgespring": "The air is thick with the scent of wet asphalt and electrical discharge. Spring storms make for treacherous, high-stakes 'wet' races.",
+            "burnseason": "Racing is restricted to night sessions to protect engines and drivers from the daytime heat. The track glows brilliantly under floodlights.",
+            "shadowfall": "Early sunsets mean more racing under the neon. The mood in the stands is focused and intense, reflecting the season's discipline."
+        },
+        "weather_variations": {
+            "snow_light": "Races are conducted with spiked tires. The snow creates a beautiful, chaotic visual as machines blur through the white-out.",
+            "thunderstorm": "Official races are suspended, but illegal 'lightning runs' are whispered about in the pits. The track is a slick, dangerous mirror.",
+            "heatwave": "The track surface reaches blistering temperatures. Pit crews work under cooling tents, and engine failures are frequent.",
+            "clear_cool": "Perfect conditions lead to record-breaking lap times. The grandstands are packed and the energy is at an all-time high."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "evening"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Originally built as a private racing circuit, Stop n Go evolved into the city’s premier speed hub, attracting racers and thrill-seekers from across the neon districts.",
+        "secrets": "Hidden under the main pit area is a maintenance tunnel where underground races are organized in secret, only known to select thrill enthusiasts."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "adrenaline": 1.5,
+            "vibrancy": 1.4
+        }
+    }
+}

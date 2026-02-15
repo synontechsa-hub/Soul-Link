@@ -1,0 +1,69 @@
+{
+    "location_id": "twilight_park",
+    "meta": {
+        "display_name": "Twilight Park",
+        "category": "wellness",
+        "subcategory": "general",
+        "description": "A small urban park wedged between residential blocks.",
+        "image_url": "/assets/images/locations/twilight_park_01.jpg"
+    },
+    "system_prompt_anchors": {
+        "sensory_description": "The air carries the subtle scent of grass and flowering shrubs. Ambient city noises are softened by the trees and small hedges. Stone pathways meander past benches and a central fountain, reflecting the changing colors of the sky at dusk.",
+        "crowd_atmosphere": "Residents and passersby stroll along the winding paths, jog, or sit quietly on benches reading or chatting. Dogs play near the fountain while children run across the open lawn. Overall, a calm, approachable energy pervades the park.",
+        "activities": [
+            "Take a quiet stroll along the meandering paths.",
+            "Sit on benches to read, meditate, or people-watch.",
+            "Jog or exercise on the pathways.",
+            "Enjoy casual picnics on the grass or near the fountain.",
+            "Observe local wildlife such as birds and squirrels."
+        ],
+        "interaction_rules": "Privacy Level: Public. Guests can freely use benches and pathways; certain flowerbeds are off-limits to protect delicate plants.",
+        "seasonal_variations": {
+            "frostlink": "The park is quieter in winter. Frost coats the grass and benches, and only the hardiest joggers and dog-walkers brave the cold.",
+            "surgespring": "The park bursts with new growth and flowers. Spring festivals and outdoor yoga sessions draw crowds enjoying the renewal energy.",
+            "burnseason": "The park is nearly empty during the day but comes alive in the evening when temperatures cool. Night picnics and gatherings are common.",
+            "shadowfall": "Autumn colors transform the park. The contemplative season draws people for quiet reflection, reading, and peaceful walks among falling leaves."
+        },
+        "weather_variations": {
+            "snow_light": "Light snow creates a serene, beautiful atmosphere. A few souls enjoy the peaceful winter scene, leaving footprints in fresh snow.",
+            "clear_cool": "Perfect weather fills the park with joggers, picnickers, and families. The pleasant temperature makes it the ideal outdoor retreat.",
+            "thunderstorm": "The park empties quickly as people seek shelter. Only the sound of rain on leaves and distant thunder remains.",
+            "heatwave": "The park is abandoned during the day, grass turning brown. Only in the evening do a few brave souls return to enjoy cooler air."
+        }
+    },
+    "game_logic": {
+        "availability": {
+            "weekdays": true,
+            "weekends": true
+        },
+        "operating_time_slots": [
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        ],
+        "operating_hours": {
+            "aligned_to_time_system": true,
+            "open_slot": "morning",
+            "close_slot": "night"
+        },
+        "entry_rules": {
+            "min_intimacy": 0,
+            "cost_gems": 0
+        },
+        "employable_roles": [],
+        "connections": []
+    },
+    "lore": {
+        "history": "Twilight Park was designed as a small green refuge for nearby residents, transforming a narrow urban gap into a serene public space. It has become a favorite spot for late-evening strolls and community gatherings.",
+        "secrets": "Hidden under the old oak at the park’s western edge is a small time capsule left by children decades ago, containing letters, trinkets, and sketches."
+    },
+    "metadata": {
+        "version": "1.5.5",
+        "last_updated": "2026-02-13",
+        "legacy_mods": {
+            "calm": 1.5,
+            "serenity": 1.3
+        }
+    }
+}

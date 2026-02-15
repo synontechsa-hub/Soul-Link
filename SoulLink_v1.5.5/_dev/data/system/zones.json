@@ -1,0 +1,97 @@
+{
+    "zones_id": "link_city_zones",
+    "version": "1.5.5",
+    "description": "Standardized zone categories for routine templates and soul scheduling. All locations are mapped to one of these zones.",
+    "zones": {
+        "home_zone": {
+            "display_name": "Home Zone",
+            "description": "Personal living spaces: apartments, residences, where souls rest and invite trusted Linkers.",
+            "locations": [
+                "civic_heights",
+                "crimson_arms",
+                "linkside_estate",
+                "midline_residences",
+                "northway_flats",
+                "skylink_apartments"
+            ]
+        },
+        "work_zone": {
+            "display_name": "Work Zone",
+            "description": "Professional and commercial environments: offices, malls, corporate districts.",
+            "locations": [
+                "apex_corporate_plaza",
+                "linkgate_mall"
+            ]
+        },
+        "entertainment_zone": {
+            "display_name": "Entertainment Zone",
+            "description": "High-energy fun and leisure: arcades, racetracks, arenas.",
+            "locations": [
+                "link_city_arena",
+                "pixel_den",
+                "stop_n_go"
+            ]
+        },
+        "relaxation_zone": {
+            "display_name": "Relaxation Zone",
+            "description": "Calm and restorative locations: gardens, parks, spas, overlooks, lounges.",
+            "locations": [
+                "ether_baths",
+                "rooftop_lounge",
+                "scenic_overlook",
+                "the_garden",
+                "twilight_park",
+                "zenith_lounge"
+            ]
+        },
+        "dining_zone": {
+            "display_name": "Dining Zone",
+            "description": "Casual and upscale eating/drinking spots: diners, restaurants.",
+            "locations": [
+                "circuit_diner",
+                "linkview_cuisine"
+            ]
+        },
+        "nightlife_zone": {
+            "display_name": "Nightlife Zone",
+            "description": "Evening and late-night party scenes: clubs, bars.",
+            "locations": [
+                "dollhouse_dungeon",
+                "neon_nights"
+            ]
+        },
+        "cultural_zone": {
+            "display_name": "Cultural Zone",
+            "description": "Intellectual, artistic, and contemplative spaces: libraries, archives, planetariums.",
+            "locations": [
+                "echo_archives",
+                "shadowed_archives",
+                "city_planetarium"
+            ]
+        },
+        "sports_zone": {
+            "display_name": "Sports Zone",
+            "description": "Physical training and competition areas: gyms, proving grounds.",
+            "locations": [
+                "iron_resolve_gym",
+                "obsidian_proving_grounds"
+            ]
+        },
+        "underground_zone": {
+            "display_name": "Underground Zone",
+            "description": "Hidden, risky, or shadowy areas: markets, bridges, exchanges.",
+            "locations": [
+                "umbral_exchange",
+                "neon_span_bridge"
+            ]
+        },
+        "public_square_zone": {
+            "display_name": "Public Square Zone",
+            "description": "Busy open public areas: plazas, streets.",
+            "locations": [
+                "soul_plaza",
+                "circuit_street"
+            ]
+        }
+    }
+}
