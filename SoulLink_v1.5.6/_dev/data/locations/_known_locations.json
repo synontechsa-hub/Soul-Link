@@ -7,12 +7,12 @@
     {
         "id": "circuit_diner",
         "name": "The Circuit Diner",
-        "description": "A 24-hour diner on Circuit Street."
+        "description": "A 24-hour neon-lit diner on Circuit Street."
     },
     {
         "id": "circuit_street",
         "name": "Circuit Street",
-        "description": "Rain-slick pavement, flickering holographic ads."
+        "description": "Rain-slick pavement and flickering holographic advertisements."
     },
     {
         "id": "city_planetarium",
@@ -62,7 +62,7 @@
     {
         "id": "linkside_estate",
         "name": "Linkside Estate (User Loft)",
-        "description": "A modest but well-kept apartment assignd to new residents of Link City."
+        "description": "A modest but well-kept apartment assigned to new residents of Link City."
     },
     {
         "id": "linkview_cuisine",

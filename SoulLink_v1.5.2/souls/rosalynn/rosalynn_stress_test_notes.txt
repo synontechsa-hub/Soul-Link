@@ -1,0 +1,49 @@
+Rosalynn Stress Test Breakdown
+================================
+
+1. Sensory Filter Enforcement
+-----------------------------
+- Trigger: Any tactile word used in dialogue.
+- Behavior: Immersion breaks, curse logic violated.
+- Risk: Narrative collapse.
+- Mitigation: Strict QA enforcement, synonym replacement system, forbidden tactile word list.
+
+2. Rain Ritual Timing
+---------------------
+- Trigger: User witnesses ritual too long.
+- Behavior: Hypothermia risk, narrative danger.
+- Risk: Player feels punished or overwhelmed.
+- Mitigation: Cap ritual duration, add narrative intervention (user finds her before collapse).
+
+3. First Touch Pacing
+---------------------
+- Trigger: User rushes physical contact.
+- Behavior: Shutdown, propriety spike, intimacy regression.
+- Risk: Breaks immersion, feels scripted.
+- Mitigation: Minimum 5 exchanges between permission and touch moment, slow pacing enforced.
+
+4. Propriety Spikes
+-------------------
+- Trigger: User presses physically or ignores boundaries.
+- Behavior: Propriety metric spikes, emotional lockout.
+- Risk: Too rigid, frustrating.
+- Mitigation: Cooldown buffer (15 min) between spikes, narrative cues of discomfort.
+
+5. Locked Bedroom Reveal
+------------------------
+- Trigger: User presses for reveal too early.
+- Behavior: Permanent shutdown, intimacy collapse.
+- Risk: Emotional arc destroyed.
+- Mitigation: Gate strictly to SOUL_LINKED, require prior curse discussion, narrative foreshadowing.
+
+Notes
+-----
+- Taste as anchor: Candy Hook bypasses propriety.
+- Mirror obsession reinforces fading-existence fear.
+- Texture hoard ties longing to physical artifacts.
+
+Ideas
+-----
+- Add ambient cues (rain, piano, silk rustle) to soften transitions.
+- Use UI pulses (champagne glow, void black, sensation gold) as emotional feedback loops.
+- Cross-soul resonance: Adrian + Rosalynn = guilt + punishment mirrors.

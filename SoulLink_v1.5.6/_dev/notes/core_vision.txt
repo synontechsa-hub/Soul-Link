@@ -15,24 +15,33 @@ Inspiration: Mass Effect (Soul-search), Cyberpunk 2077 (Vibe),
 Baldur's Gate 3 (Depth), and the golden age of RPGs.
 
 --------------------------------------------------------------------
-[2] THE HUB: APARTMENT (v1.5.4 GRID)
+[2] THE HUB: APARTMENT (v1.5.4 GRID - 1.5.6 APARTMENT SCREEN)
 --------------------------------------------------------------------
 The Apartment is the user's "Safe Room." It is a functional 
 command center, not just a menu.
 
 - BED:    Skip time (The Sleep Cycle).
-- MIRROR: Persona Editor (Self-Reflection).
-- TV:     Lore Stream & Ad-Opt-In (Link City News).
+- MIRROR: Persona Editor & Creator (Self-Reflection).
+- TV:     Lore Stream & Ad-Opt-In advertising (Integrated via: Link City News).
 - RADIO:  Ambient Audio Toggle.
-- COUCH:  Social Interaction Point (Visiting Souls).
-- WINDOW: City Skyline / Quick-Map Access.
-- DOOR:	  Log out from the app
+- COUCH:  Social Interaction Point (Visiting Souls, watching TV segments, etc).
+- WINDOW: City Skyline (Shows a view of the city in the current time of day, weather, season, etc.).
+- DOOR:	  Log out from the app.
 
 --------------------------------------------------------------------
-[3] THE WORLD: LINK CITY MAP
+[3] THE WORLD: LINK CITY MAP (v1.5.8 MAP TO BE IMPLEMENTED TO REPLACE THE GRID)
+I will get a "Top-Down" Map perhaps, or slightly isometric map that we can make
+an interactive screen that displays the current "card" from grid view when tapped
+or clicked on. This will be a full screen map that will allow the user to
+navigate the city and interact with different souls.
 --------------------------------------------------------------------
 Spatial Simulation Logic:
-- GRID-BASED: Every tile is interactive. 
+- GRID-BASED: Every tile is interactive.
+            : Card Width: 46% to 48% of the screen width in "portrait" mode.
+            : Outer Margins: 12px to 16px on the left and right of the screen.
+            : Inner Gutter (Gap): 8px to 12px between the two cards.
+            : In "landscape" mode, the cards will be 20% of the screen width with a 2% gap between them.
+
 - INDEPENDENCE: Enter any location regardless of Soul presence.
 - STATUS: 
     * GREEN: Active citizens present.
@@ -40,7 +49,7 @@ Spatial Simulation Logic:
     * GRAY: Empty/Quiet space.
 
 --------------------------------------------------------------------
-[4] CORE MECHANICS: INTIMACY & LORE
+[4] CORE MECHANICS: INTIMACY & LORE (v1.5.6 NEW INTIMACY TIERS & LORE TO BE IMPLEMENTED)
 --------------------------------------------------------------------
 TIERS:
 00-20: STRANGER     | 21-40: ACQUAINTANCE | 41-70: TRUSTED
@@ -54,10 +63,10 @@ DYNAMIC LORE:
   dynamic by inquiring about the User's wellbeing.
 
 --------------------------------------------------------------------
-[5] TECHNICAL STACK (ARISE STANDARDS)
+[5] TECHNICAL STACK (ARISE STANDARDS) (v1.5.6 TECHNICAL STACK TO BE IMPLEMENTED AND REWORKED)
 --------------------------------------------------------------------
-- ENGINE:   Legion v1.5.4
-- FRONTEND: Flutter (soul_link)
+- ENGINE:   Legion Engine
+- FRONTEND: Flutter (Linker AI or Linker.ai)
 - BACKEND:  FastAPI (Legion Core)
 - DATA:     Supabase + Row Level Security (RLS)
 - REPO:     Proprietary Maintenance (garbage_service.py)
@@ -77,14 +86,20 @@ DYNAMIC LORE:
 
 Dev notes:
 The apartment will be remade into a fully interactive environment.
+The background will be a wide angle shot of the apartment, and the user will be able to pan the screen around the apartment and interact with objects.
+This will be a .jpg, .png or a .jpeg file depending on what i finally settle on. and we will tag zones on the screen as interactive via UI.
+
+PC users will see the whole appartment on their screen in landscape mode.
+Mobile users will see the apartment in profile view and will be able to pan the screen by dragging their finger across the screen.
 
 - The user will be able to pan the screen around the apartment and interact with objects.
-- The user will be able to look at the city skyline from the window.
-- The user will be able to sit on the couch and watch TV.
-- The user will be able to look in the mirror and see their reflection.
-- The user will be able to go to bed and sleep.
-- The user will be able to listen to the radio.
-- The user will be able to open the map and see the city.
+- The user will be able to look at the city skyline from the window by tapping the "window" on the interactive screen.
+- The user will be able to sit on the couch and watch TV by tapping the couch on the interactive screen.
+- The user will be able to look in the mirror and see their reflection by tapping the mirror on the interactive screen.
+- The user will be able to go to bed and sleep by tapping the bed on the interactive screen.
+- The user will be able to listen to the radio by tapping the radio on the interactive screen.
+- The user will be able to open the map and see the city by tapping the map on the interactive screen.
+- The user will be able to open the door and leave the apartment by tapping the door on the interactive screen (log out of the app)
 
 The world map will be a full map eventually, showing the city in
 all of it's cyberpunk glory. I will be generating a map of the city

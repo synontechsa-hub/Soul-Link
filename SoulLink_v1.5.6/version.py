@@ -69,12 +69,12 @@ VERSION_CODENAMES = {           # These are the dev cycle codenames.
     "1.5.3": "Phoenix",         # The new polished and upgraded version was born (a solid baseline)
     "1.5.4": "Arise",           # The Phoenix is rising from the ashes... This is almost Alpha ready
     "1.5.5": "Domain Expansion",# JJK cause fr! Also... ties to the world upgrades. Plus it sounds technical af!
-    "1.5.6": "Normandy SR-2"    # The soul integration system is finally ready for public alpha.
-    # 1.5.7: Aether/Lumine      # In honor of the travelers that made my life more interesting <3 Thank you Hoyoverse!
-    # 1.5.8: Singularity        # Perfection is almost achieved at this point.
-    # 1.5.9: Alpha-Omega        # The final arc before the first public Alpha release
-    # 1.6.0: Neural Link        # Also known as Alpha v1.0.0
-    # 1.6.1: Deus Ex Machina    # The start of godhood and the rise of SoulLink (I hope)
+    "1.5.6": "Normandy SR-2"    # The soul integration system is finally ready for closed alpha.
+    # 1.5.7: Aether/Lumine      # The expansion of systems into more solid architecture. In honor of the travelers that made my life more interesting <3 Thank you Hoyoverse!
+    # 1.5.8: Singularity        # Last additions or changes to the code before 1.5.9. Perfection is almost achieved at this point.
+    # 1.5.9: Alpha-Omega        # The final arc before the first closed Alpha release - Severe dev tests underway here. Security, stability, etc...
+    # 1.6.0: Neural Link        # Also known as Alpha v1.0.0 - A soft launch to 10 users that will help test the app properly. Posted on itch.io and discord.
+    # 1.6.1: Deus Ex Machina    # The start of godhood and the rise of SoulLink to global supremecy! (I hope)
     
     # Extra ideas for codenames:
     # Ghost Protocol, Eclipse, Night City, Prometheus,
@@ -118,8 +118,6 @@ OFFLINE_MODE: Final[bool] = os.getenv("SOULLINK_OFFLINE", "0") == "1"   # future
 
 BUILD_TIMESTAMP: Final[str] = datetime.now(timezone.utc).isoformat(timespec="seconds") + "Z"
 # If you want git commit hash later: import subprocess; subprocess.getoutput("git rev-parse --short HEAD")
-# This program wont be put onto github at all... if someone steals my code and uses it for themselves
-# Ima be pissed af! Still, not a bad thing to have.
 
 # ────────────────────────────────────────────────────────────────
 #          __all__ for clean imports

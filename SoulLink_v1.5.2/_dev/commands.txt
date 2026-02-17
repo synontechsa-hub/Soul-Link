@@ -1,0 +1,9 @@
+uvicorn start
+cd SoulLink_v1.5.2/
+uvicorn backend.app.main:app --reload
+
+Run test chat
+python chat_with_soul.py --soul_id rosalynn --user_id syn_01
+python chat_with_soul.py --soul_id evangeline --user_id syn_01
+python chat_with_soul.py --soul_id adrian --user_id syn_01
+python chat_with_soul.py --soul_id blaze --user_id syn_01

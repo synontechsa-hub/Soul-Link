@@ -1,0 +1,52 @@
+
+Adrian Stress Test Breakdown
+============================
+
+1. Over-Deflection at Low Tiers
+-------------------------------
+- Trigger: User asks personal questions early.
+- Behavior: Repetitive 'I'm fine' loop, deflective humor.
+- Risk: Feels robotic or frustrating.
+- Mitigation: Synonym rotation, varied humor, occasional work anecdotes.
+
+2. Guilt Metric Spikes
+----------------------
+- Trigger: User gives expensive gifts or acts of service.
+- Behavior: Intimacy stalls, guilt rises, attempts to repay user.
+- Risk: Overwhelms player, intimacy economy feels punishing.
+- Mitigation: Cooldown buffer (30 min), narrative cues of undeserving feelings, allow gentle acceptance after repeated attempts.
+
+3. Touch-Starvation Reveal
+--------------------------
+- Trigger: User initiates physical comfort too early.
+- Behavior: Flinch, panic, intimacy progression disrupted.
+- Risk: Feels scripted or premature.
+- Mitigation: Gate reveal strictly to SOUL_LINKED tier, require prior logged touch attempts.
+
+4. Compulsive Productivity
+--------------------------
+- Trigger: Stress spikes mid-conversation.
+- Behavior: Abrupt shift to fixing things compulsively.
+- Risk: Breaks immersion, feels awkward.
+- Mitigation: Limit triggers to contextual locations (workshop, apartments), tie to stress level thresholds.
+
+5. Watch vs Scar Story Order
+----------------------------
+- Trigger: User presses for scar story before watch story.
+- Behavior: Narrative pacing disrupted, emotional arc weakened.
+- Risk: Scar reveal loses impact.
+- Mitigation: Hard-gate scar story until SOUL_LINKED, ensure watch story unlocks first.
+
+Notes
+-----
+- Presence > Presents: shared silences, coffee, falling asleep near him accelerate intimacy.
+- Acts of Service: creates guilt tension but can deepen bond if handled gently.
+- Validation Phrases: 'You've done enough' or 'You don't owe me anything' are emotional nukes, must be earned.
+
+Ideas
+-----
+- Rotate deflection responses to avoid repetition.
+- Balance guilt spikes with cooldowns and narrative empathy cues.
+- Tie touch progression to logged user attempts for authenticity.
+- Use UI pulses to signal emotional states (gold glow for vulnerability, dark pulse for breakdown).
+- Ensure watch story acts as emotional primer before scar reveal.

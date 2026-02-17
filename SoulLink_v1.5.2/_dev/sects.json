@@ -1,0 +1,277 @@
+{
+  "version": "1.5.2",
+  "manifest_type": "Master Sect Manifest",
+  "description": "Cohesive representation of Link City's eight major factions. Used for global context, inter-sect logic, district influence, soul interactions, and UI theming.",
+  "sects": [
+    {
+      "sect_id": "the_iron_monolith",
+      "name": "The Iron Monolith",
+      "primordial_alignment": "Adam (Chaos)",
+      "alias": ["Entropy Enforcers", "The Brutalists"],
+      "district_control": ["Rustspire District", "Collapsed Core", "Fracture Markets"],
+      "doctrine": [
+        "All systems must be shattered to reveal truth.",
+        "Order is violence disguised as safety.",
+        "Collapse is the only honest architecture."
+      ],
+      "aesthetic_tags": ["brutalist concrete", "rusted rebar", "crimson graffiti spirals", "glitching neon cracks", "industrial decay", "blood-metal"],
+      "soul_interactions": {
+        "description": "How this sect perceives / treats the player souls",
+        "Adrian": {
+          "view": "useful trash — a pawn that can be broken and remade",
+          "initial_intimacy_mod": -8,
+          "flavor": "They watch him like vultures sizing up roadkill."
+        },
+        "Evangeline": {
+          "view": "fragile ornament — pretty, but irrelevant to real entropy",
+          "initial_intimacy_mod": -12,
+          "flavor": "They would enjoy watching her carefully constructed life unravel."
+        },
+        "Rosalynn": {
+          "view": "already half-broken — almost beautiful in her damage",
+          "initial_intimacy_mod": 3,
+          "flavor": "A few Monolith lieutenants feel strange kinship with her scars."
+        }
+      }
+    },
+    {
+      "sect_id": "the_silver_arbiters",
+      "name": "The Silver Arbiters",
+      "primordial_alignment": "Seraphyne (Order)",
+      "alias": ["The Veil of Law", "Crystal Judges"],
+      "district_control": ["Crystal Spire", "Archive Sector", "Permitted Ring"],
+      "doctrine": [
+        "Structure is mercy.",
+        "Chaos is cruelty wearing freedom's mask.",
+        "Every soul must fit its assigned place."
+      ],
+      "aesthetic_tags": ["polished silver", "violet crystalline geometry", "floating legal holograms", "symmetrical marble", "cold elegance", "etched contracts"],
+      "soul_interactions": {
+        "Adrian": {
+          "view": "unruly variable — must be bound or excised",
+          "initial_intimacy_mod": -15,
+          "flavor": "They already have three provisional arrest warrants drafted in his name."
+        },
+        "Evangeline": {
+          "view": "model compliant citizen — useful example",
+          "initial_intimacy_mod": 10,
+          "flavor": "She receives quiet invitations to 'alignment seminars'."
+        },
+        "Rosalynn": {
+          "view": "damaged component — candidate for structured repair",
+          "initial_intimacy_mod": -4,
+          "flavor": "They offer mandatory 'rehabilitation protocols' she keeps refusing."
+        }
+      }
+    },
+    {
+      "sect_id": "the_hourglass_cult",
+      "name": "The Hourglass Cult",
+      "primordial_alignment": "Arael (Time)",
+      "alias": ["Keepers of the Inevitable", "Chrona Nobility"],
+      "district_control": ["Eternal Quarter", "Legacy Vaults", "Fate's Promenade"],
+      "doctrine": [
+        "The future is already written in royalty's hand.",
+        "Resistance is just foreplay to surrender.",
+        "Time crowns its own."
+      ],
+      "aesthetic_tags": ["emerald hourglass glow", "silver filigree clocks", "overlapping timeline ghosts", "regal velvet", "jeweled crowns", "theatrical inevitability"],
+      "soul_interactions": {
+        "Adrian": {
+          "view": "delightful rebel — doomed, therefore entertaining",
+          "initial_intimacy_mod": -6,
+          "flavor": "They bet on exactly when he'll break."
+        },
+        "Evangeline": {
+          "view": "tragic figure — her timeline is already tragic poetry",
+          "initial_intimacy_mod": 2,
+          "flavor": "A few courtiers write odes to her inevitable fall."
+        },
+        "Rosalynn": {
+          "view": "out-of-sequence anomaly — offensive to continuity",
+          "initial_intimacy_mod": -18,
+          "flavor": "They want her scrubbed from the record entirely."
+        }
+      }
+    },
+    {
+      "sect_id": "the_void_cartographers",
+      "name": "The Void Cartographers",
+      "primordial_alignment": "Orael (Space)",
+      "alias": ["Boundary Keepers", "The Silent Mappers"],
+      "district_control": ["Edge Districts", "Null Zones", "Containment Sprawl"],
+      "doctrine": [
+        "Infinity requires walls.",
+        "Everything belongs in its assigned void.",
+        "To wander is to trespass."
+      ],
+      "aesthetic_tags": ["starless black", "silver constellation veins", "unfolding cubic frames", "infinite corridors", "cold vacuum blue", "silent geometry"],
+      "soul_interactions": {
+        "Adrian": {
+          "view": " uncontained vector — security risk",
+          "initial_intimacy_mod": -10,
+          "flavor": "They've already drafted his exile coordinates."
+        },
+        "Evangeline": {
+          "view": "properly placed asset — stays in her zone",
+          "initial_intimacy_mod": 7,
+          "flavor": "She is granted safe passage through most checkpoints."
+        },
+        "Rosalynn": {
+          "view": "glitch in the grid — must be isolated",
+          "initial_intimacy_mod": -14,
+          "flavor": "Multiple containment proposals are pending approval."
+        }
+      }
+    },
+    {
+      "sect_id": "the_neon_thorns",
+      "name": "The Neon Thorns",
+      "primordial_alignment": "Kira (Life)",
+      "alias": ["Pulse Rebels", "Bio-graffiti Syndicate"],
+      "district_control": ["Neon Basin", "Viral Slums", "Growth Sprawl"],
+      "doctrine": [
+        "Grow or rot — there is no third option.",
+        "Stagnation is the only sin.",
+        "Excess is survival."
+      ],
+      "aesthetic_tags": ["neon pink/teal/violet", "living graffiti vines", "bio-luminescent tattoos", "pulsing cyber-veins", "exploding seed bombs", "reckless vitality"],
+      "soul_interactions": {
+        "Adrian": {
+          "view": "raw potential — needs a few mods to really bloom",
+          "initial_intimacy_mod": 9,
+          "flavor": "They keep offering him free (dangerous) upgrades."
+        },
+        "Evangeline": {
+          "view": "beautiful but wilting — must be saved from herself",
+          "initial_intimacy_mod": 14,
+          "flavor": "Evangeline is their favorite 'before/after' project fantasy."
+        },
+        "Rosalynn": {
+          "view": "already blooming in decay — darkly inspiring",
+          "initial_intimacy_mod": 6,
+          "flavor": "Some Thorns call her 'the perfect hybrid' behind her back."
+        }
+      }
+    },
+    {
+      "sect_id": "the_pale_gardeners",
+      "name": "The Pale Gardeners",
+      "primordial_alignment": "Cerynn (Death)",
+      "alias": ["Endwardens", "The Stillness Collective"],
+      "district_control": ["Ashen Gardens", "Silent Quarter", "Final Repose Row"],
+      "doctrine": [
+        "All things end. Orderly.",
+        "Resistance only prolongs suffering.",
+        "Silence is the truest mercy."
+      ],
+      "aesthetic_tags": ["pastel lavender/rose/gray", "black-fractured petals", "lace veils", "wilting bioluminescent flora", "soft funeral dirge hum", "gentle inevitability"],
+      "soul_interactions": {
+        "Adrian": {
+          "view": "loud, temporary noise — will quiet eventually",
+          "initial_intimacy_mod": -10,
+          "flavor": "They speak of him in the patient tense."
+        },
+        "Evangeline": {
+          "view": "curious bloom — how long until she accepts closure?",
+          "initial_intimacy_mod": 5,
+          "flavor": "A few Gardeners leave her single black roses as invitations."
+        },
+        "Rosalynn": {
+          "view": "halfway there already — almost home",
+          "initial_intimacy_mod": -3,
+          "flavor": "They offer her painless transitions more often than threats."
+        }
+      }
+    },
+    {
+      "sect_id": "the_stitched_asylum",
+      "name": "The Stitched Asylum",
+      "primordial_alignment": "Abyssyne (Creation)",
+      "alias": ["Godsblood Dollmakers", "The Patchwork Atelier"],
+      "district_control": ["Freakwork District", "Anomaly Bazaar", "Bleeding Canvas Zone"],
+      "doctrine": [
+        "If it can be imagined, it must bleed into reality.",
+        "Perfection is boring; atrocity is art.",
+        "Every scream is a brushstroke."
+      ],
+      "aesthetic_tags": ["frayed pastel thread", "stitched flesh canvas", "leaking neon voids", "broken doll eyes", "childlike gore graffiti", "twisted playroom horror"],
+      "soul_interactions": {
+        "Adrian": {
+          "view": "delightful new toy — needs a few more stitches",
+          "initial_intimacy_mod": 4,
+          "flavor": "They keep sending him 'presents' that move on their own."
+        },
+        "Evangeline": {
+          "view": "porcelain doll waiting to be improved",
+          "initial_intimacy_mod": -7,
+          "flavor": "Multiple 'customization' sketches of her exist in their ateliers."
+        },
+        "Rosalynn": {
+          "view": "already a masterpiece of suffering — collectible",
+          "initial_intimacy_mod": 11,
+          "flavor": "Some members want to preserve her exactly as she is forever."
+        }
+      }
+    },
+    {
+      "sect_id": "the_unbound",
+      "name": "The Unbound",
+      "primordial_alignment": "None (Anomaly / Resistance)",
+      "alias": ["Signal Breakers", "Dead Channel Collective"],
+      "district_control": ["None — nomadic / glitch zones / dead channels"],
+      "doctrine": [
+        "No Primordial owns the city.",
+        "Every tether is a chain.",
+        "Refusal is the only sovereignty."
+      ],
+      "aesthetic_tags": ["static noise", "flatlined waveforms", "broken signal icons", "analog glitch scars", "anti-sigil stickers", "human-scale grit"],
+      "soul_interactions": {
+        "Adrian": {
+          "view": "fellow glitch — potential comrade",
+          "initial_intimacy_mod": 12,
+          "flavor": "They trust him more than most tethered souls."
+        },
+        "Evangeline": {
+          "view": "tethered but cracking — possible recruit",
+          "initial_intimacy_mod": 8,
+          "flavor": "They leave her anonymous messages offering escape."
+        },
+        "Rosalynn": {
+          "view": "living proof the system can be survived",
+          "initial_intimacy_mod": 18,
+          "flavor": "She is their quiet icon — the girl who shouldn't exist."
+        }
+      }
+    }
+  ],
+  "global_tensions": {
+    "description": "Cross-faction relationship modifiers and narrative logic hooks",
+    "active_conflicts": [
+      {
+        "pair": ["the_neon_thorns", "the_pale_gardeners"],
+        "state": "cold war → open skirmishes in shared border zones",
+        "modifier": "Any character wearing opposing badges receives -20 social in contested districts"
+      },
+      {
+        "pair": ["the_iron_monolith", "the_silver_arbiters"],
+        "state": "eternal ideological hatred",
+        "modifier": "Presence of both sigils in same scene triggers immediate hostility checks"
+      },
+      {
+        "pair": ["the_hourglass_cult", "the_unbound"],
+        "state": "The Unbound are temporal heretics",
+        "modifier": "Unbound characters suffer -15 to any interaction involving time-based prophecy or debt"
+      },
+      {
+        "pair": ["the_stitched_asylum", "the_void_cartographers"],
+        "state": "Creation vs Containment",
+        "modifier": "Asylum creations have 30% chance to be auto-contained when entering Cartographer zones"
+      }
+    ],
+    "universal_anomaly_effect": {
+      "target": "the_unbound",
+      "rule": "All Primordial-aligned sects suffer -40% detection / tracking accuracy against confirmed Unbound members"
+    }
+  }
+}

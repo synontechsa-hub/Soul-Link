@@ -1,0 +1,6 @@
+# requirements.txt
+fastapi
+uvicorn
+sqlmodel
+requests
+ollama  # if using Ollama directly

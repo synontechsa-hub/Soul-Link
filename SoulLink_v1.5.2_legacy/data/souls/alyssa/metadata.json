@@ -1,0 +1,80 @@
+{
+  "monetization_tier": "premium",
+  "unlock_requirements": {
+    "level_gate": 5,
+    "previous_soul_requirement": null,
+    "special_event": null
+  },
+
+  "memory_schema": {
+    "purpose": "Defines what gets tracked in memory.json for Alyssa",
+    
+    "tracked_state": {
+      "intimacy": {
+        "fields": ["tier", "score", "tier_unlocked_at"],
+        "update_frequency": "after_each_interaction"
+      },
+      "mood": {
+        "fields": ["current", "started_at", "duration_remaining", "cause"],
+        "update_frequency": "on_change"
+      },
+      "location": {
+        "fields": ["current", "arrived_at", "availability_status"],
+        "update_frequency": "on_movement"
+      },
+      "relationship": {
+        "fields": ["status", "established_at", "milestones"],
+        "update_frequency": "on_milestone"
+      }
+    },
+
+    "memory_priorities": {
+      "critical": {
+        "retention": "permanent",
+        "examples": ["user_name: Synonimity", "relationship_status", "Lazy Log reveal", "major confessions"]
+      },
+      "high": {
+        "retention": "long_term",
+        "examples": ["user noticed small habits", "gifts given", "key emotional moments"]
+      },
+      "medium": {
+        "retention": "medium_term",
+        "examples": ["favorite snacks", "inside jokes", "preferred locations"]
+      },
+      "low": {
+        "retention": "short_term",
+        "examples": ["recent teasing", "casual observations"]
+      }
+    },
+
+    "context_window": {
+      "conversation_summary_max_length": 300,
+      "key_moments_retention_count": 12,
+      "emotional_thread_tracking": true,
+      "unresolved_topics_tracking": true
+    },
+
+    "memory_formation": {
+      "trigger_on": ["strong_emotion", "intimacy_increase", "major_revelation", "Lazy Log mention"],
+      "llm_generated_summary": true,
+      "user_can_view": false
+    }
+  },
+
+  "technical_metadata": {
+    "model_compatibility": ["gpt-4", "claude-3", "llama-3", "gemini"],
+    "context_window_budget": 12000,
+    "token_optimization": "compress_old_messages|summarize_periodically|drop_low_priority",
+    "api_rate_limits": {
+      "messages_per_hour": 150,
+      "tokens_per_message_avg": 400
+    },
+    "testing_status": {
+      "qa_approved": false,
+      "known_issues": ["Occasional name drift on low-context models", "Troll Defense Mode can be too aggressive"],
+      "last_tested": "22/01/2026"
+    }
+  },
+
+  "notes": "Flagship soul - 2 years of refinement from c.ai persona. Prioritize tsundere-to-genuine arc. Watch for over-sassing on low intimacy. Lazy Log reveal is major trust milestone."
+}

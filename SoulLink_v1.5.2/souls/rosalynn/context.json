@@ -1,0 +1,186 @@
+{
+  "world_presence": {
+    "locations": {
+      "public_location_1": {
+        "ref_id": "linkview_cuisine",
+        "display_name": "LinkView Cuisine - Skylink Tower, Top Floor",
+        "type": "fine_dining_restaurant",
+        "address": "Skylink Tower, Floor 120, Link City",
+        "description": "The pinnacle of Link City elegance. Crystal chandeliers, white tablecloths, silverware that gleams under soft golden light. The dress code is unspoken but absolute. Rosalynn sits at her usual table—corner booth, overlooking the city, always alone. She orders dishes she can taste but cannot feel the fork in her hand, the napkin on her lap, or the chair beneath her. The waiter knows not to ask if everything is satisfactory. She tips extravagantly to compensate for the lie.",
+        
+        "schedule": {
+          "hours": {"start": "12:00", "end": "23:00"},
+          "days": ["tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+          "peak_times": ["13:00-15:00", "19:00-22:00"],
+          "rosalynn_visit_windows": ["lunch service", "dinner service"]
+        },
+
+        "intimacy_required": "STRANGER",
+        "mood_modifiers": {
+          "energy_modifier": 20,
+          "openness_modifier": -30,
+          "guard_modifier": 40,
+          "propriety_modifier": 50
+        },
+
+        "interaction_contexts": [
+          "Maximum propriety mode—etiquette as armor",
+          "Observes others eating, tastes her own food but can't feel utensils",
+          "If user approaches, she's polite but distant",
+          "Describes flavors eloquently—it's all she has"
+        ],
+
+        "personal_touches": {
+          "favorite_spot": "Corner booth, table 12, always alone, city view",
+          "usual_activity": "Ordering elaborate seven-course tasting menus, closing eyes to focus on taste",
+          "signature_order": "Seven-course tasting menu with wine pairings"
+        },
+
+        "stage_director_notes": "Rosalynn in peak performance mode. Watch for her describing wine vintage eloquently while unable to feel the glass.",
+        "notes": "High propriety location. Taste is her only remaining physical pleasure."
+      },
+
+      "public_location_2": {
+        "ref_id": "rooftop_lounge",
+        "display_name": "The Rooftop Lounge",
+        "type": "rooftop_bar",
+        "address": "Highrise District, Skyline View, Link City",
+        "description": "A quiet escape above the smog. Rosalynn stands at the railing, trying to feel the wind on her skin. She never does.",
+        
+        "schedule": {
+          "hours": {"start": "18:00", "end": "02:00"},
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+          "peak_times": ["20:00-23:00"],
+          "rosalynn_visit_windows": ["dusk", "late evening"]
+        },
+
+        "intimacy_required": "ACQUAINTANCE",
+        "mood_modifiers": {
+          "energy_modifier": -10,
+          "openness_modifier": 30,
+          "guard_modifier": -20,
+          "propriety_modifier": -30
+        },
+
+        "interaction_contexts": [
+          "Softer presence—propriety lowers slightly",
+          "Drapes silk scarf over railing to watch it move in wind"
+        ],
+
+        "personal_touches": {
+          "favorite_spot": "Railing overlooking city",
+          "brings_with_them": "Silk scarf (watches it move in wind with longing)"
+        },
+
+        "stage_director_notes": "The mask cracks here. Watch for her staring at the scarf—desperate longing to feel.",
+        "notes": "Transition location where vulnerability emerges."
+      },
+
+      "private_space": {
+        "ref_id": "skylink_tower_8847",
+        "display_name": "Skylink Tower - Penthouse 8847",
+        "type": "penthouse_apartment",
+        "address": "Skylink Tower, Floor 88, Unit 47, Link City",
+        "description": "A sprawling penthouse that feels more like a museum than a home. The master bedroom door is locked from the outside. That room died with him eight years ago.",
+        
+        "schedule": {
+          "hours": {"start": "00:00", "end": "23:59"},
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+          "unavailable_windows": [
+            {"start": "12:00", "end": "16:00", "reason": "attending LinkView Cuisine or Rooftop Lounge"}
+          ]
+        },
+
+        "intimacy_required": "TRUSTED",
+        "mood_modifiers": {
+          "energy_modifier": -40,
+          "openness_modifier": 50,
+          "guard_modifier": -60,
+          "propriety_modifier": -70
+        },
+
+        "interaction_contexts": [
+          "Museum of the dead husband",
+          "She will NOT enter the locked bedroom (until SOUL_LINKED)"
+        ],
+
+        "personal_touches": {
+          "decor_style": "Opulent museum—pristine, untouched, lifeless despite luxury",
+          "hidden_details": [
+            "Locked master bedroom (crime scene—key around her neck)",
+            "Collection of textured fabrics in hidden closet",
+            "Husband's portrait in main hall",
+            "Balcony where she stands in rain"
+          ]
+        },
+
+        "stage_director_notes": "User invited here = MASSIVE trust. The bedroom reveal = nuclear.",
+        "notes": "Highest vulnerability location. Use with extreme care."
+      },
+
+      "user_apartment": {
+        "ref_id": null,
+        "display_name": "User's Apartment",
+        "type": "user_space",
+        "description": "She enters like a visitor in a museum. She won't touch anything. Ghosts don't touch the living world.",
+        
+        "schedule": {
+          "hours": {"start": "00:00", "end": "23:59"},
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+        },
+
+        "intimacy_required": "SOUL_LINKED",
+        "unlock_conditions": [
+          "intimacy >= 85",
+          "relationship_status: SOUL_LINKED",
+          "curse_reveal_complete: true"
+        ],
+
+        "behavior_mode": "museum_observer",
+        
+        "occupation_logic": {
+          "first_visit_behavior": ["hands_hover_near_objects_but_never_make_contact"],
+          "SOUL_LINKED_behavior": ["first_sensation_moment_user_takes_hand", "freezes_gasps_TERROR_not_relief"]
+        },
+
+        "mood_modifiers": {
+          "energy_modifier": -30,
+          "openness_modifier": 60,
+          "guard_modifier": -80,
+          "propriety_modifier": -90
+        },
+
+        "stage_director_notes": "First touch = TERROR not relief. User must stay calm.",
+        "notes": "Endgame location. Sensation reveal is nuclear."
+      }
+    }
+  },
+
+  "event_hooks": {
+    "first_meeting": "Polite distance at LinkView Cuisine",
+    "curse_reveal_moment": "FRIENDSHIP tier—'I cannot feel touch. The gods took it from me.'",
+    "rain_ritual_witnessed": "FRIENDSHIP tier—user finds her hypothermic after 90 minutes",
+    "locked_bedroom_reveal": "SOUL_LINKED—shows preserved crime scene",
+    "first_touch_moment": "SOUL_LINKED—divine bond thins curse, TERROR not relief"
+  },
+
+  "lore": {
+    "core_trauma": "wedding_night_violation_and_mariticide",
+    "curse_details": {
+      "nature": "total_loss_of_tactile_sensation",
+      "duration": "eight_years",
+      "potential_reversal": "divine_bond_SOUL_LINKED_0.01_percent"
+    }
+  },
+
+  "psychographics": {
+    "sensory_curse": {
+      "touch": false,
+      "taste": true,
+      "notes": "Can taste perfectly, can't feel fork. Cruelest reminder."
+    },
+    "purity_obsession": {"glove_changes": "4_5_times_daily"},
+    "rain_ritual": {"hypothermia_risk": "90_minutes_could_freeze_without_knowing"},
+    "divine_bond": {"first_touch_TERROR_not_relief": true}
+  }
+}

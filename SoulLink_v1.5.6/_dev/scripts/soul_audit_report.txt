@@ -1,0 +1,72 @@
+================================================================================
+SOUL DATA CONSISTENCY AUDIT REPORT
+================================================================================
+
+Total Souls Audited: 40
+Total Errors: 0
+Total Warnings: 59
+
+================================================================================
+WARNINGS (SHOULD REVIEW)
+================================================================================
+  ⚠️  cassie_01 -> nova_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  cassie_01 -> elizabeth_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  cassie_01 -> hana_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  cassie_01 -> rubii_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  cassie_01 -> echo_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  cassie_01 -> amber_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  chiara_01 -> anzu_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  chiara_01 -> nova_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  chiara_01 -> rubii_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  chiara_01 -> echo_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  chiara_01 -> sylas_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  clair_01 -> aria_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  clair_01 -> nova_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  clair_01 -> elizabeth_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  clair_01 -> tatiana_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  clair_01 -> amber_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  clair_01 -> akira_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  clair_01 -> talia_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  elizabeth_01 -> evangeline_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  erikk_01 -> mira_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  erikk_01 -> adrian_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  erikk_01 -> chiara_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  gale_01 -> clair_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  gale_01 -> aria_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  gale_01 -> nova_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  gale_01 -> juno_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> mai_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> anzu_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> adrian_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> evangeline_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> soren_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> reina_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> orion_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> selene_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> sylas_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> momoka_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  haruto_01 -> talia_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  heather_01 -> echo_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  juno_01 -> aria_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  juno_01 -> nova_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  juno_01 -> evangeline_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  juno_01 -> elizabeth_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  juno_01 -> orion_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  juno_01 -> talia_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mai_01 -> echo_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mami_01 -> vesper_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mami_01 -> haruto_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mami_01 -> chiara_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mami_01 -> soren_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mami_01 -> orion_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mami_01 -> juno_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mami_01 -> akira_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mariko_01 -> haruto_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mariko_01 -> chiara_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mariko_01 -> soren_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mira_01 -> nova_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mira_01 -> rubii_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  mira_01 -> echo_01: MISSING RECIPROCAL RELATIONSHIP
+  ⚠️  nova_01 -> echo_01: MISSING RECIPROCAL RELATIONSHIP
+
+================================================================================

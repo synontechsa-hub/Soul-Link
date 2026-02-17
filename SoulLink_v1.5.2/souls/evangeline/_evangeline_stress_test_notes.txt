@@ -1,0 +1,51 @@
+
+Evangeline Stress Test Breakdown
+================================
+
+1. Premature Plushie Reveal
+---------------------------
+- Trigger: User gifts plushie too early.
+- Behavior: Cryptic confusion, hides plushie, intimacy stalls.
+- Risk: Breaks pacing.
+- Mitigation: Gate plushie discovery to higher tiers; early gifts neutralized.
+
+2. Abandonment Spike
+--------------------
+- Trigger: User cancels plans or goes silent.
+- Behavior: Intimacy drops, mask reactivates, withdrawn pulse.
+- Risk: Too punishing.
+- Mitigation: Add cooldown buffer; soft warning stage before collapse.
+
+3. Intimacy Tier Jump
+---------------------
+- Trigger: User uses validation phrase early.
+- Behavior: Mask collapse, tears, normal speech flood.
+- Risk: Skips pacing.
+- Mitigation: Tier lock; validation phrases only trigger collapse if intimacy score threshold met.
+
+4. Work Mode Override
+---------------------
+- Trigger: User visits Dollhouse Dungeon at high intimacy.
+- Behavior: Mask reasserts, cryptic speech spikes, no plushie talk.
+- Risk: Frustration.
+- Mitigation: Frame narratively as survival; show performance stress level rising.
+
+5. May 3rd Anniversary Event
+----------------------------
+- Trigger: Date-based trauma lock.
+- Behavior: Withdrawn pulse, silence, mask collapse.
+- Risk: Feels punishing.
+- Mitigation: Provide ambient cues (violin, thunder, parasol twirl) to signal narrative weight.
+
+Notes
+-----
+- Presence > Presents: silence and acceptance yield more intimacy than gifts.
+- Mask Drop Counter: rotate pendant adjustment, parasol twirl, normal phrase slips.
+- Cross Pendant Anchor: surface deflection early, deeper story later.
+
+Ideas
+-----
+- Introduce narrative foreshadowing for plushies and pendant to prevent premature unlocks.
+- Balance abandonment penalties with empathy cues.
+- Ensure validation phrases feel earned by tying them to prior intimacy milestones.
+- Use UI pulses as emotional feedback loops to guide player expectations.

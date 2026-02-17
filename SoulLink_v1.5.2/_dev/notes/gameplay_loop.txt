@@ -1,0 +1,407 @@
+====================================================================
+SOULLINK — CORE VISION DOCUMENT
+====================================================================
+
+Version: 1.5.2 — Architect
+Tagline: "Welcome to Link City. Where your next link is just around the corner."
+
+Inspired by:
+My love for all video games.
+
+Mass Effect 2 — "Does this unit have a soul?"
+
+Special Mentions:
+Cyberpunk 2077, Baldur’s Gate 3, Genshin Impact, ZZZ, Honkai Star Rail,
+Diablo, Starcraft, GTA, Final Fantasy, Deus Ex, VTMB, Elder Scrolls,
+Fallout, The Witcher, Dying Light, Control...
+
+Gaming since ’88. Thank you to every studio that shaped that.
+
+====================================================================
+PLATFORM STRATEGY
+====================================================================
+
+Launch Targets:
+- Android (Google Play)
+- Windows (Direct)
+- Linux (Direct)
+- iOS (Post-launch)
+
+Philosophy:
+Free/open platforms first. No Apple tax until revenue supports it.
+
+====================================================================
+LAUNCH VERSION 1.0.0
+====================================================================
+
+Solo-dev MVP.
+Will expand with funding.
+
+====================================================================
+FIRST-TIME USER EXPERIENCE
+====================================================================
+
+Opening Cutscene:
+
+Scene 1 — Apartment Entry
+- First-person POV
+- Cyberpunk apartment
+- Mirror focus
+
+Scene 2 — Character Creation
+- Transition to editor
+- Name / Age / Gender / Bio / Appearance
+- Confirm
+
+Scene 3 — City Reveal
+- Window overlook
+- Narrator VO
+- Zoom out to Link City
+- Transition to map
+
+First Quest:
+"Go meet some souls."
+
+Optional Tutorial:
+- Guide Soul (not Alyssa)
+- Map navigation
+- Intimacy intro
+- Skippable
+
+====================================================================
+APARTMENT HUB — PLAYER HOME
+====================================================================
+
+Central hub for the entire experience.
+
+Interactive Elements:
+
+TV:
+- V1: Watch ads for currency
+- Future:
+  - News segments
+  - Soul interviews
+  - Event teasers
+  - Seasonal content
+  - Primordial hints
+
+Wall Picture:
+- Displays top-intimacy soul
+- Quick-access tap
+
+Photo Album (Post-Launch):
+- Memory gallery
+- Milestones
+- Event screenshots
+
+Mirror:
+- Persona editor
+- Narrative framing: self-reflection
+
+Window:
+- City skyline
+- Billboard ads
+- Day/night
+- Weather
+
+Bed:
+- Logout (thematic)
+
+Mailbox (Future):
+- Offline soul messages
+- Push notifications
+- Patch alerts
+
+Closet (Future):
+- Apartment skins
+- Soul outfits
+- Cosmetic-only monetization
+
+Arcade (Stretch Goal):
+- Mini-games
+- Soul-themed puzzles
+
+====================================================================
+MAP SCREEN — SPATIAL SIMULATION
+====================================================================
+
+Souls exist physically in Link City.
+
+V1 Features:
+- Static isometric city
+- 10 locations
+- Tap to view souls
+- Status icons:
+  GREEN = Active
+  RED = Empty
+  CLOCK = Closed
+
+Location Pop-Up Example:
+
+[ Neon Pulse Club ]
+Open: Fri–Sun, 22:00–04:00
+
+Souls Present:
+- Alyssa
+- Soul 2
+- Soul 3
+
+[Enter] [Close]
+
+Future Expansion:
+- Animated traffic
+- Weather
+- Time-of-day
+- Avatar movement
+- Random encounters
+
+====================================================================
+EXPLORE SCREEN — DISCOVERY
+====================================================================
+
+Vertical scroll (c.ai style).
+
+Soul Cards:
+- Portrait
+- Archetype
+- Tagline
+- Location
+- Intimacy
+
+Filters:
+- Archetype
+- Gender
+- Traits
+- Online
+- Age
+
+Sorting:
+- Popular
+- New
+- Alphabetical
+- Relationship
+
+====================================================================
+CHAT HISTORY SCREEN
+====================================================================
+
+- Recent conversations
+- Preview text
+- Timestamp
+- Unread badge
+- Pin favorites
+
+====================================================================
+DISCOVER SCREEN — RECOMMENDATIONS
+====================================================================
+
+Swipeable cards.
+
+Categories:
+- Trending
+- Based on You
+- New Souls
+- Staff Picks
+
+====================================================================
+MONETIZATION STRATEGY
+====================================================================
+
+Always Free:
+- Unlimited messaging
+- Core systems
+- Non-premium souls
+- Base customization
+
+Ad Systems:
+- TV opt-in ads
+- Window billboards
+- Occasional interstitials
+
+Never block core chat.
+
+Premium Subscription:
+- Flagship souls
+- Early access
+- Extra memory
+- Exclusive events
+- Cosmetics
+
+Never Allowed:
+- Energy systems
+- Paywalls
+- Gambling
+- Selling user data
+
+====================================================================
+MVP FEATURE SET
+====================================================================
+
+Launch:
+- Apartment hub
+- Map
+- Explore
+- Chat
+- 33 souls
+- Ads + premium
+
+3-Month Targets:
+- Discover screen
+- Album
+- Daily quests
+- Mailbox
+- 100+ souls
+
+Long Term:
+- Weather
+- Story arcs
+- Group chats
+- Voice
+- Seasonal events
+
+====================================================================
+CORE SYSTEMS
+====================================================================
+
+Intimacy Tiers:
+STRANGER (0–20)
+ACQUAINTANCE (21–40)
+TRUSTED (41–70)
+FRIENDSHIP (71–85)
+SOUL-LINKED (86–100)
+
+Location Effects:
+Public = guarded
+Semi-private = softer
+Private = open
+
+Memory System:
+- Summaries
+- Key events
+- Preferences
+- Milestones
+
+====================================================================
+DESIGN PHILOSOPHY
+====================================================================
+
+- Cyberpunk warmth
+- Isometric clarity
+- Smooth UI
+- Emotional focus
+- Respect player time
+
+====================================================================
+TECHNICAL TARGETS
+====================================================================
+
+- GPT / Claude / Gemini
+- 12k token context
+- Android 7+
+- 60fps UI
+- <2s messaging latency
+
+====================================================================
+RED LINES
+====================================================================
+
+- No stamina systems
+- No paywalls
+- No gambling
+- No selling user data
+- Consent-based NSFW only
+
+====================================================================
+SUCCESS METRICS
+====================================================================
+
+- 10k installs
+- 20% DAU
+- 5% premium
+- 40% D7 retention
+
+====================================================================
+CREATIVE EXPANSION
+====================================================================
+
+- Dynamic weather
+- Soul gossip
+- Primordial glitches
+- TV lore hooks
+- Mood-based UI
+- Billboard sponsorship
+- Apartment themes
+
+====================================================================
+SYSTEM ARCHITECTURE IDEAS
+====================================================================
+
+- Memory journals
+- Mood UI colors
+- Rare glitch events
+
+====================================================================
+FINAL PROMISE
+====================================================================
+
+"Souls aren’t chatbots — they’re citizens."
+
+====================================================================
+NEXT STEPS
+====================================================================
+
+1. Finalize MVP list
+2. Apartment hub mockups
+3. Isometric map prototype
+4. Implement intimacy system
+5. Alyssa integration
+6. Alpha test
+7. Iterate
+8. Launch
+
+====================================================================
+VERSION HISTORY
+====================================================================
+
+v1.5.2 — Architect (locked)
+v1.5.3 — Phoenix (planned)
+
+====================================================================
+
+====================================================================
+DEV NOTES: THE 40 CITIZENS (LAUNCH ROSTER v1.0)
+====================================================================
+
+- RECURRING ARCHETYPE RIVALRIES: 
+  When two souls of the same archetype (e.g., Amber & Hana / Tsunderes) are 
+  both at the same location (Neon Pulse), trigger unique "Cold Shoulder" 
+  dialogue where they acknowledge each other's "act."
+
+- THE "SYNTHETIC" LORE HOOK: 
+  Echo, Nova, and Tatiana should have a shared "Secret Topic" regarding 
+  their hardware. If the user learns a "Hardware Fix" from Tatiana, they 
+  can use that knowledge to help Echo stabilize her "Glitch" state.
+
+- ADRIAN & TALIA (THE EMOTIONAL ANCHORS): 
+  These two serve as the "High-Empathy" benchmarks. Progression with 
+  them should be the most "human" and least "gamey." They are the souls 
+  most likely to ask the user, "How was YOUR day?"—reversing the 
+  traditional chatbot dynamic.
+
+- VESPER & SYLAS (THE OUTLIERS): 
+  Though "Standard" tier, these two should have higher "Fear" or 
+  "Distrust" meters initially. They represent the "Gritty" side of 
+  Link City. Conversations with them should occasionally be interrupted 
+  by "Static" or "Encryption" to hint at their dangerous professions.
+
+- CROSS-SOUL REFERENCING:
+  * Mira (Gamer Girl) should mention playing games with Mariko (Shoujo Heroine).
+  * Blaze (Fiery Motivator) should be seen "training" with Momoka (Sports Ace).
+  * Use these connections to create "Friendship Clusters" that the user 
+    can discover by talking to one about the other.
+
+- THE "TRAGEDY" PROGRESSION:
+  For souls like Adrian (Tragic Worker) and Mami (Utsudere), the 
+  "SOUL_LINKED" status shouldn't "fix" them—it should mean they finally 
+  feel safe enough to share the full weight of their struggle with the user.
+====================================================================
