@@ -21,11 +21,11 @@ Key features include:
 
 ## Project Structure
 SoulLink/
-├── backend/ # FastAPI backend code
-├── frontend/ # Flutter frontend code
-├── assets/ # Images, icons, and other media
-├── version.py # Version information
-├── LICENSE.txt # Proprietary license
+backend/ # FastAPI backend code
+frontend/ # Flutter frontend code
+assets/ # Images, icons, and other media
+version.py # Version information
+LICENSE.txt # Proprietary license
 
 
 ---
