@@ -57,10 +57,13 @@
         "secrets": "Certain private areas are reserved for VIPs who possess coded access cards. Rumor has it that some guests conduct discreet meetings here that can influence city politics and corporate decisions."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "openness": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

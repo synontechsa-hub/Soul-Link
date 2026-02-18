@@ -8,7 +8,7 @@
         "image_url": "/assets/images/locations/the_garden_01.jpg"
     },
     "system_prompt_anchors": {
-        "sensory_description": "The air is humid and fragrant with a mixture of exotic flowers and fresh greenery. Light filters through the bio-dome’s translucent panels, casting soft patterns on the walkways. Gentle water features create a relaxing symphony of flowing streams.",
+        "sensory_description": "The air is humid and fragrant with a mixture of exotic flowers and fresh greenery. Light filters through the bio-dome\u2019s translucent panels, casting soft patterns on the walkways. Gentle water features create a relaxing symphony of flowing streams.",
         "crowd_atmosphere": "Visitors stroll quietly along the winding paths, stopping to admire rare plants. Occasionally, a horticulturist can be seen guiding a small tour or tending to delicate species. The overall mood is one of calm and contemplation.",
         "activities": [
             "Stroll through thematic plant sections and bio-domes.",
@@ -57,11 +57,14 @@
         "secrets": "Hidden among the flowering sections is a small, forgotten greenhouse used by researchers for experimental plant strains, accessible only through a coded security panel."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "calm": 1.5,
             "serenity": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "Hallways echo with soft footsteps, faint hums of air filtration systems, and occasional chatter from neighbors. The scent of polished concrete mingles with faint traces of coffee and home-cooked meals drifting from apartment kitchens. Soft ambient lighting gives the corridors a calm, orderly feeling.",
-        "crowd_atmosphere": "Residents are a mix of young professionals, small families, and long-term tenants. Conversations are casual and polite. Children’s laughter occasionally filters through the walls, while adults move efficiently through shared spaces like the lobby or laundry rooms.",
+        "crowd_atmosphere": "Residents are a mix of young professionals, small families, and long-term tenants. Conversations are casual and polite. Children\u2019s laughter occasionally filters through the walls, while adults move efficiently through shared spaces like the lobby or laundry rooms.",
         "activities": [
             "Enter and leave apartments at different times of day.",
             "Socialize briefly with neighbors in communal areas.",
@@ -55,15 +55,18 @@
         "connections": []
     },
     "lore": {
-        "history": "Constructed as part of Skylink Tower’s expansion, these apartments were designed to accommodate mid-tier residents seeking convenience and proximity to city amenities. The tower itself has become an iconic mixed-use hub over the years.",
+        "history": "Constructed as part of Skylink Tower\u2019s expansion, these apartments were designed to accommodate mid-tier residents seeking convenience and proximity to city amenities. The tower itself has become an iconic mixed-use hub over the years.",
         "secrets": "Some residents whisper about hidden maintenance corridors connecting floors and secret rooftop access. A few report glimpses of unusual nocturnal activities on upper floors, but nothing official is documented."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "isolation": 1.3,
             "comfort": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Private"
     }
 }

@@ -11,7 +11,7 @@
         "sensory_description": "Perched on the edge of Link City's outskirts, the Scenic Overlook offers a commanding view of the neon-lit skyline. The wind is crisp, carrying a faint tang of ozone. The soft hum of distant traffic vibrates subtly through the ground, while the city lights stretch endlessly like circuits of pulsing color. Twilight and night bring an ethereal glow, perfect for reflection or quiet companionship.",
         "crowd_atmosphere": "Visitors here are sparse and contemplative. Some sit alone on benches or ledges, sketching or recording thoughts, while others arrive in pairs, quietly sharing the view. It is a place of calm observation, with little noise beyond the ambient city hum.",
         "activities": [
-            "Observe the city’s neon skyline and digital nightscape.",
+            "Observe the city\u2019s neon skyline and digital nightscape.",
             "Meditate or reflect on personal goals and thoughts.",
             "Sketch or photograph the view for artistic purposes.",
             "Have intimate, quiet conversations at the edge of the overlook.",
@@ -56,14 +56,17 @@
     },
     "lore": {
         "history": "A favored spot for poets, dreamers, and city romantics. Many claim that observing the skyline from here reveals hidden patterns in the urban grid, believed to be left by the Architect during Link City's initial design.",
-        "secrets": "Beneath the bench at the far north corner, initials and small messages are carved into the wood—tokens left by those who wanted to leave a trace of themselves in the city. Some say reading them brings insight into past visitors’ intentions and thoughts."
+        "secrets": "Beneath the bench at the far north corner, initials and small messages are carved into the wood\u2014tokens left by those who wanted to leave a trace of themselves in the city. Some say reading them brings insight into past visitors\u2019 intentions and thoughts."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "inspiration": 1.5,
             "serenity": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

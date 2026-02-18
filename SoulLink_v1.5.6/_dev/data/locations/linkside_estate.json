@@ -63,11 +63,14 @@
         "secrets": "Some residents have discovered hidden storage panels in the walls for personal items. Rumors hint that certain apartments may include early-access smart-home features not publicly advertised, controlled by a central AI for testing."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "safety": 1.5,
             "customization": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Private"
     }
 }

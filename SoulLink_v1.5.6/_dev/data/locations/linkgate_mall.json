@@ -61,14 +61,17 @@
         "connections": []
     },
     "lore": {
-        "history": "LinkGate Mall was constructed to unify the city’s retail experience under one roof. Opening with a mix of local boutiques and international brands, it quickly became a central hub for commerce and social interaction in Link City. Over the years, it has hosted major product launches and seasonal festivals, cementing its reputation as a landmark of urban culture.",
+        "history": "LinkGate Mall was constructed to unify the city\u2019s retail experience under one roof. Opening with a mix of local boutiques and international brands, it quickly became a central hub for commerce and social interaction in Link City. Over the years, it has hosted major product launches and seasonal festivals, cementing its reputation as a landmark of urban culture.",
         "secrets": "Whispers tell of hidden VIP lounges accessible only to certain patrons and executives, and some service corridors contain prototype retail tech not seen by the general public. There are rumors of AI-managed behavioral analytics tracking shopping patterns across the mall for optimization and targeted events."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "distraction": 1.3
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

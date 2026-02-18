@@ -59,10 +59,13 @@
         "secrets": "Some VR pods are rumored to host hidden challenges that unlock rare digital items. Occasional private tournaments are held after hours, accessible only to select VIP members who receive cryptic invitations."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "energy": 1.6
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

@@ -57,11 +57,14 @@
         "secrets": "Beneath the main market floor, hidden tunnels connect to forgotten sections of the city. These passages are rumored to contain caches of stolen artifacts, secret meetings, and unsanctioned duels."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "danger": 1.5,
             "mystery": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

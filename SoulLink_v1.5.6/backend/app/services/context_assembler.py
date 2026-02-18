@@ -101,19 +101,52 @@ class ContextAssembler:
             context_tags.append(anchor_str)
 
         # 3. CONTENT CEILING (Privacy/NSFW)
-        # Using the new LinkState fields
-        # Logic: If location is private, intimacy must be high enough.
-        # But Gatekeeper might still expect the old models. 
-        # For v1.5.6, we simplify:
-        
-        # If unlocked_nsfw is False, we strictly forbid it.
-        if not link_state.unlocked_nsfw:
+        # SERVER-SIDE AGE GATE: If persona age is set and under 18, force SFW regardless of LinkState.
+        # This cannot be bypassed by the client.
+        nsfw_allowed = link_state.unlocked_nsfw
+        if persona.age is not None and persona.age < 18:
+            nsfw_allowed = False
+
+        if not nsfw_allowed:
              context_tags.append("[CONTENT: SFW_ONLY] Sexual content is strictly prohibited.")
         elif privacy_level == "Private" and link_state.intimacy_tier in ["TRUSTED", "SOUL_LINKED"]:
              context_tags.append("[CONTENT: UNRESTRICTED] Adult themes allowed in private.")
 
+        # 4. LORE & INTIMACY CONFIGURATION (v1.5.6)
+        # Extract Interaction Data
+        # We handle both likely mappings for robustness
+        interaction_engine = pillar.interaction_engine or {}
+        intimacy_tiers = interaction_engine.get("intimacy_tiers") or interaction_engine.get("interaction_system", {}).get("intimacy_tiers", {})
+        
+        current_tier = link_state.intimacy_tier if link_state.intimacy_tier else "STRANGER"
+        
+        if intimacy_tiers:
+            tier_data = intimacy_tiers.get(current_tier, {})
+            
+            # [A] BIAS INJECTION (Personality Modifier)
+            tier_bias = tier_data.get("llm_bias", "")
+            if tier_bias:
+                 context_tags.append(f"[PERSONALITY_MODIFIER] {tier_bias}")
+                 
+            # [B] TOPIC GATING
+            allowed = tier_data.get("allowed_topics", [])
+            forbidden = tier_data.get("forbidden_topics", [])
+            
+            if allowed:
+                 context_tags.append(f"[ALLOWED_TOPICS] {', '.join(allowed)}")
+            if forbidden:
+                 context_tags.append(f"[FORBIDDEN_TOPICS] {', '.join(forbidden)}")
 
-        # 4. PROTOCOLS
+        # [C] SECRET REVEALS (Lore Gating)
+        # Secrets are usually in 'lore_associations'. Check identity_pillar first.
+        identity_data = pillar.identity_pillar or {}
+        lore_data = identity_data.get("lore_associations") or interaction_engine.get("lore_associations", {})
+        
+        secrets = lore_data.get("secrets", [])
+        if secrets and current_tier == "SOUL_LINKED":
+             context_tags.append(f"[SECRETS_REVEALED] {'; '.join(secrets)}")
+
+        # 5. PROTOCOLS
         protocols = (
             "\n\n[PROTOCOL]\n"
             "- Actions: *wrap in single asterisks*\n"
@@ -123,7 +156,9 @@ class ContextAssembler:
         if is_architect:
             protocols += ", [meta-dialogue ok]"
 
-        # 5. ASSEMBLY
+
+
+        # 6. ASSEMBLY
         full_system_prompt = (
             f"{system_anchor}\n"
             f"{' '.join(context_tags)}\n"

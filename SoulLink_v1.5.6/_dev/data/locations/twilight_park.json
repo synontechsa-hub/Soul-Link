@@ -56,14 +56,17 @@
     },
     "lore": {
         "history": "Twilight Park was designed as a small green refuge for nearby residents, transforming a narrow urban gap into a serene public space. It has become a favorite spot for late-evening strolls and community gatherings.",
-        "secrets": "Hidden under the old oak at the park’s western edge is a small time capsule left by children decades ago, containing letters, trinkets, and sketches."
+        "secrets": "Hidden under the old oak at the park\u2019s western edge is a small time capsule left by children decades ago, containing letters, trinkets, and sketches."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "calm": 1.5,
             "serenity": 1.3
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

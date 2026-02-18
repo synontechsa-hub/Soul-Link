@@ -48,6 +48,9 @@ class LinkState(SQLModel, table=True):
     # Flags for specific mechanics (e.g. "Glove Removed", "True Name Known")
     flags: Dict[str, Any] = Field(default_factory=dict, sa_column=Column(JSON))
 
+    # --- STATS ---
+    total_messages_sent: int = Field(default=0, description="Total messages exchanged in this link")
+
 class LinkStateRead(BaseModel):
     soul_id: str
     intimacy_tier: str

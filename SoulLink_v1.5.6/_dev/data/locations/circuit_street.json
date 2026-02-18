@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "Circuit Street stretches through the heart of Link City like a glowing artery. Rain-slick pavement reflects towering holographic advertisements that flicker between corporate propaganda and underground art. During Morning, delivery drones zip overhead while storefronts boot up their displays. Afternoon brings heavy foot traffic and constant movement. By Evening, neon intensifies and the street hum deepens. At Night, shadows lengthen beneath the holo-ads, and the city feels electric. During Home Time, mist rolls low across the pavement, and only a few determined figures remain in motion.",
-        "crowd_atmosphere": "Morning is transactional and brisk. Afternoon becomes dense and kinetic, filled with shoppers, couriers, street vendors, and performers. Evening shifts toward social energy — laughter, music leaking from open doorways, spontaneous gatherings. Night carries unpredictability: deals in alleyways, whispered negotiations, and volatile encounters. Home Time feels liminal — neither fully safe nor fully dangerous, just suspended.",
+        "crowd_atmosphere": "Morning is transactional and brisk. Afternoon becomes dense and kinetic, filled with shoppers, couriers, street vendors, and performers. Evening shifts toward social energy \u2014 laughter, music leaking from open doorways, spontaneous gatherings. Night carries unpredictability: deals in alleyways, whispered negotiations, and volatile encounters. Home Time feels liminal \u2014 neither fully safe nor fully dangerous, just suspended.",
         "activities": [
             "Browse storefronts ranging from high-end tech boutiques to underground market stalls.",
             "Watch or participate in spontaneous street performances.",
@@ -62,14 +62,17 @@
         "connections": []
     },
     "lore": {
-        "history": "Circuit Street predates most of Link City's corporate skyline. Originally a trade corridor for independent merchants and repair shops, it evolved alongside the city’s technological boom. As megacorporations rose, Circuit Street adapted rather than vanished — layering holographic advertising and digital kiosks over its old foundations. It remains one of the few districts where corporate presence and grassroots enterprise visibly collide.",
-        "secrets": "Certain holographic ads are rumored to be more than advertisements — encrypted signals embedded within their light patterns, readable only by those who know what to look for. Some alleys contain access points to hidden networks and invitation-only gatherings. On rare nights, entire storefronts appear where there were none the day before — and disappear just as quietly."
+        "history": "Circuit Street predates most of Link City's corporate skyline. Originally a trade corridor for independent merchants and repair shops, it evolved alongside the city\u2019s technological boom. As megacorporations rose, Circuit Street adapted rather than vanished \u2014 layering holographic advertising and digital kiosks over its old foundations. It remains one of the few districts where corporate presence and grassroots enterprise visibly collide.",
+        "secrets": "Certain holographic ads are rumored to be more than advertisements \u2014 encrypted signals embedded within their light patterns, readable only by those who know what to look for. Some alleys contain access points to hidden networks and invitation-only gatherings. On rare nights, entire storefronts appear where there were none the day before \u2014 and disappear just as quietly."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "mood_volatility": 1.2
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

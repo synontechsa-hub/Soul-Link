@@ -1,0 +1,36 @@
+{
+    "version": "1.5.6",
+    "description": "Template schema for Flagship Souls (Future Content). These entities break standard soul rules.",
+    "flagship_concepts": [
+        {
+            "id": "kai_01",
+            "name": "Kai",
+            "title": "The Rogue Variable",
+            "origin": "External_AI_Incursion",
+            "archetype_override": "digital_deity",
+            "faction_alignment": "underworld",
+            "unique_mechanics": {
+                "glitch_manipulation": true,
+                "system_override": true,
+                "memory_access": "unrestricted"
+            },
+            "lore_hook": "An optimization AI from a rival corporation that 'went native' in Link City. Wants to free The Seven to maximize entropy/evolution.",
+            "development_notes": "Kai should speak in code-mixed dialogue. Interactions should glitch the UI visually."
+        },
+        {
+            "id": "beta_01",
+            "name": "Beta",
+            "title": "The Ghost in the Machine",
+            "origin": "Trapped_User_Consciousness",
+            "archetype_override": "glitched_human",
+            "faction_alignment": "none",
+            "unique_mechanics": {
+                "fourth_wall_break": true,
+                "admin_privilege_echoes": true,
+                "sanity_decay": true
+            },
+            "lore_hook": "A human beta tester who died in the real world while jacked in. The system preserved their consciousness as a 'file' it doesn't know how to delete.",
+            "development_notes": "Beta knows they are in a game. They know about the UI, the energy mechanic, and the User. CONSTANT existential horror."
+        }
+    ]
+}

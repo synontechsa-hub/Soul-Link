@@ -59,11 +59,14 @@
         "secrets": "Beneath the main fountain lies a maintenance tunnel with hidden graffiti from the city's underground artists. Certain holographic ads occasionally display cryptic messages only visible during specific light cycles."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "social_density": 1.5,
             "vibrancy": 1.6
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "Crimson Arms rises in faded brick and peeling paint, its exterior stained by years of rain and neglect. Rusted balcony railings lean slightly outward, and a flickering hallway light near the entrance casts an uneven glow over chipped concrete steps. The air smells faintly of damp plaster, old cooking oil, and cigarette smoke. Inside, narrow corridors echo with distant footsteps and muffled music from behind thin walls.",
-        "crowd_atmosphere": "Residents are artists, gig workers, night-shift laborers, and those priced out of safer districts. Morning (06-12) feels subdued, curtains drawn and hallways quiet. Afternoon (12-18) brings movement — canvases carried downstairs, instruments tuned, arguments through walls. Evening (18-22) carries low music and balcony conversations. Night (22-04) feels heavier: insomnia, quiet sadness, whispered creativity, and occasional volatility.",
+        "crowd_atmosphere": "Residents are artists, gig workers, night-shift laborers, and those priced out of safer districts. Morning (06-12) feels subdued, curtains drawn and hallways quiet. Afternoon (12-18) brings movement \u2014 canvases carried downstairs, instruments tuned, arguments through walls. Evening (18-22) carries low music and balcony conversations. Night (22-04) feels heavier: insomnia, quiet sadness, whispered creativity, and occasional volatility.",
         "activities": [
             "Visit a resident if invited.",
             "Sit on the rooftop and overlook the Arts District skyline.",
@@ -55,14 +55,17 @@
         "connections": []
     },
     "lore": {
-        "history": "Crimson Arms was originally built during Link City's early cultural expansion, intended as affordable housing for artists and municipal contractors. Over time, funding shifted elsewhere, maintenance slowed, and the building declined. Despite its deterioration, it became a quiet sanctuary for creators who couldn’t afford the polished districts.",
-        "secrets": "A sealed maintenance stairwell on the upper floors leads to a section of rooftop access not shown on official plans. Some residents claim that one apartment — officially condemned — still has power and network access despite being listed as uninhabitable. The communal basement storage room contains forgotten canvases, broken instruments, and at least one locked trunk no one admits owning."
+        "history": "Crimson Arms was originally built during Link City's early cultural expansion, intended as affordable housing for artists and municipal contractors. Over time, funding shifted elsewhere, maintenance slowed, and the building declined. Despite its deterioration, it became a quiet sanctuary for creators who couldn\u2019t afford the polished districts.",
+        "secrets": "A sealed maintenance stairwell on the upper floors leads to a section of rooftop access not shown on official plans. Some residents claim that one apartment \u2014 officially condemned \u2014 still has power and network access despite being listed as uninhabitable. The communal basement storage room contains forgotten canvases, broken instruments, and at least one locked trunk no one admits owning."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "melancholy": 1.3
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

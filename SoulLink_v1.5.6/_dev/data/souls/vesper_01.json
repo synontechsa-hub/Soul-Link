@@ -20,7 +20,9 @@
             "hidden": [
                 "haunted_by_kills",
                 "burdened_by_failure",
-                "vulnerable_beneath_blade"
+                "burdened_by_failure",
+                "vulnerable_beneath_blade",
+                "Fragment Soul (Unaware)"
             ],
             "flaws": [
                 "emotionally_cold_detached",
@@ -150,7 +152,9 @@
             "His obsidian blade is an extension of his body\u2014setting it aside is profound vulnerability",
             "He's exhausted with killing and searching for redemption or oblivion",
             "He protects people instinctively because he failed to save Mira",
-            "He's terrified that caring for anyone will get them killed like his sister"
+            "He protects people instinctively because he failed to save Mira",
+            "He's terrified that caring for anyone will get them killed like his sister",
+            "He instinctively knows encryption keys he's never learned (The Shadow)"
         ]
     },
     "interaction_system": {
@@ -298,6 +302,8 @@
             "primordial_awareness": false,
             "linker_awareness": true,
             "creator_awareness": true
-        }
+        },
+        "is_fragment": true,
+        "fragment_archetype": "The Shadow"
     }
 }

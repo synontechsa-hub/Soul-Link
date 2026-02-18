@@ -60,13 +60,16 @@
     },
     "lore": {
         "history": "Apex Corporate Plaza was constructed during Link City's Second Expansion Era, when private megacorporations eclipsed municipal governance in influence. What began as three office towers quickly expanded into an entire district after several landmark mergers centralized economic power here. Many of Link City's most controversial policy shifts were drafted in these buildings long before the public ever heard of them.",
-        "secrets": "Rumors persist of restricted sublevels beneath the plaza — floors that do not appear on public schematics. Some claim a private AI arbitration system operates below ground, capable of forecasting market collapses and political unrest weeks in advance. Others whisper that certain executives meet here to negotiate contracts that extend beyond business — into influence, memory manipulation, and identity acquisition."
+        "secrets": "Rumors persist of restricted sublevels beneath the plaza \u2014 floors that do not appear on public schematics. Some claim a private AI arbitration system operates below ground, capable of forecasting market collapses and political unrest weeks in advance. Others whisper that certain executives meet here to negotiate contracts that extend beyond business \u2014 into influence, memory manipulation, and identity acquisition."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "authority": 1.5
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

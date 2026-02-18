@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "The City Planetarium rises as a smooth, silver-white dome against the skyline, its curved surface reflecting the city lights like a distant moon. Inside, the vast projection chamber envelops visitors in a seamless artificial cosmos. During Morning, soft guided narrations accompany slow rotations of simulated star fields. Afternoon shows are brighter and more educational, mapping constellations and planetary systems in stunning clarity. By Evening, the dome darkens fully, and galaxies bloom across the ceiling in breathtaking silence.",
-        "crowd_atmosphere": "Morning brings students and quiet explorers, voices hushed in reverence. Afternoon fills with families, tourists, and academic groups engaged in discussion. Evening feels slower and more contemplative — couples, thinkers, and solitary visitors reclining beneath digital starlight. The atmosphere is calm, introspective, and faintly awe-struck.",
+        "crowd_atmosphere": "Morning brings students and quiet explorers, voices hushed in reverence. Afternoon fills with families, tourists, and academic groups engaged in discussion. Evening feels slower and more contemplative \u2014 couples, thinkers, and solitary visitors reclining beneath digital starlight. The atmosphere is calm, introspective, and faintly awe-struck.",
         "activities": [
             "Attend immersive cosmic projection shows and narrated star tours.",
             "Recline beneath simulated galaxies in quiet reflection.",
@@ -59,14 +59,17 @@
         "connections": []
     },
     "lore": {
-        "history": "The City Planetarium was commissioned during a period of civic renewal, intended to remind Link City's citizens that their ambitions extended beyond corporate towers. Built with state-of-the-art projection arrays and astrophysical simulation engines, it quickly became both an educational hub and a quiet refuge from the city’s intensity.",
+        "history": "The City Planetarium was commissioned during a period of civic renewal, intended to remind Link City's citizens that their ambitions extended beyond corporate towers. Built with state-of-the-art projection arrays and astrophysical simulation engines, it quickly became both an educational hub and a quiet refuge from the city\u2019s intensity.",
         "secrets": "Some claim the projection engine is capable of more than entertainment. Hidden programs allegedly simulate not just distant galaxies, but predictive cosmic models tied to deep-space signal research. A restricted control chamber beneath the dome is rumored to house experimental algorithms that analyze anomalous transmissions from beyond the solar system."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "wonder": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

@@ -61,14 +61,17 @@
         "connections": []
     },
     "lore": {
-        "history": "Link City Arena was inaugurated to host both traditional sports and the city’s rapidly growing e-sports scene. Its design combines futuristic architecture with functional crowd management. Over the years, it has hosted legendary matches, international concerts, and civic celebrations, becoming a landmark of competition and culture in Link City.",
+        "history": "Link City Arena was inaugurated to host both traditional sports and the city\u2019s rapidly growing e-sports scene. Its design combines futuristic architecture with functional crowd management. Over the years, it has hosted legendary matches, international concerts, and civic celebrations, becoming a landmark of competition and culture in Link City.",
         "secrets": "Rumors suggest hidden underground tunnels connect to key city buildings, allowing discreet movement of VIPs and athletes. Certain executive suites are said to contain AI-managed observation systems that track crowd engagement and behavioral patterns during events."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "confidence": 1.5
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

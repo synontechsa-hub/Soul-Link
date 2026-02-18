@@ -1,46 +1,55 @@
 # /backend/app/services/persona_service.py
 # v1.5.6 Identity Logic - Switching Masks
 
-from sqlmodel import Session, select
-from app.models.user_persona import UserPersona
-from app.models.user import User
+from datetime import datetime
+from typing import Optional
+from sqlmodel import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from backend.app.models.user_persona import UserPersona
+from backend.app.models.user import User
 
 class PersonaService:
     """
     Manages the switching and creation of User Personas.
     Ensures only one persona is active per user.
+    All methods are async to match the AsyncSession used in chat.py.
     """
-    
-    @staticmethod
-    def get_active_persona(session: Session, user_id: str) -> Optional[UserPersona]:
-        statement = select(UserPersona).where(
-            UserPersona.user_id == user_id,
-            UserPersona.is_active == True
-        )
-        return session.exec(statement).first()
 
     @staticmethod
-    def set_active_persona(session: Session, user_id: str, persona_id: int):
+    async def get_active_persona(session: AsyncSession, user_id: str) -> Optional[UserPersona]:
+        result = await session.execute(
+            select(UserPersona).where(
+                UserPersona.user_id == user_id,
+                UserPersona.is_active == True
+            )
+        )
+        return result.scalars().first()
+
+    @staticmethod
+    async def set_active_persona(session: AsyncSession, user_id: str, persona_id: int) -> Optional[UserPersona]:
         # 1. Deactivate all for this user
-        statement = select(UserPersona).where(UserPersona.user_id == user_id)
-        all_personas = session.exec(statement).all()
+        result = await session.execute(
+            select(UserPersona).where(UserPersona.user_id == user_id)
+        )
+        all_personas = result.scalars().all()
         for p in all_personas:
             p.is_active = False
-            
+
         # 2. Activate target
-        target = session.get(UserPersona, persona_id)
+        target = await session.get(UserPersona, persona_id)
         if target and target.user_id == user_id:
             target.is_active = True
             target.last_used = datetime.utcnow()
             session.add(target)
-            session.commit()
+            await session.commit()
             return target
         return None
 
     @staticmethod
-    def create_default_persona(session: Session, user: User) -> UserPersona:
+    async def create_default_persona(session: AsyncSession, user: User) -> UserPersona:
         """
-        Migrates legacy User bio/name to a new Default Persona.
+        Creates a default Persona from the legacy User bio/name fields.
+        Called automatically when a user has no active persona.
         """
         new_persona = UserPersona(
             user_id=user.user_id,
@@ -52,5 +61,5 @@ class PersonaService:
             identity_anchor="The Original"
         )
         session.add(new_persona)
-        session.commit()
+        await session.flush()  # Get ID without full commit
         return new_persona

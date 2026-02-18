@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "Echo Archives stands as a quiet refuge of polished wood and filtered sunlight. The three-story interior is lined with tall shelves and iron-railed balconies overlooking the central reading floor. Wooden boards creak softly beneath careful footsteps. The scent of aged paper and varnish lingers in the air. Morning light spills through high windows in long golden beams; afternoon feels steady and focused; evening softens into warm lamplight and hushed shadows between the stacks.",
-        "crowd_atmosphere": "Morning (06-12) draws early readers, researchers, and students seeking solitude. Afternoon (12-18) becomes studious and steady — soft keyboard tapping, quiet page turns, low murmurs at shared tables. Evening (18-22) feels contemplative and intimate, with fewer visitors lingering longer in silence. The atmosphere consistently encourages patience, thoughtfulness, and emotional grounding.",
+        "crowd_atmosphere": "Morning (06-12) draws early readers, researchers, and students seeking solitude. Afternoon (12-18) becomes studious and steady \u2014 soft keyboard tapping, quiet page turns, low murmurs at shared tables. Evening (18-22) feels contemplative and intimate, with fewer visitors lingering longer in silence. The atmosphere consistently encourages patience, thoughtfulness, and emotional grounding.",
         "activities": [
             "Browse physical books and archived city records.",
             "Use quiet reading tables for focused work or reflection.",
@@ -59,14 +59,17 @@
         "connections": []
     },
     "lore": {
-        "history": "Echo Archives predates much of modern Link City and was one of the first civic buildings constructed during the city’s early planning phase. Designed to preserve collective memory, it houses both traditional printed works and digitized municipal records. Over decades, it has quietly witnessed the city's transformation while remaining structurally and culturally constant.",
-        "secrets": "Certain archival terminals require elevated credentials and contain sealed municipal documents. A restricted third-floor collection reportedly stores early urban planning drafts that reveal abandoned districts and altered infrastructure routes. Some visitors claim the building’s acoustic design subtly dampens heightened emotional states, making it unusually difficult to argue within its walls."
+        "history": "Echo Archives predates much of modern Link City and was one of the first civic buildings constructed during the city\u2019s early planning phase. Designed to preserve collective memory, it houses both traditional printed works and digitized municipal records. Over decades, it has quietly witnessed the city's transformation while remaining structurally and culturally constant.",
+        "secrets": "Certain archival terminals require elevated credentials and contain sealed municipal documents. A restricted third-floor collection reportedly stores early urban planning drafts that reveal abandoned districts and altered infrastructure routes. Some visitors claim the building\u2019s acoustic design subtly dampens heightened emotional states, making it unusually difficult to argue within its walls."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "calm": 1.6
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

@@ -60,13 +60,16 @@
     },
     "lore": {
         "history": "Neon Nights Club opened in 2049 as one of Link City's first neon-themed nightlife venues. It quickly became a hotspot for trendsetters and underground artists seeking a visually immersive experience.",
-        "secrets": "Rumor has it that the club has hidden rooms accessed only by select VIPs, where exclusive after-hours events occur — sometimes involving high-profile deals or discreet networking between influential figures."
+        "secrets": "Rumor has it that the club has hidden rooms accessed only by select VIPs, where exclusive after-hours events occur \u2014 sometimes involving high-profile deals or discreet networking between influential figures."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "energy": 1.5
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

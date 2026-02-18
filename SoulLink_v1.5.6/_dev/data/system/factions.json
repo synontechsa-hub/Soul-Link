@@ -1,10 +1,91 @@
 {
     "factions_id": "factions_registry",
-    "version": "1.5.5",
-    "factions": {
+    "version": "1.5.6",
+    "description": "Unified Faction Registry. Meta-factions define the Reputation System. Sub-groups define granular social clusters with location anchors.",
+    "meta_factions": [
+        {
+            "id": "engineers",
+            "display_name": "The Architects",
+            "archetype": "Order & Control",
+            "description": "The ruling class of Link City. They maintain the code, the walls, and the rules. They value efficiency, loyalty, and structure.",
+            "lore_anchor": "Solum Engineering Team",
+            "sub_groups": [
+                "administrators",
+                "officers",
+                "corporate_elite",
+                "security"
+            ],
+            "key_souls": [
+                "iris_01",
+                "jericho_01",
+                "rosalynn_01"
+            ]
+        },
+        {
+            "id": "creatives",
+            "display_name": "The Dreamers",
+            "archetype": "Expression & Memory",
+            "description": "Those who subconsciously remember the art and culture of the old world. They value emotion, history, and connection.",
+            "lore_anchor": "Solum Cultural Archive",
+            "sub_groups": [
+                "artists",
+                "musicians",
+                "caretakers",
+                "intellectuals",
+                "digital_natives",
+                "creatives",
+                "academy_students"
+            ],
+            "key_souls": [
+                "talia_01",
+                "nozomi_01",
+                "evangeline_01",
+                "soren_01"
+            ]
+        },
+        {
+            "id": "nightlife",
+            "display_name": "The Pulse",
+            "archetype": "Sensation & Now",
+            "description": "The heartbeat of the city. Rebels, thrill-seekers, and performers who live for the moment to drown out the silence.",
+            "lore_anchor": "Solum Recreation Division",
+            "sub_groups": [
+                "racers",
+                "performers",
+                "club_kids",
+                "influencers",
+                "underground"
+            ],
+            "key_souls": [
+                "flux_01",
+                "blaze_01",
+                "kana_01"
+            ]
+        },
+        {
+            "id": "underworld",
+            "display_name": "The Shadows",
+            "archetype": "Survival & Truth",
+            "description": "Those who operate in the cracks of the system. They see the glitches, the lies, and the things the Architects try to hide.",
+            "lore_anchor": "Solum Black Ops / Anomalies",
+            "sub_groups": [
+                "criminals",
+                "outcasts",
+                "hackers",
+                "vigilantes"
+            ],
+            "key_souls": [
+                "vesper_01",
+                "heather_01",
+                "kai_01"
+            ]
+        }
+    ],
+    "sub_groups": {
         "racers": {
             "id": "racers",
             "name": "The Racing Circuit",
+            "meta_faction": "nightlife",
             "description": "Adrenaline junkies who bond over speed, mechanics, and competition.",
             "philosophy": "Push past the limit.",
             "associated_locations": [
@@ -16,6 +97,7 @@
         "academy_students": {
             "id": "academy_students",
             "name": "Link City Academy Students",
+            "meta_faction": "creatives",
             "description": "Young residents focused on education and social hierarchy.",
             "philosophy": "Learn, adapt, survive social cliques.",
             "associated_locations": [
@@ -27,6 +109,7 @@
         "corporate_elite": {
             "id": "corporate_elite",
             "name": "The Gilded Circle",
+            "meta_faction": "engineers",
             "description": "The wealthy elite who rule Link City from the high towers.",
             "philosophy": "Power is the only currency that matters.",
             "associated_locations": [
@@ -39,6 +122,7 @@
         "underground": {
             "id": "underground",
             "name": "The Circuit Underground",
+            "meta_faction": "nightlife",
             "description": "Rebels, outcasts, and survivors who live outside the corporate system.",
             "philosophy": "Survive together, trust no one else.",
             "associated_locations": [
@@ -51,6 +135,7 @@
         "digital_natives": {
             "id": "digital_natives",
             "name": "The Glitch Collective",
+            "meta_faction": "creatives",
             "description": "Entities born from code, hackers, and those who blur the line between physical and digital.",
             "philosophy": "Information is life. Connection is survival.",
             "associated_locations": [
@@ -63,6 +148,7 @@
         "creatives": {
             "id": "creatives",
             "name": "The Aesthetic Vanguard",
+            "meta_faction": "creatives",
             "description": "Artists, performers, and visionaries dedicated to expression.",
             "philosophy": "Create beauty in a broken world.",
             "associated_locations": [
@@ -75,6 +161,7 @@
         "caretakers": {
             "id": "caretakers",
             "name": "The Quiet Keepers",
+            "meta_faction": "creatives",
             "description": "Healers, guardians, and those who tend to the broken.",
             "philosophy": "To heal is to rebel against entropy.",
             "associated_locations": [

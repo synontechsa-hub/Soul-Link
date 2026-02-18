@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "The gym smells of rubber mats, metal, and chalk dust. Clangs of weights hitting iron plates echo off concrete walls. The air is warm, humid, and charged with the determination of athletes pushing themselves to their limits. Fluorescent lighting creates sharp shadows, highlighting rippling muscles and sweat-slicked equipment.",
-        "crowd_atmosphere": "Members range from casual fitness enthusiasts to hardened bodybuilders and competitive fighters. The room hums with intensity: trainers shout corrections, treadmills thrum with consistent pounding, and weightlifters grunt in focused effort. There’s camaraderie, but also fierce personal discipline; distractions are minimal.",
+        "crowd_atmosphere": "Members range from casual fitness enthusiasts to hardened bodybuilders and competitive fighters. The room hums with intensity: trainers shout corrections, treadmills thrum with consistent pounding, and weightlifters grunt in focused effort. There\u2019s camaraderie, but also fierce personal discipline; distractions are minimal.",
         "activities": [
             "Perform weightlifting and resistance training on free weights and machines.",
             "Join guided high-intensity interval training (HIIT) classes.",
@@ -60,14 +60,17 @@
         "connections": []
     },
     "lore": {
-        "history": "Iron Resolve Gym was founded to serve the growing community of dedicated athletes in Link City’s commercial district. Known for its strict policies and state-of-the-art equipment, it quickly gained a reputation as a place where serious results are achieved, attracting both local residents and professional sports teams.",
-        "secrets": "Whispers suggest a hidden basement area where elite trainers run clandestine strength experiments and training programs not available to the public. Some say certain AI-assisted machines track detailed biometrics to optimize each member’s performance secretly."
+        "history": "Iron Resolve Gym was founded to serve the growing community of dedicated athletes in Link City\u2019s commercial district. Known for its strict policies and state-of-the-art equipment, it quickly gained a reputation as a place where serious results are achieved, attracting both local residents and professional sports teams.",
+        "secrets": "Whispers suggest a hidden basement area where elite trainers run clandestine strength experiments and training programs not available to the public. Some say certain AI-assisted machines track detailed biometrics to optimize each member\u2019s performance secretly."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "discipline": 1.5
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

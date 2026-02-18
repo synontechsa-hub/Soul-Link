@@ -60,14 +60,17 @@
         "connections": []
     },
     "lore": {
-        "history": "LinkView Cuisine opened during Skylink Tower’s grand inauguration, aiming to redefine fine dining in Link City. Its design combines futuristic architecture with traditional elegance, establishing it as a symbol of prestige and gastronomic excellence.",
+        "history": "LinkView Cuisine opened during Skylink Tower\u2019s grand inauguration, aiming to redefine fine dining in Link City. Its design combines futuristic architecture with traditional elegance, establishing it as a symbol of prestige and gastronomic excellence.",
         "secrets": "Some patrons claim that select tables are outfitted with private communication terminals and AR interfaces for conducting sensitive business meetings or confidential tastings away from public view."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "sophistication": 1.5
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

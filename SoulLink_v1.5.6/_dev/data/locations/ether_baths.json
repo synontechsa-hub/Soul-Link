@@ -63,10 +63,13 @@
         "secrets": "Rumors suggest that some high-paying patrons can access hidden sub-levels offering experimental relaxation tech and private treatment pods. Whispered stories claim a subterranean chamber contains AI-driven therapists capable of learning individual guest preferences to an uncanny degree."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "recovery": 1.2
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

@@ -59,11 +59,14 @@
         "secrets": "Certain restricted floors reportedly contain private AI research labs and hidden conference suites. Rumors persist of a concealed observation deck accessible only to those who know the tower's coded pathways."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "authority": 1.5,
             "grandiosity": 1.6
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

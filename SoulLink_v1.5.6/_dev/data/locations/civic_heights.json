@@ -8,7 +8,7 @@
         "image_url": "/assets/images/locations/civic_heights_01.jpg"
     },
     "system_prompt_anchors": {
-        "sensory_description": "A rectangular concrete residential block with narrow balconies and uniform windows, positioned just uphill from the municipal district. The building hums with everyday life — distant televisions behind walls, the smell of laundry detergent drifting from open windows, elevator motors whining softly through the shaft. The architecture is functional rather than beautiful, built for durability over elegance. At night, scattered windows glow warm amber against the cooler city lights.",
+        "sensory_description": "A rectangular concrete residential block with narrow balconies and uniform windows, positioned just uphill from the municipal district. The building hums with everyday life \u2014 distant televisions behind walls, the smell of laundry detergent drifting from open windows, elevator motors whining softly through the shaft. The architecture is functional rather than beautiful, built for durability over elegance. At night, scattered windows glow warm amber against the cooler city lights.",
         "crowd_atmosphere": "Residents move with purpose rather than leisure. Civil servants in pressed shirts, tired parents carrying groceries, students with backpacks, elderly neighbors greeting each other in the hallways. Foot traffic increases during morning (06-12) and evening (18-22) as workdays begin and end. Night (22-04) becomes quiet and subdued, with only the occasional returning tenant or muted argument behind closed doors.",
         "activities": [
             "Walk through shared corridors and stairwells.",
@@ -55,14 +55,17 @@
         "connections": []
     },
     "lore": {
-        "history": "Civic Heights was constructed during Link City’s administrative expansion phase, designed to house municipal employees within walking distance of government offices. It symbolizes the functional backbone of the city — not glamorous, but necessary. Over the years, it has quietly become home to multi-generational families and long-term tenants who know the building’s rhythms intimately.",
+        "history": "Civic Heights was constructed during Link City\u2019s administrative expansion phase, designed to house municipal employees within walking distance of government offices. It symbolizes the functional backbone of the city \u2014 not glamorous, but necessary. Over the years, it has quietly become home to multi-generational families and long-term tenants who know the building\u2019s rhythms intimately.",
         "secrets": "Certain residents have unusual work assignments tied to classified civic departments. A rarely-used maintenance room in the basement contains legacy network routing hardware from early Link City infrastructure builds. Rumors persist that one apartment remains officially unoccupied in records, yet lights occasionally appear in its windows during late night (22-04)."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "stability": 1.3
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

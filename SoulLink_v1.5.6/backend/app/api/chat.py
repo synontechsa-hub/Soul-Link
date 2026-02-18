@@ -80,10 +80,10 @@ async def send_message(
     # ...
 
     # 3. IDENTIFY PERSONA
-    persona = PersonaService.get_active_persona(session, user.user_id)
+    persona = await PersonaService.get_active_persona(session, user.user_id)
     if not persona:
         # Fallback: Create default from User Account
-        persona = PersonaService.create_default_persona(session, user)
+        persona = await PersonaService.create_default_persona(session, user)
 
     # 4. 🕰️ NARRATOR INTERVENTION (The Chronicle)
     narrator_event = None

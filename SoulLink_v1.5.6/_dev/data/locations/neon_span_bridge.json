@@ -11,7 +11,7 @@
         "sensory_description": "The Neon Span Bridge stretches across the river like a ribbon of glowing cables. Steel beams are outlined with soft neon accents, and the wet pavement reflects the city lights below. The wind whistles through the suspension towers, carrying faint scents of rain and ozone.",
         "crowd_atmosphere": "Pedestrians stroll along the bridge at all hours, some stopping to photograph the view while others jog or cycle. Tourists and locals intermingle, though the bridge retains a sense of openness and quiet majesty. At night, it feels ethereal and slightly isolated.",
         "activities": [
-            "Walk or jog across the span while admiring Link City’s skyline.",
+            "Walk or jog across the span while admiring Link City\u2019s skyline.",
             "Photograph the neon-lit towers and city below.",
             "Observe boats passing under the bridge.",
             "Meet contacts discreetly at designated observation points.",
@@ -60,10 +60,13 @@
         "secrets": "Certain maintenance catwalks beneath the bridge are off-limits to the public. Urban explorers whisper of hidden nooks where street artists leave cryptic neon murals, only visible after dark."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "isolation": 1.5
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

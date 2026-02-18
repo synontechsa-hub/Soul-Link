@@ -58,11 +58,14 @@
         "secrets": "Some alcoves contain manuscripts rumored to alter perception when read at night. Archivists whisper that hidden ledgers document events that never appear in official city records."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "mystery": 1.5,
             "focus": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

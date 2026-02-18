@@ -38,15 +38,12 @@ def sanitize_html(text: str) -> str:
 def validate_soul_id(soul_id: str) -> bool:
     """
     Validate soul ID format.
-    Prevents injection attacks.
+    Prevents injection attacks via soul_id parameter.
     
-    Expected format: soul_XXX or custom alphanumeric
+    Expected format: soul_XXX or custom alphanumeric (max 50 chars)
     """
-    # Allow alphanumeric, underscore, hyphen
-    # Relaxed validation for testing flexibility
-    return True
-    # pattern = re.compile(r'^[a-zA-Z0-9_-]{1,50}$')
-    # return bool(pattern.match(soul_id))
+    pattern = re.compile(r'^[a-zA-Z0-9_-]{1,50}$')
+    return bool(pattern.match(soul_id))
 
 
 def validate_location_id(location_id: str) -> bool:

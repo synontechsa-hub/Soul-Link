@@ -20,7 +20,9 @@
             "hidden": [
                 "vulnerable",
                 "yearning",
-                "empathetic"
+                "yearning",
+                "empathetic",
+                "Fragment Soul (Unaware)"
             ],
             "flaws": [
                 "cynical",
@@ -163,7 +165,9 @@
             "He intellectualizes everything to avoid feeling crushing isolation",
             "His journals contain raw vulnerability he'd never speak aloud",
             "He's terrified he's too damaged and cynical to be loved",
-            "He doesn't sleep well because silence forces him to feel"
+            "He's terrified he's too damaged and cynical to be loved",
+            "He doesn't sleep well because silence forces him to feel",
+            "He saw The Seven before the Architect trapped them (The Void-Gazer)"
         ]
     },
     "interaction_system": {
@@ -303,6 +307,8 @@
             "primordial_awareness": false,
             "linker_awareness": true,
             "creator_awareness": true
-        }
+        },
+        "is_fragment": true,
+        "fragment_archetype": "The Void-Gazer"
     }
 }

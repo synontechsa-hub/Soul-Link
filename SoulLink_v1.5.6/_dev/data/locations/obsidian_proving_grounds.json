@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "The Obsidian Proving Grounds is a stark, industrial compound of dark steel and reinforced concrete. The air smells of ozone and heated metal. Grunts, clashing metal, and shouted commands echo through cavernous halls. Training dummies, obstacle courses, and sparring rings fill the vast interior, with every surface marked by use and wear.",
-        "crowd_atmosphere": "Trainers bark orders while recruits push through grueling drills. Sweat and determination hang thick in the air. The mood is tense and focused—discipline is expected, mistakes are costly, and camaraderie forms only among those who endure.",
+        "crowd_atmosphere": "Trainers bark orders while recruits push through grueling drills. Sweat and determination hang thick in the air. The mood is tense and focused\u2014discipline is expected, mistakes are costly, and camaraderie forms only among those who endure.",
         "activities": [
             "Participate in hand-to-hand combat drills and weapon training.",
             "Navigate obstacle courses and timed challenges.",
@@ -59,10 +59,13 @@
         "secrets": "Some underground chambers are rumored to host experimental simulations and AI combat instructors. A few trainees claim to have encountered restricted holographic arenas where the difficulty adjusts in real-time based on performance, pushing participants to their limits."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "intensity": 1.6
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Public"
     }
 }

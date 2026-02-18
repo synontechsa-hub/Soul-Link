@@ -9,7 +9,7 @@
     },
     "system_prompt_anchors": {
         "sensory_description": "Northway Flats consists of modest low-rise buildings, their brick facades softened by creeping ivy and small landscaped courtyards. The smell of laundry and cooking drifts from open windows. The faint hum of air conditioners and distant city traffic creates a subdued urban background.",
-        "crowd_atmosphere": "Residents move at their own pace—morning commutes, children playing in the courtyards, neighbors chatting near the stairwells. The vibe is relaxed, with a sense of community, though moments of quiet solitude are plentiful.",
+        "crowd_atmosphere": "Residents move at their own pace\u2014morning commutes, children playing in the courtyards, neighbors chatting near the stairwells. The vibe is relaxed, with a sense of community, though moments of quiet solitude are plentiful.",
         "activities": [
             "Walk through the courtyards and enjoy the small gardens.",
             "Observe daily routines of residents from public areas.",
@@ -60,10 +60,13 @@
         "secrets": "Some residents have unofficial rooftop gardens, hidden from public view. Occasional whispered stories speak of old service tunnels connecting the blocks, remnants of early city infrastructure."
     },
     "metadata": {
-        "version": "1.5.5",
+        "version": "1.5.6",
         "last_updated": "2026-02-13",
         "legacy_mods": {
             "calm": 1.4
         }
+    },
+    "system_modifiers": {
+        "privacy_gate": "Private"
     }
 }

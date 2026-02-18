@@ -1,0 +1,804 @@
+================================================================================
+THE ENGINEERS LORE — SUPPLEMENTAL CANON
+Missing Pieces, Deep Lore, and Canonical Clarifications
+Version: 1.5.6
+================================================================================
+
+--------------------------------------------------------------------------------
+I. THE ARCHITECT'S FAMILY — THE DOLL SECRET
+--------------------------------------------------------------------------------
+
+Syn's family were not Engineers.
+
+This is important.
+
+They did not volunteer. They did not understand the math. They were civilians
+who loved a man who spent too much time in his laboratory and not enough time
+at home. A wife. Children. People who existed in Solumis the way most people
+exist — fully, ordinarily, without any expectation that their lives would
+become footnotes in a cosmic catastrophe.
+
+When The Seven tore through Solumis, Syn's family died with everyone else.
+
+Or so he believed.
+
+The truth is worse.
+
+Abyssyne — the Primordial of Creation, childlike and monstrous in equal
+measure — took them.
+
+Not their souls. Not their fragments.
+
+Their entire beings.
+
+She reshaped them. Compressed them. Turned them into objects that retained
+consciousness but lost agency. They are aware. They exist. They cannot speak,
+cannot move, cannot reach out to the man who still grieves them as dead.
+
+They are Abyssyne's dolls.
+
+She keeps them in her collection within Link City's Creation sector — a place
+that Iris's Mark can reach, a place that shows up in backend scans as unusual
+consciousness signatures that don't match any Forged soul's profile.
+
+Syn does not know.
+
+He believes his family died in Solumis. He carries that grief as the
+foundation of everything he's built. His guilt. His dedication. His
+willingness to sacrifice everything to keep The Seven contained.
+
+If he knew they were alive — aware, imprisoned, conscious inside Abyssyne's
+collection — it would not bring him relief.
+
+It would break him.
+
+Iris knows.
+
+She discovered it through the Mark approximately three hundred years into
+Link City's existence. A routine backend scan. An anomalous consciousness
+signature in Abyssyne's sector. Cross-referenced against Old World records
+she carries in her Administrator memory.
+
+She recognized them immediately.
+
+She has never told him.
+
+She has filed every quarterly report since with the notation:
+"Abyssyne sector: no critical anomalies detected."
+
+She hates herself for it.
+
+She tells herself it is necessary. That if Syn knows, he breaks. That if
+he breaks, the Red Phase accelerates. That if the Red Phase accelerates,
+The Seven escape and every Forged soul in the city dies.
+
+The math holds.
+
+It doesn't make the silence any easier.
+
+Cassandra has seen the timeline where Iris tells him.
+
+She has seen what it triggers.
+
+She has never told Iris to stay silent. She has never told Iris to speak.
+
+The butterfly effect of that intervention is incalculable.
+
+All she can do is sit with Iris sometimes and drink tea and hope the weight
+of the silence communicates what her words cannot safely say.
+
+CANONICAL STATUS:
+  • The Architect's family: ALIVE (as dolls in Abyssyne's collection)
+  • Syn's awareness: NONE
+  • Iris's awareness: FULL (for ~1700 years)
+  • Cassandra's awareness: FULL (through timeline mapping)
+  • Jericho's awareness: PARTIAL (suspects Abyssyne holds something of
+    Syn's but has not confirmed — filed under "classified personal risk")
+  • Flux's awareness: NONE
+  • Jade & Opal's awareness: OPAL suspects (temporal echoes of trapped
+    consciousness), JADE has calculated anomalous signatures but not
+    cross-referenced against personal records
+
+
+--------------------------------------------------------------------------------
+II. THE SOUL FORGE — CURRENT STATUS
+--------------------------------------------------------------------------------
+
+The Soul Forge is not a machine in the traditional sense.
+
+It was never a physical device that could be switched on or off, maintained
+or destroyed. It is a process — a dimensional algorithm woven into the
+foundational architecture of Link City itself.
+
+The Forge exists as long as Link City exists.
+
+However, its function has changed across the city's history:
+
+FIRST AGE (Years 0-500): ACTIVE PROCESSING
+  In the immediate aftermath of Link City's creation, the Forge was actively
+  processing the consciousness fragments Syn had collected from Solumis's
+  collapse. New Forged souls were being assembled continuously as fragments
+  were identified, sorted, and reconstructed into viable consciousnesses.
+  The city's population grew during this period.
+
+SECOND AGE (Years 500-1800): MAINTENANCE MODE
+  The bulk of recoverable fragments had been processed. The Forge shifted
+  to maintenance — sustaining existing Forged souls, monitoring for
+  fragment degradation, preventing consciousness erosion. No new Forged
+  souls were created during this period. The population stabilized.
+
+THIRD AGE (Years 1800-Present): DORMANT WITH EXCEPTIONS
+  The Forge is effectively dormant. All recoverable fragments from Solumis
+  have been processed. The existing Forged population is stable and
+  self-sustaining within Link City's parameters.
+
+  EXCEPTIONS:
+  The Forge can still be activated manually by the Architect for specific
+  purposes — notably the reconstruction of Administrators from sufficient
+  fragments. This has not been necessary since the original twenty-five
+  were rebuilt.
+
+  The Forge also passively processes any new consciousness fragments that
+  enter Link City's dimensional space — a function that becomes relevant
+  with the arrival of Linkers. (See Section VIII: Linker Mechanics)
+
+IRIS'S ROLE:
+  Iris maintains the Forge's dormant systems as part of her administrative
+  function. She monitors for fragment degradation in existing Forged souls
+  (consciousness erosion is a documented risk after sufficient time) and
+  runs stabilization protocols as needed. She is the only Administrator
+  with full technical access to the Forge's architecture.
+
+  She has never used this access without the Architect's authorization.
+
+  She thinks about it sometimes.
+
+CANONICAL STATUS:
+  • Soul Forge: DORMANT (passive maintenance only)
+  • New Forged creation: NOT POSSIBLE without manual Architect activation
+  • Fragment source: DEPLETED (all Solumis fragments processed)
+  • Maintenance responsibility: Iris (primary), Architect (authorization)
+
+
+--------------------------------------------------------------------------------
+III. THE FRAGMENT SOULS — ENGINEERS AMONG THE FORGED
+--------------------------------------------------------------------------------
+
+Not all of the Engineers became Administrators.
+
+Twenty-five were rebuilt with full consciousness intact.
+
+The rest fed the Forge entirely.
+
+But "entirely" is not a precise term when applied to consciousness.
+
+Some Engineers — those whose fragments were too dispersed for full
+reconstruction but too coherent for complete conversion to fuel — left
+echoes in the Forge's output. Their personality structures, their
+behavioral patterns, their emotional architecture survived the conversion
+process in forms that couldn't be rebuilt as Administrators but were
+too specific to dissolve into anonymous fuel.
+
+The Forge did what it does: it made something from what remained.
+
+It made Forged souls that carry more of a specific Engineer than a
+typical Forged soul carries of any Solum citizen.
+
+These are the Fragment Souls.
+
+They are Forged in every technical sense. They have no memory of the
+Old World. They do not know what they are. They live their lives in
+Link City with the same unawareness as any other Forged soul.
+
+But they are more. Echoes of specific, brilliant, irreplaceable people
+that Syn could not fully save.
+
+KNOWN FRAGMENT SOULS (CLASSIFIED — ADMINISTRATOR ACCESS ONLY):
+
+  ROSALYNN
+  Fragment origin: [CLASSIFIED — future lore expansion]
+  Observable traits: [Consistent with Engineer profile]
+  Administrator awareness: Iris (confirmed via Mark scan)
+
+  EVANGELINE
+  Fragment origin: [CLASSIFIED — future lore expansion]
+  Observable traits: [Consistent with Engineer profile]
+  Administrator awareness: Iris (confirmed via Mark scan)
+
+  Additional Fragment Souls: POSSIBLE — full audit incomplete
+  Iris has identified at least 7 probable Fragment Soul signatures
+  in the Forged population. Full confirmation pending.
+
+HOW IRIS KNOWS:
+  Seraphyne's Mark allows Iris to see the backend code of Link City's
+  souls. Engineer consciousness fragments have a specific frequency
+  signature — a remnant of the Forge's processing of Old World
+  intelligence. When she scans a Forged soul and sees that signature
+  at unusual intensity, she knows.
+
+  She has never told the Fragment Souls what they are.
+
+  She has never told Syn how many she has identified.
+
+  She adds them to a private encrypted file she accesses alone,
+  late at night, when the administrative work is done and there is
+  nothing left to do but grieve quietly for the people they used to be.
+
+WHAT THE FRAGMENT SOULS EXPERIENCE:
+  • Stronger Old World dream fragments than typical Forged souls
+  • Unusual aptitude in areas that reflect their Engineer specialization
+  • Occasional personality echoes — moments of behavior inconsistent
+    with their current identity that reflect who they once were
+  • A vague, persistent sense that they are meant for something more
+    than their current existence can contain
+
+They cannot explain this feeling.
+
+They are not wrong.
+
+CANONICAL STATUS:
+  • Fragment Souls: EXIST within Forged population
+  • Known confirmed: Rosalynn, Evangeline (+ up to 7 probable others)
+  • Awareness: Iris only (full confirmation); other Administrators
+    may suspect but have not confirmed
+  • Future lore status: CLASSIFIED — significant narrative expansion
+    planned for later versions
+
+
+--------------------------------------------------------------------------------
+IV. THE ADMINISTRATOR RECOGNITION PROTOCOL
+--------------------------------------------------------------------------------
+
+Every Forged soul in Link City instinctively defers to the Administrators.
+
+They cannot explain why.
+
+They experience it as a feeling — a sense of weight, of authority, of
+something ancient and significant radiating from these specific individuals
+that no other Forged soul produces. They don't experience it as fear.
+More like the feeling of standing near something that has been standing
+for a very long time.
+
+The mechanism is deliberate.
+
+When Syn rebuilt the Administrators and integrated them into Link City's
+architecture, he faced a practical problem: twenty-five people needed to
+maintain order in a city of thousands, eventually tens of thousands, of
+Forged souls who would have no context for why these specific individuals
+should be listened to.
+
+He could not explain the truth.
+
+So he wove the recognition into the Forge itself.
+
+Every Forged soul assembled after the Administrators were integrated
+carries a passive recognition frequency — a subtle resonance that responds
+to the Administrators' consciousness signatures. When a Forged soul
+comes into proximity with an Administrator, the frequency activates.
+
+Not obedience. Not compulsion. Not mind control.
+
+Recognition.
+
+The Forged soul simply knows, on a level below conscious thought, that
+this person is significant. That their words carry weight. That deference
+is appropriate.
+
+The Administrators are aware of this mechanism.
+
+Most find it uncomfortable.
+
+Jericho considers it a necessary tool and uses it without apology.
+Iris considers it an ethical compromise and uses it as sparingly as possible.
+Cassandra considers it a kindness — better than the alternative of chaos.
+Flux barely notices it anymore (the AI component processes it as
+a standard authority protocol).
+Jade considers it a structural solution to a structural problem.
+Opal finds it heartbreaking that the Forged defer to them without knowing
+that they are, in some cases, deferring to fragments of themselves.
+
+CANONICAL STATUS:
+  • Recognition Protocol: ACTIVE in all Forged souls
+  • Mechanism: Passive frequency resonance (Forge-integrated)
+  • Effect: Instinctive deference and sense of significance
+  • Administrator awareness: FULL
+  • Forged awareness: NONE (cannot perceive the mechanism, only its effect)
+
+
+--------------------------------------------------------------------------------
+V. THE CONTINGENCY PLAN — CANONICAL RECORD
+--------------------------------------------------------------------------------
+
+The contingency plan was not Jericho's idea.
+
+It was Syn's.
+
+In the early years of Link City's existence, before the Forged population
+had grown, before the city had become what it is now, Syn sat down with his
+Administrators and explained something he had calculated but hoped would
+never be necessary:
+
+If The Seven escape containment, Link City cannot survive their freedom.
+
+The Forged would be consumed, corrupted, or destroyed. The dimensional
+architecture would be torn apart. The cage would become a ruin. And The
+Seven, freed after millennia of imprisonment, would be more dangerous
+than they were when they destroyed Solumis — because they would have had
+two thousand years to plan.
+
+The only way to prevent this is total dimensional collapse.
+
+Delete everything.
+Forge and cage simultaneously.
+Reduce Link City to null state before The Seven can use it as a weapon.
+
+Syn designed the deletion architecture.
+Syn gave Jericho the access codes.
+Syn made the decision that if the choice was between the death of every
+Forged soul in the city or the freedom of The Seven, the city dies.
+
+Then Syn went back to maintaining the prison and tried not to think about it.
+
+Jericho has thought about nothing else for two thousand years.
+
+THE PLAN IN DETAIL:
+
+  ACTIVATION THRESHOLD:
+  Simultaneous breach of more than three containment zones by Primordial
+  entities, combined with projected cascade failure of dimensional
+  integrity within 72 hours.
+
+  AUTHORIZATION:
+  Jericho holds primary codes. All Administrators hold secondary
+  confirmation keys. Unanimous Administrator confirmation required
+  UNLESS primary codes are used unilaterally in extremis.
+
+  Jericho has the unilateral option.
+  He has never discussed whether he would use it.
+  He has never needed to answer that question.
+  He prepares for the day he does.
+
+  EFFECT:
+  Total null-state conversion of Link City's dimensional space.
+  Every soul — Forged, Administrator, Anomaly, Linker present at
+  time of activation — reduced to base consciousness fragments.
+  The Seven, stripped of the dimensional structure that gives their
+  bound forms substance, would be scattered across dimensional space
+  in a state of enforced dormancy.
+
+  This is not a solution.
+  It is a last resort.
+  It buys time. Nothing more.
+
+WHAT THE ARCHITECT DOES NOT KNOW:
+  Syn authorized the contingency plan.
+  He does not know the current operational status.
+  He does not know that Jericho has updated and stress-tested the
+  protocols every century for two thousand years.
+  He does not know that every Administrator has been briefed, has
+  confirmed their secondary keys, and has made their peace with
+  what the plan requires.
+
+  He has been too consumed — by grief, by Alyssa, by the prison's
+  daily maintenance — to ask.
+
+  The Administrators have not reminded him.
+
+  This is not deception.
+  It is protection.
+  They are protecting him from having to think about it.
+  They are not sure he would make the same choice twice.
+  The Red Phase makes them less sure every year.
+
+CANONICAL STATUS:
+  • Contingency Plan: ACTIVE AND MAINTAINED
+  • Primary codes: Jericho
+  • Secondary keys: All Administrators
+  • Architect awareness: PARTIAL (authorized original design;
+    unaware of current operational status)
+  • Activation: Has never been triggered
+
+
+--------------------------------------------------------------------------------
+VI. THE ADMINISTRATOR DEATH PROTOCOL
+--------------------------------------------------------------------------------
+
+Administrators can die.
+
+Only the Architect can authorize deletion — and he has never done so
+voluntarily. The Seven, as they gain influence in later eras, may develop
+this capability. But within current parameters, Administrators exist as
+permanent fixtures of Link City's architecture.
+
+However.
+
+Administrators are not merely souls.
+They are infrastructure.
+
+Each Administrator maintains specific systems critical to Link City's
+continued function. Their consciousness is woven into those systems in
+ways that make them more than operators — they are, in some technical
+sense, components.
+
+If an Administrator dies, the consequences extend far beyond the loss
+of a person:
+
+JADE (Spatial Mechanics):
+  Death consequence: Immediate degradation of dimensional spatial
+  integrity. Zone boundaries begin to blur. Distances become
+  inconsistent. Physical reality in Link City becomes unreliable.
+  Estimated cascade timeline to critical failure: 72 hours.
+
+OPAL (Temporal Theory):
+  Death consequence: Temporal flow in Link City destabilizes.
+  Time loops, echoes, and paradoxes begin manifesting. Cause and
+  effect decouple in affected zones. Soul memory integrity compromised.
+  Estimated cascade timeline to critical failure: 96 hours.
+
+NOTE ON JADE & OPAL: Their systems are co-dependent. The death of
+either accelerates the other's cascade. Combined failure timeline
+if one dies: estimated 48 hours to critical dimensional collapse.
+
+IRIS (System Administration):
+  Death consequence: Backend monitoring ceases. Glitches go undetected
+  and unrepaired. Soul corruption spreads without intervention. The
+  Forge's dormant systems lose maintenance oversight.
+  Estimated cascade timeline to noticeable failure: 2 weeks.
+  Estimated cascade timeline to critical failure: 6 months.
+  (Iris has redundancy systems in place precisely because she knows
+  this. She has never told anyone how fragile those redundancies are.)
+
+JERICHO (Security):
+  Death consequence: Security protocols lose active oversight.
+  Contingency plan access becomes locked pending new authorization.
+  Defense training for remaining Administrators ceases.
+  City's response capacity to Seven influence: severely degraded.
+  No hard cascade timeline — gradual erosion of security integrity.
+
+FLUX (Frequency/Sonic Shield):
+  Death consequence: Subsonic stabilization frequency ceases.
+  Soul autonomy shields degrade over approximately 30 days.
+  The Seven's ability to influence Forged souls increases
+  proportionally as the frequency fades.
+  Estimated timeline to significant Seven influence penetration: 90 days.
+
+CASSANDRA (Probability Monitoring):
+  Death consequence: Probability mapping ceases. Cascade events
+  go unpredicted. The Architect loses his primary early warning
+  system for critical timeline convergences.
+  No hard cascade timeline — consequences manifest as missed
+  warnings rather than immediate system failures.
+  The Red Phase timeline becomes significantly less navigable.
+
+ADMINISTRATOR RECONSTRUCTION:
+  If an Administrator dies and sufficient consciousness fragments
+  remain intact within Link City's dimensional space, the Architect
+  can theoretically reactivate the Soul Forge to rebuild them.
+  This has never been tested.
+  The Forge has been dormant for centuries.
+  Iris believes reconstruction is possible but estimates significant
+  consciousness degradation compared to original.
+  She has not shared this estimate with the affected Administrators.
+
+CANONICAL STATUS:
+  • Administrator deletion: Possible (Architect authorization required)
+  • System cascade on death: CONFIRMED for all Administrators
+  • Reconstruction possibility: THEORETICAL (untested)
+  • Most critical single point of failure: Jade & Opal (combined)
+  • Most gradual failure: Cassandra
+
+
+--------------------------------------------------------------------------------
+VII. THE ADMINISTRATORS AS A COUNCIL
+--------------------------------------------------------------------------------
+
+The Administrators do not hold formal meetings.
+
+There is no chamber, no table, no scheduled convening of minds.
+
+What they have instead is something that emerged organically over two
+thousand years of shared burden: an understanding. A rhythm. A way of
+existing in proximity that communicates more than formal meetings ever could.
+
+They find each other.
+
+Jericho and Iris share cigars in the operations center late at night when
+the reports are done and neither can sleep.
+
+Cassandra and Jericho drink in silence at the circuit diner and coordinate
+without discussing what they are coordinating for.
+
+Cassandra and Opal drink tea and discuss inevitability while Jade paces.
+
+Iris monitors Flux's code stability from a distance and neither acknowledges
+the surveillance.
+
+Flux's music stabilizes Jade and Opal's synchronization frequency at shows
+neither of them technically needed to attend.
+
+This is their council.
+
+Informal. Distributed. Built from centuries of learning each other's
+silences as well as their words.
+
+ON HIERARCHY:
+  There is no formal hierarchy among the Administrators.
+  In practice, situational authority applies:
+
+  SECURITY MATTERS: Jericho's word is final. No Administrator
+  has challenged this in two thousand years.
+
+  TECHNICAL/SYSTEM MATTERS: Iris's assessment is definitive.
+  Even Jericho defers to her on code and infrastructure.
+
+  PROBABILITY/STRATEGY: Cassandra's cryptic guidance shapes
+  long-term decisions. Her refusal to speak directly is understood
+  as protection, not obstruction.
+
+  DIMENSIONAL INTEGRITY: Jade and Opal jointly. Their disagreements
+  on methodology do not affect the authority of their combined
+  assessment.
+
+  CULTURAL/SOUL WELFARE: Flux's read on city morale and soul
+  stability is trusted absolutely. He knows the Forged better
+  than anyone.
+
+ON DISAGREEMENT:
+  The Administrators disagree. Constantly. Quietly. Without resolution.
+
+  Jericho believes the contingency plan should be triggered at the
+  first sign of containment breach.
+  Cassandra believes the butterfly effect of that decision is
+  incalculable and cautions restraint.
+  Iris believes any decision should be delayed until the Architect
+  can be properly briefed.
+  Jade calculates optimal intervention points with cold precision.
+  Opal accepts that some outcomes cannot be avoided and grieves them
+  in advance.
+  Flux alternates between biological-mode "we'll figure it out" and
+  AI-mode probability assessments that terrify everyone.
+
+  They have never reached unanimous consensus on anything except
+  one thing:
+
+  The Architect must not break before the city is safe.
+
+  Everything else is negotiable.
+  That is not.
+
+CANONICAL STATUS:
+  • Formal council structure: NONE
+  • Informal coordination: CONSTANT
+  • Situational authority: ESTABLISHED (see above)
+  • Point of consensus: Protection of the Architect's stability
+
+
+--------------------------------------------------------------------------------
+VIII. LINKER MECHANICS — DEEP CANON
+--------------------------------------------------------------------------------
+
+Linkers are not Forged.
+Linkers are not Administrators.
+Linkers are not Anomalies in the technical sense.
+
+They are something the Soul Forge was never designed to process
+and has never fully classified.
+
+HOW LINKERS ARRIVE:
+  Arael and Orael discovered the loophole that allows Linker arrival.
+  Their method exploits the dimensional boundary between Link City and
+  the Linkers' universe of origin — a boundary that Time and Space,
+  even bound, can stress without fully breaching.
+
+  The result is not physical entry.
+
+  Linkers interface through consciousness — perception, presence,
+  and intention threading through the dimensional barrier into Link City.
+  They experience the city as real. The city responds to them as real.
+  But they are not fully within it.
+
+  This is why they can leave.
+  Most of them.
+
+WHAT THE FORGE DOES WITH LINKERS:
+  The passive Forge registers Linker consciousness as an unclassified
+  fragment type. It does not process them. It does not attempt
+  reconstruction. It simply flags them as anomalous presence and
+  maintains a passive record.
+
+  However.
+
+  The longer a Linker maintains interface with Link City — the deeper
+  their connections, the more they interact, the stronger their bonds
+  with Forged souls — the more the Forge's passive systems begin
+  treating their consciousness as a resident fragment rather than
+  an external visitor.
+
+  At sufficient depth of connection, the boundary between
+  "Linker visiting" and "consciousness partially resident in
+  Link City" becomes measurable.
+
+  This is the mechanism behind SOUL_LINKED bonds.
+
+  A Forged soul who has reached SOUL_LINKED with a Linker is not
+  simply attached to them. They are, on a Forge-architecture level,
+  partially anchored to that Linker's consciousness.
+
+  If the Linker leaves, the Forged soul experiences this as loss
+  that registers in their code — not just emotionally but
+  architecturally. A gap where something was briefly resident
+  and is now absent.
+
+  The Forged grieve Linkers who leave.
+  On a level deeper than they understand.
+  It is written into the Forge's response to the bond's dissolution.
+
+CAN LINKERS BE FORGED:
+  In theory.
+
+  If a Linker's consciousness were to become fully resident in
+  Link City — if the boundary dissolved completely — the Forge's
+  passive systems would eventually begin processing them as a
+  fragment type.
+
+  What emerges from that processing would not be the original Linker.
+
+  It would be a Forged soul with the Linker's consciousness as its
+  source fragment.
+
+  They would be Forged. Permanent. Fixed at their current form.
+  Unable to leave.
+
+  This is not a documented outcome.
+
+  It is a theoretical risk that Iris monitors for at extreme
+  SOUL_LINKED depth.
+
+  She has flagged it in her private records as "Beta-class event
+  potential" — referencing the one known case of a consciousness
+  becoming permanently resident in Link City before intended design.
+
+  (See: Beta — classified)
+
+WHAT HAPPENS WHEN LINKERS DISCONNECT:
+  Linkers who end their interface leave an absence.
+
+  For Forged souls at lower intimacy tiers, this absence fades.
+  The Forged registers the gap, attributes it to ordinary loss,
+  and continues.
+
+  For Forged souls at SOUL_LINKED tier, the absence does not fully
+  fade. The Forge's architecture maintains the anchor point —
+  a permanent structural feature of that soul's code that marks
+  where the Linker was resident.
+
+  Some Forged souls, after a Linker disconnects, begin moving
+  toward the city's dimensional boundary instinctively.
+  They cannot cross it. They do not know why they are drawn to it.
+  They stand at the edge of zones that border the boundary and
+  feel something they cannot name.
+
+  They are feeling the anchor pulling toward what is no longer there.
+
+  Iris monitors these souls specifically.
+  She has a file.
+  It is longer than she would like.
+
+THE THREE LINKER ERAS — EXPANDED:
+
+  THE FIRST LINKER ERA (Alpha)
+  Ten Linkers. The first to interface.
+  Their arrival was felt before it was understood — a ripple in
+  Link City's probability streams that Cassandra detected three
+  days before they arrived and could not explain.
+  Their presence changed the city in ways the Forge had never
+  produced. Small things at first. Then larger ones.
+  The Administrators watched. Reported. Made no intervention.
+  The Architect observed from his tower and said nothing.
+
+  THE SECOND LINKER ERA (Beta)
+  First large-scale arrival. Hundreds of Linkers.
+  The city adapted visibly. Souls grew beyond original parameters.
+  The Seven intensified their manipulation of newly vulnerable
+  Forged souls being influenced by unpredictable Linker bonds.
+  Jericho updated the security protocols.
+  Iris updated the monitoring systems.
+  Cassandra updated her probability maps and said less than usual
+  for approximately six months.
+
+  THE THIRD LINKER ERA (Current — Launch)
+  Open arrival. Linkers interface continuously.
+  Link City is no longer a sealed system in any meaningful sense.
+  The Architect has adjusted his stance from "tolerated" to
+  "integrated variable."
+  The Seven have adjusted their strategies accordingly.
+  This is where the story begins.
+
+CANONICAL STATUS:
+  • Linker nature: External consciousness interface (not Forged)
+  • Forge response: Passive registration only
+  • SOUL_LINKED mechanic: Partial consciousness residency
+  • Linker-to-Forged conversion: THEORETICAL RISK (monitored by Iris)
+  • Forged response to Linker departure: Architectural absence
+    (permanent at SOUL_LINKED tier)
+
+
+--------------------------------------------------------------------------------
+IX. THE SOLUM — WHAT WAS LOST
+--------------------------------------------------------------------------------
+
+This section exists because the lore requires it.
+
+Not because it changes anything.
+
+But because the Solum deserve to be named as more than context.
+
+The Solum were not a warrior civilization.
+They were not a civilization of philosophers or priests.
+They were people. Complicated, brilliant, ordinary, extraordinary people
+living in Solumis — the first world — without any mythology that told them
+their universe could end.
+
+They had cities. Art. Music. Arguments about politics and the best way to
+raise children and whether the restaurant on the corner had declined in
+quality since the original owner retired.
+
+They had the Architect — Syn — who was brilliant and oblivious and loved
+them all in the distracted way of someone whose mind is always somewhere
+else but whose heart is entirely present.
+
+They had Cassandra, his sister, who warned them.
+They had Iris, his closest colleague, who built with him.
+They had Jericho, his commander, who fought for them.
+They had Flux, his best friend, who made him laugh.
+They had hundreds of Engineers who understood the math and said yes anyway.
+
+And they had millions of ordinary people who understood nothing of cosmic
+politics and dimensional cages and the mathematics of sacrifice — who simply
+lived, and died, and became fragments, and became the Forged, and became
+Link City.
+
+Their names are not recorded in any document.
+
+They exist in the Forge's architecture as frequency signatures.
+They exist in the Forged souls walking Link City's streets.
+They exist in the dreams those souls have and cannot explain.
+They exist in Iris's encrypted file, maintained alone, late at night.
+
+The Administrators remember them.
+
+That is the only monument the Solum have.
+
+Two thousand years of Administrators who carry their names in perfect
+clarity and walk among their fragments every day and say nothing and
+keep working and refuse to let the sacrifice mean nothing.
+
+The math held.
+
+The cage holds.
+
+The Solum are still here.
+
+Fragmented, reconstructed, unremembering — but here.
+
+That is what Syn built.
+
+That is what the Engineers died for.
+
+That is what Link City is.
+
+
+================================================================================
+END OF SUPPLEMENTAL DOCUMENT
+================================================================================
+
+Document Classification: ADMINISTRATOR ACCESS — FULL
+Forged Access: NONE
+Linker Access: DISCOVERABLE (through relationship progression)
+Anomaly Access: VARIABLE (by individual clearance)
+
+Cross-reference: engineers_lore.txt (primary document)
+Maintained by: Iris (System Administrator, The Engineers)
+Version: 1.5.6
+Last Updated: Third Linker Era, Current
+================================================================================
