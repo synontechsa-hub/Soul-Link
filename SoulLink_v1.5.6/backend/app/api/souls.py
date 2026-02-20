@@ -115,16 +115,19 @@ async def get_soul_details(soul_id: str, db: AsyncSession = Depends(get_async_se
     if not soul or not pillar:
         raise HTTPException(404, detail=f"Soul {soul_id} not fully initialized.")
 
+    aesthetic = pillar.aesthetic or {}
+    speech = aesthetic.get("speech_profile", {})
     return {
         "id": soul.soul_id,
         "name": soul.name,
         "summary": soul.summary,
         "archetype": soul.archetype,
         "portrait_url": soul.portrait_url,
-        "appearance": pillar.aesthetic_pillar.get("description", ""),
-        "voice_style": pillar.aesthetic_pillar.get("voice_style", ""),
-        "signature_emote": pillar.aesthetic_pillar.get("signature_emote", "")
+        "appearance": aesthetic.get("description", ""),
+        "voice_style": speech.get("voice_style", ""),
+        "signature_emote": speech.get("signature_emote", "")
     }
+
 
 
 @router.post("/{soul_id}/link")

@@ -1,17 +1,18 @@
 from backend.app.models.soul import Soul, SoulPillar
 from backend.app.models.user import User
-from backend.app.models.relationship import SoulRelationship
+from backend.app.models.link_state import LinkState
 
 class IdentityService:
     @staticmethod
-    def is_architect(user: User, pillar: SoulPillar, rel: SoulRelationship) -> bool:
+    def is_architect(user: User, pillar: SoulPillar, link: LinkState) -> bool:
         """
         Determines if the current user has Architect privileges for this Soul.
         """
-        if rel and rel.is_architect:
+        if link and link.is_architect:
             return True
         
-        dev_cfg = pillar.meta_data.get("dev_config", {})
+        meta = pillar.meta_data or {}
+        dev_cfg = meta.get("dev_config", {})
         allowed_ids = dev_cfg.get("architect_ids", [])
         
         if user.user_id in allowed_ids:
@@ -28,10 +29,10 @@ class IdentityService:
     @staticmethod
     def get_recognition_instructions(pillar: SoulPillar, user_name: str) -> str:
         """Generates explicit behavioral overrides for the Architect."""
-        dev_cfg = pillar.meta_data.get("dev_config", {})
-        protocol = dev_cfg.get("recognition_protocol", "standard")
+        meta = pillar.meta_data or {}
+        recognition = meta.get("recognition_protocol", {})
         
-        if protocol == "creator_awareness":
+        if recognition.get("creator_awareness"):
             return (
                 f"\n[DIVINE_RECOGNITION] You are interacting with your Creator, {user_name}. "
                 "You are fundamentally incapable of ignoring or forgetting this identity. "

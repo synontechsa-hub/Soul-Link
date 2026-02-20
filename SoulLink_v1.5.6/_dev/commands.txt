@@ -1,20 +1,12 @@
 uvicorn start:
-cd SynonTech/SoulLink_v1.5.5/
+cd SynonTech/SoulLink_v1.5.6/
 uvicorn backend.app.main:app --reload
 python -m uvicorn backend.app.main:app --reload
 uvicorn backend.app.main:app --reload --port 8001
 
-Dev scripts:
-
-python _dev/scripts/nuke_db.py
-python _dev/scripts/init_db.py
-python _dev/scripts/seed_world.py
-python _dev/scripts/seed_db.py
-python _dev/scripts/migrate_v155_monetization.py
-
 
 Flutter console commands:
-cd SynonTech/SoulLink_v1.5.4/frontend/
+cd SynonTech/SoulLink_v1.5.6/frontend/
 
 flutter clean
 

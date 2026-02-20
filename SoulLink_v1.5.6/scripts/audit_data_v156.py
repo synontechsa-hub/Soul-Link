@@ -10,12 +10,13 @@ TARGET_VERSION = "1.5.6"
 
 # --- EXPECTED SCHEMAS ---
 
-# 1. SOUL SCHEMA (Standard & Premium)
+# 1. SOUL SCHEMA (v1.5.6 Unified)
 REQUIRED_SOUL_KEYS = [
     "soul_id", "version", "identity", "aesthetic", "systems_config", 
     "routine", "inventory", "relationships", "lore_associations", 
     "interaction_system", "prompts", "meta_data"
 ]
+
 
 REQUIRED_META_KEYS = [
     "recognition_protocol"

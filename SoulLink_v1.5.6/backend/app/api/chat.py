@@ -92,7 +92,7 @@ async def send_message(
     if NarratorService.check_time_jump(link.last_interaction):
         # Trigger Time Jump Logic
         # For now, we assume simple weather/time. Real impl would fetch from WorldState.
-        chronicle_text = NarratorService.generate_chronicle(
+        chronicle_text = await NarratorService.generate_chronicle(
             link.last_interaction, 
             link.current_location or "the city", 
             "shifting"

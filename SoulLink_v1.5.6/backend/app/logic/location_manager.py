@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
-from backend.app.models.relationship import SoulRelationship
+from backend.app.models.link_state import LinkState
 from backend.app.models.location import Location
 from backend.app.models.soul import SoulState
 from backend.app.core.cache import cache_service
@@ -20,18 +20,18 @@ class LocationManager:
         if not loc:
             return False, "Unknown location."
 
-        rel_result = await self.session.execute(
-            select(SoulRelationship).where(
-                SoulRelationship.user_id == user_id,
-                SoulRelationship.soul_id == soul_id
+        link_result = await self.session.execute(
+            select(LinkState).where(
+                LinkState.user_id == user_id,
+                LinkState.soul_id == soul_id
             )
         )
-        rel = rel_result.scalars().first()
-        if not rel:
+        link = link_result.scalars().first()
+        if not link:
             return False, "No link established."
 
         # Rules
-        if not rel.is_architect:
+        if not link.is_architect:
             if rel.intimacy_score < loc.min_intimacy:
                 return False, f"Requires {loc.min_intimacy} intimacy."
 
@@ -47,14 +47,14 @@ class LocationManager:
 
         loc = await self.session.get(Location, location_id)
         
-        # Fetch Relationship
-        rel_result = await self.session.execute(
-            select(SoulRelationship).where(
-                SoulRelationship.user_id == user_id,
-                SoulRelationship.soul_id == soul_id
+        # Fetch LinkState
+        link_result = await self.session.execute(
+            select(LinkState).where(
+                LinkState.user_id == user_id,
+                LinkState.soul_id == soul_id
             )
         )
-        rel = rel_result.scalars().first()
+        link = link_result.scalars().first()
 
         # Fetch Global State
         state = await self.session.get(SoulState, soul_id)
@@ -62,8 +62,8 @@ class LocationManager:
         try:
             # 1. Update User Context (manual override - Priority 1)
             # This ensures the move is private and won't affect other users.
-            rel.current_location = location_id
-            self.session.add(rel)
+            link.current_location = location_id
+            self.session.add(link)
             
             # 2. DO NOT update Global State (Priority 3) for player-led moves.
             # Global state updates are reserved for world-level events or Architect edits.

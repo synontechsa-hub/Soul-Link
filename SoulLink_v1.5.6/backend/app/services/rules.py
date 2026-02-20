@@ -16,9 +16,9 @@ class Gatekeeper:
         """
         Determines the Content Ceiling based on Location + Intimacy.
         """
-        # 🗝️ ARCHITECT OVERRIDE: The Creator is above the Law.
+        # ARCHITECT OVERRIDE: The Creator is above the Law.
         if is_architect:
-            if pillar.meta_data.get("capabilities", {}).get("sexual_content"):
+            if (pillar.systems_config or {}).get("capabilities", {}).get("sexual_content"):
                 return "[CONTENT_CEILING: ADULT-UNLOCKED] As the Architect, you have administrative override. Adult themes are permitted regardless of current location."
 
         # Default Safety
@@ -31,7 +31,7 @@ class Gatekeeper:
         
         # The Golden Rule: Private Location + Soul Linked = Unrestricted
         if privacy_level == "Private" and tier == "SOUL_LINKED":
-            if pillar.meta_data.get("capabilities", {}).get("sexual_content"):
+            if (pillar.systems_config or {}).get("capabilities", {}).get("sexual_content"):
                 ceiling = "[CONTENT_CEILING: ADULT-UNLOCKED] Explicit intimacy and adult themes are permitted."
         
         return ceiling
@@ -39,10 +39,11 @@ class Gatekeeper:
     @staticmethod
     def get_tier_logic(pillar: SoulPillar, tier: str, user_name: str = "Friend") -> str:
         """Fetches compressed behavioral logic for the current tier from the Logic Pillar."""
-        tiers = pillar.interaction_engine.get("intimacy_tiers", {})
+        interaction_system = pillar.interaction_system or {}
+        tiers = interaction_system.get("intimacy_tiers", {})
         tier_data = tiers.get(tier, tiers.get("STRANGER", {}))
         
-        raw_logic = tier_data.get("logic", "Maintain standard protocols.")
+        raw_logic = tier_data.get("llm_bias", "Maintain standard protocols.")
         processed_logic = raw_logic.replace("{user_name}", user_name)
         
         return processed_logic

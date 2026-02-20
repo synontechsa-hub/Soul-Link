@@ -67,56 +67,82 @@ def seed():
                     dev_config.setdefault("architect_ids", []).append(architect_uuid)
                 meta["dev_config"] = dev_config
 
-                # Derive routines from interaction_engine schedule if present
-                routines = pillars.get("interaction_engine", {}).get("schedule", {})
-
-                if DRY_RUN:
-                    print(f"  [PREVIEW] {soul_id} -> name={data.get('name')}, archetype={data.get('archetype')}")
-                    success += 1
-                    continue
-
                 # ── Upsert Soul ──────────────────────────────────────────────
+                identity = data.get("identity", {})
+                soul_name = identity.get("name", data.get("name", soul_id))
+                soul_summary = identity.get("summary", data.get("short_description", "A mysterious soul..."))[:500]
+                
                 existing_soul = session.get(Soul, soul_id)
                 if existing_soul:
-                    existing_soul.name = data.get("name", soul_id)
-                    existing_soul.summary = data.get("short_description", data.get("long_description", "A mysterious soul..."))[:500]
-                    existing_soul.portrait_url = f"/assets/images/souls/{soul_id}_01.jpeg"
-                    existing_soul.archetype = data.get("archetype")
+                    existing_soul.name = soul_name
+                    existing_soul.summary = soul_summary
+                    existing_soul.portrait_url = data.get("aesthetic", {}).get("portrait_path", f"/assets/images/souls/{soul_id}_01.jpeg")
+                    existing_soul.archetype = identity.get("archetype_id", data.get("archetype"))
                     existing_soul.version = data.get("version", "1.5.6")
                     session.add(existing_soul)
                 else:
                     soul = Soul(
                         soul_id=soul_id,
-                        name=data.get("name", soul_id),
-                        summary=data.get("short_description", data.get("long_description", "A mysterious soul..."))[:500],
-                        portrait_url=f"/assets/images/souls/{soul_id}_01.jpeg",
-                        archetype=data.get("archetype"),
+                        name=soul_name,
+                        summary=soul_summary,
+                        portrait_url=data.get("aesthetic", {}).get("portrait_path", f"/assets/images/souls/{soul_id}_01.jpeg"),
+                        archetype=identity.get("archetype_id", data.get("archetype")),
                         version=data.get("version", "1.5.6"),
                         created_at=datetime.utcnow()
                     )
                     session.add(soul)
 
-                session.flush()  # Ensure soul exists before FK references
+                session.flush()
 
                 # ── Upsert SoulPillar ────────────────────────────────────────
+                # Resolve routines from template for backward compatibility/performance
+                routines_map = {}
+                routine_data = data.get("routine", {})
+                template_id = routine_data.get("template_id")
+                
+                # Load routines.json once if not already loaded
+                if not hasattr(seed, 'routines_lib'):
+                    routines_path = SOULS_DIR / ".." / "system" / "routines.json"
+                    try:
+                        with open(routines_path, 'r') as rf:
+                            seed.routines_lib = json.load(rf)
+                    except Exception as e:
+                        print(f"  [WARN] Failed to load routines library: {e}")
+                        seed.routines_lib = {}
+                
+                template = seed.routines_lib.get(template_id)
+                if template:
+                    prefs = routine_data.get("location_preferences", {})
+                    sched = template.get("schedule", {})
+                    weekday_sched = sched.get("weekday", {})
+                    for slot, zone_key in weekday_sched.items():
+                        resolved_loc = prefs.get(zone_key, zone_key) # Fallback to key if no pref
+                        routines_map[slot] = resolved_loc
+
+
                 existing_pillar = session.get(SoulPillar, soul_id)
                 pillar_data = dict(
                     soul_id=soul_id,
-                    routines=routines,
-                    personality=data.get("system_prompt_DNA", {}).get("personality", ""),
-                    background=data.get("system_prompt_DNA", {}).get("scenario_drive", ""),
-                    identity_pillar=pillars.get("identity_pillar", {}),
-                    aesthetic_pillar=pillars.get("aesthetic_pillar", {}),
-                    interaction_engine=pillars.get("interaction_engine", {}),
-                    llm_instruction_override=data.get("llm_instruction_override", {}),
+                    identity=data.get("identity", {}),
+                    aesthetic=data.get("aesthetic", {}),
+                    systems_config=data.get("systems_config", {}),
+                    routine=data.get("routine", {}),
+                    inventory=data.get("inventory", {}),
+                    relationships=data.get("relationships", {}),
+                    lore_associations=data.get("lore_associations", {}),
+                    interaction_system=data.get("interaction_system", {}),
+                    prompts=data.get("prompts", {}),
                     meta_data=meta,
+                    routines=routines_map, # Back-populated for performance
                 )
+
                 if existing_pillar:
                     for k, v in pillar_data.items():
                         setattr(existing_pillar, k, v)
                     session.add(existing_pillar)
                 else:
                     session.add(SoulPillar(**pillar_data))
+
 
                 # ── Upsert SoulState ─────────────────────────────────────────
                 existing_state = session.get(SoulState, soul_id)

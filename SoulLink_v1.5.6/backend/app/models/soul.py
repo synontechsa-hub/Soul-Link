@@ -27,33 +27,34 @@ class Soul(SQLModel, table=True):
 
 class SoulPillar(SQLModel, table=True):
     """
-    LOGIC PILLAR: The heavy definitions that drive consciousness.
-    Stored separately to avoid loading massive JSONs during simple lookups.
+    LOGIC PILLAR: The unified logic and lore definitions for the soul.
+    Mirrors the v1.5.6 'Standard' JSON schema for 1:1 ingestion.
     """
     __tablename__ = "soul_pillars"
 
     soul_id: str = Field(primary_key=True, foreign_key="souls.soul_id")
     
-    # ⏰ DEFINITION: Routines
+    # 🧬 v1.5.6 UNIFIED BINDINGS
+    identity: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    aesthetic: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    systems_config: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    routine: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    inventory: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    relationships: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    lore_associations: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    interaction_system: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    prompts: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    
+    # 🚀 METADATA & OVERRIDES
+    meta_data: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+
+    # Legacy routines field (deprecated but kept for backward compat if needed during migration)
+    # We will favor the 'routine' JSON block moving forward.
     routines: Dict[str, str] = Field(
         default_factory=dict,
         sa_type=JSON,
-        description="Time slot -> location_id mapping"
+        description="DEPRECATED: Use 'routine' field"
     )
-
-    # 🧬 DEFINITION: The Pillars
-    # Core pillar data
-    personality: str = Field(default="", sa_column=Column(Text))
-    background: str = Field(default="", sa_column=Column(Text))
-
-    # 🧬 DEFINITION: The Pillars
-    identity_pillar: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
-    aesthetic_pillar: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
-    interaction_engine: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
-
-    # 🚀 DEFINITION: Overrides & Meta
-    llm_instruction_override: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
-    meta_data: Dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
 
 class SoulState(SQLModel, table=True):
     """
@@ -72,6 +73,7 @@ class SoulState(SQLModel, table=True):
     performance_mode: int = Field(default=100)
     
     last_updated: datetime = Field(default_factory=datetime.utcnow)
+
 
 # --- READ MODELS (Frontend Aggregates) ---
 

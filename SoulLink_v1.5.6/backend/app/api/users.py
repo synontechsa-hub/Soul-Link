@@ -60,7 +60,38 @@ async def get_my_profile(
     profile_data = UserProfile.model_validate(user).model_dump(mode='json')
     
     cache_service.set(cache_key, profile_data, ttl=600) # 10 minute profile cache
-    return user
+
+
+@router.get("/me/personas")
+@limiter.limit(RateLimits.READ_ONLY)
+async def get_my_personas(
+    user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_async_session)
+):
+    """List all personas for the current user."""
+    from backend.app.models.user_persona import UserPersona
+    result = await session.execute(
+        select(UserPersona).where(UserPersona.user_id == user.user_id)
+    )
+    personas = result.scalars().all()
+    return personas
+
+
+@router.patch("/me/personas/{persona_id}/activate")
+@limiter.limit(RateLimits.USER_WRITE)
+async def activate_persona(
+    persona_id: int,
+    user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_async_session)
+):
+    """Switch the active persona for the user."""
+    from backend.app.services.persona_service import PersonaService
+    success = await PersonaService.set_active_persona(session, user.user_id, persona_id)
+    
+    if not success:
+        raise HTTPException(status_code=404, detail="Persona not found or does not belong to user.")
+        
+    return {"success": True, "active_persona_id": persona_id}
 
 @router.patch("/update")
 @limiter.limit(RateLimits.USER_WRITE)

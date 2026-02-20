@@ -33,7 +33,7 @@ class ContextAssembler:
         # 1. SYSTEM ANCHOR (The Core)
         # We replace {user_name} with the Persona's screen_name
         user_name = persona.screen_name
-        base_anchor = pillar.llm_instruction_override.get("system_anchor", "")
+        base_anchor = pillar.prompts.get("system_anchor_override", "")
         system_anchor = base_anchor.replace("{user_name}", user_name)
 
         # 🧪 ARCHITECT OVERRIDE
@@ -114,9 +114,8 @@ class ContextAssembler:
 
         # 4. LORE & INTIMACY CONFIGURATION (v1.5.6)
         # Extract Interaction Data
-        # We handle both likely mappings for robustness
-        interaction_engine = pillar.interaction_engine or {}
-        intimacy_tiers = interaction_engine.get("intimacy_tiers") or interaction_engine.get("interaction_system", {}).get("intimacy_tiers", {})
+        interaction_system = pillar.interaction_system or {}
+        intimacy_tiers = interaction_system.get("intimacy_tiers", {})
         
         current_tier = link_state.intimacy_tier if link_state.intimacy_tier else "STRANGER"
         
@@ -138,9 +137,7 @@ class ContextAssembler:
                  context_tags.append(f"[FORBIDDEN_TOPICS] {', '.join(forbidden)}")
 
         # [C] SECRET REVEALS (Lore Gating)
-        # Secrets are usually in 'lore_associations'. Check identity_pillar first.
-        identity_data = pillar.identity_pillar or {}
-        lore_data = identity_data.get("lore_associations") or interaction_engine.get("lore_associations", {})
+        lore_data = pillar.lore_associations or {}
         
         secrets = lore_data.get("secrets", [])
         if secrets and current_tier == "SOUL_LINKED":

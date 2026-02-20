@@ -16,7 +16,7 @@ from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
 from backend.app.models.soul import SoulPillar, SoulState
-from backend.app.models.relationship import SoulRelationship
+from backend.app.models.link_state import LinkState
 from backend.app.models.time_slot import TimeSlot
 
 class LocationResolver:
@@ -45,18 +45,19 @@ class LocationResolver:
             location_id (str): The resolved location
         """
         
-        # Priority 1: User-specific manual override
+        # Priority 1: User-specific manual override (LinkState)
         if user_id:
-            rel_result = await session.execute(
-                select(SoulRelationship).where(
-                    SoulRelationship.user_id == user_id,
-                    SoulRelationship.soul_id == soul_id
+            from sqlalchemy import select
+            link_result = await session.execute(
+                select(LinkState).where(
+                    LinkState.user_id == user_id,
+                    LinkState.soul_id == soul_id
                 )
             )
-            rel = rel_result.scalars().first()
+            link = link_result.scalars().first()
             
-            if rel and rel.current_location:
-                return rel.current_location
+            if link and link.current_location:
+                return link.current_location
         
         # Priority 2: Time-based routine from pillar
         pillar = await session.get(SoulPillar, soul_id)
