@@ -132,11 +132,11 @@ class TimeManager:
 
         # 2. Layer User-Specific Overrides (Priority 1)
         # These are NEVER cached as they are private to the user
-        from backend.app.models.relationship import SoulRelationship
+        from backend.app.models.link_state import LinkState
         rel_result = await self.session.execute(
-            select(SoulRelationship).where(
-                SoulRelationship.user_id == user_id,
-                SoulRelationship.current_location.is_not(None)
+            select(LinkState).where(
+                LinkState.user_id == user_id,
+                LinkState.current_location.is_not(None)
             )
         )
         overrides = rel_result.scalars().all()

@@ -8,6 +8,7 @@ Integrates Supabase Auth for secure JWT validation and Architect Role checks.
 """
 
 import asyncio
+import hashlib
 from fastapi import Header, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlmodel import select
@@ -67,14 +68,16 @@ async def get_current_user_uuid(
     if not supabase:
         raise HTTPException(500, detail="Auth Server Unavailable")
 
-    # Check cache first — avoids Supabase round-trip on every request
-    cache_key = f"auth:uuid:{token[-16:]}"  # Use last 16 chars as key (avoid storing full token)
+    # Normandy-SR2 Fix: Secure cache key using SHA256 to avoid collisions
+    token_hash = hashlib.sha256(token.encode()).hexdigest()[:32]
+    cache_key = f"auth:uuid:{token_hash}"
+    
     cached_uuid = cache_service.get(cache_key)
     if cached_uuid:
         return cached_uuid
 
-    # Run blocking Supabase call in thread pool (non-blocking for the event loop)
-    loop = asyncio.get_event_loop()
+    # Normandy-SR2 Fix: Use get_running_loop (Python 3.10+)
+    loop = asyncio.get_running_loop()
     user_id = await loop.run_in_executor(None, _validate_token_sync, token)
 
     if not user_id:
@@ -146,13 +149,14 @@ async def require_architect_role(
     if not supabase:
         raise HTTPException(500, detail="Auth Server Unavailable")
 
-    # Check cache
-    cache_key = f"auth:architect:{token[-16:]}"
+    # Normandy-SR2 Fix: Secure cache key (SHA256)
+    token_hash = hashlib.sha256(token.encode()).hexdigest()[:32]
+    cache_key = f"auth:architect:{token_hash}"
     cached = cache_service.get(cache_key)
     if cached:
         return cached
 
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     user_id = await loop.run_in_executor(None, _check_architect_role_sync, token)
 
     if not user_id:

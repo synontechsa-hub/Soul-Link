@@ -18,10 +18,11 @@ from typing import Final
 # Accordoding to Grok, this has no conflicts on any app stores in this field.
 # Needs to be checked again properly before release.
 # 
-APP_NAME: Final[str] = "Linker AI"
-APP_TAGLINE: Final[str] = "Hack your heart, link your soul."
+APP_NAME: Final[str] = "Linker.ai"
+APP_TAGLINE: Final[str] = "Hack your heart. Link your soul."
 
-# The most perfect name for an app like this. I really outdid myself.
+# The most perfect name for an app like this. I really outdid myself
+# (too bad there's already a "Soul Link" app out there. Hence the Linker.ai moniker instead)
 PROJECT_NAME: Final[str] = "SoulLink"
 
 # Inspired by Cyberpunk 2077 - "Welcome to night city!"

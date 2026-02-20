@@ -25,8 +25,8 @@ class WebSocketManager:
     MAX_CONNECTIONS_PER_USER = 5  # Prevent resource exhaustion
     
     def __init__(self):
-        # Active connections: {user_id: Set[WebSocket]}
-        self._connections: Dict[str, Set[WebSocket]] = {}
+        # Active connections: {user_id: List[WebSocket]} (FIFO order)
+        self._connections: Dict[str, list[WebSocket]] = {}
         # Connection metadata: {websocket_id: user_id}
         self._connection_metadata: Dict[int, str] = {}
     
@@ -41,24 +41,22 @@ class WebSocketManager:
         """
         await websocket.accept()
         
-        # Check connection limit
         if user_id in self._connections:
             if len(self._connections[user_id]) >= self.MAX_CONNECTIONS_PER_USER:
-                # Disconnect oldest connection
-                oldest_ws = next(iter(self._connections[user_id]))
+                # Disconnect oldest connection (FIFO: index 0)
+                oldest_ws = self._connections[user_id].pop(0)
                 try:
                     await oldest_ws.close(code=1008, reason="Connection limit exceeded")
                 except:
                     pass
-                self._connections[user_id].discard(oldest_ws)
                 self._connection_metadata.pop(id(oldest_ws), None)
-                logger.warning(f"Disconnected oldest connection for {user_id} (limit: {self.MAX_CONNECTIONS_PER_USER})")
+                logger.warning(f"FIFO Eviction: Disconnected oldest for {user_id}")
         
         # Register connection
         if user_id not in self._connections:
-            self._connections[user_id] = set()
+            self._connections[user_id] = []
         
-        self._connections[user_id].add(websocket)
+        self._connections[user_id].append(websocket)
         self._connection_metadata[id(websocket)] = user_id
         
         logger.info(f"✅ WebSocket connected: {user_id} (Total: {self.get_connection_count()})")
@@ -85,9 +83,10 @@ class WebSocketManager:
         user_id = self._connection_metadata.get(ws_id)
         
         if user_id and user_id in self._connections:
-            self._connections[user_id].discard(websocket)
+            if websocket in self._connections[user_id]:
+                self._connections[user_id].remove(websocket)
             
-            # Clean up empty sets
+            # Clean up empty lists
             if not self._connections[user_id]:
                 del self._connections[user_id]
             
@@ -110,22 +109,25 @@ class WebSocketManager:
         if user_id not in self._connections:
             return 0
         
-        disconnected = set()
+        dead_indices = []
         sent_count = 0
+        conns = self._connections[user_id]
         
-        for ws in self._connections[user_id]:
+        for i, ws in enumerate(conns):
             try:
                 await ws.send_json(message)
                 sent_count += 1
             except Exception as e:
                 logger.warning(f"Failed to send to {user_id}: {e}")
-                disconnected.add(ws)
+                dead_indices.append(i)
         
-        # Cleanup dead connections
-        if disconnected:
-            self._connections[user_id] -= disconnected
-            for ws in disconnected:
-                self._connection_metadata.pop(id(ws), None)
+        # Cleanup dead connections in reverse to maintain index integrity
+        for i in sorted(dead_indices, reverse=True):
+            ws = conns.pop(i)
+            self._connection_metadata.pop(id(ws), None)
+            
+        if not self._connections[user_id]:
+            del self._connections[user_id]
         
         return sent_count
     

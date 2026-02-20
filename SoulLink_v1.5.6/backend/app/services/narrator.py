@@ -2,14 +2,12 @@
 # v1.5.6 Narrative Engine - The Voice of the World
 # UPDATED: Now uses Groq (llama-3.1-8b-instant) for dynamic Chronicle Breaks.
 
-from datetime import datetime
+from datetime import datetime, timezone
 import random
 import logging
-from groq import Groq
 from backend.app.core.config import settings
 
 logger = logging.getLogger("Narrator")
-client = Groq(api_key=settings.groq_api_key)
 
 class NarratorService:
     """
@@ -19,6 +17,14 @@ class NarratorService:
     
     CHRONICLE_THRESHOLD_HOURS = 4  # Minimum gap to trigger a Chronicle Break
     
+    @property
+    def client(self):
+        """Lazy-loaded Groq client."""
+        if not hasattr(self, "_client") or self._client is None:
+            from groq import Groq
+            self._client = Groq(api_key=settings.groq_api_key)
+        return self._client
+    
     @staticmethod
     def check_time_jump(last_interaction: datetime) -> bool:
         """
@@ -27,7 +33,11 @@ class NarratorService:
         if not last_interaction:
             return False
             
-        delta = datetime.utcnow() - last_interaction
+        # Normandy-SR2 Fix: Ensure conscious comparison between aware/naive datetimes
+        if last_interaction.tzinfo is None:
+            last_interaction = last_interaction.replace(tzinfo=timezone.utc)
+            
+        delta = datetime.now(timezone.utc) - last_interaction
         return delta.total_seconds() > (NarratorService.CHRONICLE_THRESHOLD_HOURS * 3600)
 
     @staticmethod
@@ -36,8 +46,12 @@ class NarratorService:
         Generates the 'Chronicle Break' text based on time passed and world state.
         Uses Groq (llama-3.1-8b-instant) for snappy, immersive narration.
         """
-        delta = datetime.utcnow() - last_interaction
         hours_passed = int(delta.total_seconds() / 3600)
+        
+        # Normandy-SR2 Fix: Consistency in time comparison
+        if last_interaction.tzinfo is None:
+            last_interaction = last_interaction.replace(tzinfo=timezone.utc)
+        delta = datetime.now(timezone.utc) - last_interaction
         
         prompt = (
             f"You are the Narrator of SoulLink. Write a short 'Fade-to-Black' event summary.\n"
@@ -49,7 +63,11 @@ class NarratorService:
         )
 
         try:
-            chat_completion = client.chat.completions.create(
+            # Normandy-SR2 Fix: Use self.client (lazy) instead of global
+            # Note: Since this is currently a staticmethod, we need to instantiate or change access.
+            # Refactoring to instance method for cleaner lazy access.
+            srv = NarratorService()
+            chat_completion = srv.client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
                 model="llama-3.1-8b-instant",
                 temperature=0.7,

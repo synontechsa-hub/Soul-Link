@@ -11,9 +11,9 @@ Thin API layer - business logic is in websocket_manager service.
 import asyncio
 import json
 import logging
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Query
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Depends
 from backend.app.services.websocket_manager import websocket_manager
-from backend.app.api.dependencies import supabase
+from backend.app.api.dependencies import supabase, require_architect_role
 
 router = APIRouter(prefix="/ws", tags=["WebSocket"])
 logger = logging.getLogger("WebSocketAPI")
@@ -23,48 +23,53 @@ HEARTBEAT_TIMEOUT = 60
 
 
 @router.websocket("/connect")
-async def websocket_endpoint(
-    websocket: WebSocket,
-    token: str = Query(..., description="JWT authentication token")
-):
+async def websocket_endpoint(websocket: WebSocket):
     """
-    WebSocket connection endpoint with JWT authentication.
-
-    Connection URL: ws://localhost:8000/api/v1/ws/connect?token=<jwt>
-
-    Events sent to client:
-    - connection_established: Welcome message
-    - pong: Response to client ping
-    - location_update: Soul moved
-    - intimacy_update: Relationship changed
-    - time_advance: Time slot changed
-    - system_notification: General alerts
-
-    Client must send a ping within HEARTBEAT_TIMEOUT seconds or connection is closed.
+    WebSocket connection endpoint.
+    Normandy-SR2 Fix: Token moved from Query to Initial Handshake Message for log security.
     """
+    await websocket.accept()
     client_ip = websocket.client.host if websocket.client else "unknown"
+    user_id = None
 
-    # 1. Authenticate user
+    # 1. AUTH HANDSHAKE (Must be the first message)
+    # We give the client 10 seconds to send the token or we DROP.
     try:
-        if not supabase:
-            await websocket.close(code=1011, reason="Server configuration error")
+        try:
+            handshake_data = await asyncio.wait_for(websocket.receive_text(), timeout=10.0)
+            payload = json.loads(handshake_data)
+            if payload.get("type") != "handshake" or "token" not in payload:
+                await websocket.close(code=1008, reason="Handshake Required")
+                return
+            
+            token = payload["token"]
+            
+            if not supabase:
+                await websocket.close(code=1011, reason="Server configuration error")
+                return
+
+            # Run blocking Supabase call in thread pool
+            loop = asyncio.get_running_loop()
+            user_response = await loop.run_in_executor(None, supabase.auth.get_user, token)
+
+            if not user_response or not user_response.user:
+                logger.warning(f"WebSocket auth failed from {client_ip}")
+                await websocket.close(code=1008, reason="Invalid authentication token")
+                return
+
+            user_id = user_response.user.id
+            logger.info(f"WebSocket auth success: user={user_id} ip={client_ip}")
+
+        except asyncio.TimeoutError:
+            logger.warning(f"WebSocket handshake timeout from {client_ip}")
+            await websocket.close(code=1008, reason="Handshake Timeout")
             return
-
-        # Run blocking Supabase call in thread pool
-        loop = asyncio.get_event_loop()
-        user_response = await loop.run_in_executor(None, supabase.auth.get_user, token)
-
-        if not user_response or not user_response.user:
-            logger.warning(f"WebSocket auth failed from {client_ip}: Invalid token")
-            await websocket.close(code=1008, reason="Invalid authentication token")
+        except Exception as e:
+            logger.error(f"WebSocket handshake error: {e}")
+            await websocket.close(code=1011, reason="Handshake Failed")
             return
-
-        user_id = user_response.user.id
-        logger.info(f"WebSocket auth success: user={user_id} ip={client_ip}")
-
     except Exception as e:
-        logger.error(f"WebSocket authentication error from {client_ip}: {type(e).__name__}")
-        await websocket.close(code=1011, reason="Authentication failed")
+        logger.error(f"Outer WebSocket Error: {e}")
         return
 
     # 2. Connect and register
@@ -115,10 +120,9 @@ async def websocket_endpoint(
 
 
 @router.get("/stats")
-async def get_websocket_stats():
+async def get_websocket_stats(user_id: str = Depends(require_architect_role)):
     """
-    Get WebSocket connection statistics.
-    Useful for monitoring and debugging.
+    Get WebSocket connection statistics (Architects Only).
     """
     return {
         "total_connections": websocket_manager.get_connection_count(),

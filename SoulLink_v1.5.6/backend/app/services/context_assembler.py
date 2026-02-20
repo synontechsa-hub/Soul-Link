@@ -33,7 +33,8 @@ class ContextAssembler:
         # 1. SYSTEM ANCHOR (The Core)
         # We replace {user_name} with the Persona's screen_name
         user_name = persona.screen_name
-        base_anchor = pillar.prompts.get("system_anchor_override", "")
+        prompts = pillar.prompts or {}
+        base_anchor = prompts.get("system_anchor_override", "")
         system_anchor = base_anchor.replace("{user_name}", user_name)
 
         # 🧪 ARCHITECT OVERRIDE
@@ -107,10 +108,17 @@ class ContextAssembler:
         if persona.age is not None and persona.age < 18:
             nsfw_allowed = False
 
+        # Deep Scan Fix: Inject Consent Notes for behavioural grounding
+        sys_cfg = pillar.systems_config or {}
+        consent_notes = sys_cfg.get("consent", {}).get("notes", "")
+        consent_instr = f" [CONSENT_GUIDELINE: {consent_notes}]" if consent_notes else ""
+
         if not nsfw_allowed:
-             context_tags.append("[CONTENT: SFW_ONLY] Sexual content is strictly prohibited.")
+             context_tags.append(f"[CONTENT: SFW_ONLY] Sexual content is strictly prohibited.{consent_instr}")
         elif privacy_level == "Private" and link_state.intimacy_tier in ["TRUSTED", "SOUL_LINKED"]:
-             context_tags.append("[CONTENT: UNRESTRICTED] Adult themes allowed in private.")
+             context_tags.append(f"[CONTENT: UNRESTRICTED] Adult themes allowed in private.{consent_instr}")
+        else:
+             context_tags.append(f"[CONTENT: SFW_ONLY]{consent_instr}")
 
         # 4. LORE & INTIMACY CONFIGURATION (v1.5.6)
         # Extract Interaction Data
@@ -142,6 +150,22 @@ class ContextAssembler:
         secrets = lore_data.get("secrets", [])
         if secrets and current_tier == "SOUL_LINKED":
              context_tags.append(f"[SECRETS_REVEALED] {'; '.join(secrets)}")
+
+        # [D] SPEECH PROFILE (v1.5.6 Deep Scan Fix)
+        aesthetic = pillar.aesthetic or {}
+        speech = aesthetic.get("speech_profile", {})
+        if speech:
+            voice = speech.get("voice_style", "")
+            emote = speech.get("signature_emote", "")
+            forbid = speech.get("forbidden_behaviours", [])
+            
+            speech_tags = []
+            if voice: speech_tags.append(f"VOICE: {voice}")
+            if emote: speech_tags.append(f"EMOTE: {emote}")
+            if forbid: speech_tags.append(f"FORBIDDEN: {', '.join(forbid)}")
+            
+            if speech_tags:
+                context_tags.append(f"[SPEECH_PROFILE: {' | '.join(speech_tags)}]")
 
         # 5. PROTOCOLS
         protocols = (

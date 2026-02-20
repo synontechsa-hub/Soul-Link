@@ -1,46 +1,57 @@
-Note: This needs updating...
+# SoulLink v1.5.6 — Project Root Structure
+# Last Updated: 2026-02-20
 
-/SoulLink_v1.5.4
-├── /_dev                       # THE ARCHITECT'S WORKSHOP (Excluded from Ship)
-│   ├── /blueprints             # Raw .json files (Eva, Alyssa, etc.)
-│   ├── /prototypes             # Experimental brain logic / prompt testing
-│   ├── /scripts                # ALL running scripts (seed_db.py, migrations, etc.)
-│   └── /notes                  # Design docs, Lore, v1.1.0+ Roadmaps
+/SoulLink_v1.5.6
+├── /_dev                       # THE ARCHITECT'S WORKSHOP (Internal Development)
+│   ├── /character_sheets       # Raw .txt character sheets (38+ Souls)
+│   ├── /data                   # Unified v1.5.6 Data System
+│   │   ├── /souls              # Standard Soul .json blueprints
+│   │   ├── /locations          # Link City district .json files
+│   │   ├── /system             # Global configs (routines, archetypes, traits)
+│   │   └── /flagship_souls     # Primordial / Premium blueprints
+│   ├── /dev_log                # Version-specific development history
+│   │   ├── dev_log_v1.5.3.txt
+│   │   ├── dev_log_v1.5.4.txt
+│   │   ├── dev_log_v1.5.5.txt
+│   │   └── dev_log_v1.5.6.txt (Current Hardening)
+│   ├── /migrations             # Alembic Database Evolutions
+│   ├── /scripts                # Dev tools (seeders, validators, asset generators)
+│   ├── /world_lore             # Narrative bibles and city history
+│   └── /notes                  # Consolidated Manifests & Specs
+│       ├── vision_manifest.md  # Philosophy, Mechanics, Branding
+│       ├── release_roadmap.md  # Release Phases & Future Goals
+│       ├── store_compliance.md # Staging (Itch/Play Store) & Safety
+│       ├── radio_tv_implementation.md # Feature Technical Spec
+│       └── root_structure.txt  # [THIS FILE]
 │
-├── /backend                    # THE LEGION ENGINE (Clean & Shippable)
+├── /backend                    # THE LEGION ENGINE (Core API)
 │   ├── /app
-│   │   ├── /api                # FastAPI Routers (The "Doors")
-│   │   ├── /core               # Config, Versioning, Security (The "Internal Laws")
-│   │   ├── /database           # DB Session management (The "Connection")
-│   │   ├── /logic              # LLM Orchestration & Sentry (The "Thought Process")
-│   │   ├── /models             # SQLModel Definitions (The "Skeleton")
-│   │   └── /services           # Logic for NSFW gating & Intimacy (The "Rules")
-│   └── main.py                 # Clean entry point
+│   │   ├── /api                # FastAPI Routers (Chat, Map, Souls, Ads, WebSocket)
+│   │   ├── /core               # Laws: Config, Caching, Logging, Rate Limiting
+│   │   ├── /database           # Infrastructure: Session & Connection management
+│   │   ├── /logic              # Intelligence: Brain (LLM), LocationManager, TimeManager
+│   │   ├── /models             # Schema: SQLModel / Pydantic definitions
+│   │   ├── /services           # Logic: ContextAssembler, Narrator, EnergySystem
+│   │   └── /middleware         # Performance & Security wrappers
+│   ├── main.py                 # Engine entry point
+│   ├── dependencies.py         # Auth & Shared dependencies
+│   └── websocket.py            # Real-time event gateway
 │
-├── /frontend                   # THE INTERFACE (Flutter Project)
-│   ├── /lib                    # DART SOURCE (The Heart)
-│   │   ├── /models             # Data classes (Soul, User, Relationship)
-│   │   ├── /services           # API Clients (The Handshake)
-│   │   ├── /providers          # State Management (Riverpod/Provider)
-│   │   ├── /screens            # App Screens (Explore, Map, Chat)
-│   │   ├── /widgets            # UI Components (SoulCards, Bubbles)
-│   │   └── main.dart           # Flutter Entry Point
-│   ├── /assets                 # App-specific images/fonts
-│   └── pubspec.yaml            # Flutter Dependencies
+├── /frontend                   # THE INTERFACE (Flutter Source)
+│   ├── /lib                    # DART SOURCE
+│   │   ├── /models             # Data mapping (LinkState, User, Persona)
+│   │   ├── /services           # API & WebSocket clients
+│   │   ├── /providers          # Live state management
+│   │   ├── /screens            # Visual sectors (Apartment, Map, Chat)
+│   │   └── /widgets            # Reusable UI components (Glassmorphism)
+│   ├── /assets                 # Static UI assets (icons, splash)
+│   └── pubspec.yaml            # Project Identity & Dependencies
 │
-├── /assets                     # SHARED STATIC RESOURCES
-│   ├── /souls                  # Processed portraits (Named by soul_id)
-│   └── /map                    # Link City assets
+├── /assets                     # EXTERNAL STATIC CONTENT (Volume Mounted)
+│   ├── /souls                  # Portraits & Thumbnails
+│   └── /map                    # Ambient tracks & District visuals
 │
-├── .env                        # Local secrets
-├── .gitignore                  # Ignores .env and _dev/
-├── requirements.txt            # Python Dependencies
-└── version.py                  # Identity
-
-Potential improvements:
-
-/logic
-├── /memory        # memory injection / summarization
-├── /personality   # tone, tier modulation
-└── /world         # location awareness, ambient context
-
+├── .env                        # Local Environmental Secrets
+├── .gitignore                  # Development Ignorance
+├── requirements.txt            # Python Environment Locked
+└── version.py                  # Single Source of Truth for ID & Build

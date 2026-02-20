@@ -60,6 +60,7 @@ async def get_my_profile(
     profile_data = UserProfile.model_validate(user).model_dump(mode='json')
     
     cache_service.set(cache_key, profile_data, ttl=600) # 10 minute profile cache
+    return profile_data
 
 
 @router.get("/me/personas")

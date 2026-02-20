@@ -1,0 +1,38 @@
+================================================================================
+SESSION LOG | 2026-02-20 | v1.5.6 "NORMANDY-SR2" - THE HARDENING MILESTONE
+================================================================================
+DATE:      2026-02-20
+ARCHITECT: LEGION ENGINE [GEMINI]
+GOAL:      Eliminate functional bugs & secure the core for Alpha.
+================================================================================
+
+[ 🔴 CRITICAL REPAIRS ]
+--------------------------------------------------------------------------------
+- [BRAIN]: Consolidated stability decay into brain.py for atomic commits.
+- [LOCATION]: Fixed NameError and missing commit() in LocationManager.
+- [TIME]: Standardized all time-bounds to UTC; fixed legacy query mismatch.
+- [CONTEXT]: Added null-safety and injected speech_profile/consent notes.
+- [NARRATOR]: Implemented lazy Groq client and fixed timezone drift.
+- [USERS]: Fixed missing return statement in get_my_profile.
+
+[ 🔐 SECURITY & PRIVACY ]
+--------------------------------------------------------------------------------
+- [WS]: Hardened handshake; moved JWT from query params to initial message.
+- [AUTH]: Switched cache keys to SHA256 hashes to prevent ID collision spoofing.
+- [GATES]: Enforced server-side age-gating for NSFW content in ContextAssembler.
+- [ADS]: Validated user_id ownership in verify-reward endpoint (anti-cheat).
+- [PII]: Disabled Sentry default PII sending; reduced sampling to 10%.
+
+[ 🧬 INFRASTRUCTURE & REFINEMENT ]
+--------------------------------------------------------------------------------
+- [ROUTINES]: Overhauled LocationResolver for Routine v2 (nested templates).
+- [WS]: Implemented FIFO connection eviction + dead metadata pruning.
+- [CACHE]: Added MAX_KEYS limit (1000) and LRU-pruning to memory fallback.
+- [SYNC]: Aligned intimacy tiers across system (3-tier: Stranger/Trusted/Linked).
+- [VERSION]: Synced frontend and backend to v1.5.6.
+
+[ STATUS ]
+--------------------------------------------------------------------------------
+✅ NORMANDY-SR2 COMPLETE - Core is hardened, secure, and world-aligned.
+🧪 VERIFICATION ACTIVE - Final manual testing before v1.5.7 bump.
+================================================================================

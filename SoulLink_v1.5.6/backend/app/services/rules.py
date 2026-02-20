@@ -4,11 +4,9 @@ from backend.app.models.location import Location
 class Gatekeeper:
     @staticmethod
     def get_current_tier(score: int) -> str:
-        """Standardizes the Intimacy Ladder."""
+        """Standardizes the Intimacy Ladder (v1.5.6 aligned)."""
         if score >= 86: return "SOUL_LINKED"
-        if score >= 71: return "FRIENDSHIP"
         if score >= 41: return "TRUSTED"
-        if score >= 21: return "ACQUAINTANCE"
         return "STRANGER"
 
     @staticmethod

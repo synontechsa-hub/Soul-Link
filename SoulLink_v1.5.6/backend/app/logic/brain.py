@@ -1,11 +1,11 @@
 # /backend/app/logic/brain.py
 # v1.5.6 Normandy SR-2 Brain Logic
 
-from sqlmodel import Session, select
-from groq import Groq
-from datetime import datetime
+import logging
+from sqlmodel import select
+from datetime import datetime, timezone
 from backend.app.core.config import settings
-from backend.app.models.soul import Soul, SoulPillar, SoulState
+from backend.app.models.soul import Soul, SoulPillar
 from backend.app.models.user import User
 from backend.app.models.link_state import LinkState
 from backend.app.models.user_persona import UserPersona
@@ -17,12 +17,20 @@ from backend.app.services.identity import IdentityService
 from backend.app.services.context_assembler import ContextAssembler
 from sqlalchemy.ext.asyncio import AsyncSession
 
-# "So, Brain, what are we gonna do tonight?"
-client = Groq(api_key=settings.groq_api_key)
+logger = logging.getLogger("LegionBrain")
 
 class LegionBrain:
-    def __init__(self, engine):
-        self.engine = engine
+    def __init__(self, session: AsyncSession):
+        self.session = session
+        self._client = None
+
+    @property
+    def client(self):
+        """Lazy-loaded Groq client."""
+        if self._client is None:
+            from groq import Groq
+            self._client = Groq(api_key=settings.groq_api_key)
+        return self._client
 
     async def _get_context(self, user_id: str, soul_id: str, session: AsyncSession):
         soul = await session.get(Soul, soul_id)
@@ -103,13 +111,9 @@ class LegionBrain:
             world_state=world_state_injection
         )
 
-        # 🔍 CONSOLE LOGGING
-        print("\n" + "="*50)
-        print(f"🧠 PROMPT ASSEMBLY (v1.5.6): {soul.name}")
-        print(f"🎭 Persona: {persona.screen_name}")
-        print("-"*50)
-        print(full_system_prompt)
-        print("="*50 + "\n")
+        # 🔍 LOGGING (v1.5.6 Hardening: replaced print with logger)
+        logger.debug(f"🧠 PROMPT ASSEMBLY: {soul.name} | Persona: {persona.screen_name}")
+        logger.debug(f"\nPrompt: {full_system_prompt}")
 
         # 4. INFERENCE
         messages = [{"role": "system", "content": full_system_prompt}]
@@ -122,7 +126,7 @@ class LegionBrain:
             # Keep system + genesis + last 10
             messages = [messages[0]] + messages[-11:]
 
-        chat_completion = client.chat.completions.create(
+        chat_completion = self.client.chat.completions.create(
             messages=messages,
             model="llama-3.3-70b-versatile",
             temperature=0.8,
@@ -145,12 +149,16 @@ class LegionBrain:
         session.add(conv_assistant)
         
         # Update LinkState
-        link_state.last_interaction = datetime.utcnow()
+        link_state.last_interaction = datetime.now(timezone.utc)
         link_state.total_messages_sent = (getattr(link_state, 'total_messages_sent', 0) or 0) + 1
+        
+        # Normandy-SR2 Fix: Perform stability decay inside the brain for atomic commit
+        link_state.signal_stability = max(0.0, link_state.signal_stability - settings.ad_stability_decay_rate)
+        
         session.add(link_state)
         
         # Update Persona Last Used
-        persona.last_used = datetime.utcnow()
+        persona.last_used = datetime.now(timezone.utc)
         session.add(persona)
         
         try:

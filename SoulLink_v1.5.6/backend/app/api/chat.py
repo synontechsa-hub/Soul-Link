@@ -48,7 +48,7 @@ async def send_message(
     request: Request = None
 ):
     logger.info(f"Chat request from user={user.user_id} to soul={chat_request.soul_id}")
-    brain = LegionBrain(session.bind)
+    brain = LegionBrain(session)
     
     # 1. FETCH LINK STATE (The Mirror)
     # Replaces old Relationship + UserSoulState logic
@@ -76,8 +76,12 @@ async def send_message(
     if link.signal_stability <= 0:
         raise HTTPException(status_code=402, detail="Signal lost. Restore stability to continue.")
         
-    # TODO: Energy System integration (kept simple for this stage)
-    # ...
+    # v1.5.6 Normandy-SR2 Fix: Energy System integration
+    from backend.app.services.energy_system import EnergySystem
+    is_fast_mode = await EnergySystem.check_and_deduct_energy(user, session)
+    if not is_fast_mode:
+        # In a real app, we'd handle slow-mode gating here. For now, we report it.
+        logger.warning(f"User {user.user_id} is in SLOW MODE (Energy Depleted)")
 
     # 3. IDENTIFY PERSONA
     persona = await PersonaService.get_active_persona(session, user.user_id)
@@ -131,10 +135,7 @@ async def send_message(
             world_state_injection=world_injection
         )
         
-        # Stability Decay
-        link.signal_stability = max(0.0, link.signal_stability - settings.ad_stability_decay_rate)
-        
-        # 6. RETURN
+        # 6. RETURN (Stability decay moved into brain.py for atomic commit)
         return ChatResponse(
             soul_id=chat_request.soul_id,
             response=response_text,

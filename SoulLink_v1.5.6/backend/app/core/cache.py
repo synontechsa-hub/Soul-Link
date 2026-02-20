@@ -77,6 +77,15 @@ class CacheService:
                 logger.error(f"CacheService (Redis) Set Error: {e}")
 
         # 2. Set in Memory
+        # Normandy-SR2 Fix: Pruning logic to prevent memory blowup
+        MAX_KEYS = 1000
+        if len(self._memory_cache) >= MAX_KEYS:
+            # Prune 10% oldest keys (arbitrary but safe)
+            keys_to_prune = list(self._memory_cache.keys())[:100]
+            for k in keys_to_prune:
+                del self._memory_cache[k]
+            logger.warning(f"CacheService: Pruned 100 old keys (Limit: {MAX_KEYS})")
+
         self._memory_cache[key] = {
             "value": value,
             "expiry": time.time() + ttl

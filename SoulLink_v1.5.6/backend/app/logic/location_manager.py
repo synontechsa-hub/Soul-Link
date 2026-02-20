@@ -32,7 +32,7 @@ class LocationManager:
 
         # Rules
         if not link.is_architect:
-            if rel.intimacy_score < loc.min_intimacy:
+            if link.intimacy_score < loc.min_intimacy:
                 return False, f"Requires {loc.min_intimacy} intimacy."
 
         return True, "Eligible."
@@ -56,18 +56,13 @@ class LocationManager:
         )
         link = link_result.scalars().first()
 
-        # Fetch Global State
-        state = await self.session.get(SoulState, soul_id)
-
         try:
             # 1. Update User Context (manual override - Priority 1)
-            # This ensures the move is private and won't affect other users.
             link.current_location = location_id
             self.session.add(link)
             
-            # 2. DO NOT update Global State (Priority 3) for player-led moves.
-            # Global state updates are reserved for world-level events or Architect edits.
-            # (Deleted: LocationResolver.update_global_location call)
+            # 2. COMMIT the change
+            await self.session.commit()
             
             # 3. Cache Invalidation: Global world state is now stale
             cache_service.delete_pattern("world:state:*")
@@ -88,4 +83,5 @@ class LocationManager:
             
             return True, f"Synchronized. Welcome to {loc.display_name}."
         except Exception as e:
+            await self.session.rollback()
             return False, f"Teleportation Error: {str(e)}"

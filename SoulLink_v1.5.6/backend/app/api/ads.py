@@ -89,12 +89,18 @@ async def get_ad_config(
 @router.post("/ads/verify-reward")
 async def verify_ad_reward(
     payload: SSVRewardRequest,
+    user: User = Depends(get_current_user), # Normandy-SR2 Fix: Enforcement
     session: AsyncSession = Depends(get_async_session)
 ):
     """
     Server-Side Verification (SSV) endpoint for AppLovin.
     Validates the reward and updates the user's LinkState(s).
     """
+    # Normandy-SR2 Fix: Ensure the user being rewarded is the one who watched the ad
+    if payload.user_id != user.user_id:
+        logger.warning(f"Spoofing attempt detected: {user.user_id} tried to claim reward for {payload.user_id}")
+        raise HTTPException(status_code=403, detail="Reward identity mismatch.")
+
     logger.info(f"SSV Callback: user={payload.user_id} soul={payload.soul_id} type={payload.reward_type}")
 
     # --- SIGNATURE VALIDATION ---

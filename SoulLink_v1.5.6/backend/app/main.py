@@ -29,12 +29,12 @@ import sentry_sdk
 if settings.sentry_dsn:
     sentry_sdk.init(
         dsn=settings.sentry_dsn,
-        traces_sample_rate=1.0, # Capture 100% of transactions for development
-        send_default_pii=True,
+        traces_sample_rate=0.1, # Normandy-SR2 Fix: Reduced from 1.0 for better performance
+        send_default_pii=False, # Normandy-SR2 Fix: Disabled PII data collection
         environment=settings.environment,
         release=f"{APP_NAME}@{VERSION_SHORT}"
     )
-    logger.info("✅ Sentry Integration: Active")
+    logger.info("✅ Sentry Integration: Active (Privacy Hardened)")
 else:
     logger.warning("[WARN] Sentry DSN not set - Error tracking disabled")
 
