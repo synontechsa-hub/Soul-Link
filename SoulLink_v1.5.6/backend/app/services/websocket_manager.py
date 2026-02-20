@@ -39,7 +39,7 @@ class WebSocketManager:
             websocket: The WebSocket connection
             user_id: Authenticated user ID
         """
-        await websocket.accept()
+        # Note: websocket.accept() is handled by the calling API endpoint
         
         if user_id in self._connections:
             if len(self._connections[user_id]) >= self.MAX_CONNECTIONS_PER_USER:

@@ -178,7 +178,7 @@ class TimeManager:
         
         # Fetch Routines (Lightweight)
         pillar_result = await self.session.execute(
-            select(SoulPillar).options(load_only(SoulPillar.soul_id, SoulPillar.routines))
+            select(SoulPillar).options(load_only(SoulPillar.soul_id, SoulPillar.routine, SoulPillar.routines))
         )
         pillar_map = {p.soul_id: p for p in pillar_result.scalars().all()}
         
@@ -192,13 +192,21 @@ class TimeManager:
             locations = {}
             
             for soul_id in soul_ids:
-                # Priority 2: Routine
+                # Priority 2: Routine (v1.5.6 Unified routine block has priority)
                 pillar = pillar_map.get(soul_id)
-                if pillar and pillar.routines:
-                    routine_loc = pillar.routines.get(slot.value)
-                    if routine_loc:
-                        locations[soul_id] = routine_loc
-                        continue
+                if pillar:
+                    # Check new routine field first
+                    if pillar.routine:
+                        routine_loc = pillar.routine.get(slot.value)
+                        if routine_loc:
+                            locations[soul_id] = routine_loc
+                            continue
+                    # Fallback to legacy routines field
+                    if pillar.routines:
+                        routine_loc = pillar.routines.get(slot.value)
+                        if routine_loc:
+                            locations[soul_id] = routine_loc
+                            continue
                 
                 # Priority 3: Global State
                 state = state_map.get(soul_id)

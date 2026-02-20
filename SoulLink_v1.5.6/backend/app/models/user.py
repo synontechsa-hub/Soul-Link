@@ -19,7 +19,7 @@ class User(SQLModel, table=True):
     # This is what the Souls will use to "know" you.
     age: Optional[int] = Field(default=None)
     gender: Optional[str] = Field(default=None, max_length=20)
-    bio: Optional[str] = Field(default=None, max_length=500)
+    bio: Optional[str] = Field(default=None, max_length=1000)
     
     # 💎 THE ECONOMY
     account_tier: str = Field(default="free", max_length=20)

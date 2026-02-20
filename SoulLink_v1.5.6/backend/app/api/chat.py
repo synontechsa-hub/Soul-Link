@@ -61,13 +61,22 @@ async def send_message(
     link = link_result.scalars().first()
 
     if not link:
-        # Auto-create LinkState if missing (Migration fallback or new user)
-        # In production, we might want a dedicated 'link' endpoint, but auto-create is smoother.
+        # Auto-create LinkState if missing
+        ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
+        is_architect = user.user_id == ARCHITECT_UUID
+        
+        # Get soul state for initial location
+        from backend.app.models.soul import SoulState
+        state = await session.get(SoulState, chat_request.soul_id)
+        
         link = LinkState(
             user_id=user.user_id, 
             soul_id=chat_request.soul_id,
+            current_location=state.current_location_id if state else None,
             signal_stability=100.0,
-            intimacy_tier="STRANGER"
+            intimacy_tier="SOUL_LINKED" if is_architect else "STRANGER",
+            is_architect=is_architect,
+            unlocked_nsfw=is_architect
         )
         session.add(link)
         await session.flush()

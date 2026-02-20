@@ -67,7 +67,8 @@ async def get_my_profile(
 @limiter.limit(RateLimits.READ_ONLY)
 async def get_my_personas(
     user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_async_session)
+    session: AsyncSession = Depends(get_async_session),
+    request: Request = None
 ):
     """List all personas for the current user."""
     from backend.app.models.user_persona import UserPersona
@@ -83,7 +84,8 @@ async def get_my_personas(
 async def activate_persona(
     persona_id: int,
     user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_async_session)
+    session: AsyncSession = Depends(get_async_session),
+    request: Request = None
 ):
     """Switch the active persona for the user."""
     from backend.app.services.persona_service import PersonaService

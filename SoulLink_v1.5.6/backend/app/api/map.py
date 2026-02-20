@@ -7,7 +7,7 @@ from sqlalchemy import select, text
 from backend.app.database.session import get_async_session
 from backend.app.logic.location_manager import LocationManager
 from backend.app.models.location import Location
-from backend.app.models.relationship import SoulRelationship
+from backend.app.models.link_state import LinkState
 from backend.app.models.user import User
 from backend.app.models.soul import SoulState
 from backend.app.api.dependencies import get_current_user, ArchitectOnly

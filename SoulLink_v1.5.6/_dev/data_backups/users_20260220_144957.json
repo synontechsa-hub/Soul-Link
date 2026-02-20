@@ -1,0 +1,27 @@
+[
+  {
+    "user_id": "14dd612d-744e-487d-b2d5-cc47732183d3",
+    "lifetime_tokens_used": 0,
+    "subscription_end": null,
+    "display_name": "The Architect",
+    "last_ad_at": null,
+    "total_ads_watched": 0,
+    "age": null,
+    "last_energy_refill": "2026-02-18T11:29:58.858513",
+    "ad_cooldown_until": null,
+    "gender": null,
+    "current_location": "linkside_apartment",
+    "stability_overdrive_until": null,
+    "bio": null,
+    "current_time_slot": "morning",
+    "stripe_customer_id": null,
+    "account_tier": "architect",
+    "subscription_status": "active",
+    "stripe_subscription_id": null,
+    "gems": 99999,
+    "subscription_start": "2026-02-18T11:29:58.858427",
+    "created_at": "2026-02-18T11:29:58.858476",
+    "username": "the_architect",
+    "energy": 9999
+  }
+]

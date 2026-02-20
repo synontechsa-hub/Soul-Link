@@ -78,16 +78,27 @@ async def explore_souls(
         state_map = {state.soul_id: state for state in state_result.scalars().all()}
 
         output = []
+        ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
+        ARCHITECT_SOUL_ID = "the_architect_01"
+        is_global_architect = user.user_id == ARCHITECT_UUID
+
         for s in all_souls:
+            # Lore Filter: Architect is not a discoverable character
+            if s.soul_id == ARCHITECT_SOUL_ID:
+                continue
+
             link = linked_dict.get(s.soul_id)
             state = state_map.get(s.soul_id)
+
+            # Architect "See All" Logic
+            is_linked = link is not None or is_global_architect
 
             soul_data = {
                 "id": s.soul_id,
                 "name": s.name,
-                "summary": s.summary[:100] + "..." if len(s.summary) > 100 else s.summary,
+                "summary": (s.summary or "")[:100] + "..." if len(s.summary or "") > 100 else (s.summary or ""),
                 "archetype": s.archetype or "Unknown",
-                "is_linked": link is not None,
+                "is_linked": is_linked,
                 "portrait_url": s.portrait_url,
             }
 
@@ -97,6 +108,11 @@ async def explore_souls(
                 soul_data["current_location"] = link.current_location or (
                     state.current_location_id if state else "Unknown"
                 )
+            elif is_global_architect:
+                # Ghost-Link for Architect (Read-only view without DB record)
+                soul_data["intimacy_tier"] = "FRIEND" # Default high access
+                soul_data["signal_stability"] = 100.0
+                soul_data["current_location"] = state.current_location_id if state else "Unknown"
 
             output.append(soul_data)
 
@@ -166,10 +182,11 @@ async def link_with_soul(
             "signal_stability": existing.signal_stability
         }
 
-    # Determine architect status from pillar dev_config
+    # Determine architect status
+    ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
     dev_cfg = pillar.meta_data.get("dev_config", {}) if pillar.meta_data else {}
     allowed_ids = dev_cfg.get("architect_ids", [])
-    is_architect = user.user_id in allowed_ids
+    is_architect = (user.user_id == ARCHITECT_UUID) or (user.user_id in allowed_ids)
 
     # Create the LinkState (single source of truth)
     new_link = LinkState(
@@ -212,8 +229,25 @@ async def get_relationship_status(
         )
     )
     link = link_result.scalars().first()
+    ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
 
     if not link:
+        if user.user_id == ARCHITECT_UUID:
+            # Virtual Relationship for God Mode
+            state = await session.get(SoulState, soul_id)
+            return {
+                "soul_id": soul_id,
+                "intimacy_score": 5000,
+                "intimacy_tier": "SOUL_LINKED",
+                "signal_stability": 100.0,
+                "mask_integrity": 100.0,
+                "current_location": state.current_location_id if state else "Unknown",
+                "current_mood": "Neutral",
+                "is_architect": True,
+                "nsfw_unlocked": True,
+                "total_messages_sent": 0,
+                "flags": {}
+            }
         raise HTTPException(404, detail=f"No link with soul '{soul_id}'. Link with this soul first.")
 
     state = await session.get(SoulState, soul_id)
@@ -251,8 +285,17 @@ async def get_soul_memories(
         )
     )
     link = link_result.scalars().first()
+    ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
 
     if not link:
+        if user.user_id == ARCHITECT_UUID:
+             return {
+                "soul_id": soul_id,
+                "summary": "The Architect sees all memories, but this link is not yet persisted.",
+                "facts": {},
+                "milestones": [],
+                "total_messages": 0
+            }
         raise HTTPException(404, detail=f"No link with soul '{soul_id}'.")
 
     # Fetch memory

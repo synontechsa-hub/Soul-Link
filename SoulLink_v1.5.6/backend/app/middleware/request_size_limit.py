@@ -1,18 +1,18 @@
 # /backend/app/middleware/request_size_limit.py
-# /version.py v1.5.4 Arise
+# v1.5.6 Normandy-SR2 Fix
 # "Size matters not." - Yoda (but actually, it does for APIs)
 
-from fastapi import Request, HTTPException
+from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse
-import logging
+from backend.app.core.logging_config import get_logger
 
-logger = logging.getLogger("RequestSizeLimit")
+logger = get_logger("Middleware.SizeLimit")
 
 class RequestSizeLimitMiddleware(BaseHTTPMiddleware):
     """
     Middleware to limit the size of incoming requests.
-    Prevents large payloads from overwhelming the server.
+    Prevents large payloads from Scrambling the neural link.
     """
     
     def __init__(self, app, max_request_size: int = 1024 * 1024):  # 1MB default
@@ -27,18 +27,17 @@ class RequestSizeLimitMiddleware(BaseHTTPMiddleware):
             content_length = int(content_length)
             if content_length > self.max_request_size:
                 logger.warning(
-                    f"⚠️ Request too large: {content_length} bytes from {request.client.host}"
+                    f"⚠️ Request too large: {content_length} bytes from {request.client.host if request.client else 'unknown'}"
                 )
                 return JSONResponse(
                     status_code=413,
                     content={
                         "status": "error",
-                        "message": "Request payload too large",
+                        "message": "Payload too large",
                         "max_size_bytes": self.max_request_size,
                         "your_size_bytes": content_length,
-                        "hint": "The Legion Engine cannot process requests larger than 1MB."
+                        "hint": "The Legion Engine cannot process neural bursts larger than the configured limit."
                     }
                 )
         
-        response = await call_next(request)
-        return response
+        return await call_next(request)

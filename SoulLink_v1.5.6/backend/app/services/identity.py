@@ -23,7 +23,8 @@ class IdentityService:
     @staticmethod
     def get_architect_title(pillar: SoulPillar) -> str:
         """Fetches the preferred title for the Architect."""
-        dev_cfg = pillar.meta_data.get("dev_config", {})
+        meta = pillar.meta_data or {}
+        dev_cfg = meta.get("dev_config", {})
         return dev_cfg.get("title") or "The Architect"
 
     @staticmethod

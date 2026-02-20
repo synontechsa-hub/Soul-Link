@@ -101,15 +101,19 @@ class LegionBrain:
         # Note: IdentityService might need refactoring too, but for now we pass what we have.
         
         # 3. BUILD PROMPT (Delegated to ContextAssembler)
-        full_system_prompt = ContextAssembler.build_system_prompt(
-            soul=soul,
-            pillar=pillar,
-            persona=persona,
-            link_state=link_state,
-            location=location,
-            is_architect=is_architect,
-            world_state=world_state_injection
-        )
+        try:
+            full_system_prompt = ContextAssembler.build_system_prompt(
+                soul=soul,
+                pillar=pillar,
+                persona=persona,
+                link_state=link_state,
+                location=location,
+                is_architect=is_architect,
+                world_state=world_state_injection
+            )
+        except Exception as e:
+            logger.error(f"❌ PROMPT ASSEMBLY FAILED: {e}")
+            raise Exception(f"Failed to assemble neural context: {str(e)}")
 
         # 🔍 LOGGING (v1.5.6 Hardening: replaced print with logger)
         logger.debug(f"🧠 PROMPT ASSEMBLY: {soul.name} | Persona: {persona.screen_name}")
@@ -153,7 +157,8 @@ class LegionBrain:
         link_state.total_messages_sent = (getattr(link_state, 'total_messages_sent', 0) or 0) + 1
         
         # Normandy-SR2 Fix: Perform stability decay inside the brain for atomic commit
-        link_state.signal_stability = max(0.0, link_state.signal_stability - settings.ad_stability_decay_rate)
+        decay_rate = getattr(settings, 'ad_stability_decay_rate', 2.0)
+        link_state.signal_stability = max(0.0, (link_state.signal_stability or 100.0) - decay_rate)
         
         session.add(link_state)
         

@@ -32,34 +32,23 @@ async def websocket_endpoint(websocket: WebSocket):
     client_ip = websocket.client.host if websocket.client else "unknown"
     user_id = None
 
-    # 1. AUTH HANDSHAKE (Must be the first message)
-    # We give the client 10 seconds to send the token or we DROP.
-    try:
+    # 1. AUTH HANDSHAKE (Supports Query Param fallback and Message Handshake)
+    token = websocket.query_params.get("token")
+    
+    if token:
+        logger.info(f"WebSocket using query-param auth: {client_ip}")
+    else:
+        # If no token in query, we wait for the message handshake
+        logger.info(f"WebSocket waiting for handshake message: {client_ip}")
         try:
             handshake_data = await asyncio.wait_for(websocket.receive_text(), timeout=10.0)
             payload = json.loads(handshake_data)
-            if payload.get("type") != "handshake" or "token" not in payload:
+            if payload.get("type") == "handshake" and "token" in payload:
+                token = payload["token"]
+            else:
+                logger.warning(f"Invalid WebSocket handshake from {client_ip}")
                 await websocket.close(code=1008, reason="Handshake Required")
                 return
-            
-            token = payload["token"]
-            
-            if not supabase:
-                await websocket.close(code=1011, reason="Server configuration error")
-                return
-
-            # Run blocking Supabase call in thread pool
-            loop = asyncio.get_running_loop()
-            user_response = await loop.run_in_executor(None, supabase.auth.get_user, token)
-
-            if not user_response or not user_response.user:
-                logger.warning(f"WebSocket auth failed from {client_ip}")
-                await websocket.close(code=1008, reason="Invalid authentication token")
-                return
-
-            user_id = user_response.user.id
-            logger.info(f"WebSocket auth success: user={user_id} ip={client_ip}")
-
         except asyncio.TimeoutError:
             logger.warning(f"WebSocket handshake timeout from {client_ip}")
             await websocket.close(code=1008, reason="Handshake Timeout")
@@ -68,8 +57,27 @@ async def websocket_endpoint(websocket: WebSocket):
             logger.error(f"WebSocket handshake error: {e}")
             await websocket.close(code=1011, reason="Handshake Failed")
             return
+
+    # Verify Token
+    if not supabase:
+        await websocket.close(code=1011, reason="Server configuration error")
+        return
+
+    try:
+        # Run blocking Supabase call in thread pool
+        loop = asyncio.get_running_loop()
+        user_response = await loop.run_in_executor(None, supabase.auth.get_user, token)
+
+        if not user_response or not user_response.user:
+            logger.warning(f"WebSocket auth failed from {client_ip}")
+            await websocket.close(code=1008, reason="Invalid authentication token")
+            return
+
+        user_id = user_response.user.id
+        logger.info(f"WebSocket auth success: user={user_id} ip={client_ip}")
     except Exception as e:
-        logger.error(f"Outer WebSocket Error: {e}")
+        logger.error(f"Supabase Auth Error in WebSocket: {e}")
+        await websocket.close(code=1008, reason="Authentication failed")
         return
 
     # 2. Connect and register

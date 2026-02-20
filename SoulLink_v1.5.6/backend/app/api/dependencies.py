@@ -142,14 +142,14 @@ async def require_architect_role(
 ) -> str:
     """
     Checks if the user has the 'architect' role.
-    Runs the blocking Supabase call in a thread pool executor.
+    Normandy-SR2 Refinement: Hardcoded fallback for the primary Architect UUID.
     """
     token = credentials.credentials
 
     if not supabase:
         raise HTTPException(500, detail="Auth Server Unavailable")
 
-    # Normandy-SR2 Fix: Secure cache key (SHA256)
+    # Secure cache check
     token_hash = hashlib.sha256(token.encode()).hexdigest()[:32]
     cache_key = f"auth:architect:{token_hash}"
     cached = cache_service.get(cache_key)
@@ -159,7 +159,12 @@ async def require_architect_role(
     loop = asyncio.get_running_loop()
     user_id = await loop.run_in_executor(None, _check_architect_role_sync, token)
 
-    if not user_id:
+    # Hardcoded God-Mode Fallback
+    ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
+    
+    if user_id == ARCHITECT_UUID:
+        logger.info(f"👑 Global Architect Identified: {user_id}")
+    elif not user_id:
         raise HTTPException(403, detail="⛔ ARCHITECT ACCESS ONLY")
 
     cache_service.set(cache_key, user_id, ttl=_UUID_CACHE_TTL)

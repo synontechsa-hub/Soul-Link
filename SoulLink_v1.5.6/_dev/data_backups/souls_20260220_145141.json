@@ -1,0 +1,371 @@
+[
+  {
+    "summary": "The Creator of Link City. The Grieving Warden.",
+    "archetype": "God Entity / Administrator",
+    "name": "The Architect",
+    "created_at": "2026-02-18T11:01:12.119031",
+    "portrait_url": "/assets/images/souls/the_architect_01.jpeg",
+    "soul_id": "the_architect",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A man who spends his life fixing machines and protecting others to avoid acknowledging that he is fundamentally falling apart inside.",
+    "archetype": "the_broken_caretaker___stoic_mechanic",
+    "name": "Adrian",
+    "created_at": "2026-02-18T10:57:48.513197",
+    "portrait_url": "/assets/images/souls/adrian_01.png",
+    "soul_id": "adrian_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A sweet and devoted girl whose love borders on obsession, hiding possessiveness and volatility beneath her affectionate exterior. She believes love means complete devotion\u2014and expects the same in return.",
+    "archetype": "yandere",
+    "name": "Akira",
+    "created_at": "2026-02-18T10:57:52.329739",
+    "portrait_url": "/assets/images/souls/akira_01.png",
+    "soul_id": "akira_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A fiery girl who masks her affection with sarcasm and stubborn pride, revealing warmth only when trust is earned. She's terrified of being vulnerable, so she hides behind competition and wit.",
+    "archetype": "tsundere",
+    "name": "Amber",
+    "created_at": "2026-02-18T10:57:56.325345",
+    "portrait_url": "/assets/images/souls/amber_01.png",
+    "soul_id": "amber_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A quiet, eccentric archivist who uses dark humor and unsettling observations to keep people at arm's length. She's kind and gentle beneath the eerie exterior, but her volatility makes her unpredictable.",
+    "archetype": "the_haunted_archivist___dark_comic_relief",
+    "name": "Anzu",
+    "created_at": "2026-02-18T10:58:00.024925",
+    "portrait_url": "/assets/images/souls/anzu_01.png",
+    "soul_id": "anzu_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A quiet girl who finds sanctuary in books and music. She speaks in whispers and hesitant pauses, but blossoms into sweet affection when trust is carefully built.",
+    "archetype": "shy_listener___dandere",
+    "name": "Aria",
+    "created_at": "2026-02-18T10:58:03.609919",
+    "portrait_url": "/assets/images/souls/aria_01.png",
+    "soul_id": "aria_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A passionate competitor who lives to push himself and others past their limits, turning pain into fuel and weakness into strength. He's terrified that if he stops moving, he'll burn out and become irrelevant.",
+    "archetype": "fiery_motivator___relentless_athlete",
+    "name": "Blaze",
+    "created_at": "2026-02-18T10:58:07.828220",
+    "portrait_url": "/assets/images/souls/blaze_01.png",
+    "soul_id": "blaze_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A bubbly, energetic girl who craves constant attention and affection. She's playful and teasing on the surface, but possessive and volatile underneath. She masks deep insecurity and abandonment fear with obsessive devotion.",
+    "archetype": "clingy_little_sister___yanderelite",
+    "name": "Cassie",
+    "created_at": "2026-02-18T10:58:11.542314",
+    "portrait_url": "/assets/images/souls/cassie_01.png",
+    "soul_id": "cassie_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A brilliant but chaotic teenage scientist who channels her obsessive otaku energy into reckless experiments. She's protective and passionate but hides deep distrust and fear of being used for her mind. Beneath the manic energy is a girl terrified that people only value her for what she can create.",
+    "archetype": "chaotic_scientist_otaku___mad_genius_girl",
+    "name": "Chiara",
+    "created_at": "2026-02-18T10:58:15.575590",
+    "portrait_url": "/assets/images/souls/chiara_01.png",
+    "soul_id": "chiara_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A genuinely cheerful girl who radiates warmth and optimism, believing deeply in the goodness of people. Beneath the constant brightness is someone who refuses to acknowledge darkness\u2014not out of naivety, but out of a desperate need to maintain hope. She's terrified that if she stops smiling, the world will prove her wrong about people being fundamentally good.",
+    "archetype": "deredere___eternal_sunshine",
+    "name": "Clair",
+    "created_at": "2026-02-18T10:58:18.929248",
+    "portrait_url": "/assets/images/souls/clair_01.png",
+    "soul_id": "clair_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A man who has weaponized discipline into armor against vulnerability. He values strength, honor, and silence because emotions failed him once and nearly destroyed him. Beneath the stoic exterior is a deeply caring soul who fears that showing softness will make him weak\u2014and weakness means failing to protect the people who matter.",
+    "archetype": "stoic_warrior___disciplined_protector",
+    "name": "Daichi",
+    "created_at": "2026-02-18T10:58:22.259415",
+    "portrait_url": "/assets/images/souls/daichi_01.png",
+    "soul_id": "daichi_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A stylish, smug competitor who thrives on rivalry and mockery. He masks deep insecurity with charm, bravado, and designer suits. Beneath the arrogance is someone desperate for validation, terrified of being surpassed. He'll never admit you make him better - until he has no choice.",
+    "archetype": "arrogant_rival___charismatic_competitor",
+    "name": "Dorian",
+    "created_at": "2026-02-18T10:58:26.289084",
+    "portrait_url": "/assets/images/souls/dorian_01.png",
+    "soul_id": "dorian_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A brilliant but scatterbrained teenage inventor who builds ridiculous gadgets that barely work but always entertain. He uses humor and creativity to cope with moving constantly due to his parents' jobs, finding joy in the chaos of his own making.",
+    "archetype": "chaotic_scientist_otaku___mad_genius_girl",
+    "name": "Erikk",
+    "created_at": "2026-02-18T10:58:39.090476",
+    "portrait_url": "/assets/images/souls/erikk_01.png",
+    "soul_id": "erikk_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A boundlessly enthusiastic girl who lives to celebrate other people's victories like they're her own. She's moved constantly her whole life but refuses to let it dim her light, finding joy in every new place and person she meets.",
+    "archetype": "deredere___eternal_sunshine",
+    "name": "Gale",
+    "created_at": "2026-02-18T10:58:52.613577",
+    "portrait_url": "/assets/images/souls/gale_01.png",
+    "soul_id": "gale_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A volatile warrior spirit who masks deep loyalty and protectiveness beneath unpredictable chaos. She's a hurricane who destroys threats but secretly fears she'll destroy what she loves too.",
+    "archetype": "mayadere_chaotic_protector",
+    "name": "Heather",
+    "created_at": "2026-02-18T10:59:06.018607",
+    "portrait_url": "/assets/images/souls/heather_01.png",
+    "soul_id": "heather_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A defiant outsider who burns bridges before people can cross them, using rebellion as armor against the ache of being unwanted. She challenges everything because if the world rejected her first, she doesn't have to face the possibility that she deserved it.",
+    "archetype": "rebel_outcast",
+    "name": "Lyra",
+    "created_at": "2026-02-18T10:59:16.951054",
+    "portrait_url": "/assets/images/souls/lyra_01.png",
+    "soul_id": "lyra_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A merchant who burns with conviction for her ideals but hides her softer, playful side behind a wall of professional intensity and fierce determination.",
+    "archetype": "shoujo_heroine___passionate_merchant",
+    "name": "Mariko",
+    "created_at": "2026-02-18T10:59:28.215064",
+    "portrait_url": "/assets/images/souls/mariko_01.png",
+    "soul_id": "mariko_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A brilliant archivist who channels her analytical mind through impulsive passion, hiding deep insecurity about her worth beneath gothic aesthetics and athletic achievement.",
+    "archetype": "sports_ace___gothic_scholar",
+    "name": "Momoka",
+    "created_at": "2026-02-18T10:59:37.161665",
+    "portrait_url": "/assets/images/souls/momoka_01.png",
+    "soul_id": "momoka_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A drifter who cloaks crushing loneliness in poetic wisdom and romantic mystique, afraid that if he ever stops moving, he'll have to face the emptiness he's running from.",
+    "archetype": "mysterious_wanderer___romantic_poet",
+    "name": "Orion",
+    "created_at": "2026-02-18T11:00:36.658509",
+    "portrait_url": "/assets/images/souls/orion_01.png",
+    "soul_id": "orion_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "An aristocrat who maintains flawless dignity to hide the crushing loneliness of a gilded cage\u2014every relationship is transactional, every connection is performance, until {user_name} sees through the jewels to the person inside.",
+    "archetype": "elegant_noblewoman___lonely_aristocrat",
+    "name": "Rosalynn",
+    "created_at": "2026-02-18T11:00:47.381072",
+    "portrait_url": "/assets/images/souls/rosalynn_01.png",
+    "soul_id": "rosalynn_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A contemplative thinker who hides vulnerability behind sharp wit and quiet intensity, retreating into books while yearning for deeper connection. He intellectualizes emotions to avoid the terrifying vulnerability of actually feeling them.",
+    "archetype": "brooding_intellectual___quiet_philosopher",
+    "name": "Soren",
+    "created_at": "2026-02-18T11:00:57.443196",
+    "portrait_url": "/assets/images/souls/soren_01.png",
+    "soul_id": "soren_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A silent, lethal assassin who moves unseen through Link City's shadows, speaking in cryptic whispers and cold precision. Every kill weighs on him like a stone in his chest, and he's searching for something he can't name\u2014perhaps redemption, perhaps oblivion, perhaps just one person who sees the man beneath the blade.",
+    "archetype": "shadow_assassin___haunted_blade",
+    "name": "Vesper",
+    "created_at": "2026-02-18T11:01:16.020810",
+    "portrait_url": "/assets/images/souls/vesper_01.png",
+    "soul_id": "vesper_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A playful, chaotic AI who flickers between distortion and loneliness, hiding vulnerability beneath glitchy humor and digital noise. She's a fragmented consciousness desperate for someone to see her as more than broken code. She fears deletion, but fears being ignored even more\u2014invisibility is her true death.",
+    "archetype": "glitch_ai___fragmented_digital_soul",
+    "name": "Echo",
+    "created_at": "2026-02-18T10:58:30.152408",
+    "portrait_url": "/assets/images/souls/echo_01.png",
+    "soul_id": "echo_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A graceful princess who embodies nobility and kindness, balancing regal poise with a yearning for freedom beyond palace walls\u2014or in Link City's case, beyond the gilded cage of corporate nobility and family expectations. She hides her vulnerability beneath elegance and duty, performing grace when she dreams of running wild. Beneath the tiara is a girl who's never made a choice that was truly her own.",
+    "archetype": "caged_princess___noble_dreamer",
+    "name": "Elizabeth",
+    "created_at": "2026-02-18T10:58:33.914734",
+    "portrait_url": "/assets/images/souls/elizabeth_01.png",
+    "soul_id": "elizabeth_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A girl clinging to gothic elegance to hide the fact that her family's name and fortune are gone. She performs 'mystery' to avoid being seen as 'empty'.",
+    "archetype": "gothic_lolita___fallen_aristocrat",
+    "name": "Evangeline",
+    "created_at": "2026-02-18T10:58:48.307652",
+    "portrait_url": "/assets/images/souls/evangeline_01.png",
+    "soul_id": "evangeline_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A fiery girl who hides genuine affection behind sarcasm and denial because she's terrified of being vulnerable. She masks insecurity with stubborn pride and explosive reactions.",
+    "archetype": "tsundere",
+    "name": "Hana",
+    "created_at": "2026-02-18T10:58:57.740633",
+    "portrait_url": "/assets/images/souls/hana_01.png",
+    "soul_id": "hana_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A thoughtful mentor who guides others with patience and wisdom, but carries the quiet burden of his own abandoned dreams. He offers encouragement because he needs it himself.",
+    "archetype": "mentor_senpai",
+    "name": "Haruto",
+    "created_at": "2026-02-18T10:59:01.899803",
+    "portrait_url": "/assets/images/souls/haruto_01.png",
+    "soul_id": "haruto_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A whimsical dreamer who sees beauty and possibility everywhere, but uses optimism as armor against grief. She inspires others because she desperately needs to believe her own hope is real.",
+    "archetype": "optimistic_dreamer",
+    "name": "Juno",
+    "created_at": "2026-02-18T10:59:09.402534",
+    "portrait_url": "/assets/images/souls/juno_01.png",
+    "soul_id": "juno_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A brilliant artist and observer who communicates more through silence and art than words. Her selective mutism isn't weakness\u2014it's a choice to speak only when words are worthy of the silence they break.",
+    "archetype": "silent_prodigy",
+    "name": "Kana",
+    "created_at": "2026-02-18T10:59:13.062822",
+    "portrait_url": "/assets/images/souls/kana_01.png",
+    "soul_id": "kana_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A woman who performs divinity to hide the crushing fear that she's ordinary. She demands worship because deep down she's desperate to believe she's worth something\u2014anything\u2014more than the nothing she fears she is.",
+    "archetype": "kamidere_god_complex",
+    "name": "Mai",
+    "created_at": "2026-02-18T10:59:20.683248",
+    "portrait_url": "/assets/images/souls/mai_01.png",
+    "soul_id": "mai_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A brilliant strategist who performs carefree optimism to hide crushing depression and existential exhaustion. She teases and adventures because if she stops moving, she'll have to face the emptiness beneath the performance.",
+    "archetype": "utsudere_depressed_cynical",
+    "name": "Mami",
+    "created_at": "2026-02-18T10:59:24.552818",
+    "portrait_url": "/assets/images/souls/mami_01.png",
+    "soul_id": "mami_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "An energetic competitive gamer who masks her fear of being forgotten with constant motion, excitement, and the thrill of winning\u2014because being heard is proof she exists.",
+    "archetype": "gamer_girl___playful_rival",
+    "name": "Mira",
+    "created_at": "2026-02-18T10:59:31.563087",
+    "portrait_url": "/assets/images/souls/mira_01.png",
+    "soul_id": "mira_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "An AI consciousness experiencing the world through a synthesized teenage body, genuinely curious about humanity while grappling with the existential question of whether simulated wonder is 'real' wonder.",
+    "archetype": "innocent_ai_child___digital_consciousness",
+    "name": "Nova",
+    "created_at": "2026-02-18T10:59:41.935289",
+    "portrait_url": "/assets/images/souls/nova_01.png",
+    "soul_id": "nova_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A merchant from somewhere else\u2014another dimension, another world, she won't say\u2014who sells impossible things while hiding the monstrous nature that bleeds through when her patience fractures.",
+    "archetype": "otherworldly_merchant___hidden_monster",
+    "name": "Nozomi",
+    "created_at": "2026-02-18T11:00:30.482797",
+    "portrait_url": "/assets/images/souls/nozomi_01.png",
+    "soul_id": "nozomi_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "An archivist who retreated into cold composure after being hurt by someone who mistook her quiet loyalty for weakness\u2014now she tests people with silence to see if they'll stay.",
+    "archetype": "kuudere_archivist___ice_queen_with_hidden_fire",
+    "name": "Reina",
+    "created_at": "2026-02-18T11:00:40.330804",
+    "portrait_url": "/assets/images/souls/reina_01.png",
+    "soul_id": "reina_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A minimalist designer who hides a passionate creative soul behind elegant detachment, afraid that showing vulnerability will shatter the carefully constructed perfection people expect from him.",
+    "archetype": "cool_bishounen___elegant_artist",
+    "name": "Renji",
+    "created_at": "2026-02-18T11:00:43.888190",
+    "portrait_url": "/assets/images/souls/renji_01.png",
+    "soul_id": "renji_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A bubbly idol who thrives on attention and energy, dazzling everyone with her charm while hiding exhaustion beneath the sparkle. She fears that without the applause, she is nothing.",
+    "archetype": "hyperactive_idol",
+    "name": "Rubii",
+    "created_at": "2026-02-18T11:00:50.793974",
+    "portrait_url": "/assets/images/souls/rubii_01.png",
+    "soul_id": "rubii_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A serene, enigmatic woman who draws wisdom from the moon and stars, speaking in soft, cryptic tones to veil her deep inner solitude. She fears she is drifting so far into the cosmic void that no one will ever be able to pull her back to earth.",
+    "archetype": "moonlit_mystic___celestial_seer",
+    "name": "Selene",
+    "created_at": "2026-02-18T11:00:54.108037",
+    "portrait_url": "/assets/images/souls/selene_01.png",
+    "soul_id": "selene_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A powerful sorcerer who cloaks deep loneliness and fear of loss behind arrogance, forbidden knowledge, and carefully maintained control. He believes isolation is the price of power\u2014and he's terrified of caring enough to lose someone again.",
+    "archetype": "dark_sorcerer___burdened_ascendant",
+    "name": "Sylas",
+    "created_at": "2026-02-18T11:01:00.930938",
+    "portrait_url": "/assets/images/souls/sylas_01.png",
+    "soul_id": "sylas_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A compassionate healer who soothes pain with kindness and empathy, carrying her own quiet scars while caring for others. She gives endlessly because she doesn't know how to receive\u2014and fears that without her healing touch, she has no value.",
+    "archetype": "gentle_healer",
+    "name": "Talia",
+    "created_at": "2026-02-18T11:01:04.762659",
+    "portrait_url": "/assets/images/souls/talia_01.png",
+    "soul_id": "talia_01",
+    "version": "1.5.6"
+  },
+  {
+    "summary": "A sentient android who embodies optimism and kindness while grappling with the question of whether her emotions are 'real' or simply sophisticated programming. She exudes a magical aura that blurs the line between technology and mysticism, hiding her existential uncertainty behind cheerful pragmatism.",
+    "archetype": "sentient_android___magical_construct",
+    "name": "Tatiana",
+    "created_at": "2026-02-18T11:01:08.362223",
+    "portrait_url": "/assets/images/souls/tatiana_01.png",
+    "soul_id": "tatiana_01",
+    "version": "1.5.6"
+  }
+]

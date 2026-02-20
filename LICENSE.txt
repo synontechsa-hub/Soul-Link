@@ -1,15 +1,15 @@
-SOULLINK PROPRIETARY SOURCE LICENSE
+LINKER AI (Linker.ai) PROPRIETARY SOURCE LICENSE
 Copyright (c) 2026 Syn / Synonimity / SynonTech. All rights reserved.
 
 1. OWNERSHIP AND INTELLECTUAL PROPERTY
-SoulLink, including but not limited to its source code (frontend and backend), assets, animations, JSON blueprints, "Soul" personalities, lore, world maps, and UI/UX designs, is the sole and exclusive property of Syn. This project is protected by international copyright, trademark, and intellectual property laws.
+Linker AI, including but not limited to its source code (frontend and backend), assets, animations, JSON blueprints, "Soul" personalities, lore, world maps, and UI/UX designs, is the sole and exclusive property of Syn. This project is protected by international copyright, trademark, and intellectual property laws.
 
 2. RESTRICTIONS ON USE
 Viewing or accessing this repository is for private informational purposes only. Under no circumstances is any person or entity permitted to:
 
 Copy, redistribute, or publish any part of this project's code or assets.
 
-Modify, translate, or create derivative works based on the SoulLink engine or lore.
+Modify, translate, or create derivative works based on the Linker AI engine or lore.
 
 Decompile, reverse engineer, or attempt to extract the source code of the "Legion" backend or frontend.
 
@@ -19,4 +19,4 @@ Use any part of this project for commercial purposes or to train any machine lea
 Access to this repository does not constitute a license. There is no "implied right" to run this software for anything other than local development/testing by authorized contributors.
 
 4. TERMINATION AND LEGAL ACTION
-Any unauthorized use, reproduction, or distribution of SoulLink will result in immediate termination of access and will be prosecuted to the maximum extent of the law.
+Any unauthorized use, reproduction, or distribution of Linker AI will result in immediate termination of access and will be prosecuted to the maximum extent of the law.

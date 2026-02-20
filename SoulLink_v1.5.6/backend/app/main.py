@@ -57,36 +57,10 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.warning(f"Cache Warming Failed: {e}")
 
-    # 2. Schedule Automated Backups
-    async def schedule_backups():
-        while True:
-            try:
-                # Run backup immediately on startup (idempotent checks can be added later if needed)
-                # or simpler: just run it. The service prunes old ones, so it's safe.
-                # For Alpha: Run once on startup, then every 24h.
-                await BackupService.perform_full_backup()
-                
-                # Sleep for 24 hours
-                await asyncio.sleep(86400) 
-            except asyncio.CancelledError:
-                break
-            except Exception as e:
-                logger.error(f"Backup Scheduler Error: {e}")
-                # Retry in 1 hour if failed
-                await asyncio.sleep(3600)
-
-    # Start the background task
-    backup_task = asyncio.create_task(schedule_backups())
-    
     yield
     
     # SHUTDOWN:
     logger.info("Shutting down Legion Engine...")
-    backup_task.cancel()
-    try:
-        await backup_task
-    except asyncio.CancelledError:
-        pass
 
 app = FastAPI(
     title=f"{APP_NAME} {CURRENT_CODENAME} v{VERSION_SHORT}",
@@ -140,7 +114,7 @@ app.add_middleware(
     RequestSizeLimitMiddleware,
     max_request_size=10 * 1024 * 1024  # 10MB limit (Optimized for media)
 )
-logger.info("Middleware stack initialized: Performance, Size Limit (1MB)")
+logger.info("Middleware stack initialized: Performance, Size Limit (10MB)")
 
 
 # (Global Request Logger replaced by PerformanceMiddleware)

@@ -69,3 +69,29 @@ def setup_logging(debug: bool = False):
 def get_logger(name: str) -> logging.Logger:
     """Get a logger with the given name."""
     return logging.getLogger(f"SoulLink.{name}")
+
+
+class LegionLogger:
+    """
+    Specialized logger for engine-specific events.
+    Replaces the legacy core/logger.py.
+    """
+    
+    @staticmethod
+    def log_brain_thought(soul_id: str, prompt: str):
+        logger = get_logger("Brain")
+        # Use simple print for the visual box if in debug/dev, or just log
+        print(f"\n🧠 [BRAIN THOUGHT - {soul_id}]")
+        print("-" * 50)
+        print(prompt)
+        print("-" * 50 + "\n")
+        # Also log properly
+        logger.debug(f"Thought generated for {soul_id}")
+
+    @staticmethod
+    def log_gatekeeper(action: str, allowed: bool):
+        logger = get_logger("Gatekeeper")
+        status = "✅ ALLOWED" if allowed else "🚫 BLOCKED"
+        print(f"🛡️ [GATEKEEPER] {action}: {status}")
+        # Also log properly
+        logger.info(f"{action}: {status}")

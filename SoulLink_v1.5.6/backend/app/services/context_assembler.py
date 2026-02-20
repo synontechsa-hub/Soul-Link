@@ -89,7 +89,10 @@ class ContextAssembler:
             mods = location.system_modifiers or {}
             privacy_level = mods.get("privacy_gate", "Public")
             moods = mods.get("mood_modifiers", {})
-            top_mood = max(moods.items(), key=lambda x: float(x[1]))[0] if moods else "neutral"
+            try:
+                top_mood = max(moods.items(), key=lambda x: float(x[1]))[0] if moods else "neutral"
+            except (ValueError, TypeError, IndexError):
+                top_mood = "neutral"
             
             description_text = f"Setting: {location.description}. " if location.description else ""
             

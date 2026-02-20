@@ -20,7 +20,7 @@ class UserPersona(SQLModel, table=True):
     
     # Identity Data
     screen_name: str = Field(max_length=50)
-    bio: Optional[str] = Field(default=None, max_length=500)
+    bio: Optional[str] = Field(default=None, max_length=1000)
     age: Optional[int] = Field(default=None)
     gender: Optional[str] = Field(default=None, max_length=20)
     

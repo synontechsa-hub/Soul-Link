@@ -1,40 +1,14 @@
-# /backend/app/middleware.py
-# v1.5.5 - System Middleware
-# "I'm watching you... always watching." - Roz, Monsters Inc.
+# /backend/app/middleware/performance.py
+# v1.5.6 Normandy-SR2 Fix
+# "Slow is smooth, smooth is fast." - Navy SEALs
 
-"""
-System Middleware Components
-Handles request processing, performance tracking, and security headers.
-"""
-
+import time
+import uuid
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 from backend.app.core.logging_config import get_logger
-import time
-import uuid
 
-logger = get_logger("Middleware")
-
-class RequestSizeLimitMiddleware(BaseHTTPMiddleware):
-    """
-    Limits the size of the request body to prevent DoS attacks.
-    """
-    def __init__(self, app, max_request_size: int = 1024 * 1024):
-        super().__init__(app)
-        self.max_request_size = max_request_size
-
-    async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-        content_length = request.headers.get("content-length")
-        if content_length:
-            if int(content_length) > self.max_request_size:
-                logger.warning(f"Request too large: {content_length} bytes")
-                from fastapi.responses import JSONResponse
-                return JSONResponse(
-                    content={"status": "error", "message": "Payload too large"},
-                    status_code=413
-                )
-        return await call_next(request)
-
+logger = get_logger("Middleware.Performance")
 
 class PerformanceMiddleware(BaseHTTPMiddleware):
     """
@@ -64,10 +38,6 @@ class PerformanceMiddleware(BaseHTTPMiddleware):
         # 4. Log Slow Requests (>1s)
         if process_time > 1.0:
             logger.warning(f"SLOW REQUEST [{request_id}]: {request.method} {request.url} took {process_time:.4f}s")
-        else:
-            # Debug log for normal requests (can be noisy)
-            pass 
-            # logger.debug(f"{request.method} {request.url} took {process_time:.4f}s")
             
         # 5. Add Headers
         response.headers["X-Process-Time"] = str(process_time)

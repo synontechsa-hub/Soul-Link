@@ -1,0 +1,2242 @@
+[
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Apex Corporate Plaza",
+    "category": "commercial",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": false
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "corporate_analyst",
+        "executive_assistant",
+        "security_officer",
+        "financial_consultant"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "authority": 1.5
+      }
+    },
+    "description": "A gleaming district of glass towers.",
+    "location_id": "apex_corporate_plaza",
+    "image_url": "/assets/images/locations/apex_corporate_plaza_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "A cathedral of commerce and ambition, Apex Corporate Plaza rises in mirrored steel and blue-tinted glass. During Morning and Afternoon, sunlight fractures across its towers in sharp reflections. By Evening, interior lights glow in regimented constellations. The air smells faintly of ozone and polished marble. Footsteps echo crisply across immaculate stone walkways, interrupted by the distant hum of elevators and the soft whir of autonomous security drones.",
+      "crowd_atmosphere": "Morning traffic builds steadily as analysts and executives arrive. Afternoon is dense and high-pressure, filled with negotiations and strategic meetings. By Evening, only senior staff and select investors remain. At Night and Home Time, the plaza exterior is quiet, guarded, and largely inaccessible to the public.",
+      "activities": [
+        "Attend high-level business meetings in glass-walled conference rooms.",
+        "Network at rooftop corporate mixers overlooking Link City (Evening only).",
+        "Submit applications or pitch proposals to major firms.",
+        "Observe rival executives negotiating delicate agreements.",
+        "Access premium financial terminals and market feeds."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Public access restricted outside business hours.",
+      "seasonal_variations": {
+        "frostlink": "The glass towers reflect winter light brilliantly. Heated walkways keep ice at bay, and executives arrive in heavy coats before shedding them in climate-controlled lobbies.",
+        "surgespring": "Power surges occasionally disrupt meetings. Backup systems kick in seamlessly, but the electrical atmosphere adds tension to high-stakes negotiations.",
+        "burnseason": "The plaza's cooling systems are state-of-the-art. During heatwaves, the contrast between the scorching outside and frigid interior is stark.",
+        "shadowfall": "The amber and purple light of the season reflects beautifully off the glass towers. The contemplative mood affects even the hardened executives."
+      },
+      "weather_variations": {
+        "ice_storm": "Only essential personnel brave the ice storm. The plaza operates on skeleton crews, and many meetings are conducted remotely.",
+        "electromagnetic_storm": "Backup systems engage as the storm causes minor disruptions. Executives watch the spectacular light show from their tower offices.",
+        "smog_heavy": "Air filtration systems work overtime. The plaza becomes an even more exclusive refuge, with outdoor access severely limited.",
+        "clear_cool": "Perfect weather brings executives to rooftop mixers. The clear skies and pleasant temperature make for ideal networking conditions."
+      }
+    },
+    "lore": {
+      "history": "Apex Corporate Plaza was constructed during Link City's Second Expansion Era, when private megacorporations eclipsed municipal governance in influence. What began as three office towers quickly expanded into an entire district after several landmark mergers centralized economic power here. Many of Link City's most controversial policy shifts were drafted in these buildings long before the public ever heard of them.",
+      "secrets": "Rumors persist of restricted sublevels beneath the plaza \u2014 floors that do not appear on public schematics. Some claim a private AI arbitration system operates below ground, capable of forecasting market collapses and political unrest weeks in advance. Others whisper that certain executives meet here to negotiate contracts that extend beyond business \u2014 into influence, memory manipulation, and identity acquisition."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "The Circuit Diner",
+    "category": "dining",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "home_time",
+        "twenty_four_hour_cycle": true
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "server",
+        "line_cook",
+        "shift_manager",
+        "barista"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "comfort": 1.4
+      }
+    },
+    "description": "A 24-hour neon-lit diner on Circuit Street.",
+    "location_id": "circuit_diner",
+    "image_url": "/assets/images/locations/the_circuit_diner_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The Circuit Diner glows in steady neon blues and pinks, its sign flickering gently against the skyline. Inside, vinyl booths line chrome-edged tables, and the scent of coffee, fried onions, and warm bread lingers in the air. During Morning, sunlight filters softly through half-drawn blinds. Afternoon hums with clinking cutlery and casual chatter. By Evening and Night, neon reflections dance across polished floors while the low murmur of late-night conversations blends with the hiss of the grill.",
+      "crowd_atmosphere": "Morning draws early commuters and quiet regulars nursing strong coffee. Afternoon brings students, freelancers, and casual meetings. Evening shifts toward relaxed dinners and small groups unwinding. Night belongs to insomniacs, night-shift workers, drifters, and deep conversations that stretch past reason. During Home Time, the diner becomes calm and intimate \u2014 a sanctuary for those not ready to sleep.",
+      "activities": [
+        "Order comfort food and unlimited refills of coffee.",
+        "Meet friends or contacts in a neutral, low-pressure environment.",
+        "Work quietly in a booth with background ambience.",
+        "Have late-night philosophical conversations.",
+        "Observe the eclectic mix of regular patrons."
+      ],
+      "interaction_rules": "Privacy Level: Public. Open access at all hours.",
+      "seasonal_variations": {
+        "frostlink": "The diner becomes a warm beacon in the cold. Frost patterns form on the windows, and steam from hot coffee is extra visible. More people linger longer, seeking warmth.",
+        "surgespring": "Rain patters on the diner's roof and windows. The neon sign flickers with power surges, and conversations turn to the dramatic storms outside.",
+        "burnseason": "The diner's AC works overtime. During heatwaves, it becomes packed at night with people escaping the heat, while daytime sees fewer customers.",
+        "shadowfall": "The diner takes on a contemplative, nostalgic atmosphere. Amber lighting dominates, and late-night philosophical conversations seem deeper."
+      },
+      "weather_variations": {
+        "snow_heavy": "The diner is one of the few places still accessible. Snow-covered patrons stumble in, grateful for warmth and hot food.",
+        "thunderstorm": "Lightning flashes illuminate the diner dramatically. The storm creates a cozy, intimate atmosphere inside.",
+        "heatwave": "The diner is nearly empty during the day but packed at night. Cold drinks and ice cream are in high demand.",
+        "ice_fog": "The diner's neon sign creates a beautiful halo in the ice fog. Inside feels like a warm sanctuary cut off from the world."
+      }
+    },
+    "lore": {
+      "history": "The Circuit Diner opened during Link City's early infrastructure boom, originally serving construction crews working overnight shifts. Over time it became a cultural constant \u2014 a neutral ground where corporate workers, street-level freelancers, students, and wanderers could sit at the same counter without hierarchy. Many quiet revolutions and startup ideas were first sketched on napkins here.",
+      "secrets": "Rumor has it the corner booth near the back wall is unofficially reserved. Some say a retired systems architect still monitors city networks from that seat. Others believe the diner\u2019s old analog wiring bypasses certain surveillance systems, making it one of the few places in Link City where conversations remain truly private."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Circuit Street",
+    "category": "commercial",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "home_time",
+        "twenty_four_hour_cycle": true
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "street_vendor",
+        "courier",
+        "performer",
+        "independent_technician"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "mood_volatility": 1.2
+      }
+    },
+    "description": "Rain-slick pavement and flickering holographic advertisements.",
+    "location_id": "circuit_street",
+    "image_url": "/assets/images/locations/circuit_street_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Circuit Street stretches through the heart of Link City like a glowing artery. Rain-slick pavement reflects towering holographic advertisements that flicker between corporate propaganda and underground art. During Morning, delivery drones zip overhead while storefronts boot up their displays. Afternoon brings heavy foot traffic and constant movement. By Evening, neon intensifies and the street hum deepens. At Night, shadows lengthen beneath the holo-ads, and the city feels electric. During Home Time, mist rolls low across the pavement, and only a few determined figures remain in motion.",
+      "crowd_atmosphere": "Morning is transactional and brisk. Afternoon becomes dense and kinetic, filled with shoppers, couriers, street vendors, and performers. Evening shifts toward social energy \u2014 laughter, music leaking from open doorways, spontaneous gatherings. Night carries unpredictability: deals in alleyways, whispered negotiations, and volatile encounters. Home Time feels liminal \u2014 neither fully safe nor fully dangerous, just suspended.",
+      "activities": [
+        "Browse storefronts ranging from high-end tech boutiques to underground market stalls.",
+        "Watch or participate in spontaneous street performances.",
+        "Meet contacts in passing without drawing attention.",
+        "Accept short-term gigs or courier tasks from digital kiosks.",
+        "Explore side alleys that may lead to hidden sub-locations."
+      ],
+      "interaction_rules": "Privacy Level: Public. Highly dynamic environment influenced by time slot and day type.",
+      "seasonal_variations": {
+        "frostlink": "The street's neon reflects brilliantly off frost and ice. Steam rises from vents, and people move quickly between warm storefronts.",
+        "surgespring": "Electrical storms add drama to the street's already electric atmosphere. Power surges cause holographic ads to flicker spectacularly.",
+        "burnseason": "During the day, the street is quieter as heat shimmers off pavement. But at night, it explodes with activity as the city comes alive.",
+        "shadowfall": "The street takes on amber and purple tones. Data streams are occasionally visible in the air, adding to the season's mysterious atmosphere."
+      },
+      "weather_variations": {
+        "light_rain": "Rain creates the iconic cyberpunk aesthetic - neon reflecting off wet pavement. The street becomes even more visually stunning.",
+        "electromagnetic_storm": "Visible electrical arcs dance between buildings. The street becomes a spectacular, dangerous light show that draws crowds.",
+        "heatwave": "The street is nearly abandoned during the day, heat rising in visible waves. Evening brings explosive crowds seeking nightlife.",
+        "data_rain": "The rare phenomenon transforms the street into a mesmerizing spectacle. Crowds gather to watch data streams cascade like digital rain."
+      }
+    },
+    "lore": {
+      "history": "Circuit Street predates most of Link City's corporate skyline. Originally a trade corridor for independent merchants and repair shops, it evolved alongside the city\u2019s technological boom. As megacorporations rose, Circuit Street adapted rather than vanished \u2014 layering holographic advertising and digital kiosks over its old foundations. It remains one of the few districts where corporate presence and grassroots enterprise visibly collide.",
+      "secrets": "Certain holographic ads are rumored to be more than advertisements \u2014 encrypted signals embedded within their light patterns, readable only by those who know what to look for. Some alleys contain access points to hidden networks and invitation-only gatherings. On rare nights, entire storefronts appear where there were none the day before \u2014 and disappear just as quietly."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "City Planetarium",
+    "category": "landmark",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "astronomy_guide",
+        "projection_technician",
+        "research_assistant",
+        "event_coordinator"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "wonder": 1.4
+      }
+    },
+    "description": "A massive projection dome simulating the cosmos.",
+    "location_id": "city_planetarium",
+    "image_url": "/assets/images/locations/city_planetarium_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The City Planetarium rises as a smooth, silver-white dome against the skyline, its curved surface reflecting the city lights like a distant moon. Inside, the vast projection chamber envelops visitors in a seamless artificial cosmos. During Morning, soft guided narrations accompany slow rotations of simulated star fields. Afternoon shows are brighter and more educational, mapping constellations and planetary systems in stunning clarity. By Evening, the dome darkens fully, and galaxies bloom across the ceiling in breathtaking silence.",
+      "crowd_atmosphere": "Morning brings students and quiet explorers, voices hushed in reverence. Afternoon fills with families, tourists, and academic groups engaged in discussion. Evening feels slower and more contemplative \u2014 couples, thinkers, and solitary visitors reclining beneath digital starlight. The atmosphere is calm, introspective, and faintly awe-struck.",
+      "activities": [
+        "Attend immersive cosmic projection shows and narrated star tours.",
+        "Recline beneath simulated galaxies in quiet reflection.",
+        "Participate in educational workshops or astronomy lectures.",
+        "Observe rare astronomical simulations not visible from the real sky.",
+        "Engage in thoughtful conversation beneath the artificial cosmos."
+      ],
+      "interaction_rules": "Privacy Level: Public. Respectful silence expected during projections.",
+      "seasonal_variations": {
+        "frostlink": "Winter shows feature ice planets and frozen nebulae. The contrast between cold outside and cosmic warmth inside is profound.",
+        "surgespring": "Spring shows emphasize stellar birth and cosmic renewal. The season's energy translates into shows about creation and new beginnings.",
+        "burnseason": "Summer shows focus on burning stars and solar phenomena. The cool dome provides perfect refuge from the heat outside.",
+        "shadowfall": "Autumn shows explore dark matter and the void between stars. The contemplative season pairs perfectly with cosmic mystery."
+      },
+      "weather_variations": {
+        "snow_heavy": "The planetarium is packed with people seeking shelter and wonder. Snow on the dome's exterior creates a beautiful contrast with stars inside.",
+        "clear_cool": "Perfect weather means the dome can open its observation deck. Real stars complement the projected cosmos.",
+        "electromagnetic_storm": "The storm causes spectacular effects on the dome's exterior. Inside, shows incorporate the real electrical phenomenon into cosmic displays.",
+        "data_rain": "The rare phenomenon is incorporated into special shows. Projections blend real data streams with cosmic simulations."
+      }
+    },
+    "lore": {
+      "history": "The City Planetarium was commissioned during a period of civic renewal, intended to remind Link City's citizens that their ambitions extended beyond corporate towers. Built with state-of-the-art projection arrays and astrophysical simulation engines, it quickly became both an educational hub and a quiet refuge from the city\u2019s intensity.",
+      "secrets": "Some claim the projection engine is capable of more than entertainment. Hidden programs allegedly simulate not just distant galaxies, but predictive cosmic models tied to deep-space signal research. A restricted control chamber beneath the dome is rumored to house experimental algorithms that analyze anomalous transmissions from beyond the solar system."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Civic Heights",
+    "category": "residential",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "stability": 1.3
+      }
+    },
+    "description": "A practical residential block near municipal offices.",
+    "location_id": "civic_heights",
+    "image_url": "/assets/images/locations/civic_heights_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "A rectangular concrete residential block with narrow balconies and uniform windows, positioned just uphill from the municipal district. The building hums with everyday life \u2014 distant televisions behind walls, the smell of laundry detergent drifting from open windows, elevator motors whining softly through the shaft. The architecture is functional rather than beautiful, built for durability over elegance. At night, scattered windows glow warm amber against the cooler city lights.",
+      "crowd_atmosphere": "Residents move with purpose rather than leisure. Civil servants in pressed shirts, tired parents carrying groceries, students with backpacks, elderly neighbors greeting each other in the hallways. Foot traffic increases during morning (06-12) and evening (18-22) as workdays begin and end. Night (22-04) becomes quiet and subdued, with only the occasional returning tenant or muted argument behind closed doors.",
+      "activities": [
+        "Walk through shared corridors and stairwells.",
+        "Visit a resident if invited.",
+        "Wait outside the entrance to observe daily rhythms.",
+        "Have quiet conversations on a balcony overlooking the street.",
+        "Run into recurring NPC residents over time."
+      ],
+      "interaction_rules": "Privacy Level: Public exterior. Interior access requires invitation or narrative justification.",
+      "seasonal_variations": {
+        "frostlink": "Windows frost over, and residents bundle up before venturing out. The building's heating system hums constantly, and laundry hung on balconies freezes solid.",
+        "surgespring": "Spring cleaning is in full swing. Windows are opened to let in fresh air, and residents seem more energetic and social in the hallways.",
+        "burnseason": "During heatwaves, residents keep windows closed and AC running. Evening sees balconies filled with people escaping hot apartments.",
+        "shadowfall": "The building takes on a quieter, more introspective mood. Amber light from windows creates a warm, homey glow against the cooling air."
+      },
+      "weather_variations": {
+        "snow_heavy": "The building becomes a fortress against the storm. Residents stay inside, and the hallways are unusually quiet.",
+        "thunderstorm": "Lightning illuminates the building dramatically. Some residents watch from windows, while others retreat deeper inside.",
+        "heatwave": "The building's older AC struggles. Residents congregate in cooler common areas or escape to air-conditioned public spaces.",
+        "clear_cool": "Perfect weather brings residents to their balconies. Conversations drift between apartments, and the building feels more communal."
+      }
+    },
+    "lore": {
+      "history": "Civic Heights was constructed during Link City\u2019s administrative expansion phase, designed to house municipal employees within walking distance of government offices. It symbolizes the functional backbone of the city \u2014 not glamorous, but necessary. Over the years, it has quietly become home to multi-generational families and long-term tenants who know the building\u2019s rhythms intimately.",
+      "secrets": "Certain residents have unusual work assignments tied to classified civic departments. A rarely-used maintenance room in the basement contains legacy network routing hardware from early Link City infrastructure builds. Rumors persist that one apartment remains officially unoccupied in records, yet lights occasionally appear in its windows during late night (22-04)."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Crimson Arms Apartments",
+    "category": "residential",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "melancholy": 1.3
+      }
+    },
+    "description": "A crumbling mid-rise on the edge of the Arts District.",
+    "location_id": "crimson_arms",
+    "image_url": "/assets/images/locations/crimson_arms_apartments_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Crimson Arms rises in faded brick and peeling paint, its exterior stained by years of rain and neglect. Rusted balcony railings lean slightly outward, and a flickering hallway light near the entrance casts an uneven glow over chipped concrete steps. The air smells faintly of damp plaster, old cooking oil, and cigarette smoke. Inside, narrow corridors echo with distant footsteps and muffled music from behind thin walls.",
+      "crowd_atmosphere": "Residents are artists, gig workers, night-shift laborers, and those priced out of safer districts. Morning (06-12) feels subdued, curtains drawn and hallways quiet. Afternoon (12-18) brings movement \u2014 canvases carried downstairs, instruments tuned, arguments through walls. Evening (18-22) carries low music and balcony conversations. Night (22-04) feels heavier: insomnia, quiet sadness, whispered creativity, and occasional volatility.",
+      "activities": [
+        "Visit a resident if invited.",
+        "Sit on the rooftop and overlook the Arts District skyline.",
+        "Listen to live music drifting from an apartment gathering.",
+        "Leave anonymous notes on the communal notice board.",
+        "Observe subtle tensions between long-term tenants and newcomers."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Exterior and common areas accessible; apartment entry requires invitation or narrative justification.",
+      "seasonal_variations": {
+        "frostlink": "The building's aging heating system struggles. Residents layer blankets and huddle near space heaters. Ice forms on the rusted balconies.",
+        "surgespring": "Spring brings renewed creative energy. Windows open, music drifts between apartments, and the rooftop becomes a gathering space.",
+        "burnseason": "The lack of AC makes apartments unbearable during the day. Residents escape to the rooftop at night, creating impromptu social gatherings.",
+        "shadowfall": "The building takes on a melancholic beauty. Amber light through dirty windows creates an artistic, contemplative atmosphere."
+      },
+      "weather_variations": {
+        "snow_heavy": "The building becomes isolated. Residents share resources and gather in common areas, creating unexpected community bonds.",
+        "thunderstorm": "Leaks appear in several apartments. Residents scramble with buckets while lightning illuminates the building dramatically.",
+        "heatwave": "The building is nearly uninhabitable during the day. Residents flee to air-conditioned public spaces or suffer through the oppressive heat.",
+        "clear_cool": "Perfect weather brings everyone to the rooftop. The building feels alive with music, conversation, and creative energy."
+      }
+    },
+    "lore": {
+      "history": "Crimson Arms was originally built during Link City's early cultural expansion, intended as affordable housing for artists and municipal contractors. Over time, funding shifted elsewhere, maintenance slowed, and the building declined. Despite its deterioration, it became a quiet sanctuary for creators who couldn\u2019t afford the polished districts.",
+      "secrets": "A sealed maintenance stairwell on the upper floors leads to a section of rooftop access not shown on official plans. Some residents claim that one apartment \u2014 officially condemned \u2014 still has power and network access despite being listed as uninhabitable. The communal basement storage room contains forgotten canvases, broken instruments, and at least one locked trunk no one admits owning."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "The Dollhouse Dungeon",
+    "category": "nightlife",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "evening",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "bartender",
+        "security_staff",
+        "host",
+        "private_event_coordinator"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "inhibitions": 0.5
+      }
+    },
+    "description": "A bar located in the basement level of Skylink Tower.",
+    "location_id": "dollhouse_dungeon",
+    "image_url": "/assets/images/locations/the_dollhouse_dungeon_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Hidden beneath Skylink Tower, The Dollhouse Dungeon is accessed through an unmarked elevator requiring clearance or invitation. The space is low-lit and intimate, washed in deep crimson and violet light. Velvet-lined booths curve along the walls, and mirrored panels distort reflections in subtle, deliberate ways. Music pulses through the floor \u2014 slow, heavy bass during early evening and deeper, more immersive rhythms past midnight. The air carries notes of perfume, polished wood, and expensive liquor.",
+      "crowd_atmosphere": "Evening (18-22) begins refined and controlled \u2014 executives unwinding, curated conversations, subtle power dynamics. Night (22-04) shifts the tone: laughter grows louder, personal boundaries soften, and alliances form in shadowed corners. The energy remains controlled but charged. Staff maintain quiet authority, ensuring discretion above all.",
+      "activities": [
+        "Reserve a private booth for confidential conversation.",
+        "Order signature cocktails crafted off-menu.",
+        "Engage in subtle social maneuvering among corporate elites.",
+        "Dance in the low-lit central floor as music intensifies.",
+        "Receive or deliver information in exchange for favors."
+      ],
+      "interaction_rules": "Privacy Level: Private. Entry requires invitation, status clearance, or narrative justification. Conversations are confidential; recording devices are prohibited.",
+      "seasonal_variations": {
+        "frostlink": "The underground location makes it a warm refuge. Winter-themed cocktails and exclusive events draw the elite seeking privacy and warmth.",
+        "surgespring": "Spring brings renewed energy to power plays. The atmosphere crackles with ambition and new alliances forming.",
+        "burnseason": "The cool underground space becomes even more desirable during heatwaves. Summer sees increased attendance from heat-refugees with status.",
+        "shadowfall": "The contemplative season brings more introspective conversations. Deals become more thoughtful, less impulsive."
+      },
+      "weather_variations": {
+        "ice_storm": "The dungeon is packed with stranded elites. The forced proximity creates unexpected alliances and tensions.",
+        "electromagnetic_storm": "Backup systems engage seamlessly. The storm outside adds drama to the already charged atmosphere of power and intrigue.",
+        "heatwave": "The cool underground space is in high demand. Entry becomes even more exclusive as everyone seeks refuge.",
+        "clear_cool": "Perfect weather means some elites skip the dungeon for rooftop venues, making it quieter and more intimate."
+      }
+    },
+    "lore": {
+      "history": "The Dollhouse Dungeon was established shortly after Skylink Tower\u2019s completion, designed as an exclusive retreat for high-level executives and select clients. Officially, it is described as a luxury lounge. Unofficially, it functions as a pressure valve for those who operate at the top of Link City's corporate hierarchy.",
+      "secrets": "Certain booths are equipped with sound-dampening fields far beyond standard acoustic treatment. A secondary corridor behind the bar connects to restricted elevator shafts not listed on public building schematics. Rumors suggest that some deals finalized within The Dollhouse Dungeon have quietly reshaped entire districts of the city."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Echo Archives Public Library",
+    "category": "cultural",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "librarian",
+        "archivist",
+        "research_assistant",
+        "event_host"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "calm": 1.6
+      }
+    },
+    "description": "A three-story library with wooden floors.",
+    "location_id": "echo_archives",
+    "image_url": "/assets/images/locations/echo_archives_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Echo Archives stands as a quiet refuge of polished wood and filtered sunlight. The three-story interior is lined with tall shelves and iron-railed balconies overlooking the central reading floor. Wooden boards creak softly beneath careful footsteps. The scent of aged paper and varnish lingers in the air. Morning light spills through high windows in long golden beams; afternoon feels steady and focused; evening softens into warm lamplight and hushed shadows between the stacks.",
+      "crowd_atmosphere": "Morning (06-12) draws early readers, researchers, and students seeking solitude. Afternoon (12-18) becomes studious and steady \u2014 soft keyboard tapping, quiet page turns, low murmurs at shared tables. Evening (18-22) feels contemplative and intimate, with fewer visitors lingering longer in silence. The atmosphere consistently encourages patience, thoughtfulness, and emotional grounding.",
+      "activities": [
+        "Browse physical books and archived city records.",
+        "Use quiet reading tables for focused work or reflection.",
+        "Access public data terminals on the second floor.",
+        "Attend small lectures or author readings in the side hall.",
+        "Study architectural blueprints or historical maps of Link City."
+      ],
+      "interaction_rules": "Privacy Level: Public. Maintain quiet decorum; disruptive behavior is discouraged.",
+      "seasonal_variations": {
+        "frostlink": "The library becomes a warm refuge for readers. Winter light through high windows creates beautiful patterns on the wooden floors.",
+        "surgespring": "Spring brings renewed interest in research and learning. The library hosts more lectures and workshops celebrating renewal.",
+        "burnseason": "The library's climate control makes it a popular heat refuge. Summer reading programs draw crowds seeking cool, quiet spaces.",
+        "shadowfall": "Autumn creates the perfect library atmosphere. Amber light, contemplative mood, and falling leaves outside enhance the studious environment."
+      },
+      "weather_variations": {
+        "snow_heavy": "The library is packed with people seeking shelter and warmth. The quiet atmosphere becomes even more cozy and intimate.",
+        "thunderstorm": "Rain on the roof creates a soothing backdrop for reading. The storm makes the library feel like a peaceful sanctuary.",
+        "heatwave": "The library is absolutely packed with heat-refugees. Reading tables fill quickly as people seek cool, quiet refuge.",
+        "clear_cool": "Perfect weather means lighter attendance, but those who come enjoy the peaceful atmosphere and beautiful natural light."
+      }
+    },
+    "lore": {
+      "history": "Echo Archives predates much of modern Link City and was one of the first civic buildings constructed during the city\u2019s early planning phase. Designed to preserve collective memory, it houses both traditional printed works and digitized municipal records. Over decades, it has quietly witnessed the city's transformation while remaining structurally and culturally constant.",
+      "secrets": "Certain archival terminals require elevated credentials and contain sealed municipal documents. A restricted third-floor collection reportedly stores early urban planning drafts that reveal abandoned districts and altered infrastructure routes. Some visitors claim the building\u2019s acoustic design subtly dampens heightened emotional states, making it unusually difficult to argue within its walls."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Ether Baths Spa",
+    "category": "wellness",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "therapist",
+        "spa_attendant",
+        "receptionist",
+        "yoga_instructor"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "recovery": 1.2
+      }
+    },
+    "description": "A day spa located near the city plaza.",
+    "location_id": "ether_baths",
+    "image_url": "/assets/images/locations/ether_baths_spa_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Ether Baths Spa exudes calm sophistication. Steam rises from stone-lined baths, scented with lavender and eucalyptus. Soft instrumental music drifts through air vents, mingling with the gentle trickle of fountains. Sunlight filters through frosted glass in the morning, creating warm halos; in the evening, subtle lanterns and neon accents offer serene ambient light.",
+      "crowd_atmosphere": "Guests arrive seeking relaxation and recovery. Morning brings a trickle of early clients enjoying private hydrotherapy. Afternoon sees a mix of massage appointments, facial treatments, and yoga classes. Evenings are quieter, with intimate spa sessions and meditation circles. Staff move silently, maintaining discretion and a calming presence.",
+      "activities": [
+        "Soak in thermal baths infused with aromatherapy blends.",
+        "Book full-body massages or targeted physical therapy sessions.",
+        "Attend guided yoga and meditation sessions in serene rooms.",
+        "Participate in private skincare and facial treatments.",
+        "Relax in quiet lounges with herbal teas and ambient soundscapes."
+      ],
+      "interaction_rules": "Privacy Level: Private. Guests must maintain low voice levels and respect other patrons' personal space.",
+      "seasonal_variations": {
+        "frostlink": "The spa becomes an especially popular refuge from the cold. Steam from the baths is extra thick, and the contrast with the frigid outside is deeply satisfying.",
+        "surgespring": "Spring renewal packages are popular. The spa incorporates fresh floral scents, and guests feel energized by the season's vitality.",
+        "burnseason": "Cooling treatments are in high demand. Ice baths, cold stone therapy, and chilled aromatherapy help guests escape the oppressive heat.",
+        "shadowfall": "The spa takes on a contemplative, meditative atmosphere. Amber lighting and autumn-scented oils create a deeply relaxing environment."
+      },
+      "weather_variations": {
+        "snow_heavy": "The spa is fully booked with people seeking warm refuge. The contrast between snowy windows and warm baths is heavenly.",
+        "thunderstorm": "The sound of rain on the roof creates an extra layer of relaxation. Lightning flashes through frosted glass add drama to meditation sessions.",
+        "heatwave": "Cold plunge pools and ice treatments are booked solid. The spa's cooling systems work perfectly, making it a premium heat refuge.",
+        "clear_cool": "Perfect weather makes the spa's outdoor meditation garden accessible. Guests enjoy the pleasant temperature during yoga sessions."
+      }
+    },
+    "lore": {
+      "history": "Ether Baths Spa was established during Link City's wellness boom in the early 21st century, designed to combine traditional hydrotherapy techniques with modern technology. Its founders emphasized the integration of mental and physical recovery, and it quickly became a high-demand location for city elites seeking privacy and rejuvenation.",
+      "secrets": "Rumors suggest that some high-paying patrons can access hidden sub-levels offering experimental relaxation tech and private treatment pods. Whispered stories claim a subterranean chamber contains AI-driven therapists capable of learning individual guest preferences to an uncanny degree."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Iron Resolve Gym",
+    "category": "sports",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "personal_trainer",
+        "fitness_instructor",
+        "maintenance_staff",
+        "receptionist"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "discipline": 1.5
+      }
+    },
+    "description": "A no-nonsense training facility.",
+    "location_id": "iron_resolve_gym",
+    "image_url": "/assets/images/locations/iron_resolve_gym_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The gym smells of rubber mats, metal, and chalk dust. Clangs of weights hitting iron plates echo off concrete walls. The air is warm, humid, and charged with the determination of athletes pushing themselves to their limits. Fluorescent lighting creates sharp shadows, highlighting rippling muscles and sweat-slicked equipment.",
+      "crowd_atmosphere": "Members range from casual fitness enthusiasts to hardened bodybuilders and competitive fighters. The room hums with intensity: trainers shout corrections, treadmills thrum with consistent pounding, and weightlifters grunt in focused effort. There\u2019s camaraderie, but also fierce personal discipline; distractions are minimal.",
+      "activities": [
+        "Perform weightlifting and resistance training on free weights and machines.",
+        "Join guided high-intensity interval training (HIIT) classes.",
+        "Practice combat sports such as boxing, MMA, or kickboxing in dedicated rings.",
+        "Attend personal training sessions for tailored strength or conditioning programs.",
+        "Use cardio machines including treadmills, stationary bikes, and rowing machines."
+      ],
+      "interaction_rules": "Privacy Level: Public. All members are expected to respect training zones, share equipment efficiently, and maintain focus on personal fitness goals.",
+      "seasonal_variations": {
+        "frostlink": "The gym is packed as people seek indoor exercise. The warmth from bodies and equipment creates intense heat, contrasting sharply with the cold outside.",
+        "surgespring": "Spring renewal energy drives higher attendance. Members push harder, inspired by the season's vitality and renewal themes.",
+        "burnseason": "Early morning and late evening see peak attendance as people avoid daytime heat. The gym's AC works overtime to keep the space cool.",
+        "shadowfall": "The gym takes on a more contemplative energy. Members focus on endurance and discipline as the season's introspective mood settles in."
+      },
+      "weather_variations": {
+        "snow_heavy": "The gym is packed with people who can't exercise outdoors. The energy is intense as everyone channels cabin fever into their workouts.",
+        "clear_cool": "Perfect weather means some members skip the gym for outdoor runs, but dedicated lifters remain focused on their indoor training.",
+        "heatwave": "The gym is busiest during early morning and late evening. Cooling stations and extra fans are set up throughout the space.",
+        "thunderstorm": "The sound of thunder adds intensity to workouts. Members push harder, energized by the dramatic weather outside."
+      }
+    },
+    "lore": {
+      "history": "Iron Resolve Gym was founded to serve the growing community of dedicated athletes in Link City\u2019s commercial district. Known for its strict policies and state-of-the-art equipment, it quickly gained a reputation as a place where serious results are achieved, attracting both local residents and professional sports teams.",
+      "secrets": "Whispers suggest a hidden basement area where elite trainers run clandestine strength experiments and training programs not available to the public. Some say certain AI-assisted machines track detailed biometrics to optimize each member\u2019s performance secretly."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "The Zenith Rooftop Lounge",
+    "category": "nightlife",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "evening",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "sophistication": 1.4,
+        "openness": 1.3
+      }
+    },
+    "description": "A sleek rooftop bar.",
+    "location_id": "zenith_lounge",
+    "image_url": "/assets/images/locations/zenith_rooftop_lounge_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Glass railings stretch along the rooftop, offering panoramic views of Link City\u2019s neon skyline. Soft ambient lighting casts warm glows on sleek furniture. The scent of citrus cocktails mixes with night air tinged by distant city ozone.",
+      "crowd_atmosphere": "Well-dressed patrons lounge on plush seating, engaged in hushed conversation or laughter. Chill electronic beats set a relaxed vibe. Staff move gracefully, serving drinks with precision, while the occasional photographer captures cityscape selfies.",
+      "activities": [
+        "Enjoy crafted cocktails and gourmet small plates.",
+        "Socialize with other high-tier guests in a semi-private environment.",
+        "Admire the skyline and observe city events from above.",
+        "Participate in exclusive rooftop gatherings or themed nights.",
+        "Network with influential figures and VIPs."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Only guests with reservations or invitations are allowed. Maintain etiquette and respect personal space.",
+      "seasonal_variations": {
+        "frostlink": "Glass walls are fully extended and polarized for warmth. The winter cityscape looks like a field of cold, blue diamonds from this height.",
+        "surgespring": "The lounge features botanical 'surge' cocktails. The air is humid and smells of engineered tropical flowers and fresh ozone.",
+        "burnseason": "Mist-jets hidden in the ceiling keep the outdoor terrace habitable. The lounge is the premier spot for the city's elite to watch the summer sunset.",
+        "shadowfall": "Amber lighting dominates the lounge. The vibe is sophisticated and melancholic, perfect for high-stakes, quiet negotiations."
+      },
+      "weather_variations": {
+        "snow_heavy": "The lounge becomes a warm sanctuary in the clouds. Looking out is like being inside a snow globe hovering over the city.",
+        "electromagnetic_storm": "The lounge's protection field hums visibly as lightning strikes nearby. It\u2019s a thrill for the patrons, safely watching the raw power of the sky.",
+        "heatwave": "The lounge provides the best night breeze in the city. Reservations are impossible to get as the elite escape the stagnant heat below.",
+        "data_rain": "Special filter-glass allows patrons to see the individual data-packets in the rain cascade. It\u2019s a mesmerizing, digital-nature spectacle."
+      }
+    },
+    "lore": {
+      "history": "The Zenith Lounge was established to cater to the city\u2019s elite nightlife crowd, offering a serene escape above the bustling streets below. Its sleek design and sweeping views quickly made it a city icon.",
+      "secrets": "A hidden VIP terrace on the far east corner is accessible only via a discreet elevator. Patrons there can enjoy exclusive drinks and clandestine meetings away from prying eyes."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Link City Arena",
+    "category": "sports",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "event_manager",
+        "security_staff",
+        "concessions_worker",
+        "technician",
+        "tour_guide"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "confidence": 1.5
+      }
+    },
+    "description": "A colossal stadium of steel and light.",
+    "location_id": "link_city_arena",
+    "image_url": "/assets/images/locations/link_city_arena_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Massive steel girders support soaring tiers of seating under bright floodlights. The air vibrates with echoes of cheering crowds and thumping bass from events. The scent of popcorn, energy drinks, and polished concrete mingles. LED screens flash team logos and digital advertisements, creating a dynamic pulse throughout the arena.",
+      "crowd_atmosphere": "The arena fills with energy during events. Fans wear team colors, chant, and wave banners, while security personnel and staff navigate the crowd with precision. During downtime, cleaners, vendors, and athletes move through the space with efficiency and purpose. Noise ebbs and flows, but the anticipation is always palpable.",
+      "activities": [
+        "Watch professional sports matches or competitive e-sports tournaments.",
+        "Attend large-scale concerts, festivals, and exhibitions.",
+        "Participate in community fitness events or charity matches.",
+        "Access VIP lounges for networking or private viewings.",
+        "Explore behind-the-scenes tours, including locker rooms and media areas."
+      ],
+      "interaction_rules": "Privacy Level: Public. Attendees must respect seating arrangements, follow event staff instructions, and maintain general decorum during events.",
+      "seasonal_variations": {
+        "frostlink": "The arena converts its central floor for ice events. Outside, crowds bundle up in heated queues. The massive structure hums with heating systems.",
+        "surgespring": "The arena hosts major e-sports tournaments. The energy is electric, with holographic displays spilling out into the streets.",
+        "burnseason": "The arena is a massive, climate-controlled refuge. Summer concerts and indoor sports draw huge crowds escaping the heat.",
+        "shadowfall": "Events take on a darker, more artistic tone. Holo-concerts featuring minor keys and mysterious themes are popular."
+      },
+      "weather_variations": {
+        "snow_heavy": "Event delays are common, but those inside enjoy a warm, isolated world of entertainment. The roof is firmly sealed against the snow.",
+        "thunderstorm": "The roar of the crowd rivals the thunder outside. The retractable roof is closed, and the atmosphere inside is intense and focused.",
+        "heatwave": "The arena's AC is pushed to the limit. It's one of the most popular places in the city, packed even for minor events.",
+        "clear_cool": "The retractable roof opens for evening events, letting in the cool night air and starlight to mix with the stadium lights."
+      }
+    },
+    "lore": {
+      "history": "Link City Arena was inaugurated to host both traditional sports and the city\u2019s rapidly growing e-sports scene. Its design combines futuristic architecture with functional crowd management. Over the years, it has hosted legendary matches, international concerts, and civic celebrations, becoming a landmark of competition and culture in Link City.",
+      "secrets": "Rumors suggest hidden underground tunnels connect to key city buildings, allowing discreet movement of VIPs and athletes. Certain executive suites are said to contain AI-managed observation systems that track crowd engagement and behavioral patterns during events."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "LinkGate Mall",
+    "category": "commercial",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "shop_associate",
+        "security_staff",
+        "cleaning_staff",
+        "event_coordinator",
+        "tech_support"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "distraction": 1.3
+      }
+    },
+    "description": "The buzzing shopping mall in Link City.",
+    "location_id": "linkgate_mall",
+    "image_url": "/assets/images/locations/linkgate_mall_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "A multi-level shopping paradise filled with glowing storefronts, ambient music, and the hum of conversation. The scent of coffee, perfume, and fast food blends together as neon signage reflects off polished tiles. Escalators and glass elevators transport shoppers between floors, while interactive holograms advertise the latest products.",
+      "crowd_atmosphere": "Shoppers of all ages roam the mall. Teenagers cluster near tech stores, families navigate with carts, and business professionals pass through briskly. Security personnel patrol the floors, and maintenance staff ensure the mall stays pristine. During peak hours, the environment buzzes with excitement, while late evenings are quieter but still alive with window shoppers.",
+      "activities": [
+        "Browse high-end boutiques, electronics stores, and specialty shops.",
+        "Grab meals or snacks at cafes and food courts.",
+        "Participate in seasonal events, promotions, and product launches.",
+        "Attend interactive holographic demos or pop-up exhibitions.",
+        "Relax in seating areas while people-watching or planning purchases."
+      ],
+      "interaction_rules": "Privacy Level: Public. Shoppers must follow posted rules, respect staff and other patrons, and avoid disruptive behavior.",
+      "seasonal_variations": {
+        "frostlink": "The mall is decorated with winter themes. Shoppers seek warmth and holiday shopping deals. Hot beverage kiosks do brisk business.",
+        "surgespring": "Spring fashion launches and vibrant displays dominate. The mall hosts renewal sales and tech product launches timed with the energetic season.",
+        "burnseason": "The mall becomes a popular heat refuge. Evening shopping peaks as people avoid daytime heat. Summer sales and cooling stations are everywhere.",
+        "shadowfall": "Autumn themes and contemplative displays appear. The mall hosts harvest festivals and data-themed art installations matching the season's aesthetic."
+      },
+      "weather_variations": {
+        "snow_heavy": "The mall is packed with people seeking shelter and entertainment. Some shoppers are stranded and make the most of it.",
+        "electromagnetic_storm": "The mall's backup systems engage smoothly. Shoppers watch the spectacular storm through skylights while continuing to browse.",
+        "heatwave": "The mall is absolutely packed with heat-refugees. Cooling stations and ice cream shops have long lines.",
+        "data_rain": "The rare phenomenon draws crowds to the mall's observation areas. Special viewing events are hastily organized by event coordinators."
+      }
+    },
+    "lore": {
+      "history": "LinkGate Mall was constructed to unify the city\u2019s retail experience under one roof. Opening with a mix of local boutiques and international brands, it quickly became a central hub for commerce and social interaction in Link City. Over the years, it has hosted major product launches and seasonal festivals, cementing its reputation as a landmark of urban culture.",
+      "secrets": "Whispers tell of hidden VIP lounges accessible only to certain patrons and executives, and some service corridors contain prototype retail tech not seen by the general public. There are rumors of AI-managed behavioral analytics tracking shopping patterns across the mall for optimization and targeted events."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Linkside Estate (User Loft)",
+    "category": "residential",
+    "system_modifiers": {
+      "privacy_gate": "Private"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "home_time"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "resident",
+        "guest"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "safety": 1.5,
+        "customization": 1.4
+      }
+    },
+    "description": "A modest but well-kept apartment assigned to new residents of Link City.",
+    "location_id": "linkside_estate",
+    "image_url": "/assets/images/locations/linkview_estate_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "A cozy apartment with minimalistic furnishings, soft lighting, and clean surfaces. The faint aroma of polished wood and fresh laundry lingers in the air. Large windows overlook the bustling streets below, letting in filtered daylight and the distant hum of Link City life.",
+      "crowd_atmosphere": "Quiet and personal. Residents and guests move silently, mindful of shared walls and neighbors. Occasionally, the distant sounds of the city drift in, but inside, the loft is a calm, private retreat.",
+      "activities": [
+        "Relax or nap on the furnished sofa.",
+        "Organize personal items in the wardrobe and storage units.",
+        "Cook simple meals in the kitchenette.",
+        "Use the apartment as a personal workspace or creative studio.",
+        "Host small, private gatherings with close friends."
+      ],
+      "interaction_rules": "Privacy Level: Private. Only the resident and approved visitors may enter. Respect all personal belongings and maintain quiet.",
+      "seasonal_variations": {
+        "frostlink": "The apartment's heating keeps it cozy against the winter cold. Frost patterns form on the windows, creating beautiful views of the city.",
+        "surgespring": "Windows are opened to let in fresh spring air. The apartment feels energized and renewed, perfect for spring cleaning and reorganization.",
+        "burnseason": "The AC works constantly during heatwaves. The apartment becomes a cool refuge, though the view outside shimmers with heat haze.",
+        "shadowfall": "Amber and purple light filters through the windows. The apartment takes on a contemplative, cozy atmosphere perfect for introspection."
+      },
+      "weather_variations": {
+        "snow_heavy": "The apartment becomes a warm fortress against the storm. The view outside is a white void, making the interior feel even more secure.",
+        "thunderstorm": "Lightning illuminates the apartment dramatically. The storm creates a cozy atmosphere, perfect for staying in with hot drinks.",
+        "heatwave": "The apartment's AC makes it a premium refuge. The contrast between the scorching city outside and cool interior is deeply satisfying.",
+        "clear_cool": "Perfect weather means windows can be opened. Fresh air and pleasant temperatures make the apartment feel especially comfortable."
+      }
+    },
+    "lore": {
+      "history": "Linkside Estate was built as part of Link City's initiative to provide starter apartments to new residents. Each loft is standardized for comfort, efficiency, and safety, making it ideal for settling into the city while exploring opportunities and social connections.",
+      "secrets": "Some residents have discovered hidden storage panels in the walls for personal items. Rumors hint that certain apartments may include early-access smart-home features not publicly advertised, controlled by a central AI for testing."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "LinkView Cuisine",
+    "category": "dining",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "chef",
+        "waitstaff",
+        "sommelier",
+        "host"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "sophistication": 1.5
+      }
+    },
+    "description": "A high-tier restaurant on the top floor of Skylink Tower.",
+    "location_id": "linkview_cuisine",
+    "image_url": "/assets/images/locations/linkview_cuisine_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "An elegant restaurant perched atop Skylink Tower, offering panoramic views of Link City. Soft ambient lighting reflects off polished marble and glass surfaces. Aromas of carefully curated international cuisine fill the air, blending with the faint scent of fresh flowers on each table. Subtle jazz plays from hidden speakers, and servers glide gracefully between tables.",
+      "crowd_atmosphere": "The clientele is a mix of high-profile executives, visiting dignitaries, and discerning food enthusiasts. Conversations are hushed and sophisticated, punctuated by the occasional toast. Waitstaff move efficiently but unobtrusively. There is a palpable energy of exclusivity, refinement, and quiet observation.",
+      "activities": [
+        "Reserve a table with cityscape views for business dinners or personal celebrations.",
+        "Sample seasonal tasting menus crafted by renowned chefs.",
+        "Engage in discreet networking or high-stakes deal-making over meals.",
+        "Enjoy a private wine tasting in the glass-walled wine room.",
+        "Observe city traffic and events through the expansive panoramic windows."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Patrons are expected to maintain decorum, respect private conversations, and follow staff guidance.",
+      "seasonal_variations": {
+        "frostlink": "The restaurant offers winter tasting menus. The panoramic views of the frost-covered city create a stunning backdrop for fine dining.",
+        "surgespring": "Spring menus feature fresh, vibrant ingredients. Lightning from spring storms creates dramatic flashes through the panoramic windows.",
+        "burnseason": "Summer menus emphasize light, cooling dishes. Evening reservations are in high demand as diners enjoy the view of the city coming alive at night.",
+        "shadowfall": "Autumn menus feature rich, contemplative flavors. The amber and purple light of the season creates an especially romantic atmosphere."
+      },
+      "weather_variations": {
+        "snow_heavy": "The view of the snow-covered city is breathtaking. The restaurant is fully booked with patrons enjoying the spectacular winter scene.",
+        "thunderstorm": "Lightning illuminates the cityscape dramatically. Diners watch the storm from the safety of the tower, adding excitement to their meals.",
+        "clear_cool": "Perfect weather creates stunning city views. The panoramic windows showcase Link City at its most beautiful, enhancing the dining experience.",
+        "electromagnetic_storm": "The spectacular storm creates an unforgettable backdrop. Diners watch electrical arcs dance across the skyline while enjoying their meals."
+      }
+    },
+    "lore": {
+      "history": "LinkView Cuisine opened during Skylink Tower\u2019s grand inauguration, aiming to redefine fine dining in Link City. Its design combines futuristic architecture with traditional elegance, establishing it as a symbol of prestige and gastronomic excellence.",
+      "secrets": "Some patrons claim that select tables are outfitted with private communication terminals and AR interfaces for conducting sensitive business meetings or confidential tastings away from public view."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Midline Residences",
+    "category": "residential",
+    "system_modifiers": {
+      "privacy_gate": "Private"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "home_time"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "maintenance_staff",
+        "security_guard",
+        "concierge"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "balance": 1.3
+      }
+    },
+    "description": "Standard residential housing designed for efficiency.",
+    "location_id": "midline_residences",
+    "image_url": "/assets/images/locations/midline_residences_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "A collection of uniform mid-rise apartment blocks, painted in muted shades of gray and cream. The air carries faint aromas of laundry, morning coffee, and occasional street food. Hallways echo with the shuffle of shoes on linoleum floors, and the distant hum of HVAC units permeates the building.",
+      "crowd_atmosphere": "Residents move efficiently through their routines \u2014 parents escort children to school, office workers rush to catch morning transit, and elderly occupants exchange polite nods in the lobby. Interactions are cordial but reserved, reflecting the practical nature of the community.",
+      "activities": [
+        "Enter or exit apartments and common areas.",
+        "Socialize briefly with neighbors in lobbies or courtyards.",
+        "Use shared laundry rooms or fitness facilities.",
+        "Attend community meetings or maintenance briefings.",
+        "Observe city life from balconies or ground-floor walkways."
+      ],
+      "interaction_rules": "Privacy Level: Public. Residents expect polite distance; unsolicited entry into apartments is prohibited.",
+      "seasonal_variations": {
+        "frostlink": "Windows are frosted over, and the hum of personal heaters is audible in the hallways. Residents hurry from the cold into the warm lobby.",
+        "surgespring": "Balcony doors are flung open to catch the breeze. The sound of cleaning and reorganization echoes through the complex.",
+        "burnseason": "Blinds are drawn tight against the sun. The complex is quiet during the day, coming alive only after sunset.",
+        "shadowfall": "Warm, amber lights glow from windows comfortably early. The smell of comfort food drifts through the ventilation."
+      },
+      "weather_variations": {
+        "snow_light": "A quiet hush falls over the complex. Children play in the light snow in the courtyard.",
+        "thunderstorm": "Flickering lights and the sound of heavy rain against glass make the apartments feel like cozy bunkers.",
+        "heatwave": "Residents congregate in the cooler ground-floor lobby or sit on balconies late into the night to escape the trapped heat.",
+        "rain_heavy": "Umbrellas pile up at the entrance. The sound of tires hissing on wet pavement below is constant."
+      }
+    },
+    "lore": {
+      "history": "Midline Residences were constructed during a city-wide housing initiative aimed at providing affordable, efficient homes for the growing population of Link City. The buildings follow modular design principles to maximize space and functionality.",
+      "secrets": "Certain residents whisper about hidden maintenance tunnels connecting the buildings, rumored to be used for discreet deliveries or clandestine meetings by city officials and corporate agents."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Neon Nights Club",
+    "category": "nightlife",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "evening",
+        "close_slot": "home_time"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [
+        "bartender",
+        "DJ",
+        "security_guard",
+        "wait_staff"
+      ],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "energy": 1.5
+      }
+    },
+    "description": "Violet-crimson neon, pulsing bass.",
+    "location_id": "neon_nights",
+    "image_url": "/assets/images/locations/neon_nights_club_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The club's interior is drenched in violet and crimson neon, casting sharp shadows over polished black floors. The bass vibrates through walls and floors, a rhythmic pulse felt as much as heard. Faint scents of exotic perfumes and spirits mingle with the warm hum of crowded energy.",
+      "crowd_atmosphere": "The crowd is diverse and electric: dancers lose themselves to the music, socialites cluster in VIP corners, and bartenders move swiftly serving cocktails. Energy levels peak late at night, with laughter, chatter, and occasional arguments punctuating the beats.",
+      "activities": [
+        "Dance on the main floor beneath the neon lights.",
+        "Order specialty cocktails from the bar.",
+        "Socialize in VIP lounges or corner tables.",
+        "Participate in themed events or live DJ shows.",
+        "Observe the city through floor-to-ceiling tinted windows."
+      ],
+      "interaction_rules": "Privacy Level: Public. Patrons are free to mingle, but aggressive behavior is monitored and ejected by security.",
+      "seasonal_variations": {
+        "frostlink": "The club becomes a warm refuge from the cold. Condensation forms on the tinted windows, and the contrast between the frigid outside and heated interior intensifies the atmosphere.",
+        "surgespring": "Electrical storms outside create dramatic lightning flashes through the windows. The club's sound system occasionally crackles with power surges, adding to the energy.",
+        "burnseason": "The club is packed during evening and night as people escape the heat. The cooling system works overtime, and cold drinks are in high demand.",
+        "shadowfall": "The club takes on a more intimate, contemplative vibe. Purple and amber lighting dominates, matching the season's mood outside."
+      },
+      "weather_variations": {
+        "ice_storm": "The club is one of the few places still open and packed with people seeking shelter. The windows are completely frosted over.",
+        "electromagnetic_storm": "The light show outside competes with the club's own effects. Patrons crowd the windows to watch electrical arcs dance across the skyline.",
+        "heatwave": "The club doesn't open until evening, but when it does, it's absolutely packed with heat-refugees ready to party.",
+        "data_rain": "The rare phenomenon draws crowds. DJs incorporate the visual spectacle into their sets, and the dancefloor is electric with energy."
+      }
+    },
+    "lore": {
+      "history": "Neon Nights Club opened in 2049 as one of Link City's first neon-themed nightlife venues. It quickly became a hotspot for trendsetters and underground artists seeking a visually immersive experience.",
+      "secrets": "Rumor has it that the club has hidden rooms accessed only by select VIPs, where exclusive after-hours events occur \u2014 sometimes involving high-profile deals or discreet networking between influential figures."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Neon Span Bridge",
+    "category": "landmark",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "home_time"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "isolation": 1.5
+      }
+    },
+    "description": "A massive suspension bridge.",
+    "location_id": "neon_span_bridge",
+    "image_url": "/assets/images/locations/neon_span_bridge_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The Neon Span Bridge stretches across the river like a ribbon of glowing cables. Steel beams are outlined with soft neon accents, and the wet pavement reflects the city lights below. The wind whistles through the suspension towers, carrying faint scents of rain and ozone.",
+      "crowd_atmosphere": "Pedestrians stroll along the bridge at all hours, some stopping to photograph the view while others jog or cycle. Tourists and locals intermingle, though the bridge retains a sense of openness and quiet majesty. At night, it feels ethereal and slightly isolated.",
+      "activities": [
+        "Walk or jog across the span while admiring Link City\u2019s skyline.",
+        "Photograph the neon-lit towers and city below.",
+        "Observe boats passing under the bridge.",
+        "Meet contacts discreetly at designated observation points.",
+        "Use the bridge as a shortcut connecting key districts of the city."
+      ],
+      "interaction_rules": "Privacy Level: Public. All activities are visible to passersby; discretion is limited at peak times.",
+      "seasonal_variations": {
+        "frostlink": "The cables are coated in a thin layer of ice that shimmers in the neon light. The wind bite is fierce, keeping pedestrians moving quickly.",
+        "surgespring": "Mist from the river mingles with the neon, creating an ethereal, cyberpunk glow. The bridge feels alive with electric potential.",
+        "burnseason": "Heat shimmers off the asphalt during the day. At night, it becomes a popular spot for cooling breezes off the water.",
+        "shadowfall": "Fog often rolls in, obscuring the ends of the bridge. The lights create halos in the mist, perfect for moody, clandestine meetings."
+      },
+      "weather_variations": {
+        "snow_heavy": "Traffic slows to a crawl. The bridge is a white ribbon in the darkness, beautiful but treacherous.",
+        "electromagnetic_storm": "Lightning strikes the towers, grounding harmlessly but spectacularly. The view of the city under the storm is unmatched.",
+        "heatwave": "The bridge is empty at noon but packed at midnight with people seeking the river breeze.",
+        "rain_acid": "Pedestrians vanish. The neon reflects distorted and oily on the wet, chemical-slicked pavement."
+      }
+    },
+    "lore": {
+      "history": "Completed in 2042, the Neon Span Bridge was one of Link City's largest engineering projects, designed to ease traffic while providing a visually stunning landmark connecting the downtown and arts districts.",
+      "secrets": "Certain maintenance catwalks beneath the bridge are off-limits to the public. Urban explorers whisper of hidden nooks where street artists leave cryptic neon murals, only visible after dark."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Northway Flats",
+    "category": "residential",
+    "system_modifiers": {
+      "privacy_gate": "Private"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "home_time"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "calm": 1.4
+      }
+    },
+    "description": "Low-rise apartments tucked away.",
+    "location_id": "northway_flats",
+    "image_url": "/assets/images/locations/northway_flats_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Northway Flats consists of modest low-rise buildings, their brick facades softened by creeping ivy and small landscaped courtyards. The smell of laundry and cooking drifts from open windows. The faint hum of air conditioners and distant city traffic creates a subdued urban background.",
+      "crowd_atmosphere": "Residents move at their own pace\u2014morning commutes, children playing in the courtyards, neighbors chatting near the stairwells. The vibe is relaxed, with a sense of community, though moments of quiet solitude are plentiful.",
+      "activities": [
+        "Walk through the courtyards and enjoy the small gardens.",
+        "Observe daily routines of residents from public areas.",
+        "Visit shared laundry or recreation rooms.",
+        "Engage with locals at the front entrance or mail area.",
+        "Access nearby convenience stores and street vendors."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Respectful observation is allowed; personal interiors require invitation.",
+      "seasonal_variations": {
+        "frostlink": "Snow caps the ivy on the brick facades. The courtyards are quiet, save for the crunch of boots on frozen paths.",
+        "surgespring": "Window boxes overflow with genetically engineered blooms. The courtyards are busy with residents enjoying the mild air.",
+        "burnseason": "Fans whir in every window. Residents sit on stoops and in shaded courtyard corners until late at night.",
+        "shadowfall": "Dead leaves scatter across the brick pathways. The complex feels settled and cozy, a true home against the encroaching dark."
+      },
+      "weather_variations": {
+        "snow_heavy": "The flats look like a vintage postcard. Residents help each other clear paths, strengthening community bonds.",
+        "thunderstorm": "Puddles form in the uneven courtyard pavement. The brick walls darken with rain, feeling protective and solid.",
+        "heatwave": "The brick absorbs heat, keeping the flats warm into the night. Water fights break out in the courtyard among the younger residents.",
+        "fog": "The low-rise buildings seem to disappear into the gray. Sounds are muffled, creating a sense of isolation."
+      }
+    },
+    "lore": {
+      "history": "Built in 2035, Northway Flats was part of an affordable housing initiative to accommodate city workers and young professionals. Despite its age, many of the buildings remain well-maintained and popular among long-term residents.",
+      "secrets": "Some residents have unofficial rooftop gardens, hidden from public view. Occasional whispered stories speak of old service tunnels connecting the blocks, remnants of early city infrastructure."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Obsidian Proving Grounds",
+    "category": "combat",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "intensity": 1.6
+      }
+    },
+    "description": "A brutal training facility.",
+    "location_id": "obsidian_proving_grounds",
+    "image_url": "/assets/images/locations/obsidian_proving_grounds_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The Obsidian Proving Grounds is a stark, industrial compound of dark steel and reinforced concrete. The air smells of ozone and heated metal. Grunts, clashing metal, and shouted commands echo through cavernous halls. Training dummies, obstacle courses, and sparring rings fill the vast interior, with every surface marked by use and wear.",
+      "crowd_atmosphere": "Trainers bark orders while recruits push through grueling drills. Sweat and determination hang thick in the air. The mood is tense and focused\u2014discipline is expected, mistakes are costly, and camaraderie forms only among those who endure.",
+      "activities": [
+        "Participate in hand-to-hand combat drills and weapon training.",
+        "Navigate obstacle courses and timed challenges.",
+        "Observe or join tactical simulations and sparring matches.",
+        "Engage in strength and endurance testing sessions.",
+        "Access high-tech combat simulators and feedback terminals."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Only authorized trainees or invited visitors may engage directly; observation is allowed in designated areas.",
+      "seasonal_variations": {
+        "frostlink": "The steel equipment is ice-cold to the touch. Breath steams in the unheated training halls, and the cold metal floor makes grappling punishing.",
+        "surgespring": "The air crackles with static. Electrical hazards are incorporated into training drills, adding a dangerous edge to the obstacle courses.",
+        "burnseason": "The training halls are sweltering. Endurance training becomes the focus, pushing recruits to their physical limits in the heat.",
+        "shadowfall": "Training shifts to stealth and night operations. The halls are kept intentionally dark, lit only by dim amber emergency lights."
+      },
+      "weather_variations": {
+        "snow_heavy": "Outdoor courses are covered in snow, adding friction and cold resistance to every movement. Training continues without pause.",
+        "thunderstorm": "Thunder shakes the metal roof, masking the sound of footsteps and combat. The instructors use the chaos to test situational awareness.",
+        "heatwave": "Recruits collapse from heat exhaustion. Water rations are doubled, but the intensity of training remains unforgiving.",
+        "rain_heavy": "The sound of rain on the corrugated roof is deafening. Orders must be shouted, and the slick floors add a layer of unpredictability."
+      }
+    },
+    "lore": {
+      "history": "Established in 2038 as a private combat training complex, the Obsidian Proving Grounds became known for producing some of Link City's finest security operatives and competitive fighters. Its founders emphasized extreme discipline and technological augmentation in training.",
+      "secrets": "Some underground chambers are rumored to host experimental simulations and AI combat instructors. A few trainees claim to have encountered restricted holographic arenas where the difficulty adjusts in real-time based on performance, pushing participants to their limits."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "The Pixel Den Arcade",
+    "category": "entertainment",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "energy": 1.6
+      }
+    },
+    "description": "A sprawling cyberpunk arcade.",
+    "location_id": "pixel_den",
+    "image_url": "/assets/images/locations/pixel_den_arcade_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The Pixel Den Arcade pulses with neon light and electronic hum. Arcade cabinets line every wall, projecting flickering holograms and digital soundtracks. The scent of fried snacks, energy drinks, and warm plastics mingles with the tang of ozone from overused wiring. Laser grids and VR pods blink in rhythmic patterns, creating a sensory overload that thrills the visitor.",
+      "crowd_atmosphere": "Gamers of all ages crowd the arcade, from casual players enjoying retro cabinets to competitive teens chasing high scores. Laughter, cheers, and the occasional groan echo through the space. Friends huddle over VR headsets while others line up for popular rhythm games. The environment is energetic, chaotic, and unrelentingly bright.",
+      "activities": [
+        "Compete in classic and modern arcade games, from VR shooters to rhythm challenges.",
+        "Participate in high-score tournaments and leaderboard challenges.",
+        "Use VR and AR gaming pods for immersive experiences.",
+        "Purchase exclusive digital collectibles and in-game items from kiosks.",
+        "Grab snacks or energy drinks at the neon-lit concession stand."
+      ],
+      "interaction_rules": "Privacy Level: Public. Visitors are free to interact with games and other guests, but physical play areas follow standard arcade etiquette.",
+      "seasonal_variations": {
+        "frostlink": "The arcade becomes a warm, energetic refuge from the cold. Winter-themed tournaments and events draw large crowds seeking indoor entertainment.",
+        "surgespring": "Spring brings new game releases and tech demos. The arcade hosts launch events, and the energy is electric with excitement.",
+        "burnseason": "The arcade is packed at night as people escape the heat. Evening tournaments and events become the main draw, with daytime attendance lower.",
+        "shadowfall": "Autumn brings retro game festivals and nostalgic events. The arcade's neon takes on amber and purple tones matching the season."
+      },
+      "weather_variations": {
+        "snow_heavy": "The arcade is absolutely packed with people seeking entertainment and shelter. Tournaments are spontaneously organized to keep everyone engaged.",
+        "electromagnetic_storm": "The storm causes occasional game glitches, which gamers find exciting. Backup systems keep everything running, adding to the cyberpunk atmosphere.",
+        "heatwave": "The arcade's AC makes it a premium refuge. Evening crowds are massive, and cold drink sales skyrocket.",
+        "data_rain": "The rare phenomenon draws huge crowds. The arcade hosts special viewing parties, and data-themed games become extra popular."
+      }
+    },
+    "lore": {
+      "history": "Founded in 2041, the Pixel Den became a cornerstone of Link City's entertainment district. Originally a small retro arcade, it expanded into a sprawling neon-lit playground with cutting-edge VR and AR experiences, drawing visitors from across the city.",
+      "secrets": "Some VR pods are rumored to host hidden challenges that unlock rare digital items. Occasional private tournaments are held after hours, accessible only to select VIP members who receive cryptic invitations."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "The Rooftop Lounge",
+    "category": "nightlife",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "evening",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "openness": 1.4
+      }
+    },
+    "description": "A quiet escape above the smog.",
+    "location_id": "rooftop_lounge",
+    "image_url": "/assets/images/locations/the_rooftop_lounge_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Perched atop a gleaming skyscraper, the Rooftop Lounge offers a tranquil retreat from Link City's chaos. Warm ambient lighting glows along sleek glass railings, and the faint scent of citrus cocktails and aged oak fills the air. A soft breeze carries the distant hum of the city below, while jazz and chill electronic tracks play discreetly from hidden speakers.",
+      "crowd_atmosphere": "The crowd here is intimate and composed. Guests are often business elites, artists, or city residents seeking a serene evening. Conversations are quiet and thoughtful. Some lean against the railing watching the neon skyline, while others sit at cozy alcoves sharing drinks in hushed tones.",
+      "activities": [
+        "Sip craft cocktails while overlooking the cityscape.",
+        "Attend exclusive evening events and social mixers.",
+        "Relax in private alcoves with ambient lighting and music.",
+        "Engage in low-key networking or casual conversations.",
+        "Reserve rooftop cabanas for semi-private gatherings."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Patrons are expected to respect personal space and maintain subdued conversation.",
+      "seasonal_variations": {
+        "frostlink": "Heaters glow orange against the twilight. Patrons wrap themselves in provided thermal blankets, sipping hot spiced cocktails while watching the frozen city.",
+        "surgespring": "The air is crisp and filled with the scent of ozone and blooming rooftop gardens. The wind carries a sense of renewal and possibility.",
+        "burnseason": "Misting fans create a cool oasis above the sweltering streets. Ice-cold drinks are mandatory, and the lounge is packed until dawn.",
+        "shadowfall": "The autumn haze turns the sunset into a spectacular display of purple and gold. The mood is melancholic and romantic."
+      },
+      "weather_variations": {
+        "snow_heavy": "The retractable glass walls slide shut, turning the lounge into a warm snow globe. The silent falling snow muffles the city lights.",
+        "electromagnetic_storm": "Patrons gather at the edge to watch lightning strike the nearby towers. The air smells of ozone, and the hair on your arms stands up.",
+        "heatwave": "The night air provides welcome relief from the day's heat. The breeze at this altitude makes the lounge the most comfortable spot in the city.",
+        "rain_acid": " The glass enclosure creates a cozy, safe space while acidic rain streaks the panels, distorting the neon city below."
+      }
+    },
+    "lore": {
+      "history": "The Rooftop Lounge was established in 2043 to offer a refined, elevated nightlife experience. Designed to contrast the frenetic energy of the streets below, it quickly became a favored spot for reflective evenings and exclusive gatherings.",
+      "secrets": "Certain private areas are reserved for VIPs who possess coded access cards. Rumor has it that some guests conduct discreet meetings here that can influence city politics and corporate decisions."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Scenic Overlook",
+    "category": "landmark",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "required_item": null
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "inspiration": 1.5,
+        "serenity": 1.4
+      }
+    },
+    "description": "A high vantage point on the outskirts of Link City, offering a breathtaking view of the neon skyline.",
+    "location_id": "scenic_overlook",
+    "image_url": "/assets/images/locations/scenic_overlook_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Perched on the edge of Link City's outskirts, the Scenic Overlook offers a commanding view of the neon-lit skyline. The wind is crisp, carrying a faint tang of ozone. The soft hum of distant traffic vibrates subtly through the ground, while the city lights stretch endlessly like circuits of pulsing color. Twilight and night bring an ethereal glow, perfect for reflection or quiet companionship.",
+      "crowd_atmosphere": "Visitors here are sparse and contemplative. Some sit alone on benches or ledges, sketching or recording thoughts, while others arrive in pairs, quietly sharing the view. It is a place of calm observation, with little noise beyond the ambient city hum.",
+      "activities": [
+        "Observe the city\u2019s neon skyline and digital nightscape.",
+        "Meditate or reflect on personal goals and thoughts.",
+        "Sketch or photograph the view for artistic purposes.",
+        "Have intimate, quiet conversations at the edge of the overlook.",
+        "Trace patterns in the city's architecture and grid from above."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Visitors are expected to maintain contemplative silence and respect the solitude of others.",
+      "seasonal_variations": {
+        "frostlink": "The air is crystal clear and biting cold. The city lights twinkle with a sharpness only seen in winter. Visitors don't linger long.",
+        "surgespring": "Wind whips across the overlook, carrying scents of distant rain and wet pavement. The city below looks like a circuit board coming online.",
+        "burnseason": "Heat haze shimmers over the city during the day, softening the hard edges of the skyscrapers. At night, the view is sultry and still.",
+        "shadowfall": "Dead leaves swirl around the benches. The view is often obscured by low-hanging smog or fog, making the city feel distant and dreamlike."
+      },
+      "weather_variations": {
+        "snow_light": "The sounds of the city are dampened to a hush. The overlook feels completely isolated, a white void above the world.",
+        "thunderstorm": "You can see the rain sweeping across the city blocks like a curtain. Lightning strikes illuminate the grid in brief, blinding flashes.",
+        "heatwave": "The concrete railing is warm to the touch even at night. The city below glows like an ember.",
+        "fog": "The city is invisible, a glowing diffuse floor beneath a sea of gray. It feels like floating in a cloud."
+      }
+    },
+    "lore": {
+      "history": "A favored spot for poets, dreamers, and city romantics. Many claim that observing the skyline from here reveals hidden patterns in the urban grid, believed to be left by the Architect during Link City's initial design.",
+      "secrets": "Beneath the bench at the far north corner, initials and small messages are carved into the wood\u2014tokens left by those who wanted to leave a trace of themselves in the city. Some say reading them brings insight into past visitors\u2019 intentions and thoughts."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "The Shadowed Archives",
+    "category": "cultural",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": false
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "required_item": null
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "mystery": 1.5,
+        "focus": 1.4
+      }
+    },
+    "description": "A darker, more gothic wing of the library.",
+    "location_id": "shadowed_archives",
+    "image_url": "/assets/images/locations/the_shadowed_archives_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Dim, ambient lighting casts long shadows along towering bookshelves. The scent of aged paper and polished wood is pervasive. A faint chill lingers, and the echo of footsteps is unusually pronounced, giving the space a solemn, reverent atmosphere.",
+      "crowd_atmosphere": "Visitors here move cautiously and quietly, whispering softly as they navigate the stacks. Scholars hunched over rare tomes, archivists scanning manuscripts, and occasional curious readers create an air of intense concentration.",
+      "activities": [
+        "Study rare manuscripts and historic documents.",
+        "Research esoteric topics in hushed solitude.",
+        "Catalogue or archive rare books under supervision.",
+        "Trace hidden passages or alcoves tucked behind shelves.",
+        "Attend exclusive guided readings or lectures."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Whispering and discretion are expected; no loud conversations or casual socializing.",
+      "seasonal_variations": {
+        "frostlink": "Drafts chill the aisles, causing scholars to huddle in their coats. The smell of old paper is crisp. The silence feels frozen and absolute.",
+        "surgespring": "Dust motes dance in the few shafts of sunlight. The archives feel slightly less oppressive, as if the weight of history has lightened.",
+        "burnseason": "The archives are a cool, stone sanctuary. The thick walls keep the heat out completely. It smells of cool dust and preservation chemicals.",
+        "shadowfall": "The shadows seem to lengthen and deepen. It is the perfect atmosphere for uncovering dark secrets. The air is still and heavy."
+      },
+      "weather_variations": {
+        "snow_heavy": "The world outside ceases to exist. There is only the archive and its secrets. The silence is profound.",
+        "thunderstorm": "Thunder rumbles deep in the earth, vibrating through the stone floor. It feels like the building itself is growling.",
+        "heatwave": "While cool, the air feels stagnant and old. The ventilation struggles to move heavy air through the stacks.",
+        "rain_steady": "The sound of rain is a distant, comforting drone, encouraging hours of uninterrupted study."
+      }
+    },
+    "lore": {
+      "history": "The Shadowed Archives were added as a secluded wing to house the library's oldest and most delicate collections. Over time, it has become a haven for scholars, historians, and those pursuing knowledge that is rarely sought.",
+      "secrets": "Some alcoves contain manuscripts rumored to alter perception when read at night. Archivists whisper that hidden ledgers document events that never appear in official city records."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Skylink Tower Residences",
+    "category": "residential",
+    "system_modifiers": {
+      "privacy_gate": "Private"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "home_time"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "required_item": null
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "isolation": 1.3,
+        "comfort": 1.4
+      }
+    },
+    "description": "Mid-tier apartments within Skylink Tower.",
+    "location_id": "skylink_apartments",
+    "image_url": "/assets/images/locations/skylink_tower_residences_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Hallways echo with soft footsteps, faint hums of air filtration systems, and occasional chatter from neighbors. The scent of polished concrete mingles with faint traces of coffee and home-cooked meals drifting from apartment kitchens. Soft ambient lighting gives the corridors a calm, orderly feeling.",
+      "crowd_atmosphere": "Residents are a mix of young professionals, small families, and long-term tenants. Conversations are casual and polite. Children\u2019s laughter occasionally filters through the walls, while adults move efficiently through shared spaces like the lobby or laundry rooms.",
+      "activities": [
+        "Enter and leave apartments at different times of day.",
+        "Socialize briefly with neighbors in communal areas.",
+        "Use shared amenities such as laundry rooms or fitness corners.",
+        "Maintain or decorate personal apartments according to preference."
+      ],
+      "interaction_rules": "Privacy Level: Semi-Private. Residents are friendly but respect each other's personal space.",
+      "seasonal_variations": {
+        "frostlink": "Condensation beads on the high-quality glass. The tower's central heating is impeccable, but residents still favor heavy robes and hot tea.",
+        "surgespring": "The air filtration carries the faint, simulated scent of cherry blossoms. A sense of renewal permeates the orderly halls.",
+        "burnseason": "The cooling systems hum with a deeper, more industrial vibration. The internal temperature remains a perfect, artificial 22 degrees.",
+        "shadowfall": "The halls take on a more intimate, quiet atmosphere. Individual apartment lights glow with a warm, amber invitation."
+      },
+      "weather_variations": {
+        "snow_heavy": "The windows show a white void. Residents feel safely cocooned in the tower's massive structure.",
+        "thunderstorm": "Lightning flashes are spectacular at this height, momentarily illuminating the long corridors through the end-of-hall windows.",
+        "heatwave": "The luxury of the tower's insulation is apparent; while the city sizzles, the residences remain a cool sanctuary.",
+        "clear_cool": "The panoramic windows are crystal clear, offering sharp views of the city's details that are normally lost in the haze."
+      }
+    },
+    "lore": {
+      "history": "Constructed as part of Skylink Tower\u2019s expansion, these apartments were designed to accommodate mid-tier residents seeking convenience and proximity to city amenities. The tower itself has become an iconic mixed-use hub over the years.",
+      "secrets": "Some residents whisper about hidden maintenance corridors connecting floors and secret rooftop access. A few report glimpses of unusual nocturnal activities on upper floors, but nothing official is documented."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Skylink Tower",
+    "category": "landmark",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night",
+        "home_time"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "required_item": null
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "authority": 1.5,
+        "grandiosity": 1.6
+      }
+    },
+    "description": "A massive, opulent building in the center of Link City.",
+    "location_id": "skylink_tower",
+    "image_url": "/assets/images/locations/skylink_tower_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Sunlight glints off its mirrored surfaces, casting prismatic reflections across the plaza below. Inside, marble floors shine beneath ornate chandeliers, elevators hum silently, and the faint scent of polished stone and subtle cologne pervades the air. The building feels alive, a blend of human ambition and cutting-edge technology.",
+      "crowd_atmosphere": "Visitors range from suited executives rushing between meetings to tourists taking in the grandeur. Security personnel move methodically, maintaining order while unobtrusively observing every corner. The lobby is buzzing but composed, with a sense of calculated precision permeating the crowd.",
+      "activities": [
+        "Attend high-level corporate meetings or pitch sessions.",
+        "Explore observation decks with panoramic views of Link City.",
+        "Shop at exclusive boutiques or dine at premium restaurants inside the tower.",
+        "Interact with building AI systems for information or access control."
+      ],
+      "interaction_rules": "Privacy Level: Public. Guests may freely explore general areas, but private floors require authorization.",
+      "seasonal_variations": {
+        "frostlink": "The lobby is decorated with crystalline, holographic ice structures. Heated floor tiles provide immediate relief to those entering from the plaza.",
+        "surgespring": "Digital banners celebrate the city's renewal. The marble floors seem to shine with a more vibrant, energetic reflection.",
+        "burnseason": "The tower is a primary cooling hub for the district. The lobby is a bustling refuge of corporate precision and powerful air conditioning.",
+        "shadowfall": "The tower's exterior lighting shifts to amber and deep purple. The ambient music in the lobby becomes slower and more contemplative."
+      },
+      "weather_variations": {
+        "snow_heavy": "The tower stands like a silver needle in a white world. The lobby is packed with delayed commuters waiting for transport clearings.",
+        "electromagnetic_storm": "The tower acts as a massive lightning rod. Arcs are visible from the lobby skylights, grounded safely by the building's advanced grid.",
+        "heatwave": "The mirrored surfaces reflect intense heat back onto the plaza. Inside, the tower is a frigid, high-tech haven.",
+        "data_rain": "The tower's external surfaces shimmer as data rain flows down the glass. Crowds gather in the lobby to watch the cascade through the glass walls."
+      }
+    },
+    "lore": {
+      "history": "Constructed during Link City's Golden Era of architecture, Skylink Tower became a symbol of prosperity and technological progress. It houses a mixture of corporate offices, residential units, and public amenities, making it a central hub of city life.",
+      "secrets": "Certain restricted floors reportedly contain private AI research labs and hidden conference suites. Rumors persist of a concealed observation deck accessible only to those who know the tower's coded pathways."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Soul Plaza",
+    "category": "public_hub",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "social_density": 1.5,
+        "vibrancy": 1.6
+      }
+    },
+    "description": "The beating heart of the city.",
+    "location_id": "soul_plaza",
+    "image_url": "/assets/images/locations/soul_plaza_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The plaza is alive with motion and sound: the rhythmic tapping of shoes on polished stone, faint electronic hums from embedded street tech, and a blend of street food aromas mingling with the scent of ozone from neon signs. Holographic banners pulse above, casting shifting glows across the crowd.",
+      "crowd_atmosphere": "Commuters, street performers, shoppers, and tourists all intermix. Conversations, laughter, and the occasional shouted vendor call create a dynamic, bustling environment. The plaza feels both vibrant and safe, a crossroads of city life.",
+      "activities": [
+        "People-watch from central benches or fountains.",
+        "Shop at pop-up vendor stalls offering exotic wares.",
+        "Listen to street performers and musicians.",
+        "Attend city announcements or holographic displays."
+      ],
+      "interaction_rules": "Privacy Level: Public. Social interactions are encouraged; NPCs respond dynamically to presence and actions.",
+      "seasonal_variations": {
+        "frostlink": "The plaza's fountains are frozen solid, creating ice sculptures. Fewer people brave the cold, but those who do huddle around heat lamps. Steam rises from street vendors' carts.",
+        "surgespring": "The plaza comes alive with spring energy. Holographic displays are extra vibrant, and crowds gather to watch electrical storms from the safety of covered areas.",
+        "burnseason": "During the day, the plaza is quieter as people avoid the heat. But at night, it transforms into a bustling hub of activity with outdoor concerts and night markets.",
+        "shadowfall": "The plaza takes on a contemplative atmosphere. Amber and purple lights create beautiful shadows, and people gather to watch data streams occasionally visible in the air."
+      },
+      "weather_variations": {
+        "snow_heavy": "The plaza is nearly deserted, blanketed in heavy snow. Only the most dedicated souls venture out, and street vendors have closed their stalls.",
+        "thunderstorm": "Lightning illuminates the plaza dramatically. People take shelter under awnings and in doorways, watching the storm with excitement.",
+        "heatwave": "The plaza is abandoned during the day, heat shimmering off the stone. Cooling mist stations run constantly for the few brave souls outside.",
+        "electromagnetic_storm": "Visible electrical arcs dance between the holographic banners. Crowds gather in awe, keeping a safe distance from the spectacular phenomenon.",
+        "data_rain": "The rare Data Rain phenomenon draws huge crowds to the plaza. People stand mesmerized, watching cascading data streams fall like digital rain."
+      }
+    },
+    "lore": {
+      "history": "Soul Plaza has long been the symbolic heart of Link City, hosting celebrations, public announcements, and social gatherings. Over the decades, its design has been adapted to accommodate both holographic art and high foot traffic.",
+      "secrets": "Beneath the main fountain lies a maintenance tunnel with hidden graffiti from the city's underground artists. Certain holographic ads occasionally display cryptic messages only visible during specific light cycles."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Stop n Go Racetrack",
+    "category": "sports",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "adrenaline": 1.5,
+        "vibrancy": 1.4
+      }
+    },
+    "description": "The smell of burning rubber and ozone.",
+    "location_id": "stop_n_go",
+    "image_url": "/assets/images/locations/stop_n_go_racetrack_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The track vibrates with the roar of engines and the screech of tires. The air is thick with the scent of burning rubber and ozone from the high-voltage speed circuits. Neon banners flash along the track edges, reflecting off puddles from the occasional rain.",
+      "crowd_atmosphere": "Fans and racers alike fill the grandstands, shouting and cheering. Pit crews rush back and forth, and the ambient noise of engines, announcements, and music creates an electrifying energy.",
+      "activities": [
+        "Participate in go-kart or hovercar races.",
+        "Watch live racing events from the grandstands.",
+        "Visit pit lanes to observe vehicle tuning and repairs.",
+        "Compete in time trials or challenge other players."
+      ],
+      "interaction_rules": "Privacy Level: Public. Spectators can interact lightly with racers and crews; race participation requires standard entry rules.",
+      "seasonal_variations": {
+        "frostlink": "The track is heated to prevent icing, creating a constant haze of steam. Racing suits are heavily insulated, and hot energy drinks are the norm.",
+        "surgespring": "The air is thick with the scent of wet asphalt and electrical discharge. Spring storms make for treacherous, high-stakes 'wet' races.",
+        "burnseason": "Racing is restricted to night sessions to protect engines and drivers from the daytime heat. The track glows brilliantly under floodlights.",
+        "shadowfall": "Early sunsets mean more racing under the neon. The mood in the stands is focused and intense, reflecting the season's discipline."
+      },
+      "weather_variations": {
+        "snow_light": "Races are conducted with spiked tires. The snow creates a beautiful, chaotic visual as machines blur through the white-out.",
+        "thunderstorm": "Official races are suspended, but illegal 'lightning runs' are whispered about in the pits. The track is a slick, dangerous mirror.",
+        "heatwave": "The track surface reaches blistering temperatures. Pit crews work under cooling tents, and engine failures are frequent.",
+        "clear_cool": "Perfect conditions lead to record-breaking lap times. The grandstands are packed and the energy is at an all-time high."
+      }
+    },
+    "lore": {
+      "history": "Originally built as a private racing circuit, Stop n Go evolved into the city\u2019s premier speed hub, attracting racers and thrill-seekers from across the neon districts.",
+      "secrets": "Hidden under the main pit area is a maintenance tunnel where underground races are organized in secret, only known to select thrill enthusiasts."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Link City Botanical Garden",
+    "category": "wellness",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "evening"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "calm": 1.5,
+        "serenity": 1.4
+      }
+    },
+    "description": "A bio-dome of engineered tranquility.",
+    "location_id": "the_garden",
+    "image_url": "/assets/images/locations/the_garden_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The air is humid and fragrant with a mixture of exotic flowers and fresh greenery. Light filters through the bio-dome\u2019s translucent panels, casting soft patterns on the walkways. Gentle water features create a relaxing symphony of flowing streams.",
+      "crowd_atmosphere": "Visitors stroll quietly along the winding paths, stopping to admire rare plants. Occasionally, a horticulturist can be seen guiding a small tour or tending to delicate species. The overall mood is one of calm and contemplation.",
+      "activities": [
+        "Stroll through thematic plant sections and bio-domes.",
+        "Attend guided tours or horticulture workshops.",
+        "Relax in serene seating areas surrounded by exotic flora.",
+        "Participate in seasonal plant exhibits or photo events."
+      ],
+      "interaction_rules": "Privacy Level: Public. Guests can freely explore paths and seating areas; certain restricted greenhouses require staff approval.",
+      "seasonal_variations": {
+        "frostlink": "The bio-dome's exterior is decorated with frost patterns. Inside remains warm and humid, creating a stark contrast. Tropical plants thrive while visitors seek refuge from the cold.",
+        "surgespring": "New blooms emerge throughout the garden. Spring festivals feature vibrant floral displays, and the sound of rain on the dome creates a soothing backdrop.",
+        "burnseason": "Cooling mist systems work overtime. Tropical and desert plants are showcased, and the garden becomes a popular escape from the oppressive heat outside.",
+        "shadowfall": "Autumn colors are engineered into special displays. The atmosphere becomes contemplative, with amber lighting and seasonal plant exhibitions."
+      },
+      "weather_variations": {
+        "snow_heavy": "The bio-dome's exterior is blanketed in snow, creating a beautiful white void outside. Inside remains a warm, green sanctuary.",
+        "thunderstorm": "Lightning flashes illuminate the bio-dome dramatically. The sound of rain on glass creates a peaceful, meditative atmosphere.",
+        "heatwave": "The garden's cooling systems hum loudly. Mist sprayers create rainbows in the light, and the garden is packed with heat-refugees.",
+        "fog": "Fog outside makes the bio-dome feel like an isolated world. Inside, the humidity creates its own gentle mist among the plants."
+      }
+    },
+    "lore": {
+      "history": "The garden was created to bring a touch of nature into the heart of Link City, blending advanced climate engineering with curated plant biodiversity. It has become a sanctuary for residents seeking calm away from the urban rush.",
+      "secrets": "Hidden among the flowering sections is a small, forgotten greenhouse used by researchers for experimental plant strains, accessible only through a coded security panel."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "Twilight Park",
+    "category": "wellness",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "morning",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "calm": 1.5,
+        "serenity": 1.3
+      }
+    },
+    "description": "A small urban park wedged between residential blocks.",
+    "location_id": "twilight_park",
+    "image_url": "/assets/images/locations/twilight_park_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "The air carries the subtle scent of grass and flowering shrubs. Ambient city noises are softened by the trees and small hedges. Stone pathways meander past benches and a central fountain, reflecting the changing colors of the sky at dusk.",
+      "crowd_atmosphere": "Residents and passersby stroll along the winding paths, jog, or sit quietly on benches reading or chatting. Dogs play near the fountain while children run across the open lawn. Overall, a calm, approachable energy pervades the park.",
+      "activities": [
+        "Take a quiet stroll along the meandering paths.",
+        "Sit on benches to read, meditate, or people-watch.",
+        "Jog or exercise on the pathways.",
+        "Enjoy casual picnics on the grass or near the fountain.",
+        "Observe local wildlife such as birds and squirrels."
+      ],
+      "interaction_rules": "Privacy Level: Public. Guests can freely use benches and pathways; certain flowerbeds are off-limits to protect delicate plants.",
+      "seasonal_variations": {
+        "frostlink": "The park is quieter in winter. Frost coats the grass and benches, and only the hardiest joggers and dog-walkers brave the cold.",
+        "surgespring": "The park bursts with new growth and flowers. Spring festivals and outdoor yoga sessions draw crowds enjoying the renewal energy.",
+        "burnseason": "The park is nearly empty during the day but comes alive in the evening when temperatures cool. Night picnics and gatherings are common.",
+        "shadowfall": "Autumn colors transform the park. The contemplative season draws people for quiet reflection, reading, and peaceful walks among falling leaves."
+      },
+      "weather_variations": {
+        "snow_light": "Light snow creates a serene, beautiful atmosphere. A few souls enjoy the peaceful winter scene, leaving footprints in fresh snow.",
+        "clear_cool": "Perfect weather fills the park with joggers, picnickers, and families. The pleasant temperature makes it the ideal outdoor retreat.",
+        "thunderstorm": "The park empties quickly as people seek shelter. Only the sound of rain on leaves and distant thunder remains.",
+        "heatwave": "The park is abandoned during the day, grass turning brown. Only in the evening do a few brave souls return to enjoy cooler air."
+      }
+    },
+    "lore": {
+      "history": "Twilight Park was designed as a small green refuge for nearby residents, transforming a narrow urban gap into a serene public space. It has become a favorite spot for late-evening strolls and community gatherings.",
+      "secrets": "Hidden under the old oak at the park\u2019s western edge is a small time capsule left by children decades ago, containing letters, trinkets, and sketches."
+    },
+    "min_intimacy": 0
+  },
+  {
+    "music_track": "ambient_city_loop.mp3",
+    "display_name": "The Umbral Exchange",
+    "category": "underground",
+    "system_modifiers": {
+      "privacy_gate": "Public"
+    },
+    "game_logic": {
+      "availability": {
+        "weekdays": true,
+        "weekends": true
+      },
+      "operating_time_slots": [
+        "evening",
+        "night"
+      ],
+      "operating_hours": {
+        "aligned_to_time_system": true,
+        "open_slot": "evening",
+        "close_slot": "night"
+      },
+      "entry_rules": {
+        "min_intimacy": 0,
+        "cost_gems": 0
+      },
+      "employable_roles": [],
+      "connections": []
+    },
+    "source_metadata": {
+      "version": "1.5.6",
+      "last_updated": "2026-02-13",
+      "legacy_mods": {
+        "danger": 1.5,
+        "mystery": 1.4
+      }
+    },
+    "description": "A hidden market.",
+    "location_id": "umbral_exchange",
+    "image_url": "/assets/images/locations/the_umbral_exchange_01.jpg",
+    "system_prompt_anchors": {
+      "sensory_description": "Dimly lit lanterns cast long shadows over narrow alleys lined with stalls. The air smells of exotic spices, metallic tangs, and smoke from tiny brazier fires. Hushed whispers, bartering voices, and the soft clinking of coins echo throughout.",
+      "crowd_atmosphere": "A mix of shady traders, thrill-seekers, and curious locals weave through the stalls. Some keep their heads down, while others flaunt rare wares. Tension and excitement hang thick, with the occasional nervous glance over shoulders.",
+      "activities": [
+        "Browse rare, illicit, or exotic goods not found aboveground.",
+        "Negotiate trades with cautious vendors.",
+        "Gather information from shadowy contacts.",
+        "Experience the underground nightlife and secret gatherings.",
+        "Watch for pickpockets and potential threats among the crowd."
+      ],
+      "interaction_rules": "Privacy Level: Private. Only registered or trusted visitors are allowed past the main entrance; unknown outsiders are discouraged. Respect vendor rules and avoid drawing attention.",
+      "seasonal_variations": {
+        "frostlink": "The braziers burn hotter and more frequent. Smugglers deal in thermal gear and illegal heating units. The air is thick with the smell of coal and burning synth-fuel.",
+        "surgespring": "The dampness of the underground increases. The exchange deals in anti-fungal tech and waterproof casing for delicate electronics.",
+        "burnseason": "The underground is a natural refuge from the heat. The exchange is packed during the day as people seek the cool, dark alleys.",
+        "shadowfall": "The lanterns are dimmed further, matching the season's gloom. The exchange feels even more secretive and dangerous."
+      },
+      "weather_variations": {
+        "snow_heavy": "Access to the underground is difficult. The exchange is quiet, inhabited only by the most desperate or well-prepared traders.",
+        "thunderstorm": "Water drips from the ceiling in rhythmic patterns. The sound of thunder is a muffled, low-frequency vibration through the bedrock.",
+        "heatwave": "The exchange is an absolute hive of activity, as the temperature below remains steady and cool while the city above burns.",
+        "clear_cool": "A rare flow of fresh air reaches the deeper levels. The moisture levels drop, making for a strangely pleasant atmosphere in the dark."
+      }
+    },
+    "lore": {
+      "history": "The Umbral Exchange began as a clandestine trade hub for smugglers and black-market merchants decades ago. Over time, it evolved into a semi-organized underground marketplace, attracting those seeking rare or forbidden items.",
+      "secrets": "Beneath the main market floor, hidden tunnels connect to forgotten sections of the city. These passages are rumored to contain caches of stolen artifacts, secret meetings, and unsanctioned duels."
+    },
+    "min_intimacy": 0
+  }
+]
