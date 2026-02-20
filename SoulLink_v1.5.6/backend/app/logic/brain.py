@@ -153,7 +153,7 @@ class LegionBrain:
         session.add(conv_assistant)
         
         # Update LinkState
-        link_state.last_interaction = datetime.now(timezone.utc)
+        link_state.last_interaction = datetime.utcnow()
         link_state.total_messages_sent = (getattr(link_state, 'total_messages_sent', 0) or 0) + 1
         
         # Normandy-SR2 Fix: Perform stability decay inside the brain for atomic commit
@@ -163,7 +163,7 @@ class LegionBrain:
         session.add(link_state)
         
         # Update Persona Last Used
-        persona.last_used = datetime.now(timezone.utc)
+        persona.last_used = datetime.utcnow()
         session.add(persona)
         
         try:

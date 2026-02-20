@@ -50,6 +50,10 @@ def seed():
 
     with Session(engine) as session:
         for fpath in sorted(files):
+            if fpath.name == "the_architect_01.json":
+                print(f"  [SKIP] {fpath.name} (Lore Entity Identified)")
+                continue
+
             try:
                 with open(fpath, "r", encoding="utf-8") as f:
                     data = json.load(f)

@@ -33,11 +33,11 @@ class NarratorService:
         if not last_interaction:
             return False
             
-        # Normandy-SR2 Fix: Ensure conscious comparison between aware/naive datetimes
-        if last_interaction.tzinfo is None:
-            last_interaction = last_interaction.replace(tzinfo=timezone.utc)
+        # Normandy-SR2 Fix: Ensure conscious comparison between naive datetimes
+        if last_interaction.tzinfo is not None:
+            last_interaction = last_interaction.replace(tzinfo=None)
             
-        delta = datetime.now(timezone.utc) - last_interaction
+        delta = datetime.utcnow() - last_interaction
         return delta.total_seconds() > (NarratorService.CHRONICLE_THRESHOLD_HOURS * 3600)
 
     @staticmethod
@@ -46,12 +46,11 @@ class NarratorService:
         Generates the 'Chronicle Break' text based on time passed and world state.
         Uses Groq (llama-3.1-8b-instant) for snappy, immersive narration.
         """
-        hours_passed = int(delta.total_seconds() / 3600)
-        
         # Normandy-SR2 Fix: Consistency in time comparison
-        if last_interaction.tzinfo is None:
-            last_interaction = last_interaction.replace(tzinfo=timezone.utc)
-        delta = datetime.now(timezone.utc) - last_interaction
+        if last_interaction.tzinfo is not None:
+            last_interaction = last_interaction.replace(tzinfo=None)
+        delta = datetime.utcnow() - last_interaction
+        hours_passed = int(delta.total_seconds() / 3600)
         
         prompt = (
             f"You are the Narrator of SoulLink. Write a short 'Fade-to-Black' event summary.\n"

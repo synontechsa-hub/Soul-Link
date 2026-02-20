@@ -7,10 +7,13 @@ async def fix_db():
         print("🔍 Checking schema...")
         
         # 1. Add total_messages_sent to link_states
+        # 1. Add total_messages_sent to link_states
         try:
             await session.execute(text("ALTER TABLE link_states ADD COLUMN total_messages_sent INTEGER DEFAULT 0"))
+            await session.commit()
             print("✅ Added total_messages_sent to link_states")
         except Exception as e:
+            await session.rollback()
             if "already exists" in str(e).lower():
                 print("ℹ️ total_messages_sent already exists")
             else:
@@ -26,19 +29,34 @@ async def fix_db():
             if "id" in columns:
                 try:
                     await session.execute(text("ALTER TABLE conversations RENAME COLUMN id TO msg_id"))
+                    await session.commit()
                     print("✅ Renamed conversations.id to msg_id")
                 except Exception as e:
+                    await session.rollback()
                     print(f"❌ Failed to rename id: {e}")
             else:
                 try:
                     await session.execute(text("ALTER TABLE conversations ADD COLUMN msg_id VARCHAR(36) PRIMARY KEY"))
+                    await session.commit()
                     print("✅ Added msg_id to conversations")
                 except Exception as e:
+                    await session.rollback()
                     print(f"❌ Failed to add msg_id: {e}")
         else:
             print("ℹ️ conversations.msg_id already exists")
 
-        await session.commit()
+        # 3. Add meta_data to conversations
+        if "meta_data" not in columns:
+            try:
+                await session.execute(text("ALTER TABLE conversations ADD COLUMN meta_data JSON"))
+                await session.commit()
+                print("✅ Added meta_data to conversations")
+            except Exception as e:
+                await session.rollback()
+                print(f"❌ Failed to add meta_data: {e}")
+        else:
+            print("ℹ️ conversations.meta_data already exists")
+
         print("🚀 Database migration check complete.")
 
 if __name__ == "__main__":
