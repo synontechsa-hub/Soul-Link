@@ -1,11 +1,15 @@
+# =========================
 # Python
+# =========================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.pyo
+*.pyd
+__pypackages__/
 .Python
 build/
-develop-eggs/
 dist/
 downloads/
 eggs/
@@ -21,25 +25,43 @@ wheels/
 *.egg
 MANIFEST
 
-# Virtual Environment
+# =========================
+# Virtual Environments
+# =========================
 venv/
 ENV/
 env/
-.venv
+.venv/
 
+# =========================
+# Secrets & Environment
+# =========================
+.secrets/
+.env
+.env/
+.env.local
+.env.*.local
+
+# SSL / Private Keys
+*.pem
+*.key
+*.crt
+*.p12
+*.der
+
+# =========================
 # IDEs
+# =========================
 .vscode/
 .idea/
+.idea_modules/
 *.swp
 *.swo
 *~
 
-# Environment Variables
-.env
-.env.local
-.env.*.local
-
-# Testing
+# =========================
+# Testing / Coverage
+# =========================
 .pytest_cache/
 .coverage
 .coveragerc
@@ -49,20 +71,26 @@ coverage.xml
 .hypothesis/
 test_logs/
 
+# =========================
 # Logs
+# =========================
 *.log
 backend_debug.log
 
-# Database
+# =========================
+# Database (local only)
+# =========================
 *.db
 *.sqlite
 *.sqlite3
 
-# OS
-.DS_Store
-Thumbs.db
+# Supabase
+.supabase/
+supabase/.temp/
 
-# Flutter/Dart
+# =========================
+# Flutter / Dart
+# =========================
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -72,9 +100,16 @@ Thumbs.db
 build/
 flutter_*.log
 
+# =========================
 # Backups
+# =========================
 _dev/backups/
 *.backup
 
-# Sentry
-.sentryclirc
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride

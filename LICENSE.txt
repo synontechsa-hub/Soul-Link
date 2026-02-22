@@ -19,4 +19,4 @@ Use any part of this project for commercial purposes or to train any machine lea
 Access to this repository does not constitute a license. There is no "implied right" to run this software for anything other than local development/testing by authorized contributors.
 
 4. TERMINATION AND LEGAL ACTION
-Any unauthorized use, reproduction, or distribution of Linker AI will result in immediate termination of access and will be prosecuted to the maximum extent of the law.
+Any unauthorized use, reproduction, or distribution of Linker.ai will result in immediate termination of access and will be prosecuted to the maximum extent of the law.
