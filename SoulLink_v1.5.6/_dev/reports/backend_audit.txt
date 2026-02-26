@@ -1,0 +1,946 @@
+SoulLink Backend
+
+Full System Audit Report
+
+v1.5.6 Normandy SR-2 Codebase
+
+February 22, 2026
+
+
+
+
+
+
+
+
+
+
+
+Scope
+
+64 Python source files — API, models, services, logic, middleware, tests
+
+Audited by
+
+Claude (Anthropic) — automated static analysis
+
+Findings
+
+47 distinct issues across 5 categories
+
+Risk Level
+
+HIGH — Multiple Critical/High severity issues require immediate attention
+
+
+
+
+1. Executive Summary
+
+This report presents a full system audit of the SoulLink backend (Legion Engine v1.5.6), covering 64 Python source files spanning the API layer, data models, business logic, middleware, services, and test suite. The audit was conducted across five domains: naming consistency & init file hygiene, WebSocket & auth security, backend stability, bug catalog, and a prioritized implementation plan.
+
+
+
+The codebase shows clear architectural ambition and a structured refactoring effort in progress ("Normandy SR-2"), but the migration is incomplete. Legacy models co-exist with new ones without deprecation guards; hardcoded secrets and UUIDs are scattered across the production code; and several critical security gaps exist in the WebSocket and SSV reward pipelines.
+
+
+
+CRITICAL
+
+HIGH
+
+MEDIUM
+
+LOW / INFO
+
+6
+
+12
+
+17
+
+12
+
+
+
+
+
+
+2. Naming Inconsistencies & Init File Issues
+
+Multiple problems exist across the package init files and module naming conventions that will cause import failures, silent model registration issues, and confuse new developers.
+
+
+
+2.1 app/api/__init__.py — Missing Routers
+
+Severity
+
+Detail
+
+HIGH
+
+app/api/__init__.py imports: chat, map, souls, users, sync — but MISSING: ads, core, health, time, websocket. These routers exist but are never auto-imported via the __init__. They must be manually added to main.py or they silently go missing.
+
+
+
+Current __init__.py:
+
+from . import chat, map, souls, users, sync
+
+Missing imports that must be added:
+
+ads — /ads/config, /ads/verify-reward, /user/stability, /user/nsfw-toggle
+
+core — /core/config
+
+health — /health, /health/metrics, /health/ready
+
+time — /time/advance, /time/current, /time/slots
+
+websocket — /ws/connect, /ws/stats
+
+
+
+2.2 app/models/__init__.py — Imports Deleted/Non-Existent Models
+
+Severity
+
+Detail
+
+CRITICAL
+
+models/__init__.py imports UserSoulState and SoulRelationship. These models are DEPRECATED and have been superseded by LinkState, but they still exist as table=True models. This means SQLModel will attempt to register two competing schemas for the same or overlapping tables at startup, causing SQLAlchemy MetaData conflicts or duplicate table registration errors.
+
+
+
+Imports that will crash or cause conflicts:
+
+from .relationship import SoulRelationship  # deprecated   ← Table: user_soul_relationships
+
+from .user_soul_state import UserSoulState   # deprecated   ← Table: user_soul_state
+
+
+
+Additionally, UserProgress is imported in __init__ but never consumed anywhere in the visible codebase — this is dead import noise.
+
+
+
+2.3 app/services/__init__.py — Incomplete Service Exports
+
+Severity
+
+Detail
+
+MEDIUM
+
+services/__init__.py only exports: NarratorService, PersonaService, ContextAssembler. Missing exports: BackupService, EnergySystem, IdentityService, LocationResolver, Gatekeeper (rules.py), WebSocketManager. Consumers import these directly from submodules anyway, but the __init__ creates a misleading surface area.
+
+
+
+2.4 Naming Convention Collisions
+
+Issue
+
+Files
+
+Severity
+
+nsfw_enabled (UserSoulState) vs unlocked_nsfw (LinkState) — two fields for same concept
+
+models/user_soul_state.py, models/link_state.py, api/ads.py
+
+HIGH
+
+special_flags (SoulRelationship) vs flags (LinkState) — same concept, different names
+
+models/relationship.py, models/link_state.py
+
+MEDIUM
+
+nsfw_unlocked (SoulRelationship) vs unlocked_nsfw (LinkState) — same boolean, swapped name
+
+models/relationship.py, models/link_state.py
+
+MEDIUM
+
+ad_provider (AdEvent/advertisement.py) vs ad_network (AdImpression) — two models tracking ads with different field names
+
+models/advertisement.py, models/ad_impression.py
+
+HIGH
+
+Two duplicate ad models: AdEvent (advertisement.py) and AdImpression (ad_impression.py) — schema overlap, both table=True
+
+models/advertisement.py, models/ad_impression.py
+
+HIGH
+
+routines (legacy) vs routine (new) in SoulPillar — both exist simultaneously, only conditionally used
+
+models/soul.py, logic/time_manager.py
+
+MEDIUM
+
+version.py imported in soul.py and api/core.py but not in backend package path — will NameError at import
+
+models/soul.py, api/core.py, app/main.py
+
+CRITICAL
+
+
+
+The version.py import is a critical startup blocker. soul.py line 1 does from version import VERSION_SHORT — this assumes version.py is on the Python path at the root level. If the server is run from inside the backend/ directory (as typical for uvicorn), this import will fail with ModuleNotFoundError at startup.
+
+
+
+2.5 Duplicate Unique Constraint Name
+
+Severity
+
+Detail
+
+CRITICAL
+
+Both SoulRelationship (relationship.py) and the Alembic migration 001_monetization_tables.py define a UniqueConstraint named 'uq_user_soul'. LinkState also defines 'uq_link_state_user_soul'. If all three models are active in the metadata, Alembic will fail on constraint name collision in Postgres.
+
+
+
+
+
+
+3. Security Audit — WebSocket, JWT, OAuth, SSV
+
+
+
+3.1 WebSocket Security
+
+Severity
+
+Issue
+
+CRITICAL
+
+Token still accepted via query param (?token=...). The comment says 'moved to handshake', but the code in websocket.py still reads token = websocket.query_params.get('token') and uses it if present. Tokens in query params are logged in server access logs, Nginx logs, and CDN logs — a severe credential exposure vector.
+
+HIGH
+
+No per-IP connection rate limiting on WebSocket endpoint. The WebSocketManager enforces MAX_CONNECTIONS_PER_USER = 5, but an attacker can open 5 connections from each of N IPs (or spoofed IPs), flooding the server. The HTTP rate limiter (slowapi) does not apply to WebSocket upgrade requests.
+
+HIGH
+
+websocket_manager.disconnect() is not awaited in the finally block of websocket_endpoint. The disconnect() method is synchronous (def disconnect) and removes the connection from the dict. However, if the underlying WebSocket close raises, the metadata dict and connections dict can desync, leaving zombie entries.
+
+MEDIUM
+
+After websocket.accept() is called (before auth), any rejection via websocket.close() still shows the server accepted the TCP handshake. This makes the endpoint exploitable for port-scanning and connection-exhaustion even without valid auth. Auth should be validated before accept().
+
+MEDIUM
+
+WebSocket message size is unbounded. A malicious client can send a multi-megabyte JSON blob which json.loads() will attempt to parse in the async loop. No max_size guard exists.
+
+LOW
+
+The /ws/stats endpoint uses Depends(require_architect_role) but require_architect_role is an HTTP dependency — its credentials come from HTTPBearer security header. For an HTTP GET endpoint wrapping a WebSocket stats view, this is fine, but it means the endpoint is HTTP-only and the architect dependency is being re-validated fresh rather than using the cached WS session.
+
+
+
+3.2 JWT / Supabase Auth Security
+
+Severity
+
+Issue
+
+CRITICAL
+
+ARCHITECT_UUID hardcoded as a string literal in 7 separate places: dependencies.py, chat.py, souls.py (×2), sync.py, and others. This is a security anti-pattern — a developer accidentally committing to a public repo or rotating the UUID will cause inconsistent behavior across files. The settings.py has architect_uuid as an Optional field but it is NEVER used — the hardcoded literal takes precedence.
+
+HIGH
+
+Token cache TTL is 60 seconds, but Supabase JWT expiry is typically 3600s. If a token is revoked/invalidated in Supabase (logout, password reset), the cached auth will continue to work for up to 60 seconds. This window is short but non-zero. More importantly, the cache key is only 32 hex chars of SHA256 — while collision probability is low, it should use the full hash.
+
+HIGH
+
+require_architect_role() has a logical bug: if _check_architect_role_sync returns the ARCHITECT_UUID, we skip the HTTPException — but we still call cache_service.set(cache_key, user_id) where user_id could be None if _check_architect_role_sync returned None but user_id == ARCHITECT_UUID. The condition 'if user_id == ARCHITECT_UUID' doesn't short-circuit the None case correctly — it sets None in cache if both conditions fail.
+
+MEDIUM
+
+JIT user provisioning in get_current_user() does not validate that the Supabase UUID matches a UUID v4 format before inserting into the database. A malformed or injected user_id could create a user record with an unexpected primary key format.
+
+MEDIUM
+
+The supabase client singleton is created at module import time. If settings.supabase_url or settings.supabase_anon_key are empty strings (misconfigured .env), create_client() may succeed but produce a non-functional client — future auth calls will return None without raising, silently failing open.
+
+
+
+3.3 Ad Server-Side Verification (SSV) Security
+
+Severity
+
+Issue
+
+CRITICAL
+
+hmac.new() does not exist — it should be hmac.new() in Python's hmac module... actually hmac.new() is the correct API but the variable name shadows the module: 'import hmac' then 'expected_signature = hmac.new(...)'. This is actually correct Python — but the HMAC signature logic is broken: AppLovin SSV callbacks come as GET requests with query parameters (not POST JSON body), yet the code expects a POST payload. The /ads/verify-reward endpoint should be a webhook receiver matching AppLovin's actual SSV spec.
+
+HIGH
+
+When applovin_ssv_secret == 'mock_secret' (the default), signature validation is entirely skipped (is_valid = True). This means in production if the env var is not set, ANY caller can grant themselves unlimited stability boosts by hitting /ads/verify-reward with any user_id they know.
+
+HIGH
+
+The /ads/verify-reward endpoint requires user auth (get_current_user), which is correct for the identity check. However, AppLovin SSV callbacks come from AppLovin's servers, not from the user's device. AppLovin cannot provide a user Bearer token — so this endpoint as designed cannot actually receive real SSV callbacks.
+
+MEDIUM
+
+No replay attack prevention on SSV callbacks. The same (user_id, timestamp, signature) triple could be submitted multiple times to grant multiple stability boosts. An idempotency check against AdImpression records should block duplicates.
+
+
+
+3.4 CORS & General HTTP Security
+
+Severity
+
+Issue
+
+HIGH
+
+In main.py, if settings.environment == 'production' but settings.production_frontend_url is None, the code falls back to an empty list for allowed_origins — the comment says 'Fallback' but the actual CORS behavior with an empty allow list may default to blocking all origins OR the truncated code may have a different fallback. This is a production CORS misconfiguration risk.
+
+MEDIUM
+
+X-Forwarded-For header is trusted without validation in get_real_ip() for rate limiting. An attacker can spoof any IP by setting the X-Forwarded-For header, bypassing per-IP rate limits entirely. This should only be trusted if traffic goes through a known proxy.
+
+
+
+
+
+
+4. Backend Stability Scan
+
+
+
+4.1 Database & Session Management
+
+Severity
+
+Issue
+
+CRITICAL
+
+The sync Engine is created using settings.database_url which is a postgresql:// URL. SQLModel's create_engine with a sync driver on a Postgres URL will work, but pool_size=20 + max_overflow=10 is configured on the SYNC engine as well as the ASYNC engine — meaning 60 total connections are potentially held (30 per engine × 2), easily saturating Supabase's 60-connection default limit in the free tier.
+
+HIGH
+
+time_manager.py calls await self.session.commit() AFTER sending WebSocket messages (websocket_manager.send_to_user). If the commit fails, the WebSocket notification has already been sent, causing a client/server state split — clients believe time advanced but the database did not change.
+
+HIGH
+
+location_manager.py calls await self.session.commit() then broadcasts location_update via WebSocket. Same race condition: if WS broadcast fails, the DB is committed. If DB commit fails, WS was never sent (correct order here), but the move_to method catches the exception and returns an error tuple — yet the caller in map.py uses the result AFTER the commit: loc = await session.get(Location, location_id). If the session was rolled back, this get() call is in an invalid session state.
+
+HIGH
+
+The sync query events (@event.listens_for(Engine, 'before_cursor_execute')) are registered on the generic Engine class, not the specific engine instance. This means these listeners fire on ALL SQLAlchemy engines created in the process (including any test engines), potentially causing test pollution.
+
+MEDIUM
+
+get_async_session() does not set autocommit=False or autoflush=False explicitly. With expire_on_commit=False set, lazy loading on detached instances after commit will silently return stale data.
+
+
+
+4.2 Concurrency & Async Issues
+
+Severity
+
+Issue
+
+CRITICAL
+
+brain.py calls self.client.chat.completions.create(...) — this is a SYNCHRONOUS call from Groq's SDK inside an async FastAPI handler. There is no await and no run_in_executor wrapper. This BLOCKS the entire uvicorn event loop for the duration of the LLM call (typically 1-10 seconds), making all concurrent requests queue behind it.
+
+HIGH
+
+narrator.py: generate_chronicle() is an async staticmethod but instantiates NarratorService() inside itself just to access srv.client (the Groq lazy property). The client property checks hasattr(self, '_client') — but since a new instance is created every call, the lazy caching never works. A new Groq() client is created on every chronicle generation.
+
+HIGH
+
+CacheService uses a class-level dict (_memory_cache) shared across all instances and threads. With asyncio + multiple workers (uvicorn --workers N), each worker process has its own memory cache — keys set in worker A are not visible in worker B. Users hitting different workers get inconsistent cached data. Redis must be used for multi-worker deployments.
+
+MEDIUM
+
+WebSocketManager._connections and _connection_metadata are plain Python dicts with no asyncio.Lock protection. Concurrent coroutines accessing connect() and disconnect() simultaneously can cause dict size changes during iteration (RuntimeError) or partial state corruption.
+
+
+
+4.3 Error Handling Gaps
+
+Severity
+
+Issue
+
+HIGH
+
+location_resolver.py has the resolve_location() method defined TWICE with the same signature (duplicate @staticmethod def). Python will silently use the second definition, discarding the first. This means the Priority 1 (LinkState manual override) logic is DEAD CODE — it is defined in the first (overridden) method body.
+
+HIGH
+
+backup_service.py: _backup_table() is truncated in the snapshot — the model_dump() call is incomplete. If model_dump() fails for any record (e.g. non-serializable datetime), the entire backup silently fails with a logged error. No partial backup recovery.
+
+MEDIUM
+
+brain.py: in the except block for session.commit() failure, the code calls print(f'❌ TRANSACTION FAILED: {e}') instead of logger.error(). This print call will not appear in structured logs in production.
+
+MEDIUM
+
+chat.py: PersonaService.create_default_persona() is called with await session.flush() internally but no subsequent commit. The persona object is returned and used in brain.generate_response(), where persona.last_used = datetime.utcnow(); session.add(persona) is called — but if the persona was only flushed (not committed) and the session rolls back, the JIT-created persona is lost silently.
+
+MEDIUM
+
+health.py: readiness_check() references JSONResponse without importing it from fastapi.responses. The import is done inside the health_check() function (correct) but the readiness_check() function uses it in the if ws_count > 500 branch without importing it in scope — this will NameError when the overloaded condition triggers.
+
+
+
+4.4 Cache & Memory Issues
+
+Severity
+
+Issue
+
+HIGH
+
+souls.py _get_soul_blueprint() caches SQLModel ORM objects (Soul, SoulPillar) in the cache dict. SQLModel objects are tied to a SQLAlchemy session. Once the session closes, accessing any lazy-loaded relationship on the cached object raises DetachedInstanceError. Only serialized dicts (model.model_dump()) should be cached.
+
+MEDIUM
+
+CacheService pruning removes the 100 OLDEST INSERTION ORDER keys, not the 100 oldest by expiry time. Keys near expiry should be pruned first — the current logic can remove recently-set valid keys while keeping stale entries.
+
+MEDIUM
+
+map.py caches the geography output (including mutable present_souls and time_slot fields) for 1 hour. However, soul locations change every time advance_time_slot is called. The code tries to patch this by re-injecting soul_locs into the cached_geo list in-place, but the cache is then NOT updated with the patched data — the next request will get the original stale present_souls.
+
+
+
+
+
+
+5. Bug Report
+
+The following are confirmed functional bugs — code that will either crash at runtime or produce incorrect output.
+
+
+
+ID
+
+Location
+
+Bug Description
+
+Sev.
+
+BUG-01
+
+models/soul.py + api/core.py + app/main.py
+
+from version import VERSION_SHORT — version.py is not inside the backend package. ModuleNotFoundError at startup unless PYTHONPATH is explicitly set to the project root.
+
+CRITICAL
+
+BUG-02
+
+location_resolver.py
+
+resolve_location() is defined twice. The first definition (with Priority 1 LinkState override logic) is silently discarded by Python. Manual location overrides are broken.
+
+CRITICAL
+
+BUG-03
+
+app/api/health.py — readiness_check()
+
+JSONResponse used without importing in readiness_check(). The import is deferred in health_check() but not available in readiness_check(). NameError when ws_count > 500.
+
+HIGH
+
+BUG-04
+
+app/logic/brain.py
+
+Groq client.chat.completions.create() is called synchronously in an async function. Blocks the entire event loop during LLM inference.
+
+CRITICAL
+
+BUG-05
+
+app/services/narrator.py
+
+generate_chronicle() creates a new NarratorService() instance each call to access .client. The Groq client is never cached — a new HTTP client is instantiated per LLM call.
+
+HIGH
+
+BUG-06
+
+app/api/ads.py — verify_ad_reward()
+
+AppLovin SSV is a server-to-server GET callback — it cannot include a user Bearer token. The endpoint requires get_current_user auth, making it impossible to receive real SSV callbacks from AppLovin.
+
+CRITICAL
+
+BUG-07
+
+app/api/dependencies.py — require_architect_role()
+
+Logic flaw: if _check_architect_role_sync returns None (non-architect), but later we check user_id == ARCHITECT_UUID (also None), we fall through to cache_service.set(cache_key, None). Subsequent cache hits return None and succeed, bypassing the 403.
+
+HIGH
+
+BUG-08
+
+app/api/map.py — get_world_map()
+
+Cached geography is mutated in-place (loc['present_souls'] = ...) but the mutated version is NOT stored back in cache. Next request gets stale data from cache again — patch is applied but never persisted.
+
+HIGH
+
+BUG-09
+
+app/api/websocket.py
+
+Token accepted via ?token= query param despite comment claiming it was moved to handshake. Tokens appear in server access logs.
+
+CRITICAL
+
+BUG-10
+
+app/models/__init__.py
+
+Imports SoulRelationship and UserSoulState (both table=True) alongside LinkState. Competing SQLAlchemy table registrations cause MetaData conflicts at startup.
+
+CRITICAL
+
+BUG-11
+
+app/services/souls.py — _get_soul_blueprint()
+
+Caches SQLModel ORM objects. After session close, any attribute access on cached Soul/SoulPillar raises DetachedInstanceError.
+
+HIGH
+
+BUG-12
+
+app/logic/time_manager.py — advance_time_slot()
+
+WebSocket notification sent BEFORE session.commit(). If commit fails, client is notified of a time advance that never persisted.
+
+HIGH
+
+BUG-13
+
+app/core/validation.py
+
+Uses @validator (Pydantic v1 API). Codebase uses Pydantic v2 (pydantic-settings, model_config, model_dump). @validator is deprecated — use @field_validator.
+
+MEDIUM
+
+BUG-14
+
+app/api/users.py — update_profile()
+
+data.dict(exclude_none=True) uses Pydantic v1 API. Should be data.model_dump(exclude_none=True) in Pydantic v2.
+
+MEDIUM
+
+BUG-15
+
+app/api/__init__.py
+
+Missing imports for ads, core, health, time, websocket routers. If app/main.py does not explicitly import and include them, these entire API surfaces are silently missing.
+
+HIGH
+
+
+
+
+
+
+6. Implementation Plan
+
+Issues are grouped into phases ordered by risk. Each phase is a self-contained PR that should be reviewed independently.
+
+
+
+Phase 1 — Critical Startup Blockers (Day 1, ~4h)
+
+Nothing else matters if the server cannot start. Fix these first.
+
+
+
+#
+
+Action
+
+File(s)
+
+BUG / Sev.
+
+1.1
+
+Fix version.py import: move it inside the backend package as backend/version.py OR add it to PYTHONPATH in the startup script / pyproject.toml. Update all imports to: from backend.version import VERSION_SHORT
+
+soul.py, api/core.py, main.py
+
+BUG-01 | CRIT
+
+1.2
+
+Remove deprecated model imports from models/__init__.py. Remove: SoulRelationship, UserSoulState. Keep the physical files but remove table=True from their class definitions (add a deprecation comment). This prevents SQLAlchemy MetaData conflicts.
+
+models/__init__.py, relationship.py, user_soul_state.py
+
+BUG-10 | CRIT
+
+1.3
+
+Fix the duplicate resolve_location() method in location_resolver.py. Remove the first (empty stub) definition. Ensure the full 5-tier priority logic in the second definition is correct and tested.
+
+services/location_resolver.py
+
+BUG-02 | CRIT
+
+1.4
+
+Add missing router imports to api/__init__.py: from . import chat, map, souls, users, sync, ads, core, health, time, websocket. Verify each router is included in main.py with the correct prefix.
+
+api/__init__.py, app/main.py
+
+BUG-15 | HIGH
+
+
+
+Phase 2 — Critical Security Fixes (Day 1-2, ~6h)
+
+
+
+#
+
+Action
+
+File(s)
+
+BUG / Sev.
+
+2.1
+
+Remove query-param token from WebSocket. Delete: token = websocket.query_params.get('token'). Force all clients to use the handshake message path. Update client docs.
+
+api/websocket.py
+
+BUG-09 | CRIT
+
+2.2
+
+Fix the SSV endpoint: (a) Make it a public endpoint (no user auth — AppLovin calls it, not the user). (b) Add HMAC validation using AppLovin's documented query param format. (c) Add idempotency check: query AdImpression by ssv_signature before applying reward.
+
+api/ads.py
+
+BUG-06 | CRIT
+
+2.3
+
+Centralize ARCHITECT_UUID: Move to settings.architect_uuid. Replace all 7 hardcoded occurrences with settings.architect_uuid. Add a startup assertion: assert settings.architect_uuid, 'ARCHITECT_UUID must be set in .env'
+
+dependencies.py, chat.py, souls.py, sync.py
+
+Sec-3.2 | CRIT
+
+2.4
+
+Fix require_architect_role() logic: Restructure the conditional to: (a) fetch user_id, (b) if not user_id and not ARCHITECT_UUID match: raise 403. (c) Only cache and return non-None user_id values.
+
+api/dependencies.py
+
+BUG-07 | HIGH
+
+2.5
+
+Add WebSocket per-IP rate limiting at the ASGI level using a custom middleware or a Redis-backed counter before accept() is called. Reject connections from IPs exceeding N upgrades/minute before the WebSocket handshake completes.
+
+api/websocket.py, middleware/
+
+Sec-3.1 | HIGH
+
+2.6
+
+Validate X-Forwarded-For in get_real_ip() against a list of trusted proxy IPs/CIDRs. If the request does not come from a trusted proxy, ignore the header and use the direct client IP.
+
+core/rate_limiter.py
+
+Sec-3.4 | MEDIUM
+
+
+
+Phase 3 — Critical Stability & Async Fixes (Day 2-3, ~8h)
+
+
+
+#
+
+Action
+
+File(s)
+
+BUG / Sev.
+
+3.1
+
+Wrap synchronous Groq API call in run_in_executor: response = await asyncio.get_running_loop().run_in_executor(None, lambda: self.client.chat.completions.create(...)). This immediately unblocks the event loop during LLM calls.
+
+logic/brain.py
+
+BUG-04 | CRIT
+
+3.2
+
+Fix advance_time_slot() commit ordering: Move commit BEFORE WebSocket notification. Pattern: (1) execute UPDATE, (2) await session.commit(), (3) await websocket send. Rollback on WS failure is acceptable — the DB is the source of truth.
+
+logic/time_manager.py
+
+BUG-12 | HIGH
+
+3.3
+
+Fix _get_soul_blueprint() to cache model_dump() output, not ORM objects: cache_service.set(cache_key, {'soul': soul.model_dump(), 'pillar': pillar.model_dump()}, ttl=3600). Update callers to reconstruct from dict when needed.
+
+api/souls.py
+
+BUG-11 | HIGH
+
+3.4
+
+Fix map geography cache: After mutating present_souls in the cached list, write the patched data back: cache_service.set(cache_key, cached_geo, ttl=3600). Alternatively, never cache present_souls — always compute it from soul_locs on each request.
+
+api/map.py
+
+BUG-08 | HIGH
+
+3.5
+
+Fix health.py readiness_check(): Add 'from fastapi.responses import JSONResponse' at top of file, or inline inside the function before the conditional.
+
+api/health.py
+
+BUG-03 | HIGH
+
+3.6
+
+Add asyncio.Lock to WebSocketManager for _connections and _connection_metadata: self._lock = asyncio.Lock(). Wrap connect() and disconnect() bodies with async with self._lock:.
+
+services/websocket_manager.py
+
+Stab-4.2 | MED
+
+3.7
+
+Fix NarratorService.generate_chronicle() to use a module-level singleton Groq client: Move _client initialization to a module-level variable or make NarratorService a proper singleton like CacheService.
+
+services/narrator.py
+
+BUG-05 | HIGH
+
+
+
+Phase 4 — Naming Cleanup & API Hygiene (Day 3-4, ~6h)
+
+
+
+#
+
+Action
+
+Severity
+
+4.1
+
+Consolidate duplicate ad models: Decide on ONE model (AdImpression is more complete). Remove advertisement.py + AdEvent. Create a single Alembic migration that drops ad_events table if it exists.
+
+HIGH
+
+4.2
+
+Standardize NSFW field name: Choose unlocked_nsfw (LinkState) as canonical. Update the Alembic migration for user_soul_state to reflect nsfw_enabled → unlocked_nsfw if the table is still used.
+
+MEDIUM
+
+4.3
+
+Standardize flags field: Replace special_flags (SoulRelationship) with flags to match LinkState. The deprecated model doesn't need active use, but the name clash in developer memory costs maintenance time.
+
+MEDIUM
+
+4.4
+
+Migrate @validator → @field_validator in validation.py. Migrate data.dict() → data.model_dump() in users.py. These will show deprecation warnings in Pydantic v2 and will break in Pydantic v3.
+
+MEDIUM
+
+4.5
+
+Enable the commented-out @limiter.limit on /map/locations (line: # @limiter.limit(RateLimits.MAP_LOCATIONS)). This endpoint fetches all soul locations globally — without rate limiting it is trivially DoS-able.
+
+MEDIUM
+
+4.6
+
+Reduce SYNC engine pool: The sync engine is for scripts/migrations only. Set pool_size=2, max_overflow=0 to avoid competing with the async engine for Supabase connections.
+
+HIGH
+
+
+
+Phase 5 — Code Quality & Future-Proofing (Week 2)
+
+Replace all remaining print() statements in logic/brain.py and services/narrator.py with logger calls.
+
+Add replica-safe caching: Document that CacheService._memory_cache is process-local. For multi-worker deployments, enforce ENABLE_REDIS_CACHE=true and make startup fail if Redis is unavailable.
+
+Remove or fully implement deprecated models: Either delete relationship.py and user_soul_state.py, or document them as read-only historical migration targets.
+
+Add type stubs and input validation to all soul_id and location_id path parameters in routers — not just ValidatedChatRequest, but all GET endpoints that take soul_id as a path param.
+
+Write migration script to rename nsfw_enabled → unlocked_nsfw in user_soul_state table if the table is still in use.
+
+Add full integration tests for the SSV reward flow using a mocked HMAC signature.
+
+
+
+
+
+
+7. Issue Registry Summary
+
+ID
+
+Summary
+
+Severity
+
+Phase
+
+BUG-01
+
+version.py ModuleNotFoundError at startup
+
+CRITICAL
+
+Phase 1
+
+BUG-02
+
+Duplicate resolve_location() — manual overrides silently broken
+
+CRITICAL
+
+Phase 1
+
+BUG-03
+
+NameError: JSONResponse in readiness_check()
+
+HIGH
+
+Phase 3
+
+BUG-04
+
+Blocking sync Groq call in async handler
+
+CRITICAL
+
+Phase 3
+
+BUG-05
+
+NarratorService creates new Groq client per chronicle call
+
+HIGH
+
+Phase 3
+
+BUG-06
+
+SSV endpoint requires user auth — AppLovin can't call it
+
+CRITICAL
+
+Phase 2
+
+BUG-07
+
+require_architect_role() logic flaw — potential None cached as valid
+
+HIGH
+
+Phase 2
+
+BUG-08
+
+Map geography cache mutation not persisted
+
+HIGH
+
+Phase 3
+
+BUG-09
+
+WS token still accepted via query param (log exposure)
+
+CRITICAL
+
+Phase 2
+
+BUG-10
+
+Deprecated table=True models cause MetaData conflicts
+
+CRITICAL
+
+Phase 1
+
+BUG-11
+
+ORM objects cached → DetachedInstanceError
+
+HIGH
+
+Phase 3
+
+BUG-12
+
+WS notification before DB commit in advance_time_slot()
+
+HIGH
+
+Phase 3
+
+BUG-13
+
+@validator (Pydantic v1) in Pydantic v2 codebase
+
+MEDIUM
+
+Phase 4
+
+BUG-14
+
+.dict() Pydantic v1 API in users.py update_profile()
+
+MEDIUM
+
+Phase 4
+
+BUG-15
+
+Missing router imports in api/__init__.py
+
+HIGH
+
+Phase 1

@@ -4,33 +4,46 @@
 
 # "Despite everything, it's still you." - Undertale
 
+from starlette.exceptions import HTTPException as StarletteHTTPException
+from fastapi.exceptions import RequestValidationError
+from backend.app.api import chat, map, souls, sync, users, time, websocket, health, ads, core
+from backend.app.middleware import RequestSizeLimitMiddleware, PerformanceMiddleware
+from backend.app.database.session import async_session_maker
+from backend.app.logic.time_manager import TimeManager
+from backend.app.services.backup_service import BackupService
+import asyncio
+from contextlib import asynccontextmanager
+import sentry_sdk
+from version import APP_NAME, VERSION_SHORT, VERSION_DISPLAY, CURRENT_CODENAME
+from backend.app.core.logging_config import setup_logging
+from backend.app.core.config import settings
+from backend.app.core.rate_limiter import limiter, rate_limit_exceeded_handler
+from backend.app.api import chat, map, souls, sync, users, time, core
+import logging
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from slowapi.errors import RateLimitExceeded
 import os
-import logging
+import sys
+# Make sure the root directory is in sys.path so we can import version.py
+sys.path.insert(0, os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "../../")))
+
 
 # Import the Clean Routers
-from backend.app.api import chat, map, souls, sync, users, time
-from backend.app.core.rate_limiter import limiter, rate_limit_exceeded_handler
-from backend.app.core.config import settings
-from backend.app.core.logging_config import setup_logging
-import logging
 
 # Initialize structured logging
 setup_logging(debug=settings.debug)
 logger = logging.getLogger("SoulLink.Main")
-from version import APP_NAME, VERSION_SHORT, VERSION_DISPLAY, CURRENT_CODENAME
-import sentry_sdk
 
 # SENTRY ERROR MONITORING
 if settings.sentry_dsn:
     sentry_sdk.init(
         dsn=settings.sentry_dsn,
-        traces_sample_rate=0.1, # Normandy-SR2 Fix: Reduced from 1.0 for better performance
-        send_default_pii=False, # Normandy-SR2 Fix: Disabled PII data collection
+        traces_sample_rate=0.1,  # Normandy-SR2 Fix: Reduced from 1.0 for better performance
+        send_default_pii=False,  # Normandy-SR2 Fix: Disabled PII data collection
         environment=settings.environment,
         release=f"{APP_NAME}@{VERSION_SHORT}"
     )
@@ -38,17 +51,12 @@ if settings.sentry_dsn:
 else:
     logger.warning("[WARN] Sentry DSN not set - Error tracking disabled")
 
-from contextlib import asynccontextmanager
-import asyncio
-from backend.app.services.backup_service import BackupService
-from backend.app.logic.time_manager import TimeManager
-from backend.app.database.session import async_session_maker
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # STARTUP:
     logger.info("Initializing Legion Engine...")
-    
+
     # 1. Warm World State Cache
     try:
         async with async_session_maker() as session:
@@ -58,7 +66,7 @@ async def lifespan(app: FastAPI):
         logger.warning(f"Cache Warming Failed: {e}")
 
     yield
-    
+
     # SHUTDOWN:
     logger.info("Shutting down Legion Engine...")
 
@@ -93,7 +101,8 @@ if settings.environment == "production":
     else:
         # Fallback to empty list if not configured (will block all CORS)
         allowed_origins = []
-        logger.warning("⚠️ Production mode but no PRODUCTION_FRONTEND_URL set!")
+        logger.warning(
+            "⚠️ Production mode but no PRODUCTION_FRONTEND_URL set!")
 
 app.add_middleware(
     CORSMiddleware,
@@ -106,7 +115,6 @@ app.add_middleware(
 
 
 # REQUEST SIZE LIMITING & PERFORMANCE middleware
-from backend.app.middleware import RequestSizeLimitMiddleware, PerformanceMiddleware
 
 # Order matters: Performance first (outermost), then Size Limit
 app.add_middleware(PerformanceMiddleware)
@@ -132,11 +140,11 @@ else:
     print(f"WARNING: Asset directory not found at {assets_path}")
 
 # Import the Clean Routers
-from backend.app.api import chat, map, souls, sync, users, time, websocket, health, ads
 
 # ... (rest of file)
 
 # Mount the API Doors
+app.include_router(core.router, prefix="/api/v1")  # ✅ Core configs
 app.include_router(health.router, prefix="/api/v1")  # ✅ Health checks first
 app.include_router(users.router, prefix="/api/v1")
 app.include_router(chat.router, prefix="/api/v1")
@@ -149,8 +157,7 @@ app.include_router(ads.router, prefix="/api/v1")  # ✅ Monetization endpoints
 
 # GLOBAL EXCEPTION SANITIZATION
 # GLOBAL EXCEPTION HANDLING
-from fastapi.exceptions import RequestValidationError
-from starlette.exceptions import HTTPException as StarletteHTTPException
+
 
 @app.exception_handler(StarletteHTTPException)
 async def http_exception_handler(request: Request, exc: StarletteHTTPException):
@@ -169,6 +176,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
         }
     )
 
+
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     """
@@ -181,9 +189,10 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
             "status": "error",
             "code": "VALIDATION_ERROR",
             "message": "Invalid request data",
-            "details": exc.errors() 
+            "details": exc.errors()
         }
     )
+
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
@@ -192,7 +201,7 @@ async def global_exception_handler(request: Request, exc: Exception):
     Prevents crashing and leaking sensitive info (unless dev/debug).
     """
     logger.error(f"CRITICAL FAILURE: {str(exc)}", exc_info=True)
-    
+
     return JSONResponse(
         status_code=500,
         content={
@@ -203,10 +212,12 @@ async def global_exception_handler(request: Request, exc: Exception):
             "details": str(exc) if settings.environment != "production" else "Contact support."
         }
     )
+
+
 @app.get("/")
 def read_root():
     return {
-        "status": f"{CURRENT_CODENAME} Rising", 
+        "status": f"{CURRENT_CODENAME} Rising",
         "version": VERSION_SHORT,
         "engine": "Legion",
         "docs": "/docs",
@@ -215,6 +226,6 @@ def read_root():
             "souls": "/api/v1/souls",
             "chat": "/api/v1/chat",
             "map": "/api/v1/map",
-            "assets": "/assets" # 📡 Now visible to the web
+            "assets": "/assets"  # 📡 Now visible to the web
         }
     }

@@ -27,36 +27,47 @@ async def websocket_endpoint(websocket: WebSocket):
     """
     WebSocket connection endpoint.
     Normandy-SR2 Fix: Token moved from Query to Initial Handshake Message for log security.
+    Added strict IP rate limiting before connection acceptance.
     """
+    from backend.app.core.rate_limiter import get_real_ip
+    from backend.app.core.cache import cache_service
+
+    client_ip = get_real_ip(websocket)  # type: ignore
+
+    # 0. RATE LIMITING (Per-IP connection spam protection)
+    # Using CacheService directly since slowapi @limiter doesn't cleanly reject unaccepted WebSockets
+    rl_key = f"ws:rate_limit:{client_ip}"
+    current_count = cache_service.get(rl_key) or 0
+    if current_count >= 30:  # 30 connection attempts per minute max
+        logger.warning("Rate limit exceeded for WS connect from %s", client_ip)
+        await websocket.close(code=1008, reason="Rate Limit Exceeded")
+        return
+
+    # Needs to be a bit careful setting ttl if key doesn't exist, but our simple cache handles it
+    cache_service.set(rl_key, current_count + 1, ttl=60)
+
     await websocket.accept()
-    client_ip = websocket.client.host if websocket.client else "unknown"
     user_id = None
 
-    # 1. AUTH HANDSHAKE (Supports Query Param fallback and Message Handshake)
-    token = websocket.query_params.get("token")
-    
-    if token:
-        logger.info(f"WebSocket using query-param auth: {client_ip}")
-    else:
-        # If no token in query, we wait for the message handshake
-        logger.info(f"WebSocket waiting for handshake message: {client_ip}")
-        try:
-            handshake_data = await asyncio.wait_for(websocket.receive_text(), timeout=10.0)
-            payload = json.loads(handshake_data)
-            if payload.get("type") == "handshake" and "token" in payload:
-                token = payload["token"]
-            else:
-                logger.warning(f"Invalid WebSocket handshake from {client_ip}")
-                await websocket.close(code=1008, reason="Handshake Required")
-                return
-        except asyncio.TimeoutError:
-            logger.warning(f"WebSocket handshake timeout from {client_ip}")
-            await websocket.close(code=1008, reason="Handshake Timeout")
+    # 1. AUTH HANDSHAKE (Strictly requires Message Handshake, no query-param leak)
+    logger.info("WebSocket waiting for handshake message: %s", client_ip)
+    try:
+        handshake_data = await asyncio.wait_for(websocket.receive_text(), timeout=10.0)
+        payload = json.loads(handshake_data)
+        if payload.get("type") == "handshake" and "token" in payload:
+            token = payload["token"]
+        else:
+            logger.warning("Invalid WebSocket handshake from %s", client_ip)
+            await websocket.close(code=1008, reason="Handshake Required")
             return
-        except Exception as e:
-            logger.error(f"WebSocket handshake error: {e}")
-            await websocket.close(code=1011, reason="Handshake Failed")
-            return
+    except asyncio.TimeoutError:
+        logger.warning("WebSocket handshake timeout from %s", client_ip)
+        await websocket.close(code=1008, reason="Handshake Timeout")
+        return
+    except Exception as e:
+        logger.error("WebSocket handshake error: %s", e)
+        await websocket.close(code=1011, reason="Handshake Failed")
+        return
 
     # Verify Token
     if not supabase:
@@ -69,14 +80,15 @@ async def websocket_endpoint(websocket: WebSocket):
         user_response = await loop.run_in_executor(None, supabase.auth.get_user, token)
 
         if not user_response or not user_response.user:
-            logger.warning(f"WebSocket auth failed from {client_ip}")
+            logger.warning("WebSocket auth failed from %s", client_ip)
             await websocket.close(code=1008, reason="Invalid authentication token")
             return
 
         user_id = user_response.user.id
-        logger.info(f"WebSocket auth success: user={user_id} ip={client_ip}")
+        logger.info("WebSocket auth success: user=%s ip=%s",
+                    user_id, client_ip)
     except Exception as e:
-        logger.error(f"Supabase Auth Error in WebSocket: {e}")
+        logger.error("Supabase Auth Error in WebSocket: %s", e)
         await websocket.close(code=1008, reason="Authentication failed")
         return
 
@@ -94,12 +106,13 @@ async def websocket_endpoint(websocket: WebSocket):
                 )
             except asyncio.TimeoutError:
                 # Client didn't ping within the heartbeat window — disconnect
-                logger.warning(f"WebSocket heartbeat timeout for user={user_id}. Closing.")
+                logger.warning(
+                    "WebSocket heartbeat timeout for user=%s. Closing.", user_id)
                 await websocket.close(code=1001, reason="Heartbeat timeout")
                 break
 
             try:
-                message = json.loads(data)
+                message = json.loads(str(data))
 
                 if message.get("type") == "ping":
                     await websocket.send_json({
@@ -109,19 +122,21 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 elif message.get("type") == "subscribe":
                     topic = message.get("topic", "unknown")
-                    logger.info(f"User {user_id} subscribed to: {topic}")
+                    logger.info("User %s subscribed to: %s", user_id, topic)
 
                 else:
-                    logger.debug(f"Unknown WS message type from {user_id}: {message.get('type')}")
+                    logger.debug(
+                        "Unknown WS message type from %s: %s", user_id, message.get('type'))
 
             except json.JSONDecodeError:
-                logger.warning(f"Invalid JSON from {user_id}: {data[:100]}")
+                logger.warning("Invalid JSON from %s: %s", user_id, data[:100])
 
     except WebSocketDisconnect:
-        logger.info(f"WebSocket disconnected normally: user={user_id}")
+        logger.info("WebSocket disconnected normally: user=%s", user_id)
 
     except Exception as e:
-        logger.error(f"WebSocket error for user={user_id}: {type(e).__name__}: {e}")
+        logger.error(
+            "WebSocket error for user=%s: %s: %s", user_id, type(e).__name__, e)
 
     finally:
         websocket_manager.disconnect(websocket)

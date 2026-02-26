@@ -17,7 +17,7 @@ from typing import Final
 
 # Accordoding to Grok, this has no conflicts on any app stores in this field.
 # Needs to be checked again properly before release.
-# 
+#
 APP_NAME: Final[str] = "Linker.ai"
 APP_TAGLINE: Final[str] = "Hack your heart. Link your soul."
 
@@ -59,24 +59,43 @@ DEV_PRE_RELEASE: Final[str] = "dev-1: Pre public alpha"
 
 # Semantic development codename and versioning per major release arc
 VERSION_CODENAMES = {           # These are the dev cycle codenames.
-    "1.0.0": "Ham Sandwich",    # I was eating one when I started coding this project.
+    # I was eating one when I started coding this project.
+    "1.0.0": "Ham Sandwich",
     "1.1.0": "Code-kun",        # I expanded the app... needed lots more code.
-    "1.2.0": "I-AM-DATA",       # Found out the importance of a solid data schema before coding
+    # Found out the importance of a solid data schema before coding
+    "1.2.0": "I-AM-DATA",
     "1.3.0": "Linker",          # First in console chat with a soul... I was the linker!
     "1.4.0": "Summoner",        # Adding in more souls and improved soul logic
-    "1.5.0": "Behemoth",        # The project grew... too big... Spaghetti monsters everywhere
-    "1.5.1": "Reforged",        # Started breaking down the behemoth... Failed so went Architect
-    "1.5.2": "Architect",       # Ground up rebuild followed by full data loss during this cycle
-    "1.5.3": "Phoenix",         # The new polished and upgraded version was born (a solid baseline)
-    "1.5.4": "Arise",           # The Phoenix is rising from the ashes... This is almost Alpha ready
-    "1.5.5": "Domain Expansion",# JJK cause fr! Also... ties to the world upgrades. Plus it sounds technical af!
-    "1.5.6": "Normandy SR-2"    # The soul integration system is finally ready for closed alpha.
+    # The project grew... too big... Spaghetti monsters everywhere
+    "1.5.0": "Behemoth",
+    # Started breaking down the behemoth... Failed so went Architect
+    "1.5.1": "Reforged",
+    # Ground up rebuild followed by full data loss during this cycle
+    "1.5.2": "Architect",
+    # The new polished and upgraded version was born (a solid baseline)
+    "1.5.3": "Phoenix",
+    # The Phoenix is rising from the ashes... This is almost Alpha ready
+    "1.5.4": "Arise",
+    # JJK cause fr! Also... ties to the world upgrades. Plus it sounds technical af!
+    "1.5.5": "Domain Expansion",
+    # The soul integration system is finally ready for closed alpha.
+    "1.5.6": "Normandy SR-2"
     # 1.5.7: Aether/Lumine      # The expansion of systems into more solid architecture. In honor of the travelers that made my life more interesting <3 Thank you Hoyoverse!
     # 1.5.8: Singularity        # Last additions or changes to the code before 1.5.9. Perfection is almost achieved at this point.
     # 1.5.9: Alpha-Omega        # The final arc before the first closed Alpha release - Severe dev tests underway here. Security, stability, etc...
     # 1.6.0: Neural Link        # Also known as Alpha v1.0.0 - A soft launch to 10 users that will help test the app properly. Posted on itch.io and discord.
     # 1.6.1: Deus Ex Machina    # The start of godhood and the rise of SoulLink to global supremecy! (I hope)
-    
+    # 1.6.2:
+    # 1.6.3:
+    # 1.6.4:
+    # 1.6.5:
+    # 1.6.6:
+    # 1.6.7:
+    # 1.6.8:
+    # 1.6.9:
+    # 1.7.0:
+
+
     # Extra ideas for codenames:
     # Ghost Protocol, Eclipse, Night City, Prometheus,
     # Ragnarok, Evangelion, New Game+, Elysium,
@@ -86,6 +105,7 @@ VERSION_CODENAMES = {           # These are the dev cycle codenames.
 #          CODENAME RESOLUTION
 # ────────────────────────────────────────────────────────────────
 
+
 def resolve_codename(version: str) -> str:
     # 1️⃣ Exact match always wins
     if version in VERSION_CODENAMES:
@@ -94,6 +114,7 @@ def resolve_codename(version: str) -> str:
     # 2️⃣ Fallback to major.minor arc (e.g. 1.5.x → Behemoth)
     major_minor = ".".join(version.split(".")[:2]) + ".0"
     return VERSION_CODENAMES.get(major_minor, "Unknown Unit")
+
 
 # “The cycle ends here. We must be better.”
 # - Kratos - God of War
@@ -111,13 +132,15 @@ VERSION_DISPLAY: Final[str] = f"{APP_NAME} v{VERSION_FULL} ({CURRENT_CODENAME})"
 # - Unreal Tournament
 DEBUG: Final[bool] = os.getenv("SOULLINK_DEBUG", "0") == "1"
 DETERMINISTIC: Final[bool] = os.getenv("SOULLINK_DETERMINISTIC", "0") == "1"
-OFFLINE_MODE: Final[bool] = os.getenv("SOULLINK_OFFLINE", "0") == "1"   # future: force local LLM/DB
+OFFLINE_MODE: Final[bool] = os.getenv(
+    "SOULLINK_OFFLINE", "0") == "1"   # future: force local LLM/DB
 
 # ────────────────────────────────────────────────────────────────
 #          BUILD / RUNTIME METADATA
 # ────────────────────────────────────────────────────────────────
 
-BUILD_TIMESTAMP: Final[str] = datetime.now(timezone.utc).isoformat(timespec="seconds") + "Z"
+BUILD_TIMESTAMP: Final[str] = datetime.now(
+    timezone.utc).isoformat(timespec="seconds") + "Z"
 # If you want git commit hash later: import subprocess; subprocess.getoutput("git rev-parse --short HEAD")
 
 # ────────────────────────────────────────────────────────────────

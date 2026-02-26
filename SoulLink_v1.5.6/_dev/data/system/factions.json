@@ -170,6 +170,40 @@
                 "ether_baths",
                 "twilight_park"
             ]
+        },
+        "intellectuals": {
+            "id": "intellectuals",
+            "name": "The Intellectuals",
+            "meta_faction": "creatives",
+            "description": "Scholars, teachers, and truth-seekers.",
+            "philosophy": "Knowledge preserves humanity.",
+            "associated_locations": [
+                "shadowed_archives",
+                "echo_archives",
+                "city_planetarium"
+            ]
+        },
+        "tech_enthusiasts": {
+            "id": "tech_enthusiasts",
+            "name": "Tech Enthusiasts",
+            "meta_faction": "engineers",
+            "description": "Gadgeteers and hardware junkies who love pushing tech to its limits.",
+            "philosophy": "If it ain't broke, it doesn't have enough features yet.",
+            "associated_locations": [
+                "pixel_den",
+                "circuit_street"
+            ]
+        },
+        "community": {
+            "id": "community",
+            "name": "Community Builders",
+            "meta_faction": "creatives",
+            "description": "The glue of Link City, focusing on mutual aid and keeping people together.",
+            "philosophy": "We survive by lifting each other up.",
+            "associated_locations": [
+                "soul_plaza",
+                "the_garden"
+            ]
         }
     }
 }

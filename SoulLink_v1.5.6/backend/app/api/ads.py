@@ -43,7 +43,8 @@ class AdConfigResponse(BaseModel):
 class SSVRewardRequest(BaseModel):
     """Server-Side Verification callback from AppLovin"""
     user_id: str
-    soul_id: Optional[str] = None  # Which soul's link to restore (optional: restores all if omitted)
+    # Which soul's link to restore (optional: restores all if omitted)
+    soul_id: Optional[str] = None
     reward_type: str  # 'stability_boost', 'energy', 'city_credits'
     ad_network: str = "applovin"
     signature: Optional[str] = None
@@ -89,31 +90,30 @@ async def get_ad_config(
 @router.post("/ads/verify-reward")
 async def verify_ad_reward(
     payload: SSVRewardRequest,
-    user: User = Depends(get_current_user), # Normandy-SR2 Fix: Enforcement
+    request: Request,
     session: AsyncSession = Depends(get_async_session)
 ):
     """
     Server-Side Verification (SSV) endpoint for AppLovin.
     Validates the reward and updates the user's LinkState(s).
+    This endpoint MUST be public for AppLovin servers to reach it.
+    Security is maintained via HMAC signature verification.
     """
-    # Normandy-SR2 Fix: Ensure the user being rewarded is the one who watched the ad
-    if payload.user_id != user.user_id:
-        logger.warning(f"Spoofing attempt detected: {user.user_id} tried to claim reward for {payload.user_id}")
-        raise HTTPException(status_code=403, detail="Reward identity mismatch.")
-
-    logger.info(f"SSV Callback: user={payload.user_id} soul={payload.soul_id} type={payload.reward_type}")
+    logger.info(
+        f"SSV Callback: user={payload.user_id} soul={payload.soul_id} type={payload.reward_type}")
 
     # --- SIGNATURE VALIDATION ---
-    is_valid = True
-    if settings.applovin_ssv_secret != "mock_secret" and payload.signature:
-        expected_signature = hmac.new(
-            settings.applovin_ssv_secret.encode(),
-            f"{payload.user_id}{payload.reward_type}{payload.timestamp}".encode(),
-            hashlib.sha256
-        ).hexdigest()
-        is_valid = hmac.compare_digest(expected_signature, payload.signature)
+    if not payload.signature or not payload.timestamp:
+        raise HTTPException(
+            status_code=400, detail="Missing signature or timestamp")
 
-    if not is_valid:
+    expected_signature = hmac.new(
+        settings.applovin_ssv_secret.encode(),
+        f"{payload.user_id}{payload.reward_type}{payload.timestamp}".encode(),
+        hashlib.sha256
+    ).hexdigest()
+
+    if not hmac.compare_digest(expected_signature, payload.signature):
         logger.warning(f"Invalid SSV signature for user {payload.user_id}")
         raise HTTPException(status_code=403, detail="Invalid signature")
 
@@ -127,8 +127,10 @@ async def verify_ad_reward(
     links = result.scalars().all()
 
     if not links:
-        logger.warning(f"No LinkState found for user {payload.user_id} (soul={payload.soul_id})")
-        raise HTTPException(status_code=404, detail="No active soul link found for this user.")
+        logger.warning(
+            f"No LinkState found for user {payload.user_id} (soul={payload.soul_id})")
+        raise HTTPException(
+            status_code=404, detail="No active soul link found for this user.")
 
     # --- APPLY REWARD ---
     new_stability = 100.0
@@ -139,7 +141,8 @@ async def verify_ad_reward(
             session.add(link)
 
             # Invalidate stability cache
-            cache_service.delete(f"link:stability:{link.user_id}:{link.soul_id}")
+            cache_service.delete(
+                f"link:stability:{link.user_id}:{link.soul_id}")
 
     # --- LOG IMPRESSION ---
     impression = AdImpression(
@@ -157,7 +160,8 @@ async def verify_ad_reward(
 
     await session.commit()
 
-    logger.info(f"✅ Reward granted: {payload.reward_type} to {payload.user_id}")
+    logger.info(
+        f"✅ Reward granted: {payload.reward_type} to {payload.user_id}")
 
     return {
         "success": True,
@@ -249,7 +253,8 @@ async def toggle_nsfw(
     session.add(link)
     await session.commit()
 
-    logger.info(f"NSFW toggled for {user.user_id}/{payload.soul_id}: {payload.nsfw_enabled}")
+    logger.info(
+        f"NSFW toggled for {user.user_id}/{payload.soul_id}: {payload.nsfw_enabled}")
 
     return {
         "success": True,

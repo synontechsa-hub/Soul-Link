@@ -19,32 +19,13 @@ from backend.app.models.soul import SoulPillar, SoulState
 from backend.app.models.link_state import LinkState
 from backend.app.models.time_slot import TimeSlot
 
+
 class LocationResolver:
     """
     Single source of truth for soul location resolution.
     Ensures consistent location queries across the entire application.
     """
-    
-    @staticmethod
-    async def resolve_location(
-        soul_id: str,
-        time_slot: TimeSlot,
-        session: AsyncSession,
-        user_id: Optional[str] = None
-    ) -> str:
-        """
-        Resolves a soul's location using the 4-tier priority hierarchy.
-        
-        Args:
-            soul_id: The soul to locate
-            time_slot: Current time slot for routine resolution
-            session: Database session
-            user_id: Optional user context for manual overrides
-        
-        Returns:
-            location_id (str): The resolved location
-        """
-        
+
     @staticmethod
     async def resolve_location(
         soul_id: str,
@@ -54,7 +35,7 @@ class LocationResolver:
     ) -> str:
         """
         Resolves a soul's location using the enhanced v1.5.6 priority hierarchy.
-        
+
         Priority Order:
         1. Manual Override (LinkState.current_location) - User-specific
         2. Routine v2 (SoulPillar.routine) - Template-based + Overrides
@@ -62,7 +43,7 @@ class LocationResolver:
         4. Global Live State (SoulState.current_location_id)
         5. Default Fallback ("soul_plaza")
         """
-        
+
         # Priority 1: User-specific manual override (LinkState)
         if user_id:
             from sqlalchemy import select
@@ -75,7 +56,7 @@ class LocationResolver:
             link = link_result.scalars().first()
             if link and link.current_location:
                 return link.current_location
-        
+
         # Priority 2: Routine v2 / Logic Pillar
         pillar = await session.get(SoulPillar, soul_id)
         if pillar:
@@ -84,12 +65,12 @@ class LocationResolver:
                 from datetime import datetime
                 import os
                 import json
-                
+
                 # Check Overrides first
                 is_weekend = datetime.utcnow().weekday() >= 5
                 day_type = "weekend" if is_weekend else "weekday"
                 overrides = pillar.routine.get("schedule_overrides", {})
-                
+
                 # Check specific day override
                 day_overrides = overrides.get(day_type, {})
                 if time_slot.value in day_overrides:
@@ -98,8 +79,10 @@ class LocationResolver:
                     if "_" in target_zone or target_zone == "soul_plaza":
                         return target_zone
                     # Otherwise map zone to preference
-                    pref = pillar.routine.get("location_preferences", {}).get(target_zone)
-                    if pref: return pref
+                    pref = pillar.routine.get(
+                        "location_preferences", {}).get(target_zone)
+                    if pref:
+                        return pref
 
                 # Check Template
                 template_id = pillar.routine.get("template_id")
@@ -109,32 +92,36 @@ class LocationResolver:
                     try:
                         # In a real heavy-load app, we'd cache this json object
                         script_dir = os.path.dirname(__file__)
-                        templates_path = os.path.abspath(os.path.join(script_dir, "../../_dev/data/system/routines.json"))
+                        templates_path = os.path.abspath(os.path.join(
+                            script_dir, "../../_dev/data/system/routines.json"))
                         with open(templates_path, 'r') as f:
                             templates = json.load(f)
-                        
+
                         tmpl = templates.get(template_id, {})
-                        zone_key = tmpl.get("schedule", {}).get(day_type, {}).get(time_slot.value)
+                        zone_key = tmpl.get("schedule", {}).get(
+                            day_type, {}).get(time_slot.value)
                         if zone_key:
-                            loc_id = pillar.routine.get("location_preferences", {}).get(zone_key)
-                            if loc_id: return loc_id
+                            loc_id = pillar.routine.get(
+                                "location_preferences", {}).get(zone_key)
+                            if loc_id:
+                                return loc_id
                     except:
-                        pass # Fallback to legacy
+                        pass  # Fallback to legacy
 
             # B. TRY LEGACY ROUTINE
             if pillar.routines:
                 routine_loc = pillar.routines.get(time_slot.value)
                 if routine_loc:
                     return routine_loc
-        
+
         # Priority 4: Global live state
         state = await session.get(SoulState, soul_id)
         if state and state.current_location_id:
             return state.current_location_id
-        
+
         # Priority 5: Default fallback
         return "soul_plaza"
-    
+
     @staticmethod
     async def resolve_bulk_locations(
         soul_ids: list[str],
@@ -147,7 +134,7 @@ class LocationResolver:
         """
         from sqlmodel import select
         from sqlalchemy.orm import load_only
-        
+
         # Bulk fetch Pillars (Optimized)
         pillar_result = await session.execute(
             select(SoulPillar)
@@ -155,18 +142,18 @@ class LocationResolver:
             .options(load_only(SoulPillar.soul_id, SoulPillar.routine, SoulPillar.routines))
         )
         pillar_map = {p.soul_id: p for p in pillar_result.scalars().all()}
-        
+
         # Bulk fetch States
         state_result = await session.execute(
             select(SoulState).where(SoulState.soul_id.in_(soul_ids))
         )
         state_map = {s.soul_id: s for s in state_result.scalars().all()}
-        
+
         locations = {}
         for soul_id in soul_ids:
             pillar = pillar_map.get(soul_id)
             resolved = False
-            
+
             if pillar:
                 # 1. Try Routine v2
                 # (Same logic as resolve_location, but optimized for bulk)
@@ -176,25 +163,25 @@ class LocationResolver:
                 if pillar.routine:
                     # Simplified bulk resolution for now to avoid file I/O overhead per loop
                     # Real fix: Load templates once outside the loop
-                    pass # We'll fallback to legacy or state if template not pre-loaded
+                    pass  # We'll fallback to legacy or state if template not pre-loaded
 
                 if not resolved and pillar.routines:
                     routine_loc = pillar.routines.get(time_slot.value)
                     if routine_loc:
                         locations[soul_id] = routine_loc
                         resolved = True
-            
+
             if not resolved:
                 state = state_map.get(soul_id)
                 if state and state.current_location_id:
                     locations[soul_id] = state.current_location_id
                     resolved = True
-            
+
             if not resolved:
                 locations[soul_id] = "soul_plaza"
-            
+
         return locations
-    
+
     @staticmethod
     async def update_global_location(
         soul_id: str,
@@ -204,14 +191,14 @@ class LocationResolver:
         """
         Updates the global live state for a soul.
         Used by LocationManager when souls move.
-        
+
         Args:
             soul_id: Soul to update
             location_id: New location
             session: Database session
         """
         from datetime import datetime
-        
+
         state = await session.get(SoulState, soul_id)
         if state:
             state.current_location_id = location_id
@@ -222,8 +209,8 @@ class LocationResolver:
             except Exception as e:
                 await session.rollback()
                 # Log error but don't raise - this is a background update
-                print(f"⚠️ Failed to update global location for {soul_id}: {e}")
-
+                print(
+                    f"⚠️ Failed to update global location for {soul_id}: {e}")
 
     @staticmethod
     async def get_all_locations(session: AsyncSession) -> list:

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1650px" height="626px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1650 626"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:2.36169}
+    .str1 {stroke:black;stroke-width:2.36169}
+    .fil0 {fill:none}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect id="zone_screen_space" class="fil0 str0" x="1" y="1" width="1648" height="624">
+   <metadata id="CorelCorpID_1">
+    <odm name="Location" value="Apartment" type="0"/>
+    <odm name="Comments" value="The full apartment screen" type="0"/>
+   </metadata>
+  </rect>
+  <polygon id="zone_bed" class="fil0 str0" points="45,438 42,122 72,97 413,133 432,159 431,414 413,435 365,441 341,462 172,477 143,459 75,464 ">
+   <metadata id="CorelCorpID_2">
+    <odm name="Location" value="Bed" type="0"/>
+    <odm name="Comments" value="advances time" type="0"/>
+   </metadata>
+  </polygon>
+  <polygon id="zone_persona" class="fil0 str0" points="479,141 624,158 624,483 479,505 ">
+   <metadata id="CorelCorpID_3">
+    <odm name="Location" value="Mirror" type="0"/>
+    <odm name="Comments" value="create and edit personas" type="0"/>
+   </metadata>
+  </polygon>
+  <polygon id="zone_tv" class="fil0 str0" points="663,201 840,215 840,325 663,325 ">
+   <metadata id="CorelCorpID_4">
+    <odm name="Location" value="TV" type="0"/>
+    <odm name="Comments" value="watch adverts" type="0"/>
+   </metadata>
+  </polygon>
+  <polygon id="zone_desk" class="fil0 str0" points="759,441 775,451 859,451 859,392 886,392 886,331 655,331 655,396 759,396 ">
+   <metadata id="CorelCorpID_5">
+    <odm name="Location" value="Desk" type="0"/>
+   </metadata>
+  </polygon>
+  <polygon id="zone_couch" class="fil0 str0" points="864,511 865,495 866,478 871,464 870,452 870,425 917,418 913,412 940,412 947,378 1272,396 1278,436 1295,453 1294,465 1280,470 1280,535 1206,565 ">
+   <metadata id="CorelCorpID_6">
+    <odm name="Location" value="Couch" type="0"/>
+   </metadata>
+  </polygon>
+  <polygon id="zone_door" class="fil0 str0" points="1403,551 1370,523 1371,168 1403,133 1568,117 1607,147 1605,537 1565,570 ">
+   <metadata id="CorelCorpID_7">
+    <odm name="Comments" value="Logs out of the app" type="0"/>
+   </metadata>
+  </polygon>
+  <polygon id="zone_window" class="fil0 str0" points="906,144 891,166 890,350 905,370 1278,390 1303,367 1306,118 1284,96 ">
+   <metadata id="CorelCorpID_8">
+    <odm name="Location" value="Window" type="0"/>
+    <odm name="Comments" value="Look out at the city" type="0"/>
+   </metadata>
+  </polygon>
+  <polygon id="zone_radio" class="fil0 str0" points="645,573 640,565 641,491 644,478 654,471 808,468 816,474 822,488 820,563 817,569 809,574 652,577 ">
+   <metadata id="CorelCorpID_9">
+    <odm name="Location" value="Radio" type="0"/>
+    <odm name="Comments" value="Lore drops, etc" type="0"/>
+   </metadata>
+  </polygon>
+  <path id="zone_memories" class="fil0 str0" d="M650 167l8 -55 3 -1 71 11 -10 53 -72 -8zm194 -28l-67 -8 -8 47 1 3 67 7 7 -49z">
+   <metadata id="CorelCorpID_10">
+    <odm name="Location" value="Monitors" type="0"/>
+    <odm name="Comments" value="View memories, achievements, etc" type="0"/>
+   </metadata>
+  </path>
+  <polygon id="zone_memories_0" class="fil0 str1" points="428,602 427,591 443,585 443,577 448,577 448,571 509,539 594,542 593,558 599,559 599,569 531,606 ">
+   <metadata id="CorelCorpID_11">
+    <odm name="Location" value="Diary" type="0"/>
+    <odm name="Comments" value="View memories with souls user has linked to" type="0"/>
+   </metadata>
+  </polygon>
+ </g>
+</svg>

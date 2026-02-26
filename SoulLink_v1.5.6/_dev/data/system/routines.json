@@ -1,6 +1,6 @@
 {
     "routines_id": "soul_routines",
-    "version": "1.5.5",
+    "version": "1.5.6",
     "commercial_worker": {
         "id": "commercial_worker",
         "name": "Commercial District Employee",
@@ -166,6 +166,111 @@
                 "evening": "entertainment_zone",
                 "night": "home_zone",
                 "home_time": "home_zone"
+            }
+        }
+    },
+    "oracle_vigil": {
+        "id": "oracle_vigil",
+        "name": "The Oracle's Vigil",
+        "description": "A reverse-cycle seer's routine. She rises when timelines branch (evening), watches through the night, and retreats at dawn when all paths briefly converge into silence.",
+        "schedule": {
+            "weekday": {
+                "morning": "home_zone",
+                "afternoon": "cultural_zone",
+                "evening": "work_zone",
+                "night": "work_zone",
+                "home_time": "relaxation_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "relaxation_zone",
+                "evening": "public_square_zone",
+                "night": "work_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "nightlife_king": {
+        "id": "nightlife_king",
+        "name": "Nightlife King",
+        "description": "Rules the clubs at night, sleeps all day.",
+        "schedule": {
+            "weekday": {
+                "morning": "home_zone",
+                "afternoon": "home_zone",
+                "evening": "nightlife_zone",
+                "night": "nightlife_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "home_zone",
+                "afternoon": "home_zone",
+                "evening": "nightlife_zone",
+                "night": "nightlife_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "admin_overlord": {
+        "id": "admin_overlord",
+        "name": "Admin Overlord",
+        "description": "Always monitoring the backend.",
+        "schedule": {
+            "weekday": {
+                "morning": "underground_zone",
+                "afternoon": "underground_zone",
+                "evening": "underground_zone",
+                "night": "underground_zone",
+                "home_time": "underground_zone"
+            },
+            "weekend": {
+                "morning": "underground_zone",
+                "afternoon": "underground_zone",
+                "evening": "underground_zone",
+                "night": "underground_zone",
+                "home_time": "underground_zone"
+            }
+        }
+    },
+    "warden_twins": {
+        "id": "warden_twins",
+        "name": "Warden Twins",
+        "description": "Patrolling the high-security areas constantly.",
+        "schedule": {
+            "weekday": {
+                "morning": "work_zone",
+                "afternoon": "work_zone",
+                "evening": "work_zone",
+                "night": "home_zone",
+                "home_time": "home_zone"
+            },
+            "weekend": {
+                "morning": "work_zone",
+                "afternoon": "work_zone",
+                "evening": "work_zone",
+                "night": "home_zone",
+                "home_time": "home_zone"
+            }
+        }
+    },
+    "commander_watch": {
+        "id": "commander_watch",
+        "name": "Commander's Watch",
+        "description": "Always in the war room, preparing for the inevitable.",
+        "schedule": {
+            "weekday": {
+                "morning": "underground_zone",
+                "afternoon": "underground_zone",
+                "evening": "underground_zone",
+                "night": "underground_zone",
+                "home_time": "underground_zone"
+            },
+            "weekend": {
+                "morning": "underground_zone",
+                "afternoon": "underground_zone",
+                "evening": "underground_zone",
+                "night": "underground_zone",
+                "home_time": "underground_zone"
             }
         }
     }

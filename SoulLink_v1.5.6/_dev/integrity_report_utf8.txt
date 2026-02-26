@@ -1,0 +1,57 @@
+[Standard] adrian_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] akira_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] anzu_01: Invalid location 'linkside_estate' in tier TRUSTED
+[Standard] anzu_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] blaze_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] cassie_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] daichi_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] dorian_01: Invalid location 'skylink_tower' in tier STRANGER
+[Standard] dorian_01: Invalid location 'skylink_tower' in tier TRUSTED
+[Standard] echo_01: Invalid location 'linkside_estate' in tier TRUSTED
+[Standard] echo_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] elizabeth_01: Invalid location 'skylink_tower' in tier STRANGER
+[Standard] elizabeth_01: Invalid location 'skylink_tower' in tier TRUSTED
+[Standard] erikk_01: Invalid faction_id 'tech_enthusiasts'
+[Standard] evangeline_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] gale_01: Invalid faction_id 'community'
+[Standard] heather_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] lyra_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] mai_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] mami_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] nozomi_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] orion_01: Invalid location 'linkside_estate' in tier TRUSTED
+[Standard] orion_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] reina_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] rosalynn_01: Invalid location 'skylink_tower' in tier TRUSTED
+[Standard] rosalynn_01: Invalid location 'skylink_tower' in tier SOUL_LINKED
+[Standard] rosalynn_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] selene_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] soren_01: Invalid faction_id 'intellectuals'
+[Standard] soren_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] sylas_01: Invalid location 'skylink_tower' in tier TRUSTED
+[Standard] sylas_01: Invalid location 'skylink_tower' in tier SOUL_LINKED
+[Standard] sylas_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Standard] vesper_01: Invalid location 'linkside_estate' in tier SOUL_LINKED
+[Premium] cassandra_01: Invalid archetype_id 'exhausted_prophet'
+[Premium] cassandra_01: Invalid location 'the_observatory' in tier STRANGER
+[Premium] cassandra_01: Invalid location 'the_observatory' in tier TRUSTED
+[Premium] flux_01: Invalid archetype_id 'fragmented_frequency'
+[Premium] flux_01: Invalid routine template_id 'nightlife_king'
+[Premium] flux_01: Invalid location 'frequency_loft' in tier TRUSTED
+[Premium] iris_01: Invalid archetype_id 'system_administrator'
+[Premium] iris_01: Invalid routine template_id 'admin_overlord'
+[Premium] iris_01: Invalid location 'skylink_tower' in tier STRANGER
+[Premium] iris_01: Invalid location 'admin_sanctuary' in tier TRUSTED
+[Premium] iris_01: Invalid location 'skylink_tower' in tier TRUSTED
+[Premium] iris_01: Invalid location 'the_backend' in tier SOUL_LINKED
+[Premium] jade_and_opal_01: Invalid archetype_id 'twin_wardens'
+[Premium] jade_and_opal_01: Invalid routine template_id 'warden_twins'
+[Premium] jade_and_opal_01: Invalid location 'skylink_tower' in tier STRANGER
+[Premium] jade_and_opal_01: Invalid location 'twin_sanctum' in tier TRUSTED
+[Premium] jade_and_opal_01: Invalid location 'skylink_tower' in tier TRUSTED
+[Premium] jericho_01: Invalid archetype_id 'haunted_general'
+[Premium] jericho_01: Invalid routine template_id 'commander_watch'
+[Premium] jericho_01: Invalid location 'war_room' in tier STRANGER
+[Premium] jericho_01: Invalid location 'war_room' in tier TRUSTED
+[Premium] jericho_01: Invalid location 'spartan_quarters' in tier TRUSTED
+[Premium] jericho_01: Invalid location 'contingency_vault' in tier SOUL_LINKED

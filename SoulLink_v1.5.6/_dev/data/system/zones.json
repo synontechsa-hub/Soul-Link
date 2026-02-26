@@ -1,6 +1,6 @@
 {
     "zones_id": "link_city_zones",
-    "version": "1.5.5",
+    "version": "1.5.6",
     "description": "Standardized zone categories for routine templates and soul scheduling. All locations are mapped to one of these zones.",
     "zones": {
         "home_zone": {
@@ -9,7 +9,6 @@
             "locations": [
                 "civic_heights",
                 "crimson_arms",
-                "linkside_estate",
                 "midline_residences",
                 "northway_flats",
                 "skylink_apartments"
@@ -20,7 +19,9 @@
             "description": "Professional and commercial environments: offices, malls, corporate districts.",
             "locations": [
                 "apex_corporate_plaza",
-                "linkgate_mall"
+                "linkgate_mall",
+                "skylink_tower",
+                "twin_sanctum"
             ]
         },
         "entertainment_zone": {
@@ -57,7 +58,8 @@
             "description": "Evening and late-night party scenes: clubs, bars.",
             "locations": [
                 "dollhouse_dungeon",
-                "neon_nights"
+                "neon_nights",
+                "frequency_loft"
             ]
         },
         "cultural_zone": {
@@ -66,7 +68,8 @@
             "locations": [
                 "echo_archives",
                 "shadowed_archives",
-                "city_planetarium"
+                "city_planetarium",
+                "the_observatory"
             ]
         },
         "sports_zone": {
@@ -82,7 +85,12 @@
             "description": "Hidden, risky, or shadowy areas: markets, bridges, exchanges.",
             "locations": [
                 "umbral_exchange",
-                "neon_span_bridge"
+                "neon_span_bridge",
+                "admin_sanctuary",
+                "the_backend",
+                "war_room",
+                "spartan_quarters",
+                "contingency_vault"
             ]
         },
         "public_square_zone": {

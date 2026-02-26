@@ -19,6 +19,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 logger = logging.getLogger("LegionBrain")
 
+
 class LegionBrain:
     def __init__(self, session: AsyncSession):
         self.session = session
@@ -35,20 +36,20 @@ class LegionBrain:
     async def _get_context(self, user_id: str, soul_id: str, session: AsyncSession):
         soul = await session.get(Soul, soul_id)
         pillar = await session.get(SoulPillar, soul_id)
-        # SoulState is now global/simulation state only. 
+        # SoulState is now global/simulation state only.
         # User-specific mutable state is in LinkState.
-        
-        # We assume LinkState is passed in or fetched. 
+
+        # We assume LinkState is passed in or fetched.
         # For backward compatibility within this private method, we can fetch it if needed,
         # but optimally the caller provides it.
-        
+
         user = await session.get(User, user_id)
-        
+
         # 📜 SMART HISTORY FETCH
         genesis_result = await session.execute(
             select(Conversation)
             .where(Conversation.user_id == user_id, Conversation.soul_id == soul_id)
-            .order_by(Conversation.created_at.asc())
+            .order_by(Conversation.created_at.asc())  # type: ignore
             .limit(1)
         )
         genesis_msg = genesis_result.scalars().first()
@@ -56,15 +57,15 @@ class LegionBrain:
         recent_result = await session.execute(
             select(Conversation)
             .where(Conversation.user_id == user_id, Conversation.soul_id == soul_id)
-            .order_by(Conversation.created_at.desc())
-            .limit(10) # Bumped to 10 for better context
+            .order_by(Conversation.created_at.desc())  # type: ignore
+            .limit(10)  # Bumped to 10 for better context
         )
         recent_flow = recent_result.scalars().all()
-        
+
         history = []
         if genesis_msg:
             history.append(genesis_msg)
-        
+
         flow_list = list(reversed(recent_flow))
         for msg in flow_list:
             if genesis_msg and msg.msg_id == genesis_msg.msg_id:
@@ -74,10 +75,10 @@ class LegionBrain:
         return soul, pillar, user, history
 
     async def generate_response(
-        self, 
-        user_id: str, 
-        soul_id: str, 
-        user_input: str, 
+        self,
+        user_id: str,
+        soul_id: str,
+        user_input: str,
         session: AsyncSession,
         link_state: LinkState,
         persona: UserPersona,
@@ -87,7 +88,7 @@ class LegionBrain:
         v1.5.6 Update: Now accepts LinkState and Persona directly.
         """
         soul, pillar, user, history = await self._get_context(user_id, soul_id, session)
-        
+
         if not soul or not user or not pillar or not link_state:
             return "Error: Soul consciousness, pillars, or link state lost in the Ether."
 
@@ -99,7 +100,7 @@ class LegionBrain:
         # 2. ASK SERVICES
         is_architect = link_state.is_architect
         # Note: IdentityService might need refactoring too, but for now we pass what we have.
-        
+
         # 3. BUILD PROMPT (Delegated to ContextAssembler)
         try:
             full_system_prompt = ContextAssembler.build_system_prompt(
@@ -112,65 +113,80 @@ class LegionBrain:
                 world_state=world_state_injection
             )
         except Exception as e:
-            logger.error(f"❌ PROMPT ASSEMBLY FAILED: {e}")
+            logger.error("❌ PROMPT ASSEMBLY FAILED: %s", e)
             raise Exception(f"Failed to assemble neural context: {str(e)}")
 
         # 🔍 LOGGING (v1.5.6 Hardening: replaced print with logger)
-        logger.debug(f"🧠 PROMPT ASSEMBLY: {soul.name} | Persona: {persona.screen_name}")
-        logger.debug(f"\nPrompt: {full_system_prompt}")
+        logger.debug(
+            "🧠 PROMPT ASSEMBLY: %s | Persona: %s", soul.name, persona.screen_name)
+        logger.debug("\nPrompt: %s", full_system_prompt)
 
         # 4. INFERENCE
-        messages = [{"role": "system", "content": full_system_prompt}]
+        from typing import List, Dict, Any
+        messages: List[Dict[str, Any]] = [
+            {"role": "system", "content": full_system_prompt}]
         for msg in history:
-            messages.append({"role": msg.role, "content": msg.content})
+            messages.append(
+                {"role": str(msg.role), "content": str(msg.content)})
         messages.append({"role": "user", "content": user_input})
 
         # Cost-saving truncation
-        if len(messages) > 12: 
+        if len(messages) > 12:
             # Keep system + genesis + last 10
             messages = [messages[0]] + messages[-11:]
 
-        chat_completion = self.client.chat.completions.create(
-            messages=messages,
-            model="llama-3.3-70b-versatile",
-            temperature=0.8,
-            max_tokens=600
-        )
-        response_text = chat_completion.choices[0].message.content
-        
+        # Non-blocking inference
+        import asyncio
+        loop = asyncio.get_running_loop()
+
+        def _call_groq():
+            return self.client.chat.completions.create(
+                messages=messages,  # type: ignore
+                model="llama-3.3-70b-versatile",
+                temperature=0.8,
+                max_tokens=600
+            )
+
+        chat_completion = await loop.run_in_executor(None, _call_groq)
+        response_text = chat_completion.choices[0].message.content or ""
+
         # 5. SAVE & UPDATE
         # Save Conversation
-        conv_user = Conversation(user_id=user_id, soul_id=soul_id, role="user", content=user_input)
-        conv_assistant = Conversation(user_id=user_id, soul_id=soul_id, role="assistant", content=response_text)
-        
+        conv_user = Conversation(
+            user_id=user_id, soul_id=soul_id, role="user", content=user_input)
+        conv_assistant = Conversation(
+            user_id=user_id, soul_id=soul_id, role="assistant", content=response_text)
+
         # v1.5.6: Store telemetry in metadata
         conv_assistant.meta_data = {
             "persona_id": persona.id,
             "link_state_id": link_state.id
         }
-        
+
         session.add(conv_user)
         session.add(conv_assistant)
-        
+
         # Update LinkState
         link_state.last_interaction = datetime.utcnow()
-        link_state.total_messages_sent = (getattr(link_state, 'total_messages_sent', 0) or 0) + 1
-        
+        link_state.total_messages_sent = (
+            getattr(link_state, 'total_messages_sent', 0) or 0) + 1
+
         # Normandy-SR2 Fix: Perform stability decay inside the brain for atomic commit
         decay_rate = getattr(settings, 'ad_stability_decay_rate', 2.0)
-        link_state.signal_stability = max(0.0, (link_state.signal_stability or 100.0) - decay_rate)
-        
+        link_state.signal_stability = max(
+            0.0, (link_state.signal_stability or 100.0) - decay_rate)
+
         session.add(link_state)
-        
+
         # Update Persona Last Used
         persona.last_used = datetime.utcnow()
         session.add(persona)
-        
+
         try:
             await session.commit()
         except Exception as e:
             await session.rollback()
-            print(f"❌ TRANSACTION FAILED: {e}")
+            logger.error("❌ TRANSACTION FAILED: %s", e, exc_info=True)
             raise Exception(f"Failed to save conversation: {str(e)}")
 
         return response_text

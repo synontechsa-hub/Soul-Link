@@ -1,0 +1,1436 @@
+SOULLINK v1.5.6 "NORMANDY SR-2"
+
+FULL SYSTEM AUDIT REPORT
+
+Backend · Frontend (Flutter/Dart) · Data Layer · Architecture
+
+Report Date
+
+22 February 2026
+
+System Version
+
+v1.5.6 Normandy SR-2
+
+Auditor
+
+Claude Sonnet 4.6 (Anthropic)
+
+Scope
+
+326 files: Python backend (64), Flutter frontend (60+), _dev data/lore/config (200+)
+
+Total Issues Found
+
+32 (8 Critical · 11 High · 9 Medium · 4 Low)
+
+Target
+
+Closed Alpha on itch.io / Discord (10 testers, 7-10 days)
+
+Alpha Readiness
+
+~65% — Blockers are mechanical, no rewrites required
+
+
+
+
+1. Executive Summary
+
+This audit extends the previous backend-only analysis (Claude, 22 Feb 2026) to cover the complete SoulLink codebase including the Flutter frontend, _dev data files, dev logs, and system config. The prior audit identified 47 backend issues. This report adds 15 newly identified frontend-specific issues and deepens the analysis on issues that span the client-server boundary.
+
+
+
+The core of SoulLink — its lore, soul character depth, world-building, and monetization philosophy — remains a genuine differentiator. The problems found are engineering execution gaps, not architectural failures. All blockers are solvable within the 7-10 day alpha window.
+
+
+
+Three cross-cutting themes dominate this audit:
+
+Security perimeter: The WebSocket JWT exposure, SSV verification bypass, and NSFW toggle non-persistence are all connected — the "Normandy SR-2 hardening" was partially applied on the backend but the Flutter client was not updated to match.
+
+Frontend-backend contract drift: Field names differ between Dart models and API responses (nsfw_enabled vs unlocked_nsfw, portrait_url casing, soul "id" vs "soul_id"). These will cause silent data loss and null-checks that always pass.
+
+Async safety: The blocking Groq call and the WS-before-commit ordering affect every alpha tester directly — the first causes the app to freeze during chat, the second causes desynced time displays.
+
+
+
+Severity
+
+Frontend
+
+Backend
+
+Primary Impact
+
+Phase
+
+CRITICAL
+
+3
+
+6
+
+Boot failure, token exposure, broken core loop
+
+P0 / P1
+
+HIGH
+
+6
+
+6
+
+Non-functional features, event loop blocking, data loss
+
+P1 / P2
+
+MEDIUM
+
+4
+
+4
+
+Broken UX flows, deprecated APIs, linter warnings
+
+P2 / P3
+
+LOW
+
+2
+
+2
+
+Code quality, logging, minor naming
+
+P3
+
+
+
+
+2. Frontend Audit (Flutter / Dart)
+
+The Flutter codebase is well-structured with a clean Provider architecture, good separation of concerns, and a polished cyberpunk UI aesthetic. The issues found are concentrated in the WebSocket client, auth flow, and model/API contract layer — not in the widget tree.
+
+2.1 Frontend Issues
+
+FE-01
+
+JWT Exposed in WebSocket URL
+
+websocket_service.dart
+
+CRITICAL
+
+Phase P1
+
+Finding: WebSocket connects via ?token=JWT query parameter. Tokens appear in server access logs, proxies, and browser history verbatim. Despite the backend Normandy-SR2 "fix" adding a handshake path, the Dart client still builds the URL with token embedded and connects before any handshake can fire.
+
+Fix: On connect, establish the WebSocket without a token. Immediately send a {"type":"handshake","token":JWT} message. Wait for {"type":"connection_established"} before treating the socket as live.
+
+
+
+FE-02
+
+_isConnecting Never Reset on Early Return
+
+websocket_service.dart
+
+CRITICAL
+
+Phase P1
+
+Finding: When token == null, the function returns early without setting _isConnecting = false. All subsequent connect() calls are silently no-ops; the WebSocket never reconnects for the session lifetime.
+
+Fix: Add _isConnecting = false before every early return in connect(), or use a try/finally block that always resets it.
+
+
+
+FE-03
+
+Duplicate Print + Stale Comment Residue
+
+websocket_service.dart
+
+HIGH
+
+Phase P3
+
+Finding: print('Connecting to $wsUrl') appears twice consecutively. Multiple commented-out blocks reference removed code (e.g. _isDisposed guard). This reflects unfinished edits and adds noise to production logs.
+
+Fix: Remove duplicate print. Replace all print() calls with a logger.dart wrapper that is stripped in release builds.
+
+
+
+FE-04
+
+WebSocket Connect Called Every Rebuild
+
+main.dart
+
+HIGH
+
+Phase P1
+
+Finding: The Consumer2 builder calls Future.microtask(() => wsProvider.connect()) conditionally but this runs on every widget rebuild while logged in but not yet connected. If the connection attempt is in-flight, a second attempt fires. Dart's microtask queue does not deduplicate.
+
+Fix: Move connect() into DashboardProvider.initAfterAuth() or a didChangeDependencies guard with a flag. Do not trigger side-effects from builder callbacks.
+
+
+
+FE-05
+
+WebSocket onChatMessage Handler Fully Disabled
+
+chat_screen.dart
+
+HIGH
+
+Phase P2
+
+Finding: The entire onChatMessage callback body is commented out. Souls never update the chat UI via WebSocket — only HTTP responses add messages. This defeats real-time presence for multi-device and cross-chat events.
+
+Fix: Restore the handler with proper deduplication: track the last HTTP response ID and ignore WS messages for that ID. Process WS events for any other soul or for system events.
+
+
+
+FE-06
+
+NSFW Toggle is Pure UI State — Never Persisted
+
+settings_screen.dart
+
+HIGH
+
+Phase P2
+
+Finding: _nsfwEnabled is a local bool with setState(). Toggling it does nothing to the backend LinkState.unlocked_nsfw. The toggle resets on every navigation or rebuild. The feature is entirely non-functional.
+
+Fix: On toggle, call apiService.setNsfwToggle(soulId, value) which hits POST /ads/nsfw-toggle. Read initial value from DashboardProvider (LinkState). Show a loading indicator while the request is in-flight.
+
+
+
+FE-07
+
+Version Constants Internally Contradictory
+
+version.dart
+
+HIGH
+
+Phase P3
+
+Finding: SoulLinkVersion.number = "1.5.6" but SoulLinkVersion.version = "1.5.4" and codename = "Arise Alpha" while the project is Normandy SR-2. displayVersion uses the stale version field, so the login screen shows the wrong version to every tester.
+
+Fix: Set version = "1.5.6", codename = "Normandy SR-2", remove the redundant number field, or merge both into a single source of truth aligned with version.py.
+
+
+
+FE-08
+
+Orphaned Model with Old Field Names
+
+user_soul_state.dart
+
+HIGH
+
+Phase P3
+
+Finding: UserSoulState uses nsfw_enabled while the consolidated backend uses unlocked_nsfw in LinkState. This model is imported nowhere visible in the snapshot but its presence creates a naming contract mismatch that will break any new code that imports it.
+
+Fix: Delete UserSoulState.dart. All soul state is now read from SoulRelationship (which maps unlocked_nsfw) or LinkState.
+
+
+
+FE-09
+
+portrait_url Naming Violation (Linter Warning)
+
+relationship.dart
+
+MEDIUM
+
+Phase P3
+
+Finding: The field is named portrait_url (snake_case) instead of portraitUrl (lowerCamelCase). Flutter analysis flags this as non_constant_identifier_names. It causes IDE warnings and will break if the field is ever used with reflection or code generation.
+
+Fix: Rename to portraitUrl throughout. Update all consumers: map_screen.dart, soul_card.dart, etc.
+
+
+
+FE-10
+
+BuildContext Captured Across Async Gap (Linter Warning)
+
+apartment_screen.dart
+
+MEDIUM
+
+Phase P2
+
+Finding: _playAd and _moveUserTo use context after async awaits without checking mounted first in all branches. Flutter analysis flags this as use_build_context_synchronously.
+
+Fix: Add if (!mounted) return; immediately after every await inside async methods that use context. This pattern is already used correctly in some methods but inconsistently applied.
+
+
+
+FE-11
+
+Soul ID Mismatch: "id" vs "soul_id"
+
+explore_screen.dart
+
+MEDIUM
+
+Phase P2
+
+Finding: _openChat matches against soul['id'] from the explore list but relationship.soulId is mapped from json['soul_id']. If the /souls/explore endpoint returns {id: ...}, the firstWhere will always throw a StateError and the chat never opens from the explore screen.
+
+Fix: Normalize: use soul['soul_id'] ?? soul['id'] in both _initiateLink and _openChat. Confirm the API response field name and document it.
+
+
+
+FE-12
+
+isProfileComplete Logic Too Permissive
+
+dashboard_provider.dart
+
+MEDIUM
+
+Phase P2
+
+Finding: A user is considered "complete" if they have either a gender OR a bio. A guest user with just a gender set (e.g. "Not Specified") is routed to the Dashboard bypassing the Mirror setup. The check also has a note "Not Specified" but doesn't actually handle it as incomplete for gender.
+
+Fix: Require both: gender set AND != "Not Specified", AND bio non-empty. Or better, add a profile_complete boolean to the backend /users/me response that reflects server-side completeness.
+
+
+
+FE-13
+
+MockAdService Calls verifyAdReward with User Auth
+
+ad_service.dart
+
+MEDIUM
+
+Phase P1
+
+Finding: The mock service calls apiService.verifyAdReward() which hits POST /ads/verify-reward. This endpoint uses get_current_user (requires Bearer token). AppLovin SSV calls come from AppLovin servers with no user token. The mock works but reinforces the wrong flow, and real SSV will fail when AppLovin is integrated.
+
+Fix: The verify-reward endpoint must be public (no auth dependency). User ID should come from query params validated server-side. Update MockAdService to simulate this correctly.
+
+
+
+FE-14
+
+print() Throughout Production Code
+
+main.dart + multiple files
+
+LOW
+
+Phase P3
+
+Finding: Flutter analysis flags dozens of print() calls across api_service.dart, websocket_service.dart, main.dart, and ad_service.dart. These appear in release builds and may expose token fragments (e.g. token.substring(0, 10)) to device logs.
+
+Fix: Replace all print() with debugPrint() (stripped in release) or a proper logging package (logger, logging). The api_service.dart already partially logs the token — remove that specific log immediately.
+
+
+
+FE-15
+
+Registration Calls signInAnonymously Then updateUserProfile
+
+registration_screen.dart
+
+LOW
+
+Phase P2
+
+Finding: The registration flow calls signInAnonymously() then updateUserProfile() with only a display name. Username is never sent to the backend. The user ends up with no username set, causing username: "" in the User model and potentially breaking dashboard display.
+
+Fix: Pass both username and displayName to updateUserProfile(). Add username validation server-side (3-20 chars, alphanumeric) and return an error if taken.
+
+
+
+
+
+
+3. Backend Audit (Python / FastAPI)
+
+The backend inherits all 47 findings from the prior audit. This section highlights the 17 highest-priority issues with updated context from reading the actual implementation, plus cross-references to frontend impact. For the full prior catalog, see SoulLink_Backend_Audit_Report.docx.
+
+3.1 Backend Issues
+
+BE-01
+
+from version import VERSION_SHORT — ModuleNotFoundError at Boot
+
+main.py + soul.py
+
+CRITICAL
+
+Phase P0
+
+Finding: soul.py imports from version import VERSION_SHORT at module level. version.py lives at the project root, not inside the backend package. When uvicorn launches from any directory other than project root, Python cannot find version.py. This is a startup blocker.
+
+Fix: Move backend/version.py to backend/app/version.py and update imports. Or add the project root to PYTHONPATH in the launch script. Also fix main.py which imports VERSION_DISPLAY and CURRENT_CODENAME which do not exist in version.py.
+
+
+
+BE-02
+
+Five Routers Not Auto-Imported
+
+api/__init__.py
+
+CRITICAL
+
+Phase P0
+
+Finding: api/__init__.py imports only: chat, map, souls, users, sync. Missing: ads, core, health, time, websocket. These routers exist but are only included if main.py manually imports them. Currently main.py imports: chat, map, souls, sync, users, time — missing ads, core, health, websocket.
+
+Fix: Add all missing routers to both api/__init__.py and main.py app.include_router() calls. Verify all 10 are included: chat, map, souls, users, sync, ads, core, health, time, websocket.
+
+
+
+BE-03
+
+resolve_location() Defined Twice — First Definition Silently Discarded
+
+services/location_resolver.py
+
+CRITICAL
+
+Phase P0
+
+Finding: LocationResolver has two @staticmethod definitions of resolve_location(). Python silently overwrites the first with the second. The first definition contains the "Normandy-SR2 hardened" logic comment but is completely dead code. This will cause subtle routing bugs if the implementations differ.
+
+Fix: Delete the first (stub) definition entirely. Keep only the second v1.5.6 implementation with the 5-tier priority logic.
+
+
+
+BE-04
+
+WebSocket Notification Sent BEFORE commit()
+
+logic/time_manager.py
+
+CRITICAL
+
+Phase P0
+
+Finding: advance_time_slot() sends the time_advance WebSocket event to the user, then calls session.commit(). If the commit fails, clients receive a "time advanced" notification for a change that was rolled back. The UI enters a desynced state with no recovery path.
+
+Fix: Reorder: commit() first, then broadcast the WebSocket event. If commit fails, raise — the client will not receive a phantom notification.
+
+
+
+BE-05
+
+Query-Param Token Fallback Still Active (Security)
+
+api/websocket.py
+
+CRITICAL
+
+Phase P1
+
+Finding: Despite the "Normandy-SR2 Fix" comment, the handshake code still reads token = websocket.query_params.get("token") and uses it if present. The Flutter client still sends ?token=JWT. Tokens continue to appear in server access logs and nginx/reverse proxy logs verbatim.
+
+Fix: Remove the query-param fallback entirely. Force all clients through the handshake message path. Update the Flutter client simultaneously.
+
+
+
+BE-06
+
+verify-reward Requires User Bearer Auth — SSV Will Never Work
+
+api/ads.py
+
+CRITICAL
+
+Phase P1
+
+Finding: The /ads/verify-reward endpoint uses get_current_user which requires a Bearer token. AppLovin SSV callbacks originate from AppLovin's servers, which cannot provide a user JWT. The endpoint is functionally broken for real ad verification. Only the mock flow (client → backend) works.
+
+Fix: Remove the get_current_user dependency. Read user_id from the query/body payload. Validate user_id ownership via HMAC signature from AppLovin. Add idempotency check (store processed signatures in AdImpression).
+
+
+
+BE-07
+
+Synchronous Groq API Call Blocks Event Loop
+
+logic/brain.py
+
+HIGH
+
+Phase P1
+
+Finding: brain.py calls self.client.chat.completions.create() — a synchronous HTTP call — inside an async function with no run_in_executor wrapper. During the 1-10 second Groq inference, the entire uvicorn event loop is blocked. No other requests (including WebSocket heartbeats) can be served.
+
+Fix: Wrap the call: loop = asyncio.get_running_loop(); response = await loop.run_in_executor(None, lambda: self.client.chat.completions.create(...)). Or switch to the async Groq client (groq.AsyncGroq).
+
+
+
+BE-08
+
+ARCHITECT_UUID Hardcoded String Literal in 7+ Files
+
+api/chat.py
+
+HIGH
+
+Phase P1
+
+Finding: "14dd612d-744e-487d-b2d5-cc47732183d3" appears as a hardcoded string literal in chat.py and at minimum 6 other files. settings.architect_uuid exists in config.py and is loaded from .env, but is unused in all these locations. A UUID change requires editing every file manually.
+
+Fix: Replace all hardcoded literals with settings.architect_uuid. Add an assertion at startup: assert settings.architect_uuid, "ARCHITECT_UUID must be set in .env".
+
+
+
+BE-09
+
+Deprecated Models Still table=True — SQLAlchemy MetaData Conflict
+
+models/__init__.py
+
+HIGH
+
+Phase P0
+
+Finding: SoulRelationship and UserSoulState remain imported in models/__init__.py with table=True. They define overlapping column/constraint names with the new LinkState. On startup, SQLAlchemy MetaData registers duplicate table definitions, causing runtime errors or silent constraint bypasses.
+
+Fix: Remove SoulRelationship and UserSoulState from models/__init__.py. Add table=False to their class definitions (to keep models for read-only migration queries if needed). Or delete the files entirely.
+
+
+
+BE-10
+
+CacheService._memory_cache Has No asyncio.Lock
+
+services/cache.py
+
+HIGH
+
+Phase P2
+
+Finding: The in-memory fallback cache uses a plain dict with no locking. Under asyncio concurrency (multiple coroutines hitting cache simultaneously), dict iteration during prune() can corrupt state. Under multi-worker deployments, each worker has an isolated cache — completely inconsistent.
+
+Fix: Add an asyncio.Lock() around all _memory_cache mutations. Document clearly that the memory cache is single-worker only. Add ENABLE_REDIS_CACHE=true enforcement in production startup.
+
+
+
+BE-11
+
+NameError: JSONResponse Not Imported in readiness_check()
+
+api/health.py
+
+HIGH
+
+Phase P0
+
+Finding: health.py's readiness_check() uses JSONResponse directly but it is not imported in the file. When the WebSocket connection count exceeds 500, this endpoint crashes with NameError, defeating its purpose as a health check.
+
+Fix: Add from fastapi.responses import JSONResponse to health.py imports.
+
+
+
+BE-12
+
+Pydantic v1 @validator in v2 Codebase
+
+core/validation.py
+
+MEDIUM
+
+Phase P2
+
+Finding: validation.py uses @validator (Pydantic v1 API). The codebase uses Pydantic v2 (confirmed by pydantic==2 in requirements). @validator is deprecated in v2 and will be removed in v3. The migration warning is silenced but the code is on borrowed time.
+
+Fix: Migrate to @field_validator with mode="before" where needed. Update the function signatures to accept the new (cls, v, info) pattern.
+
+
+
+BE-13
+
+data.dict() — Pydantic v1 API
+
+api/users.py
+
+MEDIUM
+
+Phase P2
+
+Finding: update_profile() calls data.dict() which is the Pydantic v1 method. In Pydantic v2 this triggers a deprecation warning on every profile update. Will break in Pydantic v3.
+
+Fix: Replace with data.model_dump(exclude_unset=True) to only update provided fields.
+
+
+
+BE-14
+
+HMAC SSV Validation Skipped When Secret == "mock_secret"
+
+core/config.py + ads.py
+
+MEDIUM
+
+Phase P1
+
+Finding: The SSV verification skips HMAC validation when applovin_ssv_secret == "mock_secret" (the default). Any server can send a fake SSV payload in development. If the .env default leaks into staging/production, real reward grants bypass validation entirely.
+
+Fix: Remove the mock bypass. Validate HMAC unconditionally. Use a distinct APPLOVIN_SSV_SECRET_DEV for local development that still goes through the validation path with a known test signature.
+
+
+
+BE-15
+
+NarratorService Creates New Groq Client Per Call
+
+services/narrator.py
+
+MEDIUM
+
+Phase P2
+
+Finding: generate_chronicle() creates a new NarratorService() instance each call solely to access .client. Each instantiation initializes a new Groq HTTP client with a new connection pool, wasting memory and connection overhead.
+
+Fix: Use a module-level singleton: _groq_client = Groq(api_key=settings.groq_api_key). Reference it directly in generate_chronicle().
+
+
+
+BE-16
+
+print() Instead of logger.error() in Exception Handler
+
+logic/brain.py
+
+LOW
+
+Phase P3
+
+Finding: The commit exception handler in brain.py uses print() instead of the logger. In production, this output goes to stdout without structured fields, bypassing Sentry and log aggregation.
+
+Fix: Replace with logger.error("Failed to commit: %s", e, exc_info=True).
+
+
+
+BE-17
+
+Dual Engine Pool May Exhaust Supabase Free Tier
+
+database/session.py
+
+LOW
+
+Phase P2
+
+Finding: Both sync and async engines are configured with pool_size=20, max_overflow=10 each. Combined potential: 60 simultaneous DB connections. Supabase free tier caps at 60 total. A moderate load spike will saturate the pool and queue all queries.
+
+Fix: Reduce sync engine: pool_size=2, max_overflow=0 (sync is only used for admin scripts). Keep async pool at pool_size=10, max_overflow=5 for production traffic.
+
+
+
+
+
+
+4. Cross-Cutting Concerns
+
+4.1 The WebSocket Security Gap
+
+This is the single most important cross-cutting issue. The backend has two authentication paths for WebSocket: query-param (legacy) and handshake message (new). The Flutter client always uses the query-param path. The result is that tokens appear in every server access log line, every nginx/reverse proxy log, and potentially Sentry breadcrumbs. Both client AND server must be fixed atomically.
+
+
+
+The correct flow after fixes:
+
+Client: ws = WebSocketChannel.connect(Uri.parse("$wsBaseUrl/ws/connect")) — no token.
+
+Client: immediately sends {"type": "handshake", "token": JWT}
+
+Server: removes query-param path entirely, only accepts handshake messages
+
+Server: sends {"type": "connection_established"} on success
+
+Client: treats connection as live only after receiving connection_established
+
+
+
+4.2 Field Name Contract Drift
+
+The backend consolidated UserSoulState into LinkState in v1.5.6, renaming nsfw_enabled to unlocked_nsfw. The Flutter relationship.dart model reads json['nsfw_unlocked'] (a third name). This means the NSFW state is read incorrectly on the client regardless of the backend value.
+
+
+
+Layer
+
+Field Name
+
+Status
+
+Action
+
+DB / LinkState
+
+unlocked_nsfw
+
+Canonical
+
+Keep as-is
+
+API Response (sync)
+
+nsfw_unlocked (?)
+
+Verify
+
+Confirm serialization key
+
+Dart model (relationship.dart)
+
+json['nsfw_unlocked']
+
+Likely correct
+
+Verify against API
+
+Dart model (user_soul_state.dart)
+
+nsfw_enabled
+
+Stale/orphaned
+
+Delete file
+
+Dart settings screen
+
+_nsfwEnabled (local)
+
+Never persisted
+
+Wire to API (FE-06)
+
+
+
+4.3 Alpha Gate: What Must Work for 10 Testers
+
+Based on the vision manifest, monetization config, and core loop design, the minimum alpha experience is:
+
+Server boots cleanly (resolves BE-01 through BE-03, BE-09, BE-11)
+
+Email login + guest login both work (no frontend regressions)
+
+WebSocket connects and stays alive — time advance and soul moves show in real-time
+
+Chat with at least one soul (Alyssa) responds without the event loop blocking (BE-07)
+
+Time advance updates the dashboard without desync (BE-04)
+
+Map loads with soul locations visible (requires BE-03 fix for LocationResolver)
+
+Stability bar shows correct value and the ad boost flow completes end-to-end
+
+No plaintext tokens visible in mobile device developer logs (FE-01, BE-05)
+
+
+
+4.4 Grok Report Reconciliation
+
+Grok's team report ("Harper / Lucas / Benjamin") is accurate and well-prioritized. Key additions from this audit:
+
+FE-02 (_isConnecting never reset) is a prerequisite to Grok's WS handshake fix — without it, the fix cannot be tested after a first failed connection attempt.
+
+FE-05 (WS handler fully disabled) means the Grok timeline's "real-time chat" goal cannot be achieved until the handler is restored and deduplication is implemented.
+
+FE-06 (NSFW toggle non-functional) was not called out in the Grok report. It needs to be addressed before handing to any alpha tester who expects the content gate to work.
+
+The Phase 3 "Frontend Sync Tasks" in the Grok plan are accurate but incomplete — the field name drift table above (section 4.2) needs to be validated before those tasks are marked done.
+
+
+
+
+5. Implementation Plan
+
+Phases are ordered strictly by alpha-gate dependency. Each phase has an explicit exit criterion before moving on.
+
+Phase 0 — Unblock Startup (Day 1, ~3h)
+
+Exit criterion: uvicorn starts with zero import/registration errors, all 10 routers respond.
+
+ID
+
+Task
+
+File(s)
+
+Time
+
+BE-01
+
+Move version.py or fix PYTHONPATH; remove VERSION_DISPLAY/CURRENT_CODENAME imports that don't exist
+
+main.py, soul.py
+
+30m
+
+BE-09
+
+Remove SoulRelationship, UserSoulState from models/__init__.py; add table=False to class defs
+
+models/*
+
+20m
+
+BE-03
+
+Delete first resolve_location() stub, keep only the v1.5.6 5-tier implementation
+
+location_resolver.py
+
+10m
+
+BE-02
+
+Add ads, core, health, time, websocket to api/__init__.py and main.py include_router() calls
+
+api/__init__.py, main.py
+
+20m
+
+BE-11
+
+Add from fastapi.responses import JSONResponse to health.py
+
+api/health.py
+
+5m
+
+BE-04
+
+Move session.commit() BEFORE websocket_manager.send_to_user() in advance_time_slot()
+
+logic/time_manager.py
+
+15m
+
+
+
+Phase 1 — Security + Async (Days 1-2, ~6h)
+
+Exit criterion: No JWT in logs; SSV mock flow works end-to-end; chat response doesn't freeze the server.
+
+ID
+
+Task
+
+File(s)
+
+Time
+
+BE-05 + FE-01
+
+Remove query-param auth from backend WS; update Flutter to send handshake message before treating WS as live
+
+websocket.py + websocket_service.dart
+
+2h
+
+FE-02
+
+Reset _isConnecting = false in all early-return paths in WebSocketService.connect()
+
+websocket_service.dart
+
+15m
+
+FE-04
+
+Move wsProvider.connect() out of Consumer builder into initAfterAuth()
+
+main.dart
+
+30m
+
+BE-06 + FE-13
+
+Make /ads/verify-reward public; validate user_id from payload against HMAC; update MockAdService to match
+
+api/ads.py + ad_service.dart
+
+1.5h
+
+BE-07
+
+Wrap Groq call: await loop.run_in_executor(None, lambda: self.client.chat.completions.create(...))
+
+logic/brain.py
+
+30m
+
+BE-08
+
+Replace all hardcoded ARCHITECT_UUID strings with settings.architect_uuid; add startup assertion
+
+7 files
+
+30m
+
+BE-14
+
+Remove mock_secret bypass from HMAC validation; require explicit APPLOVIN_SSV_SECRET in .env
+
+api/ads.py
+
+30m
+
+
+
+Phase 2 — Core Loop + UX (Days 2-4, ~8h)
+
+Exit criterion: Full core loop works — login, map, chat, time advance, stability boost, NSFW toggle.
+
+ID
+
+Task
+
+File(s)
+
+Time
+
+FE-05
+
+Restore and implement WS onChatMessage handler with deduplication by response ID
+
+chat_screen.dart
+
+1h
+
+FE-06
+
+Wire NSFW toggle to POST /ads/nsfw-toggle; read initial value from DashboardProvider
+
+settings_screen.dart, api_service.dart
+
+1h
+
+FE-10
+
+Add if (!mounted) return; after every await in async methods using context
+
+apartment_screen.dart
+
+30m
+
+FE-11
+
+Normalize soul ID field: use soul['soul_id'] ?? soul['id'] in explore screen
+
+explore_screen.dart
+
+20m
+
+FE-12
+
+Tighten isProfileComplete: require gender AND bio, or add server-side profile_complete flag
+
+dashboard_provider.dart
+
+30m
+
+FE-15
+
+Pass username to backend in registration flow; add username validation
+
+registration_screen.dart, api/users.py
+
+45m
+
+BE-10
+
+Add asyncio.Lock() to all _memory_cache mutations in CacheService
+
+core/cache.py
+
+30m
+
+BE-12 + 13
+
+Migrate @validator → @field_validator; .dict() → .model_dump(exclude_unset=True)
+
+core/validation.py, api/users.py
+
+45m
+
+BE-15
+
+Create module-level Groq singleton in narrator.py; remove per-call instantiation
+
+services/narrator.py
+
+15m
+
+BE-17
+
+Reduce sync engine: pool_size=2, max_overflow=0
+
+database/session.py
+
+10m
+
+
+
+Phase 3 — Polish + Alpha Gate (Days 4-7, ~4h)
+
+Exit criterion: Zero console errors in Flutter, all linter warnings addressed, alpha checklist passes.
+
+ID
+
+Task
+
+File(s)
+
+Time
+
+FE-03
+
+Remove duplicate print; replace all print() with debugPrint() or logger across Flutter
+
+websocket_service.dart + others
+
+45m
+
+FE-07
+
+Fix SoulLinkVersion: version="1.5.6", codename="Normandy SR-2"
+
+core/version.dart
+
+5m
+
+FE-08
+
+Delete user_soul_state.dart; confirm nothing imports it
+
+models/user_soul_state.dart
+
+10m
+
+FE-09
+
+Rename portrait_url → portraitUrl; fix all consumers
+
+models/relationship.dart + consumers
+
+30m
+
+FE-14
+
+Remove token logging from api_service.dart header debug print
+
+services/api_service.dart
+
+5m
+
+BE-16
+
+Replace print() with logger.error() in brain.py exception handler
+
+logic/brain.py
+
+5m
+
+
+
+
+
+
+6. Master Issue Registry
+
+ID
+
+Title
+
+Layer
+
+Severity
+
+Phase
+
+FE-01
+
+JWT Exposed in WebSocket URL
+
+Frontend
+
+CRITICAL
+
+P1
+
+FE-02
+
+_isConnecting Never Reset on Early Return
+
+Frontend
+
+CRITICAL
+
+P1
+
+FE-03
+
+Duplicate Print + Stale Comment Residue
+
+Frontend
+
+HIGH
+
+P3
+
+FE-04
+
+WebSocket Connect Called Every Rebuild
+
+Frontend
+
+HIGH
+
+P1
+
+FE-05
+
+WebSocket onChatMessage Handler Fully Disabled
+
+Frontend
+
+HIGH
+
+P2
+
+FE-06
+
+NSFW Toggle is Pure UI State — Never Persisted
+
+Frontend
+
+HIGH
+
+P2
+
+FE-07
+
+Version Constants Internally Contradictory
+
+Frontend
+
+HIGH
+
+P3
+
+FE-08
+
+Orphaned Model with Old Field Names
+
+Frontend
+
+HIGH
+
+P3
+
+FE-09
+
+portrait_url Naming Violation (Linter Warning)
+
+Frontend
+
+MEDIUM
+
+P3
+
+FE-10
+
+BuildContext Captured Across Async Gap (Linter Warning)
+
+Frontend
+
+MEDIUM
+
+P2
+
+FE-11
+
+Soul ID Mismatch: "id" vs "soul_id"
+
+Frontend
+
+MEDIUM
+
+P2
+
+FE-12
+
+isProfileComplete Logic Too Permissive
+
+Frontend
+
+MEDIUM
+
+P2
+
+FE-13
+
+MockAdService Calls verifyAdReward with User Auth
+
+Frontend
+
+MEDIUM
+
+P1
+
+FE-14
+
+print() Throughout Production Code
+
+Frontend
+
+LOW
+
+P3
+
+FE-15
+
+Registration Calls signInAnonymously Then updateUserProfile
+
+Frontend
+
+LOW
+
+P2
+
+BE-01
+
+from version import VERSION_SHORT — ModuleNotFoundError at Boot
+
+Backend
+
+CRITICAL
+
+P0
+
+BE-02
+
+Five Routers Not Auto-Imported
+
+Backend
+
+CRITICAL
+
+P0
+
+BE-03
+
+resolve_location() Defined Twice — First Definition Silently Discarded
+
+Backend
+
+CRITICAL
+
+P0
+
+BE-04
+
+WebSocket Notification Sent BEFORE commit()
+
+Backend
+
+CRITICAL
+
+P0
+
+BE-05
+
+Query-Param Token Fallback Still Active (Security)
+
+Backend
+
+CRITICAL
+
+P1
+
+BE-06
+
+verify-reward Requires User Bearer Auth — SSV Will Never Work
+
+Backend
+
+CRITICAL
+
+P1
+
+BE-07
+
+Synchronous Groq API Call Blocks Event Loop
+
+Backend
+
+HIGH
+
+P1
+
+BE-08
+
+ARCHITECT_UUID Hardcoded String Literal in 7+ Files
+
+Backend
+
+HIGH
+
+P1
+
+BE-09
+
+Deprecated Models Still table=True — SQLAlchemy MetaData Conflict
+
+Backend
+
+HIGH
+
+P0
+
+BE-10
+
+CacheService._memory_cache Has No asyncio.Lock
+
+Backend
+
+HIGH
+
+P2
+
+BE-11
+
+NameError: JSONResponse Not Imported in readiness_check()
+
+Backend
+
+HIGH
+
+P0
+
+BE-12
+
+Pydantic v1 @validator in v2 Codebase
+
+Backend
+
+MEDIUM
+
+P2
+
+BE-13
+
+data.dict() — Pydantic v1 API
+
+Backend
+
+MEDIUM
+
+P2
+
+BE-14
+
+HMAC SSV Validation Skipped When Secret == "mock_secret"
+
+Backend
+
+MEDIUM
+
+P1
+
+BE-15
+
+NarratorService Creates New Groq Client Per Call
+
+Backend
+
+MEDIUM
+
+P2
+
+BE-16
+
+print() Instead of logger.error() in Exception Handler
+
+Backend
+
+LOW
+
+P3
+
+BE-17
+
+Dual Engine Pool May Exhaust Supabase Free Tier
+
+Backend
+
+LOW
+
+P2
+
+
+
+
+7. Notes
+
+7.1 What Grok Got Right
+
+The Grok team report is a solid high-level plan and we endorse it. The phase ordering is correct. The 7-10 day timeline is realistic. The "you are 65-70% to alpha" assessment aligns with our own findings.
+
+7.2 The Lore and Soul Layer
+
+Having read the full _dev character sheets, world lore, location files, and vision manifest: the creative foundation of SoulLink is genuinely strong. The 40+ soul character sheets show unusual depth and internal consistency. The 3-tier intimacy system is mechanically sound and the monetization model (link stability → ad reward) is elegant and non-intrusive when implemented correctly. None of the engineering bugs diminish this.
+
+7.3 What to Defer Post-Alpha
+
+Redis cache enforcement (ENABLE_REDIS_CACHE): single-worker is fine for 10 testers
+
+Native billboard ad placements: the ad framework exists but is not needed for alpha
+
+Soul Forge / hybrid system: post-launch feature per roadmap
+
+Social login: placeholder in UI, correctly disabled
+
+Radio / TV lore system: UI stubs are charming, wiring to real data can wait
+
+Skins / Wardrobe system: v1.6.0 per roadmap
+
+7.4 Pre-Alpha Handoff Checklist
+
+ARCHITECT_UUID set in .env and confirmed working
+
+GROQ_API_KEY set and Alyssa chat tested end-to-end
+
+SUPABASE_URL and SUPABASE_ANON_KEY configured for frontend .env
+
+WebSocket handshake tested with Flutter app connected
+
+Time advance tested: dashboard updates, soul locations move
+
+Ad mock flow: stability at 0 → watch ad → stability restored
+
+NSFW toggle: enable/disable and confirm soul behavior changes in chat
+
+flutter analyze shows 0 errors, 0 warnings (after Phase 3 fixes)
+
+Server logs show no ?token= URLs in WebSocket connect lines
+
+
+
+
+
+End of Report — SoulLink Full System Audit v1.5.6
+
+Audited by Claude Sonnet 4.6 · 22 February 2026 · SynonTech / Linker.ai

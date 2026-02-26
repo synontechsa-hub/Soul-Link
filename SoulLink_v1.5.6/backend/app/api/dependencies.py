@@ -26,11 +26,13 @@ logger = get_logger("Dependencies")
 # ⚡ SUPABASE CLIENT SINGLETON
 # Initialize once, reuse everywhere
 try:
-    supabase: Client = create_client(settings.supabase_url, settings.supabase_anon_key)
+    supabase: Client = create_client(
+        settings.supabase_url, settings.supabase_anon_key)
     logger.info(f"✅ Supabase Client Init: {settings.supabase_url[:20]}...")
 except Exception as e:
     logger.critical(f"❌ CRITICAL: Supabase Init Failed: {e}")
-    raise RuntimeError("Cannot start server without Supabase connection") from e
+    raise RuntimeError(
+        "Cannot start server without Supabase connection") from e
 
 security = HTTPBearer()
 
@@ -71,7 +73,7 @@ async def get_current_user_uuid(
     # Normandy-SR2 Fix: Secure cache key using SHA256 to avoid collisions
     token_hash = hashlib.sha256(token.encode()).hexdigest()[:32]
     cache_key = f"auth:uuid:{token_hash}"
-    
+
     cached_uuid = cache_service.get(cache_key)
     if cached_uuid:
         return cached_uuid
@@ -112,8 +114,10 @@ async def get_current_user(
             await session.refresh(new_user)
         except Exception as e:
             await session.rollback()
-            logger.error(f"Failed to create user {user_uuid}: {e}", exc_info=True)
-            raise HTTPException(status_code=500, detail="Failed to create user account")
+            logger.error(
+                f"Failed to create user {user_uuid}: {e}", exc_info=True)
+            raise HTTPException(
+                status_code=500, detail="Failed to create user account")
         return new_user
 
     return user
@@ -159,13 +163,11 @@ async def require_architect_role(
     loop = asyncio.get_running_loop()
     user_id = await loop.run_in_executor(None, _check_architect_role_sync, token)
 
-    # Hardcoded God-Mode Fallback
-    ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
-    
-    if user_id == ARCHITECT_UUID:
+    # Dynamic God-Mode Fallback from Environment (Architect Dev Account)
+    if settings.architect_uuid and user_id == settings.architect_uuid:
         logger.info(f"👑 Global Architect Identified: {user_id}")
     elif not user_id:
-        raise HTTPException(403, detail="⛔ ARCHITECT ACCESS ONLY")
+        raise HTTPException(status_code=403, detail="⛔ ARCHITECT ACCESS ONLY")
 
     cache_service.set(cache_key, user_id, ttl=_UUID_CACHE_TTL)
     return user_id

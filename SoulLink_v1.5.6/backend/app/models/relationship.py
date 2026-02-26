@@ -12,8 +12,11 @@ from typing import Optional, Dict, Any
 
 # "Had to be me. Someone else might have gotten it wrong."
 # - Mordin Solus - Mass Effect
-class SoulRelationship(SQLModel, table=True):
-    __table_args__ = (UniqueConstraint("user_id", "soul_id", name="uq_user_soul"),)
+
+
+class SoulRelationship(SQLModel, table=False):
+    __table_args__ = (UniqueConstraint(
+        "user_id", "soul_id", name="uq_user_soul"),)
     """
     Tracks the bond between a specific User and a Soul.
     Handles intimacy progression, location state, and special flags.
@@ -26,7 +29,7 @@ class SoulRelationship(SQLModel, table=True):
     # Ensure foreign_key="users.user_id" matches your actual User model table name
     user_id: str = Field(
         index=True,
-        max_length=36 
+        max_length=36
     )
     soul_id: str = Field(
         index=True,
@@ -43,7 +46,7 @@ class SoulRelationship(SQLModel, table=True):
 
     # Current world state
     current_location: Optional[str] = Field(
-        default=None, # NULL = Follow Dynamic Routine
+        default=None,  # NULL = Follow Dynamic Routine
         max_length=50
     )
 
@@ -57,16 +60,19 @@ class SoulRelationship(SQLModel, table=True):
     # 🚀 RECOGNITION & CONTENT GATING 🚀
     # Set to True only if user matches the dev_config during first link or via admin
     is_architect: bool = Field(default=False)
-    
+
     # Decides if NSFW content is active for this specific pairing
     nsfw_unlocked: bool = Field(default=False)
 
     # "Don't be sorry, be better."
     # - Kratos - God of War
     created_at: datetime = Field(default_factory=datetime.utcnow)
-    last_interaction: datetime = Field(default_factory=datetime.utcnow, sa_column_kwargs={"onupdate": datetime.utcnow})
+    last_interaction: datetime = Field(
+        default_factory=datetime.utcnow, sa_column_kwargs={"onupdate": datetime.utcnow})
 
 # --- READ SCHEMAS (For API Responses) ---
+
+
 class RelationshipRead(BaseModel):
     soul_id: str
     intimacy_tier: str

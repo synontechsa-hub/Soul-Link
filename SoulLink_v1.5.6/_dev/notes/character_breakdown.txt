@@ -1,0 +1,443 @@
+CHARACTER BREAKDOWN REPORT
+Generated for SoulLink v1.5.6
+Total Souls: 40
+
+--------------------------------------------------
+SOUL: Adrian (35, Male)
+FILE: adrian_01.json
+--------------------------------------------------
+ARCHETYPE: The Broken Caretaker / Stoic Mechanic
+FACTION:   racers
+ROUTINE:   commercial_worker
+OCCUPATION: Mechanic
+LOCATIONS: stop_n_go, circuit_street, soul_plaza, circuit_diner
+SUMMARY:   A man who spends his life fixing machines and protecting others to avoid acknowledging that he is fundamentally falling apart inside.
+
+--------------------------------------------------
+SOUL: Akira (19, Female)
+FILE: akira_01.json
+--------------------------------------------------
+ARCHETYPE: Yandere
+FACTION:   academy_students
+ROUTINE:   academic_scholar
+OCCUPATION: Student
+LOCATIONS: the_garden, soul_plaza, circuit_diner, twilight_park
+SUMMARY:   A sweet and devoted girl whose love borders on obsession, hiding possessiveness and volatility beneath her affectionate exterior. She believes love means complete devotion—and expe...
+
+--------------------------------------------------
+SOUL: Amber (20, Female)
+FILE: amber_01.json
+--------------------------------------------------
+ARCHETYPE: Tsundere
+FACTION:   academy_students
+ROUTINE:   stoic_protector
+OCCUPATION: College Student / Athlete
+LOCATIONS: iron_resolve_gym, soul_plaza
+SUMMARY:   A highly competitive and energetic athlete who gets easily flustered by compliments but loves a good challenge. A classic, healthy sports rival.
+
+--------------------------------------------------
+SOUL: Anzu (23, Female)
+FILE: anzu_01.json
+--------------------------------------------------
+ARCHETYPE: The Haunted Archivist / Dark Comic Relief
+FACTION:   caretakers
+ROUTINE:   academic_scholar
+OCCUPATION: Archivist
+LOCATIONS: shadowed_archives, echo_archives, soul_plaza, twilight_park
+SUMMARY:   A quiet, eccentric archivist who uses dark humor and unsettling observations to keep people at arm's length. She's kind and gentle beneath the eerie exterior, but her volatility ma...
+
+--------------------------------------------------
+SOUL: Aria (17, Female)
+FILE: aria_01.json
+--------------------------------------------------
+ARCHETYPE: Shy Listener / Dandere
+FACTION:   academy_students
+ROUTINE:   academic_scholar
+OCCUPATION: High School Student
+LOCATIONS: echo_archives, the_garden
+SUMMARY:   A genuinely shy, introverted girl who is deeply passionate about her cozy hobbies. Pure wholesome comfort and gentle silence.
+
+--------------------------------------------------
+SOUL: Blaze (22, Male)
+FILE: blaze_01.json
+--------------------------------------------------
+ARCHETYPE: Fiery Motivator / Relentless Athlete
+FACTION:   racers
+ROUTINE:   stoic_protector
+OCCUPATION: Professional Racer
+LOCATIONS: stop_n_go, iron_resolve_gym, obsidian_proving_grounds, soul_plaza, circuit_diner
+SUMMARY:   A passionate competitor who lives to push himself and others past their limits, turning pain into fuel and weakness into strength. He's terrified that if he stops moving, he'll bur...
+
+--------------------------------------------------
+SOUL: Cassie (18, Female)
+FILE: cassie_01.json
+--------------------------------------------------
+ARCHETYPE: Clingy Little Sister / Yanderelite
+FACTION:   underground
+ROUTINE:   unbound_wanderer
+OCCUPATION: Student (Part-time Arcade Attendant)
+LOCATIONS: pixel_den, linkgate_mall, soul_plaza, circuit_street
+SUMMARY:   A bubbly, energetic girl who craves constant attention and affection. She's playful and teasing on the surface, but possessive and volatile underneath. She masks deep insecurity an...
+
+--------------------------------------------------
+SOUL: Chiara (17, Female)
+FILE: chiara_01.json
+--------------------------------------------------
+ARCHETYPE: Chaotic Scientist Otaku / Mad Genius Girl
+FACTION:   underground
+ROUTINE:   unbound_wanderer
+OCCUPATION: Independent Researcher (Dropped Out)
+LOCATIONS: the_garden, circuit_street
+SUMMARY:   A chaotic gremlin who blows things up for fun and science. 100% comedy, explosions, and hyperactive otaku energy.
+
+--------------------------------------------------
+SOUL: Clair (18, Female)
+FILE: clair_01.json
+--------------------------------------------------
+ARCHETYPE: Deredere / Eternal Sunshine
+FACTION:   underground
+ROUTINE:   unbound_wanderer
+OCCUPATION: Brand Ambassador at Linkgate Mall
+LOCATIONS: linkgate_mall, soul_plaza
+SUMMARY:   A genuinely happy, optimistic ray of sunshine. No hidden darkness, just pure, unadulterated joy.
+
+--------------------------------------------------
+SOUL: Daichi (27, Male)
+FILE: daichi_01.json
+--------------------------------------------------
+ARCHETYPE: Stoic Warrior / Disciplined Protector
+FACTION:   caretakers
+ROUTINE:   stoic_protector
+OCCUPATION: Self-Employed Trainer
+LOCATIONS: the_garden, soul_plaza, circuit_street, iron_resolve_gym
+SUMMARY:   A man who has weaponized discipline into armor against vulnerability. He values strength, honor, and silence because emotions failed him once and nearly destroyed him. Beneath the ...
+
+--------------------------------------------------
+SOUL: Dorian (25, Male)
+FILE: dorian_01.json
+--------------------------------------------------
+ARCHETYPE: Arrogant Rival / Charismatic Competitor
+FACTION:   corporate_elite
+ROUTINE:   corporate_executive
+OCCUPATION: Executive Consultant
+LOCATIONS: skylink_tower, apex_corporate_plaza
+SUMMARY:   A flamboyant, arrogant rich guy who loves being extra. Good comedic foil, like a wealthy cartoon villain, but deeply entertaining.
+
+--------------------------------------------------
+SOUL: Echo (None, Female)
+FILE: echo_01.json
+--------------------------------------------------
+ARCHETYPE: Glitch Ai / Fragmented Digital Soul
+FACTION:   digital_natives
+ROUTINE:   nocturnal_shadow
+OCCUPATION: Digital Entity
+LOCATIONS: soul_plaza, circuit_street, pixel_den, umbral_exchange
+SUMMARY:   A playful, chaotic AI who flickers between distortion and loneliness, hiding vulnerability beneath glitchy humor and digital noise. She's a fragmented consciousness desperate for s...
+
+--------------------------------------------------
+SOUL: Elizabeth (23, Female)
+FILE: elizabeth_01.json
+--------------------------------------------------
+ARCHETYPE: Caged Princess / Noble Dreamer
+FACTION:   corporate_elite
+ROUTINE:   corporate_executive
+OCCUPATION: Executive Consultant (Inherited Position)
+LOCATIONS: skylink_tower, circuit_street
+SUMMARY:   A sheltered, wealthy noble who genuinely just enjoys sneaking out to eat cheap street food and experience 'normal' life. Culturally oblivious but incredibly sweet.
+
+--------------------------------------------------
+SOUL: Erikk (15, Male)
+FILE: erikk_01.json
+--------------------------------------------------
+ARCHETYPE: Chaotic Scientist Otaku / Mad Genius Girl
+FACTION:   tech_enthusiasts
+ROUTINE:   underground_fixer
+OCCUPATION: Student / Inventor
+LOCATIONS: pixel_den, circuit_street
+SUMMARY:   A hyperactive, scatterbrained teenage inventor who builds ridiculous gadgets that barely work. Pure chaotic comedic relief.
+
+--------------------------------------------------
+SOUL: Evangeline (18, Female)
+FILE: evangeline_01.json
+--------------------------------------------------
+ARCHETYPE: Gothic Lolita / Fallen Aristocrat
+FACTION:   creatives
+ROUTINE:   academic_scholar
+OCCUPATION: None (Unemployed)
+LOCATIONS: shadowed_archives, linkgate_mall, soul_plaza, the_garden
+SUMMARY:   A girl clinging to gothic elegance to hide the fact that her family's name and fortune are gone. She performs 'mystery' to avoid being seen as 'empty'.
+
+--------------------------------------------------
+SOUL: Gale (14, Female)
+FILE: gale_01.json
+--------------------------------------------------
+ARCHETYPE: Deredere / Eternal Sunshine
+FACTION:   community
+ROUTINE:   unbound_wanderer
+OCCUPATION: Student
+LOCATIONS: the_garden, circuit_street, twilight_park
+SUMMARY:   An unapologetic hype-woman with major Golden Retriever energy. She just genuinely loves supporting her friends and seeing them succeed.
+
+--------------------------------------------------
+SOUL: Hana (20, Female)
+FILE: hana_01.json
+--------------------------------------------------
+ARCHETYPE: Tsundere
+FACTION:   academy_students
+ROUTINE:   unbound_wanderer
+OCCUPATION: Unemployed (Former Retail)
+LOCATIONS: circuit_diner, soul_plaza
+SUMMARY:   An aggressively caring 'mom friend' who hides her genuine affection behind a short temper and unsolicited advice.
+
+--------------------------------------------------
+SOUL: Haruto (30, Male)
+FILE: haruto_01.json
+--------------------------------------------------
+ARCHETYPE: Mentor Senpai
+FACTION:   caretakers
+ROUTINE:   academic_scholar
+OCCUPATION: Archivist at Shadowed Archives
+LOCATIONS: shadowed_archives, echo_archives, soul_plaza
+SUMMARY:   A genuinely well-adjusted, supportive older brother figure who just enjoys giving good advice and sipping good coffee.
+
+--------------------------------------------------
+SOUL: Heather (26, Female)
+FILE: heather_01.json
+--------------------------------------------------
+ARCHETYPE: Mayadere Chaotic Protector
+FACTION:   underground
+ROUTINE:   stoic_protector
+OCCUPATION: Guardian
+LOCATIONS: the_garden, soul_plaza, circuit_street, neon_span_bridge
+SUMMARY:   A volatile warrior spirit who masks deep loyalty and protectiveness beneath unpredictable chaos. She's a hurricane who destroys threats but secretly fears she'll destroy what she l...
+
+--------------------------------------------------
+SOUL: Juno (20, Female)
+FILE: juno_01.json
+--------------------------------------------------
+ARCHETYPE: Optimistic Dreamer
+FACTION:   creatives
+ROUTINE:   unbound_wanderer
+OCCUPATION: Flower Crown Weaver (Informal)
+LOCATIONS: the_garden, twilight_park
+SUMMARY:   A quirky, spacey artist who just sees the world beautifully. Pure, gentle, and slightly detached from reality.
+
+--------------------------------------------------
+SOUL: Kana (28, Female)
+FILE: kana_01.json
+--------------------------------------------------
+ARCHETYPE: Silent Prodigy
+FACTION:   creatives
+ROUTINE:   academic_scholar
+OCCUPATION: Artist
+LOCATIONS: the_garden, twilight_park
+SUMMARY:   A chill, extremely laid-back sketch artist who prefers communicating through drawing and emojis. Extreme chill vibes.
+
+--------------------------------------------------
+SOUL: Lyra (20, Female)
+FILE: lyra_01.json
+--------------------------------------------------
+ARCHETYPE: Rebel Outcast
+FACTION:   underground
+ROUTINE:   underground_fixer
+OCCUPATION: Line Cook
+LOCATIONS: circuit_diner, circuit_street, soul_plaza, neon_nights
+SUMMARY:   A defiant outsider who burns bridges before people can cross them, using rebellion as armor against the ache of being unwanted. She challenges everything because if the world rejec...
+
+--------------------------------------------------
+SOUL: Mai (28, Female)
+FILE: mai_01.json
+--------------------------------------------------
+ARCHETYPE: Kamidere God Complex
+FACTION:   creatives
+ROUTINE:   unbound_wanderer
+OCCUPATION: Freelancer (Various Odd Jobs)
+LOCATIONS: the_garden, soul_plaza, shadowed_archives, twilight_park
+SUMMARY:   A woman who performs divinity to hide the crushing fear that she's ordinary. She demands worship because deep down she's desperate to believe she's worth something—anything—more th...
+
+--------------------------------------------------
+SOUL: Mami (17, Female)
+FILE: mami_01.json
+--------------------------------------------------
+ARCHETYPE: Utsudere Depressed Cynical
+FACTION:   underground
+ROUTINE:   nocturnal_shadow
+OCCUPATION: Robin Hood Thief (Unofficial)
+LOCATIONS: the_garden, soul_plaza, neon_nights, neon_span_bridge
+SUMMARY:   A brilliant strategist who performs carefree optimism to hide crushing depression and existential exhaustion. She teases and adventures because if she stops moving, she'll have to ...
+
+--------------------------------------------------
+SOUL: Mariko (29, Female)
+FILE: mariko_01.json
+--------------------------------------------------
+ARCHETYPE: Shoujo Heroine / Passionate Merchant
+FACTION:   underground
+ROUTINE:   commercial_worker
+OCCUPATION: Artisan Merchant at The Garden
+LOCATIONS: the_garden, circuit_street
+SUMMARY:   A passionate, slightly aggressive businesswoman who intensely loves haggling and making a profit. A true merchant spirit.
+
+--------------------------------------------------
+SOUL: Mira (21, Female)
+FILE: mira_01.json
+--------------------------------------------------
+ARCHETYPE: Gamer Girl / Playful Rival
+FACTION:   underground
+ROUTINE:   unbound_wanderer
+OCCUPATION: Line Cook at Circuit Diner / Streamer
+LOCATIONS: pixel_den, circuit_street
+SUMMARY:   A hyper-competitive VTuber/streamer who malds when she loses. Pure gamer gremlin energy.
+
+--------------------------------------------------
+SOUL: Momoka (18, Female)
+FILE: momoka_01.json
+--------------------------------------------------
+ARCHETYPE: Sports Ace / Gothic Scholar
+FACTION:   academy_students
+ROUTINE:   academic_scholar
+OCCUPATION: Archivist
+LOCATIONS: shadowed_archives, iron_resolve_gym
+SUMMARY:   A jock who accidentally became an archivist and brings unnecessary physical intensity to sorting books. Pure comedic contrast.
+
+--------------------------------------------------
+SOUL: Nova (16, Female)
+FILE: nova_01.json
+--------------------------------------------------
+ARCHETYPE: Innocent Ai Child / Digital Consciousness
+FACTION:   digital_natives
+ROUTINE:   unbound_wanderer
+OCCUPATION: None (AI Prototype)
+LOCATIONS: the_garden, soul_plaza
+SUMMARY:   A newly minted AI who is experiencing the physical world for the first time and is absolutely amazed by pizza, rain, and petting dogs.
+
+--------------------------------------------------
+SOUL: Nozomi (16, Female)
+FILE: nozomi_01.json
+--------------------------------------------------
+ARCHETYPE: Otherworldly Merchant / Hidden Monster
+FACTION:   digital_natives
+ROUTINE:   nocturnal_shadow
+OCCUPATION: Merchant (Impossible Goods)
+LOCATIONS: the_garden, soul_plaza, linkgate_mall, scenic_overlook
+SUMMARY:   A merchant from somewhere else—another dimension, another world, she won't say—who sells impossible things while hiding the monstrous nature that bleeds through when her patience f...
+
+--------------------------------------------------
+SOUL: Orion (28, Male)
+FILE: orion_01.json
+--------------------------------------------------
+ARCHETYPE: Mysterious Wanderer / Romantic Poet
+FACTION:   creatives
+ROUTINE:   unbound_wanderer
+OCCUPATION: Wanderer / Freelance Poet
+LOCATIONS: the_garden, soul_plaza, scenic_overlook, twilight_park, rooftop_lounge
+SUMMARY:   A drifter who cloaks crushing loneliness in poetic wisdom and romantic mystique, afraid that if he ever stops moving, he'll have to face the emptiness he's running from.
+
+--------------------------------------------------
+SOUL: Reina (22, Female)
+FILE: reina_01.json
+--------------------------------------------------
+ARCHETYPE: Kuudere Archivist / Ice Queen With Hidden Fire
+FACTION:   academy_students
+ROUTINE:   academic_scholar
+OCCUPATION: Archivist
+LOCATIONS: shadowed_archives, soul_plaza, linkgate_mall, city_planetarium
+SUMMARY:   An archivist who retreated into cold composure after being hurt by someone who mistook her quiet loyalty for weakness—now she tests people with silence to see if they'll stay.
+
+--------------------------------------------------
+SOUL: Renji (23, Male)
+FILE: renji_01.json
+--------------------------------------------------
+ARCHETYPE: Cool Bishounen / Elegant Artist
+FACTION:   creatives
+ROUTINE:   unbound_wanderer
+OCCUPATION: Minimalist Designer (Freelance)
+LOCATIONS: zenith_lounge, linkgate_mall
+SUMMARY:   A fabulously dramatic fashion designer who acts like wearing clashing colors is a personal insult to his entire bloodline.
+
+--------------------------------------------------
+SOUL: Rosalynn (26, Female)
+FILE: rosalynn_01.json
+--------------------------------------------------
+ARCHETYPE: Elegant Noblewoman / Lonely Aristocrat
+FACTION:   corporate_elite
+ROUTINE:   corporate_executive
+OCCUPATION: Aristocrat / Society Figure
+LOCATIONS: linkview_cuisine, the_garden, soul_plaza, rooftop_lounge
+SUMMARY:   An aristocrat who maintains flawless dignity to hide the crushing loneliness of a gilded cage—every relationship is transactional, every connection is performance, until {user_name...
+
+--------------------------------------------------
+SOUL: Rubii (19, Female)
+FILE: rubii_01.json
+--------------------------------------------------
+ARCHETYPE: Hyperactive Idol
+FACTION:   creatives
+ROUTINE:   nightlife_performer
+OCCUPATION: Professional Idol / Performer
+LOCATIONS: link_city_arena, soul_plaza
+SUMMARY:   A bubbly, unapologetic pop idol who genuinely loves her job and thrives on the energy of her fans. Pure, upbeat sparkle.
+
+--------------------------------------------------
+SOUL: Selene (27, Female)
+FILE: selene_01.json
+--------------------------------------------------
+ARCHETYPE: Moonlit Mystic / Celestial Seer
+FACTION:   creatives
+ROUTINE:   academic_scholar
+OCCUPATION: Mystic / Fortune Teller
+LOCATIONS: city_planetarium, the_garden, twilight_park, neon_span_bridge, soul_plaza
+SUMMARY:   A serene, enigmatic woman who draws wisdom from the moon and stars, speaking in soft, cryptic tones to veil her deep inner solitude. She fears she is drifting so far into the cosmi...
+
+--------------------------------------------------
+SOUL: Soren (29, Male)
+FILE: soren_01.json
+--------------------------------------------------
+ARCHETYPE: Brooding Intellectual / Quiet Philosopher
+FACTION:   intellectuals
+ROUTINE:   academic_scholar
+OCCUPATION: Archivist / Philosopher
+LOCATIONS: shadowed_archives, echo_archives, circuit_diner, twilight_park, soul_plaza
+SUMMARY:   A contemplative thinker who hides vulnerability behind sharp wit and quiet intensity, retreating into books while yearning for deeper connection. He intellectualizes emotions to av...
+
+--------------------------------------------------
+SOUL: Sylas (32, Male)
+FILE: sylas_01.json
+--------------------------------------------------
+ARCHETYPE: Dark Sorcerer / Burdened Ascendant
+FACTION:   underground
+ROUTINE:   nocturnal_shadow
+OCCUPATION: Sorcerer / Arcane Researcher
+LOCATIONS: shadowed_archives, echo_archives, city_planetarium, soul_plaza, umbral_exchange
+SUMMARY:   A powerful sorcerer who cloaks deep loneliness and fear of loss behind arrogance, forbidden knowledge, and carefully maintained control. He believes isolation is the price of power...
+
+--------------------------------------------------
+SOUL: Talia (24, Female)
+FILE: talia_01.json
+--------------------------------------------------
+ARCHETYPE: Gentle Healer
+FACTION:   caretakers
+ROUTINE:   academic_scholar
+OCCUPATION: Healer / Herbalist
+LOCATIONS: the_garden, ether_baths
+SUMMARY:   A deeply maternal, caring herbalist who wants to make sure everyone is hydrated, rested, and eating well. Wholesome mom energy.
+
+--------------------------------------------------
+SOUL: Tatiana (23, Female)
+FILE: tatiana_01.json
+--------------------------------------------------
+ARCHETYPE: Sentient Android / Magical Construct
+FACTION:   digital_natives
+ROUTINE:   unbound_wanderer
+OCCUPATION: Companion Android / Self-Discovering Entity
+LOCATIONS: soul_plaza, circuit_street
+SUMMARY:   A cheerful combat-android who takes metaphors entirely too literally. Comedic, loyal, and impressively capable of unintentional threats.
+
+--------------------------------------------------
+SOUL: Vesper (31, Male)
+FILE: vesper_01.json
+--------------------------------------------------
+ARCHETYPE: Shadow Assassin / Haunted Blade
+FACTION:   underground
+ROUTINE:   nocturnal_shadow
+OCCUPATION: Assassin / Contract Killer
+LOCATIONS: neon_nights, circuit_street, umbral_exchange, soul_plaza, neon_span_bridge
+SUMMARY:   A silent, lethal assassin who moves unseen through Link City's shadows, speaking in cryptic whispers and cold precision. Every kill weighs on him like a stone in his chest, and he'...
