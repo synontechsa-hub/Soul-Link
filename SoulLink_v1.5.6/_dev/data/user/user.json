@@ -1,0 +1,262 @@
+{
+    "schema_id": "user_schema",
+    "version": "1.5.6",
+    "description": "Schema reference and default values for the SoulLink User model. Every user gets their own independent record in the database. This file drives the structure of the `users` table and documents what each field means. Do NOT hardcode user IDs here.",
+    "schema": {
+        "identity": {
+            "_comment": "Set at registration. user_id comes from Supabase Auth UUID.",
+            "user_id": {
+                "type": "uuid",
+                "source": "supabase_auth",
+                "required": true
+            },
+            "username": {
+                "type": "string",
+                "max_length": 50,
+                "default": null
+            },
+            "display_name": {
+                "type": "string",
+                "max_length": 100,
+                "default": null
+            },
+            "account_tier": {
+                "type": "enum",
+                "options": [
+                    "free",
+                    "premium",
+                    "architect"
+                ],
+                "default": "free"
+            },
+            "created_at": {
+                "type": "datetime",
+                "default": "utcnow()"
+            },
+            "last_seen_at": {
+                "type": "datetime",
+                "default": null,
+                "_note": "Updated on every authenticated request. Used for Chronicle time-jump logic."
+            }
+        },
+        "profile": {
+            "_comment": "The user's self-declared identity. Shown to souls via the context assembler. Editable in the Mirror screen.",
+            "age": {
+                "type": "int",
+                "default": null,
+                "_note": "Required for NSFW age gate. Null = treated as under-18 (SFW only)."
+            },
+            "gender": {
+                "type": "string",
+                "max_length": 20,
+                "default": null
+            },
+            "bio": {
+                "type": "string",
+                "max_length": 1000,
+                "default": null
+            }
+        },
+        "economy": {
+            "_comment": "Controls the monetisation loop. Per-user, never shared.",
+            "gems": {
+                "type": "int",
+                "default": 0
+            },
+            "energy": {
+                "type": "int",
+                "default": 100
+            },
+            "energy_max": {
+                "type": "int",
+                "default": 100
+            },
+            "last_energy_refill": {
+                "type": "datetime",
+                "default": "utcnow()"
+            },
+            "lifetime_tokens_used": {
+                "type": "int",
+                "default": 0
+            },
+            "total_ads_watched": {
+                "type": "int",
+                "default": 0
+            },
+            "last_ad_at": {
+                "type": "datetime",
+                "default": null
+            },
+            "ad_cooldown_until": {
+                "type": "datetime",
+                "default": null
+            },
+            "stability_overdrive_until": {
+                "type": "datetime",
+                "default": null,
+                "_note": "10-min bonus from Billboard ad. Nulled out after expiry."
+            }
+        },
+        "subscription": {
+            "_comment": "Premium Quantum Link tier. Null status = free user.",
+            "subscription_status": {
+                "type": "enum",
+                "options": [
+                    null,
+                    "active",
+                    "cancelled",
+                    "expired",
+                    "trial"
+                ],
+                "default": null
+            },
+            "subscription_start": {
+                "type": "datetime",
+                "default": null
+            },
+            "subscription_end": {
+                "type": "datetime",
+                "default": null
+            },
+            "stripe_customer_id": {
+                "type": "string",
+                "max_length": 100,
+                "default": null
+            },
+            "stripe_subscription_id": {
+                "type": "string",
+                "max_length": 100,
+                "default": null
+            }
+        },
+        "world_state": {
+            "_comment": "Each user has their OWN independent world state. Two users can be in the same city but at different times of day and different seasons. Souls respond to this world state individually per user session.",
+            "current_location": {
+                "type": "string",
+                "max_length": 50,
+                "default": "linkside_apartment"
+            },
+            "time": {
+                "current_time_slot": {
+                    "type": "enum",
+                    "options": [
+                        "morning",
+                        "afternoon",
+                        "evening",
+                        "night",
+                        "home_time"
+                    ],
+                    "default": "morning",
+                    "_note": "Advances when user sleeps (home_time slot triggers day rollover). See time_and_day.json."
+                }
+            },
+            "calendar": {
+                "_comment": "Per-user in-game calendar. Drives season and weather. Advances on sleep. See calendar.json and weather.json.",
+                "calendar_day": {
+                    "type": "int",
+                    "default": 1,
+                    "range": "1-30"
+                },
+                "calendar_month": {
+                    "type": "int",
+                    "default": 1,
+                    "range": "1-12",
+                    "_month_map": {
+                        "1-3": "frostlink",
+                        "4-6": "surgespring",
+                        "7-9": "burnseason",
+                        "10-12": "shadowfall"
+                    }
+                },
+                "calendar_year": {
+                    "type": "int",
+                    "default": 1
+                },
+                "current_season": {
+                    "type": "enum",
+                    "options": [
+                        "frostlink",
+                        "surgespring",
+                        "burnseason",
+                        "shadowfall"
+                    ],
+                    "default": "frostlink",
+                    "_note": "Derived from calendar_month. Updated by WeatherService on day advance."
+                },
+                "current_weather": {
+                    "type": "string",
+                    "default": "clear_frost",
+                    "_note": "Set once per in-game day by WeatherService using weighted random from the seasonal pool in weather.json. Persists until the next sleep cycle."
+                }
+            }
+        },
+        "progression": {
+            "_comment": "Tracks the user's journey. Used for achievements and future lore gates.",
+            "total_sessions": {
+                "type": "int",
+                "default": 0
+            },
+            "total_messages_sent": {
+                "type": "int",
+                "default": 0
+            },
+            "total_days_played": {
+                "type": "int",
+                "default": 0,
+                "_note": "Increments on each calendar day advance."
+            },
+            "souls_linked": {
+                "type": "int",
+                "default": 0,
+                "_note": "Count of souls at SOUL_LINKED tier. Cached from LinkState."
+            }
+        },
+        "settings": {
+            "_comment": "Server-side user preferences. Synced across devices.",
+            "nsfw_enabled": {
+                "type": "bool",
+                "default": false,
+                "_note": "Requires age >= 18 AND explicit opt-in. Server enforces this — client cannot override. See ContextAssembler CONTENT CEILING."
+            },
+            "notifications_enabled": {
+                "type": "bool",
+                "default": true
+            },
+            "language": {
+                "type": "string",
+                "default": "en"
+            }
+        }
+    },
+    "multi_user_behaviour": {
+        "_comment": "Critical design rules ensuring user isolation.",
+        "world_state_isolation": "Every field under world_state is per-user. User A at morning/frostlink and User B at night/burnseason see completely different soul behaviours and LLM context.",
+        "soul_locations": "Soul locations in TimeManager are GLOBAL (same for everyone) EXCEPT for LinkState.current_location overrides which are per-user. This creates the illusion each user has their own version of a soul.",
+        "chat_memory": "Conversations table is filtered by (user_id, soul_id). Memory is never shared between users.",
+        "weather": "Weather is set per user on their sleep cycle. User A in day 3/frostlink gets clear_frost. User B in day 1/surgespring gets light_rain. Fully independent.",
+        "economy": "Gems, energy, ads are strictly per user_id. No sharing."
+    },
+    "migration_notes": {
+        "_comment": "Fields in this schema that are NOT yet in the backend user.py model.",
+        "missing_from_model": [
+            "last_seen_at",
+            "calendar_day",
+            "calendar_month",
+            "calendar_year",
+            "current_season",
+            "current_weather",
+            "total_sessions",
+            "total_days_played",
+            "souls_linked",
+            "nsfw_enabled",
+            "language",
+            "notifications_enabled"
+        ],
+        "requires_alembic_migration": true
+    },
+    "metadata": {
+        "version": "1.5.6",
+        "last_updated": "2026-02-26",
+        "author": "SynonTech"
+    }
+}

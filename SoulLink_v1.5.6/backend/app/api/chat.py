@@ -15,7 +15,7 @@ from backend.app.models.time_slot import TimeSlot
 from backend.app.services.narrator import NarratorService
 from backend.app.services.persona_service import PersonaService
 
-from backend.app.api.dependencies import get_current_user 
+from backend.app.api.dependencies import get_current_user
 from backend.app.logic.time_manager import TimeManager
 from backend.app.core.rate_limiter import limiter, RateLimits
 from backend.app.core.validation import ValidatedChatRequest
@@ -29,6 +29,8 @@ router = APIRouter(prefix="/chat", tags=["Legion Engine - Chat"])
 logger = get_logger("ChatAPI")
 
 # ⚡ UPDATED RESPONSE MODEL
+
+
 class ChatResponse(BaseModel):
     soul_id: str
     response: str
@@ -37,21 +39,32 @@ class ChatResponse(BaseModel):
     location: str
     is_architect: bool
     debug_info: Optional[dict] = None
-    system_event: Optional[dict] = None # <--- NEW: For Chronicle/Narrator events
+    # <--- NEW: For Chronicle/Narrator events
+    system_event: Optional[dict] = None
+
 
 @router.post("/send", response_model=ChatResponse)
 @limiter.limit(RateLimits.CHAT)
 async def send_message(
-    chat_request: ValidatedChatRequest, 
-    user: User = Depends(get_current_user), 
+    chat_request: ValidatedChatRequest,
+    user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_async_session),
     request: Request = None
 ):
-    logger.info(f"Chat request from user={user.user_id} to soul={chat_request.soul_id}")
+    logger.info(
+        f"Chat request from user={user.user_id} to soul={chat_request.soul_id}")
     brain = LegionBrain(session)
-    
+
     # 1. FETCH LINK STATE (The Mirror)
     # Replaces old Relationship + UserSoulState logic
+
+    # Fast validation: does the soul even exist?
+    from backend.app.models.soul import Soul
+    soul_exists = await session.get(Soul, chat_request.soul_id)
+    if not soul_exists:
+        raise HTTPException(
+            status_code=404, detail="Link lost. Soul not found.")
+
     link_result = await session.execute(
         select(LinkState).where(
             LinkState.user_id == user.user_id,
@@ -64,13 +77,13 @@ async def send_message(
         # Auto-create LinkState if missing
         ARCHITECT_UUID = "14dd612d-744e-487d-b2d5-cc47732183d3"
         is_architect = user.user_id == ARCHITECT_UUID
-        
+
         # Get soul state for initial location
         from backend.app.models.soul import SoulState
         state = await session.get(SoulState, chat_request.soul_id)
-        
+
         link = LinkState(
-            user_id=user.user_id, 
+            user_id=user.user_id,
             soul_id=chat_request.soul_id,
             current_location=state.current_location_id if state else None,
             signal_stability=100.0,
@@ -83,14 +96,16 @@ async def send_message(
 
     # 2. CHECK STABILITY & ENERGY
     if link.signal_stability <= 0:
-        raise HTTPException(status_code=402, detail="Signal lost. Restore stability to continue.")
-        
+        raise HTTPException(
+            status_code=402, detail="Signal lost. Restore stability to continue.")
+
     # v1.5.6 Normandy-SR2 Fix: Energy System integration
     from backend.app.services.energy_system import EnergySystem
     is_fast_mode = await EnergySystem.check_and_deduct_energy(user, session)
     if not is_fast_mode:
         # In a real app, we'd handle slow-mode gating here. For now, we report it.
-        logger.warning(f"User {user.user_id} is in SLOW MODE (Energy Depleted)")
+        logger.warning(
+            f"User {user.user_id} is in SLOW MODE (Energy Depleted)")
 
     # 3. IDENTIFY PERSONA
     persona = await PersonaService.get_active_persona(session, user.user_id)
@@ -101,16 +116,26 @@ async def send_message(
     # 4. 🕰️ NARRATOR INTERVENTION (The Chronicle)
     narrator_event = None
     world_injection = ""
-    
-    if NarratorService.check_time_jump(link.last_interaction):
-        # Trigger Time Jump Logic
-        # For now, we assume simple weather/time. Real impl would fetch from WorldState.
-        chronicle_text = await NarratorService.generate_chronicle(
-            link.last_interaction, 
-            link.current_location or "the city", 
-            "shifting"
+
+    # Use last_seen_at for time-jump if available (more accurate than link interaction)
+    time_jump_anchor = user.last_seen_at or link.last_interaction
+
+    if time_jump_anchor and NarratorService.check_time_jump(time_jump_anchor):
+        # Resolve real weather for this user's world state
+        from backend.app.services.weather_service import WeatherService
+        weather_string = WeatherService.get_weather_string(
+            calendar_day=user.calendar_day,
+            calendar_month=user.calendar_month,
+            calendar_year=user.calendar_year,
+            current_season=user.current_season,
+            current_weather=user.current_weather,
         )
-        
+        chronicle_text = await NarratorService.generate_chronicle(
+            time_jump_anchor,
+            link.current_location or "the city",
+            weather_string
+        )
+
         # Insert Chronicle Message into DB
         chronicle_msg = Conversation(
             user_id=user.user_id,
@@ -121,16 +146,17 @@ async def send_message(
         )
         session.add(chronicle_msg)
         await session.flush()
-        
+
         narrator_event = {
             "type": "chronicle_break",
             "text": chronicle_text
         }
-        
+
         # Inject into prompt
         world_injection = f"[SYSTEM EVENT] {chronicle_text}"
-        
-        logger.info(f"Chronicle triggered for {user.user_id}: {chronicle_text}")
+
+        logger.info(
+            f"Chronicle triggered for {user.user_id}: {chronicle_text}")
 
     # 5. GENERATE RESPONSE
     try:
@@ -143,7 +169,7 @@ async def send_message(
             persona=persona,     # <--- PASSING PERSONA
             world_state_injection=world_injection
         )
-        
+
         # 6. RETURN (Stability decay moved into brain.py for atomic commit)
         return ChatResponse(
             soul_id=chat_request.soul_id,
@@ -159,6 +185,7 @@ async def send_message(
         import traceback
         logger.error(f"Brain Error: {e}")
         logger.debug(traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f"Neural Link Failure: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Neural Link Failure: {str(e)}")
 
 # ... History endpoint logic remains mostly same, just updating model imports if needed.

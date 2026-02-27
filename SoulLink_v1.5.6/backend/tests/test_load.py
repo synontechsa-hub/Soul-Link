@@ -12,6 +12,7 @@ from backend.app.models.user import User
 # Sample User IDs for load simulation
 USER_IDS = [f"user_load_{i}" for i in range(50)]
 
+
 @pytest.fixture
 def mock_users():
     """Disable rate limiting for load testing if needed, or set up multiple users."""
@@ -20,13 +21,14 @@ def mock_users():
     # or handle the rotation inside the test loop.
     pass
 
+
 async def simulate_user_request(client: AsyncClient, user_id: str):
     """Simulates a single user's request pattern."""
-    # Override user for this specific request context if possible? 
-    # Actually, dependency_overrides is global. 
+    # Override user for this specific request context if possible?
+    # Actually, dependency_overrides is global.
     # To simulate DIFFERENT users, we might need a more complex approach,
     # but for RAW LOAD on the engine, hitting /world-state is sufficient.
-    
+
     start_time = time.perf_counter()
     try:
         # Hit world state (heavy read)
@@ -35,6 +37,7 @@ async def simulate_user_request(client: AsyncClient, user_id: str):
         return response.status_code, latency
     except Exception as e:
         return 500, 0
+
 
 @pytest.mark.asyncio
 async def test_load_50_concurrent_users(client: AsyncClient, async_session):
@@ -82,33 +85,43 @@ async def test_load_50_concurrent_users(client: AsyncClient, async_session):
     await async_session.commit()
     await async_session.refresh(test_user)
 
-    # Override user to use the one we just created
+    # Override user to use a fresh instance of the one we just created
     async def get_mock_user():
-        return test_user
+        return User(
+            user_id="load_test_architect",
+            username="load_test",
+            display_name="Load Test Architect",
+            account_tier="architect",
+            current_time_slot="morning",
+            gems=0,
+            energy=100,
+            lifetime_tokens_used=0,
+            total_ads_watched=0
+        )
     app.dependency_overrides[get_current_user] = get_mock_user
-    
+
     # Disable rate limiter for load test
     from backend.app.core.rate_limiter import limiter
     limiter.enabled = False
-    
+
     # Pre-warm cache
     print(f"\n[WARM] Pre-warming cache...")
     await client.get("/api/v1/map/locations")
-    
+
     tasks = []
     for i in range(50):
         tasks.append(client.get("/api/v1/map/locations"))
-    
+
     print(f"\n[START] Launching 50 concurrent requests to /locations...")
     start_test = time.perf_counter()
     results = await asyncio.gather(*tasks, return_exceptions=True)
     total_time = time.perf_counter() - start_test
-    
+
     print(f"[METRICS] Results:")
     status_codes = []
     latencies = []
     errors = []
-    
+
     for r in results:
         if isinstance(r, Exception):
             errors.append(str(r))
@@ -117,21 +130,21 @@ async def test_load_50_concurrent_users(client: AsyncClient, async_session):
         else:
             status_codes.append(r.status_code)
             latencies.append(r.elapsed.total_seconds())
-    
+
     avg_latency = sum(latencies) / len(latencies) if latencies else 0
     success_count = status_codes.count(200)
-    
+
     print(f"  - Total Time: {total_time:.4f}s")
     print(f"  - Avg Latency: {avg_latency:.4f}s")
     print(f"  - Max Latency: {max(latencies) if latencies else 0:.4f}s")
     print(f"  - Success Rate: {success_count}/50")
     if errors:
         print(f"  - Errors encountered: {len(errors)}")
-        for e in errors[:5]: # Show first 5
+        for e in errors[:5]:  # Show first 5
             print(f"    - {e}")
-    
+
     # Assertions
     assert success_count == 50, f"Only {success_count}/50 requests succeeded"
     assert avg_latency < 1.0, f"Average latency too high: {avg_latency:.4f}s"
-    
+
     app.dependency_overrides.clear()

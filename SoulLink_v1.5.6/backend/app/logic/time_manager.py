@@ -96,16 +96,17 @@ class TimeManager:
         """
         Get the complete world state for a user at their current time slot.
         """
+        # Always fetch the user's world-state columns we need
+        user_result = await self.session.execute(
+            text("SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = :user_id"),
+            {"user_id": user_id}
+        )
+        user_row = user_result.fetchone()
+
+        if not user_row:
+            raise ValueError(f"User {user_id} not found")
+
         if not current_slot:
-            user_result = await self.session.execute(
-                text("SELECT current_time_slot FROM users WHERE user_id = :user_id"),
-                {"user_id": user_id}
-            )
-            user_row = user_result.fetchone()
-
-            if not user_row:
-                raise ValueError(f"User {user_id} not found")
-
             current_slot = TimeSlot(user_row[0])
 
         cache_key = f"world:state:{current_slot.value}"
@@ -149,7 +150,9 @@ class TimeManager:
 
         return {
             "time_slot": current_slot.value,
-            "soul_locations": soul_locations
+            "soul_locations": soul_locations,
+            "season": user_row[1] if user_row[1] else "frostlink",
+            "weather": user_row[2] if user_row[2] else "clear_frost",
         }
 
     async def get_souls_at_location(self, user_id: str, location_id: str) -> List[str]:

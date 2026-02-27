@@ -104,18 +104,35 @@ class NarratorService:
         session,
         location_id: str,
         current_time_slot: str,
-        present_souls_data: list
+        present_souls_data: list,
+        user=None
     ) -> dict:
         """
         Fast, database-driven location narration returning structured data for Flutter widgets.
         No LLM generation involved.
+        Uses WeatherService to resolve real per-user season and weather.
         """
         from backend.app.models.location import Location
+        from backend.app.services.weather_service import WeatherService
+
         loc = await session.get(Location, location_id)
 
-        # Hardcoded weather/season placeholders until global WeatherState is implemented
-        current_season = "frostlink"
-        current_weather = "clear_frost"
+        # Resolve per-user weather context (falls back to defaults if user is None)
+        if user:
+            weather_ctx = WeatherService.get_weather_for_user(
+                calendar_day=user.calendar_day,
+                calendar_month=user.calendar_month,
+                calendar_year=user.calendar_year,
+                current_season=user.current_season,
+                current_weather=user.current_weather,
+            )
+        else:
+            weather_ctx = WeatherService.get_weather_for_user(
+                calendar_day=1, calendar_month=1, calendar_year=1
+            )
+
+        current_season = weather_ctx["season"]
+        current_weather = weather_ctx["weather_id"]
 
         if not loc:
             base_desc = f"You arrive at {location_id.replace('_', ' ').title()}."
@@ -137,7 +154,9 @@ class NarratorService:
             "environmental_factors": {
                 "time_slot": current_time_slot,
                 "season": current_season,
-                "weather": current_weather
+                "weather": current_weather,
+                "weather_display": weather_ctx["display_name"],
+                "weather_llm_context": weather_ctx["llm_context"],
             },
             "present_souls": present_souls_data
         }

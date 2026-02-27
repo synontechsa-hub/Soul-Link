@@ -150,7 +150,8 @@ async def get_location_narration(
         session=session,
         location_id=location_id,
         current_time_slot=current_time_slot,
-        present_souls_data=present_souls_data
+        present_souls_data=present_souls_data,
+        user=user
     )
 
     return narration_data
