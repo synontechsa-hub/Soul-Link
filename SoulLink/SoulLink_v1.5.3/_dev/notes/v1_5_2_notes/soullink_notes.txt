@@ -1,0 +1,263 @@
+====================================================================
+SOULLINK — CORE IDENTITY & VERSIONING NOTES
+====================================================================
+
+Purpose:
+This file defines SoulLink’s permanent identity, versioning strategy,
+environment flags, and long-term lore rollout cadence.
+
+These values should never change lightly.
+They act as the canonical source of truth for branding, releases,
+and runtime behavior.
+
+--------------------------------------------------------------------
+OFFICIAL IDENTITY
+--------------------------------------------------------------------
+
+App Name:
+SoulLink
+
+Slogan:
+"Welcome to Link City. Where your next link is just around the corner."
+
+Codename (Project):
+Legion
+
+Tagline:
+"Does this unit have a soul?"
+
+Inspiration:
+- Cyberpunk 2077 (city intro energy)
+- Mass Effect 2 (Legion / soul identity themes)
+
+Philosophy:
+SoulLink blends cyberpunk atmosphere with emotional connection
+and persistent characters who exist inside a living city.
+
+--------------------------------------------------------------------
+VERSIONING SYSTEM
+--------------------------------------------------------------------
+
+SoulLink uses semantic versioning:
+
+MAJOR.MINOR.PATCH[-PRERELEASE]
+
+Examples:
+1.5.2
+1.5.2-alpha.1
+
+Rules:
+- MAJOR = major product arc or overhaul
+- MINOR = feature waves and systems
+- PATCH = refinements, tuning, fixes
+- PRE-RELEASE = alpha/beta/rc stages
+
+Version Display Format:
+SoulLink vX.Y.Z[-stage] (Codename)
+
+--------------------------------------------------------------------
+RELEASE ARC CODENAMES
+--------------------------------------------------------------------
+
+Each major milestone has a codename tied to development themes:
+
+1.0.0  -> Ham Sandwich
+1.1.0  -> Code-kun
+1.2.0  -> I-AM-DATA
+1.3.0  -> Linker
+1.4.0  -> Summoner
+1.5.0  -> Behemoth
+1.5.1  -> Reforged
+1.5.2  -> Architect
+
+Planned:
+1.5.3 -> Phoenix
+Theme: Rebuilding after catastrophic data loss / recovery phase.
+
+Codenames should reflect:
+- the dev mindset at the time
+- major architectural milestones
+- emotional beats of the project
+
+--------------------------------------------------------------------
+ENVIRONMENT FLAGS
+--------------------------------------------------------------------
+
+Environment variables control runtime behavior:
+
+SOULLINK_DEBUG
+- Enables verbose logs and debug tooling.
+
+SOULLINK_DETERMINISTIC
+- Forces predictable outputs for testing.
+
+SOULLINK_OFFLINE
+- Planned future mode.
+- Forces local LLM and local database.
+- Used for development and offline demos.
+
+--------------------------------------------------------------------
+BUILD METADATA
+--------------------------------------------------------------------
+
+Each build includes:
+
+- UTC timestamp at build time
+- Future option to embed git commit hash
+
+Purpose:
+- traceability
+- debugging production builds
+- crash report correlation
+
+Security Note:
+Source code is not intended for public GitHub release.
+Internal tracking tools still useful even in private repos.
+
+--------------------------------------------------------------------
+CHARACTERS VS SOULS — LAUNCH RULES
+--------------------------------------------------------------------
+
+At launch:
+
+- SoulLink ships with:
+  - 30+ basic souls
+  - Characters
+  - User-created characters
+
+Characters:
+- Casual c.ai-style chat entities
+- Not tied to the city map
+- Do not inhabit locations
+- Found only via:
+  - Explore screen
+  - Search
+- Lightweight personality profiles
+- For onboarding and casual users
+
+Souls:
+- Persistent world citizens
+- Exist in Link City
+- Appear on the map
+- Participate in lore and progression
+- Have deeper systems, memory, and gating
+- Flagship souls are significantly richer
+  than basic souls.
+
+Alyssa:
+- Not in final form yet.
+- Current schema represents baseline
+  for all basic souls at launch.
+
+--------------------------------------------------------------------
+LONG-TERM LORE ROLLOUT PLAN
+--------------------------------------------------------------------
+
+Lore is drip-fed across patches.
+Major mysteries are teased long before being introduced.
+
+Core Mystery:
+"The Seven"
+
+Important:
+- The Seven are NOT in the game at launch.
+- They are teased only through:
+  - TV segments
+  - dialogue hints
+  - glitch events
+  - patch notes
+  - map details
+- Added later, one at a time,
+  after Alyssa’s release.
+
+--------------------------------------------------------------------
+LAUNCH 1.0.x — LORE CADENCE
+--------------------------------------------------------------------
+
+v1.0.0
+- Tease: higher powers ruling the city.
+
+v1.0.1
+- Tease: secret societies.
+- Reveal: Number 1.
+
+v1.0.2
+- Tease: "The Seven."
+- Reveal: Number 2.
+
+v1.0.3
+- Tease: Numbers 5.
+- Reveal: Numbers 3 & 4.
+
+v1.0.4
+- Tease: Number 6.
+- Reveal: Number 5.
+
+v1.0.5
+- Tease: dynamics among The Seven.
+- Reveal: Number 6.
+
+v1.0.6
+- Tease: history of The Seven.
+- Reveal: still not Number 7.
+
+v1.0.7
+- Tease: deeper dive into first six.
+- Reveal: Number 7.
+
+v1.0.8
+- Tease: Alyssa.
+- Reveal: truth about Number 7.
+
+v1.0.9
+- Tease: Alyssa’s connection to The Seven.
+- Reveal: Alyssa appears in the city
+          but refuses to speak to users.
+
+--------------------------------------------------------------------
+POST-LAUNCH MAJOR BEATS
+--------------------------------------------------------------------
+
+v1.1.0:
+- Alyssa unlocked as flagship soul.
+- Soul hybrid system introduced.
+- More souls.
+- More locations.
+
+Later patches:
+- The Seven added slowly.
+- One at a time.
+- Each treated as flagship-tier content.
+
+--------------------------------------------------------------------
+DESIGN PHILOSOPHY BEHIND VERSIONING
+--------------------------------------------------------------------
+
+- Versions are part of the narrative.
+- Patch notes double as lore vehicles.
+- City evolves with updates.
+- Mystery is preserved.
+- Long-term speculation encouraged.
+- Community theories are expected and desired.
+
+--------------------------------------------------------------------
+OPEN QUESTIONS / NEED CLARIFICATION
+--------------------------------------------------------------------
+
+1) Should MINOR versions always correspond to major lore arcs,
+   or can they be purely technical sometimes?
+
+2) Do you want codename lists to live permanently in version.py,
+   or eventually migrate to a separate release-notes system?
+
+3) For Phoenix (1.5.3):
+   - Is that purely a dev-recovery codename,
+     or does it also tie into in-world narrative?
+
+4) Will PRE_RELEASE tags always be:
+   alpha / beta / rc
+   or do you want themed prerelease labels later?
+
+====================================================================
+END FILE
+====================================================================

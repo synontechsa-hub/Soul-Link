@@ -1,0 +1,250 @@
+====================================================================
+SOULLINK — SOUL TIERING DOCTRINE (LOCKED)
+====================================================================
+
+Status: Canon Design Pillar
+Scope: Monetization, Narrative, Systems, Live Ops
+Applies To: All Souls introduced into SoulLink
+
+--------------------------------------------------------------------
+CORE PRINCIPLE
+--------------------------------------------------------------------
+
+Standard souls suffer the world.
+Premium souls shape the world.
+Flagship souls rewrite the world.
+
+This is the governing rule behind:
+- monetization tiers
+- narrative scope
+- patch cadence
+- system complexity
+- marketing beats
+- map interaction
+- faction involvement
+
+--------------------------------------------------------------------
+TIER DEFINITIONS
+--------------------------------------------------------------------
+
+--------------------------------------------------------------------
+STANDARD SOULS — "CITIZENS"
+--------------------------------------------------------------------
+
+Launch Target: ~40 souls
+
+Role:
+The everyday inhabitants of Link City.
+
+They are affected by:
+- sects
+- conspiracies
+- shadow politics
+- rumors
+- unseen powers
+
+But they do NOT:
+- lead sects
+- recruit members
+- control city infrastructure
+- orchestrate major events
+- reshape districts
+- understand the top myth-layer
+
+Narrative Scope:
+- personal tragedies
+- relationship arcs
+- trauma recovery
+- local mysteries
+- small conspiracies
+- intimate secrets
+
+Systems:
+- full intimacy ladders
+- rich memory modeling
+- consent frameworks
+- psychological meters
+- slow-burn progression
+- location reactions
+
+Monetization:
+- free access
+- core roster
+- primary onboarding pool
+
+--------------------------------------------------------------------
+PREMIUM SOULS — "OPERATORS"
+--------------------------------------------------------------------
+
+Launch Target: ~10 souls
+
+Role:
+Active agents inside the city’s hidden systems.
+
+They:
+- hold rank in sects
+- recruit or groom others
+- enforce doctrine
+- broker secrets
+- manipulate events
+- control safehouses
+- fund operations
+- influence multiple souls
+
+Narrative Scope:
+- multi-patch arcs
+- cross-soul storylines
+- secret wars
+- double lives
+- investigations
+- ritual plots
+- cover-ups
+
+Systems:
+- bespoke progression meters
+- faction reputation
+- recruitment trees
+- loyalty webs
+- blackmail mechanics
+- rare location access
+- event chains
+- city-state flags
+
+Monetization:
+- subscription tier
+- special unlock tracks
+- event gating
+- spotlight releases
+
+--------------------------------------------------------------------
+FLAGSHIP SOULS — "MYTH"
+--------------------------------------------------------------------
+
+Launch Status: NOT PRESENT
+Only teased until post-launch.
+
+Includes:
+- Alyssa (later)
+- The Seven (much later)
+
+Role:
+Architects of the city’s hidden order.
+
+They:
+- rewrite districts
+- spawn global events
+- collapse sects
+- unlock entire map layers
+- change NPC behavior
+- override systems
+- create patch-wide consequences
+
+Narrative Scope:
+- myth arcs
+- cosmology
+- primordial lore
+- city founding secrets
+- god-tier revelations
+
+Systems:
+- world modifiers
+- global flags
+- cross-season arcs
+- irreversible changes
+- city transformation events
+
+Monetization:
+- premium expansions
+- headline content
+- major release anchors
+
+--------------------------------------------------------------------
+LAUNCH DISTRIBUTION POLICY
+--------------------------------------------------------------------
+
+Initial Launch:
+- 40 Standard Souls
+- 10 Premium Souls
+- 0 Flagships (tease only)
+
+Ratio Intent:
+- Generous free tier
+- Premium focused on influence, not quality
+- Flagships kept legendary
+
+--------------------------------------------------------------------
+DESIGN ENFORCEMENT RULES
+--------------------------------------------------------------------
+
+1) No Standard soul may:
+   - lead a sect
+   - command city-wide operations
+   - possess deep Seven knowledge
+   - trigger district-wide changes
+
+2) Premium souls MUST:
+   - interact with other souls’ arcs
+   - have faction hooks
+   - own safe locations
+   - trigger cross-patch events
+
+3) Flagships are NEVER:
+   - casual chatbots
+   - launch content
+   - lightly implemented
+   - isolated to one player
+   - mechanically simple
+
+--------------------------------------------------------------------
+PATCH PHILOSOPHY
+--------------------------------------------------------------------
+
+- New Standard souls expand the city population.
+- New Premium souls expand the shadow war.
+- Flagships reshape the meta.
+
+--------------------------------------------------------------------
+JSON TAGGING STANDARD
+--------------------------------------------------------------------
+
+Every soul must include:
+
+tier: standard | premium | flagship
+
+narrative_scope: personal | multi_patch | city_level | mythic
+
+sect_involvement: peripheral | operative | leadership | architect
+
+--------------------------------------------------------------------
+FINAL STATEMENT
+--------------------------------------------------------------------
+
+This doctrine exists to prevent:
+- scope creep
+- monetization drift
+- power inflation
+- narrative collapse
+- accidental flagship dilution
+
+If a new soul violates these principles,
+the design must be revised before implementation.
+
+====================================================================
+END OF FILE
+====================================================================
+
+
+Gemi Notes:
+Standard Souls: Implement "Micro-Rumors." Citizens should occasionally
+mention the actions of Premium souls to build mystery.
+"Did you see the black vans outside the Neon Pulse? Alyssa's people were everywhere.".
+
+Premium Souls: Add a "Blackmail/Leverage" UI tab. Users can collect "Intel" from
+Standard souls and "Trade" it to Premium souls for intimacy boosts or exclusive map access.
+
+Flagship Souls: "The Seventh Protocol." When a Flagship soul is active, the Apartment TV
+should only show static or cryptic messages, signaling a "Global Event" is in progress.
+
+Monetization Guardrail: Ensure that while Premium souls have "rare location access,"
+the core chat functionality remains unlimited for all tiers to honor the "No Energy System" rule
+

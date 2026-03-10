@@ -1,0 +1,148 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\python.exe
+cachedir: .pytest_cache
+rootdir: D:\Coding\SynonTech\SoulLink_v1.5.6
+configfile: pytest.ini
+plugins: anyio-4.12.1, asyncio-1.3.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+backend/tests/test_errors.py::test_malformed_json PASSED                 [ 14%]
+backend/tests/test_errors.py::test_missing_fields PASSED                 [ 28%]
+backend/tests/test_errors.py::test_database_downtime_simulation PASSED   [ 42%]
+backend/tests/test_errors.py::test_sentry_capture_on_error PASSED        [ 57%]
+backend/tests/test_errors.py::test_large_payload_limit FAILED            [ 71%]
+backend/tests/test_load.py::test_load_50_concurrent_users PASSED         [ 85%]
+backend/tests/test_rate_limits.py::test_global_rate_limit PASSED         [100%]
+
+================================== FAILURES ===================================
+__________________________ test_large_payload_limit ___________________________
+
+client = <httpx.AsyncClient object at 0x000001EB8D2B97F0>
+mock_auth = User(user_id='architect_001', username='TestArchitect', account_tier='architect', display_name=None, last_seen_at=None...al_messages_sent=0, total_days_played=0, souls_linked=0, nsfw_enabled=False, notifications_enabled=True, language='en')
+
+    @pytest.mark.asyncio
+    async def test_large_payload_limit(client: AsyncClient, mock_auth):
+        """Verify that the RequestSizeLimitMiddleware blocks oversized payloads."""
+        # Use a large structured string rather than pure "X" to pass JSON parse
+        large_data = '{"soul_id": "soul_001", "target_location_id": "loc_0", "message": "' + \
+            'X' * (10 * 1024 * 1024 + 1024) + '"}'  # > 10MB
+        response = await client.post(
+            "/api/v1/map/move",
+            content=large_data,
+            headers={"Content-Type": "application/json"}
+        )
+        # If the middleware is active, it should return 413
+        assert response.status_code == 413
+>       assert "payload too large" in response.json()["detail"].lower()
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'detail'
+
+backend\tests\test_errors.py:114: KeyError
+---------------------------- Captured stdout call -----------------------------
+[2026-03-02T18:41:30.661028+00:00] [WARNING] [SoulLink.Middleware.SizeLimit] [N/A] \u26a0\ufe0f Request too large: 10486853 bytes from 127.0.0.1\n[2026-03-02T18:41:30.661437+00:00] [INFO] [httpx] [N/A] HTTP Request: POST http://test/api/v1/map/move "HTTP/1.1 413 Request Entity Too Large"
+------------------------------ Captured log call ------------------------------
+WARNING  SoulLink.Middleware.SizeLimit:request_size_limit.py:29 \u26a0\ufe0f Request too large: 10486853 bytes from 127.0.0.1\nINFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/v1/map/move "HTTP/1.1 413 Request Entity Too Large"
+============================== warnings summary ===============================
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sqlmodel\main.py:534
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sqlmodel\main.py:534: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    new_cls = super().__new__(cls, name, bases, dict_used, **config_kwargs)
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:365
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:365: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:494
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:494: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:498
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:498: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:502
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:502: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:506
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:506: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:538
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:538: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:542
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:542: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:546
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:546: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:550
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:550: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+backend\app\core\validation.py:61
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:61: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('soul_id')
+
+backend\app\core\validation.py:67
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:67: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('message')
+
+backend\app\core\validation.py:85
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:85: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('soul_id')
+
+backend\app\core\validation.py:91
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:91: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('location_id')
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(func):
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\starlette.py:427: 4 warnings
+backend/tests/test_errors.py: 2 warnings
+backend/tests/test_rate_limits.py: 10 warnings
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\starlette.py:427: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    return asyncio.iscoroutinefunction(obj) or (
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: 28 warnings
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    and not asyncio.iscoroutinefunction(dependant.call)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend/tests/test_errors.py::test_large_payload_limit - KeyError: 'de...
+================== 1 failed, 6 passed, 67 warnings in 10.52s ==================
+python : Sentry is 
+attempting to send 13 
+pending events
+At line:1 char:1
++ python -m pytest backend/
+tests/test_errors.py 
+backend/tests/test_load ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (Sen  
+  try is attem... pendin   
+ g events:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+Waiting up to 2 seconds
+Press Ctrl-Break to quit

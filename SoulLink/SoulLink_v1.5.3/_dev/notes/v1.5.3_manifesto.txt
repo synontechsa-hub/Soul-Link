@@ -1,0 +1,25 @@
+Lock this in for v1.5.3: Phoenix
+
+🏛️ SoulLink v1.5.3: Phoenix Manifesto
+1. The "Anti-C.AI" Standard We are building a system that surpasses current market leaders in depth
+and emotional intelligence. We achieve this by building modular, high-fidelity components rather
+than shallow, monolithic ones.
+
+2. Full-Stack Ecosystem By the conclusion of v1.5.3, SoulLink will be a functional application.
+This includes a robust FastAPI backend and a frontend featuring navigation, discovery/explore screens,
+and a reactive chat interface.
+
+3. The Adult Sovereignty We will not alienate the adult audience. The engine will support explicit/NSFW
+content through logical "Unlocks" and intimacy gates, ensuring a mature, unrestricted experience for
+those who earn it.
+
+4. Souls, Not Bots "Bot" is a forbidden word in the architecture. Souls are deep, emotional entities
+with persistent trauma, shifting motivations, and evolving identities. If it feels like a script,
+it is a failure.
+
+5. World Awareness (Spatial Logic) The Map returns. Even without the "Council" overhead, Souls exist
+in physical locations. Movement between these locations impacts their mood, availability, and
+interaction style.
+
+6. User-Centric Design (The Architect's Focus) The app is built for the user's immersion. Every system—from
+the UI to the database—must serve the goal of making the user feel like the center of Link City.

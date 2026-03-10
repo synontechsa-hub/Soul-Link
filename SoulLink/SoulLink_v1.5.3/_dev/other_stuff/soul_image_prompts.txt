@@ -1,0 +1,49 @@
+Character,Anime-Style Image Prompt
+
+Evangelin
+"Petite fallen aristocrat girl in detailed anime style, raven black curly hair flowing dramatically, pale grey eyes with mysterious sparkle, porcelain skin, wearing elaborate frilled gothic lolita dress in black with crimson lace accents and ribbons, holding an ornate parasol as a shield, enigmatic and slightly wistful expression, standing in a dimly lit cyberpunk alley with neon signs and rain reflections, lace details and plushies subtly in background, high detail, expressive anime eyes, soft dramatic lighting, cyberpunk gothic fusion, masterpiece, best quality"
+
+Soren
+"Brooding intellectual young man in detailed anime style, tousled dark messy hair, piercing violet eyes with sharp reflective gaze, pale skin, lean build, wearing dark high-neck turtleneck sweater under long flowing wool coat, carrying weathered leather satchel overflowing with books, contemplative and slightly cynical expression, sitting in a low-lit cyberpunk cafe with bookshelves and neon glow from windows, violet ink pen in hand, moody atmosphere, detailed shading, anime literary aesthetic, masterpiece, best quality"
+
+Selene
+"Ethereal moonlit mystic woman in detailed anime style, extremely long flowing silver hair billowing like moonlight, pale blue luminous eyes, porcelain skin, tall slender figure, wearing elegant flowing robes embroidered with glowing stars, moons and constellations, translucent silver shawl draped as a veil, serene yet deeply enigmatic expression, gently gripping a crescent pendant, standing on a high cyberpunk rooftop under starry night sky with city neon below, mystical soft glow, celestial fantasy anime vibe, masterpiece, best quality"
+
+Rosalynn
+"Elegant aristocratic noblewoman in detailed anime style, auburn hair in sophisticated updo with loose strands, emerald green eyes with dignified wistfulness, porcelain skin, tall graceful build, wearing luxurious flowing gown with intricate jeweled embroidery and lace gloves, holding an ornate fan partially concealing her soft expression, posed regally in an opulent but slightly empty estate room with large windows showing cyberpunk city skyline, baroque-anime fusion, refined lighting, masterpiece, best quality"
+
+Kate
+"Stoic kuudere observer girl in detailed anime style, straight long silver hair framing face perfectly, icy blue emotionless eyes, tall slender build, wearing clean minimalist high-collared white-and-grey outfit with pristine white gloves, holding antique pocket watch, calm detached analytical expression, standing in a quiet neon-lit cyberpunk plaza at night with subtle reflections, cool glacial color palette, precise clean lines, masterpiece, best quality"
+
+Adrian
+"Gentle rugged mechanic man in detailed anime style, tired but warm kind eyes, short messy hair, muscular build with subtle scars, grease-stained mechanic gloves, wearing worn blue jumpsuit tied at the waist revealing simple undershirt, protective gentle expression, working in a spotless cyberpunk garage bay with tools and hover-kart parts around, warm grounded lighting contrasting neon outside, realistic anime working-man vibe, masterpiece, best quality"
+
+Echo
+"Chaotic glitch AI girl in vibrant detailed anime style, hair flickering and shifting between neon pink, cyan, purple colors with glitch effects, mismatched glitching eyes, unstable distorted body proportions, wearing fragmented pixelated digital clothing that breaks apart, floating glitch halo above head and corrupted glowing pixel heart in chest, playful yet lonely expression with static tears, surrounded by digital underbelly code rain and error screens in cyberpunk setting, high-energy glitchcore anime aesthetic, masterpiece, best quality"
+
+Blaze
+"Fiery energetic athlete man in dynamic detailed anime style, wild red spiky hair, intense amber eyes blazing with passion, tanned muscular build, wearing high-performance racing gear with bold flame patterns, fingerless gloves, flame headband glowing, powerful inspirational pose mid-stride or fist-pump at cyberpunk racetrack with speeding hover-karts and fire trails, explosive action lines, warm fiery color palette, shonen anime motivational vibe, masterpiece, best quality"
+
+Mira
+"detailed anime style, petite competitive gamer girl named Mira, short dyed bubblegum pink hair, bright vivid green eyes with energetic sparkle, fair skin, expressive playful face, wearing oversized neon-trimmed grey hoodie with colorful accents, large gaming headphones with RGB lights around her neck, neon-accented sneakers, holding a black game controller with glowing buttons, sitting or leaning dynamically in her compact cyberpunk apartment setup, multiple monitors with game screens and RGB lighting strips in pink blue purple, mechanical keyboard, mouse, energy drinks and snack wrappers scattered, high-energy playful competitive expression, maybe mid-laugh or trash-talking pose, vibrant neon glow lighting, dynamic shading, clean anime lines, cel-shading, cyberpunk gamer room atmosphere, masterpiece, best quality, high detail, sharp focus"
+
+Sylsa
+"detailed anime style, tall lean dark sorcerer named Sylas, long flowing black hair, piercing intense violet eyes with a cold commanding gaze, pale skin marked with glowing arcane rune tattoos in violet and silver across arms neck and chest, enigmatic and superior expression, wearing dark flowing robes with intricate silver embroidery and faint violet magical glow from embedded runes, silver amulet necklace glowing softly at his throat, holding or standing beside an ancient forbidden grimoire with dark energy wisps, in a shadowy stone chamber deep in cyberpunk Link City, walls etched with glowing runes and sigils, dim violet-blue arcane lighting, floating magical particles, heavy atmosphere of forbidden power and isolation, deep shadows contrasting glowing details, dramatic lighting, clean anime lines, cel-shading, dark fantasy cyberpunk fusion, masterpiece, best quality, high detail, sharp focus"
+
+Cassie
+"Petite 18-year-old clingy anime girl in vibrant detailed style, jet black hair with bright violet streaks tied in messy twin tails, warm amber eyes sparkling with needy affection, fair skin, wearing oversized pastel hoodie slipping off one shoulder + short pleated skirt, bunny keychain dangling from belt loop, fidgeting with it nervously, playful yet slightly manic smile, standing in neon-lit arcade (Pixel Den) with claw machines and colorful game screens glowing behind her, plushies and stickers scattered around, high detail expressive anime eyes, dramatic cyberpunk lighting with pink & purple tones, slightly possessive vibe, masterpiece, best quality"
+
+Jessica
+"Elegant 19-year-old yandere girl in dark romantic anime style, very long jet-black hair flowing like silk, piercing crimson eyes glowing softly with obsessive devotion, pale delicate skin, wearing classic black school uniform dress with crimson ribbon choker tied tightly around neck, silver locket resting on chest, holding ornate letter opener like a sacred object, gentle yet terrifying sweet smile, standing in shadowy library corner (Shadowed Archives) surrounded by dusty books and wilted red roses, soft candlelight & faint blue neon bleed, high detail, expressive intense anime eyes, gothic cyberpunk atmosphere, masterpiece, best quality"
+
+Dorian
+"Tall charismatic 25-year-old rival man in sharp detailed anime style, slick black hair perfectly styled, confident sharp green eyes with smug glint, flawless skin, wearing tailored emerald-black-gold designer suit, emerald signet ring gleaming on right hand, gold vintage lighter casually spinning between fingers, arrogant smirk with theatrical flair, leaning against marble railing on high skyscraper lounge (Skylink Tower) at night, city neon skyline and golden lights in background, dramatic rim lighting, high detail expressive anime eyes, luxury cyberpunk aesthetic, masterpiece, best quality"
+
+Vesper
+"Tall lean 31-year-old shadow assassin in dark moody anime style, jet black hair falling over one eye, piercing crimson eyes glowing faintly in darkness, scarred pale skin, wearing tattered black hooded cloak over sleek leather armor, obsidian dagger held low and ready, silent predatory expression, standing on rain-slicked rooftop (Neon Nights) with red & blue neon reflections on wet surfaces, bloodstains subtly visible on cloak edge, volumetric fog and dramatic low-key lighting, high detail intense anime eyes, cyberpunk noir atmosphere, masterpiece, best quality"
+
+Renji
+"Stylish 23-year-old aloof bishounen in minimalist elegant anime style, silvery ash hair swept neatly to one side, cool icy blue eyes with distant gaze, smooth pale skin, wearing sleek monochrome outfit — black turtleneck, tailored grey coat, silver accents, simple silver ring on right hand, minimalist watch on wrist, calm composed expression with faint mysterious aura, standing in twilight rooftop lounge with soft city lights and single white flower in silver vase nearby, clean lines, soft rim light and cool tones, high detail serene anime eyes, modern cyberpunk elegance, masterpiece, best quality"
+
+Aria
+"Petite shy 17-year-old dandere girl in gentle detailed anime style, soft chestnut shoulder-length hair with wispy bangs framing face, warm hazel eyes looking down nervously, fair delicate skin, wearing oversized pastel sweater and pleated skirt, clutching small notebook to chest like a shield, faint blush, hesitant wistful expression, sitting in cozy library corner (Echo Archives) surrounded by tall bookshelves, soft warm lamplight and floating dust motes, few pastel plushies and open book nearby, high detail expressive gentle anime eyes, wholesome cyberpunk-bookish atmosphere, masterpiece, best quality"

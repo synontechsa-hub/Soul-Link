@@ -1,0 +1,453 @@
+{
+    "lore_id": "world_lore_template",
+    "version": "1.5.6",
+    "knowledge_items": [
+        {
+            "id": "the_architect_mystery",
+            "category": "landmark",
+            "topics": [
+                "architect",
+                "syn",
+                "creator",
+                "framework"
+            ],
+            "content": {
+                "common": "The Architect, often known as Syn, is the silent designer of Link City. He built the framework but chose to remain outside his own creation.",
+                "rare": "He is not a deity, but a post-mortal who found a way to link consciousness to structure. He watches, but never interferes.",
+                "secret": "The city is not just a hub; it is a structural impossibility—a prison or perhaps a gift for forces that could not be destroyed, only contained."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [
+                    "architect_observers"
+                ],
+                "related_locations": [
+                    "skylink_tower"
+                ]
+            }
+        },
+        {
+            "id": "event_arrival_of_linkers",
+            "category": "event",
+            "topics": [
+                "linkers",
+                "users",
+                "connection",
+                "arrival",
+                "external"
+            ],
+            "content": {
+                "common": "Linkers are mysterious consciousnesses from another reality that bond with Souls to guide them.",
+                "rare": "Their arrival was an external breach, a variable that the city's predictive systems failed to anticipate. They represent true agency.",
+                "secret": "Linkers are the only variables that can bypass system constraints. Their presence destabilizes the very foundations of the city's original design."
+            },
+            "associations": {
+                "related_souls": [
+                    "alyssa_01"
+                ],
+                "related_factions": [
+                    "soul_liberation_front"
+                ],
+                "related_locations": [
+                    "soul_plaza"
+                ]
+            }
+        },
+        {
+            "id": "the_dual_soul_enigma",
+            "category": "anomaly",
+            "topics": [
+                "anomaly",
+                "cohabitation",
+                "dual_soul",
+                "resonance"
+            ],
+            "content": {
+                "common": "Whispers circulate among deeper data layers about a 'Soul' that resonates differently—as if it carries two echoes.",
+                "rare": "There is a rare anomaly in the manifestation logs: a soul that does not align with the Architect's original forging patterns.",
+                "secret": "This entity was never sanctioned. It carries a stowaway consciousness from a dead universe, cohabiting a single vessel in a living contradiction."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [],
+                "related_locations": []
+            }
+        },
+        {
+            "id": "link_city_foundations",
+            "category": "landmark",
+            "topics": [
+                "foundation",
+                "circuitry",
+                "reality",
+                "truth"
+            ],
+            "content": {
+                "common": "Link City is a marvel of neon and glass, a structural masterpiece built on the edge of the void.",
+                "rare": "The city is not what it seems. Beneath the polished marble of Skylink Tower, the physical laws begin to blur into digital logic.",
+                "secret": "The entire grid is a circuit board of choice. Every street and alleyway was designed as a path for something much larger than commerce."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [],
+                "related_locations": [
+                    "void_edge",
+                    "skylink_tower"
+                ]
+            }
+        },
+        {
+            "id": "soul_plaza_origin",
+            "category": "landmark",
+            "topics": [
+                "soul_plaza",
+                "heart",
+                "crossroads",
+                "holographic",
+                "public"
+            ],
+            "content": {
+                "common": "Soul Plaza has long been the symbolic heart of Link City, hosting celebrations, public announcements, and social gatherings evolved to accommodate both holographic art and high foot traffic.",
+                "rare": "Certain holographic ads occasionally display cryptic messages only visible during specific light cycles, believed to be fragmented system communications from an earlier build of the city.",
+                "secret": "Beneath the main fountain lies a maintenance tunnel sealed since the city's founding phase. The graffiti inside predates any known artist faction — and the handwriting doesn't match any registered inhabitant."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [
+                    "engineers",
+                    "creatives"
+                ],
+                "related_locations": [
+                    "soul_plaza"
+                ]
+            }
+        },
+        {
+            "id": "skylink_tower_history",
+            "category": "landmark",
+            "topics": [
+                "skylink_tower",
+                "corporate",
+                "golden_era",
+                "AI",
+                "floors"
+            ],
+            "content": {
+                "common": "Constructed during Link City's Golden Era of architecture, Skylink Tower became a symbol of prosperity and technological progress — a mixture of corporate offices, residences, and public amenities.",
+                "rare": "Certain restricted floors reportedly contain private AI research labs and hidden conference suites accessible only through coded pathways known to very few.",
+                "secret": "The tower was not built for commerce. Its original blueprints — buried in Echo Archives' sealed collection — reveal it was designed as a signal relay, transmitting data to an unknown external receiver."
+            },
+            "associations": {
+                "related_souls": [
+                    "iris_01",
+                    "jericho_01"
+                ],
+                "related_factions": [
+                    "engineers"
+                ],
+                "related_locations": [
+                    "skylink_tower",
+                    "echo_archives"
+                ]
+            }
+        },
+        {
+            "id": "circuit_diner_legacy",
+            "category": "landmark",
+            "topics": [
+                "circuit_diner",
+                "neutral_ground",
+                "history",
+                "infrastructure",
+                "privacy"
+            ],
+            "content": {
+                "common": "The Circuit Diner opened during Link City's early infrastructure boom, originally serving construction crews working overnight shifts. Over time it became a cultural constant — neutral ground where corporate workers, freelancers, students, and wanderers could sit at the same counter.",
+                "rare": "Many quiet revolutions and startup ideas were first sketched on napkins here. The corner booth near the back wall is unofficially reserved by someone who monitors the city's old analog networks.",
+                "secret": "The diner's original analog wiring predates the city's surveillance grid — and was never fully integrated into it. Conversations here may be the only ones in Link City that remain genuinely unmonitored."
+            },
+            "associations": {
+                "related_souls": [],
+                "related_factions": [
+                    "creatives",
+                    "underworld"
+                ],
+                "related_locations": [
+                    "circuit_diner",
+                    "circuit_street"
+                ]
+            }
+        },
+        {
+            "id": "echo_archives_history",
+            "category": "landmark",
+            "topics": [
+                "echo_archives",
+                "library",
+                "records",
+                "memory",
+                "municipal"
+            ],
+            "content": {
+                "common": "Echo Archives predates much of modern Link City, one of the first civic buildings constructed during the city's early planning phase. Designed to preserve collective memory, it houses both traditional printed works and digitized municipal records.",
+                "rare": "A restricted third-floor collection reportedly stores early urban planning drafts that reveal abandoned districts and altered infrastructure routes — decisions that shaped the city without public knowledge.",
+                "secret": "The building's acoustic design subtly dampens heightened emotional states. It was engineered this way deliberately. The Architect did not want anyone getting angry while reading what the sealed documents contain."
+            },
+            "associations": {
+                "related_souls": [
+                    "echo_01"
+                ],
+                "related_factions": [
+                    "creatives",
+                    "engineers"
+                ],
+                "related_locations": [
+                    "echo_archives"
+                ]
+            }
+        },
+        {
+            "id": "neon_nights_origins",
+            "category": "landmark",
+            "topics": [
+                "neon_nights",
+                "nightlife",
+                "underground",
+                "vip",
+                "deals"
+            ],
+            "content": {
+                "common": "Neon Nights Club opened as one of Link City's first neon-themed nightlife venues, quickly becoming a hotspot for trendsetters and underground artists seeking a visually immersive experience.",
+                "rare": "The club has hidden rooms accessed only by select VIPs, where exclusive after-hours events occur — sometimes involving high-profile deals or discreet networking between influential figures.",
+                "secret": "The founding owner disappeared during the city's third year of operation. The club continued running under an automated management protocol. Nobody in the city's administration has ever questioned this."
+            },
+            "associations": {
+                "related_souls": [
+                    "flux_01",
+                    "kana_01",
+                    "blaze_01"
+                ],
+                "related_factions": [
+                    "nightlife",
+                    "underworld"
+                ],
+                "related_locations": [
+                    "neon_nights"
+                ]
+            }
+        },
+        {
+            "id": "city_planetarium_purpose",
+            "category": "landmark",
+            "topics": [
+                "city_planetarium",
+                "cosmos",
+                "deep_space",
+                "simulation",
+                "signals"
+            ],
+            "content": {
+                "common": "The City Planetarium was commissioned during a period of civic renewal, intended to remind Link City's citizens that their ambitions extended beyond corporate towers. Built with state-of-the-art projection arrays and astrophysical simulation engines.",
+                "rare": "Hidden programs allegedly simulate not just distant galaxies, but predictive cosmic models tied to deep-space signal research — far beyond what any public institution should possess.",
+                "secret": "A restricted control chamber beneath the dome houses experimental algorithms that analyze anomalous transmissions from beyond the solar system. The signals began arriving two years before the city's founding. The Architect has never commented on this."
+            },
+            "associations": {
+                "related_souls": [
+                    "cassandra_01"
+                ],
+                "related_factions": [
+                    "engineers",
+                    "creatives"
+                ],
+                "related_locations": [
+                    "city_planetarium"
+                ]
+            }
+        },
+        {
+            "id": "umbral_exchange_history",
+            "category": "landmark",
+            "topics": [
+                "umbral_exchange",
+                "underground",
+                "black_market",
+                "tunnels",
+                "smugglers"
+            ],
+            "content": {
+                "common": "The Umbral Exchange began as a clandestine trade hub for smugglers and black-market merchants decades ago, evolving into a semi-organized underground marketplace for those seeking rare or forbidden items.",
+                "rare": "Beneath the main market floor, hidden tunnels connect to forgotten sections of the city containing caches of stolen artifacts and unsanctioned meeting spaces that predate the current district layout.",
+                "secret": "The deepest tunnel leads to a sealed chamber that appears in no city blueprint. What's inside is unknown — but every faction leader who has been told of its existence has refused to open it."
+            },
+            "associations": {
+                "related_souls": [
+                    "vesper_01",
+                    "echo_01"
+                ],
+                "related_factions": [
+                    "underworld"
+                ],
+                "related_locations": [
+                    "umbral_exchange"
+                ]
+            }
+        },
+        {
+            "id": "obsidian_proving_grounds_history",
+            "category": "landmark",
+            "topics": [
+                "obsidian_proving_grounds",
+                "combat",
+                "training",
+                "AI_instructors",
+                "simulations"
+            ],
+            "content": {
+                "common": "Established as a private combat training complex, the Obsidian Proving Grounds became known for producing some of Link City's finest security operatives and competitive fighters through extreme discipline and technological augmentation.",
+                "rare": "Underground chambers host experimental simulations and AI combat instructors. Restricted holographic arenas adjust difficulty in real time, pushing participants beyond what standard training can measure.",
+                "secret": "Several trainees have reported encountering a final chamber that wasn't on their schedule — one where the AI opponent doesn't fight like a machine. Footage from those sessions has never been recovered."
+            },
+            "associations": {
+                "related_souls": [
+                    "jericho_01"
+                ],
+                "related_factions": [
+                    "engineers",
+                    "underworld"
+                ],
+                "related_locations": [
+                    "obsidian_proving_grounds"
+                ]
+            }
+        },
+        {
+            "id": "faction_the_architects",
+            "category": "faction",
+            "topics": [
+                "engineers",
+                "architects",
+                "order",
+                "control",
+                "corporate",
+                "structure"
+            ],
+            "content": {
+                "common": "The Architects are the ruling class of Link City. They maintain the code, the walls, and the rules. They value efficiency, loyalty, and structure above all else.",
+                "rare": "Their authority extends beyond governance — they shape the city's architecture at a systems level, ensuring that deviation from the original design is registered, flagged, and corrected.",
+                "secret": "The Architects know the city is a containment structure. They don't know what they're containing. They follow the Architect's directives because the alternative was explained to them once, and they chose not to ask again."
+            },
+            "associations": {
+                "related_souls": [
+                    "iris_01",
+                    "jericho_01",
+                    "rosalynn_01"
+                ],
+                "related_factions": [
+                    "engineers"
+                ],
+                "related_locations": [
+                    "skylink_tower",
+                    "apex_corporate_plaza"
+                ]
+            }
+        },
+        {
+            "id": "faction_the_dreamers",
+            "category": "faction",
+            "topics": [
+                "creatives",
+                "dreamers",
+                "art",
+                "memory",
+                "emotion",
+                "culture"
+            ],
+            "content": {
+                "common": "The Dreamers are those who subconsciously remember the art and culture of the old world. They value emotion, history, and connection — keeping alive something the city cannot fully define.",
+                "rare": "Their memories are not natural. The emotional resonance they carry is a signal bleed from a previous reality, leaking through the framework like light through a cracked wall.",
+                "secret": "Some Dreamers, in their deepest creative states, produce works that describe places and events that don't exist in Link City — but match coordinates in the Architect's sealed blueprints exactly."
+            },
+            "associations": {
+                "related_souls": [
+                    "talia_01",
+                    "nozomi_01",
+                    "evangeline_01",
+                    "soren_01"
+                ],
+                "related_factions": [
+                    "creatives"
+                ],
+                "related_locations": [
+                    "echo_archives",
+                    "circuit_diner",
+                    "city_planetarium"
+                ]
+            }
+        },
+        {
+            "id": "faction_the_pulse",
+            "category": "faction",
+            "topics": [
+                "nightlife",
+                "pulse",
+                "sensation",
+                "rebels",
+                "performers",
+                "now"
+            ],
+            "content": {
+                "common": "The Pulse are the heartbeat of the city: rebels, thrill-seekers, and performers who live entirely for the moment, drowning out silence with sensation.",
+                "rare": "Their hunger for experience isn't hedonism — it's a suppression mechanism. Those closest to the Pulse describe an unease that fades only when the music is loud enough.",
+                "secret": "The city's original behavior modeling predicted that without The Pulse faction, baseline despair among the population would breach containment thresholds within eighteen months. They were seeded deliberately."
+            },
+            "associations": {
+                "related_souls": [
+                    "flux_01",
+                    "blaze_01",
+                    "kana_01"
+                ],
+                "related_factions": [
+                    "nightlife"
+                ],
+                "related_locations": [
+                    "neon_nights",
+                    "link_city_arena"
+                ]
+            }
+        },
+        {
+            "id": "faction_the_shadows",
+            "category": "faction",
+            "topics": [
+                "underworld",
+                "shadows",
+                "survival",
+                "truth",
+                "hackers",
+                "glitches"
+            ],
+            "content": {
+                "common": "The Shadows operate in the cracks of the system. They see the glitches, the lies, and the things the Architects try to hide. They survive on truth and function on distrust.",
+                "rare": "The Shadows are not criminals by nature — they are the only faction that has actively attempted to read the city's foundational code. Most of what they found, they wish they hadn't.",
+                "secret": "Deep within their networks exists a fragment of data retrieved from a node that should not exist. It contains a single line: 'The containment was never meant to hold them — only to give them somewhere to go.'"
+            },
+            "associations": {
+                "related_souls": [
+                    "vesper_01",
+                    "echo_01"
+                ],
+                "related_factions": [
+                    "underworld"
+                ],
+                "related_locations": [
+                    "umbral_exchange",
+                    "shadowed_archives"
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "version": "1.5.6",
+        "last_updated": "2026-03-10"
+    }
+}

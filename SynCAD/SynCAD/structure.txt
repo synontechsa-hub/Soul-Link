@@ -1,0 +1,25 @@
+syncad/
+├── main.py          ← 3-line entry point
+├── version.py       ← APP_NAME, APP_VERSION, WINDOW_TITLE, etc.
+├── requirements.txt
+├── README.md
+├── assets/
+│   └── style.qss    ← full Qt stylesheet, edit without touching Python
+├── core/
+│   ├── models.py
+│   ├── optimizer.py
+│   ├── persistence.py   ← saves to syncad/jobs/ by default
+│   └── export_pdf.py
+├── ui/
+│   ├── app.py           ← QApplication bootstrap + stylesheet loader
+│   ├── main_window.py   ← all window logic (moved out of main.py)
+│   ├── job_tab.py
+│   ├── sheets_tab.py
+│   ├── pieces_tab.py
+│   ├── cutplan_tab.py
+│   └── costs_tab.py
+├── jobs/            ← saved .zcad files live here (auto-created)
+│   └── .gitkeep
+└── tests/
+    ├── test_optimizer.py    ← 11 tests
+    └── test_persistence.py  ← 5 tests

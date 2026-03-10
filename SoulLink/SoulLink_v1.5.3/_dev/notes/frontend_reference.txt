@@ -1,0 +1,211 @@
+# SoulLink v1.5.3 — Proto Frontend Reference (Phoenix)
+
+> *"Souls aren’t chatbots — they’re citizens."*
+
+This document exists as a **permanent anchor** for frontend decisions.
+If something feels wrong later, compare it against this file.
+
+---
+
+## CORE FRONTEND PHILOSOPHY
+
+* Frontend represents **places**, not screens
+* UI is **diegetic** whenever possible
+* Navigation reinforces **world continuity**, not efficiency
+* Emotional clarity > feature density
+
+If a UI element breaks immersion, it must justify itself.
+
+---
+
+## MVP FRONTEND STRUCTURE (v1.5.3)
+
+### 1. APARTMENT HUB (PRIMARY ENTRY)
+
+**Status:** MVP REQUIRED
+
+**Purpose:**
+
+* Emotional anchor
+* Player identity reflection
+* Soft system dashboard
+
+**Required Interactive Elements (MVP):**
+
+* **Wall Frame**: displays highest-intimacy soul
+* **Window**: city skyline (static image acceptable for MVP)
+* **Mirror**: persona editor (basic fields only)
+* **Bed**: logout / return-to-menu
+
+**Deferred (Post-MVP):**
+
+* TV ads
+* Mailbox
+* Closet
+* Album
+
+> Rule: Apartment must never feel like a menu.
+
+---
+
+### 2. MAP — LINK CITY
+
+**Status:** MVP REQUIRED
+
+**Purpose:**
+
+* Establish souls as physical entities
+* Drive availability logic
+* Provide spatial truth
+
+**MVP Implementation:**
+
+* Static isometric image
+* 7–10 tappable locations
+* Location status icons:
+
+  * GREEN = active
+  * RED = empty
+  * CLOCK = closed
+
+**Location Popup Must Show:**
+
+* Location name
+* Open hours
+* Souls currently present
+* [Enter] button
+
+> Rule: If a soul is unavailable, the map explains why.
+
+---
+
+### 3. EXPLORE — SOUL DIRECTORY
+
+**Status:** MVP REQUIRED
+
+**Purpose:**
+
+* Intentional discovery
+* Transparency
+
+**Layout:**
+
+* Vertical scroll
+* Soul cards containing:
+
+  * Portrait
+  * Name
+  * Archetype
+  * Current location
+  * Intimacy tier
+
+**Filters (MVP):**
+
+* Archetype
+* Gender
+* Location
+
+**Sorting:**
+
+* Alphabetical
+* Relationship
+
+> Rule: Explore is not manipulative.
+
+---
+
+### 4. CHAT
+
+**Status:** MVP REQUIRED
+
+**Purpose:**
+
+* Core experience
+
+**Requirements:**
+
+* Full-screen focus
+* Location-aware tone
+* Intimacy-aware responses
+* Memory summaries visible only to system (not user-facing)
+
+> Rule: Chat must never feel like a chatbot interface.
+
+---
+
+### 5. CHAT HISTORY
+
+**Status:** MVP REQUIRED
+
+**Purpose:**
+
+* Continuity
+* Trust reinforcement
+
+**Elements:**
+
+* Soul portrait
+* Last message preview
+* Timestamp
+* Unread indicator
+
+---
+
+### 6. DISCOVER (POST-MVP)
+
+**Status:** DEFERRED
+
+Reason: Requires sufficient soul population and behavior data.
+
+---
+
+## NAVIGATION FLOW
+
+* App Launch → Apartment Hub
+* Apartment → Map / Explore
+* Map → Location → Chat
+* Explore → Chat
+* Chat → Back returns to origin (Map or Explore)
+
+> Rule: No dead ends. Always return the player to a place.
+
+---
+
+## SYSTEM ALIGNMENT NOTES
+
+* Frontend must respect **relationship table** as source of truth
+* Location presence is authoritative
+* Intimacy tiers drive UI accents (subtle color shifts later)
+
+---
+
+## MVP NON-GOALS
+
+Explicitly **not** required for v1.5.3:
+
+* Animations
+* Weather
+* Voice
+* Discover feed
+* Events
+* Minigames
+
+Cutting these is not a compromise — it is discipline.
+
+---
+
+## FINAL CHECK
+
+Before adding any frontend feature, ask:
+
+1. Does this reinforce souls as citizens?
+2. Does this preserve immersion?
+3. Does this respect player agency?
+
+If any answer is no — stop.
+
+---
+
+**Phoenix Principle:**
+
+> *Make it real before making it pretty.*

@@ -1,0 +1,1151 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\python.exe
+cachedir: .pytest_cache
+rootdir: D:\Coding\SynonTech\SoulLink_v1.5.6
+configfile: pytest.ini
+plugins: anyio-4.12.1, asyncio-1.3.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+backend/tests/test_load.py::test_load_50_concurrent_users FAILED         [ 14%]
+backend/tests/test_rate_limits.py::test_global_rate_limit FAILED         [ 28%]
+backend/tests/test_errors.py::test_malformed_json PASSED                 [ 42%]
+backend/tests/test_errors.py::test_missing_fields PASSED                 [ 57%]
+backend/tests/test_errors.py::test_database_downtime_simulation PASSED   [ 71%]
+backend/tests/test_errors.py::test_sentry_capture_on_error PASSED        [ 85%]
+backend/tests/test_errors.py::test_large_payload_limit FAILED            [100%]
+
+================================== FAILURES ===================================
+________________________ test_load_50_concurrent_users ________________________
+backend\tests\test_load.py:148: in test_load_50_concurrent_users
+    assert avg_latency < 1.0, f"Average latency too high: {avg_latency:.4f}s"
+E   AssertionError: Average latency too high: 3.3278s
+E   assert 3.32784158 < 1.0
+---------------------------- Captured stdout call -----------------------------
+
+[WARM] Pre-warming cache...
+[2026-03-02T17:51:03.062643+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+
+[START] Launching 50 concurrent requests to /locations...
+[2026-03-02T17:51:03.666025+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.5236s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.697674+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.5589s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.729826+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.5896s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.761882+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.6247s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.793585+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.6563s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.825436+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.6865s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.857378+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.7191s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.888564+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.7485s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.919979+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.7793s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.951728+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.8094s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:03.983164+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.8387s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.014723+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.8741s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.046586+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.9078s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.078304+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.9356s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.110284+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.9654s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.141689+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.0031s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.172984+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.0339s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.205140+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.0653s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.236678+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.0941s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.268314+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.1279s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.300281+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.1613s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.332160+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.1927s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.364080+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.2261s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.398159+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.2582s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.430162+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.2905s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.461682+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.3235s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.493480+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.3551s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.525929+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.3852s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.558730+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4194s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.590892+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4511s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.622407+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4839s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.653829+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5153s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.685943+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5478s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.717563+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5806s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+[2026-03-02T17:51:04.750004+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5617s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:04.782457+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [be52f23a-b36d-4770-bc85-2dda636adfca]: GET http://test/api/v1/map/locations took 1.7024s
+[2026-03-02T17:51:04.783247+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5603s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:04.816390+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4669s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:04.847519+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5294s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:04.878726+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4976s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:04.910806+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.6241s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:04.943693+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.6892s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:04.976683+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5644s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.008776+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5634s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.041108+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [f5bd6318-ba9e-44b7-b1c6-a21db3f64317]: GET http://test/api/v1/map/locations took 1.9618s
+[2026-03-02T17:51:05.041417+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [1335c2bb-1a73-4ce3-a8f0-b6bd94205bb4]: GET http://test/api/v1/map/locations took 1.9618s
+[2026-03-02T17:51:05.041597+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [aad15d3e-c14f-4540-afae-63de2dcec84f]: GET http://test/api/v1/map/locations took 1.9622s
+[2026-03-02T17:51:05.041750+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [b7d6a0c6-7841-44fb-a432-6bc53fea2d63]: GET http://test/api/v1/map/locations took 1.9626s
+[2026-03-02T17:51:05.042497+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.8060s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.074166+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.9326s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.105407+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [3b4b23a5-ac2c-45e0-8305-23ba3027faa3]: GET http://test/api/v1/map/locations took 2.0260s
+[2026-03-02T17:51:05.105636+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5043s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.136855+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4073s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.168128+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [1664fcf8-75af-42df-abf4-cf9414ec359c]: GET http://test/api/v1/map/locations took 2.0879s
+[2026-03-02T17:51:05.168439+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.6919s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.200303+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.6419s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.232167+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4387s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.263604+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.9954s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.295326+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5978s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.327428+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.0275s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.359144+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.8334s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.390905+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (0.9929s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.422998+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.6613s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.455072+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5036s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.486539+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.9479s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.517996+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.8521s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.549537+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (2.0418s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.581372+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.2493s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.613264+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4404s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.644518+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (2.0118s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.676445+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.8192s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.707596+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.6612s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.738609+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.8188s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.769853+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.7868s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.801596+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4376s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.833104+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.7234s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.864756+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4032s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.896347+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4663s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.932790+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4395s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.965335+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (2.0769s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:05.997118+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.9190s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.028780+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (2.4590s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.060660+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.8557s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.092942+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (2.0784s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.125073+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [1f31306b-3cb9-4f72-bf4a-02d31629a93a]: GET http://test/api/v1/map/locations took 3.0438s
+[2026-03-02T17:51:06.125288+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [bdbf627d-648c-4a1d-8333-357230e3bfa5]: GET http://test/api/v1/map/locations took 3.0455s
+[2026-03-02T17:51:06.125783+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (2.3005s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.157806+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.4089s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.189868+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5676s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.221447+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [1d06effd-436c-4975-ae40-8936dadd3ccf]: GET http://test/api/v1/map/locations took 3.1404s
+[2026-03-02T17:51:06.221669+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [9b557dfd-a6a8-41f3-aa84-ad8f742baf09]: GET http://test/api/v1/map/locations took 3.1404s
+[2026-03-02T17:51:06.221825+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [766276d7-93bc-4368-b2b0-b8181f388caf]: GET http://test/api/v1/map/locations took 3.1427s
+[2026-03-02T17:51:06.221943+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [21aa1376-38d9-4b05-935a-364dd9796989]: GET http://test/api/v1/map/locations took 3.1410s
+[2026-03-02T17:51:06.222133+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [7c60dce4-921f-4088-88b3-2232d1f94c89]: GET http://test/api/v1/map/locations took 3.1425s
+[2026-03-02T17:51:06.222269+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c8187d34-6ab6-44dd-829b-c13719b2d78a]: GET http://test/api/v1/map/locations took 3.1414s
+[2026-03-02T17:51:06.222360+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [be8f4a10-3e34-47dd-8382-4fe8e61b7673]: GET http://test/api/v1/map/locations took 3.1427s
+[2026-03-02T17:51:06.222624+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [68cfd887-0a22-4920-903d-f8ee07c40e1e]: GET http://test/api/v1/map/locations took 3.1416s
+[2026-03-02T17:51:06.222744+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [13cee7df-d81e-4d3d-94f2-7b30438949d5]: GET http://test/api/v1/map/locations took 3.1427s
+[2026-03-02T17:51:06.222834+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [5217ee7f-07d2-43ea-9435-eef4bdd15249]: GET http://test/api/v1/map/locations took 3.1417s
+[2026-03-02T17:51:06.222918+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ae24bdee-aa71-4f50-bbf9-6d0a15e8395b]: GET http://test/api/v1/map/locations took 3.1425s
+[2026-03-02T17:51:06.222999+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [1861cc9b-4f65-42b3-968f-4fd5549625bb]: GET http://test/api/v1/map/locations took 3.1427s
+[2026-03-02T17:51:06.223079+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ef6e7bed-5be6-4d49-ba5f-404cef53c85d]: GET http://test/api/v1/map/locations took 3.1424s
+[2026-03-02T17:51:06.223158+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [2bb45c54-b012-48ca-9f46-15f325e119eb]: GET http://test/api/v1/map/locations took 3.1420s
+[2026-03-02T17:51:06.223243+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [3157f7b2-bc9d-466e-96e7-a373b82ded09]: GET http://test/api/v1/map/locations took 3.1428s
+[2026-03-02T17:51:06.223320+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [712ac3fc-e537-457f-83e7-f1dc5d3cffe0]: GET http://test/api/v1/map/locations took 3.1425s
+[2026-03-02T17:51:06.223399+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [8abfdbeb-d16d-4bb4-a972-e1a7956c58cf]: GET http://test/api/v1/map/locations took 3.1432s
+[2026-03-02T17:51:06.223479+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e6c5e327-8020-492e-a179-9aec10266840]: GET http://test/api/v1/map/locations took 3.1424s
+[2026-03-02T17:51:06.223598+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [47a9a173-bf70-42e7-af66-e4251070f8c2]: GET http://test/api/v1/map/locations took 3.1428s
+[2026-03-02T17:51:06.223689+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [607f75a2-b6ac-4ca8-978d-4d74c2ce046b]: GET http://test/api/v1/map/locations took 3.1427s
+[2026-03-02T17:51:06.224033+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [966e5480-23cb-47e0-a9f8-8df345fa7526]: GET http://test/api/v1/map/locations took 3.1429s
+[2026-03-02T17:51:06.224151+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [13a2a483-c903-47a4-b803-5b8e5c834cd4]: GET http://test/api/v1/map/locations took 3.1432s
+[2026-03-02T17:51:06.224291+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [f6a89c46-c330-4968-a3c5-e8257d3fb22c]: GET http://test/api/v1/map/locations took 3.1442s
+[2026-03-02T17:51:06.224374+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [3b0e3b45-0aa7-49ce-870a-5e900f6e2c23]: GET http://test/api/v1/map/locations took 3.1441s
+[2026-03-02T17:51:06.224451+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [4672626f-a00a-4a3a-9f59-3ce435902acc]: GET http://test/api/v1/map/locations took 3.1452s
+[2026-03-02T17:51:06.224530+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [3be1a8b5-c094-4e96-869b-16085471545d]: GET http://test/api/v1/map/locations took 3.1448s
+[2026-03-02T17:51:06.224610+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [84e75382-74a6-4fb3-af99-a1c09c904280]: GET http://test/api/v1/map/locations took 3.1446s
+[2026-03-02T17:51:06.224698+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5711s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.255933+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.5385s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.287519+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [18588216-5cef-4c3d-bca5-7026e54471a6]: GET http://test/api/v1/map/locations took 3.2076s
+[2026-03-02T17:51:06.287739+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.6020s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.318823+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [50a09693-0faa-4a9e-bd4a-63a5331a7023]: GET http://test/api/v1/map/locations took 3.2384s
+[2026-03-02T17:51:06.319082+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [527f9958-f4e0-47eb-bc65-53dd9f935b15]: GET http://test/api/v1/map/locations took 3.2386s
+[2026-03-02T17:51:06.319222+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [bb4da162-abac-4cc6-91fd-2f322b5d8fef]: GET http://test/api/v1/map/locations took 3.2383s
+[2026-03-02T17:51:06.319343+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [44f6f39f-93c4-41a4-8d8b-90ad16d5836c]: GET http://test/api/v1/map/locations took 3.2393s
+[2026-03-02T17:51:06.319473+00:00] [WARNING] [SoulLink.Database] [N/A] SLOW QUERY (1.7288s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+[2026-03-02T17:51:06.350895+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [12589b29-2639-437f-8e36-ecf564b83c4b]: GET http://test/api/v1/map/locations took 3.2696s
+[2026-03-02T17:51:06.351130+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [9c5a8a7f-e9f8-4c79-bc30-cd76249bf866]: GET http://test/api/v1/map/locations took 3.2719s
+[2026-03-02T17:51:06.352001+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [d4fb1e2d-8977-4fca-9f3d-b094e4e27e40]: GET http://test/api/v1/map/locations took 3.2721s
+[2026-03-02T17:51:06.352478+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [5756f278-9fb8-45af-9498-f380e57368d0]: GET http://test/api/v1/map/locations took 3.2731s
+[2026-03-02T17:51:06.352589+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [76eca400-6d2c-4451-8599-39fa788dedea]: GET http://test/api/v1/map/locations took 3.2724s
+[2026-03-02T17:51:06.353372+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c08f8158-cdc0-422a-9923-ec3f485ac764]: GET http://test/api/v1/map/locations took 3.2729s
+[2026-03-02T17:51:06.353529+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [38e90861-b3bc-439f-97ea-48b11bc93097]: GET http://test/api/v1/map/locations took 3.2732s
+[2026-03-02T17:51:06.353645+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [724cb119-f4da-47a7-b47c-e350ff50b2ee]: GET http://test/api/v1/map/locations took 3.2731s
+[2026-03-02T17:51:06.353802+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [361f5f87-3bda-4a6e-b0e0-59e0978bb150]: GET http://test/api/v1/map/locations took 3.2747s
+[2026-03-02T17:51:06.360159+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.385707+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.386175+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.386885+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.387196+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.389496+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.389839+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.390675+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.390982+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.391288+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.391634+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.392056+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.392334+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.392630+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.392958+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.393324+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.398117+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.398504+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.398799+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.399069+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.399537+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.400215+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.400513+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.400804+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.401143+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.401439+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.401876+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.402136+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.402386+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.402662+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.402932+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.403192+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.403457+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.403735+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.403993+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.404305+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.404619+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.404898+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.405948+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.406269+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.406581+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.406847+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.407150+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.407420+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.407673+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.407911+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.408199+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.408532+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.408812+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[2026-03-02T17:51:06.409129+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+[METRICS] Results:
+  - Total Time: 3.3462s
+  - Avg Latency: 3.3278s
+  - Max Latency: 3.3427s
+  - Success Rate: 50/50
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.5236s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.5589s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.5896s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.6247s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.6563s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.6865s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.7191s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.7485s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.7793s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.8094s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.8387s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.8741s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.9078s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.9356s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.9654s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.0031s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.0339s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.0653s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.0941s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.1279s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.1613s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.1927s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.2261s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.2582s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.2905s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.3235s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.3551s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.3852s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4194s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4511s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4839s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5153s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5478s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5806s): SELECT current_time_slot, current_season, current_weather FROM users WHERE user_id = ?
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5617s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [be52f23a-b36d-4770-bc85-2dda636adfca]: GET http://test/api/v1/map/locations took 1.7024s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5603s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4669s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5294s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4976s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.6241s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.6892s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5644s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5634s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [f5bd6318-ba9e-44b7-b1c6-a21db3f64317]: GET http://test/api/v1/map/locations took 1.9618s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [1335c2bb-1a73-4ce3-a8f0-b6bd94205bb4]: GET http://test/api/v1/map/locations took 1.9618s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [aad15d3e-c14f-4540-afae-63de2dcec84f]: GET http://test/api/v1/map/locations took 1.9622s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [b7d6a0c6-7841-44fb-a432-6bc53fea2d63]: GET http://test/api/v1/map/locations took 1.9626s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.8060s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.9326s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [3b4b23a5-ac2c-45e0-8305-23ba3027faa3]: GET http://test/api/v1/map/locations took 2.0260s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5043s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4073s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [1664fcf8-75af-42df-abf4-cf9414ec359c]: GET http://test/api/v1/map/locations took 2.0879s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.6919s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.6419s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4387s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.9954s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5978s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.0275s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.8334s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (0.9929s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.6613s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5036s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.9479s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.8521s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (2.0418s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.2493s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4404s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (2.0118s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.8192s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.6612s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.8188s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.7868s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4376s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.7234s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4032s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4663s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4395s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (2.0769s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.9190s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (2.4590s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.8557s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (2.0784s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [1f31306b-3cb9-4f72-bf4a-02d31629a93a]: GET http://test/api/v1/map/locations took 3.0438s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [bdbf627d-648c-4a1d-8333-357230e3bfa5]: GET http://test/api/v1/map/locations took 3.0455s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (2.3005s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.4089s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5676s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [1d06effd-436c-4975-ae40-8936dadd3ccf]: GET http://test/api/v1/map/locations took 3.1404s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [9b557dfd-a6a8-41f3-aa84-ad8f742baf09]: GET http://test/api/v1/map/locations took 3.1404s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [766276d7-93bc-4368-b2b0-b8181f388caf]: GET http://test/api/v1/map/locations took 3.1427s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [21aa1376-38d9-4b05-935a-364dd9796989]: GET http://test/api/v1/map/locations took 3.1410s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [7c60dce4-921f-4088-88b3-2232d1f94c89]: GET http://test/api/v1/map/locations took 3.1425s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c8187d34-6ab6-44dd-829b-c13719b2d78a]: GET http://test/api/v1/map/locations took 3.1414s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [be8f4a10-3e34-47dd-8382-4fe8e61b7673]: GET http://test/api/v1/map/locations took 3.1427s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [68cfd887-0a22-4920-903d-f8ee07c40e1e]: GET http://test/api/v1/map/locations took 3.1416s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [13cee7df-d81e-4d3d-94f2-7b30438949d5]: GET http://test/api/v1/map/locations took 3.1427s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [5217ee7f-07d2-43ea-9435-eef4bdd15249]: GET http://test/api/v1/map/locations took 3.1417s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ae24bdee-aa71-4f50-bbf9-6d0a15e8395b]: GET http://test/api/v1/map/locations took 3.1425s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [1861cc9b-4f65-42b3-968f-4fd5549625bb]: GET http://test/api/v1/map/locations took 3.1427s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ef6e7bed-5be6-4d49-ba5f-404cef53c85d]: GET http://test/api/v1/map/locations took 3.1424s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [2bb45c54-b012-48ca-9f46-15f325e119eb]: GET http://test/api/v1/map/locations took 3.1420s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [3157f7b2-bc9d-466e-96e7-a373b82ded09]: GET http://test/api/v1/map/locations took 3.1428s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [712ac3fc-e537-457f-83e7-f1dc5d3cffe0]: GET http://test/api/v1/map/locations took 3.1425s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [8abfdbeb-d16d-4bb4-a972-e1a7956c58cf]: GET http://test/api/v1/map/locations took 3.1432s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e6c5e327-8020-492e-a179-9aec10266840]: GET http://test/api/v1/map/locations took 3.1424s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [47a9a173-bf70-42e7-af66-e4251070f8c2]: GET http://test/api/v1/map/locations took 3.1428s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [607f75a2-b6ac-4ca8-978d-4d74c2ce046b]: GET http://test/api/v1/map/locations took 3.1427s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [966e5480-23cb-47e0-a9f8-8df345fa7526]: GET http://test/api/v1/map/locations took 3.1429s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [13a2a483-c903-47a4-b803-5b8e5c834cd4]: GET http://test/api/v1/map/locations took 3.1432s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [f6a89c46-c330-4968-a3c5-e8257d3fb22c]: GET http://test/api/v1/map/locations took 3.1442s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [3b0e3b45-0aa7-49ce-870a-5e900f6e2c23]: GET http://test/api/v1/map/locations took 3.1441s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [4672626f-a00a-4a3a-9f59-3ce435902acc]: GET http://test/api/v1/map/locations took 3.1452s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [3be1a8b5-c094-4e96-869b-16085471545d]: GET http://test/api/v1/map/locations took 3.1448s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [84e75382-74a6-4fb3-af99-a1c09c904280]: GET http://test/api/v1/map/locations took 3.1446s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5711s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.5385s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [18588216-5cef-4c3d-bca5-7026e54471a6]: GET http://test/api/v1/map/locations took 3.2076s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.6020s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [50a09693-0faa-4a9e-bd4a-63a5331a7023]: GET http://test/api/v1/map/locations took 3.2384s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [527f9958-f4e0-47eb-bc65-53dd9f935b15]: GET http://test/api/v1/map/locations took 3.2386s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [bb4da162-abac-4cc6-91fd-2f322b5d8fef]: GET http://test/api/v1/map/locations took 3.2383s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [44f6f39f-93c4-41a4-8d8b-90ad16d5836c]: GET http://test/api/v1/map/locations took 3.2393s
+WARNING  SoulLink.Database:session.py:35 SLOW QUERY (1.7288s): SELECT link_states.id, link_states.user_id, link_states.soul_id, link_states.current_mood, link_states.current_location, link_states.energy_pool, link_states.intimacy_score, link_states.intimacy_tier, link_states.mask_integrity, link_states.signal_stability, link_states.last_stability_decay, link_states.unlocked_nsfw, link_states.is_architect, link_states.created_at, link_states.last_interaction, link_states.flags, link_states.total_messages_sent 
+FROM link_states 
+WHERE link_states.user_id = ? AND link_states.current_location IS NOT NULL
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [12589b29-2639-437f-8e36-ecf564b83c4b]: GET http://test/api/v1/map/locations took 3.2696s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [9c5a8a7f-e9f8-4c79-bc30-cd76249bf866]: GET http://test/api/v1/map/locations took 3.2719s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [d4fb1e2d-8977-4fca-9f3d-b094e4e27e40]: GET http://test/api/v1/map/locations took 3.2721s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [5756f278-9fb8-45af-9498-f380e57368d0]: GET http://test/api/v1/map/locations took 3.2731s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [76eca400-6d2c-4451-8599-39fa788dedea]: GET http://test/api/v1/map/locations took 3.2724s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c08f8158-cdc0-422a-9923-ec3f485ac764]: GET http://test/api/v1/map/locations took 3.2729s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [38e90861-b3bc-439f-97ea-48b11bc93097]: GET http://test/api/v1/map/locations took 3.2732s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [724cb119-f4da-47a7-b47c-e350ff50b2ee]: GET http://test/api/v1/map/locations took 3.2731s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [361f5f87-3bda-4a6e-b0e0-59e0978bb150]: GET http://test/api/v1/map/locations took 3.2747s
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/map/locations "HTTP/1.1 200 OK"
+___________________________ test_global_rate_limit ____________________________
+backend\tests\test_rate_limits.py:26: in test_global_rate_limit
+    assert 429 in status_codes, f"Did not trigger rate limit! Codes: {status_codes[:10]}..."
+E   AssertionError: Did not trigger rate limit! Codes: [200, 200, 200, 200, 200, 200, 200, 200, 200, 200]...
+E   assert 429 in [200, 200, 200, 200, 200, 200, ...]
+---------------------------- Captured stdout call -----------------------------
+[2026-03-02T17:51:10.672208+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e47b2faa-1e9a-47a0-9c77-ee53bf3be838]: GET http://test/api/v1/users/me took 3.7687s
+[2026-03-02T17:51:10.672532+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ddd5e480-fea5-4fd3-be62-8c1bde66dec9]: GET http://test/api/v1/users/me took 3.7690s
+[2026-03-02T17:51:10.672702+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ed87ea2d-0a8e-4937-a095-be0d3fc5c52f]: GET http://test/api/v1/users/me took 3.7691s
+[2026-03-02T17:51:10.672910+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [5dba787e-f594-411d-89eb-3b6f6a31bcf8]: GET http://test/api/v1/users/me took 3.7693s
+[2026-03-02T17:51:10.673041+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [d7bdeb9a-1fe3-4df7-8af4-9c674dd0bb09]: GET http://test/api/v1/users/me took 3.7694s
+[2026-03-02T17:51:10.673149+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [6c834968-4f2c-42ad-b425-28408173663f]: GET http://test/api/v1/users/me took 3.7695s
+[2026-03-02T17:51:10.673241+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [6c3289a5-76e3-4ff4-9f0e-4deb9785209b]: GET http://test/api/v1/users/me took 3.7695s
+[2026-03-02T17:51:10.673358+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [9f9b2714-6c7f-473a-96e1-22aa493eec69]: GET http://test/api/v1/users/me took 3.7696s
+[2026-03-02T17:51:10.673470+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [2077c951-7117-4025-a51e-fe12dc33ed53]: GET http://test/api/v1/users/me took 3.7697s
+[2026-03-02T17:51:10.673605+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [24ad46cc-3653-4a85-8477-65184d9c614c]: GET http://test/api/v1/users/me took 3.7698s
+[2026-03-02T17:51:10.673699+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c8f2f45a-9dab-4690-bfa2-40d535c9c474]: GET http://test/api/v1/users/me took 3.7697s
+[2026-03-02T17:51:10.673786+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [936c6ed0-215a-49c2-b3af-459f96a8692d]: GET http://test/api/v1/users/me took 3.7697s
+[2026-03-02T17:51:10.674245+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [fdf61fcc-91fa-448e-8af1-b1e1b954ba07]: GET http://test/api/v1/users/me took 3.7701s
+[2026-03-02T17:51:10.674372+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [89425b7d-b7a6-42eb-b785-58a7e0015baf]: GET http://test/api/v1/users/me took 3.7702s
+[2026-03-02T17:51:10.674466+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [56fa4776-a72d-4614-bbb2-3c6b4d8c9eeb]: GET http://test/api/v1/users/me took 3.7702s
+[2026-03-02T17:51:10.674554+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e9ef4c1f-b221-4e57-978d-9dbb738e7cbb]: GET http://test/api/v1/users/me took 3.7703s
+[2026-03-02T17:51:10.674638+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c8a3d7f9-ba20-4a7c-9e63-90b38709bd9e]: GET http://test/api/v1/users/me took 3.7703s
+[2026-03-02T17:51:10.674727+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [6450fa31-2bc6-4709-bdc9-2d3b2e19c809]: GET http://test/api/v1/users/me took 3.7704s
+[2026-03-02T17:51:10.674810+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [9a26a2c0-2c77-4d98-bca1-ad0c9f308d38]: GET http://test/api/v1/users/me took 3.7704s
+[2026-03-02T17:51:10.675078+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [d7776de8-ad7e-4259-8ce6-bdc1f92fe573]: GET http://test/api/v1/users/me took 3.7707s
+[2026-03-02T17:51:10.675278+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [400f24bf-362f-4026-879d-898341ff4eb5]: GET http://test/api/v1/users/me took 3.7708s
+[2026-03-02T17:51:10.675446+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [1a178dea-ef4d-498e-8813-62dda7cc682f]: GET http://test/api/v1/users/me took 3.7710s
+[2026-03-02T17:51:10.675565+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [873bde10-92eb-4856-a1b1-496859d55daa]: GET http://test/api/v1/users/me took 3.7711s
+[2026-03-02T17:51:10.675672+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [1ad5583c-ed7c-4ceb-95f5-626b4b655700]: GET http://test/api/v1/users/me took 3.7711s
+[2026-03-02T17:51:10.675799+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [cf21cd85-dded-418a-80ff-c4c9b6014eeb]: GET http://test/api/v1/users/me took 3.7712s
+[2026-03-02T17:51:10.675892+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [2e4ab8ed-4459-490c-b294-6301046790a3]: GET http://test/api/v1/users/me took 3.7713s
+[2026-03-02T17:51:10.675987+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [fcf695f3-10c9-4a9a-be1c-3ea7c91ae949]: GET http://test/api/v1/users/me took 3.7714s
+[2026-03-02T17:51:10.676071+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [49291043-0fe9-4c45-9f5f-7dbf24bfd04e]: GET http://test/api/v1/users/me took 3.7714s
+[2026-03-02T17:51:10.676155+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [3aa812ab-f881-46eb-8557-fbb270243f6a]: GET http://test/api/v1/users/me took 3.7714s
+[2026-03-02T17:51:10.676238+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [63d2a73c-fda8-4730-b38b-bc217b9e36e6]: GET http://test/api/v1/users/me took 3.7715s
+[2026-03-02T17:51:10.676321+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [95669a0b-bd86-4f5b-9732-cdd7dcd45d29]: GET http://test/api/v1/users/me took 3.7715s
+[2026-03-02T17:51:10.676400+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [b2596ac2-f784-432e-b48b-4c3633966788]: GET http://test/api/v1/users/me took 3.7716s
+[2026-03-02T17:51:10.676482+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [647dbc4a-804b-4518-8fd5-dd10c6ec53e5]: GET http://test/api/v1/users/me took 3.7716s
+[2026-03-02T17:51:10.676562+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c3c95479-9b09-419c-bec0-b6f3eb477b57]: GET http://test/api/v1/users/me took 3.7717s
+[2026-03-02T17:51:10.676643+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [cb990360-81b6-44a9-9fe5-d3ec2158a468]: GET http://test/api/v1/users/me took 3.7717s
+[2026-03-02T17:51:10.676723+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [af849650-235d-4b6d-8781-de459665a469]: GET http://test/api/v1/users/me took 3.7716s
+[2026-03-02T17:51:10.676802+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [134eb534-2720-4c5d-81d7-2633fb5309ed]: GET http://test/api/v1/users/me took 3.7717s
+[2026-03-02T17:51:10.676882+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e7c49aad-0ae2-454c-a059-61b80f2b0adb]: GET http://test/api/v1/users/me took 3.7717s
+[2026-03-02T17:51:10.676978+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [0eca2fbd-1029-4b19-816a-60d618a73c90]: GET http://test/api/v1/users/me took 3.7718s
+[2026-03-02T17:51:10.677068+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [84b89bc6-515c-4c2c-a672-5c7a435f1bb8]: GET http://test/api/v1/users/me took 3.7718s
+[2026-03-02T17:51:10.677154+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [a26d4715-19ff-4e9e-be4b-5b4ea54be16b]: GET http://test/api/v1/users/me took 3.7719s
+[2026-03-02T17:51:10.677236+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ed2dc256-7f44-479d-96d4-c9eafee0df28]: GET http://test/api/v1/users/me took 3.7719s
+[2026-03-02T17:51:10.677317+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e1d3158b-f4c7-42cb-b5af-06f2db9b1562]: GET http://test/api/v1/users/me took 3.7719s
+[2026-03-02T17:51:10.677400+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [7155b87d-6361-4ef0-a236-5d79309e1944]: GET http://test/api/v1/users/me took 3.7720s
+[2026-03-02T17:51:10.677490+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [745e229f-7e68-45ee-9b92-4aef7fc9bb67]: GET http://test/api/v1/users/me took 3.7720s
+[2026-03-02T17:51:10.677577+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [f32dac42-2a6c-4972-9362-bca51097ae08]: GET http://test/api/v1/users/me took 3.7721s
+[2026-03-02T17:51:10.677656+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [61aa25ef-b149-41f6-ae68-17471de250d4]: GET http://test/api/v1/users/me took 3.7721s
+[2026-03-02T17:51:10.677734+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [97c98804-df2f-4863-8284-85244ed638b8]: GET http://test/api/v1/users/me took 3.7722s
+[2026-03-02T17:51:10.677826+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [9ef45109-1ada-42a8-923e-795f44b64271]: GET http://test/api/v1/users/me took 3.7723s
+[2026-03-02T17:51:10.677908+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [b6fede46-f894-40fd-8c6d-386c79aa2528]: GET http://test/api/v1/users/me took 3.7723s
+[2026-03-02T17:51:10.677990+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [137185e0-2aa1-4647-816f-5766ba9fb928]: GET http://test/api/v1/users/me took 3.7724s
+[2026-03-02T17:51:10.678075+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [d907446a-7447-45cb-846a-93c5e06ba735]: GET http://test/api/v1/users/me took 3.7724s
+[2026-03-02T17:51:10.678159+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [40c33cea-e4ee-46cc-be1e-125aeb716f38]: GET http://test/api/v1/users/me took 3.7725s
+[2026-03-02T17:51:10.678248+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [073ac884-4863-4eba-9875-80239533147b]: GET http://test/api/v1/users/me took 3.7725s
+[2026-03-02T17:51:10.678324+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [d9e31960-2841-4fc1-8a54-2e3c92d31ec1]: GET http://test/api/v1/users/me took 3.7726s
+[2026-03-02T17:51:10.678404+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c077cb1e-f506-4baa-952c-91946bfc7cbf]: GET http://test/api/v1/users/me took 3.7726s
+[2026-03-02T17:51:10.678487+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ffeb4bb4-dccc-404b-8bc6-e5dcd098d951]: GET http://test/api/v1/users/me took 3.7726s
+[2026-03-02T17:51:10.678572+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [7a0377d0-d761-4dfd-a33f-7e23c34e5697]: GET http://test/api/v1/users/me took 3.7727s
+[2026-03-02T17:51:10.678667+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e622d992-72ba-4fde-95b7-a433bc55b873]: GET http://test/api/v1/users/me took 3.7728s
+[2026-03-02T17:51:10.678754+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e49bc2e0-f02a-4d11-a4e0-ff1334d0f358]: GET http://test/api/v1/users/me took 3.7728s
+[2026-03-02T17:51:10.678836+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [bfeb3596-0b35-4c3e-a6e4-7b94d7972c8f]: GET http://test/api/v1/users/me took 3.7727s
+[2026-03-02T17:51:10.678927+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [a8051e2d-8eda-40de-ae41-694a1c936d68]: GET http://test/api/v1/users/me took 3.7728s
+[2026-03-02T17:51:10.679027+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [323f8e81-da12-4bf7-8e06-2147be654378]: GET http://test/api/v1/users/me took 3.7728s
+[2026-03-02T17:51:10.679117+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [86fc9f7d-00ca-4c66-b5f9-bb7b6bef4957]: GET http://test/api/v1/users/me took 3.7729s
+[2026-03-02T17:51:10.679208+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [a7bf7d93-37cd-4596-ae17-2ea4868cbdba]: GET http://test/api/v1/users/me took 3.7729s
+[2026-03-02T17:51:10.679318+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [99e9ad2c-5f9b-40f3-8b9d-d267d7c7eced]: GET http://test/api/v1/users/me took 3.7730s
+[2026-03-02T17:51:10.679469+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [afb981c4-ae4d-42c5-83ed-038c73f0cce2]: GET http://test/api/v1/users/me took 3.7731s
+[2026-03-02T17:51:10.679572+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [b40cd006-7153-40bd-b106-548a0d76e3c1]: GET http://test/api/v1/users/me took 3.7732s
+[2026-03-02T17:51:10.679702+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e3b187c9-a5db-4d5c-8081-8e9fb690c8ff]: GET http://test/api/v1/users/me took 3.7733s
+[2026-03-02T17:51:10.679824+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [17d12d31-ab83-4576-8c8f-39c47e3496bf]: GET http://test/api/v1/users/me took 3.7734s
+[2026-03-02T17:51:10.680035+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [59be85c8-dc49-42e8-b3fa-c1cb19f8f4cc]: GET http://test/api/v1/users/me took 3.7735s
+[2026-03-02T17:51:10.680293+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [66f14f8e-b564-4fd1-9c45-67154b75ad94]: GET http://test/api/v1/users/me took 3.7738s
+[2026-03-02T17:51:10.681442+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [498a87d3-493d-4cbe-8dfb-ac072798b0ac]: GET http://test/api/v1/users/me took 3.7749s
+[2026-03-02T17:51:10.681570+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [b8aced96-db62-450b-9a7c-7473f4653507]: GET http://test/api/v1/users/me took 3.7750s
+[2026-03-02T17:51:10.681671+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [25bdad01-debe-4446-abf7-1aec819d6de4]: GET http://test/api/v1/users/me took 3.7751s
+[2026-03-02T17:51:10.681763+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [666f3287-fca5-416e-bf42-f06168bc3ece]: GET http://test/api/v1/users/me took 3.7751s
+[2026-03-02T17:51:10.681989+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [9589dbe7-46fe-42d6-8939-637691834233]: GET http://test/api/v1/users/me took 3.7753s
+[2026-03-02T17:51:10.682137+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [aacc3b95-467f-4d71-bc6d-15fe38f92279]: GET http://test/api/v1/users/me took 3.7754s
+[2026-03-02T17:51:10.682240+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [b68ce90d-ee2a-404a-ad0f-4266a0cf032a]: GET http://test/api/v1/users/me took 3.7755s
+[2026-03-02T17:51:10.682364+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [56899ddd-1491-4be9-80fc-89947a158164]: GET http://test/api/v1/users/me took 3.7756s
+[2026-03-02T17:51:10.682467+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [45953733-6b26-44bd-82ad-e829f59ecc3c]: GET http://test/api/v1/users/me took 3.7757s
+[2026-03-02T17:51:10.682603+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [21f536eb-8bcb-47cb-9828-517d6856b327]: GET http://test/api/v1/users/me took 3.7758s
+[2026-03-02T17:51:10.682698+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [18890751-7930-4c80-b67b-1c824ae3dec3]: GET http://test/api/v1/users/me took 3.7758s
+[2026-03-02T17:51:10.682781+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c10a2885-8ad6-4e4e-9d1b-98340387ab12]: GET http://test/api/v1/users/me took 3.7759s
+[2026-03-02T17:51:10.682863+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e5490f69-fed8-4e4f-93be-1c047a71158b]: GET http://test/api/v1/users/me took 3.7758s
+[2026-03-02T17:51:10.682959+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [b934f2b5-9a62-4b35-8d6a-e71d84c16b07]: GET http://test/api/v1/users/me took 3.7758s
+[2026-03-02T17:51:10.683069+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [f9cc4eec-1268-4fb7-a839-f73f178054df]: GET http://test/api/v1/users/me took 3.7759s
+[2026-03-02T17:51:10.683162+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [bb62d749-eb80-4eae-88f9-28ddd3d8124f]: GET http://test/api/v1/users/me took 3.7760s
+[2026-03-02T17:51:10.683255+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [3f70da6d-4036-4bf0-819b-c21f6af4eee7]: GET http://test/api/v1/users/me took 3.7760s
+[2026-03-02T17:51:10.683339+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [c6f4f150-365f-4d75-a830-2f674ae42dd9]: GET http://test/api/v1/users/me took 3.7760s
+[2026-03-02T17:51:10.683433+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [f385ce89-dd7b-4418-8fee-6a65f84cbe7c]: GET http://test/api/v1/users/me took 3.7761s
+[2026-03-02T17:51:10.683520+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ea7d1d96-9814-4625-9af7-b1cf019091de]: GET http://test/api/v1/users/me took 3.7762s
+[2026-03-02T17:51:10.683616+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [e4c853cb-a6f7-494c-a2a3-8ec00ac29ef1]: GET http://test/api/v1/users/me took 3.7762s
+[2026-03-02T17:51:10.683708+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [8ab0424a-227e-48fd-89d3-b1b200f55a8b]: GET http://test/api/v1/users/me took 3.7763s
+[2026-03-02T17:51:10.683794+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [67f8654f-2bec-43a5-b3f2-e6182bc9b2a4]: GET http://test/api/v1/users/me took 3.7763s
+[2026-03-02T17:51:10.683881+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [ea4387a6-c44b-4b9f-a21d-17cbec55a0c0]: GET http://test/api/v1/users/me took 3.7764s
+[2026-03-02T17:51:10.683966+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [83e14cfe-f31d-4453-b7c5-24289e5207bc]: GET http://test/api/v1/users/me took 3.7764s
+[2026-03-02T17:51:10.684052+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [7cbc19f3-6603-4017-b251-7ff187b7a29f]: GET http://test/api/v1/users/me took 3.7765s
+[2026-03-02T17:51:10.684135+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [984bdd5b-1bb2-45fa-965d-ea09b3d897a9]: GET http://test/api/v1/users/me took 3.7765s
+[2026-03-02T17:51:10.684219+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [6ad3c8ff-ec31-4695-b1fe-d04d6d567c2a]: GET http://test/api/v1/users/me took 3.7766s
+[2026-03-02T17:51:10.684305+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [af8886e9-4ead-491d-91f7-fe3faf36acf0]: GET http://test/api/v1/users/me took 3.7766s
+[2026-03-02T17:51:10.684390+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [f961a9ea-b9af-4a00-a233-f380a8fa5d95]: GET http://test/api/v1/users/me took 3.7767s
+[2026-03-02T17:51:10.684475+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [2ce28dd1-2f5c-4ff7-8cfc-50501d7fd96e]: GET http://test/api/v1/users/me took 3.7767s
+[2026-03-02T17:51:10.684560+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [23daa5ba-0be2-4462-a730-9cb0d6d73f6c]: GET http://test/api/v1/users/me took 3.7768s
+[2026-03-02T17:51:10.684650+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [484b0f2c-59e9-4ea6-a7ac-1b1cd49c2af2]: GET http://test/api/v1/users/me took 3.7769s
+[2026-03-02T17:51:10.684734+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [4234cb61-3a02-4911-a211-b62769eb8ddc]: GET http://test/api/v1/users/me took 3.7769s
+[2026-03-02T17:51:10.684821+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [7fd0955a-378e-4a48-9155-e42898657768]: GET http://test/api/v1/users/me took 3.7770s
+[2026-03-02T17:51:10.684922+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [047d9c7a-6886-40a2-b841-7ed3afa52d52]: GET http://test/api/v1/users/me took 3.7770s
+[2026-03-02T17:51:10.685043+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [d4a1dc1e-9d1a-42a6-844e-32e49b0a2530]: GET http://test/api/v1/users/me took 3.7771s
+[2026-03-02T17:51:10.685249+00:00] [WARNING] [SoulLink.Middleware.Performance] [N/A] SLOW REQUEST [dbcd67ac-6f0f-43cf-a162-5c7f26fadc65]: GET http://test/api/v1/users/me took 3.7771s
+[2026-03-02T17:51:10.695998+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.696529+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.696908+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.697739+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.698284+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.698871+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.699456+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.699804+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.700158+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.700467+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.700883+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.701188+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.701467+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.701723+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.701976+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.702231+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.702510+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.702768+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.703098+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.703437+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.703721+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.704002+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.704265+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.704523+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.704797+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.705070+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.705325+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.705572+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.705814+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.706098+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.706370+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.706628+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.706889+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.707164+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.707447+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.707752+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.708033+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.708288+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.708566+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.708894+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.709183+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.709477+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.710132+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.710529+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.711064+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.711453+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.711781+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.712797+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.713127+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.713397+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.713662+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.713951+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.714260+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.714532+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.714792+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.715044+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.715289+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.715569+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.715825+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.716104+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.716352+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.716668+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.716993+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.717275+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.717574+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.718235+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.718546+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.718915+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.719187+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.719479+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.719784+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.720474+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.720865+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.721217+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.721484+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.721815+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.722147+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.722402+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.722679+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.722944+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.723217+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.723614+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.724046+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.724381+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.725043+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.725325+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.725682+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.726062+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.726423+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.726828+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.727186+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.727915+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.728310+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.728723+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.729023+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.729292+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.729623+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.730308+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.730736+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.731109+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.731434+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.731734+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.732082+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.732388+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.732661+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.733527+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.733851+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.734167+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.734442+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+[2026-03-02T17:51:10.734761+00:00] [INFO] [httpx] [N/A] HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+------------------------------ Captured log call ------------------------------
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e47b2faa-1e9a-47a0-9c77-ee53bf3be838]: GET http://test/api/v1/users/me took 3.7687s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ddd5e480-fea5-4fd3-be62-8c1bde66dec9]: GET http://test/api/v1/users/me took 3.7690s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ed87ea2d-0a8e-4937-a095-be0d3fc5c52f]: GET http://test/api/v1/users/me took 3.7691s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [5dba787e-f594-411d-89eb-3b6f6a31bcf8]: GET http://test/api/v1/users/me took 3.7693s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [d7bdeb9a-1fe3-4df7-8af4-9c674dd0bb09]: GET http://test/api/v1/users/me took 3.7694s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [6c834968-4f2c-42ad-b425-28408173663f]: GET http://test/api/v1/users/me took 3.7695s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [6c3289a5-76e3-4ff4-9f0e-4deb9785209b]: GET http://test/api/v1/users/me took 3.7695s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [9f9b2714-6c7f-473a-96e1-22aa493eec69]: GET http://test/api/v1/users/me took 3.7696s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [2077c951-7117-4025-a51e-fe12dc33ed53]: GET http://test/api/v1/users/me took 3.7697s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [24ad46cc-3653-4a85-8477-65184d9c614c]: GET http://test/api/v1/users/me took 3.7698s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c8f2f45a-9dab-4690-bfa2-40d535c9c474]: GET http://test/api/v1/users/me took 3.7697s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [936c6ed0-215a-49c2-b3af-459f96a8692d]: GET http://test/api/v1/users/me took 3.7697s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [fdf61fcc-91fa-448e-8af1-b1e1b954ba07]: GET http://test/api/v1/users/me took 3.7701s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [89425b7d-b7a6-42eb-b785-58a7e0015baf]: GET http://test/api/v1/users/me took 3.7702s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [56fa4776-a72d-4614-bbb2-3c6b4d8c9eeb]: GET http://test/api/v1/users/me took 3.7702s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e9ef4c1f-b221-4e57-978d-9dbb738e7cbb]: GET http://test/api/v1/users/me took 3.7703s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c8a3d7f9-ba20-4a7c-9e63-90b38709bd9e]: GET http://test/api/v1/users/me took 3.7703s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [6450fa31-2bc6-4709-bdc9-2d3b2e19c809]: GET http://test/api/v1/users/me took 3.7704s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [9a26a2c0-2c77-4d98-bca1-ad0c9f308d38]: GET http://test/api/v1/users/me took 3.7704s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [d7776de8-ad7e-4259-8ce6-bdc1f92fe573]: GET http://test/api/v1/users/me took 3.7707s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [400f24bf-362f-4026-879d-898341ff4eb5]: GET http://test/api/v1/users/me took 3.7708s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [1a178dea-ef4d-498e-8813-62dda7cc682f]: GET http://test/api/v1/users/me took 3.7710s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [873bde10-92eb-4856-a1b1-496859d55daa]: GET http://test/api/v1/users/me took 3.7711s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [1ad5583c-ed7c-4ceb-95f5-626b4b655700]: GET http://test/api/v1/users/me took 3.7711s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [cf21cd85-dded-418a-80ff-c4c9b6014eeb]: GET http://test/api/v1/users/me took 3.7712s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [2e4ab8ed-4459-490c-b294-6301046790a3]: GET http://test/api/v1/users/me took 3.7713s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [fcf695f3-10c9-4a9a-be1c-3ea7c91ae949]: GET http://test/api/v1/users/me took 3.7714s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [49291043-0fe9-4c45-9f5f-7dbf24bfd04e]: GET http://test/api/v1/users/me took 3.7714s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [3aa812ab-f881-46eb-8557-fbb270243f6a]: GET http://test/api/v1/users/me took 3.7714s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [63d2a73c-fda8-4730-b38b-bc217b9e36e6]: GET http://test/api/v1/users/me took 3.7715s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [95669a0b-bd86-4f5b-9732-cdd7dcd45d29]: GET http://test/api/v1/users/me took 3.7715s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [b2596ac2-f784-432e-b48b-4c3633966788]: GET http://test/api/v1/users/me took 3.7716s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [647dbc4a-804b-4518-8fd5-dd10c6ec53e5]: GET http://test/api/v1/users/me took 3.7716s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c3c95479-9b09-419c-bec0-b6f3eb477b57]: GET http://test/api/v1/users/me took 3.7717s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [cb990360-81b6-44a9-9fe5-d3ec2158a468]: GET http://test/api/v1/users/me took 3.7717s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [af849650-235d-4b6d-8781-de459665a469]: GET http://test/api/v1/users/me took 3.7716s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [134eb534-2720-4c5d-81d7-2633fb5309ed]: GET http://test/api/v1/users/me took 3.7717s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e7c49aad-0ae2-454c-a059-61b80f2b0adb]: GET http://test/api/v1/users/me took 3.7717s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [0eca2fbd-1029-4b19-816a-60d618a73c90]: GET http://test/api/v1/users/me took 3.7718s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [84b89bc6-515c-4c2c-a672-5c7a435f1bb8]: GET http://test/api/v1/users/me took 3.7718s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [a26d4715-19ff-4e9e-be4b-5b4ea54be16b]: GET http://test/api/v1/users/me took 3.7719s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ed2dc256-7f44-479d-96d4-c9eafee0df28]: GET http://test/api/v1/users/me took 3.7719s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e1d3158b-f4c7-42cb-b5af-06f2db9b1562]: GET http://test/api/v1/users/me took 3.7719s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [7155b87d-6361-4ef0-a236-5d79309e1944]: GET http://test/api/v1/users/me took 3.7720s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [745e229f-7e68-45ee-9b92-4aef7fc9bb67]: GET http://test/api/v1/users/me took 3.7720s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [f32dac42-2a6c-4972-9362-bca51097ae08]: GET http://test/api/v1/users/me took 3.7721s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [61aa25ef-b149-41f6-ae68-17471de250d4]: GET http://test/api/v1/users/me took 3.7721s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [97c98804-df2f-4863-8284-85244ed638b8]: GET http://test/api/v1/users/me took 3.7722s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [9ef45109-1ada-42a8-923e-795f44b64271]: GET http://test/api/v1/users/me took 3.7723s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [b6fede46-f894-40fd-8c6d-386c79aa2528]: GET http://test/api/v1/users/me took 3.7723s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [137185e0-2aa1-4647-816f-5766ba9fb928]: GET http://test/api/v1/users/me took 3.7724s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [d907446a-7447-45cb-846a-93c5e06ba735]: GET http://test/api/v1/users/me took 3.7724s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [40c33cea-e4ee-46cc-be1e-125aeb716f38]: GET http://test/api/v1/users/me took 3.7725s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [073ac884-4863-4eba-9875-80239533147b]: GET http://test/api/v1/users/me took 3.7725s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [d9e31960-2841-4fc1-8a54-2e3c92d31ec1]: GET http://test/api/v1/users/me took 3.7726s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c077cb1e-f506-4baa-952c-91946bfc7cbf]: GET http://test/api/v1/users/me took 3.7726s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ffeb4bb4-dccc-404b-8bc6-e5dcd098d951]: GET http://test/api/v1/users/me took 3.7726s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [7a0377d0-d761-4dfd-a33f-7e23c34e5697]: GET http://test/api/v1/users/me took 3.7727s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e622d992-72ba-4fde-95b7-a433bc55b873]: GET http://test/api/v1/users/me took 3.7728s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e49bc2e0-f02a-4d11-a4e0-ff1334d0f358]: GET http://test/api/v1/users/me took 3.7728s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [bfeb3596-0b35-4c3e-a6e4-7b94d7972c8f]: GET http://test/api/v1/users/me took 3.7727s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [a8051e2d-8eda-40de-ae41-694a1c936d68]: GET http://test/api/v1/users/me took 3.7728s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [323f8e81-da12-4bf7-8e06-2147be654378]: GET http://test/api/v1/users/me took 3.7728s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [86fc9f7d-00ca-4c66-b5f9-bb7b6bef4957]: GET http://test/api/v1/users/me took 3.7729s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [a7bf7d93-37cd-4596-ae17-2ea4868cbdba]: GET http://test/api/v1/users/me took 3.7729s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [99e9ad2c-5f9b-40f3-8b9d-d267d7c7eced]: GET http://test/api/v1/users/me took 3.7730s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [afb981c4-ae4d-42c5-83ed-038c73f0cce2]: GET http://test/api/v1/users/me took 3.7731s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [b40cd006-7153-40bd-b106-548a0d76e3c1]: GET http://test/api/v1/users/me took 3.7732s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e3b187c9-a5db-4d5c-8081-8e9fb690c8ff]: GET http://test/api/v1/users/me took 3.7733s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [17d12d31-ab83-4576-8c8f-39c47e3496bf]: GET http://test/api/v1/users/me took 3.7734s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [59be85c8-dc49-42e8-b3fa-c1cb19f8f4cc]: GET http://test/api/v1/users/me took 3.7735s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [66f14f8e-b564-4fd1-9c45-67154b75ad94]: GET http://test/api/v1/users/me took 3.7738s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [498a87d3-493d-4cbe-8dfb-ac072798b0ac]: GET http://test/api/v1/users/me took 3.7749s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [b8aced96-db62-450b-9a7c-7473f4653507]: GET http://test/api/v1/users/me took 3.7750s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [25bdad01-debe-4446-abf7-1aec819d6de4]: GET http://test/api/v1/users/me took 3.7751s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [666f3287-fca5-416e-bf42-f06168bc3ece]: GET http://test/api/v1/users/me took 3.7751s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [9589dbe7-46fe-42d6-8939-637691834233]: GET http://test/api/v1/users/me took 3.7753s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [aacc3b95-467f-4d71-bc6d-15fe38f92279]: GET http://test/api/v1/users/me took 3.7754s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [b68ce90d-ee2a-404a-ad0f-4266a0cf032a]: GET http://test/api/v1/users/me took 3.7755s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [56899ddd-1491-4be9-80fc-89947a158164]: GET http://test/api/v1/users/me took 3.7756s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [45953733-6b26-44bd-82ad-e829f59ecc3c]: GET http://test/api/v1/users/me took 3.7757s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [21f536eb-8bcb-47cb-9828-517d6856b327]: GET http://test/api/v1/users/me took 3.7758s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [18890751-7930-4c80-b67b-1c824ae3dec3]: GET http://test/api/v1/users/me took 3.7758s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c10a2885-8ad6-4e4e-9d1b-98340387ab12]: GET http://test/api/v1/users/me took 3.7759s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e5490f69-fed8-4e4f-93be-1c047a71158b]: GET http://test/api/v1/users/me took 3.7758s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [b934f2b5-9a62-4b35-8d6a-e71d84c16b07]: GET http://test/api/v1/users/me took 3.7758s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [f9cc4eec-1268-4fb7-a839-f73f178054df]: GET http://test/api/v1/users/me took 3.7759s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [bb62d749-eb80-4eae-88f9-28ddd3d8124f]: GET http://test/api/v1/users/me took 3.7760s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [3f70da6d-4036-4bf0-819b-c21f6af4eee7]: GET http://test/api/v1/users/me took 3.7760s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [c6f4f150-365f-4d75-a830-2f674ae42dd9]: GET http://test/api/v1/users/me took 3.7760s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [f385ce89-dd7b-4418-8fee-6a65f84cbe7c]: GET http://test/api/v1/users/me took 3.7761s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ea7d1d96-9814-4625-9af7-b1cf019091de]: GET http://test/api/v1/users/me took 3.7762s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [e4c853cb-a6f7-494c-a2a3-8ec00ac29ef1]: GET http://test/api/v1/users/me took 3.7762s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [8ab0424a-227e-48fd-89d3-b1b200f55a8b]: GET http://test/api/v1/users/me took 3.7763s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [67f8654f-2bec-43a5-b3f2-e6182bc9b2a4]: GET http://test/api/v1/users/me took 3.7763s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [ea4387a6-c44b-4b9f-a21d-17cbec55a0c0]: GET http://test/api/v1/users/me took 3.7764s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [83e14cfe-f31d-4453-b7c5-24289e5207bc]: GET http://test/api/v1/users/me took 3.7764s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [7cbc19f3-6603-4017-b251-7ff187b7a29f]: GET http://test/api/v1/users/me took 3.7765s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [984bdd5b-1bb2-45fa-965d-ea09b3d897a9]: GET http://test/api/v1/users/me took 3.7765s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [6ad3c8ff-ec31-4695-b1fe-d04d6d567c2a]: GET http://test/api/v1/users/me took 3.7766s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [af8886e9-4ead-491d-91f7-fe3faf36acf0]: GET http://test/api/v1/users/me took 3.7766s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [f961a9ea-b9af-4a00-a233-f380a8fa5d95]: GET http://test/api/v1/users/me took 3.7767s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [2ce28dd1-2f5c-4ff7-8cfc-50501d7fd96e]: GET http://test/api/v1/users/me took 3.7767s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [23daa5ba-0be2-4462-a730-9cb0d6d73f6c]: GET http://test/api/v1/users/me took 3.7768s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [484b0f2c-59e9-4ea6-a7ac-1b1cd49c2af2]: GET http://test/api/v1/users/me took 3.7769s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [4234cb61-3a02-4911-a211-b62769eb8ddc]: GET http://test/api/v1/users/me took 3.7769s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [7fd0955a-378e-4a48-9155-e42898657768]: GET http://test/api/v1/users/me took 3.7770s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [047d9c7a-6886-40a2-b841-7ed3afa52d52]: GET http://test/api/v1/users/me took 3.7770s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [d4a1dc1e-9d1a-42a6-844e-32e49b0a2530]: GET http://test/api/v1/users/me took 3.7771s
+WARNING  SoulLink.Middleware.Performance:performance.py:40 SLOW REQUEST [dbcd67ac-6f0f-43cf-a162-5c7f26fadc65]: GET http://test/api/v1/users/me took 3.7771s
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/v1/users/me "HTTP/1.1 200 OK"
+__________________________ test_large_payload_limit ___________________________
+backend\tests\test_errors.py:113: in test_large_payload_limit
+    assert response.status_code == 413
+E   assert 403 == 413
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+---------------------------- Captured stdout call -----------------------------
+[2026-03-02T17:51:12.181938+00:00] [WARNING] [LegionEngine] [N/A] HTTP 403: Unknown location.
+[2026-03-02T17:51:12.182678+00:00] [INFO] [httpx] [N/A] HTTP Request: POST http://test/api/v1/map/move "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call ------------------------------
+WARNING  LegionEngine:main.py:168 HTTP 403: Unknown location.
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/v1/map/move "HTTP/1.1 403 Forbidden"
+============================== warnings summary ===============================
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sqlmodel\main.py:534
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sqlmodel\main.py:534: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    new_cls = super().__new__(cls, name, bases, dict_used, **config_kwargs)
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:365
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:365: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:494
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:494: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:498
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:498: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:502
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:502: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:506
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:506: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:538
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:538: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:542
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:542: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:546
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:546: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:550
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pyiceberg\table\metadata.py:550: PydanticDeprecatedSince212: Using `@model_validator` with mode='after' on a classmethod is deprecated. Instead, use an instance method. See the documentation at https://docs.pydantic.dev/2.12/concepts/validators/#model-after-validator. Deprecated in Pydantic V2.12 to be removed in V3.0.
+    @model_validator(mode="after")
+
+backend\app\core\validation.py:61
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:61: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('soul_id')
+
+backend\app\core\validation.py:67
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:67: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('message')
+
+backend\app\core\validation.py:85
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:85: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('soul_id')
+
+backend\app\core\validation.py:91
+  D:\Coding\SynonTech\SoulLink_v1.5.6\backend\app\core\validation.py:91: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('location_id')
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\slowapi\extension.py:717: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(func):
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+backend/tests/test_errors.py::test_malformed_json
+backend/tests/test_errors.py::test_missing_fields
+backend/tests/test_errors.py::test_large_payload_limit
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\starlette.py:427: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    return asyncio.iscoroutinefunction(obj) or (
+
+C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: 28 warnings
+  C:\Users\brcgr\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    and not asyncio.iscoroutinefunction(dependant.call)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend/tests/test_load.py::test_load_50_concurrent_users - AssertionE...
+FAILED backend/tests/test_rate_limits.py::test_global_rate_limit - AssertionE...
+FAILED backend/tests/test_errors.py::test_large_payload_limit - assert 403 ==...
+================== 3 failed, 4 passed, 58 warnings in 9.82s ===================
