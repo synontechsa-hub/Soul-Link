@@ -26,14 +26,22 @@ logger = get_logger("Dependencies")
 
 # ⚡ SUPABASE CLIENT SINGLETON
 # Initialize once, reuse everywhere
+supabase: Optional[Client] = None
 try:
-    supabase: Client = create_client(
-        settings.supabase_url, settings.supabase_anon_key)
-    logger.info(f"✅ Supabase Client Init: {settings.supabase_url[:20]}...")
+    if settings.supabase_url and settings.supabase_anon_key and "sb_publishable" not in settings.supabase_anon_key:
+        supabase = create_client(settings.supabase_url, settings.supabase_anon_key)
+        logger.info(f"✅ Supabase Client Init: {settings.supabase_url[:20]}...")
+    elif settings.environment == "development":
+        logger.warning("⚠️ Running without Supabase (Local Dev Mode active)")
+    else:
+        logger.critical("❌ CRITICAL: Invalid Supabase keys in production!")
+        raise RuntimeError("Cannot start production server without Supabase connection")
 except Exception as e:
-    logger.critical(f"❌ CRITICAL: Supabase Init Failed: {e}")
-    raise RuntimeError(
-        "Cannot start server without Supabase connection") from e
+    if settings.environment == "development":
+        logger.warning(f"⚠️ Supabase Init Failed (Local Dev Mode active): {e}")
+    else:
+        logger.critical(f"❌ CRITICAL: Supabase Init Failed: {e}")
+        raise RuntimeError("Cannot start server without Supabase connection") from e
 
 security = HTTPBearer()
 
@@ -48,6 +56,13 @@ def _validate_token_sync(token: str) -> Optional[str]:
     Runs in a thread pool via run_in_executor to avoid blocking the async event loop.
     Returns user_id on success, None on failure.
     """
+    # [DEV BYPASS] Local dev mock token support
+    if settings.environment == "development" and token == "dev_mock_token_123":
+        return settings.architect_uuid or "14dd612d-744e-487d-b2d5-cc47732183d3"
+        
+    if not supabase:
+        return None
+        
     try:
         user_response = supabase.auth.get_user(token)
         if user_response and user_response.user:
@@ -68,7 +83,8 @@ async def get_current_user_uuid(
     """
     token = credentials.credentials
 
-    if not supabase:
+    # [DEV BYPASS] Allow mock token if Supabase is offline
+    if not supabase and not (settings.environment == "development" and token == "dev_mock_token_123"):
         raise HTTPException(500, detail="Auth Server Unavailable")
 
     # Normandy-SR2 Fix: Secure cache key using SHA256 to avoid collisions
@@ -129,8 +145,13 @@ async def get_current_user(
         session.add(user)
         try:
             await session.commit()
-        except Exception:
+            await session.refresh(user)
+        except Exception as e:
             await session.rollback()  # Non-fatal — don't block the request
+            logger.error(f"Heartbeat update failed for user {user_uuid}: {e}", exc_info=True)
+            # Re-fetch user to clear the rolled-back/expired state
+            user = await session.get(User, user_uuid)
+            assert user is not None, "User vanished after rollback"
 
     return user
 
@@ -140,6 +161,13 @@ def _check_architect_role_sync(token: str) -> Optional[str]:
     Synchronous architect role check.
     Runs in thread pool via run_in_executor.
     """
+    # [DEV BYPASS] Local dev mock token support
+    if settings.environment == "development" and token == "dev_mock_token_123":
+        return settings.architect_uuid or "14dd612d-744e-487d-b2d5-cc47732183d3"
+        
+    if not supabase:
+        return None
+        
     try:
         user_response = supabase.auth.get_user(token)
         if not user_response or not user_response.user:
@@ -179,6 +207,9 @@ async def require_architect_role(
     if settings.architect_uuid and user_id == settings.architect_uuid:
         logger.info(f"👑 Global Architect Identified: {user_id}")
     elif not user_id:
+        raise HTTPException(status_code=403, detail="⛔ ARCHITECT ACCESS ONLY")
+
+    if user_id is None:
         raise HTTPException(status_code=403, detail="⛔ ARCHITECT ACCESS ONLY")
 
     cache_service.set(cache_key, user_id, ttl=_UUID_CACHE_TTL)

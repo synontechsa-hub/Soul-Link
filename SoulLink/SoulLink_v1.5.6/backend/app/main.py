@@ -92,14 +92,21 @@ async def lifespan(app: FastAPI):
         logger.warning(f"Startup initialisation failed: {e}")
 
     # 5. Start City Simulation
-    from backend.app.workers.city_simulation import city_simulation
-    city_simulation.start()
+    try:
+        from backend.app.workers.city_simulation import city_simulation
+        city_simulation.start()
+    except Exception as e:
+        logger.error(f"❌ Failed to start City Simulation: {e}")
 
     yield
 
     # SHUTDOWN:
     logger.info("Shutting down Legion Engine...")
-    city_simulation.shutdown()
+    try:
+        from backend.app.workers.city_simulation import city_simulation
+        city_simulation.shutdown()
+    except:
+        pass
 
 app = FastAPI(
     title=f"{APP_NAME} {CURRENT_CODENAME} v{VERSION_SHORT}",

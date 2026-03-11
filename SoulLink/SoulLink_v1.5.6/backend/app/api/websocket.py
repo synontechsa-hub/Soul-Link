@@ -12,6 +12,7 @@ import asyncio
 import json
 import logging
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Depends
+from backend.app.core.config import settings
 from backend.app.services.websocket_manager import websocket_manager
 from backend.app.api.dependencies import supabase, require_architect_role
 
@@ -70,21 +71,26 @@ async def websocket_endpoint(websocket: WebSocket):
         return
 
     # Verify Token
-    if not supabase:
+    if not supabase and not (settings.environment == "development" and token == "dev_mock_token_123"):
         await websocket.close(code=1011, reason="Server configuration error")
         return
 
     try:
-        # Run blocking Supabase call in thread pool
-        loop = asyncio.get_running_loop()
-        user_response = await loop.run_in_executor(None, supabase.auth.get_user, token)
+        user_id = None
+        # [DEV BYPASS] Let mock token through
+        if settings.environment == "development" and token == "dev_mock_token_123":
+            user_id = settings.architect_uuid or "14dd612d-744e-487d-b2d5-cc47732183d3"
+        else:
+            # Run blocking Supabase call in thread pool
+            loop = asyncio.get_running_loop()
+            user_response = await loop.run_in_executor(None, supabase.auth.get_user, token)
 
-        if not user_response or not user_response.user:
-            logger.warning("WebSocket auth failed from %s", client_ip)
-            await websocket.close(code=1008, reason="Invalid authentication token")
-            return
-
-        user_id = user_response.user.id
+            if not user_response or not user_response.user:
+                logger.warning("WebSocket auth failed from %s", client_ip)
+                await websocket.close(code=1008, reason="Invalid authentication token")
+                return
+            user_id = user_response.user.id
+            
         logger.info("WebSocket auth success: user=%s ip=%s",
                     user_id, client_ip)
     except Exception as e:
