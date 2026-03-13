@@ -17,8 +17,6 @@ from version import APP_NAME, VERSION_SHORT, VERSION_DISPLAY, CURRENT_CODENAME
 import sentry_sdk
 from contextlib import asynccontextmanager
 import asyncio
-from backend.app.services.backup_service import BackupService
-from backend.app.services.soul_blueprint import blueprint_service
 from backend.app.logic.time_manager import TimeManager
 from backend.app.database.session import async_session_maker
 from backend.app.middleware import RequestSizeLimitMiddleware, PerformanceMiddleware
@@ -48,7 +46,7 @@ if settings.sentry_dsn:
         environment=settings.environment,
         release=f"{APP_NAME}@{VERSION_SHORT}"
     )
-    logger.info("✅ Sentry Integration: Active (Privacy Hardened)")
+    logger.info("Sentry Integration: Active (Privacy Hardened)")
 else:
     logger.warning("[WARN] Sentry DSN not set - Error tracking disabled")
 
@@ -68,7 +66,7 @@ async def lifespan(app: FastAPI):
                 logger.warning(
                     "⚠️  souls table is empty — run: python _dev/scripts/seed_all_v156.py")
             else:
-                logger.info(f"✅ Legion Engine: {count} souls active in DB")
+                logger.info(f"Legion Engine: {count} souls active in DB")
 
             # ── 2. Load weather from system_config ───────────────────────────
             from backend.app.services.weather_service import initialize_weather_from_db

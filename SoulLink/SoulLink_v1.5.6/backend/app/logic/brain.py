@@ -4,6 +4,7 @@
 import logging
 from sqlmodel import select
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from backend.app.core.config import settings
 from backend.app.models.soul import Soul, SoulPillar
 from backend.app.models.user import User
@@ -20,18 +21,23 @@ from sqlalchemy.ext.asyncio import AsyncSession
 logger = logging.getLogger("LegionBrain")
 
 
+_groq_client = None
+
+def get_groq_client():
+    global _groq_client
+    if _groq_client is None:
+        from groq import Groq
+        _groq_client = Groq(api_key=settings.groq_api_key)
+    return _groq_client
+
 class LegionBrain:
     def __init__(self, session: AsyncSession):
         self.session = session
-        self._client = None
 
     @property
     def client(self):
         """Lazy-loaded Groq client."""
-        if self._client is None:
-            from groq import Groq
-            self._client = Groq(api_key=settings.groq_api_key)
-        return self._client
+        return get_groq_client()
 
     async def _get_context(self, user_id: str, soul_id: str, session: AsyncSession):
         soul = await session.get(Soul, soul_id)
@@ -149,10 +155,13 @@ class LegionBrain:
         import asyncio
         loop = asyncio.get_running_loop()
 
+        from backend.app.logic.tier_manager import get_ai_model
+        ai_model = get_ai_model(user)
+
         def _call_groq():
             return self.client.chat.completions.create(
                 messages=messages,  # type: ignore
-                model=settings.groq_model,
+                model=ai_model,
                 temperature=0.8,
                 max_tokens=600
             )
@@ -177,7 +186,7 @@ class LegionBrain:
         session.add(conv_assistant)
 
         # Update LinkState
-        link_state.last_interaction = datetime.now(timezone.utc)
+        link_state.last_interaction = utcnow()
         link_state.total_messages_sent = (
             getattr(link_state, 'total_messages_sent', 0) or 0) + 1
 
@@ -189,7 +198,7 @@ class LegionBrain:
         session.add(link_state)
 
         # Update Persona Last Used
-        persona.last_used = datetime.now(timezone.utc)
+        persona.last_used = utcnow()
         session.add(persona)
 
         try:

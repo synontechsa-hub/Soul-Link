@@ -27,12 +27,12 @@ class BackupService:
         Runs asynchronously to avoid blocking the main thread.
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        logger.info(f"⏳ Starting Database Backup ({timestamp})...")
+        logger.info(f"Starting Database Backup ({timestamp})...")
         
         try:
             if not BACKUP_DIR.exists():
                 BACKUP_DIR.mkdir(parents=True, exist_ok=True)
-                logger.info(f"📁 Created backup directory: {BACKUP_DIR}")
+                logger.info(f"Created backup directory: {BACKUP_DIR}")
 
             # Perform each table backup in its own session block to isolate failures
             await BackupService._safe_backup(User, "users", timestamp)
@@ -42,7 +42,7 @@ class BackupService:
             await BackupService._safe_backup(Location, "locations", timestamp)
             await BackupService._safe_backup(Conversation, "conversations", timestamp)
             
-            logger.info(f"✅ Backup Complete! ({timestamp})")
+            logger.info(f"Backup Complete! ({timestamp})")
             
             # Prune old backups
             await BackupService._prune_backups(keep_last=10)
@@ -77,7 +77,7 @@ class BackupService:
             loop = asyncio.get_running_loop()
             await loop.run_in_executor(None, BackupService._write_json, filepath, data)
                 
-            logger.info(f"📦 Saved {len(data)} {name}")
+            logger.info(f"Saved {len(data)} {name}")
             
         except Exception as e:
             # Re-raise to be caught by _safe_backup
@@ -107,12 +107,12 @@ class BackupService:
             
             if len(sorted_ts) > keep_last:
                 to_delete = sorted_ts[keep_last:]
-                logger.info(f"🧹 Pruning {len(to_delete)} old backup sets...")
+                logger.info(f"Pruning {len(to_delete)} old backup sets...")
                 
                 for ts in to_delete:
                     for f in backups[ts]:
                         f.unlink()
                         
-                logger.info("✅ Pruning complete.")
+                logger.info("Pruning complete.")
         except Exception as e:
             logger.warning(f"⚠️ Pruning failed: {e}")

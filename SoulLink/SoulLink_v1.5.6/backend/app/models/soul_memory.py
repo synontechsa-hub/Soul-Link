@@ -4,6 +4,7 @@
 from sqlmodel import SQLModel, Field, Column
 from sqlalchemy import JSON, Text
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional, List, Dict, Any
 
 
@@ -33,4 +34,4 @@ class SoulMemory(SQLModel, table=True):
     milestones: List[str] = Field(default_factory=list, sa_column=Column(JSON))
 
     last_updated: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())

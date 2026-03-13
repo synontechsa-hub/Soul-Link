@@ -10,6 +10,7 @@ Integrates Supabase Auth for secure JWT validation and Architect Role checks.
 import asyncio
 import hashlib
 from datetime import datetime, timezone, timedelta
+from backend.app.core.utils import utcnow
 from fastapi import Header, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlmodel import select
@@ -30,7 +31,7 @@ supabase: Optional[Client] = None
 try:
     if settings.supabase_url and settings.supabase_anon_key and "sb_publishable" not in settings.supabase_anon_key:
         supabase = create_client(settings.supabase_url, settings.supabase_anon_key)
-        logger.info(f"✅ Supabase Client Init: {settings.supabase_url[:20]}...")
+        logger.info(f"Supabase Client Init: {settings.supabase_url[:20]}...")
     elif settings.environment == "development":
         logger.warning("⚠️ Running without Supabase (Local Dev Mode active)")
     else:
@@ -139,7 +140,12 @@ async def get_current_user(
 
     # Chronicle Heartbeat: update last_seen_at if stale (>5 min) to power
     # the narrator time-jump system without a DB write on every single request.
-    now = datetime.now(timezone.utc)
+    now = utcnow()
+    
+    # Preserve the original last_seen_at before the heartbeat update
+    # so downstream systems like NarratorService can calculate time elapsed
+    user._previous_last_seen_at = user.last_seen_at
+    
     if user.last_seen_at is None or (now - user.last_seen_at) > timedelta(minutes=5):
         user.last_seen_at = now
         session.add(user)
@@ -203,14 +209,12 @@ async def require_architect_role(
     loop = asyncio.get_running_loop()
     user_id = await loop.run_in_executor(None, _check_architect_role_sync, token)
 
-    # Dynamic God-Mode Fallback from Environment (Architect Dev Account)
-    if settings.architect_uuid and user_id == settings.architect_uuid:
-        logger.info(f"👑 Global Architect Identified: {user_id}")
-    elif not user_id:
+    if not user_id:
         raise HTTPException(status_code=403, detail="⛔ ARCHITECT ACCESS ONLY")
 
-    if user_id is None:
-        raise HTTPException(status_code=403, detail="⛔ ARCHITECT ACCESS ONLY")
+    # Dynamic God-Mode Fallback from Environment (Architect Dev Account)
+    if settings.architect_uuid and user_id == settings.architect_uuid:
+        logger.info(f"Global Architect Identified: {user_id}")
 
     cache_service.set(cache_key, user_id, ttl=_UUID_CACHE_TTL)
     return user_id

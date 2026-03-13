@@ -1,0 +1,108 @@
+﻿Analyzing frontend...                                           
+
+   info - The import of 'package:flutter/foundation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' - lib\main.dart:3:8 - unnecessary_import
+   info - The variable name 'portrait_url' isn't a lowerCamelCase identifier - lib\models\relationship.dart:17:16 - non_constant_identifier_names
+   info - The variable name 'portrait_url' isn't a lowerCamelCase identifier - lib\models\relationship.dart:32:19 - non_constant_identifier_names
+   info - Don't invoke 'print' in production code - lib\providers\websocket_provider.dart:54:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\providers\websocket_provider.dart:80:9 - avoid_print
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\apartment_screen.dart:164:28 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\apartment_screen.dart:176:30 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\apartment_screen.dart:337:28 - use_build_context_synchronously
+   info - Statements in an if should be enclosed in a block - lib\screens\apartment_screen.dart:578:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\screens\apartment_screen.dart:581:7 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\screens\apartment_screen.dart:584:7 - curly_braces_in_flow_control_structures
+warning - The value of the local variable 'soulId' isn't used - lib\screens\chat_screen.dart:60:13 - unused_local_variable
+   info - Statements in an if should be enclosed in a block - lib\screens\chat_screen.dart:384:19 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\screens\chat_screen.dart:386:19 - curly_braces_in_flow_control_structures
+   info - Use 'const' with the constructor to improve performance - lib\screens\dashboard_screen.dart:45:16 - prefer_const_constructors
+   info - Use 'const' literals as arguments to constructors of '@immutable' classes - lib\screens\dashboard_screen.dart:46:21 - prefer_const_literals_to_create_immutables
+warning - Unused import: 'package:flutter_dotenv/flutter_dotenv.dart' - lib\screens\explore_screen.dart:6:8 - unused_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\login_screen.dart:91:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\login_screen.dart:92:62 - deprecated_member_use
+   info - Use 'const' with the constructor to improve performance - lib\screens\login_screen.dart:178:35 - prefer_const_constructors
+   info - The local variable '_apartmentIds' starts with an underscore - lib\screens\map_screen.dart:52:13 - no_leading_underscores_for_local_identifiers
+   info - Statements in an if should be enclosed in a block - lib\screens\map_screen.dart:84:9 - curly_braces_in_flow_control_structures
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\map_screen.dart:102:21 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\map_screen.dart:124:39 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\map_screen.dart:125:23 - use_build_context_synchronously
+   info - Statements in an if should be enclosed in a block - lib\screens\map_screen.dart:128:9 - curly_braces_in_flow_control_structures
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\map_screen.dart:210:58 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\registration_screen.dart:120:62 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\registration_screen.dart:142:62 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\registration_screen.dart:158:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\registration_screen.dart:159:62 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\screens\settings_screen.dart:59:48 - use_build_context_synchronously
+   info - Don't invoke 'print' in production code - lib\services\ad_service.dart:27:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\ad_service.dart:32:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\ad_service.dart:38:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\ad_service.dart:48:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\ad_service.dart:60:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\ad_service.dart:67:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\ad_service.dart:71:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\api_service.dart:99:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\api_service.dart:104:7 - avoid_print
+   info - Use 'const' with the constructor to improve performance - lib\services\auth_service.dart:26:27 - prefer_const_constructors
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:45:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:52:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:74:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:77:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:88:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:93:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:99:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:105:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:124:11 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:134:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:141:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:152:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:159:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\websocket_service.dart:170:5 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\explore_soul_card.dart:26:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\explore_soul_card.dart:59:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\explore_soul_card.dart:60:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:30:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:33:28 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:51:52 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:56:61 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:69:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:70:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:93:45 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:104:36 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\hub_tile.dart:110:38 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\map\tactical_node.dart:84:36 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\map\tactical_node.dart:91:39 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\map\tactical_node.dart:98:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\map\tactical_node.dart:117:38 - deprecated_member_use
+warning - A value for optional parameter 'hasBorder' isn't ever given - lib\widgets\map\tactical_node.dart:221:10 - unused_element_parameter
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\map\tactical_node.dart:234:26 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\map\tactical_node.dart:241:30 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\widgets\modals\mirror_edit_modal.dart:93:30 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\modals\mirror_edit_modal.dart:157:51 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\widgets\modals\mirror_edit_modal.dart:270:7 - deprecated_member_use
+warning - Unused import: 'package:flutter_dotenv/flutter_dotenv.dart' - lib\widgets\soul_card.dart:8:8 - unused_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\soul_card.dart:66:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\soul_card.dart:85:53 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\stability_bar.dart:35:29 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\stability_bar.dart:37:41 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\time_display.dart:21:41 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\time_display.dart:24:26 - deprecated_member_use
+  error - The name 'MyApp' isn't a class - test\widget_test.dart:16:35 - creation_with_non_type
+
+flutter : 86 issues 
+found. (ran in 1.3s)
+At line:1 char:1
++ flutter analyze 
+--no-pub 2>&1 | 
+Out-File -FilePath 
+"analyze_clean.txt ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (86 issues fou   
+ nd. (ran in 1.3s):    
+String) [], Remote    
+Exception
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 

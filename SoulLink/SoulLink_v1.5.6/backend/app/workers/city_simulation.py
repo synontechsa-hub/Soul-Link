@@ -39,7 +39,7 @@ class CitySimulationWorker:
         """
         The core loop: Advances time for all users and resolves world state.
         """
-        logger.info("⏳ Ticking City Forward...")
+        logger.info("Ticking City Forward...")
         try:
             async with async_session_maker() as session:
                 # Get all unique users

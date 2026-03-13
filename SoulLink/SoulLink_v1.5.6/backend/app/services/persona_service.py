@@ -2,6 +2,7 @@
 # v1.5.6 Identity Logic - Switching Masks
 
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional
 from sqlmodel import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -40,7 +41,7 @@ class PersonaService:
         target = await session.get(UserPersona, persona_id)
         if target and target.user_id == user_id:
             target.is_active = True
-            target.last_used = datetime.now(timezone.utc)
+            target.last_used = utcnow()
             session.add(target)
             await session.commit()
             return target

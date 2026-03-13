@@ -13,8 +13,8 @@ What changed and why:
   - user_progress         → CREATED  (achievements, lore unlocks, exploration)
   - subscription_history  → CREATED  (billing lifecycle audit trail)
 
-Revision ID: 002_v156_schema
-Revises: 001_monetization_tables
+Revision ID: 003_v156_schema
+Revises: 002_user_world_state
 Create Date: 2026-02-27
 """
 
@@ -23,8 +23,8 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers
-revision = '002_v156_schema'
-down_revision = '001_monetization_tables'
+revision = '003_v156_schema'
+down_revision = '002_user_world_state'
 branch_labels = None
 depends_on = None
 

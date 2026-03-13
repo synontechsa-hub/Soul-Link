@@ -18,7 +18,7 @@ TIER_BENEFITS = {
         "soul_access": "standard",
         "chat_priority": "normal",
         "context_multiplier": 1.0,
-        "ai_model": "gemini-flash",
+        "ai_model": "llama3-8b-8192",
         "display_name": "Free Link",
         "description": "Standard Link City access with ad-supported stability boosts"
     },
@@ -29,7 +29,7 @@ TIER_BENEFITS = {
         "soul_access": "standard",
         "chat_priority": "high",
         "context_multiplier": 2.0,
-        "ai_model": "gemini-flash",
+        "ai_model": "llama3-8b-8192",
         "display_name": "Soul Seeker",
         "description": "Enhanced stability and ad-free experience"
     },
@@ -40,7 +40,7 @@ TIER_BENEFITS = {
         "soul_access": "premium",
         "chat_priority": "highest",
         "context_multiplier": 4.0,
-        "ai_model": "gemini-pro",
+        "ai_model": "llama3-70b-8192",
         "display_name": "Soul Master",
         "description": "Unlimited stability with premium AI model access"
     },
@@ -51,7 +51,7 @@ TIER_BENEFITS = {
         "soul_access": "all",
         "chat_priority": "god_mode",
         "context_multiplier": 999.0,
-        "ai_model": "gemini-pro",
+        "ai_model": "llama3-70b-8192",
         "display_name": "Architect",
         "description": "Developer god-mode with full system access"
     }

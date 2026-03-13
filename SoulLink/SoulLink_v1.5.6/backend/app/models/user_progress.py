@@ -4,6 +4,7 @@
 from sqlmodel import SQLModel, Field, Column
 from sqlalchemy import JSON
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional, List, Dict, Any
 
 
@@ -44,4 +45,4 @@ class UserProgress(SQLModel, table=True):
     total_days_active: int = Field(default=0)
 
     last_updated: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())

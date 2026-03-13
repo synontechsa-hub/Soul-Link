@@ -5,6 +5,7 @@ from sqlmodel import SQLModel, Field, Column
 from sqlalchemy import JSON, Text
 from typing import Dict, List, Optional
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 
 
 class LoreItem(SQLModel, table=True):
@@ -37,6 +38,6 @@ class LoreItem(SQLModel, table=True):
 
     version: str = Field(default="1.5.6", max_length=20)
     created_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
     updated_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())

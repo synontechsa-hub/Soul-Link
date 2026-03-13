@@ -4,7 +4,8 @@
 from sqlmodel import SQLModel, Field, Column
 from pydantic import BaseModel
 from sqlalchemy import JSON, UniqueConstraint
-from datetime import datetime, timezone
+from datetime import datetime
+from backend.app.core.utils import utcnow
 from typing import Optional, Dict, Any
 
 
@@ -42,7 +43,7 @@ class LinkState(SQLModel, table=True):
     signal_stability: float = Field(
         default=100.0, description="Degrades with interaction, restored by Ad/Gem")
     last_stability_decay: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
 
     # --- 5. PERMISSIONS & GATES ---
     unlocked_nsfw: bool = Field(default=False)
@@ -50,9 +51,10 @@ class LinkState(SQLModel, table=True):
 
     # --- METADATA ---
     created_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
-    last_interaction: datetime = Field(default_factory=lambda: datetime.now(
-        timezone.utc), sa_column_kwargs={"onupdate": lambda: datetime.now(timezone.utc)})
+        default_factory=lambda: utcnow())
+    last_interaction: datetime = Field(
+        default_factory=lambda: utcnow(),
+        sa_column_kwargs={"onupdate": lambda: utcnow()})
 
     # Flags for specific mechanics (e.g. "Glove Removed", "True Name Known")
     flags: Dict[str, Any] = Field(default_factory=dict, sa_column=Column(JSON))

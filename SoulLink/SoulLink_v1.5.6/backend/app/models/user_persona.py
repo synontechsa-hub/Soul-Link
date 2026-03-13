@@ -4,6 +4,7 @@
 from sqlmodel import SQLModel, Field, Column
 from sqlalchemy import JSON, UniqueConstraint
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional, Dict, Any
 
 
@@ -37,9 +38,9 @@ class UserPersona(SQLModel, table=True):
 
     # Meta
     created_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
     last_used: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
 
     # Metadata for frontend specific settings (avatar, theme color, etc)
     meta_data: Dict[str, Any] = Field(

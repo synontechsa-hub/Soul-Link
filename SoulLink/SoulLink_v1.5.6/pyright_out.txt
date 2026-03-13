@@ -1,0 +1,10 @@
+﻿d:\Coding\SynonTech\SoulLink\SoulLink_v1.5.6\backend\app\api\users.py
+  d:\Coding\SynonTech\SoulLink\SoulLink_v1.5.6\backend\app\api\users.py:55:24 - error: Expression of type "None" cannot be assigned to parameter of type "Request"
+  ┬á┬á"None" is not assignable to "Request" (reportArgumentType)
+  d:\Coding\SynonTech\SoulLink\SoulLink_v1.5.6\backend\app\api\users.py:79:24 - error: Expression of type "None" cannot be assigned to parameter of type "Request"
+  ┬á┬á"None" is not assignable to "Request" (reportArgumentType)
+  d:\Coding\SynonTech\SoulLink\SoulLink_v1.5.6\backend\app\api\users.py:96:24 - error: Expression of type "None" cannot be assigned to parameter of type "Request"
+  ┬á┬á"None" is not assignable to "Request" (reportArgumentType)
+  d:\Coding\SynonTech\SoulLink\SoulLink_v1.5.6\backend\app\api\users.py:115:24 - error: Expression of type "None" cannot be assigned to parameter of type "Request"
+  ┬á┬á"None" is not assignable to "Request" (reportArgumentType)
+4 errors, 0 warnings, 0 informations

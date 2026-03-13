@@ -8,6 +8,7 @@
 from sqlmodel import SQLModel, Field
 from sqlalchemy import JSON, Column
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Dict, Any, Optional
 
 
@@ -26,5 +27,5 @@ class SystemConfig(SQLModel, table=True):
     )
     version: str = Field(default="1.5.6", max_length=20)
     updated_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc)
+        default_factory=lambda: utcnow()
     )

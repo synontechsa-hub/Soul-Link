@@ -25,5 +25,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - .env  # Dev only — swap for --dart-define in production builds
+  # Assets: .env intentionally NOT listed here.
+  # Use --dart-define flags at build time for all environment config.
+  # See lib/core/config.dart for all configurable values.

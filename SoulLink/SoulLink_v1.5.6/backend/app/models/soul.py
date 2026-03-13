@@ -4,6 +4,7 @@
 from sqlmodel import SQLModel, Field, Column
 from sqlalchemy import JSON, Text
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional, Dict, Any
 from pydantic import BaseModel
 from version import VERSION_SHORT
@@ -25,7 +26,7 @@ class Soul(SQLModel, table=True):
     archetype: Optional[str] = Field(default=None, max_length=100)
     version: str = Field(default=VERSION_SHORT, max_length=20)
     created_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
 
 
 class SoulPillar(SQLModel, table=True):
@@ -79,7 +80,7 @@ class SoulState(SQLModel, table=True):
     performance_mode: int = Field(default=100)
 
     last_updated: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
 
 
 # --- READ MODELS (Frontend Aggregates) ---

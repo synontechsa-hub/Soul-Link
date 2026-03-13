@@ -2,7 +2,7 @@
 # v1.5.6 Normandy SR-2 Chat API
 
 from fastapi import APIRouter, Depends, HTTPException, Request
-from sqlmodel import Session, select
+from sqlmodel import select
 from backend.app.database.session import get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.logic.brain import LegionBrain
@@ -12,7 +12,7 @@ from backend.app.models.link_state import LinkState
 from backend.app.models.user_persona import UserPersona
 from backend.app.models.conversation import Conversation
 from backend.app.models.time_slot import TimeSlot
-from backend.app.services.narrator import NarratorService
+from backend.app.services.narrator import NarratorService, narrator_service
 from backend.app.services.persona_service import PersonaService
 
 from backend.app.api.dependencies import get_current_user
@@ -47,9 +47,9 @@ class ChatResponse(BaseModel):
 @limiter.limit(RateLimits.CHAT)
 async def send_message(
     chat_request: ValidatedChatRequest,
+    request: Request,
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_async_session),
-    request: Request = None
 ):
     logger.info(
         f"Chat request from user={user.user_id} to soul={chat_request.soul_id}")
@@ -116,8 +116,9 @@ async def send_message(
     narrator_event = None
     world_injection = ""
 
-    # Use last_seen_at for time-jump if available (more accurate than link interaction)
-    time_jump_anchor = user.last_seen_at or link.last_interaction
+    # Use preserved last_seen_at for time-jump if available (set by dependencies.py)
+    # This prevents the heartbeat update from masking the elapsed time
+    time_jump_anchor = getattr(user, "_previous_last_seen_at", user.last_seen_at) or link.last_interaction
 
     if time_jump_anchor and NarratorService.check_time_jump(time_jump_anchor):
         # Resolve real weather for this user's world state
@@ -129,7 +130,7 @@ async def send_message(
             current_season=user.current_season,
             current_weather=user.current_weather,
         )
-        chronicle_text = await NarratorService.generate_chronicle(
+        chronicle_text = await narrator_service.generate_chronicle(
             time_jump_anchor,
             link.current_location or "the city",
             weather_string
@@ -192,10 +193,10 @@ async def send_message(
 @limiter.limit(RateLimits.READ_ONLY)
 async def get_chat_history(
     soul_id: str,
+    request: Request,
     limit: int = 50,
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_async_session),
-    request: Request = None,
 ):
     """Fetch conversation history for a user-soul pair."""
     result = await session.execute(
@@ -204,7 +205,7 @@ async def get_chat_history(
             Conversation.user_id == user.user_id,
             Conversation.soul_id == soul_id,
         )
-        .order_by(Conversation.created_at.asc())
+        .order_by(Conversation.created_at.asc())  # type: ignore[attr-defined]
         .limit(limit)
     )
     messages = result.scalars().all()

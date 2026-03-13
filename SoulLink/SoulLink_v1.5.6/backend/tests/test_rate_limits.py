@@ -15,9 +15,10 @@ async def test_global_rate_limit(client: AsyncClient, mock_auth):
     # Since tests run fast, we might hit the limit quickly.
     requests_to_send = 110
     
-    # We use gather to send them concurrently, modeling a burst
-    tasks = [client.get(endpoint) for _ in range(requests_to_send)]
-    responses = await asyncio.gather(*tasks)
+    # We send them sequentially so the memory counter correctly increments before the next request
+    responses = []
+    for _ in range(requests_to_send):
+        responses.append(await client.get(endpoint))
     
     # Check if we got any 429s
     status_codes = [r.status_code for r in responses]

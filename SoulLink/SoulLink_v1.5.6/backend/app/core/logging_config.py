@@ -10,6 +10,7 @@ Replaces print() statements with proper logging for production monitoring.
 import logging
 import sys
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional
 
 # Custom formatter for structured logs
@@ -23,7 +24,7 @@ class StructuredFormatter(logging.Formatter):
 
     def format(self, record):
         # Add timestamp
-        record.timestamp = datetime.now(timezone.utc).isoformat()
+        record.timestamp = utcnow().isoformat()
 
         # Add request ID if available (set by middleware)
         if not hasattr(record, 'request_id'):
@@ -83,18 +84,13 @@ class LegionLogger:
     @staticmethod
     def log_brain_thought(soul_id: str, prompt: str):
         logger = get_logger("Brain")
-        # Use simple print for the visual box if in debug/dev, or just log
-        print(f"\n🧠 [BRAIN THOUGHT - {soul_id}]")
-        print("-" * 50)
-        print(prompt)
-        print("-" * 50 + "\n")
-        # Also log properly
-        logger.debug(f"Thought generated for {soul_id}")
+        logger.debug(
+            "\n\U0001f9e0 [BRAIN THOUGHT - %s]\n%s\n%s\n%s",
+            soul_id, "-" * 50, prompt, "-" * 50
+        )
 
     @staticmethod
     def log_gatekeeper(action: str, allowed: bool):
         logger = get_logger("Gatekeeper")
-        status = "✅ ALLOWED" if allowed else "🚫 BLOCKED"
-        print(f"🛡️ [GATEKEEPER] {action}: {status}")
-        # Also log properly
-        logger.info(f"{action}: {status}")
+        status = "\u2705 ALLOWED" if allowed else "\U0001f6ab BLOCKED"
+        logger.info("\U0001f6e1\ufe0f [GATEKEEPER] %s: %s", action, status)

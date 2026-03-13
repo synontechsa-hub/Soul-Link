@@ -58,7 +58,7 @@ async def explore_souls(
     q: Optional[str] = None,
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_async_session),
-    request: Request = None
+    request: Optional[Request] = None
 ):
     """Discover available souls and see which ones you're linked with."""
     try:
@@ -75,7 +75,7 @@ async def explore_souls(
 
         # 3. Batch fetch SoulStates (Fix N+1)
         soul_ids = [s.soul_id for s in all_souls]
-        state_result = await db.execute(select(SoulState).where(SoulState.soul_id.in_(soul_ids)))
+        state_result = await db.execute(select(SoulState).where(SoulState.soul_id.in_(soul_ids)))  # type: ignore[attr-defined]
         state_map = {
             state.soul_id: state for state in state_result.scalars().all()}
 
@@ -151,7 +151,7 @@ async def link_with_soul(
     soul_id: str,
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_async_session),
-    request: Request = None
+    request: Optional[Request] = None
 ):
     """
     Initialize a LinkState between the user and a soul.

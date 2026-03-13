@@ -47,19 +47,9 @@ if ACTUAL_DB_URL.startswith("sqlite"):
 # For Transaction Mode, we must disable SQLAlchemy pooling to avoid conflicts.
 engine_args: Dict[str, Any] = {
     "echo": False,
-    "connect_args": connect_args
+    "connect_args": connect_args,
+    "poolclass": NullPool
 }
-
-if ":6543" in ACTUAL_DB_URL:
-    engine_args["poolclass"] = NullPool
-else:
-    # ⚡ STABILITY: Connection Pooling
-    # Keep a pool of connections ready to avoid handshake overhead
-    engine_args["pool_pre_ping"] = True
-    engine_args["pool_size"] = 20        # Baseline connections
-    engine_args["max_overflow"] = 10     # Burst capacity
-    engine_args["pool_timeout"] = 30     # Max wait for connection
-    engine_args["pool_recycle"] = 1800   # Recycle every 30 mins
 
 engine = create_engine(
     ACTUAL_DB_URL,
@@ -100,9 +90,9 @@ if ":6543" in ACTUAL_DB_URL:
 else:
     # ⚡ ASYNC POOLING
     async_engine_args["pool_pre_ping"] = True
-    async_engine_args["pool_size"] = 20
-    async_engine_args["max_overflow"] = 10
-    async_engine_args["pool_timeout"] = 30
+    async_engine_args["pool_size"] = 50
+    async_engine_args["max_overflow"] = 30
+    async_engine_args["pool_timeout"] = 60
     async_engine_args["pool_recycle"] = 1800
 
 async_engine = create_async_engine(async_url, **async_engine_args)

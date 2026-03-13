@@ -51,8 +51,9 @@ class UserProfile(BaseModel):
 @router.get("/me", response_model=UserProfile)
 @limiter.limit(RateLimits.READ_ONLY)
 async def get_my_profile(
+    request: Request,
     user: User = Depends(get_current_user),
-    request: Request = None
+    session: AsyncSession = Depends(get_async_session)
 ):
     """Fetch profile for the Apartment screen."""
     cache_key = f"user:profile:{user.user_id}"
@@ -62,9 +63,15 @@ async def get_my_profile(
     if cached_profile:
         return cached_profile
 
+    # Fetch active persona
+    from backend.app.services.persona_service import PersonaService
+    active_persona = await PersonaService.get_active_persona(session, user.user_id)
+    active_persona_id = active_persona.id if active_persona else None
+
     # If not cached, the returned 'user' object will be validated against UserProfile
     # and then returned. We should cache the validated dict for maximum speed.
     profile_data = UserProfile.model_validate(user).model_dump(mode='json')
+    profile_data["active_persona_id"] = active_persona_id
 
     # 10 minute profile cache
     cache_service.set(cache_key, profile_data, ttl=600)
@@ -74,9 +81,9 @@ async def get_my_profile(
 @router.get("/me/personas")
 @limiter.limit(RateLimits.READ_ONLY)
 async def get_my_personas(
+    request: Request,
     user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_async_session),
-    request: Request = None
+    session: AsyncSession = Depends(get_async_session)
 ):
     """List all personas for the current user."""
     from backend.app.models.user_persona import UserPersona
@@ -91,9 +98,9 @@ async def get_my_personas(
 @limiter.limit(RateLimits.USER_WRITE)
 async def activate_persona(
     persona_id: int,
+    request: Request,
     user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_async_session),
-    request: Request = None
+    session: AsyncSession = Depends(get_async_session)
 ):
     """Switch the active persona for the user."""
     from backend.app.services.persona_service import PersonaService
@@ -110,9 +117,9 @@ async def activate_persona(
 @limiter.limit(RateLimits.USER_WRITE)
 async def update_profile(
     data: UserUpdate,
+    request: Request,
     user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_async_session),
-    request: Request = None
+    session: AsyncSession = Depends(get_async_session)
 ):
     """THE MIRROR: Updates user persona data."""
     if data.display_name is not None:

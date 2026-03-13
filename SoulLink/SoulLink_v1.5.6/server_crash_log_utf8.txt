@@ -1,0 +1,4230 @@
+﻿.venv\Scripts\uvicorn : 
+\u26a0\ufe0f Running 
+without Supabase (Local 
+Dev Mode active)
+At line:1 char:1
++ .venv\Scripts\uvicorn 
+backend.app.main:app 
+--host 127.0.0.1 --port 80 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (\u2  
+  6a0\ufe0f Ru...ev Mode   
+  active):String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+[2026-03-12T13:56:30.774595+00:00] [INFO] [SoulLink] [N/A] [OK] Logging initialized (level: INFO)
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 64: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 71, 
+in serve
+    await 
+self._serve(sockets)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 78, 
+in _serve
+    config.load()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\config.py", line 439, 
+in load
+    self.loaded_app = impor
+t_from_string(self.app)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\importer.py", line 19, 
+in import_from_string
+    module = importlib.impo
+rt_module(module_str)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\importlib\__in
+it__.py", line 88, in 
+import_module
+    return _bootstrap._gcd_
+import(name[level:], 
+package, level)
+  File "<frozen 
+importlib._bootstrap>", 
+line 1398, in _gcd_import
+  File "<frozen 
+importlib._bootstrap>", 
+line 1371, in 
+_find_and_load
+  File "<frozen 
+importlib._bootstrap>", 
+line 1342, in 
+_find_and_load_unlocked
+  File "<frozen 
+importlib._bootstrap>", 
+line 938, in _load_unlocked
+  File "<frozen importlib._
+bootstrap_external>", line 
+762, in exec_module
+  File "<frozen 
+importlib._bootstrap>", 
+line 491, in 
+_call_with_frames_removed
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+51, in <module>
+    logger.info("\u2705 
+Sentry Integration: Active 
+(Privacy Hardened)")
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '\u2705 Sentry 
+Integration: Active 
+(Privacy Hardened)'
+Arguments: ()
+[2026-03-12T13:56:31.022128+00:00] [INFO] [LegionEngine] [N/A] Rate limiting enabled
+[2026-03-12T13:56:31.022241+00:00] [INFO] [LegionEngine] [N/A] Middleware stack initialized: Performance, Size Limit (10MB)
+INFO:     Started server 
+process [32644]
+INFO:     Waiting for 
+application startup.
+Assets Mounted: D:\Coding\SynonTech\SoulLink\SoulLink_v1.5.6\assets
+[2026-03-12T13:56:31.037018+00:00] [INFO] [LegionEngine] [N/A] Initializing Legion Engine...
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 63: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+71, in lifespan
+    logger.info(f"\u2705 
+Legion Engine: {count} 
+souls active in DB")
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '\u2705 Legion 
+Engine: 45 souls active in 
+DB'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 96: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+75, in lifespan
+    await initialize_weathe
+r_from_db(session)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\services\weather
+_service.py", line 50, in 
+initialize_weather_from_db
+    logger.info("WeatherSer
+vice: loaded from DB 
+\u2705 (%d types)",
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: 'WeatherService: 
+loaded from DB \u2705 (%d 
+types)'
+Arguments: (19,)
+[2026-03-12T13:56:31.149388+00:00] [INFO] [LocationResolver] [N/A] Routines cache loaded: 15 templates
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character 
+'\U0001f525' in position 
+62: character maps to 
+<undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+89, in lifespan
+    await 
+tm.warm_world_state_cache()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\logic\time_manag
+er.py", line 182, in 
+warm_world_state_cache
+    logger.info(
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '\U0001f525 
+Warming World State Cache 
+for 45 souls...'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 65: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+89, in lifespan
+    await 
+tm.warm_world_state_cache()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\logic\time_manag
+er.py", line 233, in 
+warm_world_state_cache
+    logger.info(
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '   \u2705 Cached 
+morning: 45 locations 
+(In-Memory Fast Path)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 65: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+89, in lifespan
+    await 
+tm.warm_world_state_cache()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\logic\time_manag
+er.py", line 233, in 
+warm_world_state_cache
+    logger.info(
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '   \u2705 Cached 
+afternoon: 45 locations 
+(In-Memory Fast Path)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 65: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+89, in lifespan
+    await 
+tm.warm_world_state_cache()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\logic\time_manag
+er.py", line 233, in 
+warm_world_state_cache
+    logger.info(
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '   \u2705 Cached 
+evening: 45 locations 
+(In-Memory Fast Path)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 65: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+89, in lifespan
+    await 
+tm.warm_world_state_cache()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\logic\time_manag
+er.py", line 233, in 
+warm_world_state_cache
+    logger.info(
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '   \u2705 Cached 
+night: 45 locations 
+(In-Memory Fast Path)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent 
+call last):
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1154, in emit
+    stream.write(msg + 
+self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\encodings\cp12
+52.py", line 19, in encode
+    return codecs.charmap_e
+ncode(input,self.errors,enc
+oding_table)[0]
+           ~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2705' 
+in position 65: character 
+maps to <undefined>
+Call stack:
+  File "<frozen runpy>", 
+line 198, in 
+_run_module_as_main
+  File "<frozen runpy>", 
+line 88, in _run_code
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Scripts\uvicorn.exe\__
+main__.py", line 6, in 
+<module>
+    sys.exit(main())
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1485, in 
+__call__
+    return 
+self.main(*args, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1406, in 
+main
+    rv = self.invoke(ctx)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 1269, in 
+invoke
+    return 
+ctx.invoke(self.callback, 
+**ctx.params)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\clic
+k\core.py", line 824, in 
+invoke
+    return callback(*args, 
+**kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 424, in 
+main
+    run(
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\main.py", line 594, in 
+run
+    server.run()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\server.py", line 67, 
+in run
+    return asyncio_run(self
+.serve(sockets=sockets), lo
+op_factory=self.config.get_
+loop_factory())
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\runner
+s.py", line 127, in run
+    return self._loop.run_u
+ntil_complete(task)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 706, in 
+run_until_complete
+    self.run_forever()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 677, in 
+run_forever
+    self._run_once()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\base_e
+vents.py", line 2046, in 
+_run_once
+    handle._run()
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\asyncio\events
+.py", line 94, in _run
+    self._context.run(self.
+_callback, *self._args)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\lifespan\on.py", line 
+86, in main
+    await app(scope, 
+self.receive, self.send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\uvic
+orn\middleware\proxy_header
+s.py", line 29, in __call__
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\applications.py", line 
+1135, in __call__
+    await 
+super().__call__(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 416, in 
+_sentry_patched_asgi_app
+    return await 
+middleware(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 170, in _run_asgi3
+    return await 
+self._run_app(scope, 
+receive, send, 
+asgi_version=3)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\asgi.py
+", line 182, in _run_app
+    return await 
+self.app(scope, receive, 
+send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\applications.py", 
+line 107, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\errors.py"
+, line 151, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\base.py", 
+line 103, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\cors.py", 
+line 77, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 303, in _sentr
+y_exceptionmiddleware_call
+    await old_call(self, 
+scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\middleware\exceptions
+.py", line 49, in __call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\starlet
+te.py", line 164, in 
+_create_span_call
+    return await 
+old_call(app, scope, 
+receive, send, **kwargs)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\middleware\asyncexitsta
+ck.py", line 18, in 
+__call__
+    await self.app(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+716, in __call__
+    await self.middleware_s
+tack(scope, receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+725, in app
+    await 
+self.lifespan(scope, 
+receive, send)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\star
+lette\routing.py", line 
+694, in lifespan
+    async with 
+self.lifespan_context(app) 
+as maybe_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\fast
+api\routing.py", line 153, 
+in merged_lifespan
+    async with 
+original_context(app) as 
+maybe_original_state:
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\contextlib.py"
+, line 214, in __aenter__
+    return await 
+anext(self.gen)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\main.py", line 
+89, in lifespan
+    await 
+tm.warm_world_state_cache()
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\b
+ackend\app\logic\time_manag
+er.py", line 233, in 
+warm_world_state_cache
+    logger.info(
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1520, in info
+    self._log(INFO, msg, 
+args, **kwargs)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\brcgr\AppD
+ata\Local\Python\pythoncore
+-3.14-64\Lib\logging\__init
+__.py", line 1681, in 
+handle
+    
+self.callHandlers(record)
+  File "D:\Coding\SynonTech
+\SoulLink\SoulLink_v1.5.6\.
+venv\Lib\site-packages\sent
+ry_sdk\integrations\logging
+.py", line 123, in 
+sentry_patched_callhandlers
+    return 
+old_callhandlers(self, 
+record)
+Message: '   \u2705 Cached 
+home_time: 45 locations 
+(In-Memory Fast Path)'
+Arguments: ()
+[2026-03-12T13:56:31.505851+00:00] [INFO] [apscheduler.scheduler] [N/A] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+[2026-03-12T13:56:31.505978+00:00] [INFO] [CitySimulation] [N/A] Starting CitySimulation background worker...
+[2026-03-12T13:56:31.506715+00:00] [INFO] [apscheduler.scheduler] [N/A] Added job "CitySimulationWorker.tick_city_forward" to job store "default"
+[2026-03-12T13:56:31.506813+00:00] [INFO] [apscheduler.scheduler] [N/A] Scheduler started
+INFO:     Application 
+startup complete.
+ERROR:    [Errno 10048] 
+error while attempting to 
+bind on address 
+('127.0.0.1', 8000): 
+[winerror 10048] only one 
+usage of each socket 
+address (protocol/network 
+address/port) is normally 
+permitted
+INFO:     Waiting for 
+application shutdown.
+[2026-03-12T13:56:31.610802+00:00] [INFO] [LegionEngine] [N/A] Shutting down Legion Engine...
+[2026-03-12T13:56:31.610891+00:00] [INFO] [CitySimulation] [N/A] Shutting down CitySimulation worker...
+[2026-03-12T13:56:31.611525+00:00] [INFO] [apscheduler.scheduler] [N/A] Scheduler has been shut down
+INFO:     Application 
+shutdown complete.
+Sentry is attempting to 
+send 2 pending events
+Waiting up to 2 seconds
+Press Ctrl-Break to quit

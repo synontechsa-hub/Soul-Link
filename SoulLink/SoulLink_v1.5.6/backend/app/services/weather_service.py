@@ -47,7 +47,7 @@ async def initialize_weather_from_db(session) -> bool:
     row = await session.get(SystemConfig, "weather")
     if row and row.data:
         _load_weather_cache(row.data)
-        logger.info("WeatherService: loaded from DB ✅ (%d types)",
+        logger.info("WeatherService: loaded from DB (%d types)",
                     len(_WEATHER_DATA.get("weather_types", [])))
         return True
     logger.warning(
@@ -142,7 +142,7 @@ class WeatherService:
 
         # Resolve weather (prefer stored, roll fresh if default/missing)
         weather_id = current_weather
-        if not weather_id or weather_id in ("clear_frost",) and current_season is None:
+        if not weather_id or (weather_id == "clear_frost" and current_season is None):
             # Roll a fresh one using day as seed
             seed = calendar_year * 10000 + calendar_month * 100 + calendar_day
             weather_id = WeatherService.roll_weather(season, seed)

@@ -107,7 +107,10 @@ async def test_large_payload_limit(client: AsyncClient, mock_auth):
     response = await client.post(
         "/api/v1/map/move",
         content=large_data,
-        headers={"Content-Type": "application/json"}
+        headers={
+            "Content-Type": "application/json",
+            "Content-Length": str(len(large_data.encode('utf-8')))
+        }
     )
     # If the middleware is active, it should return 413
     assert response.status_code == 413

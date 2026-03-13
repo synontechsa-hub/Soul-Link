@@ -5,6 +5,7 @@ from backend.app.models.location import Location
 from backend.app.models.soul import SoulState
 from backend.app.core.cache import cache_service
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 
 
 class LocationManager:
@@ -58,6 +59,9 @@ class LocationManager:
         )
         link = link_result.scalars().first()
 
+        if not link:
+            return False, "Link connection severed unexpectedly."
+
         try:
             # 1. Update User Context (manual override - Priority 1)
             link.current_location = location_id
@@ -77,12 +81,12 @@ class LocationManager:
                 "data": {
                     "soul_id": soul_id,
                     "location_id": location_id,
-                    "location_name": loc.display_name
+                    "location_name": loc.display_name if loc else "Unknown"
                 },
-                "timestamp": datetime.now(timezone.utc).isoformat()
+                "timestamp": utcnow().isoformat()
             })
 
-            return True, f"Synchronized. Welcome to {loc.display_name}."
+            return True, f"Synchronized. Welcome to {loc.display_name if loc else 'Unknown'}."
         except Exception as e:
             await self.session.rollback()
             return False, f"Teleportation Error: {str(e)}"

@@ -1,0 +1,4 @@
+textual>=0.52.0
+openai>=1.13.0
+python-dotenv>=1.0.1
+pydantic>=2.6.2

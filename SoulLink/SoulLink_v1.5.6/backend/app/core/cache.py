@@ -90,12 +90,18 @@ class CacheService:
         with self._lock:
             MAX_KEYS = 1000
             if len(self._memory_cache) >= MAX_KEYS:
-                # Prune 10% oldest keys (arbitrary but safe)
-                keys_to_prune = list(self._memory_cache.keys())[:100]
-                for k in keys_to_prune:
+                now = time.time()
+                # First: evict already-expired keys
+                expired = [k for k, v in self._memory_cache.items() if v["expiry"] < now]
+                for k in expired:
                     del self._memory_cache[k]
+                # Still over limit? Evict the soonest-to-expire keys
+                if len(self._memory_cache) >= MAX_KEYS:
+                    sorted_keys = sorted(self._memory_cache, key=lambda k: self._memory_cache[k]["expiry"])
+                    for k in sorted_keys[:100]:
+                        del self._memory_cache[k]
                 logger.warning(
-                    "CacheService: Pruned 100 old keys (Limit: %s)", MAX_KEYS)
+                    "CacheService: Pruned keys to stay under limit (Limit: %s)", MAX_KEYS)
 
             self._memory_cache[key] = {
                 "value": value,

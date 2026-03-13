@@ -25,9 +25,9 @@ router = APIRouter(prefix="/map", tags=["Legion Engine - Map"])
 @router.get("/locations")
 @limiter.limit(RateLimits.MAP_LOCATIONS)
 async def get_world_map(
+    request: Request,
     user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_async_session),
-    request: Request = None
+    session: AsyncSession = Depends(get_async_session)
 ):
     cache_key = "map:geography"
 
@@ -40,12 +40,13 @@ async def get_world_map(
     cached_geo = cache_service.get(cache_key)
 
     if cached_geo:
-        # We still need to inject the LATEST dynamic soul locations into the cached geography
-        for loc in cached_geo:
+        # Copy the cached dicts so we don't mutate the shared cached object
+        output = [dict(loc) for loc in cached_geo]
+        for loc in output:
             loc["present_souls"] = [s_id for s_id,
                                     l_id in soul_locs.items() if l_id == loc["location_id"]]
             loc["time_slot"] = world_state['time_slot']
-        return cached_geo
+        return output
 
     # 3. Cache Miss: Rebuild Full Geography Response
     from backend.app.services.location_resolver import LocationResolver
@@ -75,8 +76,10 @@ class MoveRequest(BaseModel):
 
 
 @router.post("/move")
+@limiter.limit(RateLimits.MAP_LOCATIONS)
 async def move_to_location(
     move_request: MoveRequest,
+    request: Request,
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_async_session)
 ):
@@ -133,7 +136,7 @@ async def get_location_narration(
     present_souls_data = []
     if soul_ids_here:
         souls_res = await session.execute(
-            select(Soul).where(Soul.soul_id.in_(soul_ids_here))
+            select(Soul).where(Soul.soul_id.in_(soul_ids_here))  # type: ignore[attr-defined]
         )
         souls = souls_res.scalars().all()
         for s in souls:

@@ -12,6 +12,7 @@ from fastapi import WebSocket, WebSocketDisconnect
 from typing import Dict, Set, Optional
 import json
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from backend.app.core.logging_config import get_logger
 
 logger = get_logger("WebSocketManager")
@@ -69,7 +70,7 @@ class WebSocketManager:
             "type": "connection_established",
             "user_id": user_id,
             "message": "Neural Link synchronized.",
-            "timestamp": datetime.now(timezone.utc).isoformat()
+            "timestamp": utcnow().isoformat()
         })
 
     def disconnect(self, websocket: WebSocket) -> Optional[str]:

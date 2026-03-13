@@ -3,6 +3,7 @@
 
 from sqlmodel import SQLModel, Field
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional
 
 
@@ -25,7 +26,7 @@ class SubscriptionHistory(SQLModel, table=True):
 
     # Lifecycle
     started_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
     ended_at: Optional[datetime] = None
 
     # Payment Details

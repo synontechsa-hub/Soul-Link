@@ -6,7 +6,6 @@
 # - The Doctor, Doctor Who
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
 from typing import Optional

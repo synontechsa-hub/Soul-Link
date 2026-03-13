@@ -85,10 +85,19 @@ async def get_full_state(
             })
     else:
         # Standard User logic
+        # ── BULK LOCATION RESOLVE — no N+1 ───────────────────────────────────
+        needs_resolve = [link.soul_id for link, _ in results if not link.current_location]
+        from backend.app.services.location_resolver import LocationResolver
+        bulk_locations = await LocationResolver.resolve_bulk_locations(
+            soul_ids=needs_resolve,
+            time_slot=current_slot,
+            session=session
+        )
+
         for link, soul in results:
             display_location = link.current_location
             if not display_location:
-                display_location = await time_manager.get_soul_location_at_time(soul.soul_id, current_slot)
+                display_location = bulk_locations.get(soul.soul_id, "soul_plaza")
 
             soul_states.append({
                 "soul_id": link.soul_id,

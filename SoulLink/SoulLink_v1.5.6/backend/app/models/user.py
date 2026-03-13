@@ -3,6 +3,7 @@
 
 from sqlmodel import SQLModel, Field
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from typing import Optional
 
 
@@ -22,7 +23,7 @@ class User(SQLModel, table=True):
     last_seen_at: Optional[datetime] = Field(default=None)
 
     created_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
 
     # ────────────────────────────────────────────────────────────────
     #   PROFILE (Mirror — what Souls know about you)
@@ -42,7 +43,7 @@ class User(SQLModel, table=True):
     lifetime_tokens_used: int = Field(default=0)
 
     last_energy_refill: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc))
+        default_factory=lambda: utcnow())
     last_ad_at: Optional[datetime] = Field(default=None)
     ad_cooldown_until: Optional[datetime] = Field(default=None)
     stability_overdrive_until: Optional[datetime] = Field(default=None)

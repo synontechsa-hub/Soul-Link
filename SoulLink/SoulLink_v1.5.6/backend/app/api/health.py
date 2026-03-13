@@ -15,9 +15,10 @@ from sqlalchemy import text
 from backend.app.database.session import get_async_session
 from backend.app.services.websocket_manager import websocket_manager
 from backend.app.core.cache import cache_service
-from backend.app.api.users import get_current_user
+from backend.app.api.dependencies import get_current_user
 from backend.app.models.user import User
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 import psutil
 import os
 
@@ -68,7 +69,7 @@ async def health_check(session: AsyncSession = Depends(get_async_session)):
 
     response = {
         "status": status,
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": utcnow().isoformat(),
         "checks": checks
     }
 
@@ -130,7 +131,7 @@ async def get_metrics(
         system_metrics = {"error": str(e)}
 
     return {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": utcnow().isoformat(),
         "websocket": ws_metrics,
         "database": db_metrics,
         "system": system_metrics

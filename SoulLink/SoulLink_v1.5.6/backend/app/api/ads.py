@@ -8,6 +8,7 @@ from sqlalchemy import select
 from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 import hmac
 import hashlib
 
@@ -145,7 +146,7 @@ async def verify_ad_reward(
     for link in links:
         if payload.reward_type == "stability_boost":
             link.signal_stability = new_stability
-            link.last_stability_decay = datetime.now(timezone.utc)
+            link.last_stability_decay = utcnow()
             session.add(link)
 
             # Invalidate stability cache
@@ -210,7 +211,7 @@ async def get_user_stability(
             signal_stability=100.0,
             decay_rate=settings.ad_stability_decay_rate,
             warning_threshold=settings.ad_stability_warning_threshold,
-            last_updated=datetime.now(timezone.utc)
+            last_updated=utcnow()
         )
 
     # Return the worst stability (most urgent for the user to know about)

@@ -3,6 +3,7 @@
 # UPDATED: Now uses Groq (llama-3.1-8b-instant) for dynamic Chronicle Breaks.
 
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 import random
 import logging
 from backend.app.core.config import settings
@@ -27,36 +28,26 @@ class NarratorService:
         return self._client
 
     @staticmethod
-    def check_time_jump(last_interaction: datetime) -> bool:
-        """
-        Determines if enough time has passed to warrant a narrator interjection.
-        """
-        if not last_interaction:
+    def check_time_jump(last_seen_at: datetime) -> bool:
+        """Check if enough time has passed to trigger a Chronicle Break."""
+        if not last_seen_at:
             return False
+        delta = utcnow() - last_seen_at
+        return (delta.total_seconds() / 3600) >= NarratorService.CHRONICLE_THRESHOLD_HOURS
 
-        # Ensure consistent tz-aware comparison
-        if last_interaction.tzinfo is None:
-            last_interaction = last_interaction.replace(tzinfo=timezone.utc)
-
-        delta = datetime.now(timezone.utc) - last_interaction
-        return delta.total_seconds() > (NarratorService.CHRONICLE_THRESHOLD_HOURS * 3600)
-
-    @staticmethod
-    async def generate_chronicle(last_interaction: datetime, current_location: str, weather: str) -> str:
-        """
-        Generates the 'Chronicle Break' text based on time passed and world state.
-        Uses Groq (llama-3.1-8b-instant) for snappy, immersive narration.
-        """
-        # Ensure consistent tz-aware comparison
-        if last_interaction.tzinfo is None:
-            last_interaction = last_interaction.replace(tzinfo=timezone.utc)
-        delta = datetime.now(timezone.utc) - last_interaction
-        hours_passed = int(delta.total_seconds() / 3600)
+    async def generate_chronicle(
+        self,
+        last_seen_at: datetime,
+        current_location: str,
+        weather: str
+    ) -> str:
+        """Generates a cinematic one-liner about the passage of time."""
+        delta = utcnow() - last_seen_at
+        hours_passed = round(delta.total_seconds() / 3600, 1)
 
         prompt = (
-            f"You are the Narrator of SoulLink. Write a short 'Fade-to-Black' event summary.\n"
-            f"Context: {hours_passed} hours have passed since the user last interacted.\n"
-            f"Current Location: {current_location}\n"
+            f"Context: It has been {hours_passed} hours since the user last interacted. "
+            f"Location: {current_location}. "
             f"Current Weather: {weather}\n\n"
             f"Requirement: Write exactly ONE cinematic sentence (max 80 tokens). "
             f"Focus on the passage of time and the atmosphere. Do not use character names."
@@ -67,7 +58,7 @@ class NarratorService:
             loop = asyncio.get_running_loop()
 
             def _call_narrator_groq():
-                return narrator_service.client.chat.completions.create(
+                return self.client.chat.completions.create(
                     messages=[{"role": "user", "content": prompt}],
                     model="llama-3.1-8b-instant",
                     temperature=0.7,

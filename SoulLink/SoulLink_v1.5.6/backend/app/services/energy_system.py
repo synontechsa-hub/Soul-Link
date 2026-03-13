@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from backend.app.models.user import User
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -22,7 +23,7 @@ class EnergySystem:
             return True
 
         # 1. Regenerate Energy First
-        now = datetime.now(timezone.utc)
+        now = utcnow()
         last_refill = user.last_energy_refill
 
         # Handle None (Legacy users)

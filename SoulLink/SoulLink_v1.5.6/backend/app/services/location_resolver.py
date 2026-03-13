@@ -17,6 +17,7 @@ Priority Order:
 import logging
 from typing import Optional
 from datetime import datetime, timezone
+from backend.app.core.utils import utcnow
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
 from backend.app.models.soul import SoulPillar, SoulState
@@ -74,7 +75,7 @@ class LocationResolver:
         # Priority 2: Routine v2 / Logic Pillar (DB cache)
         pillar = await session.get(SoulPillar, soul_id)
         if pillar and pillar.routine:
-            is_weekend = datetime.now(timezone.utc).weekday() >= 5
+            is_weekend = utcnow().weekday() >= 5
             day_type = "weekend" if is_weekend else "weekday"
 
             # Check schedule overrides first
@@ -127,7 +128,7 @@ class LocationResolver:
         """
         from sqlalchemy.orm import load_only
 
-        is_weekend = datetime.now(timezone.utc).weekday() >= 5
+        is_weekend = utcnow().weekday() >= 5
         day_type = "weekend" if is_weekend else "weekday"
 
         # Bulk fetch Pillars
@@ -205,7 +206,7 @@ class LocationResolver:
         state = await session.get(SoulState, soul_id)
         if state:
             state.current_location_id = location_id
-            state.last_updated = datetime.now(timezone.utc)
+            state.last_updated = utcnow()
             session.add(state)
             try:
                 await session.commit()
